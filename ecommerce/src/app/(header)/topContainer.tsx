@@ -1,18 +1,20 @@
 import { Instagram, YouTube } from "@mui/icons-material";
-import { Box, BoxProps, SvgIconProps } from "@mui/material";
+import { Box, BoxProps, SvgIcon, SvgIconProps } from "@mui/material";
+import VK from "@/assets/vk.svg";
 
 const HeaderTopContainer = () => {
     const outerWrapperProps: BoxProps = {
         width: "100%",
         display: "flex",
         justifyContent: "center",
+        fontSize: "15px",
     };
 
     const wrapperProps: BoxProps = {
         // minWidth: "768px",
-        width: "70%",
+        width: { lg: "100%", xl: "1300px" },
         maxWidth: "1320px",
-        paddingX: "10px",
+        paddingX: { lg: "10px", xl: "0" },
 
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
@@ -24,6 +26,8 @@ const HeaderTopContainer = () => {
         display: "flex",
         flexWrap: "wrap",
         flexGrow: 1,
+
+        minWidth: "max-content",
     };
 
     const leftItemProps: BoxProps = {
@@ -67,6 +71,9 @@ const HeaderTopContainer = () => {
                     <Box {...leftItemProps}>Обратная связь</Box>
                 </Box>
                 <Box {...rightBoxProps}>
+                    <SvgIcon {...iconProps}>
+                        <VK />
+                    </SvgIcon>
                     <Instagram {...iconProps} />
                     <YouTube {...iconProps} />
                 </Box>

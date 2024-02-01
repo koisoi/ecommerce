@@ -1,6 +1,7 @@
 import { Box, BoxProps } from "@mui/material";
 import HeaderTopContainer from "./topContainer";
 import HeaderMainContainer from "./mainContainer";
+import HeaderNavigation from "./navigation";
 
 const Header = () => {
     const wrapperProps: BoxProps = {
@@ -13,10 +14,15 @@ const Header = () => {
     };
 
     return (
-        <Box {...wrapperProps}>
-            <HeaderTopContainer />
-            <HeaderMainContainer />
-        </Box>
+        <>
+            <header>
+                <Box {...wrapperProps}>
+                    <HeaderTopContainer />
+                    <HeaderMainContainer />
+                </Box>
+            </header>
+            <HeaderNavigation />
+        </>
     );
 };
 

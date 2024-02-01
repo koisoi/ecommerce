@@ -6,6 +6,56 @@ const Home = () => {
     return (
         <main>
             <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
+            <Box>test</Box>
         </main>
     );
 };
