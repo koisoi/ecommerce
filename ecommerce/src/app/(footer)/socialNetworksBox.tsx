@@ -1,10 +1,12 @@
+"use client";
+
 import {
     Box,
     BoxProps,
     Button,
     ButtonProps,
     SvgIcon,
-    SvgIconProps,
+    SvgIconProps
 } from "@mui/material";
 import FooterTitle from "./title";
 import VK from "@/assets/vk.svg";
@@ -14,13 +16,13 @@ const SocialNetworksBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px",
+        gap: "5px"
     };
 
     const buttonsRowProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
-        gap: "5px",
+        gap: "5px"
     };
 
     const buttonProps: ButtonProps = {
@@ -29,8 +31,8 @@ const SocialNetworksBox = () => {
 
         sx: {
             minHeight: "38px",
-            minWidth: "0",
-        },
+            minWidth: "0"
+        }
     };
 
     const vkButtonProps: ButtonProps = {
@@ -39,9 +41,9 @@ const SocialNetworksBox = () => {
             ...buttonProps.sx,
             backgroundColor: "#4D7198",
             ":hover": {
-                backgroundColor: "#4D7198",
-            },
-        },
+                backgroundColor: "#4D7198"
+            }
+        }
     };
 
     const instagramButtonProps: ButtonProps = {
@@ -52,9 +54,9 @@ const SocialNetworksBox = () => {
                 "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)",
             ":hover": {
                 backgroundImage:
-                    "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)",
-            },
-        },
+                    "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)"
+            }
+        }
     };
 
     const youtubeButtonProps: ButtonProps = {
@@ -64,16 +66,16 @@ const SocialNetworksBox = () => {
             backgroundColor: "#F00",
             maxWidth: "40px",
             ":hover": {
-                backgroundColor: "#F00",
-            },
-        },
+                backgroundColor: "#F00"
+            }
+        }
     };
 
     const iconProps: SvgIconProps = {
         fontSize: "small",
         sx: {
-            color: "white",
-        },
+            color: "white"
+        }
     };
 
     return (

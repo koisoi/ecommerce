@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, BoxProps } from "@mui/material";
 import ContactsBox from "./contactsBox";
 import CatalogBox from "./catalogBox";
@@ -13,7 +15,7 @@ const Footer = () => {
         justifyContent: "center",
 
         borderTop: "1px solid",
-        borderColor: "divider",
+        borderColor: "divider"
     };
 
     const innerWrapperProps: BoxProps = {
@@ -26,7 +28,7 @@ const Footer = () => {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
         justifyContent: "space-between",
-        gap: "20px",
+        gap: "20px"
     };
 
     return (

@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, BoxProps } from "@mui/material";
 import HeaderTopContainer from "./topContainer";
 import HeaderMainContainer from "./mainContainer";
@@ -10,7 +12,7 @@ const Header = () => {
 
         display: "flex",
         justifyContent: "center",
-        flexDirection: "column",
+        flexDirection: "column"
     };
 
     return (

@@ -1,19 +1,30 @@
+"use client";
+
+import { NextLinkProps } from "@/types";
 import { Menu } from "@mui/icons-material";
 import { Box, BoxProps, Button, ButtonProps, Typography } from "@mui/material";
 import Link, { LinkProps } from "next/link";
 import React from "react";
 
 const HeaderNavigation = () => {
+    const navigationProps: { style: React.CSSProperties } = {
+        style: {
+            position: "sticky",
+            top: "-1px",
+            zIndex: 11
+        }
+    };
+
     const wrapperProps: BoxProps = {
         display: { xs: "none", md: "flex" },
         justifyContent: "center",
 
         width: "100vw",
-        height: "52.5px",
+        height: "50px",
 
         sx: {
-            backgroundColor: "primary.main",
-        },
+            backgroundColor: "primary.main"
+        }
     };
 
     const innerWrapperProps: BoxProps = {
@@ -22,7 +33,7 @@ const HeaderNavigation = () => {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "20px",
+        gap: "20px"
     };
 
     const catalogButtonProps: ButtonProps = {
@@ -39,24 +50,24 @@ const HeaderNavigation = () => {
 
             ":hover": {
                 boxShadow: "none",
-                backgroundColor: "secondary.main",
-            },
-        },
+                backgroundColor: "secondary.main"
+            }
+        }
     };
 
-    const linksProps: LinkProps & { style: React.CSSProperties } = {
+    const linksProps: NextLinkProps = {
         href: "#",
 
         style: {
             textDecoration: "none",
             color: "white",
             fontWeight: "bold",
-            textTransform: "uppercase",
-        },
+            textTransform: "uppercase"
+        }
     };
 
     return (
-        <nav style={{ position: "sticky", top: "-1px" }}>
+        <nav {...navigationProps}>
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
                     <Button {...catalogButtonProps}>

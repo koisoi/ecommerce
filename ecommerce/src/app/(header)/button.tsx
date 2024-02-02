@@ -1,9 +1,11 @@
+"use client";
+
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 
 const HeaderButton = ({
     icon,
     upperText,
-    lowerText,
+    lowerText
 }: {
     icon: JSX.Element /**unknown? */;
     upperText: string;
@@ -16,12 +18,12 @@ const HeaderButton = ({
         alignItems: "center",
 
         minWidth: "max-content",
-        height: "min-content",
+        height: "min-content"
     };
 
     const textWrapperProps: BoxProps = {
         display: "flex",
-        flexDirection: "column",
+        flexDirection: "column"
     };
 
     const iconWrapperProps: BoxProps = {
@@ -32,20 +34,20 @@ const HeaderButton = ({
         sx: {
             ":hover": {
                 color: "primary.main",
-                cursor: "pointer",
-            },
-        },
+                cursor: "pointer"
+            }
+        }
     };
 
     const upperTextProps: TypographyProps = {
         color: "text.disabled",
         fontSize: "12px",
-        lineHeight: "1.2",
+        lineHeight: "1.2"
     };
 
     const lowerTextProps: TypographyProps = {
         fontSize: "15px",
-        lineHeight: "1.2",
+        lineHeight: "1.2"
     };
 
     return (

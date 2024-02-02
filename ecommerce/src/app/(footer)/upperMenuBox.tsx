@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./title";
 import FooterLink from "./link";
@@ -6,7 +8,7 @@ const UpperMenuBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px",
+        gap: "5px"
     };
 
     return (

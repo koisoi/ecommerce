@@ -1,3 +1,5 @@
+"use client";
+
 import { Instagram, YouTube } from "@mui/icons-material";
 import { Box, BoxProps, SvgIcon, SvgIconProps } from "@mui/material";
 import VK from "@/assets/vk.svg";
@@ -7,7 +9,7 @@ const HeaderTopContainer = () => {
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        fontSize: "15px",
+        fontSize: "15px"
     };
 
     const wrapperProps: BoxProps = {
@@ -19,7 +21,7 @@ const HeaderTopContainer = () => {
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
 
-        color: "#969696",
+        color: "#969696"
     };
 
     const leftBoxProps: BoxProps = {
@@ -27,7 +29,7 @@ const HeaderTopContainer = () => {
         flexWrap: "wrap",
         flexGrow: 1,
 
-        minWidth: "max-content",
+        minWidth: "max-content"
     };
 
     const leftItemProps: BoxProps = {
@@ -36,16 +38,16 @@ const HeaderTopContainer = () => {
         sx: {
             ":hover": {
                 color: "#212529",
-                cursor: "pointer",
-            },
-        },
+                cursor: "pointer"
+            }
+        }
     };
 
     const rightBoxProps: BoxProps = {
         display: "flex",
         flexWrap: "wrap",
         flexGrow: 1,
-        justifyContent: "flex-end",
+        justifyContent: "flex-end"
     };
 
     const iconProps: SvgIconProps = {
@@ -54,9 +56,9 @@ const HeaderTopContainer = () => {
             padding: "7.5px",
             ":hover": {
                 color: "#212529",
-                cursor: "pointer",
-            },
-        },
+                cursor: "pointer"
+            }
+        }
     };
 
     return (

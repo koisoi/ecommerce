@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, BoxProps, Link, LinkProps, SvgIconProps } from "@mui/material";
 import FooterTitle from "./title";
 import FooterLink from "./link";
@@ -7,7 +9,7 @@ const ContactsBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px",
+        gap: "5px"
     };
 
     const telLinkProps: LinkProps = {
@@ -17,8 +19,8 @@ const ContactsBox = () => {
         fontSize: "19px",
         fontWeight: "bold",
         sx: {
-            textDecoration: "none",
-        },
+            textDecoration: "none"
+        }
     };
 
     const boxProps: BoxProps = {
@@ -27,14 +29,14 @@ const ContactsBox = () => {
 
         display: "flex",
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "center"
     };
 
     const iconProps: SvgIconProps = {
         fontSize: "inherit",
         sx: {
-            marginRight: "10px",
-        },
+            marginRight: "10px"
+        }
     };
 
     return (

@@ -28,6 +28,5 @@ module.exports = {
   
       return config
     },
-  
     // ...other config
   }

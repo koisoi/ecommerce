@@ -1,3 +1,5 @@
+"use client";
+
 import { Box, BoxProps } from "@mui/material";
 import HeaderSearchBox from "./searchBox";
 import HeaderButton from "./button";
@@ -14,7 +16,7 @@ const HeaderMainContainer = () => {
         flexDirection: "row",
 
         width: "95%",
-        maxWidth: "1320px",
+        maxWidth: "1320px"
     };
 
     const wrapperProps: BoxProps = {
@@ -24,14 +26,14 @@ const HeaderMainContainer = () => {
         justifyContent: "space-between",
         gap: "30px",
         width: "100%",
-        paddingX: "10px",
+        paddingX: "10px"
     };
 
     const innerWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "30px",
+        gap: "30px"
     };
 
     const logoContainerProps: BoxProps = {
@@ -40,11 +42,11 @@ const HeaderMainContainer = () => {
             sm: "225px",
             md: "120px",
             lg: "160px",
-            xl: "180px",
+            xl: "180px"
         },
         maxWidth: "225px",
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "center"
     };
 
     const logoProps = {
@@ -52,14 +54,14 @@ const HeaderMainContainer = () => {
         alt: "Логотип",
         width: "100%",
         style: {
-            margin: "auto",
-        },
+            margin: "auto"
+        }
     };
 
     const contactsBoxProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        minWidth: "max-content",
+        minWidth: "max-content"
     };
 
     const buttonsRowProps: BoxProps = {
@@ -67,7 +69,7 @@ const HeaderMainContainer = () => {
         flexDirection: "row",
         gap: "10px",
 
-        height: "min-content",
+        height: "min-content"
     };
 
     return (
@@ -83,7 +85,7 @@ const HeaderMainContainer = () => {
                             style={{
                                 color: "#3167eb",
                                 fontWeight: "bold",
-                                textDecoration: "none",
+                                textDecoration: "none"
                             }}
                         >
                             8-800-987-00-11
@@ -91,7 +93,7 @@ const HeaderMainContainer = () => {
                         <a
                             style={{
                                 color: "#969696",
-                                textDecoration: "none",
+                                textDecoration: "none"
                             }}
                             href="mailto:test@test.ru"
                         >
