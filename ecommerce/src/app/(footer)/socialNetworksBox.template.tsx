@@ -8,8 +8,8 @@ import {
     SvgIcon,
     SvgIconProps
 } from "@mui/material";
-import FooterTitle from "./title";
-import VK from "@/assets/vk.svg";
+import FooterTitle from "./title.template";
+import VK from "@/assets/svg/vk.svg";
 import { Instagram, YouTube } from "@mui/icons-material";
 
 const SocialNetworksBox = () => {

@@ -1,11 +1,11 @@
 "use client";
 
-import CatalogSubategory from "@/app/(shared)/catalogCategory.template";
-import CatalogNavigation from "@/app/(shared)/catalogNavigation.template";
+import CatalogSubategory from "@/app/(shared)/components/catalogCategory.template";
+import Breadcrumbs from "@/app/(shared)/components/breadcrumbs.template";
 import { Box, BoxProps, Typography } from "@mui/material";
-import ProductCard from "./(shared)/card/productCard.template";
+import ProductCard from "./(card)/productCard.template";
 import { CatalogItem } from "@/types";
-import { getImageLink } from "./(shared)/card/functions/getImageLink";
+import { getImageLink } from "./(card)/(functions)/getImageLink";
 
 const CategoryTemplate = ({
     categoryTitle,
@@ -48,13 +48,13 @@ const CategoryTemplate = ({
             sm: "1fr 1fr",
             md: "1fr 1fr 1fr",
             mlg: "1fr 1fr 1fr 1fr"
-        } // TODO: Если сделаем меню с фильтрами, оставить 3 колонны макс.
+        }
     };
 
     return (
         <Box {...wrapperProps}>
             <Box {...headerWrapper}>
-                <CatalogNavigation />
+                <Breadcrumbs />
                 <Typography fontSize="38px" fontWeight="bolder">
                     {categoryTitle}
                 </Typography>
@@ -68,16 +68,6 @@ const CategoryTemplate = ({
             </Typography>
 
             <Box {...linksWrapper}>
-                {/* <CatalogSubategory amount={0}>
-                    Компьютеры и планшеты
-                </CatalogSubategory>
-                <CatalogSubategory amount={0}>Ноутбуки</CatalogSubategory>
-                <CatalogSubategory amount={0}>Смартфоны</CatalogSubategory>
-                <CatalogSubategory amount={1}>Наушники</CatalogSubategory>
-                <CatalogSubategory amount={0}>Комплектующие</CatalogSubategory>
-                <CatalogSubategory amount={2}>Аксессуары</CatalogSubategory>
-                <CatalogSubategory amount={0}>Телевизоры</CatalogSubategory>
-                <CatalogSubategory amount={0}>Колонки</CatalogSubategory> */}
                 {subcategories.map((subc, i) => (
                     <CatalogSubategory amount={0} key={i}>
                         {subc}
@@ -96,8 +86,6 @@ const CategoryTemplate = ({
                             title={item.title}
                             price={item.price}
                             productLink="#"
-                            newProduct
-                            sale
                         />
                     ))}
             </Box>

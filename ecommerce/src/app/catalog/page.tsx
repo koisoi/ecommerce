@@ -1,6 +1,6 @@
 "use client";
 
-import { catalogService } from "@/services/catalog/catalogService";
+import { catalogService } from "@/app/catalog/(services)/catalogService";
 import { CatalogItem } from "@/types";
 import React from "react";
 import CategoryTemplate from "./page.template";
@@ -14,7 +14,6 @@ const Category = () => {
         catalogService
             .getCatalogItems()
             .then((val) => {
-                console.log(catalogItems, val.list);
                 setLoading(false);
                 setCatalogItems(val.list);
             })

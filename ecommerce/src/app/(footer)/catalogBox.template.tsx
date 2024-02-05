@@ -1,8 +1,8 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import FooterTitle from "./title";
-import FooterLink from "./link";
+import FooterTitle from "./title.template";
+import FooterLink from "./footerLink.template";
 
 const CatalogBox = () => {
     const wrapperProps: BoxProps = {

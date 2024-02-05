@@ -2,7 +2,7 @@
 
 import { Instagram, YouTube } from "@mui/icons-material";
 import { Box, BoxProps, SvgIcon, SvgIconProps } from "@mui/material";
-import VK from "@/assets/vk.svg";
+import VK from "@/assets/svg/vk.svg";
 
 const HeaderTopContainer = () => {
     const outerWrapperProps: BoxProps = {

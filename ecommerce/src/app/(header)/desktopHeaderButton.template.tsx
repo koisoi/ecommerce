@@ -2,12 +2,12 @@
 
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 
-const HeaderButton = ({
-    icon,
+const DesktopHeaderButton = ({
+    children,
     upperText,
     lowerText
 }: {
-    icon: JSX.Element /**unknown? */;
+    children: React.ReactNode;
     upperText: string;
     lowerText: string;
 }) => {
@@ -52,7 +52,7 @@ const HeaderButton = ({
 
     return (
         <Box {...wrapperProps}>
-            <Box {...iconWrapperProps}>{icon}</Box>
+            <Box {...iconWrapperProps}>{children}</Box>
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>{upperText}</Typography>
                 <Typography {...lowerTextProps}>{lowerText}</Typography>
@@ -61,4 +61,4 @@ const HeaderButton = ({
     );
 };
 
-export default HeaderButton;
+export default DesktopHeaderButton;

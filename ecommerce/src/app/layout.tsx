@@ -3,9 +3,9 @@
 import "./globals.css";
 import React from "react";
 import styles from "./page.module.css";
-import Header from "./(header)/header";
+import Header from "./(header)/header.template";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
-import Footer from "./(footer)/footer";
+import Footer from "./(footer)/footer.template";
 
 const theme = createTheme({
     palette: {

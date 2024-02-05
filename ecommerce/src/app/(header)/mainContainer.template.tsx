@@ -1,9 +1,10 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import HeaderSearchBox from "./searchBox";
-import HeaderButton from "./button";
+import HeaderSearchBox from "./searchBox.template";
+import DesktopHeaderButton from "./desktopHeaderButton.template";
 import { AccountCircle, Favorite, ShoppingCart } from "@mui/icons-material";
+import logotype from "@/assets/img/logotype.png";
 
 const HeaderMainContainer = () => {
     const outerWrapperProps: BoxProps = {
@@ -33,6 +34,15 @@ const HeaderMainContainer = () => {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
+        gap: "30px",
+
+        flexGrow: 2
+    };
+
+    const logoAndContactsWrapper: BoxProps = {
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
         gap: "30px"
     };
 
@@ -50,7 +60,7 @@ const HeaderMainContainer = () => {
     };
 
     const logoProps = {
-        src: "/logotype.png",
+        src: logotype.src,
         alt: "Логотип",
         width: "100%",
         style: {
@@ -68,6 +78,7 @@ const HeaderMainContainer = () => {
         display: { xs: "none", sm: "flex" },
         flexDirection: "row",
         gap: "10px",
+        flexGrow: 1,
 
         height: "min-content"
     };
@@ -76,48 +87,50 @@ const HeaderMainContainer = () => {
         <Box {...outerWrapperProps}>
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
-                    <Box {...logoContainerProps}>
-                        <img {...logoProps} />
-                    </Box>
-                    <Box {...contactsBoxProps}>
-                        <a
-                            href="tel:88009870011"
-                            style={{
-                                color: "#3167eb",
-                                fontWeight: "bold",
-                                textDecoration: "none"
-                            }}
-                        >
-                            8-800-987-00-11
-                        </a>
-                        <a
-                            style={{
-                                color: "#969696",
-                                textDecoration: "none"
-                            }}
-                            href="mailto:test@test.ru"
-                        >
-                            test@test.ru
-                        </a>
+                    <Box {...logoAndContactsWrapper}>
+                        <Box {...logoContainerProps}>
+                            <img {...logoProps} />
+                        </Box>
+                        <Box {...contactsBoxProps}>
+                            <a
+                                href="tel:88009870011"
+                                style={{
+                                    color: "#3167eb",
+                                    fontWeight: "bold",
+                                    textDecoration: "none"
+                                }}
+                            >
+                                8-800-987-00-11
+                            </a>
+                            <a
+                                style={{
+                                    color: "#969696",
+                                    textDecoration: "none"
+                                }}
+                                href="mailto:test@test.ru"
+                            >
+                                test@test.ru
+                            </a>
+                        </Box>
                     </Box>
                     <HeaderSearchBox />
                 </Box>
                 <Box {...buttonsRowProps}>
-                    <HeaderButton
-                        icon={<Favorite />}
+                    <DesktopHeaderButton
                         upperText="Избранное"
                         lowerText="Кол-во: 0"
-                    />
-                    <HeaderButton
-                        icon={<ShoppingCart />}
-                        upperText="Корзина"
-                        lowerText="0.00 €"
-                    />
-                    <HeaderButton
-                        icon={<AccountCircle />}
+                    >
+                        <Favorite />
+                    </DesktopHeaderButton>
+                    <DesktopHeaderButton upperText="Корзина" lowerText="0.00 €">
+                        <ShoppingCart />
+                    </DesktopHeaderButton>
+                    <DesktopHeaderButton
                         upperText="Войти / Новый"
                         lowerText="Аккаунт"
-                    />
+                    >
+                        <AccountCircle />
+                    </DesktopHeaderButton>
                 </Box>
             </Box>
         </Box>

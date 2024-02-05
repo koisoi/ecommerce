@@ -1,10 +1,10 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import ContactsBox from "./contactsBox";
-import CatalogBox from "./catalogBox";
-import UpperMenuBox from "./upperMenuBox";
-import SocialNetworksBox from "./socialNetworksBox";
+import ContactsBox from "./contactsBox.template";
+import CatalogBox from "./catalogBox.template";
+import UpperMenuBox from "./upperMenuBox.template";
+import SocialNetworksBox from "./socialNetworksBox.template";
 
 const Footer = () => {
     const wrapperProps: BoxProps = {

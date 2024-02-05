@@ -1,8 +1,8 @@
 "use client";
 
 import { Box, BoxProps, Link, LinkProps, SvgIconProps } from "@mui/material";
-import FooterTitle from "./title";
-import FooterLink from "./link";
+import FooterTitle from "./title.template";
+import FooterLink from "./footerLink.template";
 import { AccessTimeFilled, Email, LocationOn } from "@mui/icons-material";
 
 const ContactsBox = () => {

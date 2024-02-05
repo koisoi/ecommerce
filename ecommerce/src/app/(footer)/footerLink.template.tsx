@@ -26,7 +26,7 @@ const FooterLink = ({
             textDecoration: "none",
             display: "inline-flex",
             flexDirection: "row",
-            alignContent: "center",
+            alignItems: "center",
 
             ":hover": {
                 color: "primary.main"
