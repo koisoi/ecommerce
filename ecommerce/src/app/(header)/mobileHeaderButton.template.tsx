@@ -2,8 +2,7 @@ import {
     AccountCircle,
     Favorite,
     Menu,
-    ShoppingCart,
-    SvgIconComponent
+    ShoppingCart
 } from "@mui/icons-material";
 import {
     Box,
@@ -14,6 +13,7 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
+import { ReactNode } from "react";
 
 const MobileHeaderButton = ({
     variant,
@@ -63,7 +63,7 @@ const MobileHeaderButton = ({
         fontSize: "0.8rem"
     };
 
-    let child: React.ReactNode | null = null;
+    let child: ReactNode | null = null;
 
     switch (variant) {
         case "accountCircle":

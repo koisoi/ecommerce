@@ -1,9 +1,9 @@
 "use client";
 
 import { Typography } from "@mui/material";
-import React from "react";
+import { ReactNode } from "react";
 
-const FooterTitle = ({ children }: { children: React.ReactNode }) => {
+const FooterTitle = ({ children }: { children: ReactNode }) => {
     return (
         <Typography
             color="text.primary"

@@ -1,11 +1,12 @@
 "use client";
 
 import "./globals.css";
-import React from "react";
 import styles from "./page.module.css";
 import Header from "./(header)/header.template";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
 import Footer from "./(footer)/footer.template";
+import { CSSProperties, ReactNode, useEffect, useState } from "react";
+import StoreProvider from "./storeProvider";
 
 const theme = createTheme({
     palette: {
@@ -41,10 +42,10 @@ const theme = createTheme({
 });
 
 // https://stackoverflow.com/questions/75406728/how-to-entirely-disable-server-side-rendering-in-next-js-v13
-const Dynamic = ({ children }: { children: React.ReactNode }) => {
-    const [hasMounted, setHasMounted] = React.useState(false);
+const Dynamic = ({ children }: { children: ReactNode }) => {
+    const [hasMounted, setHasMounted] = useState(false);
 
-    React.useEffect(() => {
+    useEffect(() => {
         setHasMounted(true);
     }, []);
 
@@ -58,9 +59,9 @@ const Dynamic = ({ children }: { children: React.ReactNode }) => {
 const RootLayout = ({
     children
 }: Readonly<{
-    children: React.ReactNode;
+    children: ReactNode;
 }>) => {
-    const bodyProps: { className: string; style: React.CSSProperties } = {
+    const bodyProps: { className: string; style: CSSProperties } = {
         className: `${styles.mainFont}`,
         style: {
             display: "flex",
@@ -74,20 +75,22 @@ const RootLayout = ({
     return (
         <html lang="en">
             <body {...bodyProps}>
-                <Dynamic>
-                    <ThemeProvider theme={theme}>
-                        <Header />
-                        <Box
-                            paddingY="40px"
-                            display="flex"
-                            justifyContent="center"
-                            minHeight="100vh"
-                        >
-                            {children}
-                        </Box>
-                        <Footer />
-                    </ThemeProvider>
-                </Dynamic>
+                <StoreProvider>
+                    <Dynamic>
+                        <ThemeProvider theme={theme}>
+                            <Header />
+                            <Box
+                                paddingY="40px"
+                                display="flex"
+                                justifyContent="center"
+                                minHeight="100vh"
+                            >
+                                {children}
+                            </Box>
+                            <Footer />
+                        </ThemeProvider>
+                    </Dynamic>
+                </StoreProvider>
             </body>
         </html>
     );

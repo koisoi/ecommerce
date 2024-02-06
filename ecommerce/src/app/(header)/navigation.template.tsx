@@ -1,12 +1,12 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import React from "react";
 import HeaderMobileNavigation from "./mobileNavigation.template";
 import HeaderDesktopNavigation from "./desktopNavigation.template";
+import { CSSProperties } from "react";
 
 const HeaderNavigation = ({ mobile }: { mobile: boolean }) => {
-    const navigationProps: { style: React.CSSProperties } = {
+    const navigationProps: { style: CSSProperties } = {
         style: {
             position: "sticky",
             top: "-1px",

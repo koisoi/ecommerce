@@ -1,21 +1,33 @@
 "use client";
 
-import { catalogService } from "@/app/catalog/(services)/catalogService";
-import { CatalogItem } from "@/types";
-import React from "react";
 import CategoryTemplate from "./page.template";
+import { categoryService } from "../../lib/services/catalog.service";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks";
+import {
+    CategoryPageState,
+    setLoading,
+    setSeries,
+    setPageDesciprtion,
+    setTitle
+} from "@/lib/slices/categoryPage.slice";
 
 const Category = () => {
-    const [loading, setLoading] = React.useState<boolean>(true);
-    const [catalogItems, setCatalogItems] = React.useState<CatalogItem[]>([]);
+    const dispatch = useAppDispatch();
+    const category = "thermal_riflescopes";
 
-    // TODO: перенести стейты в redux, сделать отмену запроса при демаунте
-    React.useEffect(() => {
-        catalogService
-            .getCatalogItems()
+    const { loading, title, page_description, series } =
+        useAppSelector(CategoryPageState);
+
+    useEffect(() => {
+        categoryService
+            .getCategory(category)
             .then((val) => {
-                setLoading(false);
-                setCatalogItems(val.list);
+                dispatch(setTitle(val.title));
+                dispatch(setPageDesciprtion(val.page_description));
+                dispatch(setSeries(val.series));
+
+                dispatch(setLoading(false));
             })
             .catch((error) => console.log(error.message));
     }, []);
@@ -23,18 +35,10 @@ const Category = () => {
     return (
         <CategoryTemplate
             loading={loading}
-            catalogItems={catalogItems}
-            categoryTitle="Электроника"
-            subcategories={[
-                "Компьютеры и планшеты",
-                "Ноутбуки",
-                "Смартфоны",
-                "Наушники",
-                "Комплектующие",
-                "Аксессуары",
-                "Телевизоры",
-                "Колонки"
-            ]}
+            category={category}
+            title={title}
+            page_description={page_description}
+            series={series}
         />
     );
 };

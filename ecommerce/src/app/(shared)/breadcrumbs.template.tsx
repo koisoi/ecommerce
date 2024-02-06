@@ -1,6 +1,6 @@
 "use client";
 
-import { NextLinkProps } from "@/types";
+import { NextLinkProps } from "@/lib/types";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import Link from "next/link";
 

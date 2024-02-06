@@ -1,13 +1,14 @@
 "use client";
 
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import { ReactNode } from "react";
 
 const DesktopHeaderButton = ({
     children,
     upperText,
     lowerText
 }: {
-    children: React.ReactNode;
+    children: ReactNode;
     upperText: string;
     lowerText: string;
 }) => {

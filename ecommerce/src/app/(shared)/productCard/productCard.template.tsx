@@ -1,7 +1,7 @@
 "use client";
 
-import { NextLinkProps } from "@/types";
-import { Favorite, ShoppingCart } from "@mui/icons-material";
+import { NextLinkProps } from "@/lib/types";
+import { ShoppingCart } from "@mui/icons-material";
 import {
     Card,
     CardContent,
@@ -16,29 +16,32 @@ import {
     SvgIconProps,
     TypographyProps,
     BoxProps,
-    Box,
-    IconButtonProps,
-    IconButton
+    Box
 } from "@mui/material";
 import Link from "next/link";
+import { getProductImageLink } from "../../../lib/functions/category/getProductImageLink";
 
 const ProductCard = ({
     imageLink,
     title,
+    articul,
     price,
-    productLink,
     discount,
     newProduct,
-    sale
+    sale,
+    recommended
 }: {
     imageLink: string;
     title: string;
+    articul: string;
     price: string;
-    productLink: string;
     discount?: number;
     newProduct?: boolean;
     sale?: boolean;
+    recommended?: boolean;
 }) => {
+    imageLink = getProductImageLink(imageLink);
+
     const cardProps: CardProps = {
         sx: {
             width: "100%",
@@ -82,26 +85,31 @@ const ProductCard = ({
         }
     };
 
-    const favoriteButtonProps: IconButtonProps = {
-        disableRipple: true,
-        disableFocusRipple: true,
+    // const favoriteButtonProps: IconButtonProps = {
+    //     disableRipple: true,
+    //     disableFocusRipple: true,
 
-        sx: {
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            padding: "0",
+    //     sx: {
+    //         position: "absolute",
+    //         top: "10px",
+    //         right: "10px",
+    //         padding: "0",
 
-            color: "text.disabled",
+    //         color: "text.disabled",
 
-            ":hover": {
-                color: "primary.main"
-            }
-        }
-    };
+    //         ":hover": {
+    //             color: "primary.main"
+    //         }
+    //     }
+    // };
 
-    const favoriteIconProps: SvgIconProps = {
-        fontSize: "inherit"
+    // const favoriteIconProps: SvgIconProps = {
+    //     fontSize: "inherit"
+    // };
+
+    const articleTextProps: TypographyProps = {
+        fontSize: "0.9rem",
+        color: "text.disabled"
     };
 
     const badgeWrapperProps: BoxProps = {
@@ -143,7 +151,15 @@ const ProductCard = ({
     const saleBadgeProps: BoxProps = {
         ...badgeProps,
         sx: {
-            backgroundColor: "#FC0",
+            backgroundColor: "primary.main",
+            color: "white"
+        }
+    };
+
+    const recommendedBadgeProps: BoxProps = {
+        ...badgeProps,
+        sx: {
+            backgroundColor: "secondary.main",
             color: "white"
         }
     };
@@ -168,7 +184,7 @@ const ProductCard = ({
     };
 
     const linkProps: NextLinkProps = {
-        href: productLink,
+        href: "#",
         style: {
             textDecoration: "none"
         }
@@ -187,7 +203,7 @@ const ProductCard = ({
         }
     };
 
-    const actionRow: CardActionsProps = {
+    const actionRowProps: CardActionsProps = {
         sx: {
             display: "flex",
             flexDirection: "row",
@@ -197,15 +213,46 @@ const ProductCard = ({
         }
     };
 
-    const shoppingCartButtonProps: ButtonProps = {
+    const buttonsRowProps: BoxProps = {
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "flex-end",
+        gap: "5px",
+
+        width: "100%"
+    };
+
+    const buttonProps: ButtonProps = {
         size: "small",
         variant: "outlined",
-        color: "primary",
 
         disableRipple: true,
 
         sx: {
-            textTransform: "none",
+            textTransform: "none"
+        }
+    };
+
+    const instantBuyButtonProps: ButtonProps = {
+        ...buttonProps,
+        color: "secondary",
+
+        sx: {
+            ...buttonProps.sx,
+
+            ":hover": {
+                backgroundColor: "secondary.main",
+                color: "white"
+            }
+        }
+    };
+
+    const shoppingCartButtonProps: ButtonProps = {
+        ...buttonProps,
+        color: "primary",
+
+        sx: {
+            ...buttonProps.sx,
 
             ":hover": {
                 backgroundColor: "primary.main",
@@ -221,8 +268,19 @@ const ProductCard = ({
         }
     };
 
+    const priceProps: TypographyProps = {
+        display: "inline-block",
+        minWidth: "max-content",
+
+        fontWeight: "bold"
+    };
+
     const buttonTextProps: TypographyProps = {
-        fontSize: "0.82rem",
+        fontSize: "0.82rem"
+    };
+
+    const cartButtonTextProps: TypographyProps = {
+        ...buttonTextProps,
         paddingRight: "4px"
     };
 
@@ -233,24 +291,39 @@ const ProductCard = ({
                 <Box {...badgeWrapperProps}>
                     {newProduct && <Box {...newProductBadgeProps}>Новинка</Box>}
                     {sale && <Box {...saleBadgeProps}>Распродажа</Box>}
+                    {recommended && (
+                        <Box {...recommendedBadgeProps}>Рекомендуем</Box>
+                    )}
                 </Box>
-                <IconButton {...favoriteButtonProps}>
+                {/* <IconButton {...favoriteButtonProps}>
                     <Favorite {...favoriteIconProps} />
-                </IconButton>
+                </IconButton> */}
                 {discount && <Box {...discountBadgeProps}>-{discount}%</Box>}
             </CardMedia>
             <CardContent>
                 <Link {...linkProps}>
                     <Typography {...titleProps}>{title}</Typography>
                 </Link>
+                <Typography {...articleTextProps}>
+                    Артикул: {articul}
+                </Typography>
+                {/* TODO: вынести в переиспользуемый компонент + заголовки */}
             </CardContent>
-            <CardActions {...actionRow}>
-                {/* вынести в переиспользуемый компонент + заголовки */}
-                <Typography fontWeight="bold">{price} ₽</Typography>
-                <Button {...shoppingCartButtonProps}>
-                    <Typography {...buttonTextProps}>В корзину</Typography>
-                    <ShoppingCart {...shoppingCartIconProps} />
-                </Button>
+            <CardActions {...actionRowProps}>
+                <Typography {...priceProps}>{price} ₽</Typography>
+                <Box {...buttonsRowProps}>
+                    <Button {...instantBuyButtonProps}>
+                        <Typography {...buttonTextProps}>
+                            Быстрый заказ
+                        </Typography>
+                    </Button>
+                    <Button {...shoppingCartButtonProps}>
+                        <Typography {...cartButtonTextProps}>
+                            В корзину
+                        </Typography>
+                        <ShoppingCart {...shoppingCartIconProps} />
+                    </Button>
+                </Box>
             </CardActions>
         </Card>
     );

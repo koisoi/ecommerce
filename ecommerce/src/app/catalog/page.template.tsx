@@ -1,26 +1,20 @@
 "use client";
 
-import CatalogSubategory from "@/app/(shared)/components/catalogCategory.template";
-import Breadcrumbs from "@/app/(shared)/components/breadcrumbs.template";
+import CatalogSubategory from "@/app/catalog/catalogCategory.template";
+import Breadcrumbs from "@/app/(shared)/breadcrumbs.template";
 import { Box, BoxProps, Typography } from "@mui/material";
-import ProductCard from "./(card)/productCard.template";
-import { CatalogItem } from "@/types";
-import { getImageLink } from "./(card)/(functions)/getImageLink";
+import { CategoryInfo, CategoryItem } from "@/lib/types";
+import ProductsCategoryGrid from "./(productsGrid)/productsCategoryGrid";
 
 const CategoryTemplate = ({
-    categoryTitle,
-    subcategories,
-    catalogItems,
+    title,
+    page_description,
+    series,
+    category,
     loading
-}: {
-    categoryTitle: string;
-    // TODO: поменять на тип категорий с сервера + кол-во товаров в категории + id
-    subcategories: string[];
-    catalogItems: CatalogItem[];
-    loading: boolean;
-}) => {
+}: CategoryInfo & { loading: boolean; category: string }) => {
     const wrapperProps: BoxProps = {
-        maxWidth: "1320px",
+        maxWidth: "1400px",
         width: "100%",
         paddingX: "40px",
 
@@ -38,57 +32,25 @@ const CategoryTemplate = ({
         marginBottom: "25px"
     };
 
-    const cardsWrapperProps: BoxProps = {
-        width: "100%",
-
-        display: "grid",
-        gap: "20px",
-        gridTemplateColumns: {
-            xs: "1fr",
-            sm: "1fr 1fr",
-            md: "1fr 1fr 1fr",
-            mlg: "1fr 1fr 1fr 1fr"
-        }
-    };
-
     return (
         <Box {...wrapperProps}>
             <Box {...headerWrapper}>
                 <Breadcrumbs />
                 <Typography fontSize="38px" fontWeight="bolder">
-                    {categoryTitle}
-                </Typography>
-                <Typography color="text.disabled">
-                    Товаров в категории: {catalogItems.length}
+                    {title}
                 </Typography>
             </Box>
 
-            <Typography marginBottom="20px">
-                В каталоге представлены все новинки электроники на 2021 год
-            </Typography>
+            <Typography marginBottom="20px">{page_description}</Typography>
 
             <Box {...linksWrapper}>
-                {subcategories.map((subc, i) => (
-                    <CatalogSubategory amount={0} key={i}>
-                        {subc}
+                {series.map((series, i) => (
+                    <CatalogSubategory amount={series.productsAmount} key={i}>
+                        {series.title}
                     </CatalogSubategory>
                 ))}
             </Box>
-
-            <Box {...cardsWrapperProps}>
-                {loading && "Загрузка товаров..."}
-                {!loading &&
-                    catalogItems.length &&
-                    catalogItems.map((item) => (
-                        <ProductCard
-                            key={item.id}
-                            imageLink={getImageLink(item.images[0].url)}
-                            title={item.title}
-                            price={item.price}
-                            productLink="#"
-                        />
-                    ))}
-            </Box>
+            <ProductsCategoryGrid category={category} />
         </Box>
     );
 };

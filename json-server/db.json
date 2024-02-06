@@ -7439,5 +7439,1304 @@
                 ]
             }
         ]
+    },
+    "catalogProductsElectronics": {
+        "title": "Электроника",
+        "textDescription": "В каталоге представлены все новинки электроники на 2021 год",
+        "seriesArray": [
+            {
+                "title": "Серия 1",
+                "alias": "series1",
+                "productsAmount": 10
+            },
+            {
+                "title": "Серия 2",
+                "alias": "series2",
+                "productsAmount": 12
+            },
+            {
+                "title": "Серия 3",
+                "alias": "series3",
+                "productsAmount": 15
+            },
+            {
+                "title": "Серия 4",
+                "alias": "series4",
+                "productsAmount": 1
+            }
+        ]
+    },
+    "catalogProductsElectronicsItems1": {
+        "totalAmount": 38,
+        "products": [
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": true,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": true,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": true,
+                "sale": true
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            }
+        ]
+    },
+    "catalogProductsElectronicsItems2": {
+        "totalAmount": 38,
+        "products": [
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            }
+        ]
+    },
+    "catalogProductsElectronicsItems3": {
+        "totalAmount": 38,
+        "products": [
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": true,
+                "recommended": true,
+                "sale": true
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": true
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": true,
+                "recommended": false,
+                "sale": false
+            }
+        ]
+    },
+    "catalogProductsElectronicsItems4": {
+        "totalAmount": 38,
+        "products": [
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": false
+            },
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": true,
+                "recommended": true,
+                "sale": false
+            }
+        ]
+    },
+    "catalogProductsElectronicsSeries4Items1": {
+        "totalAmount": 1,
+        "products": [
+            {
+                "id": 509222,
+                "articul": "22365",
+                "images": [
+                    {
+                        "id": 46159,
+                        "url": "/data/upload/Catalog_Model_Products/46159_original.jpeg"
+                    },
+                    {
+                        "id": 46160,
+                        "url": "/data/upload/Catalog_Model_Products/46160_original.jpeg"
+                    },
+                    {
+                        "id": 46161,
+                        "url": "/data/upload/Catalog_Model_Products/46161_original.jpeg"
+                    },
+                    {
+                        "id": 46162,
+                        "url": "/data/upload/Catalog_Model_Products/46162_original.jpeg"
+                    },
+                    {
+                        "id": 46163,
+                        "url": "/data/upload/Catalog_Model_Products/46163_original.jpeg"
+                    }
+                ],
+                "title": "iRay Saim SCP 19W",
+                "alias": "iray-saim-scp-19w",
+                "price": "232750",
+                "new": false,
+                "recommended": false,
+                "sale": true
+            }
+        ]
     }
 }

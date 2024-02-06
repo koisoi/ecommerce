@@ -9,10 +9,11 @@ export abstract class Service {
 
     constructor(baseURL: string) {
         this._axiosInstance = axios.create({
-            baseURL: "https://dev.telescope1.ru"
-            // (process.env.NODE_ENV === "production"
-            //     ? "https://dev.telescope1.ru"
-            //     : "http://localhost:8000") + baseURL
+            // baseURL: "https://dev.telescope1.ru"
+            baseURL:
+                (process.env.NODE_ENV === "production"
+                    ? "https://dev.telescope1.ru"
+                    : "http://localhost:8000") + baseURL
             // withCredentials: true, - если в будущем будем использовать куки надо будет разкомментить
         });
 

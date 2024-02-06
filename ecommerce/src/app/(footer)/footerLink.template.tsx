@@ -1,14 +1,15 @@
 "use client";
 
-import { NextLinkProps } from "@/types";
+import { NextLinkProps } from "@/lib/types";
 import { Typography, TypographyProps } from "@mui/material";
 import Link, { LinkProps } from "next/link";
+import { ReactNode } from "react";
 
 const FooterLink = ({
     children,
     href
 }: {
-    children: React.ReactNode;
+    children: ReactNode;
     href: string;
 }) => {
     const linkProps: NextLinkProps = {

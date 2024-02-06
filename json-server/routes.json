@@ -1,3 +1,9 @@
 {
-    "/catalog/products/index": "/catalogProductsIndex"
+    "/catalog/products/index": "/catalogProductsIndex",
+    "/catalog/products/electronics": "/catalogProductsElectronics",
+    "/catalog/products/electronics/items/1": "catalogProductsElectronicsItems1",
+    "/catalog/products/electronics/items/2": "catalogProductsElectronicsItems2",
+    "/catalog/products/electronics/items/3": "catalogProductsElectronicsItems3",
+    "/catalog/products/electronics/items/4": "catalogProductsElectronicsItems4",
+    "/catalog/products/electronics/series4/items/1": "catalogProductsElectronicsSeries4Items1"
 }

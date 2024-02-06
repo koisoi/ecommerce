@@ -1,7 +1,7 @@
 "use client";
 
-import CardSkeleton from "@/app/(shared)/components/cardSkeleton.template";
-import { useMediaQueries } from "@/app/(shared)/functions/hooks";
+import CardSkeleton from "@/app/(shared)/cardSkeleton.template";
+import { useMediaQueries } from "@/lib/hooks";
 
 const CardsSkeleton = () => {
     const screen = useMediaQueries();

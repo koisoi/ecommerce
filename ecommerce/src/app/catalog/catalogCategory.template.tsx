@@ -1,15 +1,16 @@
 "use client";
 
-import { NextLinkProps } from "@/types";
+import { NextLinkProps } from "@/lib/types";
 import { Typography, TypographyProps } from "@mui/material";
 import Link from "next/link";
+import { ReactNode } from "react";
 
 const CatalogSubategory = ({
     children,
     amount
 }: {
-    children: React.ReactNode;
-    amount: number;
+    children: ReactNode;
+    amount?: number;
 }) => {
     const linkProps: NextLinkProps = {
         href: "#",
@@ -39,9 +40,11 @@ const CatalogSubategory = ({
         <Link {...linkProps}>
             <Typography {...textProps}>
                 {children}
-                <Typography {...supProps}>
-                    <sup>{amount}</sup>
-                </Typography>
+                {amount ?? (
+                    <Typography {...supProps}>
+                        <sup>{amount}</sup>
+                    </Typography>
+                )}
             </Typography>
         </Link>
     );
