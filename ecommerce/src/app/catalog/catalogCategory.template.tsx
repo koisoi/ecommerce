@@ -5,7 +5,7 @@ import { Typography, TypographyProps } from "@mui/material";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-const CatalogSubategory = ({
+const CatalogSubcategory = ({
     children,
     amount
 }: {
@@ -50,4 +50,4 @@ const CatalogSubategory = ({
     );
 };
 
-export default CatalogSubategory;
+export default CatalogSubcategory;

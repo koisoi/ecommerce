@@ -1,3 +1,4 @@
+import { useMediaQueries } from "@/lib/hooks";
 import { Box, BoxProps, Pagination, PaginationProps } from "@mui/material";
 import { ChangeEvent } from "react";
 
@@ -11,6 +12,8 @@ const CategoryPagination = ({
     pagesCount: number;
     onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
 }) => {
+    const screen = useMediaQueries();
+
     const paginationWrapperProps: BoxProps = {
         display: "flex",
         justifyContent: "center",
@@ -24,7 +27,7 @@ const CategoryPagination = ({
         page: page,
         onChange: onPageChange,
 
-        size: "large",
+        size: screen.sm ? "large" : "small",
         shape: "rounded"
     };
 

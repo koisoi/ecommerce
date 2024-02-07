@@ -20,6 +20,8 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { getProductImageLink } from "../../../lib/functions/category/getProductImageLink";
+import Price from "../price.template";
+import { InstantBuyButton, ShoppingCartButton } from "../buyButtons.template";
 
 const ProductCard = ({
     imageLink,
@@ -206,8 +208,14 @@ const ProductCard = ({
     const actionRowProps: CardActionsProps = {
         sx: {
             display: "flex",
-            flexDirection: "row",
+            flexDirection: {
+                xs: "column",
+                smd: "row",
+                md: "column",
+                xl: "row"
+            },
             justifyContent: "space-between",
+            rowGap: "5px",
 
             paddingX: "16px"
         }
@@ -217,71 +225,19 @@ const ProductCard = ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-end",
-        gap: "5px",
-
-        width: "100%"
+        gap: "5px"
     };
 
     const buttonProps: ButtonProps = {
-        size: "small",
-        variant: "outlined",
-
-        disableRipple: true,
-
         sx: {
-            textTransform: "none"
-        }
-    };
-
-    const instantBuyButtonProps: ButtonProps = {
-        ...buttonProps,
-        color: "secondary",
-
-        sx: {
-            ...buttonProps.sx,
-
-            ":hover": {
-                backgroundColor: "secondary.main",
-                color: "white"
+            flexGrow: 1,
+            width: {
+                xs: "100%",
+                smd: "unset",
+                md: "100%",
+                xl: "unset"
             }
         }
-    };
-
-    const shoppingCartButtonProps: ButtonProps = {
-        ...buttonProps,
-        color: "primary",
-
-        sx: {
-            ...buttonProps.sx,
-
-            ":hover": {
-                backgroundColor: "primary.main",
-                color: "white"
-            }
-        }
-    };
-
-    const shoppingCartIconProps: SvgIconProps = {
-        fontSize: "inherit",
-        sx: {
-            fontSize: "0.9rem"
-        }
-    };
-
-    const priceProps: TypographyProps = {
-        display: "inline-block",
-        minWidth: "max-content",
-
-        fontWeight: "bold"
-    };
-
-    const buttonTextProps: TypographyProps = {
-        fontSize: "0.82rem"
-    };
-
-    const cartButtonTextProps: TypographyProps = {
-        ...buttonTextProps,
-        paddingRight: "4px"
     };
 
     return (
@@ -295,9 +251,6 @@ const ProductCard = ({
                         <Box {...recommendedBadgeProps}>Рекомендуем</Box>
                     )}
                 </Box>
-                {/* <IconButton {...favoriteButtonProps}>
-                    <Favorite {...favoriteIconProps} />
-                </IconButton> */}
                 {discount && <Box {...discountBadgeProps}>-{discount}%</Box>}
             </CardMedia>
             <CardContent>
@@ -310,20 +263,9 @@ const ProductCard = ({
                 {/* TODO: вынести в переиспользуемый компонент + заголовки */}
             </CardContent>
             <CardActions {...actionRowProps}>
-                <Typography {...priceProps}>{price} ₽</Typography>
-                <Box {...buttonsRowProps}>
-                    <Button {...instantBuyButtonProps}>
-                        <Typography {...buttonTextProps}>
-                            Быстрый заказ
-                        </Typography>
-                    </Button>
-                    <Button {...shoppingCartButtonProps}>
-                        <Typography {...cartButtonTextProps}>
-                            В корзину
-                        </Typography>
-                        <ShoppingCart {...shoppingCartIconProps} />
-                    </Button>
-                </Box>
+                <Price variant="small" price={price} props={{ flexGrow: 1 }} />
+                <InstantBuyButton props={buttonProps} />
+                <ShoppingCartButton props={buttonProps} />
             </CardActions>
         </Card>
     );

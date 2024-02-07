@@ -8,7 +8,7 @@ import {
     Typography
 } from "@mui/material";
 import { ChangeEvent } from "react";
-import CategoryPagination from "./categoryPagination";
+import CategoryPagination from "./categoryPagination.template";
 
 const ProductsGridTemplate = ({
     list: products,

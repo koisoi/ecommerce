@@ -15,7 +15,8 @@ const theme = createTheme({
             dark: "#0e48d7"
         },
         secondary: {
-            main: "#6F95F1"
+            main: "#6F95F1",
+            dark: "#587edb"
         },
         text: {
             disabled: "#969696",
@@ -80,7 +81,7 @@ const RootLayout = ({
                         <ThemeProvider theme={theme}>
                             <Header />
                             <Box
-                                paddingY="40px"
+                                padding="40px"
                                 display="flex"
                                 justifyContent="center"
                                 minHeight="100vh"

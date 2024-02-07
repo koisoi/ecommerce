@@ -1,14 +1,12 @@
 "use client";
 
 import ProductsGridTemplate from "./productsGrid.template";
-import { categoryService } from "../../../lib/services/catalog.service";
 import { ChangeEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
     ProductsCategoryGridState,
-    setLoading,
-    setProducts,
-    setTotalAmount
+    fetchCategoryItems,
+    setCanFetch
 } from "@/lib/slices/productsCategoryGrid.slice";
 
 const ProductsCategoryGrid = ({
@@ -30,29 +28,30 @@ const ProductsCategoryGrid = ({
         list: products
     } = useAppSelector(ProductsCategoryGridState);
 
-    const handlePageChange = (
-        event: ChangeEvent<unknown>,
-        page: number
-    ): void => setPage(page);
+    const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
+        setPage(page);
 
     useEffect(() => {
-        dispatch(setLoading(true));
-        categoryService
-            .getCategoryItems({
+        dispatch(setCanFetch(true));
+        const promise = dispatch(
+            fetchCategoryItems({
                 category,
                 series,
                 productsPerPage,
                 page
             })
-            .then((val) => {
-                console.log(val);
-                dispatch(setTotalAmount(val.totalItemCount));
-                dispatch(setProducts(val.list));
-                setPagesCount(Math.trunc(val.totalItemCount / productsPerPage));
+        );
+        promise.catch((error) => console.error(error.message));
 
-                dispatch(setLoading(false));
-            });
-    }, [page]);
+        return () => {
+            promise.abort();
+            dispatch(setCanFetch(false));
+        };
+    }, [page, category, series]);
+
+    useEffect(() => {
+        setPagesCount(Math.ceil(totalAmount / productsPerPage));
+    }, [totalAmount]);
 
     return (
         <ProductsGridTemplate

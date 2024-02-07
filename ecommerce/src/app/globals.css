@@ -159,3 +159,24 @@ html {
   font-style: normal; 
 } 
 
+@font-face { 
+  font-family: "Main"; 
+  src: url('../assets/fonts/mainFontCyrrilicExt.woff2'); 
+  font-weight: normal; 
+  font-style: normal; 
+} 
+
+@font-face { 
+  font-family: "Main"; 
+  src: url('../assets/fonts/mainFontCyrrilicExt.woff2'); 
+  font-weight: bold; 
+  font-style: normal; 
+} 
+
+@font-face { 
+  font-family: "Main"; 
+  src: url('../assets/fonts/mainFontCyrrilicExt.woff2'); 
+  font-weight: bolder; 
+  font-style: normal; 
+} 
+

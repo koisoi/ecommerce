@@ -1,15 +1,15 @@
 "use client";
 
 import { NextLinkProps } from "@/lib/types";
-import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import { Box, Breadcrumbs, Typography, TypographyProps } from "@mui/material";
 import Link from "next/link";
 
-const Breadcrumbs = () => {
+const BreadcrumbsTemplate = ({
+    linksArray
+}: {
+    linksArray: { link: string; title: string }[];
+}) => {
     // TODO: переделать под переиспользуемый с usePath()
-
-    const wrapperProps: BoxProps = {
-        fontSize: "15px"
-    };
 
     const linkProps: Partial<NextLinkProps> = {
         style: {
@@ -44,13 +44,20 @@ const Breadcrumbs = () => {
     };
 
     return (
-        <Box {...wrapperProps}>
-            <Link href="#" {...linkProps}>
+        <Breadcrumbs>
+            <Link href="/" {...linkProps}>
                 <Typography {...navTextProps}>Главная</Typography>
-            </Link>{" "}
-            / <Typography {...locationTextProps}>Электроника</Typography>
-        </Box>
+            </Link>
+            {linksArray.slice(0, linksArray.length - 1).map((el, i) => (
+                <Link href={el.link} key={i} {...linkProps}>
+                    <Typography {...navTextProps}>{el.title}</Typography>
+                </Link>
+            ))}
+            <Typography {...locationTextProps}>
+                {linksArray[linksArray.length - 1].title}
+            </Typography>
+        </Breadcrumbs>
     );
 };
 
-export default Breadcrumbs;
+export default BreadcrumbsTemplate;

@@ -1,31 +1,18 @@
-import axios, { AxiosInstance } from "axios";
-
 export abstract class Service {
-    private readonly _axiosInstance: AxiosInstance;
+    readonly baseURL: string;
+    readonly headers: RequestInit;
 
-    get axiosInstance() {
-        return this._axiosInstance;
-    }
-
-    constructor(baseURL: string) {
-        this._axiosInstance = axios.create({
-            // baseURL: "https://dev.telescope1.ru"
-            baseURL:
-                (process.env.NODE_ENV === "production"
-                    ? "https://dev.telescope1.ru"
-                    : "http://localhost:8000") + baseURL
-            // withCredentials: true, - если в будущем будем использовать куки надо будет разкомментить
-        });
-
-        // дефолтная обработка ошибок - добавить попозже
-        // this._instance.interceptors.request.use(
-        //          (responce) => responce,
-        //          (error) => {
-        //              if (error.response?.status === 401) {
-        //                  store.dispatch(resetState());
-        //              }
-        //              return Promise.reject(error);
-        //         }
-        //      );
+    constructor(baseURL: string, headers?: RequestInit) {
+        this.baseURL = "https://dev.telescope1.ru" + baseURL;
+        this.headers = {
+            ...headers,
+            method: "GET",
+            credentials: "include",
+            mode: "cors",
+            headers: new Headers({
+                Authorization: "Basic " + btoa("fr123:123qwe"),
+                "Content-Type": "application/json"
+            })
+        };
     }
 }
