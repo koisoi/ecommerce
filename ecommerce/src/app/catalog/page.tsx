@@ -1,13 +1,14 @@
 "use client";
 
-import CategoryTemplate from "./page.template";
-import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
     CategoryPageState,
     fetchCategory,
-    setCanFetch
-} from "@/lib/slices/categoryPage.slice";
+    setCanFetchCategory,
+    useAppDispatch,
+    useAppSelector
+} from "@/lib";
+import CategoryTemplate from "./page.template";
+import { useEffect } from "react";
 
 const Category = () => {
     const dispatch = useAppDispatch();
@@ -17,13 +18,13 @@ const Category = () => {
         useAppSelector(CategoryPageState);
 
     useEffect(() => {
-        dispatch(setCanFetch(true));
+        dispatch(setCanFetchCategory(true));
         const promise = dispatch(fetchCategory(category));
         promise.unwrap().catch((error) => console.error(error.message));
 
         return () => {
             promise.abort();
-            dispatch(setCanFetch(false));
+            dispatch(setCanFetchCategory(false));
         };
     }, []);
 

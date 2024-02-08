@@ -1,12 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { CategoryPageReducer } from "./slices/categoryPage.slice";
-import { ProductsCategoryGridReducer } from "./slices/productsCategoryGrid.slice";
+import {
+    ProductPageReducer,
+    ProductsCategoryGridReducer,
+    CategoryPageReducer
+} from ".";
 
 export const makeStore = () => {
     return configureStore({
         reducer: {
             CategoryPageReducer,
-            ProductsCategoryGridReducer
+            ProductsCategoryGridReducer,
+            ProductPageReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

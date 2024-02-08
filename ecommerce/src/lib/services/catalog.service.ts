@@ -1,9 +1,4 @@
-import {
-    CategoryInfo,
-    CategoryItem,
-    CategoryItemsRequest,
-    CategoryItemsResponse
-} from "@/lib/types";
+import { CategoryInfo, CategoryItemsRequest, CategoryItemsResponse } from "..";
 import { Service } from "./base.service";
 
 class CategoryService extends Service {

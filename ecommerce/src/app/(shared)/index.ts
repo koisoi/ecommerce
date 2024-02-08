@@ -1,6 +1,7 @@
 export * from "./cardSkeleton.template";
-export * from "../catalog/catalogCategory.template";
 export * from "./price.template";
+export * from "./buyButtons.template";
+export * from "./title.template";
 
 export * from "./breadcrumbs/breadcrumbs.template";
 export * from "./breadcrumbs/breadcrumbs";

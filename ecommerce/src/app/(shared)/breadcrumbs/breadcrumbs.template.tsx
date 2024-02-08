@@ -1,7 +1,7 @@
 "use client";
 
-import { NextLinkProps } from "@/lib/types";
-import { Box, Breadcrumbs, Typography, TypographyProps } from "@mui/material";
+import { NextLinkProps } from "@/lib";
+import { Breadcrumbs, Typography, TypographyProps } from "@mui/material";
 import Link from "next/link";
 
 const BreadcrumbsTemplate = ({
@@ -9,8 +9,6 @@ const BreadcrumbsTemplate = ({
 }: {
     linksArray: { link: string; title: string }[];
 }) => {
-    // TODO: переделать под переиспользуемый с usePath()
-
     const linkProps: Partial<NextLinkProps> = {
         style: {
             textDecoration: "none"

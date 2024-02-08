@@ -139,12 +139,6 @@ export type CategoryItem = {
     alias: string;
     is_new: boolean;
     is_recommend: boolean;
-    // sale: boolean;
-    // category: {
-    //     // принадлежность к категории тоже не нужна, если бэкенд будет категории выдавать по запросу
-    //     id: number;
-    //     title: string;
-    // };
 };
 
 export type CategoryItemsRequest = {

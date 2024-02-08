@@ -1,7 +1,11 @@
 import { FiberManualRecord } from "@mui/icons-material";
 import { SvgIconProps, Typography, TypographyProps } from "@mui/material";
 
-const StockIndicator = ({ stock }: { stock: boolean }) => {
+export type StockIndicatorProps = {
+    stock: boolean;
+};
+
+const StockIndicator = ({ stock }: StockIndicatorProps) => {
     const wrapperProps: TypographyProps = {
         color: stock ? "success.main" : "text.disabled",
         fontSize: "0.9rem",

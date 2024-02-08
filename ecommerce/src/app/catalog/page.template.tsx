@@ -2,8 +2,8 @@
 
 import CatalogSubcategory from "@/app/catalog/catalogCategory.template";
 import { Box, BoxProps, Typography } from "@mui/material";
-import { CategoryInfo } from "@/lib/types";
 import ProductsCategoryGrid from "./(productsGrid)/productsCategoryGrid";
+import { CategoryInfo } from "@/lib";
 
 const CategoryTemplate = ({
     title,

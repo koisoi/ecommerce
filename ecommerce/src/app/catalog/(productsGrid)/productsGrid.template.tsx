@@ -1,14 +1,8 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
-import { CategoryItemsResponse } from "@/lib/types";
-import {
-    Box,
-    BoxProps,
-    Pagination,
-    PaginationProps,
-    Typography
-} from "@mui/material";
+import { Box, BoxProps, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
 import CategoryPagination from "./categoryPagination.template";
+import { CategoryItemsResponse } from "@/lib";
 
 const ProductsGridTemplate = ({
     list: products,

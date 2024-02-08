@@ -1,16 +1,16 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { CategoryInfo, SeriesInfo } from "../types";
 import { RootState } from "../store";
 import { categoryAPI } from "../services/catalog.service";
+import { CategoryInfo } from "../types/category";
 
 const initialState: CategoryInfo & {
     loading: boolean;
-    canFetch: boolean;
+    canFetchCategory: boolean;
 } = {
     title: "",
     series: [],
     loading: true,
-    canFetch: true
+    canFetchCategory: true
 };
 
 /**
@@ -29,7 +29,8 @@ export const fetchCategory = createAsyncThunk(
     },
     {
         condition: (_, { getState }) => {
-            return (getState() as RootState).CategoryPageReducer.canFetch;
+            return (getState() as RootState).CategoryPageReducer
+                .canFetchCategory;
         }
     }
 );
@@ -38,14 +39,14 @@ const slice = createSlice({
     name: "CategoryPageSlice",
     initialState,
     reducers: {
-        setCanFetch(state, action: PayloadAction<boolean>) {
-            state.canFetch = action.payload;
+        setCanFetchCategory(state, action: PayloadAction<boolean>) {
+            state.canFetchCategory = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchCategory.pending, (state) => {
             state.loading = true;
-            state.canFetch = false;
+            state.canFetchCategory = false;
         });
         builder.addCase(fetchCategory.fulfilled, (state, action) => {
             state.title = action.payload?.title || "";
@@ -53,16 +54,16 @@ const slice = createSlice({
             state.series = action.payload?.series || [];
 
             state.loading = false;
-            state.canFetch = true;
+            state.canFetchCategory = true;
         });
         builder.addCase(fetchCategory.rejected, (state) => {
             state.loading = false;
-            state.canFetch = true;
+            state.canFetchCategory = true;
         });
     }
 });
 
 export const CategoryPageReducer = slice.reducer;
-export const { setCanFetch } = slice.actions;
+export const { setCanFetchCategory } = slice.actions;
 export const CategoryPageState = (state: RootState) =>
     state.CategoryPageReducer;

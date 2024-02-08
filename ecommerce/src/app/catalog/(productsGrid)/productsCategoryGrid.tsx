@@ -1,13 +1,14 @@
 "use client";
 
-import ProductsGridTemplate from "./productsGrid.template";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import {
     ProductsCategoryGridState,
     fetchCategoryItems,
-    setCanFetch
-} from "@/lib/slices/productsCategoryGrid.slice";
+    setCanFetchCategoryItems,
+    useAppDispatch,
+    useAppSelector
+} from "@/lib";
+import ProductsGridTemplate from "./productsGrid.template";
+import { ChangeEvent, useEffect, useState } from "react";
 
 const ProductsCategoryGrid = ({
     category,
@@ -32,7 +33,7 @@ const ProductsCategoryGrid = ({
         setPage(page);
 
     useEffect(() => {
-        dispatch(setCanFetch(true));
+        dispatch(setCanFetchCategoryItems(true));
         const promise = dispatch(
             fetchCategoryItems({
                 category,
@@ -45,7 +46,7 @@ const ProductsCategoryGrid = ({
 
         return () => {
             promise.abort();
-            dispatch(setCanFetch(false));
+            dispatch(setCanFetchCategoryItems(false));
         };
     }, [page, category, series]);
 

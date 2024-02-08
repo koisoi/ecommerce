@@ -1,27 +1,37 @@
 "use client";
 
-import { NextLinkProps } from "@/lib/types";
-import { ShoppingCart } from "@mui/icons-material";
 import {
     Card,
     CardContent,
     CardMedia,
     CardActions,
     ButtonProps,
-    Button,
     CardActionsProps,
     Typography,
     CardProps,
     CardMediaProps,
-    SvgIconProps,
     TypographyProps,
     BoxProps,
     Box
 } from "@mui/material";
 import Link from "next/link";
 import { getProductImageLink } from "../../../lib/functions/category/getProductImageLink";
-import Price from "../price.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons.template";
+import { NextLinkProps } from "@/lib";
+import Price from "../price.template";
+
+export type ProductCardProps = {
+    imageLink: string;
+    title: string;
+    articul: string;
+    price: string;
+    discount?: number;
+    newProduct?: boolean;
+    sale?: boolean;
+    recommended?: boolean;
+    cardProps?: CardProps;
+    cardMediaProps?: CardMediaProps;
+};
 
 const ProductCard = ({
     imageLink,
@@ -31,23 +41,17 @@ const ProductCard = ({
     discount,
     newProduct,
     sale,
-    recommended
-}: {
-    imageLink: string;
-    title: string;
-    articul: string;
-    price: string;
-    discount?: number;
-    newProduct?: boolean;
-    sale?: boolean;
-    recommended?: boolean;
-}) => {
+    recommended,
+    cardProps,
+    cardMediaProps
+}: ProductCardProps) => {
     imageLink = getProductImageLink(imageLink);
 
-    const cardProps: CardProps = {
+    const initialCardProps: CardProps = {
+        ...cardProps,
+
         sx: {
             width: "100%",
-            minHeight: "410px",
 
             boxShadow: "none",
             border: "1px solid",
@@ -55,7 +59,9 @@ const ProductCard = ({
 
             ":hover": {
                 boxShadow: "0 4px 15px rgba(153, 153, 153, 0.3)"
-            }
+            },
+
+            ...cardProps?.sx
         }
     };
 
@@ -71,43 +77,23 @@ const ProductCard = ({
         }
     };
 
-    const cardMediaProps: CardMediaProps = {
+    const initialCardMediaProps: CardMediaProps = {
         image: imageLink,
 
         component: "div",
+
+        ...cardMediaProps,
 
         sx: {
             width: "100%",
             height: "310px",
             position: "relative",
 
-            // pointerEvents: "none",
+            backgroundSize: "contain",
 
-            backgroundSize: "contain"
+            ...cardMediaProps?.sx
         }
     };
-
-    // const favoriteButtonProps: IconButtonProps = {
-    //     disableRipple: true,
-    //     disableFocusRipple: true,
-
-    //     sx: {
-    //         position: "absolute",
-    //         top: "10px",
-    //         right: "10px",
-    //         padding: "0",
-
-    //         color: "text.disabled",
-
-    //         ":hover": {
-    //             color: "primary.main"
-    //         }
-    //     }
-    // };
-
-    // const favoriteIconProps: SvgIconProps = {
-    //     fontSize: "inherit"
-    // };
 
     const articleTextProps: TypographyProps = {
         fontSize: "0.9rem",
@@ -241,8 +227,8 @@ const ProductCard = ({
     };
 
     return (
-        <Card {...cardProps}>
-            <CardMedia {...cardMediaProps}>
+        <Card {...initialCardProps}>
+            <CardMedia {...initialCardMediaProps}>
                 <Link {...imageLinkProps} />
                 <Box {...badgeWrapperProps}>
                     {newProduct && <Box {...newProductBadgeProps}>Новинка</Box>}

@@ -7,6 +7,11 @@ import {
     TypographyProps
 } from "@mui/material";
 
+export type BuyButtonProps = {
+    props?: ButtonProps;
+    textProps?: TypographyProps;
+};
+
 const buttonProps: ButtonProps = {
     size: "small",
     variant: "outlined",
@@ -25,17 +30,12 @@ const buttonTextProps: TypographyProps = {
     fontSize: "0.82rem"
 };
 
-export const InstantBuyButton = ({
-    props,
-    textProps
-}: {
-    props?: ButtonProps;
-    textProps?: TypographyProps;
-}) => {
+export const InstantBuyButton = ({ props, textProps }: BuyButtonProps) => {
     const instantBuyButtonProps: ButtonProps = {
         ...buttonProps,
-        ...props,
         color: "secondary",
+
+        ...props,
 
         sx: {
             ...buttonProps.sx,
@@ -64,17 +64,12 @@ export const InstantBuyButton = ({
     );
 };
 
-export const ShoppingCartButton = ({
-    props,
-    textProps
-}: {
-    props?: ButtonProps;
-    textProps?: TypographyProps;
-}) => {
+export const ShoppingCartButton = ({ props, textProps }: BuyButtonProps) => {
     const shoppingCartButtonProps: ButtonProps = {
         ...buttonProps,
-        ...props,
         color: "primary",
+
+        ...props,
 
         sx: {
             ...buttonProps.sx,
