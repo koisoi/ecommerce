@@ -2,12 +2,15 @@
 
 import { NextLinkProps } from "@/lib";
 import { Breadcrumbs, Typography, TypographyProps } from "@mui/material";
+import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 
 const BreadcrumbsTemplate = ({
-    linksArray
+    linksArray,
+    lastLink
 }: {
-    linksArray: { link: string; title: string }[];
+    linksArray: { link: Url; title: string }[];
+    lastLink?: boolean;
 }) => {
     const linkProps: Partial<NextLinkProps> = {
         style: {
@@ -47,13 +50,25 @@ const BreadcrumbsTemplate = ({
                 <Typography {...navTextProps}>Главная</Typography>
             </Link>
             {linksArray.slice(0, linksArray.length - 1).map((el, i) => (
-                <Link href={el.link} key={i} {...linkProps}>
+                <Link key={i} {...linkProps} href={el.link}>
                     <Typography {...navTextProps}>{el.title}</Typography>
                 </Link>
             ))}
-            <Typography {...locationTextProps}>
-                {linksArray[linksArray.length - 1].title}
-            </Typography>
+            {!lastLink && (
+                <Typography {...locationTextProps}>
+                    {linksArray[linksArray.length - 1].title}
+                </Typography>
+            )}
+            {lastLink && (
+                <Link
+                    {...linkProps}
+                    href={linksArray[linksArray.length - 1].link}
+                >
+                    <Typography {...navTextProps}>
+                        {linksArray[linksArray.length - 1].title}
+                    </Typography>
+                </Link>
+            )}
         </Breadcrumbs>
     );
 };

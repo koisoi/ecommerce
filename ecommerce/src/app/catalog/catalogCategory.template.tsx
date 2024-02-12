@@ -9,32 +9,38 @@ const CatalogSubcategory = ({
     children,
     amount,
     seriesAlias,
-    categoryAlias
+    categoryAlias,
+    selected
 }: {
     children: ReactNode;
     amount?: number;
     seriesAlias: string;
     categoryAlias: string;
+    selected?: boolean;
 }) => {
     const linkProps: NextLinkProps = {
         href: {
             pathname: "/catalog",
             query: { category: categoryAlias, series: seriesAlias }
         },
+
         style: {
-            textDecoration: "none"
+            textDecoration: "none",
+            pointerEvents: selected ? "none" : "all"
         }
     };
 
     const textProps: TypographyProps = {
-        color: "primary.main",
+        color: selected ? "text.primary" : "primary.main",
 
         sx: {
             textDecoration: "none",
 
-            ":hover": {
-                color: "primary.dark"
-            }
+            ...(!selected && {
+                ":hover": {
+                    color: "primary.dark"
+                }
+            })
         }
     };
 

@@ -6,6 +6,29 @@ import HeaderDesktopNavigation from "./desktopNavigation.template";
 import { CSSProperties } from "react";
 
 const HeaderNavigation = ({ mobile }: { mobile: boolean }) => {
+    const categories: { title: string; alias: string }[] = [
+        {
+            title: "Дальномеры",
+            alias: "TOP.range_finders"
+        },
+        {
+            title: "Тепловизоры",
+            alias: "TOP.termovisors"
+        },
+        {
+            title: "Тепловизионные прицелы",
+            alias: "TOP.thermal_riflescopes"
+        },
+        {
+            title: "Ночные прицелы",
+            alias: "TOP.night_vision_riflescopes"
+        },
+        {
+            title: "Тепловизионные насадки",
+            alias: "TOP.nv_thermal_attachments"
+        }
+    ];
+
     const navigationProps: { style: CSSProperties } = {
         style: {
             position: "sticky",
@@ -31,7 +54,7 @@ const HeaderNavigation = ({ mobile }: { mobile: boolean }) => {
         <nav {...navigationProps}>
             <Box {...wrapperProps}>
                 {mobile && <HeaderMobileNavigation />}
-                {!mobile && <HeaderDesktopNavigation />}
+                {!mobile && <HeaderDesktopNavigation categories={categories} />}
             </Box>
         </nav>
     );

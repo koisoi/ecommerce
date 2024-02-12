@@ -4,6 +4,7 @@ import CatalogSubcategory from "@/app/catalog/catalogCategory.template";
 import { Box, BoxProps, Typography } from "@mui/material";
 import ProductsCategoryGrid from "./(productsGrid)/productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
+import PageTitle from "../(shared)/pageTitle.template";
 
 const CategoryTemplate = ({
     title,
@@ -12,7 +13,10 @@ const CategoryTemplate = ({
     alias,
     seriesAlias,
     loading
-}: CategoryInfo & { loading: boolean; seriesAlias: string | null }) => {
+}: CategoryInfo & {
+    loading: boolean;
+    seriesAlias: string | null;
+}) => {
     const headerWrapper: BoxProps = {
         marginBottom: "20px"
     };
@@ -27,20 +31,19 @@ const CategoryTemplate = ({
     return (
         <>
             <Box {...headerWrapper}>
-                <Typography fontSize="38px" fontWeight="bolder">
-                    {title}
-                </Typography>
+                <PageTitle>{title}</PageTitle>
             </Box>
 
             <Typography marginBottom="20px">{page_description}</Typography>
 
             <Box {...linksWrapper}>
-                {series.map((series, i) => (
+                {series.map((series) => (
                     <CatalogSubcategory
                         amount={series.productsAmount}
                         seriesAlias={series.alias}
                         categoryAlias={alias}
-                        key={i}
+                        selected={seriesAlias === series.alias}
+                        key={series.id}
                     >
                         {series.title}
                     </CatalogSubcategory>

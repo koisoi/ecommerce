@@ -1,7 +1,7 @@
 import { Typography, TypographyProps } from "@mui/material";
 import { ReactNode } from "react";
 
-const Title = ({
+const PageTitle = ({
     children,
     props
 }: {
@@ -9,9 +9,9 @@ const Title = ({
     props?: TypographyProps;
 }) => {
     const titleProps: TypographyProps = {
-        fontSize: "2rem",
-        fontWeight: "bold",
-        paddingY: "0.5rem",
+        fontSize: "2.5rem",
+        fontWeight: "bolder",
+        marginBottom: "0.5rem",
 
         color: "text.primary",
         ...props
@@ -20,4 +20,4 @@ const Title = ({
     return <Typography {...titleProps}>{children}</Typography>;
 };
 
-export default Title;
+export default PageTitle;

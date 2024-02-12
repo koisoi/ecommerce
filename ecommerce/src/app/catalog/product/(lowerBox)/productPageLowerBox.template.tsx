@@ -36,7 +36,7 @@ export type ProductPageLowerBoxProps = {
     complectation: string;
 };
 
-const ProductPageLowerBox = ({
+const ProductPageLowerBoxTemplate = ({
     currentTab,
     onTabChange,
     fullCharasterictics,
@@ -84,7 +84,7 @@ const ProductPageLowerBox = ({
     };
 
     const complectationBoxProps: BoxProps = {
-        dangerouslySetInnerHTML: description
+        dangerouslySetInnerHTML: complectation
             ? {
                   __html: complectation.replace(backendTextRegExp, "<br />")
               }
@@ -167,4 +167,4 @@ const ProductPageLowerBox = ({
     );
 };
 
-export default ProductPageLowerBox;
+export default ProductPageLowerBoxTemplate;

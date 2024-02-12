@@ -2,7 +2,7 @@
 
 module.exports = {
     // static files
-    output: "export",
+    // output: "export",
     trailingSlash: true,
 
     // output: "standalone",

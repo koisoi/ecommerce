@@ -6,6 +6,7 @@ import DesktopHeaderButton from "./desktopHeaderButton.template";
 import { AccountCircle, Favorite, ShoppingCart } from "@mui/icons-material";
 import logotype from "@/assets/img/logotype.png";
 import { useThemeColors } from "@/lib";
+import Link from "next/link";
 
 const HeaderMainContainer = () => {
     const colors = useThemeColors();
@@ -91,9 +92,11 @@ const HeaderMainContainer = () => {
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
                     <Box {...logoAndContactsWrapper}>
-                        <Box {...logoContainerProps}>
-                            <img {...logoProps} />
-                        </Box>
+                        <Link href="/">
+                            <Box {...logoContainerProps}>
+                                <img {...logoProps} />
+                            </Box>
+                        </Link>
                         <Box {...contactsBoxProps}>
                             <a
                                 href="tel:88009870011"

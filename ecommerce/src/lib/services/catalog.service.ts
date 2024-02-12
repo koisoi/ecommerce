@@ -1,4 +1,10 @@
-import { CategoryInfo, CategoryItemsRequest, CategoryItemsResponse } from "..";
+import {
+    CategoryInfo,
+    CategoryItemsRequest,
+    CategoryItemsResponse,
+    NetworkError,
+    SeriesInfo
+} from "..";
 import { Service } from "./base.service";
 
 class CategoryService extends Service {
@@ -21,11 +27,39 @@ class CategoryService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })
             .then((data) => data.landing);
+    }
+
+    public async getSeriesSiblings({
+        category,
+        series
+    }: {
+        category: string | null;
+        series: string | null;
+    }): Promise<SeriesInfo[]> {
+        return fetch(
+            `${this.baseURL}landing-siblings?path=${category}&landing=${
+                series || "iray"
+            }&format=json`,
+            this.headers
+        )
+            .then((response) => {
+                if (!response.ok) {
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
+                }
+                return response.json();
+            })
+            .then((data) => data.siblings);
     }
 
     /**
@@ -49,7 +83,10 @@ class CategoryService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })

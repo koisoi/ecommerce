@@ -13,7 +13,8 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
         is_new,
         is_recommend,
         alias,
-        category
+        category,
+        series
     }: CategoryItem): ProductCardProps => {
         return {
             title,
@@ -31,14 +32,17 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                 pathname: "/catalog/product",
                 query: {
                     category: category.path,
-                    alias
+                    series: series?.alias,
+                    product: alias
                 }
             }
         };
     };
 
     const tabsProps: TabsProps = {
-        variant: "scrollable"
+        variant: "scrollable",
+
+        value: false
     };
 
     const tabProps: TabProps = {

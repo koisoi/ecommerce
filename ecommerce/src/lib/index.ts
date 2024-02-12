@@ -11,7 +11,9 @@ export * from "./services/product.service";
 export * from "./slices/categoryPage.slice";
 export * from "./slices/productsCategoryGrid.slice";
 export * from "./slices/productPageSlice";
+export * from "./slices/breadcrumbs.slice";
 
 export * from "./types/category";
 export * from "./types/elementPropsTypes";
 export * from "./types/product";
+export * from "./types/error";

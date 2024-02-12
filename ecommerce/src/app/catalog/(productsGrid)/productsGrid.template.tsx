@@ -43,11 +43,13 @@ const ProductsGridTemplate = ({
             {loading && "Загрузка товаров..."}
             {!loading && (
                 <>
-                    <CategoryPagination
-                        page={page}
-                        pagesCount={pagesCount}
-                        onPageChange={onPageChange}
-                    />
+                    {pagesCount > 1 && (
+                        <CategoryPagination
+                            page={page}
+                            pagesCount={pagesCount}
+                            onPageChange={onPageChange}
+                        />
+                    )}
                     <Box {...cardsWrapperProps}>
                         {products.map((item) => (
                             <ProductCard
@@ -62,8 +64,9 @@ const ProductsGridTemplate = ({
                                 productLink={{
                                     pathname: "/catalog/product",
                                     query: {
-                                        category,
-                                        alias: item.alias
+                                        category: item.category.path,
+                                        series: item.series?.alias,
+                                        product: item.alias
                                     }
                                 }}
                             />

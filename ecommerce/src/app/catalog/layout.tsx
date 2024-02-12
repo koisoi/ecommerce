@@ -1,20 +1,20 @@
-import { Box, BoxProps } from "@mui/material";
 import { ReactNode } from "react";
 import Breadcrumbs from "../(shared)/breadcrumbs/breadcrumbs";
+import Container from "../(shared)/container.template";
 
 const CategoryLayout = ({ children }: { children: ReactNode }) => {
-    const wrapperProps: BoxProps = {
-        maxWidth: "1400px",
-        width: "100%",
+    // const wrapperProps: BoxProps = {
+    //     maxWidth: "1400px",
+    //     width: "100%",
 
-        fontSize: "15px"
-    };
+    //     fontSize: "15px"
+    // };
 
     return (
-        <Box {...wrapperProps}>
+        <Container>
             <Breadcrumbs />
             {children}
-        </Box>
+        </Container>
     );
 };
 

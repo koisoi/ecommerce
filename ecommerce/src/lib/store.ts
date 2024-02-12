@@ -2,7 +2,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import {
     ProductPageReducer,
     ProductsCategoryGridReducer,
-    CategoryPageReducer
+    CategoryPageReducer,
+    BreadcrumbsReducer
 } from ".";
 
 export const makeStore = () => {
@@ -10,7 +11,8 @@ export const makeStore = () => {
         reducer: {
             CategoryPageReducer,
             ProductsCategoryGridReducer,
-            ProductPageReducer
+            ProductPageReducer,
+            BreadcrumbsReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

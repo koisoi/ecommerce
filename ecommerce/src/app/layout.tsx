@@ -67,8 +67,9 @@ const RootLayout = ({
         style: {
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
+            // justifyContent: "space-between",
             minHeight: "100vh",
+            minWidth: "100vw",
             backgroundColor: theme.palette.background.default,
             padding: "0!important"
         }
@@ -85,7 +86,8 @@ const RootLayout = ({
                                 padding="40px"
                                 display="flex"
                                 justifyContent="center"
-                                minHeight="100vh"
+                                // minHeight="45vh"
+                                flexGrow={1}
                             >
                                 {children}
                             </Box>

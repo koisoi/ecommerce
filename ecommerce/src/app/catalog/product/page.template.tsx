@@ -1,43 +1,23 @@
 "use client";
 
 import { Box, BoxProps, Modal, ModalProps } from "@mui/material";
-import { CSSProperties, useEffect } from "react";
-import ProductPageUpperBox, {
-    ProductPageUpperBoxProps
-} from "./(upperBox)/productPageUpperBox.template";
-import ProductPageLowerBox, {
-    ProductPageLowerBoxProps
-} from "./(lowerBox)/productPageLowerBoxProps.template";
+import { CSSProperties } from "react";
 import Title from "@/app/(shared)/title.template";
+import ProductPageLowerBox from "./(lowerBox)/productPageLowerBox";
+import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
 
 const ProductPageTemplate = ({
     title,
-    imageLinks,
-    articul,
-    stock,
-    price,
-    characteristics,
-    fullCharasterictics,
-    description,
-    feedback,
-    simliarProducts,
-    complectation,
     loading,
 
     openedImgLink,
-    onImgClick,
-    onDragStart,
-    onDragStop,
-    onImgClose,
-
-    currentTab,
-    onTabChange
+    onImgClose
 }: {
+    title: string;
     openedImgLink: string | null;
     onImgClose: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void;
     loading: boolean;
-} & ProductPageUpperBoxProps &
-    ProductPageLowerBoxProps) => {
+}) => {
     const modalProps: ModalProps = {
         open: !!openedImgLink,
         onClose: onImgClose,
@@ -74,28 +54,6 @@ const ProductPageTemplate = ({
         } as CSSProperties
     };
 
-    const upperBoxProps: ProductPageUpperBoxProps = {
-        title,
-        imageLinks,
-        articul,
-        stock,
-        price,
-        characteristics,
-        onImgClick,
-        onDragStart,
-        onDragStop
-    };
-
-    const lowerBoxProps: ProductPageLowerBoxProps = {
-        currentTab,
-        onTabChange,
-        fullCharasterictics,
-        description,
-        feedback,
-        simliarProducts,
-        complectation
-    };
-
     if (loading) return null;
 
     return (
@@ -111,8 +69,8 @@ const ProductPageTemplate = ({
             </Modal>
 
             <Title>{title}</Title>
-            <ProductPageUpperBox {...upperBoxProps} />
-            <ProductPageLowerBox {...lowerBoxProps} />
+            <ProductPageUpperBox />
+            <ProductPageLowerBox />
         </>
     );
 };

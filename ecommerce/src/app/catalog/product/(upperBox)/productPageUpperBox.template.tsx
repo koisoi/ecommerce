@@ -36,7 +36,7 @@ export type ProductPageUpperBoxProps = {
     onDragStop: DragEventHandler<HTMLDivElement>;
 };
 
-const ProductPageUpperBox = ({
+const ProductPageUpperBoxTemplate = ({
     title,
     imageLinks,
     articul,
@@ -267,4 +267,4 @@ const ProductPageUpperBox = ({
     );
 };
 
-export default ProductPageUpperBox;
+export default ProductPageUpperBoxTemplate;

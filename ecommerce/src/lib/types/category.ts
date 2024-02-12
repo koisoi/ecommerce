@@ -1,5 +1,6 @@
 // TODO: поменять ключи объектов
 export type SeriesInfo = {
+    id: number;
     title: string;
     alias: string;
     productsAmount: number;
@@ -10,6 +11,10 @@ export type CategoryInfo = {
     alias: string;
     page_description?: string;
     series: SeriesInfo[];
+    category?: {
+        title: string;
+    };
+    parent_class: string;
 };
 
 export type CategoryItem = {
@@ -23,6 +28,11 @@ export type CategoryItem = {
     is_recommend: boolean;
     category: {
         path: string;
+        title: string;
+    };
+    series?: {
+        alias: string;
+        title: string;
     };
 };
 

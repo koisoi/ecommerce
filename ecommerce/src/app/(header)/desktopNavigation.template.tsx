@@ -1,12 +1,25 @@
 "use client";
 
 import { Menu } from "@mui/icons-material";
-import { Box, BoxProps, Button, ButtonProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    Button,
+    ButtonProps,
+    Tab,
+    TabProps,
+    Tabs,
+    TabsProps
+} from "@mui/material";
 import Link from "next/link";
 import SlidingCartButton from "./slidingCartButton";
 import { NextLinkProps } from "@/lib";
 
-const HeaderDesktopNavigation = () => {
+const HeaderDesktopNavigation = ({
+    categories
+}: {
+    categories: { title: string; alias: string }[];
+}) => {
     const innerWrapperProps: BoxProps = {
         position: "relative",
 
@@ -50,14 +63,49 @@ const HeaderDesktopNavigation = () => {
         }
     };
 
+    const tabsProps: TabsProps = {
+        variant: "scrollable",
+
+        value: false,
+
+        sx: {
+            color: "white"
+        }
+    };
+
+    const tabProps: TabProps = {
+        sx: {
+            textTransform: "none"
+        }
+    };
+
     return (
         <Box {...innerWrapperProps}>
             <Button {...catalogButtonProps}>
                 <Menu sx={{ marginRight: "6px" }} /> Каталог
             </Button>
-            <Link {...linksProps}>ECOMM другой цвет</Link>
+            <Tabs {...tabsProps}>
+                {categories.map((category, i) => (
+                    <Tab
+                        {...tabProps}
+                        key={i}
+                        label={
+                            <Link
+                                {...linksProps}
+                                href={{
+                                    pathname: "/catalog",
+                                    query: { category: category.alias }
+                                }}
+                            >
+                                {category.title}
+                            </Link>
+                        }
+                    />
+                ))}
+            </Tabs>
+            {/* <Link {...linksProps}>ECOMM другой цвет</Link>
             <Link {...linksProps}>Основная тема</Link>
-            <Link {...linksProps}>Light версия</Link>
+            <Link {...linksProps}>Light версия</Link> */}
             <SlidingCartButton />
         </Box>
     );

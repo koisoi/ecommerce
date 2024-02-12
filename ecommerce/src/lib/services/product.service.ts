@@ -1,4 +1,4 @@
-import { Service } from "..";
+import { NetworkError, Service } from "..";
 import { MainProductInfo, ProductRequest } from "../types/product";
 
 class ProductService extends Service {
@@ -18,7 +18,10 @@ class ProductService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })
@@ -40,7 +43,10 @@ class ProductService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })
@@ -62,7 +68,10 @@ class ProductService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })
@@ -84,7 +93,10 @@ class ProductService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })
@@ -106,7 +118,10 @@ class ProductService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    throw new Error(response.statusText);
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
                 }
                 return response.json();
             })

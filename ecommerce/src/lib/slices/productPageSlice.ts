@@ -7,6 +7,8 @@ import { FullProductInfo, ProductRequest, RootState } from "..";
 const initialState: FullProductInfo & {
     loading: boolean;
     canFetchProduct: boolean;
+    openedImgLink: string | null;
+    wrongProductQuery: boolean;
 } = {
     id: 0,
     articul: "",
@@ -18,33 +20,36 @@ const initialState: FullProductInfo & {
     is_recommend: false,
     complectation: "",
     category: {
-        path: ""
+        path: "",
+        title: ""
+    },
+    series: {
+        alias: "",
+        title: ""
     },
     shortCharacteristics: {},
     fullCharacteristics: {},
     reviews: [],
     siblings: [],
     text: "",
+    openedImgLink: null,
 
     loading: true,
-    canFetchProduct: true
+    canFetchProduct: true,
+    wrongProductQuery: false
 };
 
 export const fetchProduct = createAsyncThunk(
     "product/fetchProduct",
     async ({ alias, category }: ProductRequest, { rejectWithValue }) => {
-        try {
-            const response = Promise.all([
-                productAPI.getProductMainInfo({ alias, category }),
-                productAPI.getProductShortCharacteristics({ alias }),
-                productAPI.getProductFullCharacteristics({ alias }),
-                productAPI.getProductReviews({ alias }),
-                productAPI.getProductSiblings({ alias })
-            ]);
-            return response;
-        } catch (error: any) {
-            rejectWithValue(error.response.data);
-        }
+        const response = Promise.all([
+            productAPI.getProductMainInfo({ alias, category }),
+            productAPI.getProductShortCharacteristics({ alias }),
+            productAPI.getProductFullCharacteristics({ alias }),
+            productAPI.getProductReviews({ alias }),
+            productAPI.getProductSiblings({ alias })
+        ]).catch((error) => rejectWithValue(error));
+        return response;
     },
     {
         condition: (_, { getState }) => {
@@ -59,15 +64,22 @@ const slice = createSlice({
     reducers: {
         setCanFetchProduct(state, action: PayloadAction<boolean>) {
             state.canFetchProduct = action.payload;
+        },
+        setOpenedImgLink(state, action: PayloadAction<string | null>) {
+            state.openedImgLink = action.payload;
         }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchProduct.pending, (state) => {
             state.loading = true;
             state.canFetchProduct = false;
+            state.wrongProductQuery = false;
         });
         builder.addCase(fetchProduct.fulfilled, (state, action) => {
-            if (!action.payload) return; // throw new Error?
+            if (!action.payload) {
+                return state;
+            } // throw new Error?
+
             const [
                 mainInfo,
                 shortCharacteristics,
@@ -88,7 +100,9 @@ const slice = createSlice({
                 canFetchProduct: true
             };
         });
-        builder.addCase(fetchProduct.rejected, (state) => {
+        builder.addCase(fetchProduct.rejected, (state, action) => {
+            if ((action.payload as { status: number })?.status === 404)
+                state.wrongProductQuery = true;
             state.loading = false;
             state.canFetchProduct = true;
         });
@@ -96,5 +110,5 @@ const slice = createSlice({
 });
 
 export const ProductPageReducer = slice.reducer;
-export const { setCanFetchProduct } = slice.actions;
+export const { setCanFetchProduct, setOpenedImgLink } = slice.actions;
 export const ProductPageState = (state: RootState) => state.ProductPageReducer;
