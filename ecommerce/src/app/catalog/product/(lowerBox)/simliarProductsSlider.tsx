@@ -1,7 +1,7 @@
 import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
-import { CategoryItem, getProductImageLink } from "@/lib";
+import { CategoryItem } from "@/lib";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 
 const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
@@ -11,7 +11,9 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
         title,
         price,
         is_new,
-        is_recommend
+        is_recommend,
+        alias,
+        category
     }: CategoryItem): ProductCardProps => {
         return {
             title,
@@ -23,6 +25,13 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
             cardMediaProps: {
                 sx: {
                     height: { md: "190px", xl: "310px" }
+                }
+            },
+            productLink: {
+                pathname: "/catalog/product",
+                query: {
+                    category: category.path,
+                    alias
                 }
             }
         };

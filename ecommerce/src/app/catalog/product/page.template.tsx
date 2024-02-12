@@ -1,14 +1,13 @@
 "use client";
 
 import { Box, BoxProps, Modal, ModalProps } from "@mui/material";
-import { CSSProperties } from "react";
-import { useMediaQueries, useThemeColors } from "@/lib/hooks";
+import { CSSProperties, useEffect } from "react";
 import ProductPageUpperBox, {
     ProductPageUpperBoxProps
-} from "./productPageUpperBox.template";
+} from "./(upperBox)/productPageUpperBox.template";
 import ProductPageLowerBox, {
     ProductPageLowerBoxProps
-} from "./productPageLowerBoxProps.template";
+} from "./(lowerBox)/productPageLowerBoxProps.template";
 import Title from "@/app/(shared)/title.template";
 
 const ProductPageTemplate = ({
@@ -22,9 +21,13 @@ const ProductPageTemplate = ({
     description,
     feedback,
     simliarProducts,
+    complectation,
+    loading,
 
     openedImgLink,
     onImgClick,
+    onDragStart,
+    onDragStop,
     onImgClose,
 
     currentTab,
@@ -35,12 +38,10 @@ const ProductPageTemplate = ({
     loading: boolean;
 } & ProductPageUpperBoxProps &
     ProductPageLowerBoxProps) => {
-    const colors = useThemeColors();
-    const screen = useMediaQueries();
-
     const modalProps: ModalProps = {
         open: !!openedImgLink,
         onClose: onImgClose,
+        disableScrollLock: true,
 
         children: <></>,
 
@@ -80,7 +81,9 @@ const ProductPageTemplate = ({
         stock,
         price,
         characteristics,
-        onImgClick
+        onImgClick,
+        onDragStart,
+        onDragStop
     };
 
     const lowerBoxProps: ProductPageLowerBoxProps = {
@@ -89,8 +92,11 @@ const ProductPageTemplate = ({
         fullCharasterictics,
         description,
         feedback,
-        simliarProducts
+        simliarProducts,
+        complectation
     };
+
+    if (loading) return null;
 
     return (
         <>

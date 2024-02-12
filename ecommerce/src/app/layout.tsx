@@ -11,12 +11,12 @@ import StoreProvider from "./storeProvider";
 const theme = createTheme({
     palette: {
         primary: {
-            main: "#3167EB",
-            dark: "#0e48d7"
+            main: "#bd2126",
+            dark: "#7a1619"
         },
         secondary: {
-            main: "#6F95F1",
-            dark: "#587edb"
+            main: "#e3666a",
+            dark: "#b04d51"
         },
         text: {
             disabled: "#969696",
@@ -69,7 +69,8 @@ const RootLayout = ({
             flexDirection: "column",
             justifyContent: "space-between",
             minHeight: "100vh",
-            backgroundColor: theme.palette.background.default
+            backgroundColor: theme.palette.background.default,
+            padding: "0!important"
         }
     };
 

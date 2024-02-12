@@ -1,6 +1,7 @@
 import {
     Box,
     BoxProps,
+    Divider,
     Paper,
     PaperProps,
     Typography,
@@ -13,14 +14,15 @@ import {
     InstantBuyButton,
     ShoppingCartButton
 } from "@/app/(shared)/buyButtons.template";
-import { CSSProperties, MouseEventHandler } from "react";
+import { CSSProperties, DragEventHandler, MouseEventHandler } from "react";
 import { useMediaQueries, useThemeColors } from "@/lib/hooks";
 import {
     CarouselNavProps,
     CarouselProps
 } from "react-material-ui-carousel/dist/components/types";
-import { backendTextRegExp } from "@/lib";
+import { ProductCharacteristic, getProductImageLink } from "@/lib";
 import Price, { PriceProps } from "@/app/(shared)/price.template";
+import CharacteristicsBox from "./characteristicsBox.template";
 
 export type ProductPageUpperBoxProps = {
     title: string;
@@ -28,8 +30,10 @@ export type ProductPageUpperBoxProps = {
     articul: string;
     stock: boolean;
     price: string;
-    characteristics: string;
-    onImgClick: MouseEventHandler<HTMLImageElement>;
+    characteristics: ProductCharacteristic;
+    onImgClick: MouseEventHandler<HTMLDivElement>;
+    onDragStart: DragEventHandler<HTMLDivElement>;
+    onDragStop: DragEventHandler<HTMLDivElement>;
 };
 
 const ProductPageUpperBox = ({
@@ -39,7 +43,9 @@ const ProductPageUpperBox = ({
     stock,
     price,
     characteristics,
-    onImgClick
+    onImgClick,
+    onDragStart,
+    onDragStop
 }: ProductPageUpperBoxProps) => {
     const colors = useThemeColors();
     const screen = useMediaQueries();
@@ -81,6 +87,8 @@ const ProductPageUpperBox = ({
         overflow: "hidden",
         borderRadius: "3px",
 
+        zIndex: 2,
+
         sx: {
             backgroundColor: "white",
             transition: "300ms",
@@ -94,7 +102,7 @@ const ProductPageUpperBox = ({
     const carouselProps: CarouselProps = {
         animation: "slide",
         autoPlay: false,
-        swipe: screen.md,
+        swipe: true,
 
         sx: {
             position: "sticky",
@@ -104,7 +112,10 @@ const ProductPageUpperBox = ({
         IndicatorIcon: screen.lg
             ? imageLinks.map((imageLink, i) => (
                   <Box key={i} {...carouselIndicatorBoxProps}>
-                      <img src={imageLink.url} width="100%" />
+                      <img
+                          src={getProductImageLink(imageLink.url)}
+                          width="100%"
+                      />
                   </Box>
               ))
             : undefined,
@@ -114,28 +125,40 @@ const ProductPageUpperBox = ({
             : undefined,
         activeIndicatorIconButtonProps: screen.lg
             ? carouselActiveIndicatorButtonProps
+            : undefined,
+        navButtonsWrapperProps: screen.lg
+            ? {
+                  style: {
+                      height: "400px"
+                  }
+              }
             : undefined
     };
 
     const imgBoxProps: BoxProps = {
         width: "100%",
-        height: "400px",
+        height: { xs: "200px", sm: "400px" },
 
         display: "flex",
         justifyContent: "center",
 
         sx: {
-            backgroundColor: "white"
-        }
+            backgroundColor: "white",
+            cursor: "grab"
+        },
+
+        onClick: onImgClick
     };
 
     const imgProps = {
         style: {
             maxWidth: "100%",
             objectFit: "contain"
+            // pointerEvents: "none"
         } as CSSProperties,
 
-        onClick: onImgClick
+        onDragStart,
+        onDragEnd: onDragStop
     };
 
     const descriptionAndProductOfferBoxProps: BoxProps = {
@@ -162,14 +185,6 @@ const ProductPageUpperBox = ({
 
     const articulTextProps: TypographyProps = {
         color: "text.disabled"
-    };
-
-    const characteristicsTextProps: BoxProps = {
-        color: "text.main",
-        fontSize: "0.95rem",
-        dangerouslySetInnerHTML: {
-            __html: characteristics.replace(backendTextRegExp, "<br />")
-        }
     };
 
     const productOfferBoxProps: PaperProps = {
@@ -226,7 +241,7 @@ const ProductPageUpperBox = ({
                     {imageLinks.map((imageLink, i) => (
                         <Box key={i} {...imgBoxProps}>
                             <img
-                                src={imageLink.url}
+                                src={getProductImageLink(imageLink.url)}
                                 alt={title}
                                 {...imgProps}
                             />
@@ -239,7 +254,7 @@ const ProductPageUpperBox = ({
                     <Typography {...articulTextProps}>
                         Артикул: {articul}
                     </Typography>
-                    <Box {...characteristicsTextProps} />
+                    <CharacteristicsBox characteristics={characteristics} />
                 </Box>
                 <Paper {...productOfferBoxProps}>
                     <StockIndicator {...stockProps} />

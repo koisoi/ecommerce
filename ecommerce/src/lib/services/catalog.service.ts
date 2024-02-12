@@ -6,9 +6,17 @@ class CategoryService extends Service {
      * Получение информации для отображения категории
      * @param category alias категории
      */
-    public async getCategory(category: string): Promise<CategoryInfo> {
+    public async getCategory({
+        category,
+        series
+    }: {
+        category: string | null;
+        series?: string | null;
+    }): Promise<CategoryInfo> {
         return fetch(
-            `${this.baseURL}landing?path=TOP.${category}&landing=iray&format=json`,
+            `${this.baseURL}landing?path=${category}&landing=${
+                series || "iray"
+            }&format=json`,
             this.headers
         )
             .then((response) => {
@@ -34,7 +42,9 @@ class CategoryService extends Service {
         page
     }: CategoryItemsRequest): Promise<CategoryItemsResponse> {
         return fetch(
-            `${this.baseURL}products?path=TOP.${category}&landing=iray&page=${page}&limit=${productsPerPage}&format=json`,
+            `${this.baseURL}products?path=${category}&landing=${
+                series || "iray"
+            }&page=${page}&limit=${productsPerPage}&format=json`,
             this.headers
         )
             .then((response) => {

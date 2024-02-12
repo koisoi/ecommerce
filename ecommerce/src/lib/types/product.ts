@@ -1,21 +1,48 @@
 import { CategoryItem } from "..";
 
-export type Product = CategoryItem & {
+export type MainProductInfo = CategoryItem & {
     is_available?: boolean;
-    shortCharacteristics: string;
-    fullCharacteristics: string;
-    description: string;
-    feedback?: {
-        id: number;
-        name: string;
-        date: string;
-        comment: string;
-    }[];
-    simliarProducts: CategoryItem[];
+    complectation: string;
+    text: string;
+};
+
+export type Characteristic = {
+    text: string;
+    value: string;
+    units: string;
+};
+
+export type ProductCharacteristic = {
+    [key: string]: Characteristic;
+};
+
+export type ProductCharacteristics = {
+    [key: string]: ProductCharacteristic;
+};
+
+export type ProductReview = {
+    id: number;
+    name: string;
+    pro?: string;
+    contra?: string;
+    comment?: string;
+    created: string;
+};
+
+export type FullProductInfo = MainProductInfo & {
+    shortCharacteristics: ProductCharacteristic;
+    fullCharacteristics: ProductCharacteristics;
+    reviews: ProductReview[];
+    siblings: CategoryItem[];
 };
 
 export type ProductRequest = {
-    category: string;
-    series?: string;
-    alias: string;
+    category: string | null;
+    alias: string | null;
 };
+
+export type ProductPageTabType =
+    | "allCharasteristics"
+    | "description"
+    | "feedback"
+    | "complectation";

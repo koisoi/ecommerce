@@ -10,12 +10,16 @@ const ProductsGridTemplate = ({
     loading,
     page,
     pagesCount,
-    onPageChange
+    onPageChange,
+    category,
+    series
 }: CategoryItemsResponse & {
     loading: boolean;
     page: number;
     pagesCount: number;
     onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
+    category: string;
+    series?: string | null;
 }) => {
     const cardsWrapperProps: BoxProps = {
         width: "100%",
@@ -55,6 +59,13 @@ const ProductsGridTemplate = ({
                                 newProduct={item.is_new}
                                 // sale={item.sale}
                                 recommended={item.is_recommend}
+                                productLink={{
+                                    pathname: "/catalog/product",
+                                    query: {
+                                        category,
+                                        alias: item.alias
+                                    }
+                                }}
                             />
                         ))}
                     </Box>

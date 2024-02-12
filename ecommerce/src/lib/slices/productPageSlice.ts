@@ -1,8 +1,13 @@
+"use client";
+
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { productAPI } from "../services/product.service";
-import { Product, ProductRequest, RootState } from "..";
+import { FullProductInfo, ProductRequest, RootState } from "..";
 
-const initialState: Product & { loading: boolean; canFetchProduct: boolean } = {
+const initialState: FullProductInfo & {
+    loading: boolean;
+    canFetchProduct: boolean;
+} = {
     id: 0,
     articul: "",
     images: [],
@@ -11,10 +16,15 @@ const initialState: Product & { loading: boolean; canFetchProduct: boolean } = {
     alias: "",
     is_new: false,
     is_recommend: false,
-    shortCharacteristics: "",
-    fullCharacteristics: "",
-    description: "",
-    simliarProducts: [],
+    complectation: "",
+    category: {
+        path: ""
+    },
+    shortCharacteristics: {},
+    fullCharacteristics: {},
+    reviews: [],
+    siblings: [],
+    text: "",
 
     loading: true,
     canFetchProduct: true
@@ -22,9 +32,15 @@ const initialState: Product & { loading: boolean; canFetchProduct: boolean } = {
 
 export const fetchProduct = createAsyncThunk(
     "product/fetchProduct",
-    async (arg: ProductRequest, { rejectWithValue }) => {
+    async ({ alias, category }: ProductRequest, { rejectWithValue }) => {
         try {
-            const response = await productAPI.getCategoryItem(arg);
+            const response = Promise.all([
+                productAPI.getProductMainInfo({ alias, category }),
+                productAPI.getProductShortCharacteristics({ alias }),
+                productAPI.getProductFullCharacteristics({ alias }),
+                productAPI.getProductReviews({ alias }),
+                productAPI.getProductSiblings({ alias })
+            ]);
             return response;
         } catch (error: any) {
             rejectWithValue(error.response.data);
@@ -51,25 +67,26 @@ const slice = createSlice({
             state.canFetchProduct = false;
         });
         builder.addCase(fetchProduct.fulfilled, (state, action) => {
-            state.alias = action.payload?.alias || "";
-            state.articul = action.payload?.articul || "";
-            state.description = action.payload?.description || "";
-            state.feedback = action.payload?.feedback;
-            state.fullCharacteristics =
-                action.payload?.fullCharacteristics || "";
-            state.id = action.payload?.id || 0;
-            state.images = action.payload?.images || [];
-            state.is_available = action.payload?.is_available;
-            state.is_new = action.payload?.is_new || false;
-            state.is_recommend = action.payload?.is_recommend || false;
-            state.price = action.payload?.price || "0";
-            state.shortCharacteristics =
-                action.payload?.shortCharacteristics || "";
-            state.simliarProducts = action.payload?.simliarProducts || [];
-            state.title = action.payload?.title || "";
+            if (!action.payload) return; // throw new Error?
+            const [
+                mainInfo,
+                shortCharacteristics,
+                fullCharacteristics,
+                reviews,
+                siblings
+            ] = action.payload;
 
-            state.loading = false;
-            state.canFetchProduct = true;
+            return {
+                ...state,
+                ...mainInfo,
+                shortCharacteristics,
+                fullCharacteristics,
+                reviews,
+                siblings,
+
+                loading: false,
+                canFetchProduct: true
+            };
         });
         builder.addCase(fetchProduct.rejected, (state) => {
             state.loading = false;

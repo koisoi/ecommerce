@@ -19,6 +19,7 @@ import { getProductImageLink } from "../../../lib/functions/category/getProductI
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons.template";
 import { NextLinkProps } from "@/lib";
 import Price from "../price.template";
+import { Url } from "next/dist/shared/lib/router/router";
 
 export type ProductCardProps = {
     imageLink: string;
@@ -29,6 +30,7 @@ export type ProductCardProps = {
     newProduct?: boolean;
     sale?: boolean;
     recommended?: boolean;
+    productLink: Url;
     cardProps?: CardProps;
     cardMediaProps?: CardMediaProps;
 };
@@ -43,7 +45,8 @@ const ProductCard = ({
     sale,
     recommended,
     cardProps,
-    cardMediaProps
+    cardMediaProps,
+    productLink
 }: ProductCardProps) => {
     imageLink = getProductImageLink(imageLink);
 
@@ -66,7 +69,7 @@ const ProductCard = ({
     };
 
     const imageLinkProps: NextLinkProps = {
-        href: "#",
+        href: productLink,
 
         style: {
             display: "inline-block",
@@ -172,7 +175,7 @@ const ProductCard = ({
     };
 
     const linkProps: NextLinkProps = {
-        href: "#",
+        href: productLink,
         style: {
             textDecoration: "none"
         }
@@ -246,7 +249,6 @@ const ProductCard = ({
                 <Typography {...articleTextProps}>
                     Артикул: {articul}
                 </Typography>
-                {/* TODO: вынести в переиспользуемый компонент + заголовки */}
             </CardContent>
             <CardActions {...actionRowProps}>
                 <Price variant="small" price={price} props={{ flexGrow: 1 }} />

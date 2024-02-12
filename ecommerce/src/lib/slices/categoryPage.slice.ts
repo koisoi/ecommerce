@@ -9,6 +9,7 @@ const initialState: CategoryInfo & {
 } = {
     title: "",
     series: [],
+    alias: "",
     loading: true,
     canFetchCategory: true
 };
@@ -19,9 +20,12 @@ const initialState: CategoryInfo & {
  */
 export const fetchCategory = createAsyncThunk(
     "category/fetchCategory",
-    async (category: string, { rejectWithValue }) => {
+    async (
+        arg: { category: string | null; series: string | null },
+        { rejectWithValue }
+    ) => {
         try {
-            const responce = await categoryAPI.getCategory(category);
+            const responce = await categoryAPI.getCategory(arg);
             return responce;
         } catch (error: any) {
             rejectWithValue(error.response.data);

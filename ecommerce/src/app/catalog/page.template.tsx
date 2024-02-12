@@ -9,9 +9,10 @@ const CategoryTemplate = ({
     title,
     page_description,
     series,
-    category,
+    alias,
+    seriesAlias,
     loading
-}: CategoryInfo & { loading: boolean; category: string }) => {
+}: CategoryInfo & { loading: boolean; seriesAlias: string | null }) => {
     const headerWrapper: BoxProps = {
         marginBottom: "20px"
     };
@@ -35,12 +36,17 @@ const CategoryTemplate = ({
 
             <Box {...linksWrapper}>
                 {series.map((series, i) => (
-                    <CatalogSubcategory amount={series.productsAmount} key={i}>
+                    <CatalogSubcategory
+                        amount={series.productsAmount}
+                        seriesAlias={series.alias}
+                        categoryAlias={alias}
+                        key={i}
+                    >
                         {series.title}
                     </CatalogSubcategory>
                 ))}
             </Box>
-            <ProductsCategoryGrid category={category} />
+            <ProductsCategoryGrid category={alias} series={seriesAlias} />
         </>
     );
 };

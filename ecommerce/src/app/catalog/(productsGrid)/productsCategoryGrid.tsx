@@ -15,7 +15,7 @@ const ProductsCategoryGrid = ({
     series
 }: {
     category: string;
-    series?: string;
+    series?: string | null;
 }) => {
     const dispatch = useAppDispatch();
     const productsPerPage = 12;
@@ -62,6 +62,8 @@ const ProductsCategoryGrid = ({
             page={page}
             pagesCount={pagesCount}
             onPageChange={handlePageChange}
+            category={category}
+            series={series}
         />
     );
 };

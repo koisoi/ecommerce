@@ -2,8 +2,8 @@
 
 module.exports = {
     // static files
-    // output: "export",
-    // trailingSlash: true,
+    output: "export",
+    trailingSlash: true,
 
     // output: "standalone",
 

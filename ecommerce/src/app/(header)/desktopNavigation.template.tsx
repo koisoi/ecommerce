@@ -1,11 +1,10 @@
 "use client";
 
-import { NextLinkProps } from "@/lib/types";
-import { Menu, ShoppingCart } from "@mui/icons-material";
+import { Menu } from "@mui/icons-material";
 import { Box, BoxProps, Button, ButtonProps } from "@mui/material";
 import Link from "next/link";
-import SlidingCartButtonTemplate from "./slidingCartButton.template";
 import SlidingCartButton from "./slidingCartButton";
+import { NextLinkProps } from "@/lib";
 
 const HeaderDesktopNavigation = () => {
     const innerWrapperProps: BoxProps = {

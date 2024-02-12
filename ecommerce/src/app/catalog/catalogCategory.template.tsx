@@ -7,13 +7,20 @@ import { ReactNode } from "react";
 
 const CatalogSubcategory = ({
     children,
-    amount
+    amount,
+    seriesAlias,
+    categoryAlias
 }: {
     children: ReactNode;
     amount?: number;
+    seriesAlias: string;
+    categoryAlias: string;
 }) => {
     const linkProps: NextLinkProps = {
-        href: "#",
+        href: {
+            pathname: "/catalog",
+            query: { category: categoryAlias, series: seriesAlias }
+        },
         style: {
             textDecoration: "none"
         }

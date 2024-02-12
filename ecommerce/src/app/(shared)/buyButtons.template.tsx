@@ -27,7 +27,8 @@ const buttonProps: ButtonProps = {
 };
 
 const buttonTextProps: TypographyProps = {
-    fontSize: "0.82rem"
+    fontSize: "0.82rem",
+    noWrap: true
 };
 
 export const InstantBuyButton = ({ props, textProps }: BuyButtonProps) => {

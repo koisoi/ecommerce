@@ -5,8 +5,11 @@ import HeaderSearchBox from "./searchBox.template";
 import DesktopHeaderButton from "./desktopHeaderButton.template";
 import { AccountCircle, Favorite, ShoppingCart } from "@mui/icons-material";
 import logotype from "@/assets/img/logotype.png";
+import { useThemeColors } from "@/lib";
 
 const HeaderMainContainer = () => {
+    const colors = useThemeColors();
+
     const outerWrapperProps: BoxProps = {
         paddingY: "2rem",
         marginX: "auto",
@@ -60,7 +63,7 @@ const HeaderMainContainer = () => {
     };
 
     const logoProps = {
-        src: logotype.src,
+        src: "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
         alt: "Логотип",
         width: "100%",
         style: {
@@ -95,7 +98,7 @@ const HeaderMainContainer = () => {
                             <a
                                 href="tel:88009870011"
                                 style={{
-                                    color: "#3167eb",
+                                    color: colors.primary,
                                     fontWeight: "bold",
                                     textDecoration: "none"
                                 }}

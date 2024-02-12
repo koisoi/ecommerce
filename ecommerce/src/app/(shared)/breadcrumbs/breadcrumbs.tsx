@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import BreadcrumbsTemplate from "./breadcrumbs.template";
 
-const Breadcrumbs = () => {
+const Breadcrumbs = (/*{category, productAlias}*/) => {
     const pathArray = usePathname().split("/").slice(1);
     const linksArray = pathArray.map((path, i, array) => {
         const link = `${array[i - 1] ? "/" + array[i - 1] : ""}/${path}`;

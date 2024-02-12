@@ -1,6 +1,6 @@
 "use client";
 
-import { NextLinkProps } from "@/lib/types";
+import { NextLinkProps } from "@/lib";
 import { Typography, TypographyProps } from "@mui/material";
 import Link, { LinkProps } from "next/link";
 import { ReactNode } from "react";
