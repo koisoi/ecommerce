@@ -2,23 +2,29 @@
 
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./title.template";
-import FooterLink from "./footerLink.template";
+import AppLink from "../(shared)/appLink.template";
 
 const UpperMenuBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px"
+        gap: "5px",
+
+        fontSize: "0.95rem"
     };
 
     return (
         <Box {...wrapperProps}>
             <FooterTitle>Верхнее меню</FooterTitle>
-            <FooterLink href="#">Ecomm другой цвет</FooterLink>
-            <FooterLink href="#">Основная тема</FooterLink>
-            <FooterLink href="#">Light версия</FooterLink>
-            <FooterLink href="#">Как пользоваться темой?</FooterLink>
-            <FooterLink href="#">О компании</FooterLink>
+            <AppLink href="/delivery" footer>
+                Доставка и оплата
+            </AppLink>
+            <AppLink href="/warranty" footer>
+                Гарантия и возврат
+            </AppLink>
+            <AppLink href="/contacts" footer>
+                Контактная информация
+            </AppLink>
         </Box>
     );
 };

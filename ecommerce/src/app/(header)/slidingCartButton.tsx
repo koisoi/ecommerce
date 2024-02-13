@@ -1,10 +1,7 @@
 import SlidingCartButtonTemplate from "./slidingCartButton.template";
-import { useMediaQueries } from "../../lib/hooks";
 import { useEffect, useState } from "react";
 
 const SlidingCartButton = () => {
-    const screen = useMediaQueries();
-
     // amount буду получать из redux
     const [amount, setAmount] = useState<number>(0);
     const [visible, setVisible] = useState<boolean>(false);

@@ -2,21 +2,23 @@
 
 import { Box, BoxProps, Link, LinkProps, SvgIconProps } from "@mui/material";
 import FooterTitle from "./title.template";
-import FooterLink from "./footerLink.template";
+import AppLink from "../(shared)/appLink.template";
 import { AccessTimeFilled, Email, LocationOn } from "@mui/icons-material";
 
 const ContactsBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px"
+        gap: "5px",
+
+        fontSize: "0.95rem"
     };
 
     const telLinkProps: LinkProps = {
         href: "tel:8-800-987-00-11",
 
         color: "primary.main",
-        fontSize: "19px",
+        fontSize: "1.2rem",
         fontWeight: "bold",
         sx: {
             textDecoration: "none"
@@ -43,10 +45,10 @@ const ContactsBox = () => {
         <Box {...wrapperProps}>
             <FooterTitle>Контакты</FooterTitle>
             <Link {...telLinkProps}>8-800-987-00-11</Link>
-            <FooterLink href="mailto:test@test.ru">
+            <AppLink href="mailto:test@test.ru" footer>
                 <Email {...iconProps} />
                 test@test.ru
-            </FooterLink>
+            </AppLink>
             <Box {...boxProps}>
                 <LocationOn {...iconProps} />
                 Санкт-Петербург, ул. Пушкина 36

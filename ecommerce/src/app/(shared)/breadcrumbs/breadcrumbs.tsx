@@ -46,6 +46,21 @@ const Breadcrumbs = () => {
                     link = "/warranty";
                     break;
 
+                case "delivery":
+                    title = "Доставка и оплата";
+                    link = "/delivery";
+                    break;
+
+                case "contacts":
+                    title = "Контактная информаиця";
+                    link = "/contacts";
+                    break;
+
+                case "cart":
+                    title = "Корзина";
+                    link = "/cart";
+                    break;
+
                 default:
                     return undefined;
             }
@@ -56,6 +71,8 @@ const Breadcrumbs = () => {
             };
         })
         .filter((val) => val !== undefined);
+
+    if (pathArray.length === 1) return null;
 
     return <BreadcrumbsTemplate linksArray={linksArray} lastLink={!!product} />;
 };

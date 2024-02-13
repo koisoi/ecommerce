@@ -4,8 +4,8 @@ import {
     Table,
     TableBody,
     TableCell,
-    TableCellProps,
     TableHead,
+    TableProps,
     TableRow,
     Typography,
     TypographyProps
@@ -13,6 +13,9 @@ import {
 import Container from "../(shared)/container.template";
 import PageTitle from "../(shared)/pageTitle.template";
 import Title from "../(shared)/title.template";
+import TableTitle from "../(shared)/tableTitle.template";
+import Paragraph from "../(shared)/paragraph.template";
+import AppLink from "../(shared)/appLink.template";
 
 const WarrantyPageTemplate = () => {
     const warrantyBoxProps: BoxProps = {
@@ -28,24 +31,28 @@ const WarrantyPageTemplate = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        // alignItems: "center",
         gap: "10px"
     };
 
     const titleProps: TypographyProps = {
         paddingTop: 0,
-        fontSize: "1.5rem"
+        fontSize: { xs: "1.2rem", sm: "1.5rem" }
     };
 
-    const tableTitleProps: TypographyProps = {
-        fontWeight: "bold"
+    const tableProps: TableProps = {
+        sx: {
+            marginBottom: "2rem"
+        }
+    };
+
+    const blockBoxProps: BoxProps = {
+        paddingX: "15px"
     };
 
     return (
         <Container>
-            <PageTitle props={{ marginBottom: "1rem" }}>
-                Гарантии и возврат
-            </PageTitle>
+            <PageTitle>Гарантии и возврат</PageTitle>
+
             <Box {...warrantyBoxProps}>
                 <Title props={titleProps}>
                     Какие вы предоставляете гарантии?
@@ -66,93 +73,130 @@ const WarrantyPageTemplate = () => {
                     либо можно уточнить его у менеджера магазина.
                 </Typography>
             </Box>
+
             <Title props={titleProps}>Как вернуть товар?</Title>
-            <Table>
+
+            <Table {...tableProps}>
                 <TableHead>
                     <TableRow>
                         <TableCell>
-                            <Typography {...tableTitleProps}>
+                            <TableTitle>
                                 Возврат товара надлежащего качества
-                            </Typography>
+                            </TableTitle>
                         </TableCell>
                         <TableCell>
-                            <Typography {...tableTitleProps}>
+                            <TableTitle>
                                 Возврат товара ненадлежащего качества
-                            </Typography>
+                            </TableTitle>
                         </TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     <TableRow>
                         <TableCell>
-                            <Typography>
+                            <Paragraph>
                                 Можно вернуть товар надлежащего качества при
                                 соблюдении следующих условий:
-                            </Typography>
-                            <ul>
-                                <li>
-                                    Прошло не более 14-ти дней с момента
-                                    приобретения товара, не считая дня его
-                                    покупки;
-                                </li>
-                                <li>
-                                    Сохранен товарный вид самого товара и его
-                                    упаковки;
-                                </li>
-                                <li>
-                                    Полностью сохранена комплектация товара
-                                    (включая буклеты, инструкции и вторичную
-                                    упаковку);
-                                </li>
-                                <li>
-                                    У покупателя есть кассовый и товарный чеки,
-                                    подтверждающие покупку.
-                                </li>
-                            </ul>
-                            <Typography>
+                            </Paragraph>
+                            <Paragraph margin>
+                                <ul>
+                                    <li>
+                                        Прошло не более 14-ти дней с момента
+                                        приобретения товара, не считая дня его
+                                        покупки;
+                                    </li>
+                                    <li>
+                                        Сохранен товарный вид самого товара и
+                                        его упаковки;
+                                    </li>
+                                    <li>
+                                        Полностью сохранена комплектация товара
+                                        (включая буклеты, инструкции и вторичную
+                                        упаковку);
+                                    </li>
+                                    <li>
+                                        У покупателя есть кассовый и товарный
+                                        чеки, подтверждающие покупку.
+                                    </li>
+                                </ul>
+                            </Paragraph>
+                            <Paragraph margin>
                                 В случае, если в ассортименте не нашлось
                                 подходящего товара на замену, возможен возврат
                                 денег в течение 3-х дней с момента поступления
                                 требования покупателя.
-                            </Typography>
-                            <Typography>
+                            </Paragraph>
+                            <Paragraph margin>
                                 Подробнее см. статью 25 закона &quot;О защите
                                 прав потребителя&quot;.
-                            </Typography>
+                            </Paragraph>
                         </TableCell>
                         <TableCell>
-                            <Typography>
+                            <Paragraph>
                                 Товар ненадлежащего качества (в котором выявлен
                                 существенный неустранимый недостаток, возникший
                                 до момента передачи товара покупателю)
                                 принимается к возврату в течение гарантийного
                                 срока предоставляемого производителем.
-                            </Typography>
-                            <Typography>
+                            </Paragraph>
+                            <Paragraph margin>
                                 В случае возникновения спорных ситуаций о
                                 причинах возникновения существенного недостака,
                                 назначается проверка товара.
-                            </Typography>
-                            <Typography>
+                            </Paragraph>
+                            <Paragraph margin>
                                 Проверка товара ненадлежащего качества
                                 производится в срок до 20-ти дней, а технически
                                 сложного товара до 45-ти дней.
-                            </Typography>
-                            <Typography>
+                            </Paragraph>
+                            <Paragraph margin>
                                 Замена товара ненадлежащего качества
                                 осуществляется в срок до 7-ми дней, а возврат
                                 денег в течение 10-ти дней после выставления
                                 требования, либо проведения проверки (если она
                                 была назначена).
-                            </Typography>
-                            <Typography>
+                            </Paragraph>
+                            <Paragraph margin>
                                 Подробнее см. статьи 18-24 закона &quot;О защите
                                 прав потребителя&quot;.
-                            </Typography>
+                            </Paragraph>
                         </TableCell>
                     </TableRow>
                 </TableBody>
             </Table>
+
+            <Title props={titleProps}>
+                Возврат товара, полученного транспортной компанией
+            </Title>
+
+            <Box {...blockBoxProps}>
+                <Paragraph margin>Необходимо сделать следующее:</Paragraph>
+                <Paragraph margin>
+                    <ol>
+                        <li>
+                            Позвонить по телефону{" "}
+                            <AppLink
+                                href="tel:88007078195"
+                                props={{ fontWeight: "bold" }}
+                            >
+                                8 (800) 707-81-95
+                            </AppLink>
+                            , сообщить менеджеру магазина о возникшей проблеме и
+                            согласовать способ отправки товара;
+                        </li>
+                        <li>Отправить товар согласованным способом.</li>
+                        <li>
+                            Оплата доставки при возврате товара весом до 5 кг
+                            осуществляется покупателем. В противном случае,
+                            продавцом.
+                        </li>
+                    </ol>
+                </Paragraph>
+                <Paragraph margin>
+                    Все сроки исчисляются с момента получения товара в
+                    транспортной компании.
+                </Paragraph>
+            </Box>
         </Container>
     );
 };

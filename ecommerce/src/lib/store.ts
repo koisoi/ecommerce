@@ -3,7 +3,8 @@ import {
     ProductPageReducer,
     ProductsCategoryGridReducer,
     CategoryPageReducer,
-    BreadcrumbsReducer
+    BreadcrumbsReducer,
+    CartReducer
 } from ".";
 
 export const makeStore = () => {
@@ -12,7 +13,8 @@ export const makeStore = () => {
             CategoryPageReducer,
             ProductsCategoryGridReducer,
             ProductPageReducer,
-            BreadcrumbsReducer
+            BreadcrumbsReducer,
+            CartReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

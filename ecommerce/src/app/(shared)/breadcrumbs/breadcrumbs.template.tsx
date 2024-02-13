@@ -44,6 +44,8 @@ const BreadcrumbsTemplate = ({
         color: "text.disabled"
     };
 
+    if (!linksArray.length) return null;
+
     return (
         <Breadcrumbs>
             <Link href="/" {...linkProps}>

@@ -11,7 +11,12 @@ const HeaderSearchBox = () => {
         sx: {
             minHeight: "40px",
             minWidth: "0",
-            borderRadius: "0 4px 4px 0"
+            borderRadius: "0 4px 4px 0",
+            boxShadow: "none",
+
+            ":hover": {
+                boxShadow: "none"
+            }
         }
     };
 

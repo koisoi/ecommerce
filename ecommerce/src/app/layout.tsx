@@ -7,6 +7,8 @@ import { Box, ThemeProvider, createTheme } from "@mui/material";
 import Footer from "./(footer)/footer.template";
 import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import StoreProvider from "./storeProvider";
+import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
+import Container from "./(shared)/container.template";
 
 const theme = createTheme({
     palette: {
@@ -89,7 +91,10 @@ const RootLayout = ({
                                 // minHeight="45vh"
                                 flexGrow={1}
                             >
-                                {children}
+                                <Container>
+                                    <Breadcrumbs />
+                                    {children}
+                                </Container>
                             </Box>
                             <Footer />
                         </ThemeProvider>

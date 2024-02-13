@@ -2,26 +2,32 @@
 
 import { NextLinkProps } from "@/lib";
 import { Typography, TypographyProps } from "@mui/material";
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 import { ReactNode } from "react";
 
-const FooterLink = ({
+const AppLink = ({
     children,
-    href
+    href,
+    footer,
+    props
 }: {
-    children: ReactNode;
-    href: string;
+    children?: ReactNode;
+    href?: string;
+    footer?: boolean;
+    props?: TypographyProps;
 }) => {
     const linkProps: NextLinkProps = {
-        href,
+        href: href || "#",
         style: {
             textDecoration: "none"
         }
     };
 
     const linkTextProps: TypographyProps = {
-        color: "text.secondary",
-        fontSize: "15px",
+        color: footer ? "text.secondary" : "text.primary",
+        fontSize: "inherit",
+
+        ...props,
 
         sx: {
             textDecoration: "none",
@@ -31,7 +37,9 @@ const FooterLink = ({
 
             ":hover": {
                 color: "primary.main"
-            }
+            },
+
+            ...props?.sx
         }
     };
 
@@ -42,4 +50,4 @@ const FooterLink = ({
     );
 };
 
-export default FooterLink;
+export default AppLink;

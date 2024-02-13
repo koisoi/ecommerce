@@ -3,6 +3,8 @@
 import { Instagram, YouTube } from "@mui/icons-material";
 import { Box, BoxProps, SvgIcon, SvgIconProps } from "@mui/material";
 import VK from "@/assets/svg/vk.svg";
+import { NextLinkProps } from "@/lib";
+import Link from "next/link";
 
 const HeaderTopContainer = () => {
     const outerWrapperProps: BoxProps = {
@@ -30,6 +32,14 @@ const HeaderTopContainer = () => {
         flexGrow: 1,
 
         minWidth: "max-content"
+    };
+
+    const linkProps: NextLinkProps = {
+        href: "#",
+        style: {
+            textDecoration: "none",
+            color: "inherit"
+        }
     };
 
     const leftItemProps: BoxProps = {
@@ -66,11 +76,20 @@ const HeaderTopContainer = () => {
             <Box {...wrapperProps}>
                 <Box {...leftBoxProps}>
                     <Box {...leftItemProps}>
-                        Политика конфиденциальности и оферта
+                        <Link {...linkProps} href="/delivery">
+                            Доставка и оплата
+                        </Link>
                     </Box>
-                    <Box {...leftItemProps}>Обмен и возврат</Box>
-                    <Box {...leftItemProps}>Блог</Box>
-                    <Box {...leftItemProps}>Обратная связь</Box>
+                    <Box {...leftItemProps}>
+                        <Link {...linkProps} href="/warranty">
+                            Гарантия и возврат
+                        </Link>
+                    </Box>
+                    <Box {...leftItemProps}>
+                        <Link {...linkProps} href="/contacts">
+                            Контактная информация
+                        </Link>
+                    </Box>
                 </Box>
                 <Box {...rightBoxProps}>
                     <SvgIcon {...iconProps}>

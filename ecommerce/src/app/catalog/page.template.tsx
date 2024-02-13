@@ -5,6 +5,7 @@ import { Box, BoxProps, Typography } from "@mui/material";
 import ProductsCategoryGrid from "./(productsGrid)/productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
 import PageTitle from "../(shared)/pageTitle.template";
+import Container from "../(shared)/container.template";
 
 const CategoryTemplate = ({
     title,
@@ -29,7 +30,7 @@ const CategoryTemplate = ({
     };
 
     return (
-        <>
+        <Container>
             <Box {...headerWrapper}>
                 <PageTitle>{title}</PageTitle>
             </Box>
@@ -50,7 +51,7 @@ const CategoryTemplate = ({
                 ))}
             </Box>
             <ProductsCategoryGrid category={alias} series={seriesAlias} />
-        </>
+        </Container>
     );
 };
 

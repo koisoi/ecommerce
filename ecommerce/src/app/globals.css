@@ -111,10 +111,18 @@ a {
 	padding: 0;
 }
 
+ul, ol {
+  padding-left: 15px;
+}
+
 html {
   max-width: 100vw;
   overflow-x: hidden;
   font-family: "Open Sans", sans-serif;
+}
+
+iframe {
+  border: 0;
 }
 
 @font-face { 

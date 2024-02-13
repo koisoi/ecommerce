@@ -2,22 +2,32 @@
 
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./title.template";
-import FooterLink from "./footerLink.template";
+import AppLink from "../(shared)/appLink.template";
 
 const CatalogBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px"
+        gap: "5px",
+
+        fontSize: "0.95rem"
     };
 
     return (
         <Box {...wrapperProps}>
             <FooterTitle>Каталог</FooterTitle>
-            <FooterLink href="#">Электроника</FooterLink>
-            <FooterLink href="#">Мебель</FooterLink>
-            <FooterLink href="#">Одежда</FooterLink>
-            <FooterLink href="#">Правильное питание</FooterLink>
+            <AppLink href="#" footer>
+                Электроника
+            </AppLink>
+            <AppLink href="#" footer>
+                Мебель
+            </AppLink>
+            <AppLink href="#" footer>
+                Одежда
+            </AppLink>
+            <AppLink href="#" footer>
+                Правильное питание
+            </AppLink>
         </Box>
     );
 };
