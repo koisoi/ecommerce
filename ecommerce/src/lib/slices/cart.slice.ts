@@ -14,24 +14,27 @@ const slice = createSlice({
     name: "CartSlice",
     initialState,
     reducers: {
+        setCart(state, action: PayloadAction<CartItem[]>) {
+            //@ts-ignore
+            state.items = action.payload;
+        },
         addItemToCart(state, action: PayloadAction<CartItem>) {
             const cartItem = state.items.find(
                 (val) => val.alias === action.payload.alias
             );
             if (!!cartItem) cartItem.amount++;
+            //@ts-ignore
             else state.items.push(action.payload);
         },
-        removeOneItemFromCart(state, action: PayloadAction<CartItem>) {
-            const cartItemIndex = state.items.findIndex(
-                (val) => val.alias === action.payload.alias
+        setCartItemAmount(
+            state,
+            action: PayloadAction<{ item: CartItem; amount: number }>
+        ) {
+            const cartItem = state.items.find(
+                (val) => val.alias === action.payload.item.alias
             );
-
-            if (cartItemIndex === -1) return;
-            else if (state.items[cartItemIndex].amount > 1) {
-                state.items[cartItemIndex].amount--;
-            } else {
-                state.items.splice(cartItemIndex, 1);
-            }
+            if (!cartItem) return;
+            else cartItem.amount = action.payload.amount;
         },
         deleteItemFromCart(state, action: PayloadAction<CartItem>) {
             const cartItemIndex = state.items.findIndex(
@@ -52,8 +55,9 @@ const slice = createSlice({
 export const CartReducer = slice.reducer;
 export const {
     addItemToCart,
-    removeOneItemFromCart,
     deleteItemFromCart,
-    clearCart
+    clearCart,
+    setCartItemAmount,
+    setCart
 } = slice.actions;
-export const CartState = (state: RootState) => state.CategoryPageReducer;
+export const CartState = (state: RootState) => state.CartReducer;

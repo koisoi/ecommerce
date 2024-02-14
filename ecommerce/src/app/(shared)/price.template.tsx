@@ -1,12 +1,12 @@
 import { Typography, TypographyProps } from "@mui/material";
 
 export type PriceProps = {
-    variant: "small" | "medium" | "large";
+    variant?: "small" | "medium" | "large";
     price: string;
     props?: TypographyProps;
 };
 
-const Price = ({ variant, price, props }: PriceProps) => {
+const Price = ({ variant = "medium", price, props }: PriceProps) => {
     const priceProps: TypographyProps = {
         display: "inline-block",
         minWidth: "max-content",

@@ -20,6 +20,7 @@ import { InstantBuyButton, ShoppingCartButton } from "../buyButtons.template";
 import { NextLinkProps } from "@/lib";
 import Price from "../price.template";
 import { Url } from "next/dist/shared/lib/router/router";
+import ProductLink from "../productLink.template";
 
 export type ProductCardProps = {
     imageLink: string;
@@ -174,26 +175,6 @@ const ProductCard = ({
         }
     };
 
-    const linkProps: NextLinkProps = {
-        href: productLink,
-        style: {
-            textDecoration: "none"
-        }
-    };
-
-    const titleProps: TypographyProps = {
-        fontSize: "15px",
-        color: "text.primary",
-
-        sx: {
-            textDecoration: "none",
-
-            ":hover": {
-                color: "primary.main"
-            }
-        }
-    };
-
     const actionRowProps: CardActionsProps = {
         sx: {
             display: "flex",
@@ -208,13 +189,6 @@ const ProductCard = ({
 
             paddingX: "16px"
         }
-    };
-
-    const buttonsRowProps: BoxProps = {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-end",
-        gap: "5px"
     };
 
     const buttonProps: ButtonProps = {
@@ -243,9 +217,7 @@ const ProductCard = ({
                 {discount && <Box {...discountBadgeProps}>-{discount}%</Box>}
             </CardMedia>
             <CardContent>
-                <Link {...linkProps}>
-                    <Typography {...titleProps}>{title}</Typography>
-                </Link>
+                <ProductLink url={productLink}>{title}</ProductLink>
                 <Typography {...articleTextProps}>
                     Артикул: {articul}
                 </Typography>

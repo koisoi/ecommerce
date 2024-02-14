@@ -107,6 +107,8 @@ export const useThemeColors = () => {
         successDark,
         background,
         divider,
-        disabled: textDisabled
+        textDisabled,
+        textPrimary,
+        textSecondary
     };
 };
