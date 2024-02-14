@@ -6,15 +6,16 @@ import {
     BoxProps,
     Button,
     ButtonProps,
+    Divider,
     Typography,
     TypographyProps
 } from "@mui/material";
 import CartItemComponent from "./cartItem";
 import Price from "../price.template";
-import { useThemeColors } from "@/lib";
 import { Delete } from "@mui/icons-material";
 import { MouseEventHandler } from "react";
 import ClearDialog from "./clearDialog.template";
+import { useMediaQueries } from "@/lib";
 
 const CartTableTemplate = ({
     items,
@@ -35,7 +36,7 @@ const CartTableTemplate = ({
     onClear: MouseEventHandler<HTMLButtonElement>;
     onOpenOrderPage: MouseEventHandler<HTMLButtonElement>;
 }) => {
-    const colors = useThemeColors();
+    const screen = useMediaQueries();
 
     const wrapperProps: BoxProps = {
         width: "100%"
@@ -69,9 +70,16 @@ const CartTableTemplate = ({
         width: "140px"
     };
 
-    const amountHeaderProps: TypographyProps = {
+    const amountHeaderBoxProps: BoxProps = {
         ...headerTextProps,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
         width: "250px"
+    };
+
+    const headerDeleteButtonSpace: TypographyProps = {
+        width: "40px"
     };
 
     const itemBoxProps: BoxProps = {
@@ -94,7 +102,9 @@ const CartTableTemplate = ({
 
         display: "inline-flex",
         alignItems: "center",
-        gap: "10px"
+        gap: "10px",
+
+        paddingRight: "8px"
     };
 
     const footerPriceProps: TypographyProps = {
@@ -103,7 +113,6 @@ const CartTableTemplate = ({
 
     const clearButtonProps: ButtonProps = {
         variant: "text",
-        color: "inherit",
 
         onClick: onClearWarningOpen,
 
@@ -114,7 +123,13 @@ const CartTableTemplate = ({
             display: "flex",
             flexDirection: "row",
             gap: "5px",
-            justifyContent: "center"
+            justifyContent: "center",
+
+            color: "text.disabled",
+
+            ":hover": {
+                color: "primary.main"
+            }
         }
     };
 
@@ -143,26 +158,34 @@ const CartTableTemplate = ({
             />
 
             <Box {...wrapperProps}>
-                {full && (
+                {full && screen.md && (
                     <Box {...headerProps}>
-                        <Typography {...headerImageSpace}></Typography>
+                        <Typography {...headerImageSpace} />
                         <Typography {...titleHeaderProps}>
                             Наименование
                         </Typography>
                         <Typography {...priceHeaderProps}>Цена</Typography>
-                        <Typography {...amountHeaderProps}>
-                            Количество
-                        </Typography>
+                        <Box {...amountHeaderBoxProps}>
+                            <Typography width="170px" textAlign="center">
+                                Количество
+                            </Typography>
+                            <Typography {...headerDeleteButtonSpace} />
+                        </Box>
                     </Box>
                 )}
                 <Box {...itemBoxProps}>
-                    {items.map((item) => (
-                        <CartItemComponent key={item.alias} item={item} />
+                    {items.map((item, i, array) => (
+                        <>
+                            <CartItemComponent key={item.alias} item={item} />
+                            {!screen.md && i !== array.length - 1 && (
+                                <Divider flexItem />
+                            )}
+                        </>
                     ))}
                 </Box>
                 <Box {...footerProps}>
                     <Button {...clearButtonProps}>
-                        <Delete /> Очистить корзину
+                        <Delete /> {screen.sm && "Очистить корзину"}
                     </Button>
                     {!full && (
                         <Button {...orderButtonProps}>Оформить заказ</Button>
@@ -171,7 +194,13 @@ const CartTableTemplate = ({
                         Итого:
                         <Price
                             price={totalPrice}
-                            variant={full ? "large" : "medium"}
+                            variant={
+                                screen.sm
+                                    ? full
+                                        ? "large"
+                                        : "medium"
+                                    : "small"
+                            }
                             props={footerPriceProps}
                         />
                     </Typography>

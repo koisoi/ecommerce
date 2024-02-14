@@ -1,3 +1,5 @@
+"use client";
+
 import {
     Box,
     BoxProps,
@@ -16,12 +18,15 @@ import Title from "../(shared)/title.template";
 import TableTitle from "../(shared)/tableTitle.template";
 import Paragraph from "../(shared)/paragraph.template";
 import AppLink from "../(shared)/appLink.template";
+import { useThemeColors } from "@/lib";
 
 const WarrantyPageTemplate = () => {
+    const colors = useThemeColors();
+
     const warrantyBoxProps: BoxProps = {
         borderRadius: "10px",
         overflow: "hidden",
-        boxShadow: "0 0 15px 4px rgba(153, 153, 153, 0.2)",
+        boxShadow: "0 0 15px 1px " + colors.divider,
 
         width: "100%",
         boxSizing: "border-box",

@@ -94,7 +94,7 @@ const ProductPageUpperBoxTemplate = ({
             transition: "300ms",
 
             ":hover": {
-                boxShadow: "0px 3px 7px rgba(0, 0, 0, 0.25)"
+                boxShadow: "0 0 10px 1px " + colors.divider
             }
         }
     };

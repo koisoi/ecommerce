@@ -1,3 +1,5 @@
+"use client";
+
 import { CartItem as CartItemTemplate } from "@/lib/types/cart";
 import {
     Box,
@@ -14,6 +16,7 @@ import NumberInput from "../numberInput.template";
 import { NumberInputProps } from "@mui/base/Unstable_NumberInput";
 import { Close } from "@mui/icons-material";
 import DeleteItemDialog from "./deleteItemDialog.template";
+import { useMediaQueries } from "@/lib";
 
 const CartItemTemplate = ({
     item,
@@ -38,6 +41,8 @@ const CartItemTemplate = ({
     onDeleteWarningOpen: MouseEventHandler<HTMLButtonElement>;
     totalPrice: string;
 }) => {
+    const screen = useMediaQueries();
+
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
@@ -50,8 +55,10 @@ const CartItemTemplate = ({
     };
 
     const imgBoxProps: BoxProps = {
-        width: "75px",
-        height: "75px"
+        width: { xs: "120px", md: "75px" },
+        height: { xs: "120px", md: "75px" },
+        minWidth: "75px",
+        minHeight: "75px"
     };
 
     const imgStyle: CSSProperties = {
@@ -60,8 +67,20 @@ const CartItemTemplate = ({
         objectFit: "contain"
     };
 
+    const innerWrapperProps: BoxProps = {
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: "center",
+        gap: "20px",
+
+        flexGrow: 1,
+
+        boxSizing: "border-box"
+    };
+
     const titleBoxProps: BoxProps = {
-        flexGrow: 1
+        flexGrow: 1,
+        width: "100%"
     };
 
     const titleProps: TypographyProps = {
@@ -69,7 +88,7 @@ const CartItemTemplate = ({
     };
 
     const priceProps: TypographyProps = {
-        width: "140px",
+        minWidth: { xs: "100%", md: "140px" },
         fontWeight: "normal"
     };
 
@@ -78,7 +97,7 @@ const CartItemTemplate = ({
         flexDirection: "row",
         justifyContent: "space-between",
 
-        width: "250px"
+        minWidth: { xs: "100%", md: "250px" }
     };
 
     const amountBoxProps: BoxProps = {
@@ -100,14 +119,25 @@ const CartItemTemplate = ({
         min: 1,
         max: 99,
         value: item.amount,
-        onChange: onAmountChange
+        onChange: onAmountChange,
+
+        style: {
+            width: "170px"
+        }
     };
 
     const deleteButtonProps: IconButtonProps = {
+        color: "primary",
+
         onClick: onDeleteWarningOpen,
 
         sx: {
-            alignSelf: "flex-start"
+            alignSelf: "flex-start",
+            color: "text.disabled",
+
+            ":hover": {
+                color: "primary.main"
+            }
         }
     };
 
@@ -123,27 +153,37 @@ const CartItemTemplate = ({
                 <Box {...imgBoxProps}>
                     <img alt={item.title} src={item.imgLink} style={imgStyle} />
                 </Box>
-                <Box {...titleBoxProps}>
-                    <ProductLink url={item.url} props={titleProps}>
-                        {item.title}
-                    </ProductLink>
-                </Box>
-                <Price price={item.price} props={priceProps} />
-                <Box {...amountAndDeleteBoxProps}>
-                    <Box {...amountBoxProps}>
-                        <NumberInput {...numberInputProps} />
-                        <Typography {...amountTextProps}>
-                            {item.amount} шт. на сумму{" "}
-                            <Price
-                                price={totalPrice}
-                                props={amountTextPriceProps}
-                            />
-                        </Typography>
+                <Box {...innerWrapperProps}>
+                    <Box {...titleBoxProps}>
+                        <ProductLink url={item.url} props={titleProps}>
+                            {item.title}
+                        </ProductLink>
                     </Box>
+                    <Price price={item.price} props={priceProps} />
+                    <Box {...amountAndDeleteBoxProps}>
+                        <Box {...amountBoxProps}>
+                            <NumberInput {...numberInputProps} />
+                            <Typography {...amountTextProps}>
+                                {item.amount} шт. на сумму{" "}
+                                <Price
+                                    price={totalPrice}
+                                    props={amountTextPriceProps}
+                                />
+                            </Typography>
+                        </Box>
+                        {screen.md && (
+                            <IconButton {...deleteButtonProps}>
+                                <Close />
+                            </IconButton>
+                        )}
+                    </Box>
+                </Box>
+
+                {!screen.md && (
                     <IconButton {...deleteButtonProps}>
                         <Close />
                     </IconButton>
-                </Box>
+                )}
             </Box>
         </>
     );

@@ -20,7 +20,6 @@ const NumberInput = ({ ...props }: NumberInputProps | undefined) => {
         line-height: 1.375;
         color: ${colors.textPrimary};
         border: 1px solid ${colors.divider};
-        box-shadow: 0px 2px 4px ${colors.divider};
         border-radius: 8px;
         margin: 0 8px;
         padding: 10px 12px;

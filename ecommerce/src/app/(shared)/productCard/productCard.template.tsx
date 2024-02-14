@@ -17,7 +17,7 @@ import {
 import Link from "next/link";
 import { getProductImageLink } from "../../../lib/functions/category/getProductImageLink";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons.template";
-import { NextLinkProps } from "@/lib";
+import { NextLinkProps, useThemeColors } from "@/lib";
 import Price from "../price.template";
 import { Url } from "next/dist/shared/lib/router/router";
 import ProductLink from "../productLink.template";
@@ -51,6 +51,8 @@ const ProductCard = ({
 }: ProductCardProps) => {
     imageLink = getProductImageLink(imageLink);
 
+    const colors = useThemeColors();
+
     const initialCardProps: CardProps = {
         ...cardProps,
 
@@ -62,7 +64,7 @@ const ProductCard = ({
             borderColor: "divider",
 
             ":hover": {
-                boxShadow: "0 4px 15px rgba(153, 153, 153, 0.3)"
+                boxShadow: "0 0 15px 1px " + colors.divider
             },
 
             ...cardProps?.sx

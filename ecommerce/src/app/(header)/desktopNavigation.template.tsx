@@ -103,9 +103,6 @@ const HeaderDesktopNavigation = ({
                     />
                 ))}
             </Tabs>
-            {/* <Link {...linksProps}>ECOMM другой цвет</Link>
-            <Link {...linksProps}>Основная тема</Link>
-            <Link {...linksProps}>Light версия</Link> */}
             <SlidingCartButton />
         </Box>
     );
