@@ -23,7 +23,7 @@ class CategoryService extends Service {
             `${this.baseURL}landing?path=${category}&landing=${
                 series || "iray"
             }&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {
@@ -48,7 +48,7 @@ class CategoryService extends Service {
             `${this.baseURL}landing-siblings?path=${category}&landing=${
                 series || "iray"
             }&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {
@@ -79,7 +79,7 @@ class CategoryService extends Service {
             `${this.baseURL}products?path=${category}&landing=${
                 series || "iray"
             }&page=${page}&limit=${productsPerPage}&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {

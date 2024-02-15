@@ -175,12 +175,11 @@ const CartTableTemplate = ({
                 )}
                 <Box {...itemBoxProps}>
                     {items.map((item, i, array) => (
-                        <>
-                            <CartItemComponent key={item.alias} item={item} />
+                        <CartItemComponent key={item.alias} item={item}>
                             {!screen.md && i !== array.length - 1 && (
-                                <Divider flexItem />
+                                <Divider key={item.alias} flexItem />
                             )}
-                        </>
+                        </CartItemComponent>
                     ))}
                 </Box>
                 <Box {...footerProps}>

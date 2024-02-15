@@ -9,6 +9,8 @@ import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import StoreProvider from "./storeProvider";
 import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
 import Container from "./(shared)/container.template";
+import { useAppDispatch } from "@/lib";
+import { getIp, setReferrer, setStartUrl } from "@/lib/slices/global.slice";
 
 const theme = createTheme({
     palette: {
@@ -48,10 +50,17 @@ const theme = createTheme({
 
 // https://stackoverflow.com/questions/75406728/how-to-entirely-disable-server-side-rendering-in-next-js-v13
 const Dynamic = ({ children }: { children: ReactNode }) => {
+    const dispatch = useAppDispatch();
     const [hasMounted, setHasMounted] = useState(false);
 
     useEffect(() => {
         setHasMounted(true);
+    }, []);
+
+    useEffect(() => {
+        const promise = dispatch(getIp());
+        dispatch(setReferrer(document.referrer));
+        dispatch(setStartUrl(document.URL));
     }, []);
 
     if (!hasMounted) {

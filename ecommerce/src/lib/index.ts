@@ -18,3 +18,7 @@ export * from "./types/category";
 export * from "./types/elementPropsTypes";
 export * from "./types/product";
 export * from "./types/error";
+export * from "./types/hookForm";
+export * from "./types/order";
+
+export * from "./data/formValidators";

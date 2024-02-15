@@ -14,15 +14,9 @@ import {
 const CartTable = ({ full }: { full?: boolean }) => {
     const dispatch = useAppDispatch();
 
-    const { items } = useAppSelector(CartState);
+    const { items, cartTotal } = useAppSelector(CartState);
 
     const [clearWarningOpen, setClearWarningOpen] = useState<boolean>(false);
-
-    const totalPrice = items
-        .reduce<number>((prev, _, i, arr) => {
-            return prev + Number(arr[i].price) * arr[i].amount;
-        }, 0)
-        .toString();
 
     const handleClearWarningOpen: MouseEventHandler<HTMLButtonElement> = () => {
         setClearWarningOpen(true);
@@ -49,7 +43,8 @@ const CartTable = ({ full }: { full?: boolean }) => {
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/102096_original.webp",
                 price: "51000",
-                amount: 1
+                amount: 1,
+                articul: "test"
             },
             {
                 alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
@@ -58,61 +53,68 @@ const CartTable = ({ full }: { full?: boolean }) => {
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/45957_original.png",
                 price: "40000",
-                amount: 2
+                amount: 2,
+                articul: "test"
             },
             {
-                alias: "iray-ilr-1200-1",
+                alias: "iray-ilr-1200-12",
                 url: "http://localhost:3000/catalog/product/?category=TOP.range_finders&series=&product=iray-ilr-1200-1",
                 title: "iRay ILR-1200-1 для серии Tube",
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/102096_original.webp",
                 price: "51000",
-                amount: 1
+                amount: 1,
+                articul: "test"
             },
             {
-                alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
+                alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-10003",
                 url: "http://localhost:3000/catalog/product/?category=TOP.range_finders&series=&product=lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
                 title: "iRay LR-1000-1 для серии Rico",
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/45957_original.png",
                 price: "40000",
-                amount: 2
+                amount: 2,
+                articul: "test"
             },
             {
-                alias: "iray-ilr-1200-1",
+                alias: "iray-ilr-1200-14",
                 url: "http://localhost:3000/catalog/product/?category=TOP.range_finders&series=&product=iray-ilr-1200-1",
                 title: "iRay ILR-1200-1 для серии Tube",
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/102096_original.webp",
                 price: "51000",
-                amount: 1
+                amount: 1,
+                articul: "test"
             },
             {
-                alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
+                alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-100023423",
                 url: "http://localhost:3000/catalog/product/?category=TOP.range_finders&series=&product=lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
                 title: "iRay LR-1000-1 для серии Rico",
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/45957_original.png",
                 price: "40000",
-                amount: 2
+                amount: 2,
+                articul: "test"
             },
             {
-                alias: "iray-ilr-1200-1",
+                alias: "iray-ilr-1200-12344234",
                 url: "http://localhost:3000/catalog/product/?category=TOP.range_finders&series=&product=iray-ilr-1200-1",
                 title: "iRay ILR-1200-1 для серии Tube",
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/102096_original.webp",
                 price: "51000",
-                amount: 1
+                amount: 1,
+                articul: "test"
             },
             {
-                alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
+                alias: "lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-10003223",
                 url: "http://localhost:3000/catalog/product/?category=TOP.range_finders&series=&product=lazernyy-dalnomer-dlya-pritselov-iray-rico-lrf-1000",
                 title: "iRay LR-1000-1 для серии Rico",
                 imgLink:
                     "https://telescope1.ru/data/upload/Catalog_Model_Products/45957_original.png",
                 price: "40000",
-                amount: 2
+                amount: 2,
+                articul: "test"
             }
         ];
 
@@ -123,7 +125,7 @@ const CartTable = ({ full }: { full?: boolean }) => {
         <CartTableTemplate
             items={items}
             full={full}
-            totalPrice={totalPrice}
+            totalPrice={cartTotal}
             clearWarningOpen={clearWarningOpen}
             onClearWarningOpen={handleClearWarningOpen}
             onClearWarningClose={handleClearWarningClose}

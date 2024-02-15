@@ -9,7 +9,7 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { CSSProperties, MouseEventHandler } from "react";
+import { CSSProperties, MouseEventHandler, ReactNode } from "react";
 import ProductLink from "../productLink.template";
 import Price from "../price.template";
 import NumberInput from "../numberInput.template";
@@ -19,6 +19,7 @@ import DeleteItemDialog from "./deleteItemDialog.template";
 import { useMediaQueries } from "@/lib";
 
 const CartItemTemplate = ({
+    children,
     item,
     onAmountChange,
     deleteWarningOpen,
@@ -27,6 +28,7 @@ const CartItemTemplate = ({
     onDeleteWarningClose,
     totalPrice
 }: {
+    children?: ReactNode;
     item: CartItemTemplate;
     onAmountChange: (
         event:
@@ -42,6 +44,15 @@ const CartItemTemplate = ({
     totalPrice: string;
 }) => {
     const screen = useMediaQueries();
+
+    const outerWrapperProps: BoxProps = {
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        gap: "20px",
+
+        position: "relative"
+    };
 
     const wrapperProps: BoxProps = {
         display: "flex",
@@ -97,7 +108,8 @@ const CartItemTemplate = ({
         flexDirection: "row",
         justifyContent: "space-between",
 
-        minWidth: { xs: "100%", md: "250px" }
+        minWidth: { sm: "100%", md: "250px" },
+        width: "fit-content"
     };
 
     const amountBoxProps: BoxProps = {
@@ -135,6 +147,10 @@ const CartItemTemplate = ({
             alignSelf: "flex-start",
             color: "text.disabled",
 
+            position: "absolute",
+            right: { xs: 0, md: "10px" },
+            top: { xs: 0, md: "18%" },
+
             ":hover": {
                 color: "primary.main"
             }
@@ -149,17 +165,62 @@ const CartItemTemplate = ({
                 onDialogClose={onDeleteWarningClose}
             />
 
-            <Box {...wrapperProps}>
-                <Box {...imgBoxProps}>
-                    <img alt={item.title} src={item.imgLink} style={imgStyle} />
-                </Box>
-                <Box {...innerWrapperProps}>
-                    <Box {...titleBoxProps}>
-                        <ProductLink url={item.url} props={titleProps}>
-                            {item.title}
-                        </ProductLink>
+            <Box {...outerWrapperProps}>
+                {!screen.sm && (
+                    <Box {...imgBoxProps}>
+                        <img
+                            alt={item.title}
+                            src={item.imgLink}
+                            style={imgStyle}
+                        />
                     </Box>
-                    <Price price={item.price} props={priceProps} />
+                )}
+                <Box {...wrapperProps}>
+                    {screen.sm && (
+                        <Box {...imgBoxProps}>
+                            <img
+                                alt={item.title}
+                                src={item.imgLink}
+                                style={imgStyle}
+                            />
+                        </Box>
+                    )}
+                    <Box {...innerWrapperProps}>
+                        <Box {...titleBoxProps}>
+                            <ProductLink url={item.url} props={titleProps}>
+                                {item.title}
+                            </ProductLink>
+                        </Box>
+                        <Price price={item.price} props={priceProps} />
+                        {screen.sm && (
+                            <Box {...amountAndDeleteBoxProps}>
+                                <Box {...amountBoxProps}>
+                                    <NumberInput {...numberInputProps} />
+                                    <Typography {...amountTextProps}>
+                                        {item.amount} шт. на сумму{" "}
+                                        <Price
+                                            price={totalPrice}
+                                            props={amountTextPriceProps}
+                                        />
+                                    </Typography>
+                                </Box>
+                                {/* {screen.md && (
+                                    <IconButton {...deleteButtonProps}>
+                                        <Close />
+                                    </IconButton>
+                                )} */}
+                            </Box>
+                        )}
+                    </Box>
+
+                    {/* {!screen.md && (
+                        <IconButton {...deleteButtonProps}>
+                            <Close />
+                        </IconButton>
+                    )} */}
+                </Box>
+
+                {!screen.sm && (
                     <Box {...amountAndDeleteBoxProps}>
                         <Box {...amountBoxProps}>
                             <NumberInput {...numberInputProps} />
@@ -171,20 +232,14 @@ const CartItemTemplate = ({
                                 />
                             </Typography>
                         </Box>
-                        {screen.md && (
-                            <IconButton {...deleteButtonProps}>
-                                <Close />
-                            </IconButton>
-                        )}
                     </Box>
-                </Box>
-
-                {!screen.md && (
-                    <IconButton {...deleteButtonProps}>
-                        <Close />
-                    </IconButton>
                 )}
+
+                <IconButton {...deleteButtonProps}>
+                    <Close />
+                </IconButton>
             </Box>
+            {children}
         </>
     );
 };

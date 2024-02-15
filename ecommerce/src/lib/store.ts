@@ -6,6 +6,7 @@ import {
     BreadcrumbsReducer,
     CartReducer
 } from ".";
+import { GlobalReducer } from "./slices/global.slice";
 
 export const makeStore = () => {
     return configureStore({
@@ -14,7 +15,8 @@ export const makeStore = () => {
             ProductsCategoryGridReducer,
             ProductPageReducer,
             BreadcrumbsReducer,
-            CartReducer
+            CartReducer,
+            GlobalReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

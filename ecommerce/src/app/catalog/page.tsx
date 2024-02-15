@@ -15,6 +15,7 @@ import {
 import CategoryTemplate from "./page.template";
 import { useEffect } from "react";
 import { notFound, useSearchParams } from "next/navigation";
+import { headers } from "next/headers";
 
 const Category = () => {
     const searchParams = useSearchParams();

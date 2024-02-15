@@ -7,4 +7,5 @@ export type CartItem = {
     imgLink: string;
     price: string;
     amount: number;
+    articul: string;
 };

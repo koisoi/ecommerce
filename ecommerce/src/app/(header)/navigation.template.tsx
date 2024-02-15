@@ -33,7 +33,8 @@ const HeaderNavigation = ({ mobile }: { mobile: boolean }) => {
         style: {
             position: "sticky",
             top: "-1px",
-            zIndex: 11
+            zIndex: 11,
+            boxSizing: "border-box"
         }
     };
 

@@ -1,8 +1,14 @@
 import { deleteItemFromCart, setCartItemAmount, useAppDispatch } from "@/lib";
 import CartItemTemplate from "./cartItem.template";
-import { MouseEventHandler, useState } from "react";
+import { MouseEventHandler, ReactNode, useState } from "react";
 
-const CartItemComponent = ({ item }: { item: CartItemTemplate }) => {
+const CartItemComponent = ({
+    children,
+    item
+}: {
+    children: ReactNode;
+    item: CartItemTemplate;
+}) => {
     const dispatch = useAppDispatch();
     const totalPrice = (Number(item.price) * item.amount).toString();
 
@@ -39,7 +45,9 @@ const CartItemComponent = ({ item }: { item: CartItemTemplate }) => {
             onDeleteWarningClose={handleDeleteWarningClose}
             onDelete={handleDelete}
             totalPrice={totalPrice}
-        />
+        >
+            {children}
+        </CartItemTemplate>
     );
 };
 

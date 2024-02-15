@@ -14,7 +14,7 @@ class ProductService extends Service {
     }: ProductRequest): Promise<MainProductInfo> {
         return fetch(
             `${this.baseURL}/catalog/backend/product?path=${category}&alias=${alias}&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {
@@ -39,7 +39,7 @@ class ProductService extends Service {
     }): Promise</*TODO: изменить */ any> {
         return fetch(
             `${this.baseURL}/filters/backend/product-filters?alias=${alias}&mode=main&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {
@@ -64,7 +64,7 @@ class ProductService extends Service {
     }): Promise</*TODO: изменить */ any> {
         return fetch(
             `${this.baseURL}/filters/backend/product-filters?alias=${alias}&mode=full&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {
@@ -89,7 +89,7 @@ class ProductService extends Service {
     }): Promise</*TODO: изменить */ any> {
         return fetch(
             `${this.baseURL}/catalog/backend/reviews?alias=${alias}&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {
@@ -114,7 +114,7 @@ class ProductService extends Service {
     }): Promise</*TODO: изменить */ any> {
         return fetch(
             `${this.baseURL}/catalog/backend/siblings?alias=${alias}&format=json`,
-            this.headers
+            this.options
         )
             .then((response) => {
                 if (!response.ok) {

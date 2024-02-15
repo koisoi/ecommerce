@@ -2,13 +2,80 @@
 
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "../types/cart";
-import { RootState } from "..";
+import { OrderData, RootState, StatisticsForm } from "..";
+import { orderAPI } from "../services/order.service";
 
 const initialState: {
     items: CartItem[];
+    loading: boolean;
+    canAuthorize: boolean;
+    canPostOrder: boolean;
+    canPostStatistics: boolean;
+    postedOrderId: string | null;
+    cartTotal: string;
 } = {
-    items: []
+    items: [],
+    loading: true,
+    canAuthorize: true,
+    canPostOrder: false,
+    canPostStatistics: false,
+    postedOrderId: null,
+    cartTotal: "0"
 };
+
+/**
+ * Авторизация перед отправкой заказа на сервер
+ */
+export const authorize = createAsyncThunk(
+    "order/authorize",
+    async (_, { rejectWithValue }) => {
+        try {
+            const response = await orderAPI.authorization();
+            return response;
+        } catch (error: any) {
+            rejectWithValue(error.response.data);
+        }
+    },
+    {
+        condition: (_, { getState }) => {
+            return (getState() as RootState).CartReducer.canAuthorize;
+        }
+    }
+);
+
+export const postOrder = createAsyncThunk(
+    "order/post",
+    async (arg: OrderData, { rejectWithValue }) => {
+        try {
+            const response = await orderAPI.postOrder(arg);
+            return response;
+        } catch (error: any) {
+            rejectWithValue(error.response.data);
+        }
+    },
+    {
+        condition: (_, { getState }) => {
+            return (getState() as RootState).CartReducer.canPostOrder;
+        }
+    }
+);
+
+export const postStatistics = createAsyncThunk(
+    "order/postStatistics",
+    async (arg: StatisticsForm, { rejectWithValue }) => {
+        try {
+            const response = await orderAPI.postStatistics(arg);
+            return response;
+        } catch (error: any) {
+            rejectWithValue(error.response.data);
+        }
+    },
+    {
+        condition: (_, { getState }) => {
+            return (getState() as RootState).CartReducer.canPostStatistics;
+        }
+    }
+);
 
 const slice = createSlice({
     name: "CartSlice",
@@ -17,6 +84,11 @@ const slice = createSlice({
         setCart(state, action: PayloadAction<CartItem[]>) {
             //@ts-ignore
             state.items = action.payload;
+            state.cartTotal = state.items
+                .reduce<number>((prev, _, i, arr) => {
+                    return prev + Number(arr[i].price) * arr[i].amount;
+                }, 0)
+                .toString();
         },
         addItemToCart(state, action: PayloadAction<CartItem>) {
             const cartItem = state.items.find(
@@ -25,6 +97,11 @@ const slice = createSlice({
             if (!!cartItem) cartItem.amount++;
             //@ts-ignore
             else state.items.push(action.payload);
+            state.cartTotal = state.items
+                .reduce<number>((prev, _, i, arr) => {
+                    return prev + Number(arr[i].price) * arr[i].amount;
+                }, 0)
+                .toString();
         },
         setCartItemAmount(
             state,
@@ -35,6 +112,11 @@ const slice = createSlice({
             );
             if (!cartItem) return;
             else cartItem.amount = action.payload.amount;
+            state.cartTotal = state.items
+                .reduce<number>((prev, _, i, arr) => {
+                    return prev + Number(arr[i].price) * arr[i].amount;
+                }, 0)
+                .toString();
         },
         deleteItemFromCart(state, action: PayloadAction<CartItem>) {
             const cartItemIndex = state.items.findIndex(
@@ -44,11 +126,69 @@ const slice = createSlice({
             if (cartItemIndex === -1) return;
             else {
                 state.items.splice(cartItemIndex, 1);
+                state.cartTotal = state.items
+                    .reduce<number>((prev, _, i, arr) => {
+                        return prev + Number(arr[i].price) * arr[i].amount;
+                    }, 0)
+                    .toString();
             }
         },
         clearCart(state) {
             state.items = [];
+            state.cartTotal = "0";
         }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(authorize.pending, (state) => {
+            state.loading = true;
+            state.canAuthorize = false;
+            state.canPostOrder = false;
+            state.canPostStatistics = false;
+        });
+        builder.addCase(authorize.fulfilled, (state) => {
+            state.canPostOrder = true;
+        });
+        builder.addCase(authorize.rejected, (state) => {
+            state.canAuthorize = true;
+            state.loading = false;
+        });
+
+        builder.addCase(postOrder.pending, (state) => {
+            state.loading = true;
+            state.canAuthorize = false;
+            state.canPostOrder = false;
+            state.canPostStatistics = false;
+        });
+        builder.addCase(postOrder.fulfilled, (state, action) => {
+            state.canPostStatistics = true;
+            state.postedOrderId = action.payload?.appeal.id || "";
+            state.items = [];
+        });
+        builder.addCase(postOrder.rejected, (state) => {
+            state.canAuthorize = true;
+            state.canPostOrder = true;
+            state.loading = false;
+        });
+
+        builder.addCase(postStatistics.pending, (state) => {
+            state.loading = true;
+            state.canAuthorize = false;
+            state.canPostOrder = false;
+            state.canPostStatistics = false;
+        });
+        builder.addCase(postStatistics.fulfilled, (state) => {
+            state.canAuthorize = true;
+            state.canPostOrder = true;
+            state.canPostStatistics = true;
+
+            state.loading = false;
+        });
+        builder.addCase(postStatistics.rejected, (state) => {
+            state.canAuthorize = true;
+            state.canPostOrder = true;
+            state.canPostStatistics = true;
+            state.loading = false;
+        });
     }
 });
 
