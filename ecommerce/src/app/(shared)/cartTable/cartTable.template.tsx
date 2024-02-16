@@ -10,32 +10,37 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import CartItemComponent from "./cartItem";
+import CartItemComponent from "./cartItem/cartItem";
 import Price from "../price.template";
 import { Delete } from "@mui/icons-material";
 import { MouseEventHandler } from "react";
 import ClearDialog from "./clearDialog.template";
 import { useMediaQueries } from "@/lib";
+import EmptyCart from "./emptyCard/emptyCart";
+
+export type CartTableTemplateProps = {
+    items: CartItem[];
+    full?: boolean;
+    totalPrice: string;
+    clearWarningOpen?: boolean;
+    displayOnly?: boolean;
+    onClearWarningOpen?: MouseEventHandler<HTMLButtonElement>;
+    onClearWarningClose?: (event: any) => void;
+    onClear?: MouseEventHandler<HTMLButtonElement>;
+    onOpenOrderPage?: MouseEventHandler<HTMLButtonElement>;
+};
 
 const CartTableTemplate = ({
     items,
     full,
     totalPrice,
     clearWarningOpen,
+    displayOnly,
     onClearWarningOpen,
     onClearWarningClose,
     onClear,
     onOpenOrderPage
-}: {
-    items: CartItem[];
-    full?: boolean;
-    totalPrice: string;
-    clearWarningOpen: boolean;
-    onClearWarningOpen: MouseEventHandler<HTMLButtonElement>;
-    onClearWarningClose: (event: any) => void;
-    onClear: MouseEventHandler<HTMLButtonElement>;
-    onOpenOrderPage: MouseEventHandler<HTMLButtonElement>;
-}) => {
+}: CartTableTemplateProps) => {
     const screen = useMediaQueries();
 
     const wrapperProps: BoxProps = {
@@ -140,6 +145,7 @@ const CartTableTemplate = ({
 
         sx: {
             textTransform: "none",
+            fontSize: "inherit",
 
             boxShadow: "none",
 
@@ -149,13 +155,17 @@ const CartTableTemplate = ({
         }
     };
 
+    if (!items.length) return <EmptyCart full={full} />;
+
     return (
         <>
-            <ClearDialog
-                open={clearWarningOpen}
-                onClear={onClear}
-                onDialogClose={onClearWarningClose}
-            />
+            {!displayOnly && (
+                <ClearDialog
+                    open={!!clearWarningOpen}
+                    onClear={onClear}
+                    onDialogClose={onClearWarningClose}
+                />
+            )}
 
             <Box {...wrapperProps}>
                 {full && screen.md && (
@@ -175,7 +185,11 @@ const CartTableTemplate = ({
                 )}
                 <Box {...itemBoxProps}>
                     {items.map((item, i, array) => (
-                        <CartItemComponent key={item.alias} item={item}>
+                        <CartItemComponent
+                            key={item.alias}
+                            item={item}
+                            displayOnly
+                        >
                             {!screen.md && i !== array.length - 1 && (
                                 <Divider key={item.alias} flexItem />
                             )}
@@ -183,10 +197,12 @@ const CartTableTemplate = ({
                     ))}
                 </Box>
                 <Box {...footerProps}>
-                    <Button {...clearButtonProps}>
-                        <Delete /> {screen.sm && "Очистить корзину"}
-                    </Button>
-                    {!full && (
+                    {!displayOnly && (
+                        <Button {...clearButtonProps}>
+                            <Delete /> {screen.sm && "Очистить корзину"}
+                        </Button>
+                    )}
+                    {!full && !displayOnly && (
                         <Button {...orderButtonProps}>Оформить заказ</Button>
                     )}
                     <Typography {...footerTextProps}>

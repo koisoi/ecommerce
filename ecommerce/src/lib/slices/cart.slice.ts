@@ -2,7 +2,7 @@
 
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "../types/cart";
-import { OrderData, RootState, StatisticsForm } from "..";
+import { OrderData, OrderForm, RootState, StatisticsForm } from "..";
 import { orderAPI } from "../services/order.service";
 
 const initialState: {
@@ -13,6 +13,7 @@ const initialState: {
     canPostStatistics: boolean;
     postedOrderId: string | null;
     cartTotal: string;
+    completedOrderForm: OrderForm;
 } = {
     items: [],
     loading: true,
@@ -20,7 +21,13 @@ const initialState: {
     canPostOrder: false,
     canPostStatistics: false,
     postedOrderId: null,
-    cartTotal: "0"
+    cartTotal: "0",
+    completedOrderForm: {
+        fullName: "",
+        email: "",
+        phoneNumber: "",
+        commentary: ""
+    }
 };
 
 /**
@@ -33,7 +40,7 @@ export const authorize = createAsyncThunk(
             const response = await orderAPI.authorization();
             return response;
         } catch (error: any) {
-            rejectWithValue(error.response.data);
+            rejectWithValue(error);
         }
     },
     {
@@ -50,7 +57,7 @@ export const postOrder = createAsyncThunk(
             const response = await orderAPI.postOrder(arg);
             return response;
         } catch (error: any) {
-            rejectWithValue(error.response.data);
+            rejectWithValue(error);
         }
     },
     {
@@ -67,7 +74,7 @@ export const postStatistics = createAsyncThunk(
             const response = await orderAPI.postStatistics(arg);
             return response;
         } catch (error: any) {
-            rejectWithValue(error.response.data);
+            rejectWithValue(error);
         }
     },
     {
@@ -136,6 +143,15 @@ const slice = createSlice({
         clearCart(state) {
             state.items = [];
             state.cartTotal = "0";
+        },
+        setCanAuthorize(state, action: PayloadAction<boolean>) {
+            state.canAuthorize = action.payload;
+        },
+        setCanPostOrder(state, action: PayloadAction<boolean>) {
+            state.canPostOrder = action.payload;
+        },
+        setCanPostStatistics(state, action: PayloadAction<boolean>) {
+            state.canPostStatistics = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -162,7 +178,7 @@ const slice = createSlice({
         builder.addCase(postOrder.fulfilled, (state, action) => {
             state.canPostStatistics = true;
             state.postedOrderId = action.payload?.appeal.id || "";
-            state.items = [];
+            // state.items = [];
         });
         builder.addCase(postOrder.rejected, (state) => {
             state.canAuthorize = true;
@@ -198,6 +214,9 @@ export const {
     deleteItemFromCart,
     clearCart,
     setCartItemAmount,
-    setCart
+    setCart,
+    setCanAuthorize,
+    setCanPostOrder,
+    setCanPostStatistics
 } = slice.actions;
 export const CartState = (state: RootState) => state.CartReducer;

@@ -4,10 +4,12 @@ import { MouseEventHandler, ReactNode, useState } from "react";
 
 const CartItemComponent = ({
     children,
-    item
+    item,
+    displayOnly
 }: {
     children: ReactNode;
     item: CartItemTemplate;
+    displayOnly?: boolean;
 }) => {
     const dispatch = useAppDispatch();
     const totalPrice = (Number(item.price) * item.amount).toString();
@@ -45,6 +47,7 @@ const CartItemComponent = ({
             onDeleteWarningClose={handleDeleteWarningClose}
             onDelete={handleDelete}
             totalPrice={totalPrice}
+            displayOnly={displayOnly}
         >
             {children}
         </CartItemTemplate>

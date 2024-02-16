@@ -2,9 +2,9 @@
 
 import { Box, BoxProps } from "@mui/material";
 import HeaderTopContainer from "./topContainer.template";
-import HeaderMainContainer from "./mainContainer.template";
 import HeaderNavigation from "./navigation.template";
 import { useMediaQueries } from "../../lib/hooks";
+import HeaderMainContainer from "./mainContainer/mainContainer";
 
 const Header = () => {
     const screen = useMediaQueries();

@@ -2,6 +2,7 @@ import { DragEventHandler, MouseEventHandler, useState } from "react";
 import ProductPageUpperBoxTemplate from "./productPageUpperBox.template";
 import {
     ProductPageState,
+    getProductImageLink,
     setOpenedImgLink,
     useAppDispatch,
     useAppSelector
@@ -19,7 +20,10 @@ const ProductPageUpperBox = () => {
         is_recommend,
         is_available,
         shortCharacteristics,
-        loading
+        loading,
+        alias,
+        category,
+        series
     } = useAppSelector(ProductPageState);
 
     const [canOpenImg, setCanOpenImg] = useState<boolean>(true);
@@ -47,12 +51,28 @@ const ProductPageUpperBox = () => {
 
     return (
         <ProductPageUpperBoxTemplate
-            title={title}
-            imageLinks={images}
-            articul={articul}
-            price={price}
+            imageLinks={images.map((el) => ({
+                id: el.id,
+                url: getProductImageLink(el.url)
+            }))}
             stock={is_available || false}
             characteristics={shortCharacteristics}
+            cartItem={{
+                url: {
+                    pathname: "/catalog/product",
+                    query: {
+                        category: category.path,
+                        series: series?.alias,
+                        product: alias
+                    }
+                },
+                alias,
+                title,
+                imgLink: getProductImageLink(images[0].url),
+                price,
+                amount: 1,
+                articul
+            }}
             onImgClick={handleImgClick}
             onDragStart={handleDragStart}
             onDragStop={handleDragStop}

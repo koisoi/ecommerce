@@ -16,41 +16,33 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import { getProductImageLink } from "../../../lib/functions/category/getProductImageLink";
-import { InstantBuyButton, ShoppingCartButton } from "../buyButtons.template";
+import { InstantBuyButtonTemplate } from "../buyButtons/buyButtons.template";
 import { NextLinkProps, useThemeColors } from "@/lib";
 import Price from "../price.template";
 import { Url } from "next/dist/shared/lib/router/router";
 import ProductLink from "../productLink.template";
+import ShoppingCartButton from "../buyButtons/buyButtons";
+import { CartItem } from "@/lib/types/cart";
 
 export type ProductCardProps = {
-    imageLink: string;
-    title: string;
-    articul: string;
-    price: string;
+    cartItem: CartItem;
     discount?: number;
     newProduct?: boolean;
     sale?: boolean;
     recommended?: boolean;
-    productLink: Url;
     cardProps?: CardProps;
     cardMediaProps?: CardMediaProps;
 };
 
 const ProductCard = ({
-    imageLink,
-    title,
-    articul,
-    price,
     discount,
     newProduct,
     sale,
     recommended,
     cardProps,
     cardMediaProps,
-    productLink
+    cartItem
 }: ProductCardProps) => {
-    imageLink = getProductImageLink(imageLink);
-
     const colors = useThemeColors();
 
     const initialCardProps: CardProps = {
@@ -72,7 +64,7 @@ const ProductCard = ({
     };
 
     const imageLinkProps: NextLinkProps = {
-        href: productLink,
+        href: cartItem.url,
 
         style: {
             display: "inline-block",
@@ -84,7 +76,7 @@ const ProductCard = ({
     };
 
     const initialCardMediaProps: CardMediaProps = {
-        image: imageLink,
+        image: cartItem.imgLink,
 
         component: "div",
 
@@ -219,15 +211,22 @@ const ProductCard = ({
                 {discount && <Box {...discountBadgeProps}>-{discount}%</Box>}
             </CardMedia>
             <CardContent>
-                <ProductLink url={productLink}>{title}</ProductLink>
+                <ProductLink url={cartItem.url}>{cartItem.title}</ProductLink>
                 <Typography {...articleTextProps}>
-                    Артикул: {articul}
+                    Артикул: {cartItem.articul}
                 </Typography>
             </CardContent>
             <CardActions {...actionRowProps}>
-                <Price variant="small" price={price} props={{ flexGrow: 1 }} />
-                <InstantBuyButton props={buttonProps} />
-                <ShoppingCartButton props={buttonProps} />
+                <Price
+                    variant="small"
+                    price={cartItem.price}
+                    props={{ flexGrow: 1 }}
+                />
+                <InstantBuyButtonTemplate
+                    props={buttonProps}
+                    onClick={() => {}}
+                />
+                <ShoppingCartButton props={buttonProps} item={cartItem} />
             </CardActions>
         </Card>
     );

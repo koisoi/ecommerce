@@ -1,18 +1,24 @@
 "use client";
 
-import { useMediaQueries } from "@/lib";
+import { CartState, useAppSelector, useMediaQueries } from "@/lib";
 import SlidingCartButtonTemplate from "./slidingCartButton.template";
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const SlidingCartButton = () => {
     const screen = useMediaQueries();
     const path = usePathname();
-    // amount буду получать из redux
-    const [amount, setAmount] = useState<number>(0);
-    const [visible, setVisible] = useState<boolean>(false);
 
-    // TODO: не показывать на мобилках
+    const [visible, setVisible] = useState<boolean>(false);
+    const [cartAnchorEl, setCartAnchorEl] = useState<Element | null>(null);
+
+    const { items } = useAppSelector(CartState);
+
+    const amount = items.reduce<number>(
+        (prev, _, i, arr) => prev + arr[i].amount,
+        0
+    );
+
     const toggleVisible = () => {
         if (!screen.md || path === "/cart" || path === "/cart/") {
             setVisible(false);
@@ -23,7 +29,16 @@ const SlidingCartButton = () => {
             setVisible(true);
         } else if (scrolled <= 500) {
             setVisible(false);
+            setCartAnchorEl(null);
         }
+    };
+
+    const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+        setCartAnchorEl(event.currentTarget);
+    };
+
+    const handleCartClose = () => {
+        setCartAnchorEl(null);
     };
 
     window.addEventListener("scroll", toggleVisible);
@@ -32,7 +47,15 @@ const SlidingCartButton = () => {
         return window.removeEventListener("scroll", toggleVisible);
     });
 
-    return <SlidingCartButtonTemplate amount={amount} visible={visible} />;
+    return (
+        <SlidingCartButtonTemplate
+            amount={amount}
+            visible={visible}
+            cartPopoverAnchorEl={cartAnchorEl}
+            onClick={handleClick}
+            onCartClose={handleCartClose}
+        />
+    );
 };
 
 export default SlidingCartButton;

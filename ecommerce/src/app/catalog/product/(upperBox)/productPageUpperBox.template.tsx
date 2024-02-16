@@ -9,11 +9,7 @@ import {
 } from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import StockIndicator, { StockIndicatorProps } from "./stockIndicator.template";
-import {
-    BuyButtonProps,
-    InstantBuyButton,
-    ShoppingCartButton
-} from "@/app/(shared)/buyButtons.template";
+import { InstantBuyButtonTemplate } from "@/app/(shared)/buyButtons/buyButtons.template";
 import { CSSProperties, DragEventHandler, MouseEventHandler } from "react";
 import { useMediaQueries, useThemeColors } from "@/lib/hooks";
 import {
@@ -23,26 +19,26 @@ import {
 import { ProductCharacteristic, getProductImageLink } from "@/lib";
 import Price, { PriceProps } from "@/app/(shared)/price.template";
 import CharacteristicsBox from "./characteristicsBox.template";
+import ShoppingCartButton, {
+    BuyButtonProps
+} from "@/app/(shared)/buyButtons/buyButtons";
+import { CartItem } from "@/lib/types/cart";
 
 export type ProductPageUpperBoxProps = {
-    title: string;
     imageLinks: { url: string; id: number }[];
-    articul: string;
     stock: boolean;
-    price: string;
     characteristics: ProductCharacteristic;
+    cartItem: CartItem;
     onImgClick: MouseEventHandler<HTMLDivElement>;
     onDragStart: DragEventHandler<HTMLDivElement>;
     onDragStop: DragEventHandler<HTMLDivElement>;
 };
 
 const ProductPageUpperBoxTemplate = ({
-    title,
     imageLinks,
-    articul,
     stock,
-    price,
     characteristics,
+    cartItem,
     onImgClick,
     onDragStart,
     onDragStop
@@ -216,7 +212,7 @@ const ProductPageUpperBoxTemplate = ({
 
     const priceProps: PriceProps = {
         variant: screen.sm ? "large" : "medium",
-        price
+        price: cartItem.price
     };
 
     const buyButtonsProps: BuyButtonProps = {
@@ -231,7 +227,9 @@ const ProductPageUpperBoxTemplate = ({
 
         textProps: {
             fontSize: "0.95rem"
-        }
+        },
+
+        item: cartItem
     };
 
     return (
@@ -242,7 +240,7 @@ const ProductPageUpperBoxTemplate = ({
                         <Box key={i} {...imgBoxProps}>
                             <img
                                 src={getProductImageLink(imageLink.url)}
-                                alt={title}
+                                alt={cartItem.title}
                                 {...imgProps}
                             />
                         </Box>
@@ -252,14 +250,17 @@ const ProductPageUpperBoxTemplate = ({
             <Box {...descriptionAndProductOfferBoxProps}>
                 <Box {...descriptionBoxProps}>
                     <Typography {...articulTextProps}>
-                        Артикул: {articul}
+                        Артикул: {cartItem.articul}
                     </Typography>
                     <CharacteristicsBox characteristics={characteristics} />
                 </Box>
                 <Paper {...productOfferBoxProps}>
                     <StockIndicator {...stockProps} />
                     <Price {...priceProps} />
-                    <InstantBuyButton {...buyButtonsProps} />
+                    <InstantBuyButtonTemplate
+                        {...buyButtonsProps}
+                        onClick={() => {}}
+                    />
                     <ShoppingCartButton {...buyButtonsProps} />
                 </Paper>
             </Box>

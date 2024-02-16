@@ -1,14 +1,26 @@
 "use client";
 
-import { Box, BoxProps } from "@mui/material";
-import HeaderSearchBox from "./searchBox.template";
-import DesktopHeaderButton from "./desktopHeaderButton.template";
+import {
+    Box,
+    BoxProps,
+    Popover,
+    PopoverProps,
+    PopoverVirtualElement
+} from "@mui/material";
+import HeaderSearchBox from "../searchBox.template";
+import DesktopHeaderButton, {
+    DesktopHeaderButtonProps
+} from "../desktopHeaderButton.template";
 import { AccountCircle, Favorite, ShoppingCart } from "@mui/icons-material";
-import logotype from "@/assets/img/logotype.png";
 import { useThemeColors } from "@/lib";
 import Link from "next/link";
+import { MouseEventHandler } from "react";
 
-const HeaderMainContainer = () => {
+const HeaderMainContainerTemplate = ({
+    onCartClick
+}: {
+    onCartClick: MouseEventHandler<HTMLButtonElement>;
+}) => {
     const colors = useThemeColors();
 
     const outerWrapperProps: BoxProps = {
@@ -87,6 +99,12 @@ const HeaderMainContainer = () => {
         height: "min-content"
     };
 
+    const cartButtonProps: DesktopHeaderButtonProps = {
+        upperText: "Корзина",
+        lowerText: "0.00 €",
+        onClick: onCartClick
+    };
+
     return (
         <Box {...outerWrapperProps}>
             <Box {...wrapperProps}>
@@ -128,7 +146,7 @@ const HeaderMainContainer = () => {
                     >
                         <Favorite />
                     </DesktopHeaderButton>
-                    <DesktopHeaderButton upperText="Корзина" lowerText="0.00 €">
+                    <DesktopHeaderButton {...cartButtonProps}>
                         <ShoppingCart />
                     </DesktopHeaderButton>
                     <DesktopHeaderButton
@@ -143,4 +161,4 @@ const HeaderMainContainer = () => {
     );
 };
 
-export default HeaderMainContainer;
+export default HeaderMainContainerTemplate;

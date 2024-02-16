@@ -13,8 +13,8 @@ const ClearDialog = ({
     onDialogClose
 }: {
     open: boolean;
-    onClear: MouseEventHandler<HTMLButtonElement>;
-    onDialogClose: (event: any) => void;
+    onClear?: MouseEventHandler<HTMLButtonElement>;
+    onDialogClose?: (event: any) => void;
 }) => {
     return (
         <Dialog open={open} onClose={onDialogClose}>

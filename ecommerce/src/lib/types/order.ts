@@ -10,7 +10,7 @@ export type CartProduct = {
     // цена
     amount_original: string;
     // кол-во
-    quant: string; // FIXME: number?
+    quant: string;
     bonus_points?: string;
 };
 
@@ -33,8 +33,8 @@ export type OrderQuery = {
         info?: string;
     };
     status_appeal: "order";
-    waybills: [
-        {
+    waybills: {
+        wb_0: {
             type: "sale_out";
             method?:
                 | "shop"
@@ -45,17 +45,19 @@ export type OrderQuery = {
                 | "dellin";
             products: CartProduct[];
             nds_rate: 20;
-        }
-    ];
-    transactions: [
-        {
+        };
+    };
+    transactions: {
+        tr_0: {
             type: "sale_in";
             method?: "";
             // сумма
             amount_payed: string;
             nds_rate: 20;
-        }
-    ];
+        };
+    };
+
+    readonly [key: string]: any;
 };
 
 export type OrderResponse = {
@@ -70,6 +72,15 @@ export type StatisticsForm = {
     ip: string;
     referer: string;
     start_url: string;
+    utm: UTMParams;
+};
+
+export type UTMParams = {
+    source?: string; // param utm_source
+    medium?: string; // param utm_medium
+    campaign?: string; // param utm_campaign
+    content?: string; // param utm_content
+    term?: string; // param utm_term
 };
 
 export type StatisticsQuery = {
@@ -78,20 +89,14 @@ export type StatisticsQuery = {
         action: "add";
         label: "main";
     };
-    site_id?: number; // 49 по стандарту,
+    site_id?: number; // 49 по стандарту
     parent_id: string;
     parent_class: "Sale_Model_Appeals";
     source: "сайт";
     ip?: string;
     referer: string;
     start_url: string;
-    utm: {
-        source?: "";
-        medium?: "";
-        campaign?: "";
-        content?: "";
-        term?: "";
-    };
+    utm: UTMParams;
     yandex: {
         clientID?: "";
         yclid?: "";

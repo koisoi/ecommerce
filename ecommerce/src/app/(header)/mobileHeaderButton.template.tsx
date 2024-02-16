@@ -13,14 +13,16 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { ReactNode } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 const MobileHeaderButton = ({
     variant,
-    amount
+    amount,
+    onClick
 }: {
     variant: "menu" | "favorite" | "shoppingCart" | "accountCircle";
     amount?: number;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
 }) => {
     const iconButtonsProps: IconButtonProps = {
         disableRipple: true,
@@ -31,7 +33,9 @@ const MobileHeaderButton = ({
             color: "inherit",
 
             position: "relative"
-        }
+        },
+
+        onClick
     };
 
     const iconsProps: SvgIconProps = {

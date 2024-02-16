@@ -10,7 +10,13 @@ import StoreProvider from "./storeProvider";
 import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
 import Container from "./(shared)/container.template";
 import { useAppDispatch } from "@/lib";
-import { getIp, setReferrer, setStartUrl } from "@/lib/slices/global.slice";
+import {
+    getIp,
+    setReferrer,
+    setStartUrl,
+    setUTM
+} from "@/lib/slices/global.slice";
+import { useSearchParams } from "next/navigation";
 
 const theme = createTheme({
     palette: {
@@ -51,6 +57,14 @@ const theme = createTheme({
 // https://stackoverflow.com/questions/75406728/how-to-entirely-disable-server-side-rendering-in-next-js-v13
 const Dynamic = ({ children }: { children: ReactNode }) => {
     const dispatch = useAppDispatch();
+    const params = useSearchParams();
+
+    const source = params.get("utm_source");
+    const medium = params.get("utm_medium");
+    const campaign = params.get("utm_campaign");
+    const content = params.get("utm_content");
+    const term = params.get("utm_term");
+
     const [hasMounted, setHasMounted] = useState(false);
 
     useEffect(() => {
@@ -58,9 +72,18 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
     }, []);
 
     useEffect(() => {
-        const promise = dispatch(getIp());
+        dispatch(getIp());
         dispatch(setReferrer(document.referrer));
         dispatch(setStartUrl(document.URL));
+        dispatch(
+            setUTM({
+                source: source || undefined,
+                medium: medium || undefined,
+                campaign: campaign || undefined,
+                content: content || undefined,
+                term: term || undefined
+            })
+        );
     }, []);
 
     if (!hasMounted) {

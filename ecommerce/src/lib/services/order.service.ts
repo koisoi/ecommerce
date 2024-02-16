@@ -19,9 +19,6 @@ class OrderService extends Service {
      * Авторизация перед отправкой заказа на сервер
      */
     public async authorization(): Promise<any> {
-        console.log(
-            `${this.baseURL}?login=landing&key=0bc58985846b6384dff3332178942f6c`
-        );
         return fetch(
             `${this.baseURL}?login=landing&key=0bc58985846b6384dff3332178942f6c`,
             this.options
@@ -37,7 +34,7 @@ class OrderService extends Service {
      * Отправка заказа на сервер
      */
     public async postOrder(orderData: OrderData): Promise<OrderResponse> {
-        const body: OrderQuery = {
+        const JSONbody: OrderQuery = {
             source: "сайт",
             geo: "rf",
             is_alert: true,
@@ -49,27 +46,32 @@ class OrderService extends Service {
                 info: orderData.commentary
             },
             status_appeal: "order",
-            waybills: [
-                {
+            waybills: {
+                wb_0: {
                     type: "sale_out",
                     products: orderData.cart,
                     nds_rate: 20
                 }
-            ],
-            transactions: [
-                {
+            },
+            transactions: {
+                tr_0: {
                     type: "sale_in",
                     // сумма
                     amount_payed: orderData.total,
                     nds_rate: 20
                 }
-            ]
+            }
         };
+
+        // const formData = new FormData();
+        // Object.keys(JSONbody).forEach((key) =>
+        //     formData.append(key, JSONbody[key])
+        // );
 
         return fetch(`${this.baseURL}/sale/remote/appeal-save`, {
             ...this.options,
             method: "POST",
-            body: JSON.stringify(body)
+            body: JSON.stringify(JSONbody)
         }).then((response) => {
             if (!response.ok) {
                 throw new NetworkError(response.statusText, response.status);

@@ -1,8 +1,8 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
-import { Box, BoxProps, Typography } from "@mui/material";
+import { Box, BoxProps, Snackbar, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
 import CategoryPagination from "./categoryPagination.template";
-import { CategoryItemsResponse } from "@/lib";
+import { CategoryItemsResponse, getProductImageLink } from "@/lib";
 
 const ProductsGridTemplate = ({
     list: products,
@@ -54,20 +54,26 @@ const ProductsGridTemplate = ({
                         {products.map((item) => (
                             <ProductCard
                                 key={item.id}
-                                imageLink={item.images[0].url}
-                                title={item.title}
-                                articul={item.articul}
-                                price={item.price}
                                 newProduct={item.is_new}
                                 // sale={item.sale}
                                 recommended={item.is_recommend}
-                                productLink={{
-                                    pathname: "/catalog/product",
-                                    query: {
-                                        category: item.category.path,
-                                        series: item.series?.alias,
-                                        product: item.alias
-                                    }
+                                cartItem={{
+                                    url: {
+                                        pathname: "/catalog/product",
+                                        query: {
+                                            category: item.category.path,
+                                            series: item.series?.alias,
+                                            product: item.alias
+                                        }
+                                    },
+                                    alias: item.alias,
+                                    title: item.title,
+                                    imgLink: getProductImageLink(
+                                        item.images[0].url
+                                    ),
+                                    price: item.price,
+                                    amount: 1,
+                                    articul: item.articul
                                 }}
                             />
                         ))}

@@ -1,17 +1,28 @@
 "use client";
 
-import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import { ReactNode } from "react";
+import {
+    Box,
+    BoxProps,
+    IconButton,
+    IconButtonProps,
+    Typography,
+    TypographyProps
+} from "@mui/material";
+import { MouseEventHandler, ReactNode } from "react";
+
+export type DesktopHeaderButtonProps = {
+    children?: ReactNode;
+    upperText: string;
+    lowerText: string;
+    onClick?: MouseEventHandler<HTMLButtonElement>;
+};
 
 const DesktopHeaderButton = ({
     children,
     upperText,
-    lowerText
-}: {
-    children: ReactNode;
-    upperText: string;
-    lowerText: string;
-}) => {
+    lowerText,
+    onClick
+}: DesktopHeaderButtonProps) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
@@ -27,17 +38,20 @@ const DesktopHeaderButton = ({
         flexDirection: "column"
     };
 
-    const iconWrapperProps: BoxProps = {
-        marginRight: "10px",
-        height: "24px",
-        color: "text.disabled",
-
+    const iconWrapperProps: IconButtonProps = {
         sx: {
+            color: "text.disabled",
+            marginRight: "10px",
+            height: "24px",
+            width: "24px",
+
             ":hover": {
                 color: "primary.main",
                 cursor: "pointer"
             }
-        }
+        },
+
+        onClick
     };
 
     const upperTextProps: TypographyProps = {
@@ -53,7 +67,7 @@ const DesktopHeaderButton = ({
 
     return (
         <Box {...wrapperProps}>
-            <Box {...iconWrapperProps}>{children}</Box>
+            <IconButton {...iconWrapperProps}>{children}</IconButton>
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>{upperText}</Typography>
                 <Typography {...lowerTextProps}>{lowerText}</Typography>

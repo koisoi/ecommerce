@@ -12,6 +12,9 @@ import {
     postStatistics,
     requiredRule,
     ruPhonePattern,
+    setCanAuthorize,
+    setCanPostOrder,
+    setCanPostStatistics,
     useAppDispatch,
     useAppSelector
 } from "@/lib";
@@ -29,7 +32,7 @@ const Cart = () => {
     const dispatch = useAppDispatch();
 
     const { items, loading, cartTotal } = useAppSelector(CartState);
-    const { ip, referrer, start_url } = useAppSelector(GlobalState);
+    const { utm, ip, referrer, start_url } = useAppSelector(GlobalState);
 
     const [currentPromise, setCurrentPromise] = useState<Promise<
         PayloadAction<any>
@@ -81,7 +84,8 @@ const Cart = () => {
                             parent_id: val.appeal.id,
                             ip,
                             referer: referrer,
-                            start_url
+                            start_url,
+                            utm
                         })
                     );
                     setCurrentPromise(statisticsPromise);
@@ -90,14 +94,20 @@ const Cart = () => {
             .catch((error) => console.error(error.message));
     };
 
-    useEffect(
-        () => () => {
+    useEffect(() => {
+        dispatch(setCanAuthorize(true));
+        dispatch(setCanPostOrder(true));
+        dispatch(setCanPostStatistics(true));
+
+        return () => {
             // @ts-ignore
             if (currentPromise) currentPromise.abort();
+            dispatch(setCanAuthorize(false));
+            dispatch(setCanPostOrder(false));
+            dispatch(setCanPostStatistics(false));
             // TODO: setcanfetch = false
-        },
-        []
-    );
+        };
+    }, []);
 
     return (
         <CartTemplate

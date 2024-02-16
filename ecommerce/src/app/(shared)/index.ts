@@ -1,6 +1,6 @@
 export * from "./cardSkeleton.template";
 export * from "./price.template";
-export * from "./buyButtons.template";
+export * from "./buyButtons/buyButtons.template";
 export * from "./title.template";
 export * from "./appLink.template";
 export * from "./container.template";

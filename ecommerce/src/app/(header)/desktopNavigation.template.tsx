@@ -12,7 +12,7 @@ import {
     TabsProps
 } from "@mui/material";
 import Link from "next/link";
-import SlidingCartButton from "./slidingCartButton";
+import SlidingCartButton from "./slidingCartButton/slidingCartButton";
 import { NextLinkProps } from "@/lib";
 
 const HeaderDesktopNavigation = ({

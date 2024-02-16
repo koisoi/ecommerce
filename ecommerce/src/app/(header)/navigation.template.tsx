@@ -1,9 +1,9 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import HeaderMobileNavigation from "./mobileNavigation.template";
 import HeaderDesktopNavigation from "./desktopNavigation.template";
 import { CSSProperties } from "react";
+import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
 
 const HeaderNavigation = ({ mobile }: { mobile: boolean }) => {
     const categories: { title: string; alias: string }[] = [

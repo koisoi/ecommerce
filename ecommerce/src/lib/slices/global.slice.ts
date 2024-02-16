@@ -1,7 +1,7 @@
 "use client";
 
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "..";
+import { RootState, UTMParams } from "..";
 
 const initialState: {
     landing: string;
@@ -9,12 +9,14 @@ const initialState: {
     start_url: string;
     referrer: string;
     ip: string;
+    utm: UTMParams;
 } = {
     landing: "iray",
     landing_id: 49,
     start_url: "",
     referrer: "",
-    ip: ""
+    ip: "",
+    utm: {}
 };
 
 export const getIp = createAsyncThunk(
@@ -38,6 +40,9 @@ const slice = createSlice({
         },
         setReferrer(state, action: PayloadAction<string>) {
             state.referrer = action.payload;
+        },
+        setUTM(state, action: PayloadAction<UTMParams>) {
+            state.utm = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -48,5 +53,5 @@ const slice = createSlice({
 });
 
 export const GlobalReducer = slice.reducer;
-export const { setReferrer, setStartUrl } = slice.actions;
+export const { setReferrer, setStartUrl, setUTM } = slice.actions;
 export const GlobalState = (state: RootState) => state.GlobalReducer;

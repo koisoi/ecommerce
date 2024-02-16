@@ -6,10 +6,12 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
+import { MouseEventHandler } from "react";
 
-export type BuyButtonProps = {
+type BuyButtonProps = {
     props?: ButtonProps;
     textProps?: TypographyProps;
+    onClick: MouseEventHandler<HTMLButtonElement>;
 };
 
 const buttonProps: ButtonProps = {
@@ -31,7 +33,10 @@ const buttonTextProps: TypographyProps = {
     noWrap: true
 };
 
-export const InstantBuyButton = ({ props, textProps }: BuyButtonProps) => {
+export const InstantBuyButtonTemplate = ({
+    props,
+    textProps
+}: BuyButtonProps) => {
     const instantBuyButtonProps: ButtonProps = {
         ...buttonProps,
         color: "secondary",
@@ -65,10 +70,16 @@ export const InstantBuyButton = ({ props, textProps }: BuyButtonProps) => {
     );
 };
 
-export const ShoppingCartButton = ({ props, textProps }: BuyButtonProps) => {
+export const ShoppingCartButtonTemplate = ({
+    props,
+    textProps,
+    onClick
+}: BuyButtonProps) => {
     const shoppingCartButtonProps: ButtonProps = {
         ...buttonProps,
         color: "primary",
+
+        onClick,
 
         ...props,
 
