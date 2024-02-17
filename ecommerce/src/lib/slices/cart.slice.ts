@@ -16,7 +16,7 @@ const initialState: {
     completedOrderForm: OrderForm;
 } = {
     items: [],
-    loading: true,
+    loading: false,
     canAuthorize: true,
     canPostOrder: false,
     canPostStatistics: false,
@@ -144,6 +144,9 @@ const slice = createSlice({
             state.items = [];
             state.cartTotal = "0";
         },
+        clearOrder(state) {
+            return initialState;
+        },
         setCanAuthorize(state, action: PayloadAction<boolean>) {
             state.canAuthorize = action.payload;
         },
@@ -152,6 +155,9 @@ const slice = createSlice({
         },
         setCanPostStatistics(state, action: PayloadAction<boolean>) {
             state.canPostStatistics = action.payload;
+        },
+        setCompletedOrderInfo(state, action: PayloadAction<OrderForm>) {
+            state.completedOrderForm = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -217,6 +223,8 @@ export const {
     setCart,
     setCanAuthorize,
     setCanPostOrder,
-    setCanPostStatistics
+    setCanPostStatistics,
+    setCompletedOrderInfo,
+    clearOrder
 } = slice.actions;
 export const CartState = (state: RootState) => state.CartReducer;

@@ -1,5 +1,5 @@
-import { Title } from "@mui/icons-material";
 import { Box, BoxProps, Typography } from "@mui/material";
+import Title from "../(shared)/title.template";
 
 export type CompletedOrderFormProps = {
     fullName: string;

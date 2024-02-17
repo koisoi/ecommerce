@@ -80,7 +80,12 @@ const CartTableTemplate = ({
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
-        width: "250px"
+        width: displayOnly ? "100px" : "250px"
+    };
+
+    const amountHeaderTextProps: TypographyProps = {
+        width: displayOnly ? "100px" : "170px",
+        ...(!displayOnly && { textAlign: "center" })
     };
 
     const headerDeleteButtonSpace: TypographyProps = {
@@ -98,8 +103,9 @@ const CartTableTemplate = ({
     const footerProps: BoxProps = {
         ...headerProps,
         padding: "20px",
-        justifyContent: "space-between",
-        alignItems: "center"
+        justifyContent: displayOnly ? "flex-end" : "space-between",
+        alignItems: "center",
+        width: "100%"
     };
 
     const footerTextProps: TypographyProps = {
@@ -176,10 +182,12 @@ const CartTableTemplate = ({
                         </Typography>
                         <Typography {...priceHeaderProps}>Цена</Typography>
                         <Box {...amountHeaderBoxProps}>
-                            <Typography width="170px" textAlign="center">
+                            <Typography {...amountHeaderTextProps}>
                                 Количество
                             </Typography>
-                            <Typography {...headerDeleteButtonSpace} />
+                            {!displayOnly && (
+                                <Typography {...headerDeleteButtonSpace} />
+                            )}
                         </Box>
                     </Box>
                 )}
@@ -188,7 +196,7 @@ const CartTableTemplate = ({
                         <CartItemComponent
                             key={item.alias}
                             item={item}
-                            displayOnly
+                            displayOnly={displayOnly}
                         >
                             {!screen.md && i !== array.length - 1 && (
                                 <Divider key={item.alias} flexItem />

@@ -12,10 +12,12 @@ import { MouseEventHandler } from "react";
 const CartTemplate = ({
     form,
     rules,
+    hasItems,
     onSubmit
 }: {
     form: UseFormReturn<OrderForm>;
     rules: OrderRules;
+    hasItems: boolean;
     onSubmit: MouseEventHandler<HTMLButtonElement>;
 }) => {
     const wrapperProps: BoxProps = {
@@ -36,11 +38,13 @@ const CartTemplate = ({
                 <Box {...leftBoxProps}>
                     <CartTable full />
                 </Box>
-                <OrderFormTemplate
-                    form={form}
-                    rules={rules}
-                    onSubmit={onSubmit}
-                />
+                {hasItems && (
+                    <OrderFormTemplate
+                        form={form}
+                        rules={rules}
+                        onSubmit={onSubmit}
+                    />
+                )}
             </Box>
         </>
     );

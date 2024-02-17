@@ -27,7 +27,7 @@ const AmountBox = ({
         flexDirection: "row",
         justifyContent: "space-between",
 
-        minWidth: { sm: "100%", md: "250px" },
+        minWidth: { sm: "100%", md: displayOnly ? "100px" : "250px" },
         width: "fit-content"
     };
 

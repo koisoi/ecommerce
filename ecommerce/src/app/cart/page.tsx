@@ -4,9 +4,12 @@ import { useForm } from "react-hook-form";
 import CartTemplate from "./page.template";
 import {
     CartState,
+    NetworkError,
     OrderForm,
     RulesType,
     authorize,
+    clearCart,
+    clearOrder,
     emailPattern,
     postOrder,
     postStatistics,
@@ -15,12 +18,14 @@ import {
     setCanAuthorize,
     setCanPostOrder,
     setCanPostStatistics,
+    setCompletedOrderInfo,
     useAppDispatch,
     useAppSelector
 } from "@/lib";
 import { useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { GlobalState } from "@/lib/slices/global.slice";
+import { useRouter } from "next/navigation";
 
 export type OrderRules = {
     fullName: RulesType;
@@ -30,6 +35,7 @@ export type OrderRules = {
 
 const Cart = () => {
     const dispatch = useAppDispatch();
+    const router = useRouter();
 
     const { items, loading, cartTotal } = useAppSelector(CartState);
     const { utm, ip, referrer, start_url } = useAppSelector(GlobalState);
@@ -77,7 +83,10 @@ const Cart = () => {
                 );
                 setCurrentPromise(orderPromise);
                 orderPromise.unwrap().then((val): any => {
-                    if (!val?.appeal.id) return;
+                    if (!val?.appeal.id || val?.status != "ok")
+                        throw new Error(
+                            "Something went wrong while sending order. Server didn't respond with OK status."
+                        );
 
                     const statisticsPromise = dispatch(
                         postStatistics({
@@ -89,6 +98,15 @@ const Cart = () => {
                         })
                     );
                     setCurrentPromise(statisticsPromise);
+
+                    statisticsPromise.unwrap().then((val) => {
+                        if (val?.status != "ok")
+                            throw new Error(
+                                "Something went wrong while sending statistics. Server didn't respond with OK status."
+                            );
+                        dispatch(setCompletedOrderInfo(data));
+                        router.push("/cart/thanks");
+                    });
                 });
             })
             .catch((error) => console.error(error.message));
@@ -105,7 +123,6 @@ const Cart = () => {
             dispatch(setCanAuthorize(false));
             dispatch(setCanPostOrder(false));
             dispatch(setCanPostStatistics(false));
-            // TODO: setcanfetch = false
         };
     }, []);
 
@@ -114,6 +131,7 @@ const Cart = () => {
             form={form}
             rules={formValidation}
             onSubmit={form.handleSubmit(handleSubmit)}
+            hasItems={items.length > 0}
         />
     );
 };

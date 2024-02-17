@@ -61,6 +61,11 @@ const Breadcrumbs = () => {
                     link = "/cart";
                     break;
 
+                case "thanks":
+                    title = "Спасибо за заказ!";
+                    link = "/cart/thanks";
+                    break;
+
                 default:
                     return undefined;
             }
