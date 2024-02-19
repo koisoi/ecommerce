@@ -8,17 +8,20 @@ import OrderFormTemplate from "./orderForm.template";
 import { OrderRules } from "./page";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";
+import OrderLoading from "./loading.template";
 
 const CartTemplate = ({
     form,
     rules,
     hasItems,
-    onSubmit
+    onSubmit,
+    loading
 }: {
     form: UseFormReturn<OrderForm>;
     rules: OrderRules;
     hasItems: boolean;
     onSubmit: MouseEventHandler<HTMLButtonElement>;
+    loading: boolean;
 }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
@@ -30,6 +33,8 @@ const CartTemplate = ({
         // width: "100%",
         flexGrow: 1
     };
+
+    if (loading) return <OrderLoading />;
 
     return (
         <>

@@ -4,17 +4,13 @@ import { useForm } from "react-hook-form";
 import CartTemplate from "./page.template";
 import {
     CartState,
-    NetworkError,
     OrderForm,
     RulesType,
     authorize,
-    clearCart,
-    clearOrder,
     emailPattern,
     postOrder,
     postStatistics,
     requiredRule,
-    ruPhonePattern,
     setCanAuthorize,
     setCanPostOrder,
     setCanPostStatistics,
@@ -26,6 +22,7 @@ import { useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { GlobalState } from "@/lib/slices/global.slice";
 import { useRouter } from "next/navigation";
+import { matchIsValidTel } from "mui-tel-input";
 
 export type OrderRules = {
     fullName: RulesType;
@@ -60,7 +57,12 @@ const Cart = () => {
         },
         phoneNumber: {
             required: requiredRule,
-            pattern: ruPhonePattern
+            validate: (value: string) => {
+                return (
+                    matchIsValidTel(value, { onlyCountries: ["RU"] }) ||
+                    "Неверный формат номера телефона"
+                );
+            }
         }
     };
 
@@ -110,6 +112,10 @@ const Cart = () => {
                 });
             })
             .catch((error) => console.error(error.message));
+        // data.phoneNumber = data.phoneNumber.replace(/\D/g, "");
+        // console.log(data);
+        // dispatch(setOrderLoading(true));
+        // setTimeout(() => dispatch(setOrderLoading(false)), 2000);
     };
 
     useEffect(() => {
@@ -132,6 +138,7 @@ const Cart = () => {
             rules={formValidation}
             onSubmit={form.handleSubmit(handleSubmit)}
             hasItems={items.length > 0}
+            loading={loading}
         />
     );
 };

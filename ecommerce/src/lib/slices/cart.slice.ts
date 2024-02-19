@@ -4,6 +4,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "../types/cart";
 import { OrderData, OrderForm, RootState, StatisticsForm } from "..";
 import { orderAPI } from "../services/order.service";
+import { changeCart, deleteCart } from "../functions/cartCookie";
 
 const initialState: {
     items: CartItem[];
@@ -84,6 +85,14 @@ export const postStatistics = createAsyncThunk(
     }
 );
 
+const calculateCartTotal = (items: CartItem[]) => {
+    return items
+        .reduce<number>((prev, _, i, arr) => {
+            return prev + Number(arr[i].price) * arr[i].amount;
+        }, 0)
+        .toString();
+};
+
 const slice = createSlice({
     name: "CartSlice",
     initialState,
@@ -91,11 +100,8 @@ const slice = createSlice({
         setCart(state, action: PayloadAction<CartItem[]>) {
             //@ts-ignore
             state.items = action.payload;
-            state.cartTotal = state.items
-                .reduce<number>((prev, _, i, arr) => {
-                    return prev + Number(arr[i].price) * arr[i].amount;
-                }, 0)
-                .toString();
+            state.cartTotal = calculateCartTotal(state.items);
+            changeCart(state.items);
         },
         addItemToCart(state, action: PayloadAction<CartItem>) {
             const cartItem = state.items.find(
@@ -104,11 +110,8 @@ const slice = createSlice({
             if (!!cartItem) cartItem.amount++;
             //@ts-ignore
             else state.items.push(action.payload);
-            state.cartTotal = state.items
-                .reduce<number>((prev, _, i, arr) => {
-                    return prev + Number(arr[i].price) * arr[i].amount;
-                }, 0)
-                .toString();
+            state.cartTotal = calculateCartTotal(state.items);
+            changeCart(state.items);
         },
         setCartItemAmount(
             state,
@@ -119,11 +122,8 @@ const slice = createSlice({
             );
             if (!cartItem) return;
             else cartItem.amount = action.payload.amount;
-            state.cartTotal = state.items
-                .reduce<number>((prev, _, i, arr) => {
-                    return prev + Number(arr[i].price) * arr[i].amount;
-                }, 0)
-                .toString();
+            state.cartTotal = calculateCartTotal(state.items);
+            changeCart(state.items);
         },
         deleteItemFromCart(state, action: PayloadAction<CartItem>) {
             const cartItemIndex = state.items.findIndex(
@@ -133,18 +133,16 @@ const slice = createSlice({
             if (cartItemIndex === -1) return;
             else {
                 state.items.splice(cartItemIndex, 1);
-                state.cartTotal = state.items
-                    .reduce<number>((prev, _, i, arr) => {
-                        return prev + Number(arr[i].price) * arr[i].amount;
-                    }, 0)
-                    .toString();
+                state.cartTotal = calculateCartTotal(state.items);
+                changeCart(state.items);
             }
         },
         clearCart(state) {
             state.items = [];
             state.cartTotal = "0";
+            deleteCart();
         },
-        clearOrder(state) {
+        clearOrder() {
             return initialState;
         },
         setCanAuthorize(state, action: PayloadAction<boolean>) {
@@ -158,6 +156,10 @@ const slice = createSlice({
         },
         setCompletedOrderInfo(state, action: PayloadAction<OrderForm>) {
             state.completedOrderForm = action.payload;
+        },
+
+        setOrderLoading(state, action: PayloadAction<boolean>) {
+            state.loading = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -225,6 +227,7 @@ export const {
     setCanPostOrder,
     setCanPostStatistics,
     setCompletedOrderInfo,
-    clearOrder
+    clearOrder,
+    setOrderLoading
 } = slice.actions;
 export const CartState = (state: RootState) => state.CartReducer;

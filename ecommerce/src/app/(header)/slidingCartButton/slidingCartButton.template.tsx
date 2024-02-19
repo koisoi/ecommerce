@@ -10,14 +10,15 @@ import {
     PopoverProps,
     PopoverVirtualElement
 } from "@mui/material";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, RefObject } from "react";
 
 const SlidingCartButtonTemplate = ({
     amount,
     visible,
     onCartClose,
     cartPopoverAnchorEl,
-    onClick
+    onClick,
+    buttonRef
 }: {
     amount: number;
     visible: boolean;
@@ -29,6 +30,7 @@ const SlidingCartButtonTemplate = ({
         | (() => PopoverVirtualElement)
         | null;
     onClick: MouseEventHandler<HTMLButtonElement>;
+    buttonRef: RefObject<HTMLButtonElement>;
 }) => {
     const slidingCartButtonWrapperProps: ButtonProps = {
         disableRipple: true,
@@ -97,7 +99,7 @@ const SlidingCartButtonTemplate = ({
     return (
         <>
             <Fade in={visible}>
-                <Button {...slidingCartButtonWrapperProps}>
+                <Button {...slidingCartButtonWrapperProps} ref={buttonRef}>
                     <ShoppingCart />
                     <Box {...amountBadgeProps}>{amount}</Box>
                 </Button>

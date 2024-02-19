@@ -8,20 +8,24 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode, RefObject } from "react";
 
 export type DesktopHeaderButtonProps = {
     children?: ReactNode;
     upperText: string;
     lowerText: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
+    ref?: RefObject<HTMLButtonElement>;
+    id?: string;
 };
 
 const DesktopHeaderButton = ({
     children,
     upperText,
     lowerText,
-    onClick
+    onClick,
+    ref,
+    id
 }: DesktopHeaderButtonProps) => {
     const wrapperProps: BoxProps = {
         display: "flex",
@@ -67,7 +71,9 @@ const DesktopHeaderButton = ({
 
     return (
         <Box {...wrapperProps}>
-            <IconButton {...iconWrapperProps}>{children}</IconButton>
+            <IconButton {...iconWrapperProps} ref={ref} id={id}>
+                {children}
+            </IconButton>
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>{upperText}</Typography>
                 <Typography {...lowerTextProps}>{lowerText}</Typography>

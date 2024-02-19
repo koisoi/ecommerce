@@ -6,6 +6,7 @@ import ProductsCategoryGrid from "./(productsGrid)/productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
 import PageTitle from "../(shared)/pageTitle.template";
 import Container from "../(shared)/container.template";
+import FastOrderForm from "../(fastOrderForm)/fastOrderForm";
 
 const CategoryTemplate = ({
     title,

@@ -7,6 +7,7 @@ import {
     CartReducer
 } from ".";
 import { GlobalReducer } from "./slices/global.slice";
+import { CartAnimationReducer } from "./slices/cartAnimation.slice";
 
 export const makeStore = () => {
     return configureStore({
@@ -16,7 +17,8 @@ export const makeStore = () => {
             ProductPageReducer,
             BreadcrumbsReducer,
             CartReducer,
-            GlobalReducer
+            GlobalReducer,
+            CartAnimationReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

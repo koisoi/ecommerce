@@ -1,8 +1,13 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
-import { Box, BoxProps, Snackbar, Typography } from "@mui/material";
+import { Box, BoxProps, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
 import CategoryPagination from "./categoryPagination.template";
-import { CategoryItemsResponse, getProductImageLink } from "@/lib";
+import {
+    CategoryItem,
+    CategoryItemsResponse,
+    getProductImageLink
+} from "@/lib";
+import FastOrderForm from "@/app/(fastOrderForm)/fastOrderForm";
 
 const ProductsGridTemplate = ({
     list: products,
@@ -12,7 +17,8 @@ const ProductsGridTemplate = ({
     pagesCount,
     onPageChange,
     category,
-    series
+    series,
+    fastOrderItem
 }: CategoryItemsResponse & {
     loading: boolean;
     page: number;
@@ -20,6 +26,7 @@ const ProductsGridTemplate = ({
     onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
     category: string;
     series?: string | null;
+    fastOrderItem?: CategoryItem;
 }) => {
     const cardsWrapperProps: BoxProps = {
         width: "100%",
@@ -36,6 +43,8 @@ const ProductsGridTemplate = ({
 
     return (
         <>
+            <FastOrderForm item={fastOrderItem} />
+
             <Typography color="text.disabled" gutterBottom>
                 Товаров в категории: {totalAmount}
             </Typography>
@@ -75,6 +84,7 @@ const ProductsGridTemplate = ({
                                     amount: 1,
                                     articul: item.articul
                                 }}
+                                categoryItem={item}
                             />
                         ))}
                     </Box>

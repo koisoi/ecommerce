@@ -15,13 +15,11 @@ import {
     Box
 } from "@mui/material";
 import Link from "next/link";
-import { getProductImageLink } from "../../../lib/functions/category/getProductImageLink";
 import { InstantBuyButtonTemplate } from "../buyButtons/buyButtons.template";
-import { NextLinkProps, useThemeColors } from "@/lib";
+import { CategoryItem, NextLinkProps, useThemeColors } from "@/lib";
 import Price from "../price.template";
-import { Url } from "next/dist/shared/lib/router/router";
 import ProductLink from "../productLink.template";
-import ShoppingCartButton from "../buyButtons/buyButtons";
+import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
 
 export type ProductCardProps = {
@@ -32,6 +30,9 @@ export type ProductCardProps = {
     recommended?: boolean;
     cardProps?: CardProps;
     cardMediaProps?: CardMediaProps;
+    // TODO: переделать пропы
+    categoryItem?: CategoryItem;
+    hideButtons?: boolean;
 };
 
 const ProductCard = ({
@@ -41,7 +42,9 @@ const ProductCard = ({
     recommended,
     cardProps,
     cardMediaProps,
-    cartItem
+    cartItem,
+    categoryItem,
+    hideButtons
 }: ProductCardProps) => {
     const colors = useThemeColors();
 
@@ -54,6 +57,7 @@ const ProductCard = ({
             boxShadow: "none",
             border: "1px solid",
             borderColor: "divider",
+            overflow: "visible",
 
             ":hover": {
                 boxShadow: "0 0 15px 1px " + colors.divider
@@ -216,18 +220,17 @@ const ProductCard = ({
                     Артикул: {cartItem.articul}
                 </Typography>
             </CardContent>
-            <CardActions {...actionRowProps}>
-                <Price
-                    variant="small"
-                    price={cartItem.price}
-                    props={{ flexGrow: 1 }}
-                />
-                <InstantBuyButtonTemplate
-                    props={buttonProps}
-                    onClick={() => {}}
-                />
-                <ShoppingCartButton props={buttonProps} item={cartItem} />
-            </CardActions>
+            {!hideButtons && (
+                <CardActions {...actionRowProps}>
+                    <Price
+                        variant="small"
+                        price={cartItem.price}
+                        props={{ flexGrow: 1 }}
+                    />
+                    <InstantBuyButton props={buttonProps} item={categoryItem} />
+                    <ShoppingCartButton props={buttonProps} item={cartItem} />
+                </CardActions>
+            )}
         </Card>
     );
 };

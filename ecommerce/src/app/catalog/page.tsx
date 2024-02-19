@@ -15,14 +15,12 @@ import {
 import CategoryTemplate from "./page.template";
 import { useEffect } from "react";
 import { notFound, useSearchParams } from "next/navigation";
-import { headers } from "next/headers";
 
 const Category = () => {
     const searchParams = useSearchParams();
+    const dispatch = useAppDispatch();
     const category: string | null = searchParams.get("category");
     const series: string | null = searchParams.get("series");
-
-    const dispatch = useAppDispatch();
 
     const {
         loading,

@@ -2,7 +2,7 @@
 
 import { Box, BoxProps } from "@mui/material";
 import MobileHeaderButton from "../mobileHeaderButton.template";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, RefObject } from "react";
 
 const HeaderMobileNavigationTemplate = ({
     onCartClick
@@ -32,10 +32,11 @@ const HeaderMobileNavigationTemplate = ({
             <MobileHeaderButton variant="menu" />
             <Box {...rightButtonsWrapperProps}>
                 {/* FIXME: трехзначные числа */}
-                <MobileHeaderButton variant="favorite" amount={42} />
+                <MobileHeaderButton variant="favorite" />
                 <MobileHeaderButton
                     variant="shoppingCart"
                     onClick={onCartClick}
+                    id="mobile-shopping-cart-button"
                 />
                 <MobileHeaderButton variant="accountCircle" />
             </Box>

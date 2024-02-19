@@ -13,16 +13,20 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode, RefObject } from "react";
 
 const MobileHeaderButton = ({
     variant,
     amount,
-    onClick
+    onClick,
+    ref,
+    id
 }: {
     variant: "menu" | "favorite" | "shoppingCart" | "accountCircle";
     amount?: number;
     onClick?: MouseEventHandler<HTMLButtonElement>;
+    ref?: RefObject<HTMLButtonElement>;
+    id?: string;
 }) => {
     const iconButtonsProps: IconButtonProps = {
         disableRipple: true,
@@ -93,7 +97,7 @@ const MobileHeaderButton = ({
     if (child === null) return <></>;
 
     return (
-        <IconButton {...iconButtonsProps}>
+        <IconButton {...iconButtonsProps} ref={ref} id={id}>
             {child}
             {amount && (
                 <Box {...amountBadgeProps}>

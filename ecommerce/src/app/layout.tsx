@@ -9,7 +9,7 @@ import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import StoreProvider from "./storeProvider";
 import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
 import Container from "./(shared)/container.template";
-import { useAppDispatch } from "@/lib";
+import { setCart, useAppDispatch } from "@/lib";
 import {
     getIp,
     setReferrer,
@@ -17,6 +17,7 @@ import {
     setUTM
 } from "@/lib/slices/global.slice";
 import { useSearchParams } from "next/navigation";
+import { getCookie } from "cookies-next";
 
 const theme = createTheme({
     palette: {
@@ -84,6 +85,9 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
                 term: term || undefined
             })
         );
+
+        const cartCookie = getCookie("cart");
+        if (cartCookie) dispatch(setCart(JSON.parse(cartCookie)));
     }, []);
 
     if (!hasMounted) {

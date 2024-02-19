@@ -259,7 +259,7 @@ const ProductPageUpperBoxTemplate = ({
                     <Price {...priceProps} />
                     <InstantBuyButtonTemplate
                         {...buyButtonsProps}
-                        onClick={() => {}}
+                        onAddToCartClick={() => {}}
                     />
                     <ShoppingCartButton {...buyButtonsProps} />
                 </Paper>

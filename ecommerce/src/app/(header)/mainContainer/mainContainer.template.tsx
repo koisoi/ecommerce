@@ -1,12 +1,6 @@
 "use client";
 
-import {
-    Box,
-    BoxProps,
-    Popover,
-    PopoverProps,
-    PopoverVirtualElement
-} from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import HeaderSearchBox from "../searchBox.template";
 import DesktopHeaderButton, {
     DesktopHeaderButtonProps
@@ -14,7 +8,7 @@ import DesktopHeaderButton, {
 import { AccountCircle, Favorite, ShoppingCart } from "@mui/icons-material";
 import { useThemeColors } from "@/lib";
 import Link from "next/link";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, RefObject } from "react";
 
 const HeaderMainContainerTemplate = ({
     onCartClick
@@ -146,7 +140,10 @@ const HeaderMainContainerTemplate = ({
                     >
                         <Favorite />
                     </DesktopHeaderButton>
-                    <DesktopHeaderButton {...cartButtonProps}>
+                    <DesktopHeaderButton
+                        {...cartButtonProps}
+                        id="desktop-header-button"
+                    >
                         <ShoppingCart />
                     </DesktopHeaderButton>
                     <DesktopHeaderButton

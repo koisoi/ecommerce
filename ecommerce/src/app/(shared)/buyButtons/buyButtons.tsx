@@ -1,7 +1,15 @@
 import { CartItem } from "@/lib/types/cart";
-import { ShoppingCartButtonTemplate } from "..";
-import { addItemToCart, useAppDispatch } from "@/lib";
+import { InstantBuyButtonTemplate, ShoppingCartButtonTemplate } from "..";
+import {
+    CategoryItem,
+    addItemToCart,
+    useAppDispatch,
+    useAppSelector,
+    useMediaQueries
+} from "@/lib";
 import { ButtonProps, TypographyProps } from "@mui/material";
+import { MouseEventHandler, useState } from "react";
+import { CartAnimationState } from "@/lib/slices/cartAnimation.slice";
 
 export type BuyButtonProps = {
     props?: ButtonProps;
@@ -9,20 +17,83 @@ export type BuyButtonProps = {
     item: CartItem;
 };
 
-const ShoppingCartButton = ({ item, props, textProps }: BuyButtonProps) => {
+export const ShoppingCartButton = ({
+    item,
+    props,
+    textProps
+}: BuyButtonProps) => {
     const dispatch = useAppDispatch();
+    const screen = useMediaQueries();
 
-    const handleClick = () => {
+    const [translateTo, setTranslateTo] = useState<
+        { x: number; y: number } | undefined
+    >(undefined);
+
+    const {
+        desktopCartButtonRect,
+        desktopSlidingCartButtonRect,
+        mobileCartButtonRect
+    } = useAppSelector(CartAnimationState);
+
+    const handleAddToCartClick: MouseEventHandler<HTMLButtonElement> = (
+        event
+    ) => {
         dispatch(addItemToCart(item));
+
+        const scrolled = document.documentElement.scrollTop;
+        const buttonRect = screen.md
+            ? scrolled > 500
+                ? desktopSlidingCartButtonRect
+                : desktopCartButtonRect
+            : mobileCartButtonRect;
+
+        const translateTo = {
+            x: buttonRect!.x - event.currentTarget.getBoundingClientRect().x,
+            y: buttonRect!.y - event.currentTarget.getBoundingClientRect().y
+        };
+
+        setTranslateTo(translateTo);
+        event.currentTarget.getBoundingClientRect;
+
+        setTimeout(() => setTranslateTo(undefined), 1000);
     };
 
     return (
         <ShoppingCartButtonTemplate
             props={props}
             textProps={textProps}
-            onClick={handleClick}
+            onAddToCartClick={handleAddToCartClick}
+            translateTo={translateTo}
         />
     );
 };
 
-export default ShoppingCartButton;
+export const InstantBuyButton = ({
+    item,
+    props,
+    textProps
+}: {
+    item?: CategoryItem;
+    props?: ButtonProps;
+    textProps?: TypographyProps;
+}) => {
+    const [fastOrderDialogOpen, setFastOrderDialogOpen] =
+        useState<boolean>(false);
+
+    const handleClick: MouseEventHandler<HTMLButtonElement> = () => {
+        setFastOrderDialogOpen(true);
+    };
+
+    const handleDialogClose: MouseEventHandler<HTMLButtonElement> = () => {
+        setFastOrderDialogOpen(false);
+    };
+
+    return (
+        <InstantBuyButtonTemplate
+            props={props}
+            textProps={textProps}
+            onInstantBuyClick={handleClick}
+            item={fastOrderDialogOpen ? item : undefined}
+        />
+    );
+};

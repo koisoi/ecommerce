@@ -1,6 +1,7 @@
 "use client";
 
 import {
+    CategoryItem,
     ProductsCategoryGridState,
     fetchCategoryItems,
     setCanFetchCategoryItems,
@@ -22,6 +23,9 @@ const ProductsCategoryGrid = ({
 
     const [page, setPage] = useState<number>(1);
     const [pagesCount, setPagesCount] = useState<number>(0);
+    const [fastOrderItem, setFastOrderItem] = useState<
+        CategoryItem | undefined
+    >(undefined);
 
     const {
         loading,
@@ -64,6 +68,7 @@ const ProductsCategoryGrid = ({
             onPageChange={handlePageChange}
             category={category}
             series={series}
+            fastOrderItem={fastOrderItem}
         />
     );
 };

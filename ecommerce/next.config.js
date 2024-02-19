@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
 module.exports = {
+    reactStrictMode: false,
+    transpilePackages: ["mui-tel-input"],
     // static files
     // output: "export",
     trailingSlash: true,

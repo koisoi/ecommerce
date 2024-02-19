@@ -13,15 +13,18 @@ import { OrderRules } from "./page";
 import Title from "../(shared)/title.template";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";
+import { MuiTelInput, MuiTelInputProps } from "mui-tel-input";
 
 const OrderFormTemplate = ({
     form,
     rules,
-    onSubmit
+    onSubmit,
+    props
 }: {
     form: UseFormReturn<OrderForm>;
     rules: OrderRules;
     onSubmit: MouseEventHandler<HTMLButtonElement>;
+    props?: BoxProps;
 }) => {
     const checkoutBoxProps: BoxProps = {
         flexGrow: 1,
@@ -32,7 +35,6 @@ const OrderFormTemplate = ({
         height: "fit-content",
 
         border: "1px solid",
-        // borderRadius: "4px",
         borderColor: "divider",
 
         padding: "20px",
@@ -40,7 +42,9 @@ const OrderFormTemplate = ({
 
         display: "flex",
         flexDirection: "column",
-        gap: "20px"
+        gap: "20px",
+
+        ...props
     };
 
     const contactsBox: BoxProps = {
@@ -89,11 +93,12 @@ const OrderFormTemplate = ({
         render: ({ field }) => <TextField {...emailInputProps} {...field} />
     };
 
-    const phoneNumberInputProps: TextFieldProps = {
-        ...inputProps,
-        label: "Телефон",
-        type: "tel",
-        required: true,
+    const phoneNumberInputProps: MuiTelInputProps = {
+        defaultCountry: "RU",
+        forceCallingCode: true,
+        disableDropdown: true,
+        getFlagElement: () => null,
+        placeholder: "XXX XXX XX XX",
 
         error: !!form.formState.errors.phoneNumber,
         helperText: form.formState.errors.phoneNumber?.message
@@ -104,7 +109,7 @@ const OrderFormTemplate = ({
         control: form.control,
         rules: rules.phoneNumber,
         render: ({ field }) => (
-            <TextField {...phoneNumberInputProps} {...field} />
+            <MuiTelInput {...field} {...phoneNumberInputProps} />
         )
     };
 
