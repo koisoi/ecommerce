@@ -1,4 +1,4 @@
-import PageTitle from "@/app/(shared)/pageTitle.template";
+import PageTitle from "@/app/(shared)/text/pageTitle.template";
 import { Box, BoxProps } from "@mui/material";
 import CompletedOrderFormTemplate, {
     CompletedOrderFormProps

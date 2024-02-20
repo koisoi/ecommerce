@@ -4,9 +4,9 @@ import {
     CircularProgress,
     TypographyProps
 } from "@mui/material";
-import Title from "../(shared)/title.template";
+import Title from "./text/title.template";
 
-const OrderLoading = () => {
+const Loading = ({ search }: { search?: boolean }) => {
     const wrapperProps: BoxProps = {
         width: "100%",
         height: "100%",
@@ -25,9 +25,11 @@ const OrderLoading = () => {
     return (
         <Box {...wrapperProps}>
             <CircularProgress size="5rem" />
-            <Title props={titleProps}>Отправка заказа...</Title>
+            <Title props={titleProps}>
+                {search ? "Поиск..." : "Отправка..."}
+            </Title>
         </Box>
     );
 };
 
-export default OrderLoading;
+export default Loading;

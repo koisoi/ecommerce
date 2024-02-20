@@ -15,10 +15,9 @@ import {
     Box
 } from "@mui/material";
 import Link from "next/link";
-import { InstantBuyButtonTemplate } from "../buyButtons/buyButtons.template";
 import { CategoryItem, NextLinkProps, useThemeColors } from "@/lib";
-import Price from "../price.template";
-import ProductLink from "../productLink.template";
+import Price from "../text/price.template";
+import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
 

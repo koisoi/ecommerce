@@ -12,6 +12,7 @@ const ProductPageUpperBox = () => {
     const dispatch = useAppDispatch();
 
     const {
+        id,
         articul,
         images,
         title,
@@ -29,7 +30,6 @@ const ProductPageUpperBox = () => {
     const [canOpenImg, setCanOpenImg] = useState<boolean>(true);
 
     const handleImgClick: MouseEventHandler<HTMLDivElement> = (event) => {
-        console.log("click");
         if (canOpenImg)
             dispatch(
                 setOpenedImgLink(
@@ -76,6 +76,17 @@ const ProductPageUpperBox = () => {
             onImgClick={handleImgClick}
             onDragStart={handleDragStart}
             onDragStop={handleDragStop}
+            categoryItem={{
+                id,
+                articul,
+                images,
+                title,
+                price,
+                alias,
+                is_new,
+                is_recommend,
+                category
+            }}
         />
     );
 };

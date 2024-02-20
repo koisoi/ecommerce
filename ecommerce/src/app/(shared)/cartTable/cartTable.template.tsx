@@ -11,7 +11,7 @@ import {
     TypographyProps
 } from "@mui/material";
 import CartItemComponent from "./cartItem/cartItem";
-import Price from "../price.template";
+import Price from "../text/price.template";
 import { Delete } from "@mui/icons-material";
 import { MouseEventHandler } from "react";
 import ClearDialog from "./clearDialog.template";

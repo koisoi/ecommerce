@@ -1,5 +1,6 @@
-import { NetworkError, Service } from "..";
+import { NetworkError } from "..";
 import { MainProductInfo, ProductRequest } from "../types/product";
+import { Service } from "./base.service";
 
 class ProductService extends Service {
     /**

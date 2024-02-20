@@ -7,11 +7,11 @@ import {
     TypographyProps
 } from "@mui/material";
 import Container from "../(shared)/container.template";
-import PageTitle from "../(shared)/pageTitle.template";
-import Title from "../(shared)/title.template";
-import TableTitle from "../(shared)/tableTitle.template";
-import Paragraph from "../(shared)/paragraph.template";
-import AppLink from "../(shared)/appLink.template";
+import PageTitle from "../(shared)/text/pageTitle.template";
+import Title from "../(shared)/text/title.template";
+import TableTitle from "../(shared)/text/tableTitle.template";
+import Paragraph from "../(shared)/text/paragraph.template";
+import AppLink from "../(shared)/text/appLink.template";
 
 import YandexGo from "@/assets/svg/del-yandex-go.svg";
 import PostRF from "@/assets/svg/del-postrf.svg";
@@ -23,7 +23,7 @@ import MasterCard from "@/assets/svg/mastercard.svg";
 import Mir from "@/assets/svg/mir.svg";
 import { Description } from "@mui/icons-material";
 import { CSSProperties } from "react";
-import AttentionText from "../(shared)/attentionText.template";
+import AttentionText from "../(shared)/text/attentionText.template";
 
 const DeliveryTemplate = () => {
     const underTableTextProps: TypographyProps = {

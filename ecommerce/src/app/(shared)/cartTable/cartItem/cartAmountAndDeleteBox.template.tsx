@@ -1,6 +1,6 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import NumberInput from "../../numberInput.template";
-import Price from "../../price.template";
+import Price from "../../text/price.template";
 import { NumberInputProps } from "@mui/base/Unstable_NumberInput";
 
 export type AmountBoxProps = {

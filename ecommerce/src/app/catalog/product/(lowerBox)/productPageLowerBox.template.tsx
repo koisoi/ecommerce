@@ -1,4 +1,4 @@
-import Title from "@/app/(shared)/title.template";
+import Title from "@/app/(shared)/text/title.template";
 import {
     CategoryItem,
     ProductCharacteristics,

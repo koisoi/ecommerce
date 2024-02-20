@@ -2,7 +2,7 @@
 
 import { Box, BoxProps, Modal, ModalProps } from "@mui/material";
 import { CSSProperties } from "react";
-import Title from "@/app/(shared)/title.template";
+import Title from "@/app/(shared)/text/title.template";
 import ProductPageLowerBox from "./(lowerBox)/productPageLowerBox";
 import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
 

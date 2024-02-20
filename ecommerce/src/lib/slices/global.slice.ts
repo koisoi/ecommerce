@@ -2,6 +2,7 @@
 
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState, UTMParams } from "..";
+import { setCookie } from "cookies-next";
 
 const initialState: {
     landing: string;
@@ -10,13 +11,15 @@ const initialState: {
     referrer: string;
     ip: string;
     utm: UTMParams;
+    geo: "rf" | "nn" | "msk" | "spb";
 } = {
     landing: "iray",
     landing_id: 49,
     start_url: "",
     referrer: "",
     ip: "",
-    utm: {}
+    utm: {},
+    geo: "rf"
 };
 
 export const getIp = createAsyncThunk(
@@ -27,6 +30,22 @@ export const getIp = createAsyncThunk(
             return response.json();
         } catch (error: any) {
             rejectWithValue(error.response.data);
+        }
+    }
+);
+
+export const getGeo = createAsyncThunk(
+    "global/getGeo",
+    async (_, { getState, rejectWithValue, dispatch }) => {
+        try {
+            const { ip } = getState() as typeof initialState;
+            if (!ip) await dispatch(getIp());
+            const response = await fetch(
+                `https://dev.telescope1.ru/geo/backend/locate?ip=${ip}&format=json`
+            );
+            return response.json();
+        } catch (error: any) {
+            rejectWithValue(error.responce.data);
         }
     }
 );
@@ -49,6 +68,40 @@ const slice = createSlice({
         builder.addCase(getIp.fulfilled, (state, action) => {
             state.ip = action.payload.ip;
         });
+
+        builder.addCase(
+            getGeo.fulfilled,
+            (
+                state,
+                action: PayloadAction<{
+                    location: {
+                        data: {
+                            city: string;
+                        };
+                    };
+                }>
+            ) => {
+                switch (action.payload?.location.data.city) {
+                    case "Нижний Новгород":
+                        state.geo = "nn";
+                        break;
+
+                    case "Москва":
+                        state.geo = "msk";
+                        break;
+
+                    case "Санкт-Петербург":
+                        state.geo = "spb";
+                        break;
+
+                    default:
+                        state.geo = "rf";
+                        break;
+                }
+
+                setCookie("geo", state.geo, { maxAge: 604800 });
+            }
+        );
     }
 });
 

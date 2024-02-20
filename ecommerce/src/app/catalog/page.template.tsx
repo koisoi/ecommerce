@@ -2,11 +2,11 @@
 
 import CatalogSubcategory from "@/app/catalog/catalogCategory.template";
 import { Box, BoxProps, Typography } from "@mui/material";
-import ProductsCategoryGrid from "./(productsGrid)/productsCategoryGrid";
+import ProductsCategoryGrid from "./productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
-import PageTitle from "../(shared)/pageTitle.template";
+import PageTitle from "../(shared)/text/pageTitle.template";
 import Container from "../(shared)/container.template";
-import FastOrderForm from "../(fastOrderForm)/fastOrderForm";
+import FastOrderForm from "../(shared)/fastOrderForm/fastOrderForm";
 
 const CategoryTemplate = ({
     title,

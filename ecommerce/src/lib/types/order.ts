@@ -5,6 +5,12 @@ export type OrderForm = {
     commentary: string;
 };
 
+export type AppealForm = {
+    fullName: string;
+    phoneNumber: string;
+    question: string;
+};
+
 export type CartProduct = {
     articul: string;
     // цена
@@ -19,7 +25,7 @@ export type OrderData = OrderForm & {
     total: string;
 };
 
-export type OrderQuery = {
+export type AppealQuery = {
     source: "сайт";
     geo: "rf"; // 'rf' | 'msk' | 'spb' | 'nn'
     is_alert: true;
@@ -32,7 +38,10 @@ export type OrderQuery = {
         address?: string;
         info?: string;
     };
-    status_appeal: "order";
+    status_appeal: "order" | "new";
+};
+
+export type OrderQuery = AppealQuery & {
     waybills: {
         wb_0: {
             type: "sale_out";
@@ -60,6 +69,8 @@ export type OrderQuery = {
     readonly [key: string]: any;
 };
 
+export type AppealResponse = OrderResponse;
+
 export type OrderResponse = {
     status: "ok" | "fail";
     appeal: {
@@ -85,9 +96,9 @@ export type UTMParams = {
 
 export type StatisticsQuery = {
     type: {
-        category: "basket";
+        category: "order" | "appeal";
         action: "add";
-        label: "main";
+        label: string;
     };
     site_id?: number; // 49 по стандарту
     parent_id: string;

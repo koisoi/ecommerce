@@ -2,12 +2,17 @@ import ProductCard from "@/app/(shared)/productCard/productCard.template";
 import { Box, BoxProps, Typography } from "@mui/material";
 import { ChangeEvent } from "react";
 import CategoryPagination from "./categoryPagination.template";
-import {
-    CategoryItem,
-    CategoryItemsResponse,
-    getProductImageLink
-} from "@/lib";
-import FastOrderForm from "@/app/(fastOrderForm)/fastOrderForm";
+import { CategoryItemsResponse, getProductImageLink } from "@/lib";
+
+export type ProductsGridTemplateProps = CategoryItemsResponse & {
+    loading?: boolean;
+    page: number;
+    pagesCount: number;
+    onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
+    category?: string;
+    series?: string | null;
+    search?: boolean;
+};
 
 const ProductsGridTemplate = ({
     list: products,
@@ -18,16 +23,8 @@ const ProductsGridTemplate = ({
     onPageChange,
     category,
     series,
-    fastOrderItem
-}: CategoryItemsResponse & {
-    loading: boolean;
-    page: number;
-    pagesCount: number;
-    onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
-    category: string;
-    series?: string | null;
-    fastOrderItem?: CategoryItem;
-}) => {
+    search
+}: ProductsGridTemplateProps) => {
     const cardsWrapperProps: BoxProps = {
         width: "100%",
 
@@ -43,10 +40,8 @@ const ProductsGridTemplate = ({
 
     return (
         <>
-            <FastOrderForm item={fastOrderItem} />
-
             <Typography color="text.disabled" gutterBottom>
-                Товаров в категории: {totalAmount}
+                Товаров {search ? "найдено" : "в категории"}: {totalAmount}
             </Typography>
 
             {loading && "Загрузка товаров..."}

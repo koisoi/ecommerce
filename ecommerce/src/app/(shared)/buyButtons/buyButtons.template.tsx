@@ -1,6 +1,6 @@
 "use client";
 
-import FastOrderForm from "@/app/(fastOrderForm)/fastOrderForm";
+import FastOrderForm from "@/app/(shared)/fastOrderForm/fastOrderForm";
 import { CategoryItem } from "@/lib";
 import { ShoppingCart } from "@mui/icons-material";
 import {
@@ -40,10 +40,14 @@ export const InstantBuyButtonTemplate = ({
     props,
     textProps,
     onInstantBuyClick,
-    item
+    item,
+    open,
+    onClose
 }: BuyButtonProps & {
     onInstantBuyClick: MouseEventHandler<HTMLButtonElement>;
-    item?: CategoryItem;
+    onClose: MouseEventHandler<HTMLButtonElement>;
+    item: CategoryItem;
+    open: boolean;
 }) => {
     const instantBuyButtonProps: ButtonProps = {
         ...buttonProps,
@@ -72,7 +76,7 @@ export const InstantBuyButtonTemplate = ({
 
     return (
         <>
-            <FastOrderForm item={item} />
+            <FastOrderForm item={item} open={open} onClose={onClose} />
 
             <Button {...instantBuyButtonProps}>
                 <Typography {...buttonTextProps} {...textProps}>

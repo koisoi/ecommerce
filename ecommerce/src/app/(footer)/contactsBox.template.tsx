@@ -2,7 +2,7 @@
 
 import { Box, BoxProps, Link, LinkProps, SvgIconProps } from "@mui/material";
 import FooterTitle from "./title.template";
-import AppLink from "../(shared)/appLink.template";
+import AppLink from "../(shared)/text/appLink.template";
 import { AccessTimeFilled, Email, LocationOn } from "@mui/icons-material";
 
 const ContactsBox = () => {

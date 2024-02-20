@@ -1,36 +1,39 @@
-"use client";
-
-import { useForm } from "react-hook-form";
-import CartTemplate from "./page.template";
 import {
     CartState,
+    CategoryItem,
     OrderForm,
-    RulesType,
     authorize,
     emailPattern,
+    getProductImageLink,
     postOrder,
     postStatistics,
     requiredRule,
+    ruPhoneValidator,
     setCanAuthorize,
     setCanPostOrder,
     setCanPostStatistics,
+    setCart,
     setCompletedOrderInfo,
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import { useEffect, useState } from "react";
+import FastOrderFormTemplate from "./fastOrderForm.template";
+import { useForm } from "react-hook-form";
+import { OrderRules } from "../../cart/page";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { GlobalState } from "@/lib/slices/global.slice";
 import { useRouter } from "next/navigation";
-import { matchIsValidTel } from "mui-tel-input";
+import { GlobalState } from "@/lib/slices/global.slice";
 
-export type OrderRules = {
-    fullName: RulesType;
-    email: RulesType;
-    phoneNumber: RulesType;
-};
-
-const Cart = () => {
+const FastOrderForm = ({
+    item,
+    open,
+    onClose
+}: {
+    item: CategoryItem;
+    open: boolean;
+    onClose: MouseEventHandler<HTMLButtonElement>;
+}) => {
     const dispatch = useAppDispatch();
     const router = useRouter();
 
@@ -57,17 +60,32 @@ const Cart = () => {
         },
         phoneNumber: {
             required: requiredRule,
-            validate: (value: string) => {
-                return (
-                    matchIsValidTel(value, { onlyCountries: ["RU"] }) ||
-                    "Неверный формат номера телефона"
-                );
-            }
+            validate: ruPhoneValidator
         }
     };
 
     const handleSubmit = (data: OrderForm) => {
         data.phoneNumber = data.phoneNumber.replace(/\D/g, "");
+        dispatch(
+            setCart([
+                {
+                    url: {
+                        pathname: "/catalog/product",
+                        query: {
+                            category: item.category.path,
+                            series: item.series?.alias,
+                            product: item.alias
+                        }
+                    },
+                    alias: item.alias,
+                    title: item.title,
+                    imgLink: getProductImageLink(item.images[0].url),
+                    price: item.price,
+                    amount: 1,
+                    articul: item.articul
+                }
+            ])
+        );
 
         const authPromise = dispatch(authorize());
         setCurrentPromise(authPromise);
@@ -100,7 +118,8 @@ const Cart = () => {
                                 referer: referrer,
                                 start_url,
                                 utm
-                            }
+                            },
+                            fastOrder: true
                         })
                     );
                     setCurrentPromise(statisticsPromise);
@@ -116,6 +135,7 @@ const Cart = () => {
                 });
             })
             .catch((error) => console.error(error.message));
+
         // console.log(data);
         // dispatch(setOrderLoading(true));
         // setTimeout(() => dispatch(setOrderLoading(false)), 2000);
@@ -134,14 +154,16 @@ const Cart = () => {
     }, []);
 
     return (
-        <CartTemplate
-            form={form}
+        <FastOrderFormTemplate
+            item={item}
             rules={formValidation}
+            form={form}
+            open={open}
             onSubmit={form.handleSubmit(handleSubmit)}
-            hasItems={items.length > 0}
+            onClose={onClose}
             loading={loading}
         />
     );
 };
 
-export default Cart;
+export default FastOrderForm;

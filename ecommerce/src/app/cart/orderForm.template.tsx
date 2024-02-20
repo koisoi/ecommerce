@@ -10,10 +10,17 @@ import {
 } from "@mui/material";
 import { Controller, ControllerProps, UseFormReturn } from "react-hook-form";
 import { OrderRules } from "./page";
-import Title from "../(shared)/title.template";
+import Title from "../(shared)/text/title.template";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";
 import { MuiTelInput, MuiTelInputProps } from "mui-tel-input";
+import {
+    CommentaryInput,
+    EmailInput,
+    FormButton,
+    FullNameInput,
+    PhoneInput
+} from "../(shared)/formFields.template";
 
 const OrderFormTemplate = ({
     form,
@@ -54,114 +61,43 @@ const OrderFormTemplate = ({
         width: "100%"
     };
 
-    const inputProps: TextFieldProps = {
-        variant: "outlined",
-        sx: {
-            flexGrow: 1
-        }
-    };
-
-    const fullNameInputProps: TextFieldProps = {
-        ...inputProps,
-        label: "ФИО",
-        required: true,
-
-        error: !!form.formState.errors.fullName,
-        helperText: form.formState.errors.fullName?.message
-    };
-
     const fullNameControllerProps: ControllerProps<OrderForm> = {
         name: "fullName",
         control: form.control,
         rules: rules.fullName,
-        render: ({ field }) => <TextField {...fullNameInputProps} {...field} />
-    };
-
-    const emailInputProps: TextFieldProps = {
-        ...inputProps,
-        label: "E-mail",
-        type: "email",
-
-        error: !!form.formState.errors.email,
-        helperText: form.formState.errors.email?.message
+        render: ({ field }) => <FullNameInput form={form} field={field} />
     };
 
     const emailControllerProps: ControllerProps<OrderForm> = {
         name: "email",
         control: form.control,
         rules: rules.email,
-        render: ({ field }) => <TextField {...emailInputProps} {...field} />
-    };
-
-    const phoneNumberInputProps: MuiTelInputProps = {
-        defaultCountry: "RU",
-        forceCallingCode: true,
-        disableDropdown: true,
-        getFlagElement: () => null,
-        placeholder: "XXX XXX XX XX",
-
-        error: !!form.formState.errors.phoneNumber,
-        helperText: form.formState.errors.phoneNumber?.message
+        render: ({ field }) => <EmailInput form={form} field={field} />
     };
 
     const phoneNumberControllerProps: ControllerProps<OrderForm> = {
         name: "phoneNumber",
         control: form.control,
         rules: rules.phoneNumber,
-        render: ({ field }) => (
-            <MuiTelInput {...field} {...phoneNumberInputProps} />
-        )
-    };
-
-    const commentaryInputProps: TextFieldProps = {
-        ...inputProps,
-        label: "Комментарий",
-        multiline: true,
-        rows: 4
+        render: ({ field }) => <PhoneInput form={form} field={field} />
     };
 
     const commentaryControllerProps: ControllerProps<OrderForm> = {
         name: "commentary",
         control: form.control,
-        render: ({ field }) => (
-            <TextField {...commentaryInputProps} {...field} />
-        )
-    };
-
-    const buttonProps: ButtonProps = {
-        variant: "contained",
-        fullWidth: true,
-
-        onClick: onSubmit,
-
-        sx: {
-            textTransform: "none",
-            fontSize: "1rem",
-            boxShadow: "none",
-
-            ":hover": {
-                boxShadow: "none"
-            }
-        }
-    };
-
-    const smallTextProps: TypographyProps = {
-        fontSize: "0.7rem"
+        render: ({ field }) => <CommentaryInput form={form} field={field} />
     };
 
     return (
         <Box {...checkoutBoxProps}>
-            <Title>Форма заказа</Title>
+            <Title props={{ noWrap: true }}>Форма заказа</Title>
             <Box {...contactsBox}>
                 <Controller {...fullNameControllerProps} />
                 <Controller {...emailControllerProps} />
                 <Controller {...phoneNumberControllerProps} />
             </Box>
             <Controller {...commentaryControllerProps} />
-            <Typography {...smallTextProps}>
-                * - поля, обязательные для заполнения
-            </Typography>
-            <Button {...buttonProps}>Оформить заказ</Button>
+            <FormButton onSubmit={onSubmit}>Оформить заказ</FormButton>
         </Box>
     );
 };

@@ -8,7 +8,7 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import ProductsGridTemplate from "./productsGrid.template";
+import ProductsGridTemplate from "../(shared)/productsGrid/productsGrid.template";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const ProductsCategoryGrid = ({
@@ -23,9 +23,6 @@ const ProductsCategoryGrid = ({
 
     const [page, setPage] = useState<number>(1);
     const [pagesCount, setPagesCount] = useState<number>(0);
-    const [fastOrderItem, setFastOrderItem] = useState<
-        CategoryItem | undefined
-    >(undefined);
 
     const {
         loading,
@@ -68,7 +65,6 @@ const ProductsCategoryGrid = ({
             onPageChange={handlePageChange}
             category={category}
             series={series}
-            fastOrderItem={fastOrderItem}
         />
     );
 };

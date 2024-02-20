@@ -70,9 +70,15 @@ export const postOrder = createAsyncThunk(
 
 export const postStatistics = createAsyncThunk(
     "order/postStatistics",
-    async (arg: StatisticsForm, { rejectWithValue }) => {
+    async (
+        { arg, fastOrder }: { arg: StatisticsForm; fastOrder?: boolean },
+        { rejectWithValue }
+    ) => {
         try {
-            const response = await orderAPI.postStatistics(arg);
+            const response = await orderAPI.postStatistics(
+                arg,
+                fastOrder ? "fast" : "main"
+            );
             return response;
         } catch (error: any) {
             rejectWithValue(error);

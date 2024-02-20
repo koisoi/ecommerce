@@ -1,13 +1,16 @@
 import {
+    AppealForm,
+    AppealQuery,
+    AppealResponse,
     NetworkError,
     OrderData,
     OrderQuery,
     OrderResponse,
-    Service,
     StatisticsForm,
     StatisticsQuery,
     StatisticsResponse
 } from "..";
+import { Service } from "./base.service";
 
 class OrderService extends Service {
     constructor(baseURL: string, options?: RequestInit) {
@@ -84,13 +87,15 @@ class OrderService extends Service {
      * Отправка статистики (после отправки заказа на сервер)
      */
     public async postStatistics(
-        statistics: StatisticsForm
+        statistics: StatisticsForm,
+        label: string,
+        isAppeal?: boolean
     ): Promise<StatisticsResponse> {
         const body: StatisticsQuery = {
             type: {
-                category: "basket",
+                category: isAppeal ? "appeal" : "order",
                 action: "add",
-                label: "main"
+                label
             },
             site_id: 49, // 49 по стандарту,
             parent_id: statistics.parent_id,
@@ -104,6 +109,34 @@ class OrderService extends Service {
         };
 
         return fetch(`${this.baseURL}/statv2/remote/action-save`, {
+            ...this.options,
+            method: "POST",
+            body: JSON.stringify(body)
+        }).then((response) => {
+            if (!response.ok) {
+                throw new NetworkError(response.statusText, response.status);
+            }
+            return response.json();
+        });
+    }
+
+    /**
+     * Отправка обратного звонка
+     */
+    public async postAppeal(appeal: AppealForm): Promise<AppealResponse> {
+        const body: AppealQuery = {
+            source: "сайт",
+            geo: "rf",
+            is_alert: true,
+            site_info: {
+                name: appeal.fullName,
+                phone: appeal.phoneNumber,
+                info: appeal.question
+            },
+            status_appeal: "new"
+        };
+
+        return fetch(`${this.baseURL}/sale/remote/appeal-save`, {
             ...this.options,
             method: "POST",
             body: JSON.stringify(body)

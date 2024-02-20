@@ -66,6 +66,11 @@ const Breadcrumbs = () => {
                     link = "/cart/thanks";
                     break;
 
+                case "search":
+                    title = "Поиск";
+                    link = "/search";
+                    break;
+
                 default:
                     return undefined;
             }

@@ -10,15 +10,15 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import AppLink from "../(shared)/appLink.template";
-import AttentionText from "../(shared)/attentionText.template";
+import AppLink from "../(shared)/text/appLink.template";
+import AttentionText from "../(shared)/text/attentionText.template";
 import Container from "../(shared)/container.template";
-import PageTitle from "../(shared)/pageTitle.template";
-import TableTitle from "../(shared)/tableTitle.template";
+import PageTitle from "../(shared)/text/pageTitle.template";
+import TableTitle from "../(shared)/text/tableTitle.template";
 import MetroStation from "./metro.template";
-import Paragraph from "../(shared)/paragraph.template";
+import Paragraph from "../(shared)/text/paragraph.template";
 import { useMediaQueries } from "@/lib";
-import Title from "../(shared)/title.template";
+import Title from "../(shared)/text/title.template";
 import ImageSwitcher from "./imageSwitcher";
 
 const ContactsTemplate = ({

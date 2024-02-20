@@ -13,7 +13,7 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import Title from "./title.template";
+import Title from "./text/title.template";
 import { useMediaQueries } from "@/lib";
 
 const OurAdvantages = ({ props }: { props?: BoxProps }) => {

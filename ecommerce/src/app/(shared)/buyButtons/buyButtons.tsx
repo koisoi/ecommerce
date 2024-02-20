@@ -73,7 +73,7 @@ export const InstantBuyButton = ({
     props,
     textProps
 }: {
-    item?: CategoryItem;
+    item: CategoryItem;
     props?: ButtonProps;
     textProps?: TypographyProps;
 }) => {
@@ -84,7 +84,7 @@ export const InstantBuyButton = ({
         setFastOrderDialogOpen(true);
     };
 
-    const handleDialogClose: MouseEventHandler<HTMLButtonElement> = () => {
+    const handleClose: MouseEventHandler<HTMLButtonElement> = () => {
         setFastOrderDialogOpen(false);
     };
 
@@ -93,7 +93,9 @@ export const InstantBuyButton = ({
             props={props}
             textProps={textProps}
             onInstantBuyClick={handleClick}
-            item={fastOrderDialogOpen ? item : undefined}
+            item={item}
+            open={fastOrderDialogOpen}
+            onClose={handleClose}
         />
     );
 };

@@ -2,7 +2,7 @@
 
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./title.template";
-import AppLink from "../(shared)/appLink.template";
+import AppLink from "../(shared)/text/appLink.template";
 
 const CatalogBox = () => {
     const wrapperProps: BoxProps = {

@@ -2,13 +2,13 @@
 
 import { Box, BoxProps } from "@mui/material";
 import CartTable from "../(shared)/cartTable/cartTable";
-import PageTitle from "../(shared)/pageTitle.template";
+import PageTitle from "../(shared)/text/pageTitle.template";
 import { UseFormReturn } from "react-hook-form";
 import OrderFormTemplate from "./orderForm.template";
 import { OrderRules } from "./page";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";
-import OrderLoading from "./loading.template";
+import Loading from "../(shared)/loading.template";
 
 const CartTemplate = ({
     form,
@@ -34,7 +34,7 @@ const CartTemplate = ({
         flexGrow: 1
     };
 
-    if (loading) return <OrderLoading />;
+    if (loading) return <Loading />;
 
     return (
         <>

@@ -7,8 +7,8 @@ import {
     SvgIconProps,
     TypographyProps
 } from "@mui/material";
-import PageTitle from "../../pageTitle.template";
-import Paragraph from "../../paragraph.template";
+import PageTitle from "../../text/pageTitle.template";
+import Paragraph from "../../text/paragraph.template";
 import { MouseEventHandler, useEffect } from "react";
 
 const EmptyCartTemplate = ({

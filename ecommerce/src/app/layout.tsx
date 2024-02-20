@@ -11,6 +11,7 @@ import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
 import Container from "./(shared)/container.template";
 import { setCart, useAppDispatch } from "@/lib";
 import {
+    getGeo,
     getIp,
     setReferrer,
     setStartUrl,
@@ -85,6 +86,7 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
                 term: term || undefined
             })
         );
+        if (getCookie("geo")) dispatch(getGeo());
 
         const cartCookie = getCookie("cart");
         if (cartCookie) dispatch(setCart(JSON.parse(cartCookie)));
@@ -111,7 +113,9 @@ const RootLayout = ({
             minHeight: "100vh",
             minWidth: "100vw",
             backgroundColor: theme.palette.background.default,
-            padding: "0!important"
+            padding: "0!important",
+
+            overflowX: "hidden"
         }
     };
 

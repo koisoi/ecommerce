@@ -2,8 +2,25 @@
 
 import { Search } from "@mui/icons-material";
 import { Button, ButtonProps, TextField, TextFieldProps } from "@mui/material";
+import {
+    ChangeEventHandler,
+    KeyboardEventHandler,
+    MouseEventHandler
+} from "react";
 
-const HeaderSearchBox = () => {
+const HeaderSearchBox = ({
+    onSearch,
+    searchQuery,
+    onSearchQueryChange,
+    onSearchEnter
+}: {
+    onSearch: MouseEventHandler<HTMLButtonElement>;
+    searchQuery: string;
+    onSearchQueryChange: ChangeEventHandler<
+        HTMLTextAreaElement | HTMLInputElement
+    >;
+    onSearchEnter: KeyboardEventHandler<HTMLDivElement>;
+}) => {
     const buttonProps: ButtonProps = {
         variant: "contained",
         size: "small",
@@ -17,9 +34,12 @@ const HeaderSearchBox = () => {
             ":hover": {
                 boxShadow: "none"
             }
-        }
+        },
+
+        onClick: onSearch
     };
 
+    //TODO: поиск на энтер
     const searchBoxProps: TextFieldProps = {
         variant: "outlined",
 
@@ -30,7 +50,11 @@ const HeaderSearchBox = () => {
             minWidth: { sm: "220px", md: "380px", xl: "420px" },
             display: { xs: "none", sm: "block" }
         },
-        placeholder: "Поиск по каталогу",
+        label: "Поиск по каталогу",
+
+        value: searchQuery,
+        onChange: onSearchQueryChange,
+        onKeyDown: onSearchEnter,
 
         InputProps: {
             endAdornment: (

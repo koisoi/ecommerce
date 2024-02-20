@@ -9,8 +9,8 @@ import {
     TypographyProps
 } from "@mui/material";
 import { MouseEventHandler, ReactNode } from "react";
-import ProductLink from "../../productLink.template";
-import Price from "../../price.template";
+import ProductLink from "../../text/productLink.template";
+import Price from "../../text/price.template";
 import { Close } from "@mui/icons-material";
 import DeleteItemDialog from "../deleteItemDialog.template";
 import { useMediaQueries } from "@/lib";

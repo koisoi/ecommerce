@@ -4,7 +4,7 @@ export * from "./store";
 export * from "./functions/backendTextRegExp";
 export * from "./functions/category/getProductImageLink";
 
-export * from "./services/base.service";
+// export * from "./services/base.service";
 export * from "./services/catalog.service";
 export * from "./services/product.service";
 

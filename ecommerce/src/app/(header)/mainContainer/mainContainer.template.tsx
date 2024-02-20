@@ -1,19 +1,47 @@
 "use client";
 
-import { Box, BoxProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    Button,
+    ButtonProps,
+    Typography,
+    TypographyProps
+} from "@mui/material";
 import HeaderSearchBox from "../searchBox.template";
 import DesktopHeaderButton, {
     DesktopHeaderButtonProps
 } from "../desktopHeaderButton.template";
-import { AccountCircle, Favorite, ShoppingCart } from "@mui/icons-material";
+import { ShoppingCart } from "@mui/icons-material";
 import { useThemeColors } from "@/lib";
 import Link from "next/link";
-import { MouseEventHandler, RefObject } from "react";
+import {
+    ChangeEventHandler,
+    KeyboardEventHandler,
+    MouseEventHandler
+} from "react";
+import BackCallForm from "@/app/(backCallForm)/backCallForm";
 
 const HeaderMainContainerTemplate = ({
-    onCartClick
+    onCartClick,
+    backCallOpen,
+    onBackCallButtonClick,
+    onBackCallClose,
+    onSearch,
+    searchQuery,
+    onSearchQueryChange,
+    onSearchEnter
 }: {
     onCartClick: MouseEventHandler<HTMLButtonElement>;
+    backCallOpen: boolean;
+    onBackCallButtonClick: MouseEventHandler<HTMLButtonElement>;
+    onBackCallClose: MouseEventHandler<HTMLButtonElement>;
+    onSearch: MouseEventHandler<HTMLButtonElement>;
+    searchQuery: string;
+    onSearchQueryChange: ChangeEventHandler<
+        HTMLTextAreaElement | HTMLInputElement
+    >;
+    onSearchEnter: KeyboardEventHandler<HTMLDivElement>;
 }) => {
     const colors = useThemeColors();
 
@@ -84,10 +112,25 @@ const HeaderMainContainerTemplate = ({
         minWidth: "max-content"
     };
 
+    const backCallButtonProps: ButtonProps = {
+        variant: "contained",
+
+        onClick: onBackCallButtonClick,
+
+        sx: {
+            textTransform: "none",
+            boxShadow: "none",
+
+            ":hover": {
+                boxShadow: "none"
+            }
+        }
+    };
+
     const buttonsRowProps: BoxProps = {
         display: { xs: "none", sm: "flex" },
         flexDirection: "row",
-        gap: "10px",
+        gap: "20px",
         flexGrow: 1,
 
         height: "min-content"
@@ -99,62 +142,60 @@ const HeaderMainContainerTemplate = ({
         onClick: onCartClick
     };
 
+    const addressProps: TypographyProps = {
+        color: "text.disabled"
+    };
+
     return (
-        <Box {...outerWrapperProps}>
-            <Box {...wrapperProps}>
-                <Box {...innerWrapperProps}>
-                    <Box {...logoAndContactsWrapper}>
-                        <Link href="/">
-                            <Box {...logoContainerProps}>
-                                <img {...logoProps} />
+        <>
+            <BackCallForm open={backCallOpen} onClose={onBackCallClose} />
+
+            <Box {...outerWrapperProps}>
+                <Box {...wrapperProps}>
+                    <Box {...innerWrapperProps}>
+                        <Box {...logoAndContactsWrapper}>
+                            <Link href="/">
+                                <Box {...logoContainerProps}>
+                                    <img {...logoProps} />
+                                </Box>
+                            </Link>
+                            <Box {...contactsBoxProps}>
+                                <a
+                                    href="tel:88009870011"
+                                    style={{
+                                        color: colors.primary,
+                                        fontWeight: "bold",
+                                        textDecoration: "none"
+                                    }}
+                                >
+                                    8-800-987-00-11
+                                </a>
+                                <Typography {...addressProps}>
+                                    Адрес магазина: у. Пушкина дом Колотушкина
+                                </Typography>
                             </Box>
-                        </Link>
-                        <Box {...contactsBoxProps}>
-                            <a
-                                href="tel:88009870011"
-                                style={{
-                                    color: colors.primary,
-                                    fontWeight: "bold",
-                                    textDecoration: "none"
-                                }}
-                            >
-                                8-800-987-00-11
-                            </a>
-                            <a
-                                style={{
-                                    color: "#969696",
-                                    textDecoration: "none"
-                                }}
-                                href="mailto:test@test.ru"
-                            >
-                                test@test.ru
-                            </a>
                         </Box>
+                        <HeaderSearchBox
+                            onSearch={onSearch}
+                            searchQuery={searchQuery}
+                            onSearchQueryChange={onSearchQueryChange}
+                            onSearchEnter={onSearchEnter}
+                        />
                     </Box>
-                    <HeaderSearchBox />
-                </Box>
-                <Box {...buttonsRowProps}>
-                    <DesktopHeaderButton
-                        upperText="Избранное"
-                        lowerText="Кол-во: 0"
-                    >
-                        <Favorite />
-                    </DesktopHeaderButton>
-                    <DesktopHeaderButton
-                        {...cartButtonProps}
-                        id="desktop-header-button"
-                    >
-                        <ShoppingCart />
-                    </DesktopHeaderButton>
-                    <DesktopHeaderButton
-                        upperText="Войти / Новый"
-                        lowerText="Аккаунт"
-                    >
-                        <AccountCircle />
-                    </DesktopHeaderButton>
+                    <Box {...buttonsRowProps}>
+                        <Button {...backCallButtonProps}>
+                            Обратный звонок
+                        </Button>
+                        <DesktopHeaderButton
+                            {...cartButtonProps}
+                            id="desktop-header-button"
+                        >
+                            <ShoppingCart />
+                        </DesktopHeaderButton>
+                    </Box>
                 </Box>
             </Box>
-        </Box>
+        </>
     );
 };
 
