@@ -113,9 +113,9 @@ const RootLayout = ({
             minHeight: "100vh",
             minWidth: "100vw",
             backgroundColor: theme.palette.background.default,
-            padding: "0!important",
+            padding: "0!important"
 
-            overflowX: "hidden"
+            // overflowX: "hidden"
         }
     };
 

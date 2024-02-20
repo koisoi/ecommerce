@@ -171,7 +171,7 @@ const HeaderMainContainerTemplate = ({
                                     8-800-987-00-11
                                 </a>
                                 <Typography {...addressProps}>
-                                    Адрес магазина: у. Пушкина дом Колотушкина
+                                    Адрес магазина
                                 </Typography>
                             </Box>
                         </Box>
