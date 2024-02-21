@@ -2,6 +2,7 @@
 
 import { NextLinkProps } from "@/lib";
 import { Typography, TypographyProps } from "@mui/material";
+import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { ReactNode } from "react";
 
@@ -12,7 +13,7 @@ const AppLink = ({
     props
 }: {
     children?: ReactNode;
-    href?: string;
+    href?: Url;
     footer?: boolean;
     props?: TypographyProps;
 }) => {

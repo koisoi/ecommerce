@@ -1,3 +1,5 @@
+export type CategoryListItem = { title: string; path: string; image?: string };
+
 // TODO: поменять ключи объектов
 export type SeriesInfo = {
     id: number;
@@ -13,6 +15,7 @@ export type CategoryInfo = {
     series: SeriesInfo[];
     category?: {
         title: string;
+        images: [{ id: number; url: string }];
     };
     parent_class: string;
 };
@@ -34,6 +37,7 @@ export type CategoryItem = {
         alias: string;
         title: string;
     };
+    is_available?: boolean; //FIXME: изменить на availability (строка)
 };
 
 export type CategoryItemsRequest = {

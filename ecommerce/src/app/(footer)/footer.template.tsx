@@ -5,8 +5,17 @@ import ContactsBox from "./contactsBox.template";
 import CatalogBox from "./catalogBox.template";
 import UpperMenuBox from "./upperMenuBox.template";
 import SocialNetworksBox from "./socialNetworksBox.template";
+import { CategoryListItem } from "@/lib";
 
-const Footer = () => {
+const FooterTemplate = ({
+    phone,
+    address,
+    categories
+}: {
+    phone: string;
+    address: string;
+    categories: CategoryListItem[];
+}) => {
     const wrapperProps: BoxProps = {
         boxSizing: "border-box",
         minWidth: "100%",
@@ -21,22 +30,24 @@ const Footer = () => {
     const innerWrapperProps: BoxProps = {
         maxWidth: "1320px",
         paddingY: "40px",
-        paddingLeft: "10px",
-        minWidth: { xs: "100%", sm: "0" },
+        paddingX: "10px",
+
+        minWidth: { xs: "100%", smd: "0" },
         width: { lg: "100%", xl: "1300px" },
+        boxSizing: "border-box",
 
         display: "flex",
-        flexDirection: { xs: "column", sm: "row" },
+        flexDirection: { xs: "column", smd: "row" },
         justifyContent: "space-between",
         gap: "20px"
     };
 
     return (
-        <footer>
+        <footer style={{ boxSizing: "border-box" }}>
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
-                    <ContactsBox />
-                    <CatalogBox />
+                    <ContactsBox phone={phone} address={address} />
+                    <CatalogBox categories={categories} />
                     <UpperMenuBox />
                     <SocialNetworksBox />
                 </Box>
@@ -45,4 +56,4 @@ const Footer = () => {
     );
 };
 
-export default Footer;
+export default FooterTemplate;

@@ -3,6 +3,8 @@
 import {
     Box,
     BoxProps,
+    Button,
+    ButtonProps,
     IconButton,
     IconButtonProps,
     Typography,
@@ -12,8 +14,7 @@ import { MouseEventHandler, ReactNode, RefObject } from "react";
 
 export type DesktopHeaderButtonProps = {
     children?: ReactNode;
-    upperText: string;
-    lowerText: string;
+    text: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     ref?: RefObject<HTMLButtonElement>;
     id?: string;
@@ -21,64 +22,67 @@ export type DesktopHeaderButtonProps = {
 
 const DesktopHeaderButton = ({
     children,
-    upperText,
-    lowerText,
+    text: upperText,
     onClick,
     ref,
     id
 }: DesktopHeaderButtonProps) => {
-    const wrapperProps: BoxProps = {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
-
-        minWidth: "max-content",
-        height: "min-content"
-    };
-
-    const textWrapperProps: BoxProps = {
-        display: "flex",
-        flexDirection: "column"
-    };
-
-    const iconWrapperProps: IconButtonProps = {
+    const wrapperProps: ButtonProps = {
         sx: {
-            color: "text.disabled",
-            marginRight: "10px",
-            height: "24px",
-            width: "24px",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
 
-            ":hover": {
-                color: "primary.main",
-                cursor: "pointer"
-            }
+            minWidth: "max-content",
+            height: "min-content"
         },
 
         onClick
     };
 
-    const upperTextProps: TypographyProps = {
-        color: "text.disabled",
-        fontSize: "12px",
-        lineHeight: "1.2"
+    const textWrapperProps: BoxProps = {
+        display: "flex",
+        flexDirection: "column",
+
+        marginLeft: "5px"
     };
 
-    const lowerTextProps: TypographyProps = {
-        fontSize: "15px",
-        lineHeight: "1.2"
+    // const iconWrapperProps: IconButtonProps = {
+    //     disableFocusRipple: true,
+    //     disableRipple: true,
+
+    //     sx: {
+    //         color: "text.disabled",
+    //         marginRight: "10px",
+    //         height: "24px",
+    //         width: "24px",
+    //         transition: "0.2s",
+
+    //         ":hover": {
+    //             color: "primary.main",
+    //             cursor: "pointer"
+    //         }
+    //     },
+
+    //     onClick
+    // };
+
+    const upperTextProps: TypographyProps = {
+        fontSize: "0.9rem",
+        lineHeight: "1.2",
+        sx: {
+            textTransform: "none"
+        }
     };
 
     return (
-        <Box {...wrapperProps}>
-            <IconButton {...iconWrapperProps} ref={ref} id={id}>
-                {children}
-            </IconButton>
+        <Button {...wrapperProps} ref={ref} id={id}>
+            {children}
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>{upperText}</Typography>
-                <Typography {...lowerTextProps}>{lowerText}</Typography>
             </Box>
-        </Box>
+        </Button>
     );
 };
 

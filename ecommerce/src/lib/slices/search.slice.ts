@@ -36,7 +36,7 @@ const slice = createSlice({
     name: "SearchSlice",
     initialState,
     reducers: {
-        setCanSerach(state, action: PayloadAction<boolean>) {
+        setCanSearch(state, action: PayloadAction<boolean>) {
             state.canSearch = action.payload;
         },
         resetSearch() {
@@ -45,7 +45,8 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(search.pending, (state) => {
-            (state.loading = true), (state.canSearch = false);
+            state.loading = true;
+            state.canSearch = false;
         });
         builder.addCase(search.fulfilled, (state, action) => {
             state.response = action.payload;
@@ -60,5 +61,5 @@ const slice = createSlice({
 });
 
 export const SearchReducer = slice.reducer;
-export const { setCanSerach, resetSearch } = slice.actions;
+export const { setCanSearch, resetSearch } = slice.actions;
 export const SearchState = (state: RootState) => state.SearchReducer;

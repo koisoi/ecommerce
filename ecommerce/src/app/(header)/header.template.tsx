@@ -5,8 +5,9 @@ import HeaderTopContainer from "./topContainer.template";
 import HeaderNavigation from "./navigation.template";
 import { useMediaQueries } from "../../lib/hooks";
 import HeaderMainContainer from "./mainContainer/mainContainer";
+import { CategoryListItem } from "@/lib";
 
-const Header = () => {
+const HeaderTemplate = ({ categories }: { categories: CategoryListItem[] }) => {
     const screen = useMediaQueries();
 
     const wrapperProps: BoxProps = {
@@ -20,16 +21,20 @@ const Header = () => {
 
     return (
         <>
-            {!screen.md && <HeaderNavigation mobile={true} />}
+            {!screen.md && (
+                <HeaderNavigation mobile={true} categories={categories} />
+            )}
             <header>
                 <Box {...wrapperProps}>
                     <HeaderTopContainer />
                     <HeaderMainContainer />
                 </Box>
             </header>
-            {screen.md && <HeaderNavigation mobile={false} />}
+            {screen.md && (
+                <HeaderNavigation mobile={false} categories={categories} />
+            )}
         </>
     );
 };
 
-export default Header;
+export default HeaderTemplate;

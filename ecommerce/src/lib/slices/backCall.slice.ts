@@ -11,13 +11,15 @@ const initialState: {
     canPostAppealStatistics: boolean;
     postedAppealId: string | null;
     appealSendingCompleted: boolean;
+    backCallOpen: boolean;
 } = {
     loading: false,
     canAuthorizeAppeal: true,
     canPostAppeal: false,
     canPostAppealStatistics: false,
     postedAppealId: null,
-    appealSendingCompleted: false
+    appealSendingCompleted: false,
+    backCallOpen: false
 };
 
 /**
@@ -97,6 +99,12 @@ const slice = createSlice({
         },
         resetAppeal() {
             return initialState;
+        },
+        openBackCallModal(state) {
+            state.backCallOpen = true;
+        },
+        closeBackCallModal(state) {
+            state.backCallOpen = false;
         }
     },
     extraReducers: (builder) => {
@@ -160,6 +168,8 @@ export const {
     setCanPostAppeal,
     setCanPostAppealStatistics,
     setOrderLoading,
-    resetAppeal
+    resetAppeal,
+    closeBackCallModal,
+    openBackCallModal
 } = slice.actions;
 export const BackCallState = (state: RootState) => state.BackCallReducer;

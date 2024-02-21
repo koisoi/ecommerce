@@ -63,11 +63,15 @@ const AllCharacteristicsBox = ({
                                         <Box key={i}>
                                             <Tooltip
                                                 title={
-                                                    <Box
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: description.text
-                                                        }}
-                                                    />
+                                                    description.text ? (
+                                                        <Box
+                                                            dangerouslySetInnerHTML={{
+                                                                __html: description.text
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        ""
+                                                    )
                                                 }
                                             >
                                                 <Typography

@@ -1,7 +1,14 @@
 "use client";
 
-import { Instagram, YouTube } from "@mui/icons-material";
-import { Box, BoxProps, SvgIcon, SvgIconProps } from "@mui/material";
+import { YouTube } from "@mui/icons-material";
+import {
+    Box,
+    BoxProps,
+    SvgIcon,
+    SvgIconProps,
+    Link as MUILink,
+    LinkProps
+} from "@mui/material";
 import VK from "@/assets/svg/vk.svg";
 import { NextLinkProps } from "@/lib";
 import Link from "next/link";
@@ -23,7 +30,7 @@ const HeaderTopContainer = () => {
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
 
-        color: "#969696"
+        color: "text.disabled"
     };
 
     const leftBoxProps: BoxProps = {
@@ -65,10 +72,15 @@ const HeaderTopContainer = () => {
         sx: {
             padding: "7.5px",
             ":hover": {
-                color: "#212529",
+                color: "text.primary",
                 cursor: "pointer"
             }
         }
+    };
+
+    const MUILinkProps: LinkProps = {
+        color: "text.disabled",
+        target: "_blank"
     };
 
     return (
@@ -92,11 +104,20 @@ const HeaderTopContainer = () => {
                     </Box>
                 </Box>
                 <Box {...rightBoxProps}>
-                    <SvgIcon {...iconProps}>
-                        <VK />
-                    </SvgIcon>
-                    <Instagram {...iconProps} />
-                    <YouTube {...iconProps} />
+                    <MUILink
+                        href="https://vk.com/telescope1_ru"
+                        {...MUILinkProps}
+                    >
+                        <SvgIcon {...iconProps}>
+                            <VK />
+                        </SvgIcon>
+                    </MUILink>
+                    <MUILink
+                        href="https://www.youtube.com/watch?v=WYgzpw7FaRI"
+                        {...MUILinkProps}
+                    >
+                        <YouTube {...iconProps} />
+                    </MUILink>
                 </Box>
             </Box>
         </Box>

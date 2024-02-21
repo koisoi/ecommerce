@@ -3,45 +3,29 @@
 import {
     Box,
     BoxProps,
-    Button,
-    ButtonProps,
     Typography,
-    TypographyProps
+    TypographyProps,
+    LinkProps
 } from "@mui/material";
-import HeaderSearchBox from "../searchBox.template";
 import DesktopHeaderButton, {
     DesktopHeaderButtonProps
 } from "../desktopHeaderButton.template";
 import { ShoppingCart } from "@mui/icons-material";
 import { useThemeColors } from "@/lib";
 import Link from "next/link";
-import {
-    ChangeEventHandler,
-    KeyboardEventHandler,
-    MouseEventHandler
-} from "react";
-import BackCallForm from "@/app/(backCallForm)/backCallForm";
+import { MouseEventHandler } from "react";
+import PhoneLink from "@/app/(shared)/text/phoneLink.template";
+import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
+import HeaderSearchBox from "../search/search";
 
 const HeaderMainContainerTemplate = ({
     onCartClick,
-    backCallOpen,
-    onBackCallButtonClick,
-    onBackCallClose,
-    onSearch,
-    searchQuery,
-    onSearchQueryChange,
-    onSearchEnter
+    storeAddress,
+    phone
 }: {
     onCartClick: MouseEventHandler<HTMLButtonElement>;
-    backCallOpen: boolean;
-    onBackCallButtonClick: MouseEventHandler<HTMLButtonElement>;
-    onBackCallClose: MouseEventHandler<HTMLButtonElement>;
-    onSearch: MouseEventHandler<HTMLButtonElement>;
-    searchQuery: string;
-    onSearchQueryChange: ChangeEventHandler<
-        HTMLTextAreaElement | HTMLInputElement
-    >;
-    onSearchEnter: KeyboardEventHandler<HTMLDivElement>;
+    storeAddress: string;
+    phone: string;
 }) => {
     const colors = useThemeColors();
 
@@ -86,8 +70,8 @@ const HeaderMainContainerTemplate = ({
 
     const logoContainerProps: BoxProps = {
         width: {
-            xs: "100%",
-            sm: "225px",
+            // xs: "100%",
+            sm: "100%",
             md: "120px",
             lg: "160px",
             xl: "180px"
@@ -109,27 +93,14 @@ const HeaderMainContainerTemplate = ({
     const contactsBoxProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        minWidth: "max-content"
-    };
-
-    const backCallButtonProps: ButtonProps = {
-        variant: "contained",
-
-        onClick: onBackCallButtonClick,
-
-        sx: {
-            textTransform: "none",
-            boxShadow: "none",
-
-            ":hover": {
-                boxShadow: "none"
-            }
-        }
+        width: "max-content",
+        maxWidth: "180px"
     };
 
     const buttonsRowProps: BoxProps = {
         display: { xs: "none", sm: "flex" },
         flexDirection: "row",
+        alignItems: "center",
         gap: "20px",
         flexGrow: 1,
 
@@ -137,19 +108,26 @@ const HeaderMainContainerTemplate = ({
     };
 
     const cartButtonProps: DesktopHeaderButtonProps = {
-        upperText: "Корзина",
-        lowerText: "0.00 €",
+        text: "Корзина",
         onClick: onCartClick
     };
 
     const addressProps: TypographyProps = {
-        color: "text.disabled"
+        color: "text.disabled",
+        fontSize: "0.8rem"
+    };
+
+    const phoneLinkProps: LinkProps = {
+        href: "tel:88009870011",
+        sx: {
+            color: colors.primary,
+            fontWeight: "bold",
+            textDecoration: "none"
+        }
     };
 
     return (
         <>
-            <BackCallForm open={backCallOpen} onClose={onBackCallClose} />
-
             <Box {...outerWrapperProps}>
                 <Box {...wrapperProps}>
                     <Box {...innerWrapperProps}>
@@ -160,32 +138,16 @@ const HeaderMainContainerTemplate = ({
                                 </Box>
                             </Link>
                             <Box {...contactsBoxProps}>
-                                <a
-                                    href="tel:88009870011"
-                                    style={{
-                                        color: colors.primary,
-                                        fontWeight: "bold",
-                                        textDecoration: "none"
-                                    }}
-                                >
-                                    8-800-987-00-11
-                                </a>
+                                <PhoneLink number={phone} />
                                 <Typography {...addressProps}>
-                                    Адрес магазина
+                                    {storeAddress}
                                 </Typography>
                             </Box>
                         </Box>
-                        <HeaderSearchBox
-                            onSearch={onSearch}
-                            searchQuery={searchQuery}
-                            onSearchQueryChange={onSearchQueryChange}
-                            onSearchEnter={onSearchEnter}
-                        />
+                        <HeaderSearchBox />
                     </Box>
                     <Box {...buttonsRowProps}>
-                        <Button {...backCallButtonProps}>
-                            Обратный звонок
-                        </Button>
+                        <BackCallButton />
                         <DesktopHeaderButton
                             {...cartButtonProps}
                             id="desktop-header-button"

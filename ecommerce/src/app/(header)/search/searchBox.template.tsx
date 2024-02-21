@@ -7,12 +7,16 @@ import {
     KeyboardEventHandler,
     MouseEventHandler
 } from "react";
+import SearchPopover from "./searchPopover";
 
-const HeaderSearchBox = ({
+const HeaderSearchBoxTemplate = ({
     onSearch,
     searchQuery,
     onSearchQueryChange,
-    onSearchEnter
+    onSearchEnter,
+    searchPopoverAnchorEl,
+    searchPopoverOpen,
+    onPopoverClose
 }: {
     onSearch: MouseEventHandler<HTMLButtonElement>;
     searchQuery: string;
@@ -20,6 +24,9 @@ const HeaderSearchBox = ({
         HTMLTextAreaElement | HTMLInputElement
     >;
     onSearchEnter: KeyboardEventHandler<HTMLDivElement>;
+    searchPopoverAnchorEl: Element | null;
+    searchPopoverOpen: boolean;
+    onPopoverClose: (...props: any) => any;
 }) => {
     const buttonProps: ButtonProps = {
         variant: "contained",
@@ -68,7 +75,17 @@ const HeaderSearchBox = ({
         }
     };
 
-    return <TextField {...searchBoxProps} />;
+    return (
+        <>
+            <TextField {...searchBoxProps} />
+            <SearchPopover
+                searchQuery={searchQuery}
+                anchorEl={searchPopoverAnchorEl}
+                open={searchPopoverOpen}
+                onClose={onPopoverClose}
+            />
+        </>
+    );
 };
 
-export default HeaderSearchBox;
+export default HeaderSearchBoxTemplate;

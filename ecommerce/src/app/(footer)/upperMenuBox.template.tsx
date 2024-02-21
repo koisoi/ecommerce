@@ -8,23 +8,31 @@ const UpperMenuBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px",
+        gap: "15px",
 
         fontSize: "0.95rem"
     };
 
+    const innerWrapperProps: BoxProps = {
+        display: "flex",
+        flexDirection: "column",
+        gap: "5px"
+    };
+
     return (
         <Box {...wrapperProps}>
-            <FooterTitle>Верхнее меню</FooterTitle>
-            <AppLink href="/delivery" footer>
-                Доставка и оплата
-            </AppLink>
-            <AppLink href="/warranty" footer>
-                Гарантия и возврат
-            </AppLink>
-            <AppLink href="/contacts" footer>
-                Контактная информация
-            </AppLink>
+            <FooterTitle>Для покупателей</FooterTitle>
+            <Box {...innerWrapperProps}>
+                <AppLink href="/delivery" footer>
+                    Доставка и оплата
+                </AppLink>
+                <AppLink href="/warranty" footer>
+                    Гарантия и возврат
+                </AppLink>
+                <AppLink href="/contacts" footer>
+                    Контактная информация
+                </AppLink>
+            </Box>
         </Box>
     );
 };

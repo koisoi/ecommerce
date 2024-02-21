@@ -37,6 +37,8 @@ const SocialNetworksBox = () => {
 
     const vkButtonProps: ButtonProps = {
         ...buttonProps,
+        href: "https://vk.com/telescope1_ru",
+
         sx: {
             ...buttonProps.sx,
             backgroundColor: "#4D7198",
@@ -46,21 +48,10 @@ const SocialNetworksBox = () => {
         }
     };
 
-    const instagramButtonProps: ButtonProps = {
-        ...buttonProps,
-        sx: {
-            ...buttonProps.sx,
-            backgroundImage:
-                "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)",
-            ":hover": {
-                backgroundImage:
-                    "radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%)"
-            }
-        }
-    };
-
     const youtubeButtonProps: ButtonProps = {
         ...buttonProps,
+        href: "https://www.youtube.com/watch?v=WYgzpw7FaRI",
+
         sx: {
             ...buttonProps.sx,
             backgroundColor: "#F00",
@@ -86,9 +77,6 @@ const SocialNetworksBox = () => {
                     <SvgIcon {...iconProps}>
                         <VK />
                     </SvgIcon>
-                </Button>
-                <Button {...instagramButtonProps}>
-                    <Instagram {...iconProps} />
                 </Button>
                 <Button {...youtubeButtonProps}>
                     <YouTube />

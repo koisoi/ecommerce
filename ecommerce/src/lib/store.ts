@@ -10,6 +10,7 @@ import { GlobalReducer } from "./slices/global.slice";
 import { CartAnimationReducer } from "./slices/cartAnimation.slice";
 import { BackCallReducer } from "./slices/backCall.slice";
 import { SearchReducer } from "./slices/search.slice";
+import { SearchPopoverReducer } from "./slices/searchPopover.slice";
 
 export const makeStore = () => {
     return configureStore({
@@ -22,7 +23,8 @@ export const makeStore = () => {
             GlobalReducer,
             CartAnimationReducer,
             BackCallReducer,
-            SearchReducer
+            SearchReducer,
+            SearchPopoverReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

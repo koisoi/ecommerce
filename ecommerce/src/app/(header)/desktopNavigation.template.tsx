@@ -13,12 +13,12 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import SlidingCartButton from "./slidingCartButton/slidingCartButton";
-import { NextLinkProps } from "@/lib";
+import { CategoryListItem, NextLinkProps } from "@/lib";
 
 const HeaderDesktopNavigation = ({
     categories
 }: {
-    categories: { title: string; alias: string }[];
+    categories: CategoryListItem[];
 }) => {
     const innerWrapperProps: BoxProps = {
         position: "relative",
@@ -94,7 +94,7 @@ const HeaderDesktopNavigation = ({
                                 {...linksProps}
                                 href={{
                                     pathname: "/catalog",
-                                    query: { category: category.alias }
+                                    query: { category: category.path }
                                 }}
                             >
                                 {category.title}

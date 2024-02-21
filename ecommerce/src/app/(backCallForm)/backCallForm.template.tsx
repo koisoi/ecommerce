@@ -55,7 +55,8 @@ const BackCallFormTemplate = ({
     appealSendingCompleted: boolean;
 }) => {
     const dialogProps: DialogProps = {
-        open
+        open,
+        disableScrollLock: true
     };
 
     const dialogTitleProps: DialogTitleProps = {

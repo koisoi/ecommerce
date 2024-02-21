@@ -5,12 +5,7 @@ import { ReactNode } from "react";
 
 const FooterTitle = ({ children }: { children: ReactNode }) => {
     return (
-        <Typography
-            color="text.primary"
-            fontSize="19px"
-            fontWeight="bold"
-            gutterBottom
-        >
+        <Typography color="text.primary" fontSize="19px" fontWeight="bold">
             {children}
         </Typography>
     );

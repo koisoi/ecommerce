@@ -2,23 +2,33 @@
 
 import "./globals.css";
 import styles from "./page.module.css";
-import Header from "./(header)/header.template";
+import Header from "./(header)/header";
 import { Box, ThemeProvider, createTheme } from "@mui/material";
-import Footer from "./(footer)/footer.template";
-import { CSSProperties, ReactNode, useEffect, useState } from "react";
+import {
+    CSSProperties,
+    MouseEventHandler,
+    ReactNode,
+    useEffect,
+    useState
+} from "react";
 import StoreProvider from "./storeProvider";
 import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
 import Container from "./(shared)/container.template";
-import { setCart, useAppDispatch } from "@/lib";
+import { setCart, useAppDispatch, useAppSelector } from "@/lib";
 import {
+    getCategoryImages,
     getGeo,
     getIp,
+    setGeo,
     setReferrer,
     setStartUrl,
     setUTM
 } from "@/lib/slices/global.slice";
 import { useSearchParams } from "next/navigation";
 import { getCookie } from "cookies-next";
+import Footer from "./(footer)/footer";
+import BackCallForm from "./(backCallForm)/backCallForm";
+import { BackCallState, closeBackCallModal } from "@/lib/slices/backCall.slice";
 
 const theme = createTheme({
     palette: {
@@ -69,6 +79,12 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
 
     const [hasMounted, setHasMounted] = useState(false);
 
+    const { backCallOpen } = useAppSelector(BackCallState);
+
+    const handleBackCallClose: MouseEventHandler<HTMLButtonElement> = () => {
+        dispatch(closeBackCallModal());
+    };
+
     useEffect(() => {
         setHasMounted(true);
     }, []);
@@ -86,7 +102,13 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
                 term: term || undefined
             })
         );
-        if (getCookie("geo")) dispatch(getGeo());
+        dispatch(getCategoryImages());
+
+        const geo = getCookie("geo");
+        if (!geo) dispatch(getGeo());
+        else {
+            dispatch(setGeo(geo as "rf" | "nn" | "msk" | "spb"));
+        }
 
         const cartCookie = getCookie("cart");
         if (cartCookie) dispatch(setCart(JSON.parse(cartCookie)));
@@ -96,7 +118,12 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
         return null;
     }
 
-    return <>{children}</>;
+    return (
+        <>
+            <BackCallForm open={backCallOpen} onClose={handleBackCallClose} />
+            {children}
+        </>
+    );
 };
 
 const RootLayout = ({
@@ -109,22 +136,30 @@ const RootLayout = ({
         style: {
             display: "flex",
             flexDirection: "column",
-            // justifyContent: "space-between",
             minHeight: "100vh",
-            minWidth: "100vw",
+            minWidth: "100%",
             backgroundColor: theme.palette.background.default,
-            padding: "0!important"
+            padding: "0!important",
+            boxSizing: "border-box"
 
             // overflowX: "hidden"
         }
     };
 
     return (
-        <html lang="en">
+        <html lang="ru">
+            <head>
+                <meta charSet="UTF-8" />
+                <meta
+                    name="viewport"
+                    content="width=device-width, initial-scale=1.0"
+                />
+                <title>iRay</title>
+            </head>
             <body {...bodyProps}>
                 <StoreProvider>
-                    <Dynamic>
-                        <ThemeProvider theme={theme}>
+                    <ThemeProvider theme={theme}>
+                        <Dynamic>
                             <Header />
                             <Box
                                 padding="40px"
@@ -139,8 +174,8 @@ const RootLayout = ({
                                 </Container>
                             </Box>
                             <Footer />
-                        </ThemeProvider>
-                    </Dynamic>
+                        </Dynamic>
+                    </ThemeProvider>
                 </StoreProvider>
             </body>
         </html>

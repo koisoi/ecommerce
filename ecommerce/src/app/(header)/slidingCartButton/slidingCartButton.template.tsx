@@ -89,6 +89,7 @@ const SlidingCartButtonTemplate = ({
             vertical: 40,
             horizontal: "right"
         },
+
         transformOrigin: {
             horizontal: "right",
             vertical: "top"

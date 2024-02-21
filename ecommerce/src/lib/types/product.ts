@@ -1,7 +1,6 @@
 import { CategoryItem } from "..";
 
 export type MainProductInfo = CategoryItem & {
-    is_available?: boolean;
     complectation: string;
     text: string;
 };
