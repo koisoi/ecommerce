@@ -29,7 +29,7 @@ const Breadcrumbs = () => {
 
             switch (path) {
                 case "catalog":
-                    title = currentCategoryTitle || "Категория";
+                    title = currentCategoryTitle || "Каталог";
                     link = { pathname: "/catalog", query: { category } };
                     break;
 

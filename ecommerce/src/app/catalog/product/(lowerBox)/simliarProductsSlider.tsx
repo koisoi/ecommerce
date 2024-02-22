@@ -26,7 +26,8 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                 sx: {
                     height: { md: "190px", xl: "310px" }
                 }
-            }
+            },
+            categoryItem: item
         };
     };
 

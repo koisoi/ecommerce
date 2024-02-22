@@ -6,7 +6,6 @@ import ProductsCategoryGrid from "./productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
 import PageTitle from "../(shared)/text/pageTitle.template";
 import Container from "../(shared)/container.template";
-import FastOrderForm from "../(shared)/fastOrderForm/fastOrderForm";
 
 const CategoryTemplate = ({
     title,
@@ -31,7 +30,7 @@ const CategoryTemplate = ({
     };
 
     return (
-        <Container>
+        <>
             <Box {...headerWrapper}>
                 <PageTitle>{title}</PageTitle>
             </Box>
@@ -52,7 +51,7 @@ const CategoryTemplate = ({
                 ))}
             </Box>
             <ProductsCategoryGrid category={alias} series={seriesAlias} />
-        </Container>
+        </>
     );
 };
 

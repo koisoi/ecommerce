@@ -17,6 +17,7 @@ import { MouseEventHandler } from "react";
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import HeaderSearchBox from "../search/search";
+import Logo from "../logo/logo";
 
 const HeaderMainContainerTemplate = ({
     onCartClick,
@@ -68,28 +69,6 @@ const HeaderMainContainerTemplate = ({
         gap: "30px"
     };
 
-    const logoContainerProps: BoxProps = {
-        width: {
-            // xs: "100%",
-            sm: "100%",
-            md: "120px",
-            lg: "160px",
-            xl: "180px"
-        },
-        maxWidth: "225px",
-        display: "flex",
-        justifyContent: "center"
-    };
-
-    const logoProps = {
-        src: "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
-        alt: "Логотип",
-        width: "100%",
-        style: {
-            margin: "auto"
-        }
-    };
-
     const contactsBoxProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
@@ -132,11 +111,7 @@ const HeaderMainContainerTemplate = ({
                 <Box {...wrapperProps}>
                     <Box {...innerWrapperProps}>
                         <Box {...logoAndContactsWrapper}>
-                            <Link href="/">
-                                <Box {...logoContainerProps}>
-                                    <img {...logoProps} />
-                                </Box>
-                            </Link>
+                            <Logo />
                             <Box {...contactsBoxProps}>
                                 <PhoneLink number={phone} />
                                 <Typography {...addressProps}>

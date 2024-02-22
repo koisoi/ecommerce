@@ -3,13 +3,17 @@
 import { Box, BoxProps } from "@mui/material";
 import MobileHeaderButton from "../mobileHeaderButton.template";
 import { MouseEventHandler, RefObject } from "react";
+import MobileMenu from "../mobileMenu/mobileMenu";
 
 const HeaderMobileNavigationTemplate = ({
-    onCartClick
+    onCartClick,
+    cartAmount,
+    onMenuOpen
 }: {
     onCartClick: MouseEventHandler<HTMLButtonElement>;
+    cartAmount: number;
+    onMenuOpen: MouseEventHandler<HTMLButtonElement>;
 }) => {
-    // TODO: добавить кнопки
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
@@ -28,19 +32,21 @@ const HeaderMobileNavigationTemplate = ({
     };
 
     return (
-        <Box {...wrapperProps}>
-            <MobileHeaderButton variant="menu" />
-            <Box {...rightButtonsWrapperProps}>
-                {/* FIXME: трехзначные числа */}
-                <MobileHeaderButton variant="favorite" />
-                <MobileHeaderButton
-                    variant="shoppingCart"
-                    onClick={onCartClick}
-                    id="mobile-shopping-cart-button"
-                />
-                <MobileHeaderButton variant="accountCircle" />
+        <>
+            <MobileMenu />
+
+            <Box {...wrapperProps}>
+                <MobileHeaderButton variant="menu" onClick={onMenuOpen} />
+                <Box {...rightButtonsWrapperProps}>
+                    <MobileHeaderButton
+                        variant="shoppingCart"
+                        onClick={onCartClick}
+                        id="mobile-shopping-cart-button"
+                        amount={cartAmount}
+                    />
+                </Box>
             </Box>
-        </Box>
+        </>
     );
 };
 

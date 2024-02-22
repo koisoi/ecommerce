@@ -1,5 +1,9 @@
 import { NetworkError } from "..";
-import { MainProductInfo, ProductRequest } from "../types/product";
+import {
+    MainProductInfo,
+    ProductRequest,
+    ProductReview
+} from "../types/product";
 import { Service } from "./base.service";
 
 class ProductService extends Service {
@@ -87,7 +91,7 @@ class ProductService extends Service {
         alias
     }: {
         alias: string | null;
-    }): Promise</*TODO: изменить */ any> {
+    }): Promise<ProductReview[]> {
         return fetch(
             `${this.baseURL}/catalog/backend/reviews?alias=${alias}&format=json`,
             this.options

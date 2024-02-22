@@ -7,7 +7,7 @@ const EmptyCart = ({ full }: { full?: boolean }) => {
     const router = useRouter();
 
     const handleCatalogClick = () => {
-        router.push("/catalog?category=TOP.range_finders");
+        router.push("/catalog");
     };
 
     return (

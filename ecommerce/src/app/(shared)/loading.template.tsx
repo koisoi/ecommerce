@@ -5,8 +5,15 @@ import {
     TypographyProps
 } from "@mui/material";
 import Title from "./text/title.template";
+import { ReactNode } from "react";
 
-const Loading = ({ search }: { search?: boolean }) => {
+const Loading = ({
+    children,
+    props
+}: {
+    children?: ReactNode;
+    props?: BoxProps;
+}) => {
     const wrapperProps: BoxProps = {
         width: "100%",
         height: "100%",
@@ -15,7 +22,9 @@ const Loading = ({ search }: { search?: boolean }) => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        gap: "20px"
+        gap: "20px",
+
+        ...props
     };
 
     const titleProps: TypographyProps = {
@@ -25,9 +34,7 @@ const Loading = ({ search }: { search?: boolean }) => {
     return (
         <Box {...wrapperProps}>
             <CircularProgress size="5rem" />
-            <Title props={titleProps}>
-                {search ? "Поиск..." : "Отправка..."}
-            </Title>
+            <Title props={titleProps}>{children}</Title>
         </Box>
     );
 };

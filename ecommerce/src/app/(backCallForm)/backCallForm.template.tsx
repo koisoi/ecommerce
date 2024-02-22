@@ -199,7 +199,7 @@ const BackCallFormTemplate = ({
                     </>
                 )}
 
-                {loading && <Loading />}
+                {loading && <Loading>Отправка...</Loading>}
 
                 {appealSendingCompleted && postedAppealId && (
                     <Box {...thanksForAppealBoxProps}>

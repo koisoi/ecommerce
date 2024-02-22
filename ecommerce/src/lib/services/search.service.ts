@@ -1,3 +1,4 @@
+import { store } from "@/app/storeProvider";
 import { CategoryItemsResponse, NetworkError } from "..";
 import { Service } from "./base.service";
 
@@ -22,7 +23,9 @@ class SearchService extends Service {
         page
     }: SearchQuery): Promise<SearchResponse> {
         return fetch(
-            `${this.baseURL}?brand=iray&term=${query}&page=${page}&limit=${productsPerPage}&format=json`,
+            `${this.baseURL}?brand=${
+                store.getState().GlobalReducer.landing
+            }&term=${query}&page=${page}&limit=${productsPerPage}&format=json`,
             this.options
         )
             .then((response) => {

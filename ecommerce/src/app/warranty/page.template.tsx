@@ -55,7 +55,7 @@ const WarrantyPageTemplate = () => {
     };
 
     return (
-        <Container>
+        <>
             <PageTitle>Гарантии и возврат</PageTitle>
 
             <Box {...warrantyBoxProps}>
@@ -202,7 +202,7 @@ const WarrantyPageTemplate = () => {
                     транспортной компании.
                 </Paragraph>
             </Box>
-        </Container>
+        </>
     );
 };
 

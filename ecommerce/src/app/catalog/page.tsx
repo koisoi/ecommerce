@@ -15,6 +15,7 @@ import {
 import CategoryTemplate from "./page.template";
 import { useEffect } from "react";
 import { notFound, useSearchParams } from "next/navigation";
+import CategoriesMenu from "./(categoriesMenu)/categoriesMenu";
 
 const Category = () => {
     const searchParams = useSearchParams();
@@ -43,6 +44,8 @@ const Category = () => {
     }, []);
 
     useEffect(() => {
+        if (!category) return;
+
         const promise = dispatch(fetchCategory({ category, series }));
         promise
             .unwrap()
@@ -60,6 +63,8 @@ const Category = () => {
     }, [category, series]);
 
     useEffect(() => {
+        if (!category) return;
+
         const seriesSiblingsPromise = dispatch(
             fetchSeriesSiblings({ category, series })
         );
@@ -74,7 +79,7 @@ const Category = () => {
 
     // TODO: добавить меню каталога
     if (!category) {
-        return notFound();
+        return <CategoriesMenu />;
     }
 
     return (

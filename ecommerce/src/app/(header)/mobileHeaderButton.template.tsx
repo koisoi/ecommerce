@@ -36,7 +36,9 @@ const MobileHeaderButton = ({
             fontSize: "inherit",
             color: "inherit",
 
-            position: "relative"
+            position: "relative",
+
+            zIndex: 12
         },
 
         onClick
@@ -99,7 +101,7 @@ const MobileHeaderButton = ({
     return (
         <IconButton {...iconButtonsProps} ref={ref} id={id}>
             {child}
-            {amount && (
+            {!!amount && (
                 <Box {...amountBadgeProps}>
                     <Typography {...textProps}>{amount}</Typography>
                 </Box>

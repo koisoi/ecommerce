@@ -11,6 +11,8 @@ import { CartAnimationReducer } from "./slices/cartAnimation.slice";
 import { BackCallReducer } from "./slices/backCall.slice";
 import { SearchReducer } from "./slices/search.slice";
 import { SearchPopoverReducer } from "./slices/searchPopover.slice";
+import { MobileMenuReducer } from "./slices/mobileMenu.slice";
+import { HomePageReducer } from "./slices/homePage.slice";
 
 export const makeStore = () => {
     return configureStore({
@@ -24,7 +26,9 @@ export const makeStore = () => {
             CartAnimationReducer,
             BackCallReducer,
             SearchReducer,
-            SearchPopoverReducer
+            SearchPopoverReducer,
+            MobileMenuReducer,
+            HomePageReducer
         },
         middleware: (getDefaultMiddleware) =>
             getDefaultMiddleware({ serializableCheck: false })

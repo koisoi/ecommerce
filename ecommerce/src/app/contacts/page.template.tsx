@@ -60,7 +60,7 @@ const ContactsTemplate = ({
     };
 
     return (
-        <Container>
+        <>
             <PageTitle>Контактная информация</PageTitle>
 
             <AttentionText>
@@ -329,7 +329,7 @@ const ContactsTemplate = ({
                 Юридический адрес: 603146, Российская Федерация, Нижний
                 Новгород, ул. Саврасова, д. 32, литер Б, помещение 5
             </Paragraph>
-        </Container>
+        </>
     );
 };
 

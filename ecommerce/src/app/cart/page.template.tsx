@@ -34,7 +34,7 @@ const CartTemplate = ({
         flexGrow: 1
     };
 
-    if (loading) return <Loading />;
+    if (loading) return <Loading>Отправка заказа...</Loading>;
 
     return (
         <>

@@ -13,6 +13,7 @@ import { setCookie } from "cookies-next";
 const initialState: {
     landing: string;
     landing_id: number;
+    logoImgLink: string;
     start_url: string;
     referrer: string;
     ip: string;
@@ -22,9 +23,23 @@ const initialState: {
     phoneNumber: string;
     categories: CategoryListItem[];
     categoryImagesLoading: boolean;
+    colors: {
+        primary: {
+            main: string;
+            dark: string;
+            light: string;
+        };
+        secondary: {
+            main: string;
+            dark: string;
+            light: string;
+        };
+    };
 } = {
     landing: "iray",
     landing_id: 49,
+    logoImgLink:
+        "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
     start_url: "",
     referrer: "",
     ip: "",
@@ -54,7 +69,19 @@ const initialState: {
             path: "TOP.nv_thermal_attachments"
         }
     ],
-    categoryImagesLoading: false
+    categoryImagesLoading: false,
+    colors: {
+        primary: {
+            main: "#bd2126",
+            dark: "#7a1619",
+            light: "#ff757a"
+        },
+        secondary: {
+            main: "#e3666a",
+            dark: "#b04d51",
+            light: "#ffb3b5"
+        }
+    }
 };
 
 export const getIp = createAsyncThunk(

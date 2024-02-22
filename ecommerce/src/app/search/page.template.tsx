@@ -43,7 +43,7 @@ const SearchPageTemplate = ({
     return (
         <Box>
             <PageTitle>Поиск</PageTitle>
-            {loading && <Loading search />}
+            {loading && <Loading>Поиск...</Loading>}
             {!loading && response?.list.length !== 0 && (
                 <ProductsGridTemplate {...productsGridProps} />
             )}

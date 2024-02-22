@@ -13,13 +13,15 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import SlidingCartButton from "./slidingCartButton/slidingCartButton";
-import { CategoryListItem, NextLinkProps } from "@/lib";
+import { CategoryListItem, NextLinkProps, useMediaQueries } from "@/lib";
 
 const HeaderDesktopNavigation = ({
     categories
 }: {
     categories: CategoryListItem[];
 }) => {
+    const screen = useMediaQueries();
+
     const innerWrapperProps: BoxProps = {
         position: "relative",
 
@@ -36,8 +38,12 @@ const HeaderDesktopNavigation = ({
         variant: "contained",
         color: "secondary",
 
+        disableFocusRipple: true,
+        disableRipple: true,
+
         sx: {
-            minHeight: "100%",
+            height: "100%",
+            maxHeight: "50px",
             borderRadius: "0px",
             boxShadow: "none",
             color: "white",
@@ -82,7 +88,9 @@ const HeaderDesktopNavigation = ({
     return (
         <Box {...innerWrapperProps}>
             <Button {...catalogButtonProps}>
-                <Menu sx={{ marginRight: "6px" }} /> Каталог
+                <Link {...linksProps} href="/catalog">
+                    Каталог
+                </Link>
             </Button>
             <Tabs {...tabsProps}>
                 {categories.map((category, i) => (

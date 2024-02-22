@@ -1,62 +1,57 @@
 "use client";
 
-import { Box } from "@mui/material";
+import { useAppDispatch, useAppSelector } from "@/lib";
+import HomeTemplate from "./page.template";
+import { GlobalState } from "@/lib/slices/global.slice";
+import {
+    HomePageState,
+    fetchLastReviews,
+    fetchPopularProducts,
+    setPopularProductsLoading,
+    setReviewsLoading
+} from "@/lib/slices/homePage.slice";
+import { useEffect } from "react";
 
 const Home = () => {
+    const dispatch = useAppDispatch();
+
+    const frameLinks = [
+        "https://telescope1.ru/img/banners/pulsar-telos-lrf-xp50/index.html",
+        "https://telescope1.ru/img/banners/nikon-sale/index.html",
+        "https://telescope1.ru/img/banners/club-price-auth/index.html",
+        "https://telescope1.ru/img/banners/vector-optics/index.html",
+        "https://telescope1.ru/img/banners/delivery/index.html"
+    ];
+
+    const { categories, categoryImagesLoading } = useAppSelector(GlobalState);
+    const { reviews, reviewsLoading, popularProducts, popularProductsLoading } =
+        useAppSelector(HomePageState);
+
+    useEffect(() => {
+        const productsPromise = dispatch(fetchPopularProducts());
+        const reviewsPromise = dispatch(fetchLastReviews());
+
+        productsPromise.unwrap().catch((error) => console.error(error));
+        reviewsPromise.unwrap().catch((error) => console.error(error));
+
+        return () => {
+            productsPromise.abort();
+            reviewsPromise.abort();
+            dispatch(setPopularProductsLoading(false));
+            dispatch(setReviewsLoading(false));
+        };
+    }, []);
+
     return (
-        <main>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-            <Box>test</Box>
-        </main>
+        <HomeTemplate
+            frameLinks={frameLinks}
+            categories={categories}
+            categoryImagesLoading={categoryImagesLoading}
+            popularProducts={popularProducts}
+            popularProductsLoading={popularProductsLoading}
+            reviews={reviews}
+            reviewsLoading={reviewsLoading}
+        />
     );
 };
 

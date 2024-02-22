@@ -12,10 +12,10 @@ import {
     useState
 } from "react";
 import StoreProvider from "./storeProvider";
-import Breadcrumbs from "./(shared)/breadcrumbs/breadcrumbs";
 import Container from "./(shared)/container.template";
 import { setCart, useAppDispatch, useAppSelector } from "@/lib";
 import {
+    GlobalState,
     getCategoryImages,
     getGeo,
     getIp,
@@ -30,42 +30,6 @@ import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
 import { BackCallState, closeBackCallModal } from "@/lib/slices/backCall.slice";
 
-const theme = createTheme({
-    palette: {
-        primary: {
-            main: "#bd2126",
-            dark: "#7a1619",
-            light: "#ff757a"
-        },
-        secondary: {
-            main: "#e3666a",
-            dark: "#b04d51",
-            light: "#ffb3b5"
-        },
-        text: {
-            disabled: "#969696",
-            primary: "#212529",
-            secondary: "#545454"
-        },
-        background: {
-            default: "#fff"
-        }
-    },
-    breakpoints: {
-        values: {
-            xs: 0,
-            xsm: 300,
-            sm: 600,
-            smd: 750,
-            md: 900,
-            mlg: 1050,
-            lg: 1200,
-            xlg: 1350,
-            xl: 1536
-        }
-    }
-});
-
 // https://stackoverflow.com/questions/75406728/how-to-entirely-disable-server-side-rendering-in-next-js-v13
 const Dynamic = ({ children }: { children: ReactNode }) => {
     const dispatch = useAppDispatch();
@@ -79,7 +43,35 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
 
     const [hasMounted, setHasMounted] = useState(false);
 
+    const { colors } = useAppSelector(GlobalState);
     const { backCallOpen } = useAppSelector(BackCallState);
+
+    const theme = createTheme({
+        palette: {
+            ...colors,
+            text: {
+                disabled: "#969696",
+                primary: "#212529",
+                secondary: "#545454"
+            },
+            background: {
+                default: "#fff"
+            }
+        },
+        breakpoints: {
+            values: {
+                xs: 0,
+                xsm: 300,
+                sm: 600,
+                smd: 750,
+                md: 900,
+                mlg: 1050,
+                lg: 1200,
+                xlg: 1350,
+                xl: 1536
+            }
+        }
+    });
 
     const handleBackCallClose: MouseEventHandler<HTMLButtonElement> = () => {
         dispatch(closeBackCallModal());
@@ -119,10 +111,10 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
     }
 
     return (
-        <>
+        <ThemeProvider theme={theme}>
             <BackCallForm open={backCallOpen} onClose={handleBackCallClose} />
             {children}
-        </>
+        </ThemeProvider>
     );
 };
 
@@ -138,7 +130,7 @@ const RootLayout = ({
             flexDirection: "column",
             minHeight: "100vh",
             minWidth: "100%",
-            backgroundColor: theme.palette.background.default,
+            backgroundColor: "#fff",
             padding: "0!important",
             boxSizing: "border-box"
 
@@ -158,24 +150,18 @@ const RootLayout = ({
             </head>
             <body {...bodyProps}>
                 <StoreProvider>
-                    <ThemeProvider theme={theme}>
-                        <Dynamic>
-                            <Header />
-                            <Box
-                                padding="40px"
-                                display="flex"
-                                justifyContent="center"
-                                // minHeight="45vh"
-                                flexGrow={1}
-                            >
-                                <Container>
-                                    <Breadcrumbs />
-                                    {children}
-                                </Container>
-                            </Box>
-                            <Footer />
-                        </Dynamic>
-                    </ThemeProvider>
+                    <Dynamic>
+                        <Header />
+                        <Box
+                            padding="40px"
+                            display="flex"
+                            justifyContent="center"
+                            flexGrow={1}
+                        >
+                            <Container>{children}</Container>
+                        </Box>
+                        <Footer />
+                    </Dynamic>
                 </StoreProvider>
             </body>
         </html>

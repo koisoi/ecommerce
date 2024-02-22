@@ -20,6 +20,7 @@ import Price from "../text/price.template";
 import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
+import AppCard, { AppCardProps } from "../appCard.template";
 
 export type ProductCardProps = {
     cartItem: CartItem;
@@ -30,7 +31,7 @@ export type ProductCardProps = {
     cardProps?: CardProps;
     cardMediaProps?: CardMediaProps;
     // TODO: переделать пропы
-    categoryItem?: CategoryItem;
+    categoryItem: CategoryItem;
     hideButtons?: boolean;
 };
 
@@ -45,27 +46,6 @@ const ProductCard = ({
     categoryItem,
     hideButtons
 }: ProductCardProps) => {
-    const colors = useThemeColors();
-
-    const initialCardProps: CardProps = {
-        ...cardProps,
-
-        sx: {
-            width: "100%",
-
-            boxShadow: "none",
-            border: "1px solid",
-            borderColor: "divider",
-            overflow: "visible",
-
-            ":hover": {
-                boxShadow: "0 0 15px 1px " + colors.divider
-            },
-
-            ...cardProps?.sx
-        }
-    };
-
     const imageLinkProps: NextLinkProps = {
         href: cartItem.url,
 
@@ -75,24 +55,6 @@ const ProductCard = ({
             width: "100%",
 
             cursor: "pointer"
-        }
-    };
-
-    const initialCardMediaProps: CardMediaProps = {
-        image: cartItem.imgLink,
-
-        component: "div",
-
-        ...cardMediaProps,
-
-        sx: {
-            width: "100%",
-            height: "310px",
-            position: "relative",
-
-            backgroundSize: "contain",
-
-            ...cardMediaProps?.sx
         }
     };
 
@@ -200,9 +162,12 @@ const ProductCard = ({
         }
     };
 
-    return (
-        <Card {...initialCardProps}>
-            <CardMedia {...initialCardMediaProps}>
+    const appCardProps: AppCardProps = {
+        imageLink: cartItem.imgLink,
+        cardProps,
+        cardMediaProps,
+        cardMediaChildren: (
+            <>
                 <Link {...imageLinkProps} />
                 <Box {...badgeWrapperProps}>
                     {newProduct && <Box {...newProductBadgeProps}>Новинка</Box>}
@@ -212,7 +177,12 @@ const ProductCard = ({
                     )}
                 </Box>
                 {discount && <Box {...discountBadgeProps}>-{discount}%</Box>}
-            </CardMedia>
+            </>
+        )
+    };
+
+    return (
+        <AppCard {...appCardProps}>
             <CardContent>
                 <ProductLink url={cartItem.url}>{cartItem.title}</ProductLink>
                 <Typography {...articleTextProps}>
@@ -230,7 +200,7 @@ const ProductCard = ({
                     <ShoppingCartButton props={buttonProps} item={cartItem} />
                 </CardActions>
             )}
-        </Card>
+        </AppCard>
     );
 };
 

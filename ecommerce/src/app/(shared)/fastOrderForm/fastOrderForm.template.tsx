@@ -143,7 +143,7 @@ const FastOrderFormTemplate = ({
                         />
                     </>
                 )}
-                {loading && <Loading />}
+                {loading && <Loading>Отправка заказа...</Loading>}
             </DialogContent>
         </Dialog>
     );

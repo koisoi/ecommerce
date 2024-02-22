@@ -16,10 +16,12 @@ import BackCallButton from "../(shared)/backCallButton/backCallButton";
 
 const ContactsBox = ({
     phone,
-    address
+    address,
+    props
 }: {
     phone: string;
     address: string;
+    props?: BoxProps;
 }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
@@ -28,7 +30,9 @@ const ContactsBox = ({
 
         boxSizing: "border-box",
 
-        fontSize: "0.95rem"
+        fontSize: "0.95rem",
+
+        ...props
     };
 
     const innerWrapperProps: BoxProps = {

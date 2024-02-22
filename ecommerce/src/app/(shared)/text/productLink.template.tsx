@@ -4,19 +4,18 @@ import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import { ReactNode } from "react";
 
-const ProductLink = ({
-    url,
-    children,
-    props
-}: {
+export type ProductLinkProps = {
     url: Url;
-    children: ReactNode;
+    children?: ReactNode;
     props?: TypographyProps;
-}) => {
+};
+
+const ProductLink = ({ url, children, props }: ProductLinkProps) => {
     const linkProps: NextLinkProps = {
         href: url,
         style: {
-            textDecoration: "none"
+            textDecoration: "none",
+            color: "inherit"
         }
     };
 

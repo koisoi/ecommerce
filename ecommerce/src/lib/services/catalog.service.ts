@@ -1,3 +1,4 @@
+import { store } from "@/app/storeProvider";
 import {
     CategoryInfo,
     CategoryItemsRequest,
@@ -21,7 +22,7 @@ class CategoryService extends Service {
     }): Promise<CategoryInfo> {
         return fetch(
             `${this.baseURL}landing?path=${category}&landing=${
-                series || "iray"
+                series || store.getState().GlobalReducer.landing
             }&format=json`,
             this.options
         )
@@ -46,7 +47,7 @@ class CategoryService extends Service {
     }): Promise<SeriesInfo[]> {
         return fetch(
             `${this.baseURL}landing-siblings?path=${category}&landing=${
-                series || "iray"
+                series || store.getState().GlobalReducer.landing
             }&format=json`,
             this.options
         )
@@ -77,7 +78,7 @@ class CategoryService extends Service {
     }: CategoryItemsRequest): Promise<CategoryItemsResponse> {
         return fetch(
             `${this.baseURL}products?path=${category}&landing=${
-                series || "iray"
+                series || store.getState().GlobalReducer.landing
             }&page=${page}&limit=${productsPerPage}&format=json`,
             this.options
         )

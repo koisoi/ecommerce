@@ -53,7 +53,7 @@ const DeliveryTemplate = () => {
     };
 
     return (
-        <Container>
+        <>
             <PageTitle>Доставка и оплата</PageTitle>
 
             <Title>Способы доставки</Title>
@@ -311,7 +311,7 @@ const DeliveryTemplate = () => {
                 После того как Вы осмотрели покупку и убедились, что все в
                 порядке, Вы платите курьеру наличными или картой.
             </Paragraph>
-        </Container>
+        </>
     );
 };
 

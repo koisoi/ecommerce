@@ -1,3 +1,4 @@
+import { store } from "@/app/storeProvider";
 import {
     AppealForm,
     AppealQuery,
@@ -97,7 +98,7 @@ class OrderService extends Service {
                 action: "add",
                 label
             },
-            site_id: 49, // 49 по стандарту,
+            site_id: store.getState().GlobalReducer.landing_id, // 49 по стандарту,
             parent_id: statistics.parent_id,
             parent_class: "Sale_Model_Appeals",
             source: "сайт",

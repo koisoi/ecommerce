@@ -10,7 +10,7 @@ export * from "./services/product.service";
 
 export * from "./slices/categoryPage.slice";
 export * from "./slices/productsCategoryGrid.slice";
-export * from "./slices/productPageSlice";
+export * from "./slices/productPage.slice";
 export * from "./slices/breadcrumbs.slice";
 export * from "./slices/cart.slice";
 

@@ -4,7 +4,7 @@ import { Box, BoxProps } from "@mui/material";
 import HeaderDesktopNavigation from "./desktopNavigation.template";
 import { CSSProperties } from "react";
 import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
-import { CategoryListItem } from "@/lib";
+import { CategoryListItem, useMediaQueries } from "@/lib";
 
 const HeaderNavigation = ({
     mobile,
@@ -13,12 +13,15 @@ const HeaderNavigation = ({
     mobile: boolean;
     categories: CategoryListItem[];
 }) => {
+    const screen = useMediaQueries();
+
     const navigationProps: { style: CSSProperties } = {
         style: {
             position: "sticky",
             top: "-1px",
             zIndex: 11,
-            boxSizing: "border-box"
+            boxSizing: "border-box",
+            minHeight: screen.md ? "50px" : "45px"
         }
     };
 
@@ -27,7 +30,7 @@ const HeaderNavigation = ({
         justifyContent: { xs: "normal", md: "center" },
 
         width: { xs: "unset", md: "100vw" },
-        height: { xs: "45px", md: "50px" },
+        minHeight: { xs: "45px", md: "50px" },
         paddingX: { xs: "15px", md: "0" },
 
         sx: {
