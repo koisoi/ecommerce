@@ -7,6 +7,12 @@ module.exports = {
     // output: "export",
     trailingSlash: true,
 
+    // not recommended (https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout)
+    // remove after ssr
+    experimental: {
+        missingSuspenseWithCSRBailout: false
+    },
+
     // output: "standalone",
 
     webpack(config) {

@@ -36,7 +36,7 @@ const FastOrderFormTemplate = ({
     onClose,
     loading
 }: {
-    item?: CategoryItem;
+    item: CategoryItem;
     open: boolean;
     form: UseFormReturn<OrderForm>;
     rules: OrderRules;
@@ -99,6 +99,7 @@ const FastOrderFormTemplate = ({
         },
         newProduct: item?.is_new,
         recommended: item?.is_recommend,
+        categoryItem: item,
 
         cardProps: {
             sx: { width: "unset" }
