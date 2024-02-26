@@ -7,9 +7,12 @@ import {
     setMobileMenuOpen
 } from "@/lib/slices/mobileMenu.slice";
 import { GlobalState } from "@/lib/slices/global.slice";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const MobileMenu = () => {
     const dispatch = useAppDispatch();
+    const path = usePathname();
+    const params = useSearchParams();
 
     const { mobileMenuOpen } = useAppSelector(MobileMenuState);
     const { categories, phoneNumber, storeAddress } =
@@ -29,6 +32,8 @@ const MobileMenu = () => {
             categories={categories}
             phone={phoneNumber}
             address={storeAddress}
+            path={path}
+            catalogPath={params.get("category")}
         />
     );
 };

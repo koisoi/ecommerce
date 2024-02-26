@@ -1,6 +1,5 @@
 "use client";
 
-import { Menu } from "@mui/icons-material";
 import {
     Box,
     BoxProps,
@@ -12,16 +11,19 @@ import {
     TabsProps
 } from "@mui/material";
 import Link from "next/link";
-import SlidingCartButton from "./slidingCartButton/slidingCartButton";
-import { CategoryListItem, NextLinkProps, useMediaQueries } from "@/lib";
+import SlidingCartButton from "../slidingCartButton/slidingCartButton";
+import { CategoryListItem } from "@/lib";
+import { CSSProperties } from "react";
 
-const HeaderDesktopNavigation = ({
-    categories
+const HeaderDesktopNavigationTemplate = ({
+    categories,
+    onTabClick,
+    catalogPath
 }: {
     categories: CategoryListItem[];
+    onTabClick: (path: string) => void;
+    catalogPath: string | null;
 }) => {
-    const screen = useMediaQueries();
-
     const innerWrapperProps: BoxProps = {
         position: "relative",
 
@@ -58,15 +60,8 @@ const HeaderDesktopNavigation = ({
         }
     };
 
-    const linksProps: NextLinkProps = {
-        href: "#",
-
-        style: {
-            textDecoration: "none",
-            color: "white",
-            fontWeight: "bold",
-            textTransform: "uppercase"
-        }
+    const linkStyle: CSSProperties = {
+        height: "100%"
     };
 
     const tabsProps: TabsProps = {
@@ -79,35 +74,34 @@ const HeaderDesktopNavigation = ({
         }
     };
 
-    const tabProps: TabProps = {
+    const tabProps = (path: string): TabProps => ({
         sx: {
-            textTransform: "none"
+            textDecoration: "none",
+            color: "white",
+            fontWeight: "bold",
+            textTransform: "uppercase",
+
+            transition: "0.2s",
+            height: "100%",
+
+            ...(path === catalogPath && {
+                backgroundColor: "secondary.main"
+            })
         }
-    };
+    });
 
     return (
         <Box {...innerWrapperProps}>
-            <Button {...catalogButtonProps}>
-                <Link {...linksProps} href="/catalog">
-                    Каталог
-                </Link>
-            </Button>
+            <Link style={linkStyle} href="/catalog">
+                <Button {...catalogButtonProps}>Каталог</Button>
+            </Link>
             <Tabs {...tabsProps}>
                 {categories.map((category, i) => (
                     <Tab
-                        {...tabProps}
+                        {...tabProps(category.path)}
                         key={i}
-                        label={
-                            <Link
-                                {...linksProps}
-                                href={{
-                                    pathname: "/catalog",
-                                    query: { category: category.path }
-                                }}
-                            >
-                                {category.title}
-                            </Link>
-                        }
+                        onClick={() => onTabClick(category.path)}
+                        label={category.title}
                     />
                 ))}
             </Tabs>
@@ -116,4 +110,4 @@ const HeaderDesktopNavigation = ({
     );
 };
 
-export default HeaderDesktopNavigation;
+export default HeaderDesktopNavigationTemplate;

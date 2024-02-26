@@ -12,8 +12,9 @@ const ProductPageLowerBox = () => {
         text
     } = useAppSelector(ProductPageState);
 
-    const [currentTab, setCurrentTab] =
-        useState<ProductPageTabType>("allCharasteristics");
+    const [currentTab, setCurrentTab] = useState<ProductPageTabType>(
+        fullCharacteristics ? "allCharasteristics" : "description"
+    );
 
     const handleTabChange: (
         event: SyntheticEvent<Element, Event>,

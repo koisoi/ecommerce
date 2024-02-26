@@ -4,9 +4,10 @@ import { useAppDispatch, useAppSelector } from "@/lib";
 import SearchPageTemplate from "./page.template";
 import { SearchState, resetSearch, search } from "@/lib/slices/search.slice";
 import { notFound, useSearchParams } from "next/navigation";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, Suspense, useEffect, useState } from "react";
+import Loading from "../(shared)/loading.template";
 
-const SearchPage = () => {
+const SearchPageFC = () => {
     const dispatch = useAppDispatch();
     const params = useSearchParams();
     const productsPerPage = 12;
@@ -57,6 +58,14 @@ const SearchPage = () => {
             page={page}
             pagesCount={pagesCount}
         />
+    );
+};
+
+const SearchPage = () => {
+    return (
+        <Suspense fallback={<Loading>Загрузка...</Loading>}>
+            <SearchPageFC />
+        </Suspense>
     );
 };
 

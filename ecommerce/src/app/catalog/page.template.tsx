@@ -5,7 +5,7 @@ import { Box, BoxProps, Typography } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
 import PageTitle from "../(shared)/text/pageTitle.template";
-import Container from "../(shared)/container.template";
+import Loading from "../(shared)/loading.template";
 
 const CategoryTemplate = ({
     title,
@@ -28,6 +28,8 @@ const CategoryTemplate = ({
         gap: "25px",
         marginBottom: "25px"
     };
+
+    if (loading) return <Loading>Загрузка категории...</Loading>;
 
     return (
         <>

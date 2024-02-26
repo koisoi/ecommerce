@@ -13,6 +13,7 @@ import {
     List,
     ListItem,
     ListItemButton,
+    ListItemButtonProps,
     ListItemProps,
     ListItemText
 } from "@mui/material";
@@ -26,18 +27,21 @@ const MobileMenuTemplate = ({
     onMenuClose,
     categories,
     phone,
-    address
+    address,
+    path,
+    catalogPath
 }: {
     open: boolean;
     onMenuClose: (...props: any) => void;
     categories: CategoryListItem[];
     phone: string;
     address: string;
+    path: string;
+    catalogPath: string | null;
 }) => {
     const drawerProps: DrawerProps = {
         open,
         onClose: onMenuClose,
-        onClick: onMenuClose,
 
         disableRestoreFocus: true
     };
@@ -51,7 +55,27 @@ const MobileMenuTemplate = ({
         minHeight: "fit-content"
     };
 
+    const listItemProps: ListItemProps = {
+        disablePadding: true
+    };
+
+    const listItemButtonProps = (
+        href: string,
+        params?: { category?: string }
+    ): ListItemButtonProps => ({
+        onClick: onMenuClose,
+        selected:
+            (path === `${href}/` || path === href) &&
+            ((!catalogPath && !params) || catalogPath === params?.category),
+        sx: {
+            ...(path === href && {
+                pointerEvents: "none"
+            })
+        }
+    });
+
     const logoListItemProps: ListItemProps = {
+        onClick: onMenuClose,
         sx: {
             display: "flex",
             justifyContent: "space-between",
@@ -79,8 +103,8 @@ const MobileMenuTemplate = ({
                         </IconButton>
                     </ListItem>
 
-                    <ListItem disablePadding>
-                        <ListItemButton>
+                    <ListItem {...listItemProps}>
+                        <ListItemButton {...listItemButtonProps("/")}>
                             <Link href="/" style={linksStyle}>
                                 <ListItemText
                                     primary={<FooterTitle>Главная</FooterTitle>}
@@ -89,32 +113,32 @@ const MobileMenuTemplate = ({
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding>
-                        <ListItemButton>
+                    <ListItem {...listItemProps}>
+                        <ListItemButton {...listItemButtonProps("/delivery")}>
                             <Link href="/delivery" style={linksStyle}>
                                 <ListItemText primary="Доставка и оплата" />
                             </Link>
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding>
-                        <ListItemButton>
+                    <ListItem {...listItemProps}>
+                        <ListItemButton {...listItemButtonProps("/warranty")}>
                             <Link href="/warranty" style={linksStyle}>
                                 <ListItemText primary="Гарантия и возврат" />
                             </Link>
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding>
-                        <ListItemButton>
+                    <ListItem {...listItemProps}>
+                        <ListItemButton {...listItemButtonProps("/contacts")}>
                             <Link href="/contacts" style={linksStyle}>
                                 <ListItemText primary="Контактная информация" />
                             </Link>
                         </ListItemButton>
                     </ListItem>
 
-                    <ListItem disablePadding>
-                        <ListItemButton>
+                    <ListItem {...listItemProps}>
+                        <ListItemButton {...listItemButtonProps("/catalog")}>
                             <Link href="/catalog" style={linksStyle}>
                                 <ListItemText
                                     primary={<FooterTitle>Каталог</FooterTitle>}
@@ -124,8 +148,12 @@ const MobileMenuTemplate = ({
                     </ListItem>
 
                     {categories.map((category) => (
-                        <ListItem key={category.path} disablePadding>
-                            <ListItemButton>
+                        <ListItem key={category.path} {...listItemProps}>
+                            <ListItemButton
+                                {...listItemButtonProps("/catalog", {
+                                    category: category.path
+                                })}
+                            >
                                 <Link
                                     href={{
                                         pathname: "/catalog",

@@ -9,7 +9,6 @@ import {
 import {
     Box,
     BoxProps,
-    CardProps,
     Tab,
     TabProps,
     Tabs,
@@ -29,11 +28,11 @@ export type ProductPageLowerBoxProps = {
         event: SyntheticEvent<Element, Event>,
         value: ProductPageTabType
     ) => void;
-    fullCharasterictics: ProductCharacteristics;
-    description: string;
-    feedback: ProductReview[];
+    fullCharasterictics?: ProductCharacteristics;
+    description?: string;
+    feedback?: ProductReview[];
     simliarProducts: CategoryItem[];
-    complectation: string;
+    complectation?: string;
 };
 
 const ProductPageLowerBoxTemplate = ({
@@ -80,7 +79,10 @@ const ProductPageLowerBoxTemplate = ({
             ? {
                   __html: description.replace(backendTextRegExp, "<br />")
               }
-            : undefined
+            : undefined,
+        sx: {
+            fontSize: "1rem"
+        }
     };
 
     const complectationBoxProps: BoxProps = {
@@ -88,7 +90,10 @@ const ProductPageLowerBoxTemplate = ({
             ? {
                   __html: complectation.replace(backendTextRegExp, "<br />")
               }
-            : undefined
+            : undefined,
+        sx: {
+            fontSize: "1rem"
+        }
     };
 
     const simliarTitleProps: TypographyProps = {
@@ -103,20 +108,41 @@ const ProductPageLowerBoxTemplate = ({
 
     return (
         <Box {...wrapperProps}>
-            <Tabs {...tabsProps}>
-                <Tab
-                    value={"allCharasteristics"}
-                    label={"Все характеристики"}
-                    {...tabProps}
-                />
-                <Tab value={"description"} label={"Описание"} {...tabProps} />
-                <Tab
-                    value={"complectation"}
-                    label={"Комплектация"}
-                    {...tabProps}
-                />
-                <Tab value={"feedback"} label={"Отзывы"} {...tabProps} />
-            </Tabs>
+            {(fullCharasterictics ||
+                description ||
+                complectation ||
+                (feedback && feedback.length)) && (
+                <Tabs {...tabsProps}>
+                    {fullCharasterictics && (
+                        <Tab
+                            value={"allCharasteristics"}
+                            label={"Все характеристики"}
+                            {...tabProps}
+                        />
+                    )}
+                    {description && (
+                        <Tab
+                            value={"description"}
+                            label={"Описание"}
+                            {...tabProps}
+                        />
+                    )}
+                    {complectation && (
+                        <Tab
+                            value={"complectation"}
+                            label={"Комплектация"}
+                            {...tabProps}
+                        />
+                    )}
+                    {feedback && feedback.length && (
+                        <Tab
+                            value={"feedback"}
+                            label={"Отзывы"}
+                            {...tabProps}
+                        />
+                    )}
+                </Tabs>
+            )}
             <Box {...innerWrapperProps}>
                 {currentTab === "allCharasteristics" && (
                     <AllCharacteristicsBox
@@ -145,12 +171,13 @@ const ProductPageLowerBoxTemplate = ({
                 )}
                 {currentTab === "feedback" && (
                     <>
-                        {!feedback.length && (
-                            <Typography {...noTextProps}>
-                                У данного товара нет отзывов.
-                            </Typography>
-                        )}
-                        {!!feedback.length && (
+                        {!feedback ||
+                            (!feedback.length && (
+                                <Typography {...noTextProps}>
+                                    У данного товара нет отзывов.
+                                </Typography>
+                            ))}
+                        {feedback && !!feedback.length && (
                             <FeedbackBoxTemplate feedback={feedback} />
                         )}
                     </>

@@ -19,7 +19,7 @@ const Contacts = () => {
         nnImageLinks: [
             "https://telescope1.ru/data/upload/static/images/savrasova-1.jpg",
             "https://telescope1.ru/data/upload/static/images/savrasova-2.jpg",
-            "	https://telescope1.ru/data/upload/static/images/savrasova-3.jpg"
+            "https://telescope1.ru/data/upload/static/images/savrasova-3.jpg"
         ]
     };
 

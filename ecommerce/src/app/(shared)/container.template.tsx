@@ -1,5 +1,5 @@
 import { Box, BoxProps } from "@mui/material";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 import Breadcrumbs from "./breadcrumbs/breadcrumbs";
 
 const Container = ({ children }: { children?: ReactNode }) => {
@@ -10,11 +10,15 @@ const Container = ({ children }: { children?: ReactNode }) => {
         fontSize: "15px"
     };
 
+    const bodyStyle: CSSProperties = {
+        width: "100%",
+        height: "100%"
+    };
+
     return (
         <Box {...wrapperProps}>
-            <main style={{ width: "100%" }}>
+            <main style={bodyStyle}>
                 <Breadcrumbs />
-
                 {children}
             </main>
         </Box>

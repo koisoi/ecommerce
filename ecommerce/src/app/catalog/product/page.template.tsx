@@ -1,10 +1,20 @@
 "use client";
 
-import { Box, BoxProps, Modal, ModalProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    IconButton,
+    IconButtonProps,
+    Modal,
+    ModalProps
+} from "@mui/material";
 import { CSSProperties } from "react";
 import Title from "@/app/(shared)/text/title.template";
 import ProductPageLowerBox from "./(lowerBox)/productPageLowerBox";
 import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
+import Loading from "@/app/(shared)/loading.template";
+import { Close } from "@mui/icons-material";
+import { useMediaQueries } from "@/lib";
 
 const ProductPageTemplate = ({
     title,
@@ -15,9 +25,11 @@ const ProductPageTemplate = ({
 }: {
     title: string;
     openedImgLink: string | null;
-    onImgClose: (event: {}, reason: "backdropClick" | "escapeKeyDown") => void;
+    onImgClose: (...props: any) => void;
     loading: boolean;
 }) => {
+    const screen = useMediaQueries();
+
     const modalProps: ModalProps = {
         open: !!openedImgLink,
         onClose: onImgClose,
@@ -29,6 +41,8 @@ const ProductPageTemplate = ({
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
+
+            // position: "relative"
         }
     };
 
@@ -54,16 +68,35 @@ const ProductPageTemplate = ({
         } as CSSProperties
     };
 
-    if (loading) return null;
+    const iconButtonProps: IconButtonProps = {
+        size: screen.sm ? "large" : "medium",
+        sx: {
+            position: "fixed",
+            top: "20px",
+            right: "20px",
+            color: "white"
+        },
+
+        onClick: onImgClose
+    };
+
+    if (loading) return <Loading>Загрузка товара...</Loading>;
 
     return (
         <>
             <Modal {...modalProps}>
                 <>
                     {!!openedImgLink && (
-                        <Box {...fullImgBoxProps}>
-                            <img {...fullImgProps} />
-                        </Box>
+                        <>
+                            <Box {...fullImgBoxProps}>
+                                <img {...fullImgProps} />
+                            </Box>
+                            <IconButton {...iconButtonProps}>
+                                <Close
+                                    fontSize={screen.sm ? "large" : "medium"}
+                                />
+                            </IconButton>
+                        </>
                     )}
                 </>
             </Modal>

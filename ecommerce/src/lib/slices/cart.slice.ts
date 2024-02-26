@@ -4,7 +4,7 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { CartItem } from "../types/cart";
 import { OrderData, OrderForm, RootState, StatisticsForm } from "..";
 import { orderAPI } from "../services/order.service";
-import { changeCart, deleteCart } from "../functions/cartCookie";
+import { changeCart, deleteCart, getCart } from "../functions/cartCookie";
 
 const initialState: {
     items: CartItem[];
@@ -104,43 +104,56 @@ const slice = createSlice({
     initialState,
     reducers: {
         setCart(state, action: PayloadAction<CartItem[]>) {
+            const cart = JSON.parse(getCart() || "[]");
+            const items: CartItem[] = [...cart, ...action.payload];
             //@ts-ignore
-            state.items = action.payload;
+            state.items = items;
             state.cartTotal = calculateCartTotal(state.items);
-            changeCart(state.items);
+            changeCart(items);
         },
         addItemToCart(state, action: PayloadAction<CartItem>) {
-            const cartItem = state.items.find(
+            const cart = JSON.parse(getCart() || "[]");
+            const items: CartItem[] = [...cart];
+            const cartItem = items.find(
                 (val) => val.alias === action.payload.alias
             );
             if (!!cartItem) cartItem.amount++;
+            else items.push(action.payload);
             //@ts-ignore
-            else state.items.push(action.payload);
+            state.items = items;
             state.cartTotal = calculateCartTotal(state.items);
-            changeCart(state.items);
+            changeCart(items);
         },
         setCartItemAmount(
             state,
             action: PayloadAction<{ item: CartItem; amount: number }>
         ) {
-            const cartItem = state.items.find(
+            const cart = JSON.parse(getCart() || "[]");
+            const items: CartItem[] = [...cart];
+            const cartItem = items.find(
                 (val) => val.alias === action.payload.item.alias
             );
             if (!cartItem) return;
             else cartItem.amount = action.payload.amount;
+            //@ts-ignore
+            state.items = items;
             state.cartTotal = calculateCartTotal(state.items);
-            changeCart(state.items);
+            changeCart(items);
         },
         deleteItemFromCart(state, action: PayloadAction<CartItem>) {
-            const cartItemIndex = state.items.findIndex(
+            const cart = JSON.parse(getCart() || "[]");
+            const items: CartItem[] = [...cart];
+            const cartItemIndex = items.findIndex(
                 (val) => val.alias === action.payload.alias
             );
 
             if (cartItemIndex === -1) return;
             else {
-                state.items.splice(cartItemIndex, 1);
+                items.splice(cartItemIndex, 1);
+                //@ts-ignore
+                state.items = items;
                 state.cartTotal = calculateCartTotal(state.items);
-                changeCart(state.items);
+                changeCart(items);
             }
         },
         clearCart(state) {

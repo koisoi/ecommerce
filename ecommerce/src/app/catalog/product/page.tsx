@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect } from "react";
+import { Suspense, useEffect } from "react";
 import ProductPageTemplate from "./page.template";
 import {
     ProductPageState,
@@ -15,8 +15,9 @@ import {
     useAppSelector
 } from "@/lib";
 import { notFound, useSearchParams } from "next/navigation";
+import Loading from "@/app/(shared)/loading.template";
 
-const ProductPage = () => {
+const ProductPageFC = () => {
     const searchParams = useSearchParams();
     const alias: string | null = searchParams.get("product");
     const category: string | null = searchParams.get("category");
@@ -31,6 +32,7 @@ const ProductPage = () => {
         is_recommend,
         loading,
         openedImgLink,
+        category: itemCategory,
         wrongProductQuery: wrongQuery
     } = useAppSelector(ProductPageState);
 
@@ -68,11 +70,19 @@ const ProductPage = () => {
 
     return (
         <ProductPageTemplate
-            title={title}
+            title={`${itemCategory.title_single} ${title}`}
             openedImgLink={openedImgLink}
             onImgClose={handleImgClose}
             loading={loading}
         />
+    );
+};
+
+const ProductPage = () => {
+    return (
+        <Suspense fallback={<Loading>Загрузка...</Loading>}>
+            <ProductPageFC />
+        </Suspense>
     );
 };
 

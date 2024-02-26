@@ -48,6 +48,7 @@ const FastOrderFormTemplate = ({
 
     const dialogProps: DialogProps = {
         open,
+        disableScrollLock: true,
         maxWidth: screen.sm ? "md" : "xs",
         fullWidth: true
     };

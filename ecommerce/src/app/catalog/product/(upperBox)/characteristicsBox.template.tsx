@@ -4,7 +4,7 @@ import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 const CharacteristicsBox = ({
     characteristics
 }: {
-    characteristics: ProductCharacteristic;
+    characteristics?: ProductCharacteristic;
 }) => {
     const wrapperProps: BoxProps = {
         color: "text.main",
@@ -28,12 +28,13 @@ const CharacteristicsBox = ({
 
     return (
         <Box {...wrapperProps}>
-            {!Object.entries(characteristics).length && (
+            {(!characteristics || !Object.entries(characteristics).length) && (
                 <Typography {...noTextProps}>
                     У данного товара нет характеристик.
                 </Typography>
             )}
-            {!!Object.entries(characteristics).length &&
+            {characteristics &&
+                !!Object.entries(characteristics).length &&
                 Object.entries(characteristics).map(
                     ([charTitle, description], i) => (
                         <Box key={i}>

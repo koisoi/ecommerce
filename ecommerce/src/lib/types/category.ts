@@ -32,6 +32,7 @@ export type CategoryItem = {
     category: {
         path: string;
         title: string;
+        title_single?: string;
     };
     series?: {
         alias: string;

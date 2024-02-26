@@ -13,11 +13,12 @@ import {
     useAppSelector
 } from "@/lib";
 import CategoryTemplate from "./page.template";
-import { useEffect } from "react";
-import { notFound, useSearchParams } from "next/navigation";
+import { Suspense, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import CategoriesMenu from "./(categoriesMenu)/categoriesMenu";
+import Loading from "../(shared)/loading.template";
 
-const Category = () => {
+const CategoryFC = () => {
     const searchParams = useSearchParams();
     const dispatch = useAppDispatch();
     const category: string | null = searchParams.get("category");
@@ -92,6 +93,14 @@ const Category = () => {
             seriesAlias={series}
             parent_class={parent_class}
         />
+    );
+};
+
+const Category = () => {
+    return (
+        <Suspense fallback={<Loading>Загрузка...</Loading>}>
+            <CategoryFC />
+        </Suspense>
     );
 };
 

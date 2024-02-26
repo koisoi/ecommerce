@@ -32,7 +32,6 @@ import {
 } from "../(shared)/formFields.template";
 import { AppealForm } from "@/lib";
 import Loading from "../(shared)/loading.template";
-import TableTitle from "../(shared)/text/tableTitle.template";
 import SecondTitle from "../(shared)/text/secondTitle.template";
 
 const BackCallFormTemplate = ({

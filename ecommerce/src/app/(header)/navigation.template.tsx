@@ -1,17 +1,20 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import HeaderDesktopNavigation from "./desktopNavigation.template";
+import HeaderDesktopNavigationTemplate from "./desktopNavigation/desktopNavigation.template";
 import { CSSProperties } from "react";
 import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
 import { CategoryListItem, useMediaQueries } from "@/lib";
+import HeaderDesktopNavigation from "./desktopNavigation/desktopNavigation";
 
 const HeaderNavigation = ({
     mobile,
-    categories
+    categories,
+    onDesktopTabClick
 }: {
     mobile: boolean;
     categories: CategoryListItem[];
+    onDesktopTabClick: (path: string) => void;
 }) => {
     const screen = useMediaQueries();
 
@@ -42,7 +45,12 @@ const HeaderNavigation = ({
         <nav {...navigationProps}>
             <Box {...wrapperProps}>
                 {mobile && <HeaderMobileNavigation />}
-                {!mobile && <HeaderDesktopNavigation categories={categories} />}
+                {!mobile && (
+                    <HeaderDesktopNavigation
+                        categories={categories}
+                        onTabClick={onDesktopTabClick}
+                    />
+                )}
             </Box>
         </nav>
     );

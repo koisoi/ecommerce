@@ -91,7 +91,9 @@ class CategoryService extends Service {
                 }
                 return response.json();
             })
-            .then((data) => data.products);
+            .then((data) => {
+                return data.products;
+            });
     }
 }
 

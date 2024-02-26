@@ -150,7 +150,7 @@ export const ShoppingCartButtonTemplate = ({
                 "100%": {
                     transform: `translate(${translateTo?.x || 0}px, ${
                         translateTo?.y || -1000
-                    }px) scale(0)`
+                    }px) scale(0.5)`
                 }
             },
 

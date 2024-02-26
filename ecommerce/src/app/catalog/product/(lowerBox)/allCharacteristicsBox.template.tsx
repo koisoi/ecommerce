@@ -12,7 +12,7 @@ import {
 const AllCharacteristicsBox = ({
     fullCharacteristics
 }: {
-    fullCharacteristics: ProductCharacteristics;
+    fullCharacteristics?: ProductCharacteristics;
 }) => {
     const noTextProps: TypographyProps = {
         color: "text.disabled"
@@ -31,9 +31,9 @@ const AllCharacteristicsBox = ({
     const titleProps: TypographyProps = {
         color: "primary.main",
         fontWeight: "bold",
-        fontSize: "1.6rem",
+        fontSize: "1.3rem",
         lineHeight: 1,
-        paddingY: "16px"
+        paddingY: "8px"
     };
 
     const characteristicsBoxProps: BoxProps = {
@@ -41,17 +41,19 @@ const AllCharacteristicsBox = ({
         flexDirection: "column",
         gap: "10px",
         marginBottom: "30px",
-        marginTop: "16px"
+        marginTop: "8px"
     };
 
     return (
         <Box>
-            {!Object.entries(fullCharacteristics).length && (
+            {(!fullCharacteristics ||
+                !Object.entries(fullCharacteristics).length) && (
                 <Typography {...noTextProps}>
                     У данного товара нет полных характеристик.
                 </Typography>
             )}
-            {!!Object.entries(fullCharacteristics).length &&
+            {fullCharacteristics &&
+                !!Object.entries(fullCharacteristics).length &&
                 Object.entries(fullCharacteristics).map(
                     ([charTitle, charCategory], i) => (
                         <Box key={i}>

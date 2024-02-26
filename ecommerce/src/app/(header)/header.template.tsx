@@ -7,7 +7,13 @@ import { useMediaQueries } from "../../lib/hooks";
 import HeaderMainContainer from "./mainContainer/mainContainer";
 import { CategoryListItem } from "@/lib";
 
-const HeaderTemplate = ({ categories }: { categories: CategoryListItem[] }) => {
+const HeaderTemplate = ({
+    categories,
+    onDesktopTabClick
+}: {
+    categories: CategoryListItem[];
+    onDesktopTabClick: (path: string) => void;
+}) => {
     const screen = useMediaQueries();
 
     const wrapperProps: BoxProps = {
@@ -22,7 +28,11 @@ const HeaderTemplate = ({ categories }: { categories: CategoryListItem[] }) => {
     return (
         <>
             {!screen.md && (
-                <HeaderNavigation mobile={true} categories={categories} />
+                <HeaderNavigation
+                    mobile={true}
+                    categories={categories}
+                    onDesktopTabClick={onDesktopTabClick}
+                />
             )}
             <header>
                 <Box {...wrapperProps}>
@@ -31,7 +41,11 @@ const HeaderTemplate = ({ categories }: { categories: CategoryListItem[] }) => {
                 </Box>
             </header>
             {screen.md && (
-                <HeaderNavigation mobile={false} categories={categories} />
+                <HeaderNavigation
+                    mobile={false}
+                    categories={categories}
+                    onDesktopTabClick={onDesktopTabClick}
+                />
             )}
         </>
     );

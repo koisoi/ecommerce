@@ -100,8 +100,8 @@ export const getGeo = createAsyncThunk(
     "global/getGeo",
     async (_, { getState, rejectWithValue, dispatch }) => {
         try {
+            await dispatch(getIp());
             const { ip } = (getState() as RootState).GlobalReducer;
-            if (!ip) await dispatch(getIp());
             const response = await fetch(
                 `https://dev.telescope1.ru/geo/backend/locate?ip=${ip}&format=json`,
                 {

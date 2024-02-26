@@ -80,7 +80,9 @@ class ProductService extends Service {
                 }
                 return response.json();
             })
-            .then((data) => data.filters);
+            .then((data) =>
+                data.filters.length === 0 ? undefined : data.filters
+            );
     }
 
     /**

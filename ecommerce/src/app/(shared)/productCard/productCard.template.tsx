@@ -1,9 +1,7 @@
 "use client";
 
 import {
-    Card,
     CardContent,
-    CardMedia,
     CardActions,
     ButtonProps,
     CardActionsProps,
@@ -15,7 +13,7 @@ import {
     Box
 } from "@mui/material";
 import Link from "next/link";
-import { CategoryItem, NextLinkProps, useThemeColors } from "@/lib";
+import { CategoryItem, NextLinkProps } from "@/lib";
 import Price from "../text/price.template";
 import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
@@ -184,7 +182,9 @@ const ProductCard = ({
     return (
         <AppCard {...appCardProps}>
             <CardContent>
-                <ProductLink url={cartItem.url}>{cartItem.title}</ProductLink>
+                <ProductLink url={cartItem.url}>
+                    {categoryItem.category.title_single} {cartItem.title}
+                </ProductLink>
                 <Typography {...articleTextProps}>
                     Артикул: {cartItem.articul}
                 </Typography>

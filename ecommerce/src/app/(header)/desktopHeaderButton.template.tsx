@@ -5,8 +5,6 @@ import {
     BoxProps,
     Button,
     ButtonProps,
-    IconButton,
-    IconButtonProps,
     Typography,
     TypographyProps
 } from "@mui/material";
@@ -16,7 +14,6 @@ export type DesktopHeaderButtonProps = {
     children?: ReactNode;
     text: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
-    ref?: RefObject<HTMLButtonElement>;
     id?: string;
 };
 
@@ -24,7 +21,6 @@ const DesktopHeaderButton = ({
     children,
     text: upperText,
     onClick,
-    ref,
     id
 }: DesktopHeaderButtonProps) => {
     const wrapperProps: ButtonProps = {
@@ -48,26 +44,6 @@ const DesktopHeaderButton = ({
         marginLeft: "5px"
     };
 
-    // const iconWrapperProps: IconButtonProps = {
-    //     disableFocusRipple: true,
-    //     disableRipple: true,
-
-    //     sx: {
-    //         color: "text.disabled",
-    //         marginRight: "10px",
-    //         height: "24px",
-    //         width: "24px",
-    //         transition: "0.2s",
-
-    //         ":hover": {
-    //             color: "primary.main",
-    //             cursor: "pointer"
-    //         }
-    //     },
-
-    //     onClick
-    // };
-
     const upperTextProps: TypographyProps = {
         fontSize: "0.9rem",
         lineHeight: "1.2",
@@ -77,7 +53,7 @@ const DesktopHeaderButton = ({
     };
 
     return (
-        <Button {...wrapperProps} ref={ref} id={id}>
+        <Button {...wrapperProps} id={id}>
             {children}
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>{upperText}</Typography>

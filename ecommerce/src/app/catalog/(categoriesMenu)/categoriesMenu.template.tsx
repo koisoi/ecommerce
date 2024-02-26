@@ -1,14 +1,9 @@
 "use client";
 
-import AppCard, { AppCardProps } from "@/app/(shared)/appCard.template";
 import CategoryCard from "@/app/(shared)/categoryCard.template";
 import Loading from "@/app/(shared)/loading.template";
-import ProductLink, {
-    ProductLinkProps
-} from "@/app/(shared)/text/productLink.template";
 import { CategoryListItem, NextLinkProps } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
-import Link from "next/link";
 
 const CategoriesMenuTemplate = ({
     categories,

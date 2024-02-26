@@ -27,7 +27,7 @@ import { CartItem } from "@/lib/types/cart";
 export type ProductPageUpperBoxProps = {
     imageLinks: { url: string; id: number }[];
     stock: boolean;
-    characteristics: ProductCharacteristic;
+    characteristics?: ProductCharacteristic;
     cartItem: CartItem;
     onImgClick: MouseEventHandler<HTMLDivElement>;
     onDragStart: DragEventHandler<HTMLDivElement>;

@@ -13,19 +13,17 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { MouseEventHandler, ReactNode, RefObject } from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 const MobileHeaderButton = ({
     variant,
     amount,
     onClick,
-    ref,
     id
 }: {
     variant: "menu" | "favorite" | "shoppingCart" | "accountCircle";
     amount?: number;
     onClick?: MouseEventHandler<HTMLButtonElement>;
-    ref?: RefObject<HTMLButtonElement>;
     id?: string;
 }) => {
     const iconButtonsProps: IconButtonProps = {
@@ -99,7 +97,7 @@ const MobileHeaderButton = ({
     if (child === null) return <></>;
 
     return (
-        <IconButton {...iconButtonsProps} ref={ref} id={id}>
+        <IconButton {...iconButtonsProps} id={id}>
             {child}
             {!!amount && (
                 <Box {...amountBadgeProps}>

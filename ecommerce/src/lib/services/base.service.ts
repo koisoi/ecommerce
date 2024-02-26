@@ -12,6 +12,7 @@ export abstract class Service {
                 Authorization: "Basic " + btoa("fr123:123qwe"),
                 "Content-Type": "application/json"
             }),
+            cache: "no-store",
             ...options
         };
     }

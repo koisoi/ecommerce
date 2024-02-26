@@ -29,7 +29,7 @@ export type ProductReview = {
 };
 
 export type FullProductInfo = MainProductInfo & {
-    shortCharacteristics: ProductCharacteristic;
+    shortCharacteristics?: ProductCharacteristic;
     fullCharacteristics: ProductCharacteristics;
     reviews: ProductReview[];
     siblings: CategoryItem[];

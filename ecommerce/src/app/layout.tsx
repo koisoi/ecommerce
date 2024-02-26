@@ -18,7 +18,6 @@ import {
     GlobalState,
     getCategoryImages,
     getGeo,
-    getIp,
     setGeo,
     setReferrer,
     setStartUrl,
@@ -82,7 +81,6 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
     }, []);
 
     useEffect(() => {
-        dispatch(getIp());
         dispatch(setReferrer(document.referrer));
         dispatch(setStartUrl(document.URL));
         dispatch(
@@ -123,23 +121,28 @@ const RootLayout = ({
 }: Readonly<{
     children: ReactNode;
 }>) => {
+    const htmlStyle: CSSProperties = {
+        overflow: "auto",
+        scrollbarGutter: "stable",
+        maxWidth: "100vw",
+        overflowX: "hidden"
+    };
+
     const bodyProps: { className: string; style: CSSProperties } = {
         className: `${styles.mainFont}`,
         style: {
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
-            minWidth: "100%",
+            // minWidth: "100vw",
             backgroundColor: "#fff",
             padding: "0!important",
             boxSizing: "border-box"
-
-            // overflowX: "hidden"
         }
     };
 
     return (
-        <html lang="ru">
+        <html lang="ru" style={htmlStyle}>
             <head>
                 <meta charSet="UTF-8" />
                 <meta
