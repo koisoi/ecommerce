@@ -71,7 +71,7 @@ const ProductPageLowerBoxTemplate = ({
 
     const innerWrapperProps: BoxProps = {
         width: "100%",
-        paddingY: "2rem"
+        paddingY: "0.8rem"
     };
 
     const descriptionBoxProps: BoxProps = {
@@ -81,7 +81,16 @@ const ProductPageLowerBoxTemplate = ({
               }
             : undefined,
         sx: {
-            fontSize: "1rem"
+            fontSize: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+            strong: {
+                color: "primary.main",
+                fontWeight: "bold",
+                paddingTop: "10px",
+                fontSize: "1.3rem"
+            }
         }
     };
 
@@ -92,7 +101,30 @@ const ProductPageLowerBoxTemplate = ({
               }
             : undefined,
         sx: {
-            fontSize: "1rem"
+            fontSize: "1rem",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+
+            ul: {
+                listStyle: "none",
+                marginLeft: 0,
+                paddingLeft: 0
+            },
+
+            li: {
+                marginTop: "10px",
+                paddingLeft: "1em",
+                textIndent: "-1em"
+                // color: "primary.main"
+                // fontWeight: "bold"
+            },
+
+            "li:before": {
+                content: '"—"',
+                paddingRight: "10px",
+                color: "text.primary"
+            }
         }
     };
 

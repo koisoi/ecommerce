@@ -9,31 +9,30 @@ import {
 } from "react";
 import HeaderMainContainerTemplate from "./mainContainer.template";
 import { useRouter } from "next/navigation";
-import { useAppDispatch, useAppSelector } from "@/lib";
-import { setDesktopCartButtonRect } from "@/lib/slices/cartAnimation.slice";
+import { CartState, useAppDispatch, useAppSelector } from "@/lib";
 import { GlobalState } from "@/lib/slices/global.slice";
 
 const HeaderMainContainer = () => {
-    const dispatch = useAppDispatch();
     const router = useRouter();
 
     const { storeAddress, phoneNumber } = useAppSelector(GlobalState);
+    const { items } = useAppSelector(CartState);
+
+    const amount = items.reduce<number>(
+        (prev, _, i, arr) => prev + arr[i].amount,
+        0
+    );
 
     const handleCartClick: MouseEventHandler<HTMLButtonElement> = () => {
         router.push("/cart");
     };
-
-    useLayoutEffect(() => {
-        const button = document.getElementById("desktop-header-button");
-
-        dispatch(setDesktopCartButtonRect(button?.getBoundingClientRect()));
-    }, []);
 
     return (
         <HeaderMainContainerTemplate
             onCartClick={handleCartClick}
             storeAddress={storeAddress}
             phone={phoneNumber}
+            cartAmount={amount}
         />
     );
 };

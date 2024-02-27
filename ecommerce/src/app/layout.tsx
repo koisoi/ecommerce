@@ -100,8 +100,7 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
             dispatch(setGeo(geo as "rf" | "nn" | "msk" | "spb"));
         }
 
-        const cartCookie = getCookie("cart");
-        if (cartCookie) dispatch(setCart(JSON.parse(cartCookie)));
+        if (getCookie("cart")) dispatch(setCart([]));
     }, []);
 
     if (!hasMounted) {

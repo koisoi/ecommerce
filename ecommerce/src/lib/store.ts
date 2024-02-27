@@ -7,7 +7,6 @@ import {
     CartReducer
 } from ".";
 import { GlobalReducer } from "./slices/global.slice";
-import { CartAnimationReducer } from "./slices/cartAnimation.slice";
 import { BackCallReducer } from "./slices/backCall.slice";
 import { SearchReducer } from "./slices/search.slice";
 import { SearchPopoverReducer } from "./slices/searchPopover.slice";
@@ -23,7 +22,6 @@ export const makeStore = () => {
             BreadcrumbsReducer,
             CartReducer,
             GlobalReducer,
-            CartAnimationReducer,
             BackCallReducer,
             SearchReducer,
             SearchPopoverReducer,

@@ -9,7 +9,6 @@ import {
 } from "@/lib";
 import { ButtonProps, TypographyProps } from "@mui/material";
 import { MouseEventHandler, useState } from "react";
-import { CartAnimationState } from "@/lib/slices/cartAnimation.slice";
 
 export type BuyButtonProps = {
     props?: ButtonProps;
@@ -29,28 +28,45 @@ export const ShoppingCartButton = ({
         { x: number; y: number } | undefined
     >(undefined);
 
-    const {
-        desktopCartButtonRect,
-        desktopSlidingCartButtonRect,
-        mobileCartButtonRect
-    } = useAppSelector(CartAnimationState);
-
     const handleAddToCartClick: MouseEventHandler<HTMLButtonElement> = (
         event
     ) => {
         dispatch(addItemToCart(item));
 
         const scrolled = document.documentElement.scrollTop;
-        const buttonRect = screen.md
+        const id = screen.md
             ? scrolled > 500
-                ? desktopSlidingCartButtonRect
-                : desktopCartButtonRect
-            : mobileCartButtonRect;
+                ? "desktop-sliding-header-button"
+                : "desktop-header-button"
+            : "mobile-shopping-cart-button";
+        const button = document.getElementById(id);
 
-        const translateTo = {
-            x: buttonRect!.x - event.currentTarget.getBoundingClientRect().x,
-            y: buttonRect!.y - event.currentTarget.getBoundingClientRect().y
-        };
+        const translateTo =
+            screen.md && scrolled > 500
+                ? {
+                      x:
+                          button!.getBoundingClientRect().x -
+                          event.currentTarget.getBoundingClientRect().x -
+                          16,
+                      y:
+                          button!.getBoundingClientRect().y -
+                          event.currentTarget.getBoundingClientRect().y
+                  }
+                : {
+                      x:
+                          button!.getBoundingClientRect().x -
+                          event.currentTarget.getBoundingClientRect().x,
+                      y:
+                          button!.getBoundingClientRect().y -
+                          event.currentTarget.getBoundingClientRect().y
+                  };
+
+        console.log(
+            button!.getBoundingClientRect().x,
+            button!.getBoundingClientRect().y,
+            event.currentTarget.getBoundingClientRect().x,
+            event.currentTarget.getBoundingClientRect().y
+        );
 
         setTranslateTo(translateTo);
         event.currentTarget.getBoundingClientRect;

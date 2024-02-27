@@ -1,18 +1,10 @@
 "use client";
 
-import {
-    Box,
-    BoxProps,
-    Typography,
-    TypographyProps,
-    LinkProps
-} from "@mui/material";
+import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import DesktopHeaderButton, {
     DesktopHeaderButtonProps
 } from "../desktopHeaderButton.template";
 import { ShoppingCart } from "@mui/icons-material";
-import { useThemeColors } from "@/lib";
-import Link from "next/link";
 import { MouseEventHandler } from "react";
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
@@ -22,14 +14,14 @@ import Logo from "../logo/logo";
 const HeaderMainContainerTemplate = ({
     onCartClick,
     storeAddress,
-    phone
+    phone,
+    cartAmount
 }: {
     onCartClick: MouseEventHandler<HTMLButtonElement>;
     storeAddress: string;
     phone: string;
+    cartAmount: number;
 }) => {
-    const colors = useThemeColors();
-
     const outerWrapperProps: BoxProps = {
         paddingY: "2rem",
         marginX: "auto",
@@ -88,21 +80,13 @@ const HeaderMainContainerTemplate = ({
 
     const cartButtonProps: DesktopHeaderButtonProps = {
         text: "Корзина",
-        onClick: onCartClick
+        onClick: onCartClick,
+        lowerText: `Товаров: ${cartAmount}`
     };
 
     const addressProps: TypographyProps = {
         color: "text.disabled",
         fontSize: "0.8rem"
-    };
-
-    const phoneLinkProps: LinkProps = {
-        href: "tel:88009870011",
-        sx: {
-            color: colors.primary,
-            fontWeight: "bold",
-            textDecoration: "none"
-        }
     };
 
     return (
@@ -123,11 +107,8 @@ const HeaderMainContainerTemplate = ({
                     </Box>
                     <Box {...buttonsRowProps}>
                         <BackCallButton />
-                        <DesktopHeaderButton
-                            {...cartButtonProps}
-                            id="desktop-header-button"
-                        >
-                            <ShoppingCart />
+                        <DesktopHeaderButton {...cartButtonProps}>
+                            <ShoppingCart id="desktop-header-button" />
                         </DesktopHeaderButton>
                     </Box>
                 </Box>

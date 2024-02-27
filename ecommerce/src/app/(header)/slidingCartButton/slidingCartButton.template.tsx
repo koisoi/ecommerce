@@ -17,8 +17,7 @@ const SlidingCartButtonTemplate = ({
     visible,
     onCartClose,
     cartPopoverAnchorEl,
-    onClick,
-    buttonRef
+    onClick
 }: {
     amount: number;
     visible: boolean;
@@ -30,7 +29,6 @@ const SlidingCartButtonTemplate = ({
         | (() => PopoverVirtualElement)
         | null;
     onClick: MouseEventHandler<HTMLButtonElement>;
-    buttonRef: RefObject<HTMLButtonElement>;
 }) => {
     const slidingCartButtonWrapperProps: ButtonProps = {
         disableRipple: true,
@@ -100,8 +98,8 @@ const SlidingCartButtonTemplate = ({
     return (
         <>
             <Fade in={visible}>
-                <Button {...slidingCartButtonWrapperProps} ref={buttonRef}>
-                    <ShoppingCart />
+                <Button {...slidingCartButtonWrapperProps}>
+                    <ShoppingCart id="desktop-sliding-header-button" />
                     <Box {...amountBadgeProps}>{amount}</Box>
                 </Button>
             </Fade>

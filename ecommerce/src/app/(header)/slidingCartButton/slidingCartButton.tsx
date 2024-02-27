@@ -7,15 +7,21 @@ import {
     useMediaQueries
 } from "@/lib";
 import SlidingCartButtonTemplate from "./slidingCartButton.template";
-import { MouseEventHandler, useEffect, useRef, useState } from "react";
+import {
+    MouseEventHandler,
+    useEffect,
+    useLayoutEffect,
+    useRef,
+    useState
+} from "react";
 import { usePathname } from "next/navigation";
-import { setDesktopSlidingCartButtonRect } from "@/lib/slices/cartAnimation.slice";
 
 const SlidingCartButton = () => {
     const screen = useMediaQueries();
     const path = usePathname();
-    const ref = useRef<HTMLButtonElement>(null);
     const dispatch = useAppDispatch();
+
+    const button = document.getElementById("desktop-header-sliding-button");
 
     const [visible, setVisible] = useState<boolean>(false);
     const [cartAnchorEl, setCartAnchorEl] = useState<Element | null>(null);
@@ -33,11 +39,7 @@ const SlidingCartButton = () => {
             return;
         }
 
-        dispatch(
-            setDesktopSlidingCartButtonRect(
-                ref.current?.getBoundingClientRect()
-            )
-        );
+        const button = document.getElementById("desktop-header-sliding-button");
 
         const scrolled = document.documentElement.scrollTop;
         if (scrolled > 500) {
@@ -58,13 +60,10 @@ const SlidingCartButton = () => {
 
     useEffect(() => {
         window.addEventListener("scroll", toggleVisible);
-        dispatch(
-            setDesktopSlidingCartButtonRect(
-                ref.current?.getBoundingClientRect()
-            )
-        );
 
-        return () => window.removeEventListener("scroll", toggleVisible);
+        return () => {
+            window.removeEventListener("scroll", toggleVisible);
+        };
     }, []);
 
     return (
@@ -74,7 +73,6 @@ const SlidingCartButton = () => {
             cartPopoverAnchorEl={cartAnchorEl}
             onClick={handleClick}
             onCartClose={handleCartClose}
-            buttonRef={ref}
         />
     );
 };

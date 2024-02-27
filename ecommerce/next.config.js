@@ -9,9 +9,9 @@ module.exports = {
 
     // not recommended (https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout)
     // remove after ssr
-    // experimental: {
-    //     missingSuspenseWithCSRBailout: false
-    // },
+    experimental: {
+        missingSuspenseWithCSRBailout: false
+    },
 
     // output: "standalone",
 

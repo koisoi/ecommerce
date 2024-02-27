@@ -10,7 +10,6 @@ import {
 import { useRouter } from "next/navigation";
 import HeaderMobileNavigationTemplate from "./mobileNavigation.template";
 import { CartState, useAppDispatch, useAppSelector } from "@/lib";
-import { setMobileCartButtonRect } from "@/lib/slices/cartAnimation.slice";
 import { setMobileMenuOpen } from "@/lib/slices/mobileMenu.slice";
 
 const HeaderMobileNavigation = () => {
@@ -32,12 +31,6 @@ const HeaderMobileNavigation = () => {
     const handleMenuOpen: MouseEventHandler<HTMLButtonElement> = () => {
         dispatch(setMobileMenuOpen(true));
     };
-
-    useLayoutEffect(() => {
-        const button = document.getElementById("mobile-shopping-cart-button");
-
-        dispatch(setMobileCartButtonRect(button?.getBoundingClientRect()));
-    }, []);
 
     return (
         <HeaderMobileNavigationTemplate

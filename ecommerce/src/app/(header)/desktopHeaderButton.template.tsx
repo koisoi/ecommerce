@@ -13,6 +13,7 @@ import { MouseEventHandler, ReactNode, RefObject } from "react";
 export type DesktopHeaderButtonProps = {
     children?: ReactNode;
     text: string;
+    lowerText?: string;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     id?: string;
 };
@@ -21,7 +22,8 @@ const DesktopHeaderButton = ({
     children,
     text: upperText,
     onClick,
-    id
+    id,
+    lowerText
 }: DesktopHeaderButtonProps) => {
     const wrapperProps: ButtonProps = {
         sx: {
@@ -40,6 +42,7 @@ const DesktopHeaderButton = ({
     const textWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
+        alignItems: "flex-start",
 
         marginLeft: "5px"
     };
@@ -52,11 +55,19 @@ const DesktopHeaderButton = ({
         }
     };
 
+    const lowerTextProps: TypographyProps = {
+        fontSize: "0.7rem",
+        textTransform: "none"
+    };
+
     return (
         <Button {...wrapperProps} id={id}>
             {children}
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>{upperText}</Typography>
+                {lowerText && (
+                    <Typography {...lowerTextProps}>{lowerText}</Typography>
+                )}
             </Box>
         </Button>
     );
