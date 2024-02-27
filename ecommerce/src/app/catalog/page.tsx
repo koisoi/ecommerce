@@ -15,7 +15,7 @@ import {
 import CategoryTemplate from "./page.template";
 import { Suspense, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import CategoriesMenu from "./(categoriesMenu)/categoriesMenu";
+import CategoriesMenu from "./categoriesMenu";
 import Loading from "../(shared)/loading.template";
 
 const CategoryFC = () => {

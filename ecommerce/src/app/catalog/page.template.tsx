@@ -1,4 +1,4 @@
-import CatalogSubcategory from "@/app/catalog/catalogCategory.template";
+import CatalogSubcategory from "@/app/catalog/catalogSubcategory.template";
 import { Box, BoxProps, Typography } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
@@ -31,7 +31,7 @@ const CategoryTemplate = ({
 
     return (
         <>
-            <Box {...headerWrapper}>
+            <Box {...headerWrapper} id="mememehehe">
                 <PageTitle>{title}</PageTitle>
             </Box>
 
