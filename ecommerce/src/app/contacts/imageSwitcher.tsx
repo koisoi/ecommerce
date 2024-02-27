@@ -1,3 +1,5 @@
+"use client";
+
 import { SyntheticEvent, useState } from "react";
 import ImageSwitcherTemplate from "./imageSwicther.template";
 import { BoxProps } from "@mui/material";

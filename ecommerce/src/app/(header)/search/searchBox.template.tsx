@@ -1,5 +1,3 @@
-"use client";
-
 import { Search } from "@mui/icons-material";
 import { Button, ButtonProps, TextField, TextFieldProps } from "@mui/material";
 import {
@@ -46,7 +44,6 @@ const HeaderSearchBoxTemplate = ({
         onClick: onSearch
     };
 
-    //TODO: поиск на энтер
     const searchBoxProps: TextFieldProps = {
         variant: "outlined",
 

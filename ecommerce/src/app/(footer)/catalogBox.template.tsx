@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./title.template";
 import AppLink from "../(shared)/text/appLink.template";

@@ -1,3 +1,5 @@
+"use client";
+
 import { useMediaQueries } from "@/lib/hooks";
 import { Box, BoxProps, Pagination, PaginationProps } from "@mui/material";
 import { ChangeEvent } from "react";

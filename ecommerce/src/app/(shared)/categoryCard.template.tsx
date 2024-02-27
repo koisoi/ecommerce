@@ -1,5 +1,3 @@
-"use client";
-
 import { CategoryListItem, NextLinkProps } from "@/lib";
 import AppCard, { AppCardProps } from "./appCard.template";
 import Link from "next/link";

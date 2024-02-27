@@ -1,5 +1,3 @@
-"use client";
-
 import FastOrderForm from "@/app/(shared)/fastOrderForm/fastOrderForm";
 import { CategoryItem } from "@/lib";
 import { ShoppingCart } from "@mui/icons-material";

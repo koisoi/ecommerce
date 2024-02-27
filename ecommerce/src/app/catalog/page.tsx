@@ -78,7 +78,6 @@ const CategoryFC = () => {
         };
     }, [parent_class]);
 
-    // TODO: добавить меню каталога
     if (!category) {
         return <CategoriesMenu />;
     }

@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, BoxProps } from "@mui/material";
 import ContactsBox from "./contactsBox.template";
 import CatalogBox from "./catalogBox.template";

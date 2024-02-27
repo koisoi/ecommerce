@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import DesktopHeaderButton, {
     DesktopHeaderButtonProps

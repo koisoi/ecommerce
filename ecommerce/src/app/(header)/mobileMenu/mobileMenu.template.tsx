@@ -1,5 +1,3 @@
-"use client";
-
 import ContactsBox from "@/app/(footer)/contactsBox.template";
 import FooterTitle from "@/app/(footer)/title.template";
 import { CategoryListItem } from "@/lib";

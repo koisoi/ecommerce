@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, BoxProps } from "@mui/material";
 import MobileHeaderButton from "../mobileHeaderButton.template";
 import { MouseEventHandler, RefObject } from "react";

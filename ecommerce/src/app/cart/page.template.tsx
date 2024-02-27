@@ -1,5 +1,3 @@
-"use client";
-
 import { Box, BoxProps } from "@mui/material";
 import CartTable from "../(shared)/cartTable/cartTable";
 import PageTitle from "../(shared)/text/pageTitle.template";

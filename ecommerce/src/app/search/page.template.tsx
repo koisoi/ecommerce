@@ -1,10 +1,4 @@
-import {
-    Box,
-    BoxProps,
-    CircularProgress,
-    Typography,
-    TypographyProps
-} from "@mui/material";
+import { Box, Typography, TypographyProps } from "@mui/material";
 import PageTitle from "../(shared)/text/pageTitle.template";
 import { SearchResponse } from "@/lib/services/search.service";
 import { ChangeEvent } from "react";

@@ -70,7 +70,9 @@ const ProductPageFC = () => {
 
     return (
         <ProductPageTemplate
-            title={`${itemCategory.title_single} ${title}`}
+            title={`${
+                itemCategory.title_single ? itemCategory.title_single + " " : ""
+            }${title}`}
             openedImgLink={openedImgLink}
             onImgClose={handleImgClose}
             loading={loading}

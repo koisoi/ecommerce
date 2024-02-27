@@ -1,5 +1,3 @@
-"use client";
-
 import { Skeleton, SkeletonProps } from "@mui/material";
 
 // TODO: Сделать в виде карточки

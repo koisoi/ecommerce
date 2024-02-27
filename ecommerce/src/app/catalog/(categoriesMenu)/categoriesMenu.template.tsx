@@ -1,5 +1,3 @@
-"use client";
-
 import CategoryCard from "@/app/(shared)/categoryCard.template";
 import Loading from "@/app/(shared)/loading.template";
 import { CategoryListItem, NextLinkProps } from "@/lib";

@@ -1,7 +1,8 @@
+"use client";
+
 import {
     AddCard,
     CurrencyRuble,
-    LocalShipping,
     LocalShippingOutlined
 } from "@mui/icons-material";
 import {

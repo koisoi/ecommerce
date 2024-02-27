@@ -1,5 +1,3 @@
-"use client";
-
 import CatalogSubcategory from "@/app/catalog/catalogCategory.template";
 import { Box, BoxProps, Typography } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";

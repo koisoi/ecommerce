@@ -1,7 +1,6 @@
 "use client";
 
 import { Box, BoxProps } from "@mui/material";
-import HeaderDesktopNavigationTemplate from "./desktopNavigation/desktopNavigation.template";
 import { CSSProperties } from "react";
 import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
 import { CategoryListItem, useMediaQueries } from "@/lib";

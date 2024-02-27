@@ -1,5 +1,3 @@
-"use client";
-
 import { NextLinkProps } from "@/lib";
 import { Typography, TypographyProps } from "@mui/material";
 import { Url } from "next/dist/shared/lib/router/router";

@@ -12,13 +12,12 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import Container from "../(shared)/container.template";
 import PageTitle from "../(shared)/text/pageTitle.template";
-import Title from "../(shared)/text/title.template";
 import TableTitle from "../(shared)/text/tableTitle.template";
 import Paragraph from "../(shared)/text/paragraph.template";
 import AppLink from "../(shared)/text/appLink.template";
 import { useThemeColors } from "@/lib";
+import Title from "../(shared)/text/title.template";
 
 const WarrantyPageTemplate = () => {
     const colors = useThemeColors();

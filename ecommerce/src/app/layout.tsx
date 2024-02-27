@@ -40,7 +40,7 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
     const content = params.get("utm_content");
     const term = params.get("utm_term");
 
-    const [hasMounted, setHasMounted] = useState(false);
+    // const [hasMounted, setHasMounted] = useState(false);
 
     const { colors } = useAppSelector(GlobalState);
     const { backCallOpen } = useAppSelector(BackCallState);
@@ -76,9 +76,9 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
         dispatch(closeBackCallModal());
     };
 
-    useEffect(() => {
-        setHasMounted(true);
-    }, []);
+    // useEffect(() => {
+    //     setHasMounted(true);
+    // }, []);
 
     useEffect(() => {
         dispatch(setReferrer(document.referrer));
@@ -103,9 +103,9 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
         if (getCookie("cart")) dispatch(setCart([]));
     }, []);
 
-    if (!hasMounted) {
-        return null;
-    }
+    // if (!hasMounted) {
+    //     return null;
+    // }
 
     return (
         <ThemeProvider theme={theme}>

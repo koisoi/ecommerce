@@ -6,7 +6,6 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import Container from "../(shared)/container.template";
 import PageTitle from "../(shared)/text/pageTitle.template";
 import Title from "../(shared)/text/title.template";
 import TableTitle from "../(shared)/text/tableTitle.template";

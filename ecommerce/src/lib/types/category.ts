@@ -1,6 +1,5 @@
 export type CategoryListItem = { title: string; path: string; image?: string };
 
-// TODO: поменять ключи объектов
 export type SeriesInfo = {
     id: number;
     title: string;

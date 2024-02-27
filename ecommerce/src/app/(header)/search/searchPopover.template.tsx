@@ -1,5 +1,3 @@
-"use client";
-
 import { SearchResponse } from "@/lib/services/search.service";
 import {
     List,
