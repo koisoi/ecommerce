@@ -1,7 +1,6 @@
-import { NextLinkProps } from "@/lib";
-import { Typography, TypographyProps } from "@mui/material";
+import { Link, LinkProps, Typography, TypographyProps } from "@mui/material";
 import { Url } from "next/dist/shared/lib/router/router";
-import Link from "next/link";
+import { default as NextLink } from "next/link";
 import { ReactNode } from "react";
 
 const AppLink = ({
@@ -15,8 +14,9 @@ const AppLink = ({
     footer?: boolean;
     props?: TypographyProps;
 }) => {
-    const linkProps: NextLinkProps = {
-        href: href || "#",
+    const linkProps: LinkProps = {
+        // component: NextLink,
+        // href: href || "#",
         style: {
             textDecoration: "none"
         }

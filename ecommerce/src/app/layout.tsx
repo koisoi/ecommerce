@@ -3,20 +3,12 @@
 import "./globals.css";
 import styles from "./page.module.css";
 import Header from "./(header)/header";
-import { Box, ThemeProvider, createTheme } from "@mui/material";
-import {
-    CSSProperties,
-    MouseEventHandler,
-    ReactNode,
-    useEffect,
-    useState
-} from "react";
+import { Box, ThemeProvider } from "@mui/material";
+import { CSSProperties, MouseEventHandler, ReactNode, useEffect } from "react";
 import StoreProvider from "./storeProvider";
 import Container from "./(shared)/container.template";
 import { setCart, useAppDispatch, useAppSelector } from "@/lib";
 import {
-    GlobalState,
-    getCategoryImages,
     getGeo,
     setGeo,
     setReferrer,
@@ -28,6 +20,8 @@ import { getCookie } from "cookies-next";
 import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
 import { BackCallState, closeBackCallModal } from "@/lib/slices/backCall.slice";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
+import { theme } from "./theme";
 
 // https://stackoverflow.com/questions/75406728/how-to-entirely-disable-server-side-rendering-in-next-js-v13
 const Dynamic = ({ children }: { children: ReactNode }) => {
@@ -42,35 +36,7 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
 
     // const [hasMounted, setHasMounted] = useState(false);
 
-    const { colors } = useAppSelector(GlobalState);
     const { backCallOpen } = useAppSelector(BackCallState);
-
-    const theme = createTheme({
-        palette: {
-            ...colors,
-            text: {
-                disabled: "#969696",
-                primary: "#212529",
-                secondary: "#545454"
-            },
-            background: {
-                default: "#fff"
-            }
-        },
-        breakpoints: {
-            values: {
-                xs: 0,
-                xsm: 300,
-                sm: 600,
-                smd: 750,
-                md: 900,
-                mlg: 1050,
-                lg: 1200,
-                xlg: 1350,
-                xl: 1536
-            }
-        }
-    });
 
     const handleBackCallClose: MouseEventHandler<HTMLButtonElement> = () => {
         dispatch(closeBackCallModal());
@@ -92,7 +58,6 @@ const Dynamic = ({ children }: { children: ReactNode }) => {
                 term: term || undefined
             })
         );
-        dispatch(getCategoryImages());
 
         const geo = getCookie("geo");
         if (!geo) dispatch(getGeo());
@@ -152,18 +117,20 @@ const RootLayout = ({
             </head>
             <body {...bodyProps}>
                 <StoreProvider>
-                    <Dynamic>
-                        <Header />
-                        <Box
-                            padding="40px"
-                            display="flex"
-                            justifyContent="center"
-                            flexGrow={1}
-                        >
-                            <Container>{children}</Container>
-                        </Box>
-                        <Footer />
-                    </Dynamic>
+                    <AppRouterCacheProvider>
+                        <Dynamic>
+                            <Header />
+                            <Box
+                                padding="40px"
+                                display="flex"
+                                justifyContent="center"
+                                flexGrow={1}
+                            >
+                                <Container>{children}</Container>
+                            </Box>
+                            <Footer />
+                        </Dynamic>
+                    </AppRouterCacheProvider>
                 </StoreProvider>
             </body>
         </html>

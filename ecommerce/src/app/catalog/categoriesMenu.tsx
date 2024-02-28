@@ -1,16 +1,15 @@
 "use client";
 
-import { useAppSelector } from "@/lib";
-import { GlobalState } from "@/lib/slices/global.slice";
+import { landingConfig } from "../config";
 import CategoriesMenuTemplate from "./categoriesMenu.template";
 
 const CategoriesMenu = () => {
-    const { categoryImagesLoading, categories } = useAppSelector(GlobalState);
+    // const { categoryImagesLoading, categories } = useAppSelector(GlobalState);
 
     return (
         <CategoriesMenuTemplate
-            loading={categoryImagesLoading}
-            categories={categories}
+            // loading={categoryImagesLoading}
+            categories={landingConfig.categories}
         />
     );
 };

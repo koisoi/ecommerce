@@ -1,4 +1,4 @@
-export type CategoryListItem = { title: string; path: string; image?: string };
+export type CategoryListItem = { title: string; path: string; image: string };
 
 export type SeriesInfo = {
     id: number;

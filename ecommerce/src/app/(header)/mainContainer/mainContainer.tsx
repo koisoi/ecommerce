@@ -1,15 +1,9 @@
 "use client";
 
-import {
-    ChangeEventHandler,
-    KeyboardEventHandler,
-    MouseEventHandler,
-    useLayoutEffect,
-    useState
-} from "react";
+import { MouseEventHandler } from "react";
 import HeaderMainContainerTemplate from "./mainContainer.template";
 import { useRouter } from "next/navigation";
-import { CartState, useAppDispatch, useAppSelector } from "@/lib";
+import { CartState, useAppSelector } from "@/lib";
 import { GlobalState } from "@/lib/slices/global.slice";
 
 const HeaderMainContainer = () => {

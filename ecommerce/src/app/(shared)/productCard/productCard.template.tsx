@@ -8,7 +8,8 @@ import {
     CardMediaProps,
     TypographyProps,
     BoxProps,
-    Box
+    Box,
+    CardContentProps
 } from "@mui/material";
 import Link from "next/link";
 import { CategoryItem, NextLinkProps } from "@/lib";
@@ -17,6 +18,7 @@ import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
 import AppCard, { AppCardProps } from "../appCard.template";
+import { CSSProperties } from "react";
 
 export type ProductCardProps = {
     cartItem: CartItem;
@@ -29,6 +31,7 @@ export type ProductCardProps = {
     // TODO: переделать пропы
     categoryItem: CategoryItem;
     hideButtons?: boolean;
+    linkStyle?: CSSProperties;
 };
 
 const ProductCard = ({
@@ -40,7 +43,8 @@ const ProductCard = ({
     cardMediaProps,
     cartItem,
     categoryItem,
-    hideButtons
+    hideButtons,
+    linkStyle
 }: ProductCardProps) => {
     const imageLinkProps: NextLinkProps = {
         href: cartItem.url,
@@ -50,7 +54,9 @@ const ProductCard = ({
             height: "310px",
             width: "100%",
 
-            cursor: "pointer"
+            cursor: "pointer",
+
+            ...linkStyle
         }
     };
 
@@ -177,9 +183,13 @@ const ProductCard = ({
         )
     };
 
+    const cardContentProps: CardContentProps = {
+        sx: { flexGrow: 1 }
+    };
+
     return (
         <AppCard {...appCardProps}>
-            <CardContent>
+            <CardContent {...cardContentProps}>
                 <ProductLink url={cartItem.url}>
                     {categoryItem.category.title_single} {cartItem.title}
                 </ProductLink>

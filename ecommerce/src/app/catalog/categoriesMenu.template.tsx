@@ -1,14 +1,13 @@
 import CategoryCard from "@/app/(shared)/categoryCard.template";
-import Loading from "@/app/(shared)/loading.template";
-import { CategoryListItem, NextLinkProps } from "@/lib";
+import { CategoryListItem } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
 
 const CategoriesMenuTemplate = ({
-    categories,
-    loading
-}: {
+    categories
+}: // loading
+{
     categories: CategoryListItem[];
-    loading: boolean;
+    // loading: boolean;
 }) => {
     const wrapperProps: BoxProps = {
         paddingY: "50px",
@@ -23,7 +22,7 @@ const CategoriesMenuTemplate = ({
         gap: "30px"
     };
 
-    if (loading) return <Loading>Загрузка...</Loading>;
+    // if (loading) return <Loading>Загрузка...</Loading>;
 
     return (
         <Box {...wrapperProps}>

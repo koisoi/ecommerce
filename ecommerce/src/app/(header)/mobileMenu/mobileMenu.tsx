@@ -8,6 +8,7 @@ import {
 } from "@/lib/slices/mobileMenu.slice";
 import { GlobalState } from "@/lib/slices/global.slice";
 import { usePathname, useSearchParams } from "next/navigation";
+import { landingConfig } from "@/app/config";
 
 const MobileMenu = () => {
     const dispatch = useAppDispatch();
@@ -15,8 +16,7 @@ const MobileMenu = () => {
     const params = useSearchParams();
 
     const { mobileMenuOpen } = useAppSelector(MobileMenuState);
-    const { categories, phoneNumber, storeAddress } =
-        useAppSelector(GlobalState);
+    const { phoneNumber, storeAddress } = useAppSelector(GlobalState);
 
     const handleMenuClose: (
         event: {},
@@ -29,7 +29,7 @@ const MobileMenu = () => {
         <MobileMenuTemplate
             open={mobileMenuOpen}
             onMenuClose={handleMenuClose}
-            categories={categories}
+            categories={landingConfig.categories}
             phone={phoneNumber}
             address={storeAddress}
             path={path}

@@ -1,4 +1,3 @@
-import { store } from "@/app/storeProvider";
 import {
     AppealForm,
     AppealQuery,
@@ -12,6 +11,7 @@ import {
     StatisticsResponse
 } from "..";
 import { Service } from "./base.service";
+import { landingConfig } from "@/app/config";
 
 class OrderService extends Service {
     constructor(baseURL: string, options?: RequestInit) {
@@ -98,7 +98,7 @@ class OrderService extends Service {
                 action: "add",
                 label
             },
-            site_id: store.getState().GlobalReducer.landing_id, // 49 по стандарту,
+            site_id: landingConfig.landing_id, // 49 по стандарту,
             parent_id: statistics.parent_id,
             parent_class: "Sale_Model_Appeals",
             source: "сайт",

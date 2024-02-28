@@ -8,7 +8,7 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import {
     BackCallState,

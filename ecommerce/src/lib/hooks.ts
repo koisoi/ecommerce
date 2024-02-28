@@ -8,6 +8,7 @@ import {
     useSelector,
     useStore
 } from "react-redux";
+import { theme } from "@/app/theme";
 
 // Вместо стандартных useDispatch и useSelector
 export const useAppDispatch: () => AppDispatch = useDispatch;
@@ -49,8 +50,6 @@ export const useMediaQueries = () => {
  * @returns Объект с значениями цвета тем
  */
 export const useThemeColors = () => {
-    const theme = useTheme();
-
     // Основные цвета
     const primary = theme.palette.primary.main;
     const secondary = theme.palette.secondary.main;

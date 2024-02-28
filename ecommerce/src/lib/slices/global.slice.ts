@@ -11,9 +11,9 @@ import {
 import { setCookie } from "cookies-next";
 
 const initialState: {
-    landing: string;
-    landing_id: number;
-    logoImgLink: string;
+    // landing: string;
+    // landing_id: number;
+    // logoImgLink: string;
     start_url: string;
     referrer: string;
     ip: string;
@@ -21,67 +21,55 @@ const initialState: {
     geo: "rf" | "nn" | "msk" | "spb";
     storeAddress: string;
     phoneNumber: string;
-    categories: CategoryListItem[];
-    categoryImagesLoading: boolean;
-    colors: {
-        primary: {
-            main: string;
-            dark: string;
-            light: string;
-        };
-        secondary: {
-            main: string;
-            dark: string;
-            light: string;
-        };
-    };
+    // categories: CategoryListItem[];
+    // categoryImagesLoading: boolean;
+    // colors: {
+    //     primary: {
+    //         main: string;
+    //         dark: string;
+    //         light: string;
+    //     };
+    //     secondary: {
+    //         main: string;
+    //         dark: string;
+    //         light: string;
+    //     };
+    // };
 } = {
-    landing: "iray",
-    landing_id: 49,
-    logoImgLink:
-        "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
+    // landing: "iray",
+    // landing_id: 49,
+    // logoImgLink:
+    //     "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
     start_url: "",
     referrer: "",
     ip: "",
     utm: {},
     geo: "rf",
     storeAddress: "Доставка в пункт самовывоза",
-    phoneNumber: "88007078195",
-    categories: [
-        {
-            title: "Дальномеры",
-            path: "TOP.range_finders"
-        },
-        {
-            title: "Тепловизоры",
-            path: "TOP.termovisors"
-        },
-        {
-            title: "Тепловизионные прицелы",
-            path: "TOP.thermal_riflescopes"
-        },
-        {
-            title: "Ночные прицелы",
-            path: "TOP.night_vision_riflescopes"
-        },
-        {
-            title: "Тепловизионные насадки",
-            path: "TOP.nv_thermal_attachments"
-        }
-    ],
-    categoryImagesLoading: false,
-    colors: {
-        primary: {
-            main: "#bd2126",
-            dark: "#7a1619",
-            light: "#ff757a"
-        },
-        secondary: {
-            main: "#e3666a",
-            dark: "#b04d51",
-            light: "#ffb3b5"
-        }
-    }
+    phoneNumber: "88007078195"
+    // categories: [
+    //     {
+    //         title: "Дальномеры",
+    //         path: "TOP.range_finders"
+    //     },
+    //     {
+    //         title: "Тепловизоры",
+    //         path: "TOP.termovisors"
+    //     },
+    //     {
+    //         title: "Тепловизионные прицелы",
+    //         path: "TOP.thermal_riflescopes"
+    //     },
+    //     {
+    //         title: "Ночные прицелы",
+    //         path: "TOP.night_vision_riflescopes"
+    //     },
+    //     {
+    //         title: "Тепловизионные насадки",
+    //         path: "TOP.nv_thermal_attachments"
+    //     }
+    // ],
+    // categoryImagesLoading: false,
 };
 
 export const getIp = createAsyncThunk(
@@ -121,18 +109,18 @@ export const getGeo = createAsyncThunk(
     }
 );
 
-export const getCategoryImages = createAsyncThunk(
-    "global/getCategoryImages",
-    async (_, { getState, rejectWithValue }) => {
-        const { categories } = (getState() as RootState).GlobalReducer;
-        const response = Promise.all(
-            categories.map((el) =>
-                categoryAPI.getCategory({ category: el.path })
-            )
-        ).catch((error) => rejectWithValue(error));
-        return response;
-    }
-);
+// export const getCategoryImages = createAsyncThunk(
+//     "global/getCategoryImages",
+//     async (_, { getState, rejectWithValue }) => {
+//         const { categories } = (getState() as RootState).GlobalReducer;
+//         const response = Promise.all(
+//             categories.map((el) =>
+//                 categoryAPI.getCategory({ category: el.path })
+//             )
+//         ).catch((error) => rejectWithValue(error));
+//         return response;
+//     }
+// );
 
 const slice = createSlice({
     name: "globalSlice",
@@ -232,26 +220,26 @@ const slice = createSlice({
             }
         );
 
-        builder.addCase(getCategoryImages.pending, (state) => {
-            state.categoryImagesLoading = true;
-        });
-        builder.addCase(getCategoryImages.fulfilled, (state, action) => {
-            if (!action.payload) {
-                return;
-            }
+        // builder.addCase(getCategoryImages.pending, (state) => {
+        //     state.categoryImagesLoading = true;
+        // });
+        // builder.addCase(getCategoryImages.fulfilled, (state, action) => {
+        //     if (!action.payload) {
+        //         return;
+        //     }
 
-            state.categories.forEach((el, i) => {
-                if (!action.payload[i].category) return;
-                el.image = getProductImageLink(
-                    action.payload[i].category!.images[0].url
-                );
-            });
+        //     state.categories.forEach((el, i) => {
+        //         if (!action.payload[i].category) return;
+        //         el.image = getProductImageLink(
+        //             action.payload[i].category!.images[0].url
+        //         );
+        //     });
 
-            state.categoryImagesLoading = false;
-        });
-        builder.addCase(getCategoryImages.rejected, (state) => {
-            state.categoryImagesLoading = false;
-        });
+        //     state.categoryImagesLoading = false;
+        // });
+        // builder.addCase(getCategoryImages.rejected, (state) => {
+        //     state.categoryImagesLoading = false;
+        // });
     }
 });
 

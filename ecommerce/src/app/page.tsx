@@ -11,6 +11,7 @@ import {
     setReviewsLoading
 } from "@/lib/slices/homePage.slice";
 import { useEffect } from "react";
+import { landingConfig } from "./config";
 
 const Home = () => {
     const dispatch = useAppDispatch();
@@ -23,7 +24,6 @@ const Home = () => {
         "https://telescope1.ru/img/banners/delivery/index.html"
     ];
 
-    const { categories, categoryImagesLoading } = useAppSelector(GlobalState);
     const { reviews, reviewsLoading, popularProducts, popularProductsLoading } =
         useAppSelector(HomePageState);
 
@@ -45,8 +45,7 @@ const Home = () => {
     return (
         <HomeTemplate
             frameLinks={frameLinks}
-            categories={categories}
-            categoryImagesLoading={categoryImagesLoading}
+            categories={landingConfig.categories}
             popularProducts={popularProducts}
             popularProductsLoading={popularProductsLoading}
             reviews={reviews}

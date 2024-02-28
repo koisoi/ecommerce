@@ -1,11 +1,8 @@
-import { useAppSelector } from "@/lib";
+import { landingConfig } from "@/app/config";
 import LogoTemplate from "./logo.template";
-import { GlobalState } from "@/lib/slices/global.slice";
 
 const Logo = () => {
-    const { logoImgLink } = useAppSelector(GlobalState);
-
-    return <LogoTemplate logoLink={logoImgLink} />;
+    return <LogoTemplate logoLink={landingConfig.logoImgLink} />;
 };
 
 export default Logo;

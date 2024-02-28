@@ -1,10 +1,14 @@
+"use client";
+
 import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
-import { CategoryItem, getProductImageLink } from "@/lib";
+import { CategoryItem, getProductImageLink, useMediaQueries } from "@/lib";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 
 const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
+    const screen = useMediaQueries();
+
     const productCardProps = (item: CategoryItem): ProductCardProps => {
         return {
             cartItem: {
@@ -27,6 +31,14 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                     height: { md: "190px", xl: "310px" }
                 }
             },
+            cardProps: {
+                sx: {
+                    height: "100%"
+                }
+            },
+            linkStyle: {
+                height: screen.xl ? "310px" : screen.md ? "190px" : "310px"
+            }, // md: "190px", xl: "310px"
             categoryItem: item
         };
     };
@@ -34,12 +46,24 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
     const tabsProps: TabsProps = {
         variant: "scrollable",
 
-        value: false
+        value: false,
+
+        sx: {
+            minHeight: "max-content",
+            overflow: "visible",
+            ".MuiTabs-scrollableX": {
+                overflowX: "visible"
+            }
+        }
     };
 
     const tabProps: TabProps = {
+        disableRipple: true,
+
         sx: {
-            textTransform: "none"
+            textTransform: "none",
+            overflow: "visible",
+            minHeight: "100%"
         }
     };
 

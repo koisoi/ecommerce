@@ -1,7 +1,14 @@
 "use client";
 
 import { useThemeColors } from "@/lib";
-import { Card, CardMedia, CardMediaProps, CardProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    Card,
+    CardMedia,
+    CardMediaProps,
+    CardProps
+} from "@mui/material";
 import { ReactNode } from "react";
 
 export type AppCardProps = {
@@ -32,6 +39,9 @@ const AppCard = ({
             borderColor: "divider",
             overflow: "visible",
 
+            display: "flex",
+            flexDirection: "column",
+
             ...cardProps?.sx,
 
             ":hover": {
@@ -57,6 +67,13 @@ const AppCard = ({
             ...cardMediaProps?.sx
         }
     };
+
+    // const cardContentBoxProps: BoxProps = {
+    //     flexGrow: 1,
+
+    //     display: "flex",
+    //     flexDirection: "column"
+    // };
 
     return (
         <Card {...initialCardProps}>

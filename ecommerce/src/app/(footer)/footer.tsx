@@ -1,16 +1,16 @@
 import { useAppSelector } from "@/lib";
 import { GlobalState } from "@/lib/slices/global.slice";
 import FooterTemplate from "./footer.template";
+import { landingConfig } from "../config";
 
 const Footer = () => {
-    const { phoneNumber, storeAddress, categories } =
-        useAppSelector(GlobalState);
+    const { phoneNumber, storeAddress } = useAppSelector(GlobalState);
 
     return (
         <FooterTemplate
             phone={phoneNumber}
             address={storeAddress}
-            categories={categories}
+            categories={landingConfig.categories}
         />
     );
 };

@@ -13,7 +13,6 @@ import Loading from "./(shared)/loading.template";
 const HomeTemplate = ({
     frameLinks,
     categories,
-    categoryImagesLoading,
     popularProducts,
     popularProductsLoading,
     reviews,
@@ -21,7 +20,6 @@ const HomeTemplate = ({
 }: {
     frameLinks: string[];
     categories: CategoryListItem[];
-    categoryImagesLoading: boolean;
     popularProducts: CategoryItem[];
     popularProductsLoading: boolean;
     reviews: ProductReview[];

@@ -61,13 +61,6 @@ export const ShoppingCartButton = ({
                           event.currentTarget.getBoundingClientRect().y
                   };
 
-        console.log(
-            button!.getBoundingClientRect().x,
-            button!.getBoundingClientRect().y,
-            event.currentTarget.getBoundingClientRect().x,
-            event.currentTarget.getBoundingClientRect().y
-        );
-
         setTranslateTo(translateTo);
         event.currentTarget.getBoundingClientRect;
 
