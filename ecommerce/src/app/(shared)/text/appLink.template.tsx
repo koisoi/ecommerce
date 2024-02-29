@@ -15,14 +15,10 @@ const AppLink = ({
     props?: TypographyProps;
 }) => {
     const linkProps: LinkProps = {
-        // component: NextLink,
-        // href: href || "#",
-        style: {
-            textDecoration: "none"
-        }
-    };
+        component: NextLink,
+        // @ts-ignore
+        href: href || "#",
 
-    const linkTextProps: TypographyProps = {
         color: footer ? "text.secondary" : "text.primary",
         fontSize: "inherit",
 
@@ -42,11 +38,11 @@ const AppLink = ({
         }
     };
 
-    return (
-        <Link {...linkProps}>
-            <Typography {...linkTextProps}>{children}</Typography>
-        </Link>
-    );
+    // const linkTextProps: TypographyProps = {
+
+    // };
+
+    return <Link {...linkProps}>{children}</Link>;
 };
 
 export default AppLink;

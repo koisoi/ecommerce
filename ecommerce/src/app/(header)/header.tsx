@@ -1,19 +1,47 @@
-import HeaderTemplate from "./header.template";
-import { useRouter } from "next/navigation";
-import { landingConfig } from "../config";
+import { Box, BoxProps } from "@mui/material";
+import HeaderNavigation from "./navigation.template";
+import { landingConfig } from "@/lib/data/config";
+import HeaderTopContainer from "./topContainer.template";
+import HeaderMainContainer from "./mainContainer/mainContainer";
 
 const Header = () => {
-    const router = useRouter();
+    // props
+    const wrapperProps: BoxProps = {
+        boxSizing: "border-box",
+        minWidth: "100%",
 
-    const handleDesktopTabClick = (path: string): void => {
-        router.push(`/catalog?category=${path}`);
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column"
+    };
+
+    const mobileHeaderProps: BoxProps = {
+        display: { xs: "flex", md: "none" }
+    };
+
+    const desktopHeaderProps: BoxProps = {
+        display: { xs: "none", md: "flex" }
     };
 
     return (
-        <HeaderTemplate
-            categories={landingConfig.categories}
-            onDesktopTabClick={handleDesktopTabClick}
-        />
+        <>
+            <HeaderNavigation
+                mobile={true}
+                categories={landingConfig.categories}
+                boxProps={mobileHeaderProps}
+            />
+            <header>
+                <Box {...wrapperProps}>
+                    <HeaderTopContainer />
+                    <HeaderMainContainer />
+                </Box>
+            </header>
+            <HeaderNavigation
+                mobile={false}
+                categories={landingConfig.categories}
+                boxProps={desktopHeaderProps}
+            />
+        </>
     );
 };
 

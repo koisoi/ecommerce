@@ -1,19 +1,10 @@
 "use client";
 
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import {
-    CategoryListItem,
-    RootState,
-    UTMParams,
-    categoryAPI,
-    getProductImageLink
-} from "..";
+import { RootState, UTMParams } from "..";
 import { setCookie } from "cookies-next";
 
 const initialState: {
-    // landing: string;
-    // landing_id: number;
-    // logoImgLink: string;
     start_url: string;
     referrer: string;
     ip: string;
@@ -21,25 +12,7 @@ const initialState: {
     geo: "rf" | "nn" | "msk" | "spb";
     storeAddress: string;
     phoneNumber: string;
-    // categories: CategoryListItem[];
-    // categoryImagesLoading: boolean;
-    // colors: {
-    //     primary: {
-    //         main: string;
-    //         dark: string;
-    //         light: string;
-    //     };
-    //     secondary: {
-    //         main: string;
-    //         dark: string;
-    //         light: string;
-    //     };
-    // };
 } = {
-    // landing: "iray",
-    // landing_id: 49,
-    // logoImgLink:
-    //     "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
     start_url: "",
     referrer: "",
     ip: "",
@@ -47,29 +20,6 @@ const initialState: {
     geo: "rf",
     storeAddress: "Доставка в пункт самовывоза",
     phoneNumber: "88007078195"
-    // categories: [
-    //     {
-    //         title: "Дальномеры",
-    //         path: "TOP.range_finders"
-    //     },
-    //     {
-    //         title: "Тепловизоры",
-    //         path: "TOP.termovisors"
-    //     },
-    //     {
-    //         title: "Тепловизионные прицелы",
-    //         path: "TOP.thermal_riflescopes"
-    //     },
-    //     {
-    //         title: "Ночные прицелы",
-    //         path: "TOP.night_vision_riflescopes"
-    //     },
-    //     {
-    //         title: "Тепловизионные насадки",
-    //         path: "TOP.nv_thermal_attachments"
-    //     }
-    // ],
-    // categoryImagesLoading: false,
 };
 
 export const getIp = createAsyncThunk(
@@ -108,19 +58,6 @@ export const getGeo = createAsyncThunk(
         }
     }
 );
-
-// export const getCategoryImages = createAsyncThunk(
-//     "global/getCategoryImages",
-//     async (_, { getState, rejectWithValue }) => {
-//         const { categories } = (getState() as RootState).GlobalReducer;
-//         const response = Promise.all(
-//             categories.map((el) =>
-//                 categoryAPI.getCategory({ category: el.path })
-//             )
-//         ).catch((error) => rejectWithValue(error));
-//         return response;
-//     }
-// );
 
 const slice = createSlice({
     name: "globalSlice",
@@ -219,27 +156,6 @@ const slice = createSlice({
                 setCookie("geo", state.geo, { maxAge: 604800 });
             }
         );
-
-        // builder.addCase(getCategoryImages.pending, (state) => {
-        //     state.categoryImagesLoading = true;
-        // });
-        // builder.addCase(getCategoryImages.fulfilled, (state, action) => {
-        //     if (!action.payload) {
-        //         return;
-        //     }
-
-        //     state.categories.forEach((el, i) => {
-        //         if (!action.payload[i].category) return;
-        //         el.image = getProductImageLink(
-        //             action.payload[i].category!.images[0].url
-        //         );
-        //     });
-
-        //     state.categoryImagesLoading = false;
-        // });
-        // builder.addCase(getCategoryImages.rejected, (state) => {
-        //     state.categoryImagesLoading = false;
-        // });
     }
 });
 

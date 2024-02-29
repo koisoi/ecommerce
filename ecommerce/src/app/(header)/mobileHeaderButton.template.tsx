@@ -1,9 +1,4 @@
-import {
-    AccountCircle,
-    Favorite,
-    Menu,
-    ShoppingCart
-} from "@mui/icons-material";
+import { Menu, ShoppingCart } from "@mui/icons-material";
 import {
     Box,
     BoxProps,
@@ -74,14 +69,6 @@ const MobileHeaderButton = ({
     let child: ReactNode | null = null;
 
     switch (variant) {
-        case "accountCircle":
-            child = <AccountCircle {...iconsProps} />;
-            break;
-
-        case "favorite":
-            child = <Favorite {...iconsProps} />;
-            break;
-
         case "shoppingCart":
             child = <ShoppingCart {...iconsProps} />;
             break;

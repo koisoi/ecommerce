@@ -19,9 +19,6 @@ import { usePathname } from "next/navigation";
 const SlidingCartButton = () => {
     const screen = useMediaQueries();
     const path = usePathname();
-    const dispatch = useAppDispatch();
-
-    const button = document.getElementById("desktop-header-sliding-button");
 
     const [visible, setVisible] = useState<boolean>(false);
     const [cartAnchorEl, setCartAnchorEl] = useState<Element | null>(null);

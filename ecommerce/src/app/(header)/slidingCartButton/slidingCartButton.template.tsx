@@ -1,3 +1,5 @@
+"use client";
+
 import CartTable from "@/app/(shared)/cartTable/cartTable";
 import { ShoppingCart } from "@mui/icons-material";
 import {

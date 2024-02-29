@@ -2,6 +2,7 @@ import { CategoryListItem } from "..";
 
 export type LandingConfig = {
     landing: string;
+    landing_title: string;
     landing_id: number;
     logoImgLink: string;
     categories: CategoryListItem[];

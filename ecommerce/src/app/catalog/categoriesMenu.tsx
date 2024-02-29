@@ -1,6 +1,6 @@
 "use client";
 
-import { landingConfig } from "../config";
+import { landingConfig } from "../../lib/data/config";
 import CategoriesMenuTemplate from "./categoriesMenu.template";
 
 const CategoriesMenu = () => {

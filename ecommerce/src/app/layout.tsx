@@ -1,90 +1,26 @@
-"use client";
-
 import "./globals.css";
 import styles from "./page.module.css";
 import Header from "./(header)/header";
 import { Box, ThemeProvider } from "@mui/material";
-import { CSSProperties, MouseEventHandler, ReactNode, useEffect } from "react";
+import { CSSProperties, ReactNode } from "react";
 import StoreProvider from "./storeProvider";
 import Container from "./(shared)/container.template";
-import { setCart, useAppDispatch, useAppSelector } from "@/lib";
-import {
-    getGeo,
-    setGeo,
-    setReferrer,
-    setStartUrl,
-    setUTM
-} from "@/lib/slices/global.slice";
-import { useSearchParams } from "next/navigation";
-import { getCookie } from "cookies-next";
 import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
-import { BackCallState, closeBackCallModal } from "@/lib/slices/backCall.slice";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
-
-// https://stackoverflow.com/questions/75406728/how-to-entirely-disable-server-side-rendering-in-next-js-v13
-const Dynamic = ({ children }: { children: ReactNode }) => {
-    const dispatch = useAppDispatch();
-    const params = useSearchParams();
-
-    const source = params.get("utm_source");
-    const medium = params.get("utm_medium");
-    const campaign = params.get("utm_campaign");
-    const content = params.get("utm_content");
-    const term = params.get("utm_term");
-
-    // const [hasMounted, setHasMounted] = useState(false);
-
-    const { backCallOpen } = useAppSelector(BackCallState);
-
-    const handleBackCallClose: MouseEventHandler<HTMLButtonElement> = () => {
-        dispatch(closeBackCallModal());
-    };
-
-    // useEffect(() => {
-    //     setHasMounted(true);
-    // }, []);
-
-    useEffect(() => {
-        dispatch(setReferrer(document.referrer));
-        dispatch(setStartUrl(document.URL));
-        dispatch(
-            setUTM({
-                source: source || undefined,
-                medium: medium || undefined,
-                campaign: campaign || undefined,
-                content: content || undefined,
-                term: term || undefined
-            })
-        );
-
-        const geo = getCookie("geo");
-        if (!geo) dispatch(getGeo());
-        else {
-            dispatch(setGeo(geo as "rf" | "nn" | "msk" | "spb"));
-        }
-
-        if (getCookie("cart")) dispatch(setCart([]));
-    }, []);
-
-    // if (!hasMounted) {
-    //     return null;
-    // }
-
-    return (
-        <ThemeProvider theme={theme}>
-            <BackCallForm open={backCallOpen} onClose={handleBackCallClose} />
-            {children}
-        </ThemeProvider>
-    );
-};
+import { landingConfig } from "../lib/data/config";
+import { headers } from "next/headers";
 
 const RootLayout = ({
     children
 }: Readonly<{
     children: ReactNode;
+    searchParams: { [key: string]: string | string[] | undefined };
 }>) => {
+    const headersList = headers();
+    const referer = headersList.get("referer");
+
     const htmlStyle: CSSProperties = {
         overflow: "auto",
         scrollbarGutter: "stable",
@@ -93,7 +29,7 @@ const RootLayout = ({
     };
 
     const bodyProps: { className: string; style: CSSProperties } = {
-        className: `${styles.mainFont}`,
+        className: styles.mainFont,
         style: {
             display: "flex",
             flexDirection: "column",
@@ -113,12 +49,13 @@ const RootLayout = ({
                     name="viewport"
                     content="width=device-width, initial-scale=1.0"
                 />
-                <title>iRay</title>
+                <title>{landingConfig.landing_title}</title>
             </head>
             <body {...bodyProps}>
-                <StoreProvider>
+                <StoreProvider referer={referer}>
                     <AppRouterCacheProvider>
-                        <Dynamic>
+                        <ThemeProvider theme={theme}>
+                            <BackCallForm />
                             <Header />
                             <Box
                                 padding="40px"
@@ -129,7 +66,7 @@ const RootLayout = ({
                                 <Container>{children}</Container>
                             </Box>
                             <Footer />
-                        </Dynamic>
+                        </ThemeProvider>
                     </AppRouterCacheProvider>
                 </StoreProvider>
             </body>

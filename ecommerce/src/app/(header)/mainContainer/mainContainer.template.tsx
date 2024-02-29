@@ -3,23 +3,25 @@ import DesktopHeaderButton, {
     DesktopHeaderButtonProps
 } from "../desktopHeaderButton.template";
 import { ShoppingCart } from "@mui/icons-material";
-import { MouseEventHandler } from "react";
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import HeaderSearchBox from "../search/search";
 import Logo from "../logo/logo";
+import { cookies } from "next/headers";
+import { phoneNumber, storeAddress } from "@/lib/data/geoInf";
+import { CartItem } from "@/lib/types/cart";
 
-const HeaderMainContainerTemplate = ({
-    onCartClick,
-    storeAddress,
-    phone,
-    cartAmount
-}: {
-    onCartClick: MouseEventHandler<HTMLButtonElement>;
-    storeAddress: string;
-    phone: string;
-    cartAmount: number;
-}) => {
+const HeaderMainContainerTemplate = () => {
+    // const
+    const cookieStore = cookies();
+    const geo = cookieStore.get("geo")?.value;
+    const cart: CartItem[] = JSON.parse(cookieStore.get("cart")?.value || "[]");
+    const amount = cart.reduce<number>(
+        (prev, _, i, arr) => prev + arr[i].amount,
+        0
+    );
+
+    // props
     const outerWrapperProps: BoxProps = {
         paddingY: "2rem",
         marginX: "auto",
@@ -78,8 +80,7 @@ const HeaderMainContainerTemplate = ({
 
     const cartButtonProps: DesktopHeaderButtonProps = {
         text: "Корзина",
-        onClick: onCartClick,
-        lowerText: `Товаров: ${cartAmount}`
+        lowerText: `Товаров: ${amount}`
     };
 
     const addressProps: TypographyProps = {
@@ -95,9 +96,9 @@ const HeaderMainContainerTemplate = ({
                         <Box {...logoAndContactsWrapper}>
                             <Logo />
                             <Box {...contactsBoxProps}>
-                                <PhoneLink number={phone} />
+                                <PhoneLink number={phoneNumber[geo || "rf"]} />
                                 <Typography {...addressProps}>
-                                    {storeAddress}
+                                    {storeAddress[geo || "rf"]}
                                 </Typography>
                             </Box>
                         </Box>

@@ -1,4 +1,4 @@
-import { landingConfig } from "@/app/config";
+import { landingConfig } from "@/lib/data/config";
 import LogoTemplate from "./logo.template";
 
 const Logo = () => {

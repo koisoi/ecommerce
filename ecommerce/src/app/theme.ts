@@ -1,7 +1,7 @@
 "use client";
 
 import { createTheme } from "@mui/material";
-import { landingConfig } from "./config";
+import { landingConfig } from "../lib/data/config";
 
 export const theme = createTheme({
     palette: {

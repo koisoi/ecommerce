@@ -1,6 +1,6 @@
 import { CategoryItem, NetworkError, ProductReview } from "..";
 import { Service } from "./base.service";
-import { landingConfig } from "@/app/config";
+import { landingConfig } from "@/lib/data/config";
 
 class HomePageService extends Service {
     public async getPopularProducts(): Promise<CategoryItem[]> {

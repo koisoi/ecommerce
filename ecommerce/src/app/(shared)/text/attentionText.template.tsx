@@ -15,7 +15,7 @@ const AttentionText = ({
         color: "primary.main",
         fontWeight: "bold",
 
-        ...(inline && { display: "inline" }),
+        ...(inline && { display: "inline", component: "span" }),
 
         ...props
     };

@@ -8,7 +8,7 @@ import {
 } from "@/lib/slices/mobileMenu.slice";
 import { GlobalState } from "@/lib/slices/global.slice";
 import { usePathname, useSearchParams } from "next/navigation";
-import { landingConfig } from "@/app/config";
+import { landingConfig } from "@/lib/data/config";
 
 const MobileMenu = () => {
     const dispatch = useAppDispatch();

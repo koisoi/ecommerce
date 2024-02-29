@@ -8,23 +8,31 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { MouseEventHandler, ReactNode, RefObject } from "react";
 
 export type DesktopHeaderButtonProps = {
     children?: ReactNode;
     text: string;
     lowerText?: string;
-    onClick?: MouseEventHandler<HTMLButtonElement>;
     id?: string;
 };
 
 const DesktopHeaderButton = ({
     children,
     text: upperText,
-    onClick,
     id,
     lowerText
 }: DesktopHeaderButtonProps) => {
+    // const
+    const router = useRouter();
+
+    // handlers
+    const handleCartClick: MouseEventHandler<HTMLButtonElement> = () => {
+        router.push("/cart");
+    };
+
+    // props
     const wrapperProps: ButtonProps = {
         sx: {
             display: "flex",
@@ -36,7 +44,7 @@ const DesktopHeaderButton = ({
             height: "min-content"
         },
 
-        onClick
+        onClick: handleCartClick
     };
 
     const textWrapperProps: BoxProps = {

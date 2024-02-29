@@ -6,7 +6,7 @@ import {
     SeriesInfo
 } from "..";
 import { Service } from "./base.service";
-import { landingConfig } from "@/app/config";
+import { landingConfig } from "@/lib/data/config";
 
 class CategoryService extends Service {
     /**

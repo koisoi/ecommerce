@@ -2,7 +2,6 @@
 
 import { useAppDispatch, useAppSelector } from "@/lib";
 import HomeTemplate from "./page.template";
-import { GlobalState } from "@/lib/slices/global.slice";
 import {
     HomePageState,
     fetchLastReviews,
@@ -11,7 +10,7 @@ import {
     setReviewsLoading
 } from "@/lib/slices/homePage.slice";
 import { useEffect } from "react";
-import { landingConfig } from "./config";
+import { landingConfig } from "../lib/data/config";
 
 const Home = () => {
     const dispatch = useAppDispatch();

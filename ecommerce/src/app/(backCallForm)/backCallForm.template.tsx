@@ -1,3 +1,5 @@
+"use client";
+
 import {
     Box,
     BoxProps,
@@ -12,7 +14,6 @@ import {
     Table,
     TableBody,
     TableCell,
-    TableHead,
     TableRow
 } from "@mui/material";
 import Title from "../(shared)/text/title.template";

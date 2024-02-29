@@ -15,7 +15,6 @@ import PageTitle from "../(shared)/text/pageTitle.template";
 import TableTitle from "../(shared)/text/tableTitle.template";
 import MetroStation from "./metro.template";
 import Paragraph from "../(shared)/text/paragraph.template";
-import { useMediaQueries } from "@/lib";
 import Title from "../(shared)/text/title.template";
 import ImageSwitcher from "./imageSwitcher";
 import { contactsData } from "./contactsData";
@@ -191,14 +190,14 @@ const ContactsTemplate = () => {
                 </TableBody>
             </Table>
 
-            <Paragraph>
-                <Table {...tableProps}>
-                    <TableBody>
-                        <TableRow>
-                            <TableCell>
-                                <TableTitle>Отдел розничных продаж</TableTitle>
-                            </TableCell>
-                            <TableCell>
+            <Table {...tableProps}>
+                <TableBody>
+                    <TableRow>
+                        <TableCell>
+                            <TableTitle>Отдел розничных продаж</TableTitle>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
                                 <AppLink
                                     href="mailto:sales@telescope1.ru"
                                     props={mailLinkProps}
@@ -206,15 +205,17 @@ const ContactsTemplate = () => {
                                     sales@telescope1.ru
                                 </AppLink>{" "}
                                 (продажи физическим лицам)
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <TableTitle>
-                                    Отдел корпоративных и оптовых продаж
-                                </TableTitle>
-                            </TableCell>
-                            <TableCell>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <TableTitle>
+                                Отдел корпоративных и оптовых продаж
+                            </TableTitle>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
                                 <AppLink
                                     href="mailto:corp@telescope1.ru"
                                     props={mailLinkProps}
@@ -223,15 +224,15 @@ const ContactsTemplate = () => {
                                 </AppLink>{" "}
                                 (продажи юр. лицам, получение счета возможно
                                 через корзину)
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <TableTitle>
-                                    Отдел клиентского сервиса
-                                </TableTitle>
-                            </TableCell>
-                            <TableCell>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <TableTitle>Отдел клиентского сервиса</TableTitle>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
                                 <AppLink
                                     href="mailto:service@telescope1.ru"
                                     props={mailLinkProps}
@@ -240,13 +241,15 @@ const ContactsTemplate = () => {
                                 </AppLink>{" "}
                                 (по вопросам гарантийного обслуживания, ремонта
                                 и возврата товара)
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <TableTitle>Отдел закупок</TableTitle>
-                            </TableCell>
-                            <TableCell>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <TableTitle>Отдел закупок</TableTitle>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
                                 <AppLink
                                     href="mailto:pur@telescope1.ru"
                                     props={mailLinkProps}
@@ -255,13 +258,15 @@ const ContactsTemplate = () => {
                                 </AppLink>{" "}
                                 (по вопросам предложений дилерства и
                                 дистрибуции)
-                            </TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>
-                                <TableTitle>Отдел маркетинга</TableTitle>
-                            </TableCell>
-                            <TableCell>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <TableTitle>Отдел маркетинга</TableTitle>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
                                 <AppLink
                                     href="mailto:marketing@telescope1.ru"
                                     props={mailLinkProps}
@@ -269,11 +274,11 @@ const ContactsTemplate = () => {
                                     marketing@telescope1.ru
                                 </AppLink>{" "}
                                 (по вопросам рекламы и сотрудничества)
-                            </TableCell>
-                        </TableRow>
-                    </TableBody>
-                </Table>
-            </Paragraph>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableBody>
+            </Table>
 
             <Title props={marginBottomProps}>
                 Схема проезда в пункт выдачи Telescope1.ru в Москве

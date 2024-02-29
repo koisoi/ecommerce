@@ -2,6 +2,7 @@ import { LandingConfig } from "@/lib/types/config";
 
 export const landingConfig: LandingConfig = {
     landing: "iray",
+    landing_title: "iRay",
     landing_id: 49,
     logoImgLink:
         "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",

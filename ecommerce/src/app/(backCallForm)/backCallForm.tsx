@@ -1,3 +1,5 @@
+"use client";
+
 import { useForm } from "react-hook-form";
 import BackCallFormTemplate from "./backCallForm.template";
 import {
@@ -13,6 +15,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import {
     BackCallState,
     authorizeAppeal,
+    closeBackCallModal,
     postAppeal,
     postAppealStatistics,
     resetAppeal
@@ -25,17 +28,15 @@ export type BackCallRules = {
     question: RulesType;
 };
 
-const BackCallForm = ({
-    open,
-    onClose
-}: {
-    open: boolean;
-    onClose: MouseEventHandler<HTMLButtonElement>;
-}) => {
+const BackCallForm = () => {
     const dispatch = useAppDispatch();
     const { utm, ip, referrer, start_url } = useAppSelector(GlobalState);
-    const { loading, postedAppealId, appealSendingCompleted } =
+    const { loading, postedAppealId, appealSendingCompleted, backCallOpen } =
         useAppSelector(BackCallState);
+
+    const handleBackCallClose: MouseEventHandler<HTMLButtonElement> = () => {
+        dispatch(closeBackCallModal());
+    };
 
     const [currentPromise, setCurrentPromise] = useState<Promise<
         PayloadAction<any>
@@ -99,7 +100,7 @@ const BackCallForm = ({
     };
 
     const handleClose: MouseEventHandler<HTMLButtonElement> = (e) => {
-        onClose(e);
+        handleBackCallClose(e);
         // @ts-ignore
         if (currentPromise) currentPromise.abort();
         dispatch(resetAppeal());
@@ -107,7 +108,7 @@ const BackCallForm = ({
 
     return (
         <BackCallFormTemplate
-            open={open}
+            open={backCallOpen}
             onClose={handleClose}
             form={form}
             rules={formValidation}
