@@ -1,5 +1,6 @@
 "use client";
 
+import { CartState, useAppSelector } from "@/lib";
 import {
     Box,
     BoxProps,
@@ -9,23 +10,29 @@ import {
     TypographyProps
 } from "@mui/material";
 import { useRouter } from "next/navigation";
-import { MouseEventHandler, ReactNode, RefObject } from "react";
+import {
+    MouseEventHandler,
+    ReactNode,
+    RefObject,
+    useEffect,
+    useState
+} from "react";
 
 export type DesktopHeaderButtonProps = {
     children?: ReactNode;
-    text: string;
-    lowerText?: string;
     id?: string;
 };
+export const dynamic = "force-dynamic";
 
-const DesktopHeaderButton = ({
-    children,
-    text: upperText,
-    id,
-    lowerText
-}: DesktopHeaderButtonProps) => {
+const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
+    const { items } = useAppSelector(CartState);
+
     // const
     const router = useRouter();
+    const amount = items.reduce<number>(
+        (prev, _, i, arr) => prev + arr[i].amount,
+        0
+    );
 
     // handlers
     const handleCartClick: MouseEventHandler<HTMLButtonElement> = () => {
@@ -72,10 +79,8 @@ const DesktopHeaderButton = ({
         <Button {...wrapperProps} id={id}>
             {children}
             <Box {...textWrapperProps}>
-                <Typography {...upperTextProps}>{upperText}</Typography>
-                {lowerText && (
-                    <Typography {...lowerTextProps}>{lowerText}</Typography>
-                )}
+                <Typography {...upperTextProps}>Корзина</Typography>
+                <Typography {...lowerTextProps}>Товаров: {amount}</Typography>
             </Box>
         </Button>
     );

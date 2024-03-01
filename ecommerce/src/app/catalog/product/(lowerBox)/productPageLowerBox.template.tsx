@@ -17,10 +17,10 @@ import {
     TypographyProps
 } from "@mui/material";
 import { SyntheticEvent } from "react";
-import SimliarProductsSlider from "./simliarProductsSlider";
+import SimliarProductsSlider from "../../../(shared)/simliarProductsSlider";
 import OurAdvantages from "@/app/(shared)/ourAdvantages.template";
 import AllCharacteristicsBox from "./allCharacteristicsBox.template";
-import FeedbackBoxTemplate from "./feedbackBox.template";
+import FeedbackBoxTemplate from "../../../(shared)/feedbackBox.template";
 
 export type ProductPageLowerBoxProps = {
     currentTab: ProductPageTabType;

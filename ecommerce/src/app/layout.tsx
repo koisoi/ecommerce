@@ -3,14 +3,24 @@ import styles from "./page.module.css";
 import Header from "./(header)/header";
 import { Box, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
-import StoreProvider from "./storeProvider";
-import Container from "./(shared)/container.template";
 import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { landingConfig } from "../lib/data/config";
 import { headers } from "next/headers";
+import dynamic from "next/dynamic";
+import Loading from "./(shared)/loading.template";
+import Container from "./(shared)/container.template";
+
+const DynamicStoreProvider = dynamic(() => import("@/app/storeProvider"), {
+    ssr: false,
+    loading: () => (
+        <Box sx={{ height: "100vh", width: "100vw" }}>
+            <Loading>Загрузка...</Loading>
+        </Box>
+    )
+});
 
 const RootLayout = ({
     children
@@ -41,6 +51,11 @@ const RootLayout = ({
         }
     };
 
+    // Fixes: Hydration failed because the initial UI does not match what was rendered on the server.
+    // const DynamicContextProvider = dynamic(() => import('@/app/storeProvider').then(mod => mod.default, {
+    //     ssr: false
+    //   })
+
     return (
         <html lang="ru" style={htmlStyle}>
             <head>
@@ -52,9 +67,9 @@ const RootLayout = ({
                 <title>{landingConfig.landing_title}</title>
             </head>
             <body {...bodyProps}>
-                <StoreProvider referer={referer}>
-                    <AppRouterCacheProvider>
-                        <ThemeProvider theme={theme}>
+                <ThemeProvider theme={theme}>
+                    <DynamicStoreProvider referer={referer}>
+                        <AppRouterCacheProvider>
                             <BackCallForm />
                             <Header />
                             <Box
@@ -66,9 +81,9 @@ const RootLayout = ({
                                 <Container>{children}</Container>
                             </Box>
                             <Footer />
-                        </ThemeProvider>
-                    </AppRouterCacheProvider>
-                </StoreProvider>
+                        </AppRouterCacheProvider>
+                    </DynamicStoreProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

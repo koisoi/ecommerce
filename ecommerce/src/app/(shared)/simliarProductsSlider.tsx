@@ -1,18 +1,17 @@
-"use client";
-
 import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
-import { CategoryItem, getProductImageLink, useMediaQueries } from "@/lib";
+import { CategoryItem, getProductImageLink } from "@/lib";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 
 const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
-    const screen = useMediaQueries();
-
     const productCardProps = (item: CategoryItem): ProductCardProps => {
         return {
             cartItem: {
-                ...item,
+                alias: item.alias,
+                title: item.title,
+                price: item.price,
+                articul: item.articul,
                 url: {
                     pathname: "/catalog/product",
                     query: {
@@ -36,8 +35,8 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                     height: "100%"
                 }
             },
-            linkStyle: {
-                height: screen.xl ? "310px" : screen.md ? "190px" : "310px"
+            linkProps: {
+                height: { xs: "310px", md: "190px", xl: "310px" }
             }, // md: "190px", xl: "310px"
             categoryItem: item
         };

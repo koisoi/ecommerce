@@ -1,7 +1,5 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import DesktopHeaderButton, {
-    DesktopHeaderButtonProps
-} from "../desktopHeaderButton.template";
+import DesktopHeaderButton from "../desktopHeaderButton.template";
 import { ShoppingCart } from "@mui/icons-material";
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
@@ -9,17 +7,11 @@ import HeaderSearchBox from "../search/search";
 import Logo from "../logo/logo";
 import { cookies } from "next/headers";
 import { phoneNumber, storeAddress } from "@/lib/data/geoInf";
-import { CartItem } from "@/lib/types/cart";
 
 const HeaderMainContainerTemplate = () => {
     // const
     const cookieStore = cookies();
     const geo = cookieStore.get("geo")?.value;
-    const cart: CartItem[] = JSON.parse(cookieStore.get("cart")?.value || "[]");
-    const amount = cart.reduce<number>(
-        (prev, _, i, arr) => prev + arr[i].amount,
-        0
-    );
 
     // props
     const outerWrapperProps: BoxProps = {
@@ -78,11 +70,6 @@ const HeaderMainContainerTemplate = () => {
         height: "min-content"
     };
 
-    const cartButtonProps: DesktopHeaderButtonProps = {
-        text: "Корзина",
-        lowerText: `Товаров: ${amount}`
-    };
-
     const addressProps: TypographyProps = {
         color: "text.disabled",
         fontSize: "0.8rem"
@@ -106,7 +93,7 @@ const HeaderMainContainerTemplate = () => {
                     </Box>
                     <Box {...buttonsRowProps}>
                         <BackCallButton />
-                        <DesktopHeaderButton {...cartButtonProps}>
+                        <DesktopHeaderButton>
                             <ShoppingCart id="desktop-header-button" />
                         </DesktopHeaderButton>
                     </Box>

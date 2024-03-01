@@ -1,19 +1,16 @@
-import CatalogSubcategory from "@/app/catalog/catalogSubcategory.template";
 import { Box, BoxProps, Typography } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
-import PageTitle from "../(shared)/text/pageTitle.template";
-import Loading from "../(shared)/loading.template";
+import PageTitle from "../../(shared)/text/pageTitle.template";
+import CatalogSubcategory from "./catalogSubcategory.template";
 
 const CategoryTemplate = ({
     title,
     page_description,
     series,
     alias,
-    seriesAlias,
-    loading
+    seriesAlias
 }: CategoryInfo & {
-    loading: boolean;
     seriesAlias: string | null;
 }) => {
     const headerWrapper: BoxProps = {
@@ -26,8 +23,6 @@ const CategoryTemplate = ({
         gap: "25px",
         marginBottom: "25px"
     };
-
-    if (loading) return <Loading>Загрузка категории...</Loading>;
 
     return (
         <>

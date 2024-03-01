@@ -1,4 +1,4 @@
-import { Link, LinkProps, Typography, TypographyProps } from "@mui/material";
+import { Link, LinkProps } from "@mui/material";
 import { Url } from "next/dist/shared/lib/router/router";
 import { default as NextLink } from "next/link";
 import { ReactNode } from "react";
@@ -12,7 +12,7 @@ const AppLink = ({
     children?: ReactNode;
     href?: Url;
     footer?: boolean;
-    props?: TypographyProps;
+    props?: LinkProps;
 }) => {
     const linkProps: LinkProps = {
         component: NextLink,
@@ -37,10 +37,6 @@ const AppLink = ({
             ...props?.sx
         }
     };
-
-    // const linkTextProps: TypographyProps = {
-
-    // };
 
     return <Link {...linkProps}>{children}</Link>;
 };

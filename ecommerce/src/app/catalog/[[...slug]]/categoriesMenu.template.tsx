@@ -1,14 +1,8 @@
 import CategoryCard from "@/app/(shared)/categoryCard.template";
-import { CategoryListItem } from "@/lib";
+import { landingConfig } from "@/lib/data/config";
 import { Box, BoxProps } from "@mui/material";
 
-const CategoriesMenuTemplate = ({
-    categories
-}: // loading
-{
-    categories: CategoryListItem[];
-    // loading: boolean;
-}) => {
+const CategoriesMenuTemplate = () => {
     const wrapperProps: BoxProps = {
         paddingY: "50px",
 
@@ -22,11 +16,9 @@ const CategoriesMenuTemplate = ({
         gap: "30px"
     };
 
-    // if (loading) return <Loading>Загрузка...</Loading>;
-
     return (
         <Box {...wrapperProps}>
-            {categories.map((category) => (
+            {landingConfig.categories.map((category) => (
                 <CategoryCard category={category} key={category.path} />
             ))}
         </Box>

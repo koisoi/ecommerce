@@ -25,10 +25,7 @@ const CatalogBox = ({ categories }: { categories: CategoryListItem[] }) => {
                 {categories.map((category) => (
                     <AppLink
                         key={category.path}
-                        href={{
-                            pathname: "/catalog",
-                            query: { category: category.path }
-                        }}
+                        href={`/catalog/${category.path}`}
                         footer
                     >
                         {category.title}

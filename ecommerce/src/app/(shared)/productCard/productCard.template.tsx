@@ -9,16 +9,17 @@ import {
     TypographyProps,
     BoxProps,
     Box,
-    CardContentProps
+    CardContentProps,
+    Link,
+    LinkProps
 } from "@mui/material";
-import Link from "next/link";
-import { CategoryItem, NextLinkProps } from "@/lib";
+import { CategoryItem } from "@/lib";
 import Price from "../text/price.template";
 import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
 import AppCard, { AppCardProps } from "../appCard.template";
-import { CSSProperties } from "react";
+import { default as NextLink } from "next/link";
 
 export type ProductCardProps = {
     cartItem: CartItem;
@@ -31,7 +32,7 @@ export type ProductCardProps = {
     // TODO: переделать пропы
     categoryItem: CategoryItem;
     hideButtons?: boolean;
-    linkStyle?: CSSProperties;
+    linkProps?: LinkProps;
 };
 
 const ProductCard = ({
@@ -44,19 +45,23 @@ const ProductCard = ({
     cartItem,
     categoryItem,
     hideButtons,
-    linkStyle
+    linkProps
 }: ProductCardProps) => {
-    const imageLinkProps: NextLinkProps = {
+    const imageLinkProps: LinkProps = {
+        component: NextLink,
+        // @ts-ignore
         href: cartItem.url,
 
-        style: {
+        ...linkProps,
+
+        sx: {
             display: "inline-block",
             height: "310px",
             width: "100%",
 
             cursor: "pointer",
 
-            ...linkStyle
+            ...linkProps?.sx
         }
     };
 

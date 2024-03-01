@@ -118,7 +118,9 @@ const slice = createSlice({
                 (val) => val.alias === action.payload.alias
             );
             if (!!cartItem) cartItem.amount++;
-            else items.push(action.payload);
+            else {
+                items.push(action.payload);
+            }
             //@ts-ignore
             state.items = items;
             state.cartTotal = calculateCartTotal(state.items);

@@ -16,6 +16,8 @@ import { Provider } from "react-redux";
 
 // export let store: ReturnType<typeof makeStore>;
 
+export const dynamic = "force-dynamic";
+
 export default function StoreProvider({
     children,
     referer

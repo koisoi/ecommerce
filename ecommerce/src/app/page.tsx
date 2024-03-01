@@ -1,55 +1,70 @@
-"use client";
+import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
+import Title from "./(shared)/text/title.template";
+import CategoryCard from "./(shared)/categoryCard.template";
+import OurAdvantages from "./(shared)/ourAdvantages.template";
+import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
+import FeedbackBoxTemplate from "./(shared)/feedbackBox.template";
+import { landingConfig } from "@/lib/data/config";
+import { homePageAPI } from "@/lib/services/homePage.service";
+import MainPageCarousel from "./mainPageCarousel";
+import { CategoryItem, ProductReview } from "@/lib";
 
-import { useAppDispatch, useAppSelector } from "@/lib";
-import HomeTemplate from "./page.template";
-import {
-    HomePageState,
-    fetchLastReviews,
-    fetchPopularProducts,
-    setPopularProductsLoading,
-    setReviewsLoading
-} from "@/lib/slices/homePage.slice";
-import { useEffect } from "react";
-import { landingConfig } from "../lib/data/config";
+const Home = async () => {
+    // async
+    let popularProducts: CategoryItem[] = [];
+    let reviews: ProductReview[] = [];
+    try {
+        popularProducts = await homePageAPI.getPopularProducts();
+        reviews = await homePageAPI.getLastReviews();
+    } catch (error) {
+        console.error(error);
+    }
 
-const Home = () => {
-    const dispatch = useAppDispatch();
+    // props
+    const tabsProps: TabsProps = {
+        variant: "scrollable",
 
-    const frameLinks = [
-        "https://telescope1.ru/img/banners/pulsar-telos-lrf-xp50/index.html",
-        "https://telescope1.ru/img/banners/nikon-sale/index.html",
-        "https://telescope1.ru/img/banners/club-price-auth/index.html",
-        "https://telescope1.ru/img/banners/vector-optics/index.html",
-        "https://telescope1.ru/img/banners/delivery/index.html"
-    ];
+        value: false,
 
-    const { reviews, reviewsLoading, popularProducts, popularProductsLoading } =
-        useAppSelector(HomePageState);
+        sx: {
+            minHeight: "max-content"
+        }
+    };
 
-    useEffect(() => {
-        const productsPromise = dispatch(fetchPopularProducts());
-        const reviewsPromise = dispatch(fetchLastReviews());
-
-        productsPromise.unwrap().catch((error) => console.error(error));
-        reviewsPromise.unwrap().catch((error) => console.error(error));
-
-        return () => {
-            productsPromise.abort();
-            reviewsPromise.abort();
-            dispatch(setPopularProductsLoading(false));
-            dispatch(setReviewsLoading(false));
-        };
-    }, []);
+    const tabProps: TabProps = {
+        sx: {
+            textTransform: "none",
+            width: "240px",
+            minHeight: "100%"
+        }
+    };
 
     return (
-        <HomeTemplate
-            frameLinks={frameLinks}
-            categories={landingConfig.categories}
-            popularProducts={popularProducts}
-            popularProductsLoading={popularProductsLoading}
-            reviews={reviews}
-            reviewsLoading={reviewsLoading}
-        />
+        // <></>
+        <Box>
+            <MainPageCarousel />
+            <Title>Категории</Title>
+            <Tabs {...tabsProps} id="hehehe">
+                {landingConfig.categories.map((category) => (
+                    <Tab
+                        key={category.path}
+                        label={
+                            <CategoryCard
+                                category={category}
+                                smallText
+                                smallImage
+                            />
+                        }
+                        {...tabProps}
+                    />
+                ))}
+            </Tabs>
+            <Title>Популярные товары</Title>
+            <SimliarProductsSlider products={popularProducts} />
+            <Title>Последние отзывы</Title>
+            <FeedbackBoxTemplate feedback={reviews} />
+            <OurAdvantages props={{ marginTop: "40px" }} />
+        </Box>
     );
 };
 

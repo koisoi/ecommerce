@@ -1,10 +1,11 @@
+"use client";
+
 import { CartItem } from "@/lib/types/cart";
 import { InstantBuyButtonTemplate, ShoppingCartButtonTemplate } from "..";
 import {
     CategoryItem,
     addItemToCart,
     useAppDispatch,
-    useAppSelector,
     useMediaQueries
 } from "@/lib";
 import { ButtonProps, TypographyProps } from "@mui/material";
@@ -62,7 +63,6 @@ export const ShoppingCartButton = ({
                   };
 
         setTranslateTo(translateTo);
-        event.currentTarget.getBoundingClientRect;
 
         setTimeout(() => setTranslateTo(undefined), 1000);
     };

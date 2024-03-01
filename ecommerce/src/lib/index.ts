@@ -2,7 +2,7 @@ export * from "./hooks";
 export * from "./store";
 
 export * from "./functions/backendTextRegExp";
-export * from "./functions/category/getProductImageLink";
+export * from "./functions/getProductImageLink";
 
 // export * from "./services/base.service";
 export * from "./services/catalog.service";

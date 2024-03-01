@@ -8,7 +8,7 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import ProductsGridTemplate from "../(shared)/productsGrid/productsGrid.template";
+import ProductsGridTemplate from "../../(shared)/productsGrid/productsGrid.template";
 import { ChangeEvent, useEffect, useState } from "react";
 
 const ProductsCategoryGrid = ({

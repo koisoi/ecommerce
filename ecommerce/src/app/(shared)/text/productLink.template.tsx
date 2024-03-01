@@ -1,8 +1,7 @@
-import { NextLinkProps } from "@/lib";
-import { Typography, TypographyProps } from "@mui/material";
+import { Link, LinkProps, Typography, TypographyProps } from "@mui/material";
 import { Url } from "next/dist/shared/lib/router/router";
-import Link from "next/link";
 import { ReactNode } from "react";
+import { default as NextLink } from "next/link";
 
 export type ProductLinkProps = {
     url: Url;
@@ -11,15 +10,11 @@ export type ProductLinkProps = {
 };
 
 const ProductLink = ({ url, children, props }: ProductLinkProps) => {
-    const linkProps: NextLinkProps = {
+    const linkProps: LinkProps = {
+        component: NextLink,
+        // @ts-ignore
         href: url,
-        style: {
-            textDecoration: "none",
-            color: "inherit"
-        }
-    };
 
-    const titleProps: TypographyProps = {
         fontSize: "0.95rem",
         color: "text.primary",
 
@@ -27,7 +22,6 @@ const ProductLink = ({ url, children, props }: ProductLinkProps) => {
 
         sx: {
             textDecoration: "none",
-
             ":hover": {
                 color: "primary.main"
             },
@@ -36,11 +30,7 @@ const ProductLink = ({ url, children, props }: ProductLinkProps) => {
         }
     };
 
-    return (
-        <Link {...linkProps}>
-            <Typography {...titleProps}>{children}</Typography>
-        </Link>
-    );
+    return <Link {...linkProps}>{children}</Link>;
 };
 
 export default ProductLink;

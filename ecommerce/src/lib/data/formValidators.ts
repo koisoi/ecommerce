@@ -1,3 +1,5 @@
+"use client";
+
 import { matchIsValidTel } from "mui-tel-input";
 
 /**
