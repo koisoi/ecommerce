@@ -1,5 +1,4 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import DesktopHeaderButton from "../desktopHeaderButton.template";
 import { ShoppingCart } from "@mui/icons-material";
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
@@ -7,6 +6,15 @@ import HeaderSearchBox from "../search/search";
 import Logo from "../logo/logo";
 import { cookies } from "next/headers";
 import { phoneNumber, storeAddress } from "@/lib/data/geoInf";
+import dynamic from "next/dynamic";
+
+const DynamicHeaderButton = dynamic(
+    () => import("@/app/(header)/desktopHeaderButton.template"),
+    {
+        ssr: false,
+        loading: () => <>Загрузка корзины...</>
+    }
+);
 
 const HeaderMainContainerTemplate = () => {
     // const
@@ -93,9 +101,12 @@ const HeaderMainContainerTemplate = () => {
                     </Box>
                     <Box {...buttonsRowProps}>
                         <BackCallButton />
-                        <DesktopHeaderButton>
+                        <DynamicHeaderButton>
                             <ShoppingCart id="desktop-header-button" />
-                        </DesktopHeaderButton>
+                        </DynamicHeaderButton>
+                        {/* <DesktopHeaderButton>
+                            <ShoppingCart id="desktop-header-button" />
+                        </DesktopHeaderButton> */}
                     </Box>
                 </Box>
             </Box>

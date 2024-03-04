@@ -10,19 +10,12 @@ import {
     TypographyProps
 } from "@mui/material";
 import { useRouter } from "next/navigation";
-import {
-    MouseEventHandler,
-    ReactNode,
-    RefObject,
-    useEffect,
-    useState
-} from "react";
+import { MouseEventHandler, ReactNode } from "react";
 
 export type DesktopHeaderButtonProps = {
     children?: ReactNode;
     id?: string;
 };
-export const dynamic = "force-dynamic";
 
 const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
     const { items } = useAppSelector(CartState);

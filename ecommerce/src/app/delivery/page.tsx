@@ -1,4 +1,5 @@
 import {
+    LinkProps,
     Table,
     TableBody,
     TableCell,
@@ -31,7 +32,7 @@ const Delivery = () => {
         marginBottom: "2rem"
     };
 
-    const linksProps: TypographyProps = {
+    const linksProps: LinkProps = {
         sx: {
             textDecoration: "underline 1px"
         }

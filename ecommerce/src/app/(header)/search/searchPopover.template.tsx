@@ -1,5 +1,6 @@
 import { SearchResponse } from "@/lib/services/search.service";
 import {
+    LinkProps,
     List,
     ListItem,
     ListProps,
@@ -66,7 +67,7 @@ const SearchPopoverTemplate = ({
         }
     };
 
-    const linkProps: TypographyProps = {
+    const linkProps: LinkProps = {
         sx: {
             paddingTop: "8px",
 

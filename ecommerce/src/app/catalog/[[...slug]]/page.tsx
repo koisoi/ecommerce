@@ -1,6 +1,7 @@
 import CategoryTemplate from "./page.template";
 import CategoriesMenuTemplate from "./categoriesMenu.template";
 import { CategoryInfo, SeriesInfo, categoryAPI } from "@/lib";
+import { notFound } from "next/navigation";
 
 /**
  * slug пустой - меню категорий
@@ -14,8 +15,10 @@ const Category = async ({ params }: { params: { slug: string[] } }) => {
     let siblings: SeriesInfo[] = [];
 
     try {
-        // popularProducts = await homePageAPI.getPopularProducts();
-        // reviews = await homePageAPI.getLastReviews();
+        // console.log({
+        //     category: params.slug[0],
+        //     series: params.slug[1]
+        // });
         category = await categoryAPI.getCategory({
             category: params.slug[0],
             series: params.slug[1]
@@ -27,6 +30,8 @@ const Category = async ({ params }: { params: { slug: string[] } }) => {
     } catch (error) {
         console.error(error);
     }
+
+    if (!category) return notFound();
     // const searchParams = useSearchParams();
     // const dispatch = useAppDispatch();
     // const category: string | null = searchParams.get("category");

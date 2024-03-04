@@ -2,7 +2,7 @@
 
 import { Box, BoxProps } from "@mui/material";
 import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
-import { CategoryListItem, useMediaQueries } from "@/lib";
+import { CategoryListItem } from "@/lib";
 import HeaderDesktopNavigation from "./desktopNavigation/desktopNavigation";
 import { useRouter } from "next/navigation";
 
@@ -20,15 +20,8 @@ const HeaderNavigation = ({
 
     // handlers
     const handleDesktopTabClick = (path: string): void => {
-        router.push(`/catalog?category=${path}`);
+        router.push(`/catalog/${path}`);
     };
-
-    // props
-    // const navigationProps: { style: CSSProperties } = {
-    //     style: {
-    //         minHeight: screen.md ? "50px" : "45px"
-    //     }
-    // };
 
     const wrapperProps: BoxProps = {
         component: "nav",

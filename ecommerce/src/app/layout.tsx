@@ -9,18 +9,8 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { landingConfig } from "../lib/data/config";
 import { headers } from "next/headers";
-import dynamic from "next/dynamic";
-import Loading from "./(shared)/loading.template";
 import Container from "./(shared)/container.template";
-
-const DynamicStoreProvider = dynamic(() => import("@/app/storeProvider"), {
-    ssr: false,
-    loading: () => (
-        <Box sx={{ height: "100vh", width: "100vw" }}>
-            <Loading>Загрузка...</Loading>
-        </Box>
-    )
-});
+import StoreProvider from "./storeProvider";
 
 const RootLayout = ({
     children
@@ -68,7 +58,7 @@ const RootLayout = ({
             </head>
             <body {...bodyProps}>
                 <ThemeProvider theme={theme}>
-                    <DynamicStoreProvider referer={referer}>
+                    <StoreProvider referer={referer}>
                         <AppRouterCacheProvider>
                             <BackCallForm />
                             <Header />
@@ -82,7 +72,7 @@ const RootLayout = ({
                             </Box>
                             <Footer />
                         </AppRouterCacheProvider>
-                    </DynamicStoreProvider>
+                    </StoreProvider>
                 </ThemeProvider>
             </body>
         </html>

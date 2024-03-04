@@ -2,12 +2,12 @@ import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 import Title from "./(shared)/text/title.template";
 import CategoryCard from "./(shared)/categoryCard.template";
 import OurAdvantages from "./(shared)/ourAdvantages.template";
-import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
-import FeedbackBoxTemplate from "./(shared)/feedbackBox.template";
 import { landingConfig } from "@/lib/data/config";
 import { homePageAPI } from "@/lib/services/homePage.service";
 import MainPageCarousel from "./mainPageCarousel";
 import { CategoryItem, ProductReview } from "@/lib";
+import FeedbackBoxTemplate from "./(shared)/feedbackBox.template";
+import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
 
 const Home = async () => {
     // async
@@ -40,7 +40,6 @@ const Home = async () => {
     };
 
     return (
-        // <></>
         <Box>
             <MainPageCarousel />
             <Title>Категории</Title>
@@ -61,8 +60,8 @@ const Home = async () => {
             </Tabs>
             <Title>Популярные товары</Title>
             <SimliarProductsSlider products={popularProducts} />
-            <Title>Последние отзывы</Title>
-            <FeedbackBoxTemplate feedback={reviews} />
+            {/* <Title>Последние отзывы</Title>
+            <FeedbackBoxTemplate feedback={reviews} /> */}
             <OurAdvantages props={{ marginTop: "40px" }} />
         </Box>
     );

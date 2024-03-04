@@ -1,5 +1,6 @@
 import {
     BoxProps,
+    LinkProps,
     Table,
     TableBody,
     TableCell,
@@ -20,7 +21,7 @@ import ImageSwitcher from "./imageSwitcher";
 import { contactsData } from "./contactsData";
 
 const ContactsTemplate = () => {
-    const phoneLinksProps: TypographyProps = {
+    const phoneLinksProps: LinkProps = {
         fontWeight: "bold",
         noWrap: true
     };
@@ -35,7 +36,7 @@ const ContactsTemplate = () => {
         marginBottom: "2rem"
     };
 
-    const mailLinkProps: TypographyProps = {
+    const mailLinkProps: LinkProps = {
         sx: {
             textDecoration: "underline 1px"
         }
