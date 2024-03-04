@@ -13,7 +13,8 @@ const CategoryCard = ({
     smallImage?: boolean;
 }) => {
     const imgLinkProps = (category: CategoryListItem): NextLinkProps => ({
-        href: { pathname: "/catalog", query: { category: category.path } },
+        href: `/catalog/${category.path}`,
+        // href: { pathname: "/catalog", query: { category: category.path } },
 
         style: {
             display: "inline-block",
@@ -43,10 +44,11 @@ const CategoryCard = ({
     });
 
     const linkProps = (category: CategoryListItem): ProductLinkProps => ({
-        url: {
-            pathname: "/catalog",
-            query: { category: category.path }
-        },
+        url: `/catalog/${category.path}`,
+        // url: {
+        //     pathname: "/catalog",
+        //     query: { category: category.path }
+        // },
 
         props: {
             fontSize: smallText ? "1.05rem" : "1.3rem",

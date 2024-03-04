@@ -5,22 +5,21 @@ import { ReactNode } from "react";
 
 const CatalogSubcategory = ({
     children,
-    amount,
     seriesAlias,
     categoryAlias,
     selected
 }: {
     children: ReactNode;
-    amount?: number;
     seriesAlias: string;
     categoryAlias: string;
     selected?: boolean;
 }) => {
     const linkProps: NextLinkProps = {
-        href: {
-            pathname: "/catalog",
-            query: { category: categoryAlias, series: seriesAlias }
-        },
+        href: `/catalog/${categoryAlias}/${seriesAlias}`,
+        // href: {
+        //     pathname: "/catalog",
+        //     query: { category: categoryAlias, series: seriesAlias }
+        // },
 
         style: {
             textDecoration: "none",
@@ -49,14 +48,7 @@ const CatalogSubcategory = ({
 
     return (
         <Link {...linkProps}>
-            <Typography {...textProps}>
-                {children}
-                {amount ?? (
-                    <Typography {...supProps}>
-                        <sup>{amount}</sup>
-                    </Typography>
-                )}
-            </Typography>
+            <Typography {...textProps}>{children}</Typography>
         </Link>
     );
 };

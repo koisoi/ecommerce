@@ -57,7 +57,6 @@ const ProductsGridTemplate = ({
                             <ProductCard
                                 key={item.id}
                                 newProduct={item.is_new}
-                                // sale={item.sale}
                                 recommended={item.is_recommend}
                                 cartItem={{
                                     url: {

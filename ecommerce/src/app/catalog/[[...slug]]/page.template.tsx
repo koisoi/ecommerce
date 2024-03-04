@@ -36,16 +36,14 @@ const CategoryTemplate = ({
 
             <Box {...linksWrapper}>
                 {series.map((series) => (
-                    <></>
-                    // <CatalogSubcategory
-                    //     amount={series.productsAmount}
-                    //     seriesAlias={series.alias}
-                    //     categoryAlias={alias}
-                    //     selected={seriesAlias === series.alias}
-                    //     key={series.id}
-                    // >
-                    //     {series.title}
-                    // </CatalogSubcategory>
+                    <CatalogSubcategory
+                        seriesAlias={series.alias}
+                        categoryAlias={alias}
+                        selected={seriesAlias === series.alias}
+                        key={series.id}
+                    >
+                        {series.title}
+                    </CatalogSubcategory>
                 ))}
             </Box>
             <ProductsCategoryGrid
