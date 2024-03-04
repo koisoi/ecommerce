@@ -14,6 +14,7 @@ export type CategoryInfo = {
     series: SeriesInfo[];
     category?: {
         title: string;
+        path: string;
         images: [{ id: number; url: string }];
     };
     parent_class: string;

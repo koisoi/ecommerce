@@ -48,7 +48,6 @@ const HeaderNavigation = ({
     };
 
     return (
-        // <nav {...navigationProps}>
         <Box {...wrapperProps}>
             {mobile && <HeaderMobileNavigation />}
             {!mobile && (
@@ -58,7 +57,6 @@ const HeaderNavigation = ({
                 />
             )}
         </Box>
-        // </nav>
     );
 };
 

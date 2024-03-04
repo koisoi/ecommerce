@@ -14,6 +14,14 @@ import Link from "next/link";
 import SlidingCartButton from "../slidingCartButton/slidingCartButton";
 import { CategoryListItem } from "@/lib";
 import { CSSProperties } from "react";
+import dynamic from "next/dynamic";
+
+const DynamicSlidingCartButton = dynamic(
+    () => import("@/app/(header)/slidingCartButton/slidingCartButton"),
+    {
+        ssr: false
+    }
+);
 
 const HeaderDesktopNavigationTemplate = ({
     categories,
@@ -105,7 +113,7 @@ const HeaderDesktopNavigationTemplate = ({
                     />
                 ))}
             </Tabs>
-            <SlidingCartButton />
+            <DynamicSlidingCartButton />
         </Box>
     );
 };

@@ -1,6 +1,5 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
 import { Box, BoxProps, Typography } from "@mui/material";
-import { ChangeEvent } from "react";
 import CategoryPagination from "./categoryPagination.template";
 import { CategoryItemsResponse, getProductImageLink } from "@/lib";
 
@@ -8,8 +7,7 @@ export type ProductsGridTemplateProps = CategoryItemsResponse & {
     loading?: boolean;
     page: number;
     pagesCount: number;
-    onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
-    category?: string;
+    category: string;
     series?: string | null;
     search?: boolean;
 };
@@ -20,7 +18,6 @@ const ProductsGridTemplate = ({
     loading,
     page,
     pagesCount,
-    onPageChange,
     category,
     series,
     search
@@ -51,7 +48,8 @@ const ProductsGridTemplate = ({
                         <CategoryPagination
                             page={page}
                             pagesCount={pagesCount}
-                            onPageChange={onPageChange}
+                            category={category}
+                            series={series}
                         />
                     )}
                     <Box {...cardsWrapperProps}>

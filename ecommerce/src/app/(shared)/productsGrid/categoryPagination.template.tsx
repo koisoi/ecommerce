@@ -2,18 +2,30 @@
 
 import { useMediaQueries } from "@/lib/hooks";
 import { Box, BoxProps, Pagination, PaginationProps } from "@mui/material";
+import { useRouter } from "next/navigation";
 import { ChangeEvent } from "react";
 
-// TODO: сделать слайс?
 const CategoryPagination = ({
     page,
     pagesCount,
-    onPageChange
-}: {
+    category,
+    series
+}: // onPageChange
+{
     page: number;
     pagesCount: number;
-    onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
+    category: string;
+    series?: string | null;
+    // onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
 }) => {
+    const router = useRouter();
+
+    const handlePageChange = (_: ChangeEvent<unknown>, page: number): void => {
+        router.push(
+            `/catalog/${category}${series ? "/" + series : ""}?page=${page}`
+        );
+    };
+
     const screen = useMediaQueries();
 
     const paginationWrapperProps: BoxProps = {
@@ -27,7 +39,7 @@ const CategoryPagination = ({
     const paginationProps: PaginationProps = {
         count: pagesCount,
         page: page,
-        onChange: onPageChange,
+        onChange: handlePageChange,
 
         size: screen.sm ? "large" : "small",
         shape: "rounded"

@@ -6,7 +6,6 @@ import { landingConfig } from "@/lib/data/config";
 import { homePageAPI } from "@/lib/services/homePage.service";
 import MainPageCarousel from "./mainPageCarousel";
 import { CategoryItem, ProductReview } from "@/lib";
-import FeedbackBoxTemplate from "./(shared)/feedbackBox.template";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
 
 const Home = async () => {

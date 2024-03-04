@@ -12,7 +12,18 @@ const DynamicHeaderButton = dynamic(
     () => import("@/app/(header)/desktopHeaderButton.template"),
     {
         ssr: false,
-        loading: () => <>Загрузка корзины...</>
+        loading: () => {
+            const textProps: TypographyProps = {
+                fontSize: "0.8rem",
+                lineHeight: "1.2",
+                color: "primary.main",
+                sx: {
+                    textTransform: "none"
+                }
+            };
+
+            return <Typography {...textProps}>Загрузка корзины...</Typography>;
+        }
     }
 );
 

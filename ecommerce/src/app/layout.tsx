@@ -12,6 +12,15 @@ import { headers } from "next/headers";
 import Container from "./(shared)/container.template";
 import StoreProvider from "./storeProvider";
 
+// const DynamicStoreProvider = dynamic(() => import("@/app/storeProvider"), {
+//     ssr: false,
+//     loading: () => (
+//         <Box sx={{ height: "100vh", width: "100vw" }}>
+//             <Loading>Загрузка...</Loading>
+//         </Box>
+//     )
+// });
+
 const RootLayout = ({
     children
 }: Readonly<{

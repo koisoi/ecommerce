@@ -10,6 +10,22 @@ import {
 } from "@/lib";
 import { ButtonProps, TypographyProps } from "@mui/material";
 import { MouseEventHandler, useState } from "react";
+import dynamic from "next/dynamic";
+
+const DynamicShoppingCartButtonTemplate = dynamic(
+    () =>
+        import("@/app/(shared)/buyButtons/buyButtons.template").then(
+            (mod) => mod.ShoppingCartButtonTemplate
+        ),
+    { ssr: false }
+);
+const DynamicInstantBuyButtonTemplate = dynamic(
+    () =>
+        import("@/app/(shared)/buyButtons/buyButtons.template").then(
+            (mod) => mod.InstantBuyButtonTemplate
+        ),
+    { ssr: false }
+);
 
 export type BuyButtonProps = {
     props?: ButtonProps;
@@ -68,7 +84,14 @@ export const ShoppingCartButton = ({
     };
 
     return (
-        <ShoppingCartButtonTemplate
+        // <></>
+        // <ShoppingCartButtonTemplate
+        // props={props}
+        // textProps={textProps}
+        // onAddToCartClick={handleAddToCartClick}
+        // translateTo={translateTo}
+        // />
+        <DynamicShoppingCartButtonTemplate
             props={props}
             textProps={textProps}
             onAddToCartClick={handleAddToCartClick}
@@ -98,7 +121,7 @@ export const InstantBuyButton = ({
     };
 
     return (
-        <InstantBuyButtonTemplate
+        <DynamicInstantBuyButtonTemplate
             props={props}
             textProps={textProps}
             onInstantBuyClick={handleClick}
@@ -106,5 +129,14 @@ export const InstantBuyButton = ({
             open={fastOrderDialogOpen}
             onClose={handleClose}
         />
+        // <></>
+        // <InstantBuyButtonTemplate
+        // props={props}
+        // textProps={textProps}
+        // onInstantBuyClick={handleClick}
+        // item={item}
+        // open={fastOrderDialogOpen}
+        // onClose={handleClose}
+        // />
     );
 };

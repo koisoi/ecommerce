@@ -1,68 +1,77 @@
-"use client";
-
-import {
-    CategoryItem,
-    ProductsCategoryGridState,
-    fetchCategoryItems,
-    setCanFetchCategoryItems,
-    useAppDispatch,
-    useAppSelector
-} from "@/lib";
+import { CategoryItemsResponse, categoryAPI } from "@/lib";
 import ProductsGridTemplate from "../../(shared)/productsGrid/productsGrid.template";
-import { ChangeEvent, useEffect, useState } from "react";
 
-const ProductsCategoryGrid = ({
+const ProductsCategoryGrid = async ({
     category,
-    series
+    series,
+    page
 }: {
     category: string;
     series?: string | null;
+    page: number;
 }) => {
-    const dispatch = useAppDispatch();
+    // const dispatch = useAppDispatch();
     const productsPerPage = 12;
+    let response: CategoryItemsResponse | null = null;
 
-    const [page, setPage] = useState<number>(1);
-    const [pagesCount, setPagesCount] = useState<number>(0);
+    try {
+        response = await categoryAPI.getCategoryItems({
+            category,
+            series,
+            productsPerPage,
+            page
+        });
+    } catch (error) {
+        console.log(error);
+    }
 
-    const {
-        loading,
-        totalItemCount: totalAmount,
-        list: products
-    } = useAppSelector(ProductsCategoryGridState);
+    // FIXME: проверить как работает с несколькими клиентами, если что можно прямо из запроса в сервисе делать store.dispatch() и потом в самом компоненте пагинации получать из стора
+    const pagesCount = Math.ceil(
+        (response?.totalItemCount || 0) / productsPerPage
+    );
 
-    const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
-        setPage(page);
+    // const [page, setPage] = useState<number>(1);
+    // const [pagesCount, setPagesCount] = useState<number>(0);
 
-    useEffect(() => {
-        dispatch(setCanFetchCategoryItems(true));
-        const promise = dispatch(
-            fetchCategoryItems({
-                category,
-                series,
-                productsPerPage,
-                page
-            })
-        );
-        promise.catch((error) => console.error(error.message));
+    // const {
+    //     loading,
+    //     totalItemCount: totalAmount,
+    //     list: products
+    // } = useAppSelector(ProductsCategoryGridState);
 
-        return () => {
-            promise.abort();
-            dispatch(setCanFetchCategoryItems(false));
-        };
-    }, [page, category, series]);
+    // TODO: redirect на страницу с новым query
+    // const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
+    //     setPage(page);
 
-    useEffect(() => {
-        setPagesCount(Math.ceil(totalAmount / productsPerPage));
-    }, [totalAmount]);
+    // useEffect(() => {
+    //     dispatch(setCanFetchCategoryItems(true));
+    //     const promise = dispatch(
+    //         fetchCategoryItems({
+    //             category,
+    //             series,
+    //             productsPerPage,
+    //             page
+    //         })
+    //     );
+    //     promise.catch((error) => console.error(error.message));
+
+    //     return () => {
+    //         promise.abort();
+    //         dispatch(setCanFetchCategoryItems(false));
+    //     };
+    // }, [page, category, series]); <=== это должно работать с серверными компнентами без массива заивисмостей т.к. у нас изменение каждой из этих переменных === изменение ссылки === ререндер
+
+    // useEffect(() => {
+    //     setPagesCount(Math.ceil(totalAmount / productsPerPage));
+    // }, [totalAmount]);
 
     return (
+        // <></>
         <ProductsGridTemplate
-            list={products}
-            totalItemCount={totalAmount}
-            loading={loading}
+            list={response?.list || []}
+            totalItemCount={response?.totalItemCount || 0}
             page={page}
             pagesCount={pagesCount}
-            onPageChange={handlePageChange}
             category={category}
             series={series}
         />

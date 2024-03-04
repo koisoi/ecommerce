@@ -22,7 +22,8 @@ const MainPageCarousel = () => {
         swipe: true,
 
         sx: {
-            width: "100%"
+            width: "100%",
+            minHeight: "330px"
         }
     };
 

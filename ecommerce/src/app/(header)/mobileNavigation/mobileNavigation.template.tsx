@@ -1,7 +1,21 @@
 import { Box, BoxProps } from "@mui/material";
 import MobileHeaderButton from "../mobileHeaderButton.template";
-import { MouseEventHandler, RefObject } from "react";
+import { MouseEventHandler } from "react";
 import MobileMenu from "../mobileMenu/mobileMenu";
+import dynamic from "next/dynamic";
+
+const DynamicHeaderButton = dynamic(
+    () => import("@/app/(header)/mobileHeaderButton.template"),
+    {
+        ssr: false,
+        loading: () => (
+            <MobileHeaderButton
+                variant="shoppingCart"
+                id="mobile-shopping-cart-button"
+            />
+        )
+    }
+);
 
 const HeaderMobileNavigationTemplate = ({
     onCartClick,
@@ -36,7 +50,7 @@ const HeaderMobileNavigationTemplate = ({
             <Box {...wrapperProps}>
                 <MobileHeaderButton variant="menu" onClick={onMenuOpen} />
                 <Box {...rightButtonsWrapperProps}>
-                    <MobileHeaderButton
+                    <DynamicHeaderButton
                         variant="shoppingCart"
                         onClick={onCartClick}
                         id="mobile-shopping-cart-button"

@@ -9,9 +9,11 @@ const CategoryTemplate = ({
     page_description,
     series,
     alias,
-    seriesAlias
+    seriesAlias,
+    page
 }: CategoryInfo & {
     seriesAlias: string | null;
+    page: number;
 }) => {
     const headerWrapper: BoxProps = {
         marginBottom: "20px"
@@ -26,7 +28,7 @@ const CategoryTemplate = ({
 
     return (
         <>
-            <Box {...headerWrapper} id="mememehehe">
+            <Box {...headerWrapper}>
                 <PageTitle>{title}</PageTitle>
             </Box>
 
@@ -34,18 +36,23 @@ const CategoryTemplate = ({
 
             <Box {...linksWrapper}>
                 {series.map((series) => (
-                    <CatalogSubcategory
-                        amount={series.productsAmount}
-                        seriesAlias={series.alias}
-                        categoryAlias={alias}
-                        selected={seriesAlias === series.alias}
-                        key={series.id}
-                    >
-                        {series.title}
-                    </CatalogSubcategory>
+                    <></>
+                    // <CatalogSubcategory
+                    //     amount={series.productsAmount}
+                    //     seriesAlias={series.alias}
+                    //     categoryAlias={alias}
+                    //     selected={seriesAlias === series.alias}
+                    //     key={series.id}
+                    // >
+                    //     {series.title}
+                    // </CatalogSubcategory>
                 ))}
             </Box>
-            <ProductsCategoryGrid category={alias} series={seriesAlias} />
+            <ProductsCategoryGrid
+                category={alias}
+                series={seriesAlias}
+                page={page}
+            />
         </>
     );
 };

@@ -8,17 +8,19 @@ import { notFound } from "next/navigation";
  * slug [0] - категория
  * slug [1] - серия
  */
-const Category = async ({ params }: { params: { slug: string[] } }) => {
+const Category = async ({
+    params,
+    searchParams
+}: {
+    params: { slug: string[] };
+    searchParams: { page?: number };
+}) => {
     if (!params.slug) return <CategoriesMenuTemplate />;
 
     let category: CategoryInfo | null = null;
     let siblings: SeriesInfo[] = [];
 
     try {
-        // console.log({
-        //     category: params.slug[0],
-        //     series: params.slug[1]
-        // });
         category = await categoryAPI.getCategory({
             category: params.slug[0],
             series: params.slug[1]
@@ -95,7 +97,7 @@ const Category = async ({ params }: { params: { slug: string[] } }) => {
 
     return (
         <CategoryTemplate
-            alias={category?.alias || ""}
+            alias={category?.category?.path || ""}
             title={
                 category?.series
                     ? category?.title
@@ -105,6 +107,7 @@ const Category = async ({ params }: { params: { slug: string[] } }) => {
             series={category?.series || []}
             seriesAlias={params.slug[1]}
             parent_class={""}
+            page={Number(searchParams.page) || 1}
         />
     );
 };

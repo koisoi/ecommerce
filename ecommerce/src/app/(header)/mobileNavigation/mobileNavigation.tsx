@@ -1,12 +1,6 @@
 "use client";
 
-import {
-    MouseEventHandler,
-    useEffect,
-    useLayoutEffect,
-    useMemo,
-    useRef
-} from "react";
+import { MouseEventHandler, useMemo } from "react";
 import { useRouter } from "next/navigation";
 import HeaderMobileNavigationTemplate from "./mobileNavigation.template";
 import { CartState, useAppDispatch, useAppSelector } from "@/lib";
