@@ -1,6 +1,6 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import HeaderDesktopNavigationTemplate from "./desktopNavigation.template";
 import { CategoryListItem } from "@/lib";
 
@@ -11,13 +11,13 @@ const HeaderDesktopNavigation = ({
     categories: CategoryListItem[];
     onTabClick: (path: string) => void;
 }) => {
-    const params = useSearchParams();
+    const params = usePathname();
 
     return (
         <HeaderDesktopNavigationTemplate
             categories={categories}
             onTabClick={onTabClick}
-            catalogPath={params.get("category")}
+            catalogPath={params}
         />
     );
 };

@@ -6,26 +6,37 @@ import Loading from "../(shared)/loading.template";
 import ProductsGridTemplate, {
     ProductsGridTemplateProps
 } from "../(shared)/productsGrid/productsGrid.template";
+import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+import { homePageBreadcrumbs } from "../page";
+
+export const searchBreadcrumbs: Breadcrumb[] = [
+    ...homePageBreadcrumbs,
+    { link: "/search", title: "Поиск" }
+];
 
 const SearchPageTemplate = ({
     loading,
     response,
-    onPageChange,
+    // onPageChange,
     page,
-    pagesCount
+    pagesCount,
+    linkBeforeQuery
 }: {
     loading: boolean;
     response?: SearchResponse;
-    onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
+    // onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
     page: number;
     pagesCount: number;
+    linkBeforeQuery: string;
 }) => {
     const productsGridProps: ProductsGridTemplateProps = {
         list: response?.list || [],
         totalItemCount: response?.totalItemCount || 0,
         page,
         pagesCount,
-        onPageChange,
+        // onPageChange,
+        linkBeforeQuery,
 
         search: true
     };
@@ -36,6 +47,7 @@ const SearchPageTemplate = ({
 
     return (
         <Box>
+            <AppBreadcrumbs linksArray={searchBreadcrumbs} />
             <PageTitle>Поиск</PageTitle>
             {loading && <Loading>Поиск...</Loading>}
             {!loading && response?.list.length !== 0 && (

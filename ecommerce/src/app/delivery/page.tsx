@@ -4,6 +4,7 @@ import {
     TableBody,
     TableCell,
     TableHead,
+    TableProps,
     TableRow,
     TypographyProps
 } from "@mui/material";
@@ -24,12 +25,19 @@ import Mir from "@/assets/svg/mir.svg";
 import { Description } from "@mui/icons-material";
 import { CSSProperties } from "react";
 import AttentionText from "../(shared)/text/attentionText.template";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+import { homePageBreadcrumbs } from "../page";
+import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+
+export const deliveryBreadcrumbs: Breadcrumb[] = [
+    ...homePageBreadcrumbs,
+    { link: "/delivery", title: "Доставка и оплата" }
+];
 
 const Delivery = () => {
     const underTableTextProps: TypographyProps = {
-        paddingX: "15px",
-        marginTop: "1rem",
-        marginBottom: "2rem"
+        paddingX: "1rem",
+        paddingY: "1rem"
     };
 
     const linksProps: LinkProps = {
@@ -49,16 +57,25 @@ const Delivery = () => {
     };
 
     const titleMarginProps: TypographyProps = {
-        marginTop: "2rem"
+        marginTop: { xs: "1rem", md: "2rem" }
+    };
+
+    const tableProps: TableProps = {
+        sx: {
+            ".MuiTableCell-root": {
+                padding: "0.5rem !important"
+            }
+        }
     };
 
     return (
         <>
+            <AppBreadcrumbs linksArray={deliveryBreadcrumbs} />
             <PageTitle>Доставка и оплата</PageTitle>
 
             <Title>Способы доставки</Title>
 
-            <Table>
+            <Table {...tableProps}>
                 <TableHead>
                     <TableRow>
                         <TableCell>

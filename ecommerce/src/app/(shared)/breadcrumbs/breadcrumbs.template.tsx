@@ -1,18 +1,31 @@
 import { NextLinkProps } from "@/lib";
-import { Breadcrumbs, Typography, TypographyProps } from "@mui/material";
-import { Url } from "next/dist/shared/lib/router/router";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+import {
+    Breadcrumbs,
+    BreadcrumbsProps,
+    Typography,
+    TypographyProps
+} from "@mui/material";
 import Link from "next/link";
 
-const BreadcrumbsTemplate = ({
+const AppBreadcrumbs = ({
     linksArray,
     lastLink
 }: {
-    linksArray: { link: Url; title: string }[];
+    linksArray: Breadcrumb[];
     lastLink?: boolean;
 }) => {
+    const breadcrumbsProps: BreadcrumbsProps = {
+        sx: {
+            fontSize: { xs: "0.8rem", sm: "1rem" },
+            marginBottom: "0.8rem"
+        }
+    };
+
     const linkProps: Partial<NextLinkProps> = {
         style: {
-            textDecoration: "none"
+            textDecoration: "none",
+            fontSize: "inherit"
         }
     };
 
@@ -31,6 +44,7 @@ const BreadcrumbsTemplate = ({
         sx: {
             ...textProps.sx,
 
+            fontSize: "inherit",
             ":hover": {
                 color: "primary.dark"
             }
@@ -39,16 +53,14 @@ const BreadcrumbsTemplate = ({
 
     const locationTextProps: TypographyProps = {
         ...textProps,
-        color: "text.disabled"
+        color: "text.disabled",
+        fontSize: "inherit"
     };
 
     if (!linksArray.length) return null;
 
     return (
-        <Breadcrumbs>
-            <Link href="/" {...linkProps}>
-                <Typography {...navTextProps}>Главная</Typography>
-            </Link>
+        <Breadcrumbs {...breadcrumbsProps}>
             {linksArray.slice(0, linksArray.length - 1).map((el, i) => (
                 <Link key={i} {...linkProps} href={el.link}>
                     <Typography {...navTextProps}>{el.title}</Typography>
@@ -73,4 +85,4 @@ const BreadcrumbsTemplate = ({
     );
 };
 
-export default BreadcrumbsTemplate;
+export default AppBreadcrumbs;

@@ -6,67 +6,43 @@ import {
     ProductReview,
     backendTextRegExp
 } from "@/lib";
-import {
-    Box,
-    BoxProps,
-    Tab,
-    TabProps,
-    Tabs,
-    TabsProps,
-    Typography,
-    TypographyProps
-} from "@mui/material";
-import { SyntheticEvent } from "react";
-import SimliarProductsSlider from "../../../(shared)/simliarProductsSlider";
+import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import SimliarProductsSlider from "../../../../(shared)/simliarProductsSlider";
 import OurAdvantages from "@/app/(shared)/ourAdvantages.template";
 import AllCharacteristicsBox from "./allCharacteristicsBox.template";
-import FeedbackBoxTemplate from "../../../(shared)/feedbackBox.template";
+import FeedbackBoxTemplate from "../../../../(shared)/feedbackBox.template";
+import ProductPageTabs from "./productPageTabs";
 
 export type ProductPageLowerBoxProps = {
-    currentTab: ProductPageTabType;
-    onTabChange: (
-        event: SyntheticEvent<Element, Event>,
-        value: ProductPageTabType
-    ) => void;
-    fullCharasterictics?: ProductCharacteristics;
-    description?: string;
-    feedback?: ProductReview[];
+    searchParams: { page?: number; tab?: ProductPageTabType };
+    fullCharasterictics?: ProductCharacteristics | null;
+    description?: string | null;
+    feedback?: ProductReview[] | null;
     simliarProducts: CategoryItem[];
-    complectation?: string;
+    complectation?: string | null;
+    product: string;
+    category: string;
+    series?: string;
 };
 
-const ProductPageLowerBoxTemplate = ({
-    currentTab,
-    onTabChange,
+const ProductPageLowerBox = ({
+    searchParams,
     fullCharasterictics,
     description,
     feedback,
     simliarProducts,
-    complectation
+    complectation,
+    product,
+    category,
+    series
 }: ProductPageLowerBoxProps) => {
+    const currentTab =
+        searchParams.tab ||
+        (fullCharasterictics ? "allCharasteristics" : "description");
+
     const wrapperProps: BoxProps = {
         width: "100%",
         marginTop: "15px"
-    };
-
-    const tabsProps: TabsProps = {
-        value: currentTab,
-        onChange: onTabChange,
-
-        variant: "scrollable",
-
-        sx: {
-            borderBottom: "1px solid",
-            borderColor: "divider"
-        }
-    };
-
-    const tabProps: TabProps = {
-        sx: {
-            fontFamily: "inherit",
-            fontSize: "1.5rem",
-            textTransform: "none"
-        }
     };
 
     const innerWrapperProps: BoxProps = {
@@ -116,8 +92,6 @@ const ProductPageLowerBoxTemplate = ({
                 marginTop: "10px",
                 paddingLeft: "1em",
                 textIndent: "-1em"
-                // color: "primary.main"
-                // fontWeight: "bold"
             },
 
             "li:before": {
@@ -140,41 +114,16 @@ const ProductPageLowerBoxTemplate = ({
 
     return (
         <Box {...wrapperProps}>
-            {(fullCharasterictics ||
-                description ||
-                complectation ||
-                (feedback && feedback.length)) && (
-                <Tabs {...tabsProps}>
-                    {fullCharasterictics && (
-                        <Tab
-                            value={"allCharasteristics"}
-                            label={"Все характеристики"}
-                            {...tabProps}
-                        />
-                    )}
-                    {description && (
-                        <Tab
-                            value={"description"}
-                            label={"Описание"}
-                            {...tabProps}
-                        />
-                    )}
-                    {complectation && (
-                        <Tab
-                            value={"complectation"}
-                            label={"Комплектация"}
-                            {...tabProps}
-                        />
-                    )}
-                    {feedback && feedback.length && (
-                        <Tab
-                            value={"feedback"}
-                            label={"Отзывы"}
-                            {...tabProps}
-                        />
-                    )}
-                </Tabs>
-            )}
+            <ProductPageTabs
+                currentTab={currentTab}
+                fullCharasterictics={fullCharasterictics}
+                description={description}
+                feedback={feedback}
+                complectation={complectation}
+                product={product}
+                category={category}
+                series={series}
+            />
             <Box {...innerWrapperProps}>
                 {currentTab === "allCharasteristics" && (
                     <AllCharacteristicsBox
@@ -226,4 +175,4 @@ const ProductPageLowerBoxTemplate = ({
     );
 };
 
-export default ProductPageLowerBoxTemplate;
+export default ProductPageLowerBox;

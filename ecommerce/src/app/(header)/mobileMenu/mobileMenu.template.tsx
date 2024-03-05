@@ -57,14 +57,9 @@ const MobileMenuTemplate = ({
         disablePadding: true
     };
 
-    const listItemButtonProps = (
-        href: string,
-        params?: { category?: string }
-    ): ListItemButtonProps => ({
+    const listItemButtonProps = (href: string): ListItemButtonProps => ({
         onClick: onMenuClose,
-        selected:
-            (path === `${href}/` || path === href) &&
-            ((!catalogPath && !params) || catalogPath === params?.category),
+        selected: path === `${href}/` || path === href,
         sx: {
             ...(path === href && {
                 pointerEvents: "none"
@@ -148,15 +143,12 @@ const MobileMenuTemplate = ({
                     {categories.map((category) => (
                         <ListItem key={category.path} {...listItemProps}>
                             <ListItemButton
-                                {...listItemButtonProps("/catalog", {
-                                    category: category.path
-                                })}
+                                {...listItemButtonProps(
+                                    `/catalog/${category.path}`
+                                )}
                             >
                                 <Link
-                                    href={{
-                                        pathname: "/catalog",
-                                        query: { category: category.path }
-                                    }}
+                                    href={`/catalog/${category.path}`}
                                     style={linksStyle}
                                 >
                                     <ListItemText primary={category.title} />
@@ -164,6 +156,16 @@ const MobileMenuTemplate = ({
                             </ListItemButton>
                         </ListItem>
                     ))}
+
+                    <ListItem {...listItemProps}>
+                        <ListItemButton {...listItemButtonProps("/search")}>
+                            <Link href="/search" style={linksStyle}>
+                                <ListItemText
+                                    primary={<FooterTitle>Поиск</FooterTitle>}
+                                />
+                            </Link>
+                        </ListItemButton>
+                    </ListItem>
                 </List>
 
                 <ContactsBox

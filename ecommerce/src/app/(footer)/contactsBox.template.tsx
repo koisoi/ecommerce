@@ -24,11 +24,11 @@ const ContactsBox = ({
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "15px",
+        gap: { xs: "0.5rem", md: "1rem" },
 
         boxSizing: "border-box",
 
-        fontSize: "0.95rem",
+        fontSize: "inherit",
 
         ...props
     };
@@ -55,7 +55,7 @@ const ContactsBox = ({
     };
 
     const phoneLinkProps: LinkProps = {
-        fontSize: "1.2rem"
+        fontSize: { xs: "1rem", md: "1.2rem" }
     };
 
     const backCallButtonProps: ButtonProps = {

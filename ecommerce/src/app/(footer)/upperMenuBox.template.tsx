@@ -6,9 +6,9 @@ const UpperMenuBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "15px",
+        gap: { xs: "0.5rem", md: "1rem" },
 
-        fontSize: "0.95rem"
+        fontSize: "inherit"
     };
 
     const innerWrapperProps: BoxProps = {

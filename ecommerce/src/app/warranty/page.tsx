@@ -15,6 +15,14 @@ import TableTitle from "../(shared)/text/tableTitle.template";
 import Paragraph from "../(shared)/text/paragraph.template";
 import AppLink from "../(shared)/text/appLink.template";
 import Title from "../(shared)/text/title.template";
+import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+import { homePageBreadcrumbs } from "../page";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+
+export const warrantyBreadcrumbs: Breadcrumb[] = [
+    ...homePageBreadcrumbs,
+    { link: "/warranty", title: "Гарантии и возврат" }
+];
 
 const WarrantyPage = () => {
     const warrantyBoxProps: BoxProps = {
@@ -50,6 +58,7 @@ const WarrantyPage = () => {
 
     return (
         <>
+            <AppBreadcrumbs linksArray={warrantyBreadcrumbs} />
             <PageTitle>Гарантии и возврат</PageTitle>
 
             <Box {...warrantyBoxProps}>

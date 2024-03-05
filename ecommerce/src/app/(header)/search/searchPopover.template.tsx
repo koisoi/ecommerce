@@ -21,7 +21,8 @@ const SearchPopoverTemplate = ({
     loading,
     response,
     seeMoreHref,
-    limit
+    limit,
+    searchPage
 }: {
     open: boolean;
     anchorEl: Element | null;
@@ -30,6 +31,7 @@ const SearchPopoverTemplate = ({
     response?: SearchResponse;
     seeMoreHref: Url;
     limit: number;
+    searchPage?: boolean;
 }) => {
     const popoverProps: PopoverProps = {
         id: "searchPopover",
@@ -40,7 +42,7 @@ const SearchPopoverTemplate = ({
         disableScrollLock: true,
 
         sx: {
-            display: { xs: "none", sm: "block" }
+            display: searchPage ? "block" : { xs: "none", sm: "block" }
         },
 
         anchorOrigin: {

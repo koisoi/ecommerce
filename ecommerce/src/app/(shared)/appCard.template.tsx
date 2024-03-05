@@ -47,7 +47,7 @@ const AppCard = ({
 
         sx: {
             width: "100%",
-            height: "310px",
+            height: { xs: "100px", md: "310px" },
             position: "relative",
 
             backgroundSize: "contain",

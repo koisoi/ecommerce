@@ -4,7 +4,7 @@ import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 const CharacteristicsBox = ({
     characteristics
 }: {
-    characteristics?: ProductCharacteristic;
+    characteristics?: ProductCharacteristic | null;
 }) => {
     const wrapperProps: BoxProps = {
         color: "text.main",

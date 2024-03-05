@@ -24,6 +24,7 @@ import { MouseEventHandler, useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";
 import { GlobalState } from "@/lib/slices/global.slice";
+import { getProductLink } from "@/lib/functions/getProductLink";
 
 const FastOrderForm = ({
     item,
@@ -69,14 +70,14 @@ const FastOrderForm = ({
         dispatch(
             setCart([
                 {
-                    url: {
+                    url: getProductLink(item.category.path, item.alias) /*{
                         pathname: "/catalog/product",
                         query: {
                             category: item.category.path,
                             series: item.series?.alias,
                             product: item.alias
                         }
-                    },
+                    }*/,
                     alias: item.alias,
                     title: item.title,
                     imgLink: getProductImageLink(item.images[0].url),

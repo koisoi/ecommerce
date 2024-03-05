@@ -2,6 +2,7 @@ import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
 import { CategoryItem, getProductImageLink } from "@/lib";
+import { getProductLink } from "@/lib/functions/getProductLink";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 
 const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
@@ -12,14 +13,14 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                 title: item.title,
                 price: item.price,
                 articul: item.articul,
-                url: {
+                url: getProductLink(item.category.path, item.alias) /*{
                     pathname: "/catalog/product",
                     query: {
                         category: item.category.path,
                         series: item.series?.alias,
                         product: item.alias
                     }
-                },
+                }*/,
                 imgLink: getProductImageLink(item.images[0].url),
                 amount: 1
             },

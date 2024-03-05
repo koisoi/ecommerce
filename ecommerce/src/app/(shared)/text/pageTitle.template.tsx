@@ -9,9 +9,10 @@ const PageTitle = ({
     props?: TypographyProps;
 }) => {
     const titleProps: TypographyProps = {
-        fontSize: { xs: "1.8rem", sm: "2.5rem" },
+        fontSize: "2.5rem",
         fontWeight: "bolder",
-        marginBottom: "1rem",
+        marginBottom: { xs: "0.5rem", sm: "1rem" },
+        lineHeight: { xs: 1, sm: 1.5 },
 
         color: "text.primary",
         ...props

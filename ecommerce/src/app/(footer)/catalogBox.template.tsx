@@ -7,9 +7,9 @@ const CatalogBox = ({ categories }: { categories: CategoryListItem[] }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "15px",
+        gap: { xs: "0.5rem", md: "1rem" },
 
-        fontSize: "0.95rem"
+        fontSize: "inherit"
     };
 
     const categoriesBoxProps: BoxProps = {
@@ -32,18 +32,6 @@ const CatalogBox = ({ categories }: { categories: CategoryListItem[] }) => {
                     </AppLink>
                 ))}
             </Box>
-            {/* <AppLink href="#" footer>
-                Электроника
-            </AppLink>
-            <AppLink href="#" footer>
-                Мебель
-            </AppLink>
-            <AppLink href="#" footer>
-                Одежда
-            </AppLink>
-            <AppLink href="#" footer>
-                Правильное питание
-            </AppLink> */}
         </Box>
     );
 };

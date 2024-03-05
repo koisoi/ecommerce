@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 import { useAppDispatch } from "@/lib";
 import { clearPopupSearchResponse } from "@/lib/slices/searchPopover.slice";
 
-const HeaderSearchBox = () => {
+const HeaderSearchBox = ({ searchPage }: { searchPage?: boolean }) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
 
@@ -54,6 +54,7 @@ const HeaderSearchBox = () => {
             searchPopoverAnchorEl={searchPopoverAnchorEl}
             searchPopoverOpen={searchPopoverOpen}
             onPopoverClose={handlePopoverClose}
+            searchPage={searchPage}
         />
     );
 };

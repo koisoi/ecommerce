@@ -26,6 +26,7 @@ import OrderFormTemplate from "../../cart/orderForm.template";
 import { MouseEventHandler } from "react";
 import { Close } from "@mui/icons-material";
 import Loading from "../loading.template";
+import { getProductLink } from "@/lib/functions/getProductLink";
 
 const FastOrderFormTemplate = ({
     item,
@@ -83,14 +84,14 @@ const FastOrderFormTemplate = ({
 
     const productCardProps: ProductCardProps = {
         cartItem: {
-            url: {
+            url: getProductLink(item.category.path, item.alias) /*{
                 pathname: "/catalog/product",
                 query: {
                     category: item?.category.path,
                     series: item?.series?.alias,
                     product: item?.alias
                 }
-            },
+            }*/,
             alias: item?.alias || "",
             title: item?.title || "",
             imgLink: item ? getProductImageLink(item.images[0].url) : "",

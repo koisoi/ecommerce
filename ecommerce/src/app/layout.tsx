@@ -1,7 +1,7 @@
 import "./globals.css";
 import styles from "./page.module.css";
 import Header from "./(header)/header";
-import { Box, ThemeProvider } from "@mui/material";
+import { Box, BoxProps, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
 import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
@@ -11,6 +11,11 @@ import { landingConfig } from "../lib/data/config";
 import { headers } from "next/headers";
 import Container from "./(shared)/container.template";
 import StoreProvider from "./storeProvider";
+
+// Fixes: Hydration failed because the initial UI does not match what was rendered on the server.
+// const DynamicContextProvider = dynamic(() => import('@/app/storeProvider').then(mod => mod.default, {
+//     ssr: false
+//   })
 
 // const DynamicStoreProvider = dynamic(() => import("@/app/storeProvider"), {
 //     ssr: false,
@@ -30,11 +35,17 @@ const RootLayout = ({
     const headersList = headers();
     const referer = headersList.get("referer");
 
-    const htmlStyle: CSSProperties = {
-        overflow: "auto",
-        scrollbarGutter: "stable",
-        maxWidth: "100vw",
-        overflowX: "hidden"
+    const htmlBoxProps: BoxProps = {
+        component: "html",
+        lang: "ru",
+
+        sx: {
+            overflow: "auto",
+            scrollbarGutter: "stable",
+            maxWidth: "100vw",
+            overflowX: "hidden",
+            fontSize: { xs: "12px", sm: "15px" }
+        }
     };
 
     const bodyProps: { className: string; style: CSSProperties } = {
@@ -50,29 +61,25 @@ const RootLayout = ({
         }
     };
 
-    // Fixes: Hydration failed because the initial UI does not match what was rendered on the server.
-    // const DynamicContextProvider = dynamic(() => import('@/app/storeProvider').then(mod => mod.default, {
-    //     ssr: false
-    //   })
-
     return (
-        <html lang="ru" style={htmlStyle}>
-            <head>
-                <meta charSet="UTF-8" />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1.0"
-                />
-                <title>{landingConfig.landing_title}</title>
-            </head>
-            <body {...bodyProps}>
-                <ThemeProvider theme={theme}>
-                    <StoreProvider referer={referer}>
-                        <AppRouterCacheProvider>
+        <AppRouterCacheProvider>
+            <ThemeProvider theme={theme}>
+                <Box {...htmlBoxProps}>
+                    <head>
+                        <meta charSet="UTF-8" />
+                        <meta
+                            name="viewport"
+                            content="width=device-width, initial-scale=1.0"
+                        />
+                        <title>{landingConfig.landing_title}</title>
+                    </head>
+                    <body {...bodyProps}>
+                        <StoreProvider referer={referer}>
                             <BackCallForm />
                             <Header />
                             <Box
-                                padding="40px"
+                                padding={{ xs: "1rem", md: "2rem" }}
+                                paddingTop={{ xs: "0" }}
                                 display="flex"
                                 justifyContent="center"
                                 flexGrow={1}
@@ -80,11 +87,11 @@ const RootLayout = ({
                                 <Container>{children}</Container>
                             </Box>
                             <Footer />
-                        </AppRouterCacheProvider>
-                    </StoreProvider>
-                </ThemeProvider>
-            </body>
-        </html>
+                        </StoreProvider>
+                    </body>
+                </Box>
+            </ThemeProvider>
+        </AppRouterCacheProvider>
     );
 };
 

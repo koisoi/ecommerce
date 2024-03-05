@@ -1,8 +1,11 @@
-import { Box, BoxProps, Typography } from "@mui/material";
+import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
 import { CategoryInfo } from "@/lib";
 import PageTitle from "../../(shared)/text/pageTitle.template";
 import CatalogSubcategory from "./catalogSubcategory.template";
+import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+import Paragraph from "@/app/(shared)/text/paragraph.template";
 
 const CategoryTemplate = ({
     title,
@@ -10,29 +13,36 @@ const CategoryTemplate = ({
     series,
     alias,
     seriesAlias,
-    page
+    page,
+    breadcrumbs,
+    linkBeforeQuery
 }: CategoryInfo & {
     seriesAlias: string | null;
     page: number;
+    breadcrumbs: Breadcrumb[];
+    linkBeforeQuery: string;
 }) => {
-    const headerWrapper: BoxProps = {
-        marginBottom: "20px"
-    };
-
     const linksWrapper: BoxProps = {
         display: "flex",
         flexWrap: "wrap",
-        gap: "25px",
-        marginBottom: "25px"
+        gap: "0.5rem",
+        // rowGap: "0.5rem",
+        // columnGap: "1rem",
+        // marginBottom: "25px"
+        marginY: "1rem"
     };
+
+    const descriptionProps: TypographyProps = {};
 
     return (
         <>
-            <Box {...headerWrapper}>
+            <AppBreadcrumbs linksArray={breadcrumbs} />
+            <Box>
                 <PageTitle>{title}</PageTitle>
             </Box>
 
-            <Typography marginBottom="20px">{page_description}</Typography>
+            <Paragraph>{page_description}</Paragraph>
+            {/* <Typography>{page_description}</Typography> */}
 
             <Box {...linksWrapper}>
                 {series.map((series) => (
@@ -50,6 +60,7 @@ const CategoryTemplate = ({
                 category={alias}
                 series={seriesAlias}
                 page={page}
+                linkBeforeQuery={linkBeforeQuery}
             />
         </>
     );

@@ -8,22 +8,16 @@ import { ChangeEvent } from "react";
 const CategoryPagination = ({
     page,
     pagesCount,
-    category,
-    series
-}: // onPageChange
-{
+    linkBeforeQuery
+}: {
     page: number;
     pagesCount: number;
-    category: string;
-    series?: string | null;
-    // onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
+    linkBeforeQuery: string;
 }) => {
     const router = useRouter();
 
     const handlePageChange = (_: ChangeEvent<unknown>, page: number): void => {
-        router.push(
-            `/catalog/${category}${series ? "/" + series : ""}?page=${page}`
-        );
+        router.push(`${linkBeforeQuery}page=${page}`);
     };
 
     const screen = useMediaQueries();
@@ -33,7 +27,7 @@ const CategoryPagination = ({
         justifyContent: "center",
 
         width: "100%",
-        paddingY: "25px"
+        paddingY: { xs: "1rem", md: "1.5rem" }
     };
 
     const paginationProps: PaginationProps = {

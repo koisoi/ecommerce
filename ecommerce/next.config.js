@@ -9,9 +9,18 @@ module.exports = {
 
     // not recommended (https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout)
     // remove after ssr
-    experimental: {
-        missingSuspenseWithCSRBailout: false
-    },
+    // experimental: {
+    //     missingSuspenseWithCSRBailout: false
+    // },
+
+    // async rewrites() {
+    //     return [
+    //         {
+    //             source: "/catalog/:category/*",
+    //             destination: "/catalog/:category/*" // Matched parameters can be used in the destination
+    //         }
+    //     ];
+    // },
 
     // output: "standalone",
 

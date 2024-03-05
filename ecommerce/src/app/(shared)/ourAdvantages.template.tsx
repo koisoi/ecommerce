@@ -23,7 +23,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
     const wrapperProps: BoxProps = {
         ...props,
 
-        padding: "20px",
+        padding: "1rem",
         borderRadius: "10px",
         overflow: "hidden",
         boxShadow: "0 0 15px 4px rgba(153, 153, 153, 0.2)",
@@ -44,18 +44,18 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
 
     const descriptionProps: TypographyProps = {
         textAlign: "center",
-        padding: "20px",
+        padding: "1rem",
         paddingTop: "0",
 
         color: "text.secondary",
-        fontSize: { xs: "0.9rem", sm: "1rem", md: "0.9rem", mlg: "1rem" }
+        fontSize: "1rem"
     };
 
     const innerWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: { xs: "column", md: "row" },
         justifyContent: "space-between",
-        gap: "30px"
+        gap: "1rem"
     };
 
     const dividerProps: DividerProps = {
@@ -68,7 +68,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "15px"
+        gap: "1rem"
     };
 
     const advantageTextProps: TypographyProps = {

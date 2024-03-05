@@ -3,24 +3,29 @@
 import { useAppDispatch, useAppSelector } from "@/lib";
 import SearchPageTemplate from "./page.template";
 import { SearchState, resetSearch, search } from "@/lib/slices/search.slice";
-import { notFound, useSearchParams } from "next/navigation";
+import { notFound, useRouter, useSearchParams } from "next/navigation";
 import { ChangeEvent, Suspense, useEffect, useState } from "react";
 import Loading from "../(shared)/loading.template";
+import { Box } from "@mui/material";
+import HeaderSearchBox from "../(header)/search/search";
+import NoQuery from "./noQueryPage.template";
 
 const SearchPageFC = () => {
     const dispatch = useAppDispatch();
     const params = useSearchParams();
+    const router = useRouter();
     const productsPerPage = 12;
 
     const query = params.get("query");
+    const page = params.get("page");
 
     const { loading, response } = useAppSelector(SearchState);
 
-    const [page, setPage] = useState<number>(1);
+    // const [page, setPage] = useState<number>(1);
     const [pagesCount, setPagesCount] = useState<number>(0);
 
     const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
-        setPage(page);
+        router.push(`/search?query=${query}&page=${page}`);
 
     useEffect(() => {
         if (!query) return;
@@ -28,7 +33,7 @@ const SearchPageFC = () => {
         const promise = dispatch(
             search({
                 query,
-                page,
+                page: Number(page || 1),
                 productsPerPage
             })
         );
@@ -47,16 +52,17 @@ const SearchPageFC = () => {
     }, [response?.totalItemCount]);
 
     if (!query) {
-        return notFound();
+        // return notFound();
+        return <NoQuery />;
     }
 
     return (
         <SearchPageTemplate
             loading={loading}
             response={response}
-            onPageChange={handlePageChange}
-            page={page}
+            page={Number(page)}
             pagesCount={pagesCount}
+            linkBeforeQuery={`/search?query=${query}&`}
         />
     );
 };

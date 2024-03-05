@@ -1,5 +1,6 @@
 import ProductLink from "@/app/(shared)/text/productLink.template";
 import { CategoryItem, getProductImageLink } from "@/lib";
+import { getProductLink } from "@/lib/functions/getProductLink";
 import {
     ListItem,
     ListItemAvatar,
@@ -17,14 +18,14 @@ const SearchPopoverItem = ({
     item: CategoryItem;
     onClick: (...props: any) => any;
 }) => {
-    const url: Url = {
+    const url: Url = getProductLink(item.category.path, item.alias); /*{
         pathname: "/catalog/product",
         query: {
             category: item.category.path,
             series: item.series?.alias,
             product: item.alias
         }
-    };
+    }*/
 
     const linksProps: ListItemAvatarProps & ListItemTextProps = {
         onClick

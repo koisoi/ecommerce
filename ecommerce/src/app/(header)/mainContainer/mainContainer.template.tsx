@@ -34,7 +34,7 @@ const HeaderMainContainerTemplate = () => {
 
     // props
     const outerWrapperProps: BoxProps = {
-        paddingY: "2rem",
+        paddingY: { xs: "1rem", md: "2rem" },
         marginX: "auto",
 
         display: "flex",
@@ -80,7 +80,7 @@ const HeaderMainContainerTemplate = () => {
     };
 
     const buttonsRowProps: BoxProps = {
-        display: { xs: "none", sm: "flex" },
+        display: { xs: "none", md: "flex" },
         flexDirection: "row",
         alignItems: "center",
         gap: "20px",

@@ -5,6 +5,7 @@ import {
     NetworkError,
     SeriesInfo
 } from "..";
+import { categoryAliasToPath } from "../functions/catalogPathTransform";
 import { Service } from "./base.service";
 import { landingConfig } from "@/lib/data/config";
 
@@ -21,9 +22,9 @@ class CategoryService extends Service {
         series?: string | null;
     }): Promise<CategoryInfo> {
         return fetch(
-            `${this.baseURL}landing?path=${category}&landing=${
-                series || landingConfig.landing
-            }&format=json`,
+            `${this.baseURL}landing?path=${categoryAliasToPath(
+                category
+            )}&landing=${series || landingConfig.landing}&format=json`,
             this.options
         )
             .then((response) => {
@@ -46,9 +47,9 @@ class CategoryService extends Service {
         series: string | null;
     }): Promise<SeriesInfo[]> {
         return fetch(
-            `${this.baseURL}landing-siblings?path=${category}&landing=${
-                series || landingConfig.landing
-            }&format=json`,
+            `${this.baseURL}landing-siblings?path=${categoryAliasToPath(
+                category
+            )}&landing=${series || landingConfig.landing}&format=json`,
             this.options
         )
             .then((response) => {
@@ -77,7 +78,9 @@ class CategoryService extends Service {
         page
     }: CategoryItemsRequest): Promise<CategoryItemsResponse> {
         return fetch(
-            `${this.baseURL}products?path=${category}&landing=${
+            `${this.baseURL}products?path=${categoryAliasToPath(
+                category
+            )}&landing=${
                 series || landingConfig.landing
             }&page=${page}&limit=${productsPerPage}&format=json`,
             this.options

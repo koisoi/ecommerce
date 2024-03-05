@@ -1,11 +1,11 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import BreadcrumbsTemplate from "./breadcrumbs.template";
+import AppBreadcrumbs from "./breadcrumbs.template";
 import { Url } from "next/dist/shared/lib/router/router";
 import { BreadcrumbsState, useAppSelector } from "@/lib";
 
-const Breadcrumbs = () => {
+const AppBreadcrumbs = () => {
     const params = useSearchParams();
     const category: string | null = params.get("category");
     const series: string | null = params.get("series");
@@ -84,7 +84,7 @@ const Breadcrumbs = () => {
 
     if (pathArray.length === 1) return null;
 
-    return <BreadcrumbsTemplate linksArray={linksArray} lastLink={!!product} />;
+    return <AppBreadcrumbs linksArray={linksArray} lastLink={!!product} />;
 };
 
-export default Breadcrumbs;
+// export default Breadcrumbs;

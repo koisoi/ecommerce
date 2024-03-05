@@ -4,11 +4,13 @@ import ProductsGridTemplate from "../../(shared)/productsGrid/productsGrid.templ
 const ProductsCategoryGrid = async ({
     category,
     series,
-    page
+    page,
+    linkBeforeQuery
 }: {
     category: string;
     series?: string | null;
     page: number;
+    linkBeforeQuery: string;
 }) => {
     // const dispatch = useAppDispatch();
     const productsPerPage = 12;
@@ -22,7 +24,7 @@ const ProductsCategoryGrid = async ({
             page
         });
     } catch (error) {
-        console.log(error);
+        console.error(error);
     }
 
     // FIXME: проверить как работает с несколькими клиентами, если что можно прямо из запроса в сервисе делать store.dispatch() и потом в самом компоненте пагинации получать из стора
@@ -72,8 +74,9 @@ const ProductsCategoryGrid = async ({
             totalItemCount={response?.totalItemCount || 0}
             page={page}
             pagesCount={pagesCount}
-            category={category}
-            series={series}
+            linkBeforeQuery={linkBeforeQuery}
+            // category={category}
+            // series={series}
         />
     );
 };

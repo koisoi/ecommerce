@@ -12,7 +12,7 @@ import {
 const AllCharacteristicsBox = ({
     fullCharacteristics
 }: {
-    fullCharacteristics?: ProductCharacteristics;
+    fullCharacteristics?: ProductCharacteristics | null;
 }) => {
     const noTextProps: TypographyProps = {
         color: "text.disabled"

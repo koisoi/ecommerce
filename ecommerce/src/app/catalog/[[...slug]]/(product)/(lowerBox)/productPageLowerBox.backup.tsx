@@ -1,8 +1,8 @@
 import { SyntheticEvent, useState } from "react";
-import ProductPageLowerBoxTemplate from "./productPageLowerBox.template";
+import ProductPageLowerBox from "./productPageLowerBox";
 import { ProductPageState, ProductPageTabType, useAppSelector } from "@/lib";
 
-const ProductPageLowerBox = () => {
+const ProductPageLowerBoxFC = () => {
     const {
         complectation,
         fullCharacteristics,
@@ -24,7 +24,7 @@ const ProductPageLowerBox = () => {
     };
 
     return (
-        <ProductPageLowerBoxTemplate
+        <ProductPageLowerBox
             currentTab={currentTab}
             onTabChange={handleTabChange}
             fullCharasterictics={fullCharacteristics}
@@ -36,4 +36,4 @@ const ProductPageLowerBox = () => {
     );
 };
 
-export default ProductPageLowerBox;
+export default ProductPageLowerBoxFC;

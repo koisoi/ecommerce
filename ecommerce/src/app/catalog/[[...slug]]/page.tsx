@@ -1,19 +1,33 @@
 import CategoryTemplate from "./page.template";
 import CategoriesMenuTemplate from "./categoriesMenu.template";
-import { CategoryInfo, SeriesInfo, categoryAPI } from "@/lib";
+import {
+    CategoryInfo,
+    ProductPageTabType,
+    SeriesInfo,
+    categoryAPI
+} from "@/lib";
 import { notFound } from "next/navigation";
+import ProductPage from "./(product)/page";
+import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
+import { homePageBreadcrumbs } from "@/app/page";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+
+export const catalogPageBreadcrumb: Breadcrumb[] = [
+    ...homePageBreadcrumbs,
+    { link: "/catalog", title: "Каталог" }
+];
 
 /**
  * slug пустой - меню категорий
  * slug [0] - категория
- * slug [1] - серия
+ * slug [1] - серия или товар
  */
 const Category = async ({
     params,
     searchParams
 }: {
     params: { slug: string[] };
-    searchParams: { page?: number };
+    searchParams: { page?: number; tab?: ProductPageTabType };
 }) => {
     if (!params.slug) return <CategoriesMenuTemplate />;
 
@@ -25,12 +39,43 @@ const Category = async ({
             category: params.slug[0],
             series: params.slug[1]
         });
+        if (category.category?.path)
+            category.category.path = categoryPathToAlias(
+                category.category.path
+            )!;
+
         siblings = await categoryAPI.getSeriesSiblings({
             category: params.slug[0],
             series: params.slug[1]
         });
     } catch (error) {
         console.error(error);
+    }
+
+    const breadcrumbs: Breadcrumb[] = [
+        ...catalogPageBreadcrumb,
+        {
+            link: `/catalog/${params.slug[0]}`,
+            title: category?.category?.title || ""
+        }
+    ];
+
+    // TODO: проверить работу с несколькими клиентами
+    if (params.slug[1])
+        breadcrumbs.push({
+            link: `/catalog/${params.slug[0]}/${params.slug[1]}`,
+            title: category?.title || ""
+        });
+
+    if (params.slug[1] && !siblings.find((el) => el.alias === params.slug[1])) {
+        return (
+            <ProductPage
+                category={params.slug[0]}
+                product={params.slug[1]}
+                searchParams={searchParams}
+                breadcrumbs={breadcrumbs}
+            />
+        );
     }
 
     if (!category) return notFound();
@@ -100,14 +145,18 @@ const Category = async ({
             alias={category?.category?.path || ""}
             title={
                 category?.series
-                    ? category?.title
-                    : category?.category?.title || ""
+                    ? category?.category?.title || ""
+                    : category?.title
             }
             page_description={category?.page_description}
             series={category?.series || []}
             seriesAlias={params.slug[1]}
             parent_class={""}
             page={Number(searchParams.page) || 1}
+            breadcrumbs={breadcrumbs}
+            linkBeforeQuery={`/catalog/${params.slug[0]}${
+                params.slug[1] ? "/" + params.slug[1] : ""
+            }?`}
         />
     );
 };

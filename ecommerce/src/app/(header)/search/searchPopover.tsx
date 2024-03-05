@@ -1,9 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import SearchPopoverTemplate from "./searchPopover.template";
 import { useAppDispatch, useAppSelector } from "@/lib";
 import {
     SearchPopoverState,
-    clearPopupSearchResponse,
     searchPopover,
     setCanSearchInPopover
 } from "@/lib/slices/searchPopover.slice";
@@ -13,12 +12,14 @@ const SearchPopover = ({
     searchQuery,
     anchorEl,
     open,
-    onClose
+    onClose,
+    searchPage
 }: {
     searchQuery: string;
     anchorEl: Element | null;
     open: boolean;
     onClose: (...props: any) => any;
+    searchPage?: boolean;
 }) => {
     const dispatch = useAppDispatch();
     const limit = 10;
@@ -66,6 +67,7 @@ const SearchPopover = ({
             response={response}
             seeMoreHref={{ pathname: "/search", query: { query: searchQuery } }}
             limit={limit}
+            searchPage={searchPage}
         />
     );
 };

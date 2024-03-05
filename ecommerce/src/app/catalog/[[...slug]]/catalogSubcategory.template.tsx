@@ -1,3 +1,4 @@
+import Paragraph from "@/app/(shared)/text/paragraph.template";
 import { NextLinkProps } from "@/lib";
 import { Typography, TypographyProps } from "@mui/material";
 import Link from "next/link";
@@ -32,6 +33,7 @@ const CatalogSubcategory = ({
 
         sx: {
             textDecoration: "none",
+            lineHeight: { xs: "1", md: "1.5" },
 
             ...(!selected && {
                 ":hover": {
@@ -41,14 +43,10 @@ const CatalogSubcategory = ({
         }
     };
 
-    const supProps: TypographyProps = {
-        color: "text.disabled",
-        display: "inline"
-    };
-
     return (
         <Link {...linkProps}>
-            <Typography {...textProps}>{children}</Typography>
+            {/* <Typography {...textProps}>{children}</Typography> */}
+            <Paragraph props={textProps}>{children}</Paragraph>
         </Link>
     );
 };

@@ -9,7 +9,8 @@ const Title = ({
     props?: TypographyProps;
 }) => {
     const titleProps: TypographyProps = {
-        fontSize: { xs: "1.5rem", sm: "2rem" },
+        fontSize: "2rem",
+        lineHeight: { xs: 1, sm: 1.5 },
         fontWeight: "bold",
         paddingY: "0.5rem",
 

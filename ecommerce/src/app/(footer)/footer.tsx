@@ -26,17 +26,20 @@ const Footer = () => {
 
     const innerWrapperProps: BoxProps = {
         maxWidth: "1320px",
-        paddingY: "40px",
-        paddingX: "10px",
+        paddingY: { xs: "1rem", md: "2rem" },
+        paddingX: "1rem",
 
         minWidth: { xs: "100%", smd: "0" },
-        width: { lg: "100%", xl: "1300px" },
+        width: "100%",
         boxSizing: "border-box",
 
         display: "flex",
         flexDirection: { xs: "column", smd: "row" },
         justifyContent: "space-between",
-        gap: "20px"
+        gap: { xs: "1rem", sm: "2rem" },
+
+        // fontSize: { xs: "0.8rem", md: "0.95rem" }
+        fontSize: "1rem"
     };
 
     return (
@@ -49,7 +52,6 @@ const Footer = () => {
                     />
                     <CatalogBox categories={landingConfig.categories} />
                     <UpperMenuBox />
-                    <SocialNetworksBox />
                 </Box>
             </Box>
         </footer>

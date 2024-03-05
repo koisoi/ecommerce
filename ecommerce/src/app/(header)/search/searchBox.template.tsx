@@ -14,7 +14,8 @@ const HeaderSearchBoxTemplate = ({
     onSearchEnter,
     searchPopoverAnchorEl,
     searchPopoverOpen,
-    onPopoverClose
+    onPopoverClose,
+    searchPage
 }: {
     onSearch: MouseEventHandler<HTMLButtonElement>;
     searchQuery: string;
@@ -25,6 +26,7 @@ const HeaderSearchBoxTemplate = ({
     searchPopoverAnchorEl: Element | null;
     searchPopoverOpen: boolean;
     onPopoverClose: (...props: any) => any;
+    searchPage?: boolean;
 }) => {
     const buttonProps: ButtonProps = {
         variant: "contained",
@@ -52,7 +54,12 @@ const HeaderSearchBoxTemplate = ({
         sx: {
             maxWidth: { sm: "220px", md: "380px", xl: "420px" },
             minWidth: { sm: "220px", md: "380px", xl: "420px" },
-            display: { xs: "none", sm: "block" }
+            display: { xs: "none", sm: "block" },
+            ...(searchPage && {
+                maxWidth: "420px",
+                width: "100%",
+                display: "block"
+            })
         },
         label: "Поиск по каталогу",
 
@@ -80,6 +87,7 @@ const HeaderSearchBoxTemplate = ({
                 anchorEl={searchPopoverAnchorEl}
                 open={searchPopoverOpen}
                 onClose={onPopoverClose}
+                searchPage={searchPage}
             />
         </>
     );

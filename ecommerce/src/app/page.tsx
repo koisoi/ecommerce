@@ -7,6 +7,12 @@ import { homePageAPI } from "@/lib/services/homePage.service";
 import MainPageCarousel from "./mainPageCarousel";
 import { CategoryItem, ProductReview } from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
+import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
+import { Breadcrumb } from "@/lib/types/breadcrumbs";
+
+export const homePageBreadcrumbs: Breadcrumb[] = [
+    { link: "/", title: "Главная" }
+];
 
 const Home = async () => {
     // async
@@ -15,6 +21,11 @@ const Home = async () => {
     try {
         popularProducts = await homePageAPI.getPopularProducts();
         reviews = await homePageAPI.getLastReviews();
+
+        popularProducts.forEach(
+            (val) =>
+                (val.category.path = categoryPathToAlias(val.category.path)!)
+        );
     } catch (error) {
         console.error(error);
     }

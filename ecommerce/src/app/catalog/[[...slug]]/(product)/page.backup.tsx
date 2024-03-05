@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useEffect } from "react";
-import ProductPageTemplate from "./page.template";
+import ProductPage from "./page";
 import {
     ProductPageState,
     fetchProduct,
@@ -68,24 +68,7 @@ const ProductPageFC = () => {
         return notFound();
     }
 
-    return (
-        <ProductPageTemplate
-            title={`${
-                itemCategory.title_single ? itemCategory.title_single + " " : ""
-            }${title}`}
-            openedImgLink={openedImgLink}
-            onImgClose={handleImgClose}
-            loading={loading}
-        />
-    );
+    return <ProductPage />;
 };
 
-const ProductPage = () => {
-    return (
-        <Suspense fallback={<Loading>Загрузка...</Loading>}>
-            <ProductPageFC />
-        </Suspense>
-    );
-};
-
-export default ProductPage;
+export default ProductPageFC;

@@ -1,14 +1,18 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
-import { Box, BoxProps, Typography } from "@mui/material";
+import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import CategoryPagination from "./categoryPagination.template";
 import { CategoryItemsResponse, getProductImageLink } from "@/lib";
+import { getProductLink } from "@/lib/functions/getProductLink";
+import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
+import Paragraph from "../text/paragraph.template";
 
 export type ProductsGridTemplateProps = CategoryItemsResponse & {
     loading?: boolean;
     page: number;
     pagesCount: number;
-    category: string;
-    series?: string | null;
+    // category?: string;
+    // series?: string | null;
+    linkBeforeQuery: string;
     search?: boolean;
 };
 
@@ -18,9 +22,10 @@ const ProductsGridTemplate = ({
     loading,
     page,
     pagesCount,
-    category,
-    series,
-    search
+    // category,
+    // series,
+    search,
+    linkBeforeQuery
 }: ProductsGridTemplateProps) => {
     const cardsWrapperProps: BoxProps = {
         width: "100%",
@@ -35,11 +40,15 @@ const ProductsGridTemplate = ({
         }
     };
 
+    const foundTextProps: TypographyProps = {
+        color: "text.disabled"
+    };
+
     return (
         <>
-            <Typography color="text.disabled" gutterBottom>
+            <Paragraph props={foundTextProps}>
                 Товаров {search ? "найдено" : "в категории"}: {totalAmount}
-            </Typography>
+            </Paragraph>
 
             {loading && "Загрузка товаров..."}
             {!loading && (
@@ -48,8 +57,9 @@ const ProductsGridTemplate = ({
                         <CategoryPagination
                             page={page}
                             pagesCount={pagesCount}
-                            category={category}
-                            series={series}
+                            linkBeforeQuery={linkBeforeQuery}
+                            // category={category}
+                            // series={series}
                         />
                     )}
                     <Box {...cardsWrapperProps}>
@@ -59,14 +69,19 @@ const ProductsGridTemplate = ({
                                 newProduct={item.is_new}
                                 recommended={item.is_recommend}
                                 cartItem={{
-                                    url: {
+                                    url: getProductLink(
+                                        categoryPathToAlias(
+                                            item.category.path
+                                        )!,
+                                        item.alias
+                                    ) /*{
                                         pathname: "/catalog/product",
                                         query: {
                                             category: item.category.path,
                                             series: item.series?.alias,
                                             product: item.alias
                                         }
-                                    },
+                                    }*/,
                                     alias: item.alias,
                                     title: item.title,
                                     imgLink: getProductImageLink(

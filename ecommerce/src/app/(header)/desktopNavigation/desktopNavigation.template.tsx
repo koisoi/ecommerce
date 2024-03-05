@@ -11,7 +11,6 @@ import {
     TabsProps
 } from "@mui/material";
 import Link from "next/link";
-import SlidingCartButton from "../slidingCartButton/slidingCartButton";
 import { CategoryListItem } from "@/lib";
 import { CSSProperties } from "react";
 import dynamic from "next/dynamic";
@@ -30,7 +29,7 @@ const HeaderDesktopNavigationTemplate = ({
 }: {
     categories: CategoryListItem[];
     onTabClick: (path: string) => void;
-    catalogPath: string | null;
+    catalogPath: string;
 }) => {
     const innerWrapperProps: BoxProps = {
         position: "relative",
@@ -59,7 +58,7 @@ const HeaderDesktopNavigationTemplate = ({
             color: "white",
             fontWeight: "bold",
             paddingX: "30px",
-            fontSize: "16px",
+            fontSize: "1rem",
 
             ":hover": {
                 boxShadow: "none",
@@ -92,11 +91,13 @@ const HeaderDesktopNavigationTemplate = ({
             transition: "0.2s",
             height: "100%",
 
-            ...(path === catalogPath && {
+            ...((path === catalogPath || path + "/" === catalogPath) && {
                 backgroundColor: "secondary.main"
             })
         }
     });
+
+    console.log(categories[0], catalogPath);
 
     return (
         <Box {...innerWrapperProps}>
@@ -106,7 +107,7 @@ const HeaderDesktopNavigationTemplate = ({
             <Tabs {...tabsProps}>
                 {categories.map((category, i) => (
                     <Tab
-                        {...tabProps(category.path)}
+                        {...tabProps(`/catalog/${category.path}`)}
                         key={i}
                         onClick={() => onTabClick(category.path)}
                         label={category.title}

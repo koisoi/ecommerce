@@ -1,6 +1,9 @@
-import { NetworkError } from "..";
+import { CategoryItem, NetworkError } from "..";
+import { categoryAliasToPath } from "../functions/catalogPathTransform";
 import {
     MainProductInfo,
+    ProductCharacteristic,
+    ProductCharacteristics,
     ProductRequest,
     ProductReview
 } from "../types/product";
@@ -18,7 +21,9 @@ class ProductService extends Service {
         alias
     }: ProductRequest): Promise<MainProductInfo> {
         return fetch(
-            `${this.baseURL}/catalog/backend/product?path=${category}&alias=${alias}&format=json`,
+            `${this.baseURL}/catalog/backend/product?path=${categoryAliasToPath(
+                category
+            )}&alias=${alias}&format=json`,
             this.options
         )
             .then((response) => {
@@ -41,7 +46,7 @@ class ProductService extends Service {
         alias
     }: {
         alias: string | null;
-    }): Promise</*TODO: изменить */ any> {
+    }): Promise<ProductCharacteristic> {
         return fetch(
             `${this.baseURL}/filters/backend/product-filters?alias=${alias}&mode=main&format=json`,
             this.options
@@ -66,7 +71,7 @@ class ProductService extends Service {
         alias
     }: {
         alias: string | null;
-    }): Promise</*TODO: изменить */ any> {
+    }): Promise<ProductCharacteristics> {
         return fetch(
             `${this.baseURL}/filters/backend/product-filters?alias=${alias}&mode=full&format=json`,
             this.options
@@ -118,7 +123,7 @@ class ProductService extends Service {
         alias
     }: {
         alias: string | null;
-    }): Promise</*TODO: изменить */ any> {
+    }): Promise<CategoryItem[]> {
         return fetch(
             `${this.baseURL}/catalog/backend/siblings?alias=${alias}&format=json`,
             this.options
