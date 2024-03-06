@@ -1,7 +1,8 @@
+import { landingConfig } from "@/lib/data/config";
 import { Box, BoxProps } from "@mui/material";
 import Link from "next/link";
 
-const LogoTemplate = ({ logoLink }: { logoLink: string }) => {
+const Logo = ({ mobile }: { mobile?: boolean }) => {
     const logoContainerProps: BoxProps = {
         width: {
             // xs: "100%",
@@ -16,8 +17,9 @@ const LogoTemplate = ({ logoLink }: { logoLink: string }) => {
     };
 
     const logoProps = {
-        // TODO: поменять
-        src: logoLink,
+        src: mobile
+            ? landingConfig.logoImgMobileLink
+            : landingConfig.logoImgLink,
         alt: "Логотип",
         width: "100%",
         style: {
@@ -34,4 +36,4 @@ const LogoTemplate = ({ logoLink }: { logoLink: string }) => {
     );
 };
 
-export default LogoTemplate;
+export default Logo;

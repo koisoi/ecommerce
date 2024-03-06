@@ -19,14 +19,8 @@ import Paragraph from "../(shared)/text/paragraph.template";
 import Title from "../(shared)/text/title.template";
 import ImageSwitcher from "./imageSwitcher";
 import { contactsData } from "./contactsData";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
-import { homePageBreadcrumbs } from "../page";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
-
-export const contactsBreadcrumbs: Breadcrumb[] = [
-    ...homePageBreadcrumbs,
-    { link: "/contacts", title: "Контактная информация" }
-];
+import { contactsBreadcrumbs } from "@/lib";
 
 const ContactsTemplate = () => {
     const phoneLinksProps: LinkProps = {

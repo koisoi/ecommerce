@@ -36,6 +36,7 @@ const HeaderSearchBoxTemplate = ({
             minHeight: "40px",
             minWidth: "0",
             borderRadius: "0 4px 4px 0",
+            border: "0",
             boxShadow: "none",
 
             ":hover": {
@@ -47,7 +48,7 @@ const HeaderSearchBoxTemplate = ({
     };
 
     const searchBoxProps: TextFieldProps = {
-        variant: "outlined",
+        // variant: "outlined",
 
         size: "small",
         fullWidth: true,
@@ -59,7 +60,18 @@ const HeaderSearchBoxTemplate = ({
                 maxWidth: "420px",
                 width: "100%",
                 display: "block"
-            })
+            }),
+
+            ".MuiInputBase-input": {
+                backgroundColor: "white",
+                borderRadius: "4px 0 0 4px"
+            },
+
+            fieldset: {
+                // border: {xs: 0}
+                border: { xs: 0, md: "solid 1px rgba(0, 0, 0, 0.23)" }
+                // borderColor: "text.disabled"
+            }
         },
         label: "Поиск по каталогу",
 
@@ -75,6 +87,7 @@ const HeaderSearchBoxTemplate = ({
             ),
             sx: {
                 padding: 0
+                // backgroundColor: "background.default"
             }
         }
     };

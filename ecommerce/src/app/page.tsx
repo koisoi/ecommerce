@@ -9,10 +9,7 @@ import { CategoryItem, ProductReview } from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
-
-export const homePageBreadcrumbs: Breadcrumb[] = [
-    { link: "/", title: "Главная" }
-];
+import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
 
 const Home = async () => {
     // async
@@ -53,7 +50,8 @@ const Home = async () => {
         <Box>
             <MainPageCarousel />
             <Title>Категории</Title>
-            <Tabs {...tabsProps} id="hehehe">
+            <CategoriesMenuTemplate />
+            {/* <Tabs {...tabsProps}>
                 {landingConfig.categories.map((category) => (
                     <Tab
                         key={category.path}
@@ -67,7 +65,7 @@ const Home = async () => {
                         {...tabProps}
                     />
                 ))}
-            </Tabs>
+            </Tabs> */}
             <Title>Популярные товары</Title>
             <SimliarProductsSlider products={popularProducts} />
             {/* <Title>Последние отзывы</Title>

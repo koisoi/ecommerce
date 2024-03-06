@@ -4,18 +4,15 @@ import {
     CategoryInfo,
     ProductPageTabType,
     SeriesInfo,
-    categoryAPI
+    catalogPageBreadcrumb,
+    categoryAPI,
+    homePageBreadcrumbs
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
-import { homePageBreadcrumbs } from "@/app/page";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
-
-export const catalogPageBreadcrumb: Breadcrumb[] = [
-    ...homePageBreadcrumbs,
-    { link: "/catalog", title: "Каталог" }
-];
+import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
 
 /**
  * slug пустой - меню категорий
@@ -29,7 +26,13 @@ const Category = async ({
     params: { slug: string[] };
     searchParams: { page?: number; tab?: ProductPageTabType };
 }) => {
-    if (!params.slug) return <CategoriesMenuTemplate />;
+    if (!params.slug)
+        return (
+            <>
+                <AppBreadcrumbs linksArray={catalogPageBreadcrumb} />
+                <CategoriesMenuTemplate />
+            </>
+        );
 
     let category: CategoryInfo | null = null;
     let siblings: SeriesInfo[] = [];

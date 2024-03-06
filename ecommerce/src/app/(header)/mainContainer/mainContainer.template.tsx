@@ -1,12 +1,10 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
-import PhoneLink from "@/app/(shared)/text/phoneLink.template";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import HeaderSearchBox from "../search/search";
-import Logo from "../logo/logo";
-import { cookies } from "next/headers";
-import { phoneNumber, storeAddress } from "@/lib/data/geoInf";
 import dynamic from "next/dynamic";
+import LoadingHeaderContactsBox from "../contactsBox/loadingContactsBox";
+import Logo from "../logo";
 
 const DynamicHeaderButton = dynamic(
     () => import("@/app/(header)/desktopHeaderButton.template"),
@@ -27,14 +25,24 @@ const DynamicHeaderButton = dynamic(
     }
 );
 
-const HeaderMainContainerTemplate = () => {
-    // const
-    const cookieStore = cookies();
-    const geo = cookieStore.get("geo")?.value;
+const DynamicContactsBox = dynamic(
+    () => import("@/app/(header)/contactsBox/realContactsBox"),
+    {
+        ssr: false,
+        loading: () => <LoadingHeaderContactsBox />
+    }
+);
 
+const HeaderMainContainer = ({
+    props,
+    mobileHeader
+}: {
+    props?: BoxProps;
+    mobileHeader?: boolean;
+}) => {
     // props
     const outerWrapperProps: BoxProps = {
-        paddingY: { xs: "1rem", md: "2rem" },
+        paddingY: { xs: "0.4rem", md: "2rem" },
         marginX: "auto",
 
         display: "flex",
@@ -43,7 +51,15 @@ const HeaderMainContainerTemplate = () => {
         flexDirection: "row",
 
         width: "95%",
-        maxWidth: "1320px"
+        maxWidth: "1320px",
+        ...(mobileHeader && {
+            fontSize: "1rem"
+        }),
+        ...props,
+
+        sx: {
+            ...props?.sx
+        }
     };
 
     const wrapperProps: BoxProps = {
@@ -72,13 +88,6 @@ const HeaderMainContainerTemplate = () => {
         gap: "30px"
     };
 
-    const contactsBoxProps: BoxProps = {
-        display: "flex",
-        flexDirection: "column",
-        width: "max-content",
-        maxWidth: "180px"
-    };
-
     const buttonsRowProps: BoxProps = {
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
@@ -89,24 +98,14 @@ const HeaderMainContainerTemplate = () => {
         height: "min-content"
     };
 
-    const addressProps: TypographyProps = {
-        color: "text.disabled",
-        fontSize: "0.8rem"
-    };
-
     return (
         <>
             <Box {...outerWrapperProps}>
                 <Box {...wrapperProps}>
                     <Box {...innerWrapperProps}>
                         <Box {...logoAndContactsWrapper}>
-                            <Logo />
-                            <Box {...contactsBoxProps}>
-                                <PhoneLink number={phoneNumber[geo || "rf"]} />
-                                <Typography {...addressProps}>
-                                    {storeAddress[geo || "rf"]}
-                                </Typography>
-                            </Box>
+                            <Logo mobile={mobileHeader} />
+                            <DynamicContactsBox />
                         </Box>
                         <HeaderSearchBox />
                     </Box>
@@ -115,9 +114,6 @@ const HeaderMainContainerTemplate = () => {
                         <DynamicHeaderButton>
                             <ShoppingCart id="desktop-header-button" />
                         </DynamicHeaderButton>
-                        {/* <DesktopHeaderButton>
-                            <ShoppingCart id="desktop-header-button" />
-                        </DesktopHeaderButton> */}
                     </Box>
                 </Box>
             </Box>
@@ -125,4 +121,4 @@ const HeaderMainContainerTemplate = () => {
     );
 };
 
-export default HeaderMainContainerTemplate;
+export default HeaderMainContainer;

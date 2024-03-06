@@ -23,6 +23,13 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { GlobalState } from "@/lib/slices/global.slice";
 import { useRouter } from "next/navigation";
 import { matchIsValidTel } from "mui-tel-input";
+import dynamic from "next/dynamic";
+import Loading from "../(shared)/loading.template";
+
+const DynamicCartTemplate = dynamic(() => import("@/app/cart/page.template"), {
+    ssr: false,
+    loading: () => <Loading>Загрузка...</Loading>
+});
 
 export type OrderRules = {
     fullName: RulesType;
@@ -134,7 +141,7 @@ const Cart = () => {
     }, []);
 
     return (
-        <CartTemplate
+        <DynamicCartTemplate
             form={form}
             rules={formValidation}
             onSubmit={form.handleSubmit(handleSubmit)}

@@ -42,20 +42,21 @@ const CategoryTemplate = ({
             </Box>
 
             <Paragraph>{page_description}</Paragraph>
-            {/* <Typography>{page_description}</Typography> */}
 
-            <Box {...linksWrapper}>
-                {series.map((series) => (
-                    <CatalogSubcategory
-                        seriesAlias={series.alias}
-                        categoryAlias={alias}
-                        selected={seriesAlias === series.alias}
-                        key={series.id}
-                    >
-                        {series.title}
-                    </CatalogSubcategory>
-                ))}
-            </Box>
+            {!!series.length && (
+                <Box {...linksWrapper}>
+                    {series.map((series) => (
+                        <CatalogSubcategory
+                            seriesAlias={series.alias}
+                            categoryAlias={alias}
+                            selected={seriesAlias === series.alias}
+                            key={series.id}
+                        >
+                            {series.title}
+                        </CatalogSubcategory>
+                    ))}
+                </Box>
+            )}
             <ProductsCategoryGrid
                 category={alias}
                 series={seriesAlias}

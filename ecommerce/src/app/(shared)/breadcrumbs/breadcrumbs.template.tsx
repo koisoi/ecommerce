@@ -17,7 +17,7 @@ const AppBreadcrumbs = ({
 }) => {
     const breadcrumbsProps: BreadcrumbsProps = {
         sx: {
-            fontSize: { xs: "0.8rem", sm: "1rem" },
+            fontSize: "1rem",
             marginBottom: "0.8rem"
         }
     };

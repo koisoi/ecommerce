@@ -2,16 +2,20 @@ import { Box, BoxProps } from "@mui/material";
 import ContactsBox from "./contactsBox.template";
 import CatalogBox from "./catalogBox.template";
 import UpperMenuBox from "./upperMenuBox.template";
-import SocialNetworksBox from "./socialNetworksBox.template";
-import { cookies } from "next/headers";
 import { phoneNumber, storeAddress } from "@/lib/data/geoInf";
 import { landingConfig } from "@/lib/data/config";
+import dynamic from "next/dynamic";
+import LoadingContactsBox from "./loadingContactsBox";
+
+const DynamicContactsBox = dynamic(
+    () => import("@/app/(footer)/realContactsBox"),
+    {
+        ssr: false,
+        loading: () => <LoadingContactsBox />
+    }
+);
 
 const Footer = () => {
-    // const
-    const cookieStore = cookies();
-    const geo = cookieStore.get("geo")?.value;
-
     // props
     const wrapperProps: BoxProps = {
         boxSizing: "border-box",
@@ -21,7 +25,9 @@ const Footer = () => {
         justifyContent: "center",
 
         borderTop: "1px solid",
-        borderColor: "divider"
+        borderColor: "divider",
+
+        marginTop: "2rem"
     };
 
     const innerWrapperProps: BoxProps = {
@@ -46,10 +52,7 @@ const Footer = () => {
         <footer style={{ boxSizing: "border-box" }}>
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
-                    <ContactsBox
-                        phone={phoneNumber[geo || "rf"]}
-                        address={storeAddress[geo || "rf"]}
-                    />
+                    <DynamicContactsBox />
                     <CatalogBox categories={landingConfig.categories} />
                     <UpperMenuBox />
                 </Box>

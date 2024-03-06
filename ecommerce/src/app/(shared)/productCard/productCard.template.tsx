@@ -27,8 +27,9 @@ export type ProductCardProps = {
     newProduct?: boolean;
     sale?: boolean;
     recommended?: boolean;
-    cardProps?: CardProps;
-    cardMediaProps?: CardMediaProps;
+    initialCardProps?: CardProps;
+    initialCardMediaProps?: CardMediaProps;
+    initialCardContentProps?: CardContentProps;
     // TODO: переделать пропы
     categoryItem: CategoryItem;
     hideButtons?: boolean;
@@ -40,8 +41,9 @@ const ProductCard = ({
     newProduct,
     sale,
     recommended,
-    cardProps,
-    cardMediaProps,
+    initialCardProps,
+    initialCardMediaProps,
+    initialCardContentProps,
     cartItem,
     categoryItem,
     hideButtons,
@@ -56,7 +58,6 @@ const ProductCard = ({
 
         sx: {
             display: "inline-block",
-            height: "310px",
             width: "100%",
 
             cursor: "pointer",
@@ -144,28 +145,40 @@ const ProductCard = ({
     const actionRowProps: CardActionsProps = {
         sx: {
             display: "flex",
-            flexDirection: {
-                xs: "column",
-                smd: "row",
-                md: "column",
-                xl: "row"
-            },
+            flexDirection: "column",
             justifyContent: "space-between",
             rowGap: "5px",
 
-            paddingX: "16px"
+            paddingX: "1rem",
+            paddingTop: "0"
         }
     };
 
     const buttonProps: ButtonProps = {
         sx: {
             flexGrow: 1,
-            width: {
-                xs: "100%",
-                smd: "unset",
-                md: "100%",
-                xl: "unset"
-            }
+            width: "100%"
+        }
+    };
+
+    const cardProps: CardProps = {
+        ...initialCardProps,
+        sx: {
+            flexDirection: { xs: "row", md: "column" },
+            maxWidth: "300px",
+            ...initialCardProps?.sx
+        }
+    };
+
+    const cardMediaProps: CardMediaProps = {
+        ...initialCardMediaProps,
+        sx: {
+            height: { xs: "100%", md: "200px" },
+            minHeight: { xs: "unset", md: "200px" },
+
+            flexGrow: 1,
+            flexBasis: 0,
+            ...initialCardMediaProps?.sx
         }
     };
 
@@ -189,30 +202,49 @@ const ProductCard = ({
     };
 
     const cardContentProps: CardContentProps = {
-        sx: { flexGrow: 1 }
+        ...initialCardContentProps,
+        sx: {
+            flexGrow: 1,
+            padding: "0.5rem",
+            ...initialCardContentProps?.sx
+        }
+    };
+
+    const cardContentWrapperProps: BoxProps = {
+        display: "flex",
+        flexDirection: "column",
+        flexGrow: 1,
+        flexBasis: 0
     };
 
     return (
         <AppCard {...appCardProps}>
-            <CardContent {...cardContentProps}>
-                <ProductLink url={cartItem.url}>
-                    {categoryItem.category.title_single} {cartItem.title}
-                </ProductLink>
-                <Typography {...articleTextProps}>
-                    Артикул: {cartItem.articul}
-                </Typography>
-            </CardContent>
-            {!hideButtons && (
+            <Box {...cardContentWrapperProps}>
+                <CardContent {...cardContentProps}>
+                    <ProductLink url={cartItem.url}>
+                        {categoryItem.category.title_single} {cartItem.title}
+                    </ProductLink>
+                    <Typography {...articleTextProps}>
+                        Артикул: {cartItem.articul}
+                    </Typography>
+                </CardContent>
+
                 <CardActions {...actionRowProps}>
-                    <Price
-                        variant="small"
-                        price={cartItem.price}
-                        props={{ flexGrow: 1 }}
-                    />
-                    <InstantBuyButton props={buttonProps} item={categoryItem} />
-                    <ShoppingCartButton props={buttonProps} item={cartItem} />
+                    <Price price={cartItem.price} props={{ flexGrow: 1 }} />
+                    {!hideButtons && (
+                        <>
+                            <InstantBuyButton
+                                props={buttonProps}
+                                item={categoryItem}
+                            />
+                            <ShoppingCartButton
+                                props={buttonProps}
+                                item={cartItem}
+                            />
+                        </>
+                    )}
                 </CardActions>
-            )}
+            </Box>
         </AppCard>
     );
 };

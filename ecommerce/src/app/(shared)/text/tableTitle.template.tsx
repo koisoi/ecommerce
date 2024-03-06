@@ -9,7 +9,7 @@ const TableTitle = ({
     props?: TypographyProps;
 }) => {
     const titleProps: TypographyProps = {
-        fontSize: { xs: "0.8rem", sm: "1rem" },
+        fontSize: "1rem",
         fontWeight: "bold",
 
         ...props

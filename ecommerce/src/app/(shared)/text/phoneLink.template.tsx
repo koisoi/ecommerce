@@ -10,10 +10,10 @@ const PhoneLink = ({
     const linkProps: LinkProps = {
         href: `tel:${number}`,
 
+        color: "primary.main",
         ...props,
 
         sx: {
-            color: "primary.main",
             fontWeight: "bold",
             textDecoration: "none",
 

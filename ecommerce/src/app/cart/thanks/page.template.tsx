@@ -6,6 +6,8 @@ import CompletedOrderFormTemplate, {
 import CartTableTemplate, {
     CartTableTemplateProps
 } from "@/app/(shared)/cartTable/cartTable.template";
+import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
+import { thanksForOrderBreadcrumbs } from "@/lib";
 
 const ThanksForOrderPageTemplate = ({
     fullName,
@@ -44,6 +46,7 @@ const ThanksForOrderPageTemplate = ({
 
     return (
         <>
+            <AppBreadcrumbs linksArray={thanksForOrderBreadcrumbs} />
             <PageTitle>Спасибо за заказ!</PageTitle>
             <Box {...wrapperProps}>
                 <Box {...leftBoxProps}>

@@ -7,6 +7,7 @@ import {
     ProductCharacteristics,
     ProductPageTabType,
     ProductReview,
+    catalogPageBreadcrumb,
     getProductImageLink,
     productAPI
 } from "@/lib";
@@ -17,7 +18,6 @@ import { getProductLink } from "@/lib/functions/getProductLink";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
-import { catalogPageBreadcrumb } from "../page";
 
 const ProductPage = async ({
     product,

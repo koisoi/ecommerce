@@ -4,9 +4,10 @@ import PageTitle from "../(shared)/text/pageTitle.template";
 import { UseFormReturn } from "react-hook-form";
 import OrderFormTemplate from "./orderForm.template";
 import { OrderRules } from "./page";
-import { OrderForm } from "@/lib";
+import { OrderForm, cartBreadcrumbs } from "@/lib";
 import { MouseEventHandler } from "react";
 import Loading from "../(shared)/loading.template";
+import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
 
 const CartTemplate = ({
     form,
@@ -36,6 +37,7 @@ const CartTemplate = ({
 
     return (
         <>
+            <AppBreadcrumbs linksArray={cartBreadcrumbs} />
             <PageTitle>Корзина</PageTitle>
             <Box {...wrapperProps}>
                 <Box {...leftBoxProps}>

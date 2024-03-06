@@ -18,7 +18,7 @@ const CategoryCard = ({
 
         style: {
             display: "inline-block",
-            height: smallImage ? "200px" : "310px",
+            // height: smallImage ? "200px" : "310px",
             width: "100%",
 
             cursor: "pointer"
@@ -30,7 +30,8 @@ const CategoryCard = ({
         cardProps: {
             sx: {
                 color: "text.primary",
-                height: "100%",
+                height: { xs: "190px", md: "240px" },
+                width: { xs: "150px", md: "200px" },
 
                 ":hover": {
                     color: "primary.main"
@@ -38,7 +39,7 @@ const CategoryCard = ({
             }
         },
         cardMediaProps: {
-            sx: { ...(smallImage && { height: "200px" }) }
+            sx: { height: { xs: "150px", md: "200px" } }
         },
         cardMediaChildren: <Link {...imgLinkProps(category)} />
     });
@@ -51,11 +52,11 @@ const CategoryCard = ({
         // },
 
         props: {
-            fontSize: smallText ? "1.05rem" : "1.3rem",
+            fontSize: /*smallText ? "0.9rem" :*/ "1rem",
             fontWeight: "bold",
             color: "inherit",
 
-            padding: "10px",
+            padding: "0.5rem",
             textAlign: "center",
 
             sx: {

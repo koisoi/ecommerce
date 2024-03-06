@@ -8,10 +8,11 @@ import {
 import { styled } from "@mui/system";
 import RemoveIcon from "@mui/icons-material/Remove";
 import AddIcon from "@mui/icons-material/Add";
-import { useThemeColors } from "@/lib";
+import { useMediaQueries, useThemeColors } from "@/lib";
 
 const NumberInput = ({ ...props }: NumberInputProps | undefined) => {
     const colors = useThemeColors();
+    const screen = useMediaQueries();
 
     const StyledInput = styled("input")`
         font-size: 0.875rem;
@@ -22,10 +23,10 @@ const NumberInput = ({ ...props }: NumberInputProps | undefined) => {
         border: 1px solid ${colors.divider};
         border-radius: 8px;
         margin: 0 8px;
-        padding: 10px 12px;
+        padding: ${screen.md ? "10px 12px" : "5px 6px"};
         outline: 0;
         min-width: 0;
-        width: 4rem;
+        width: ${screen.md ? "4rem" : "2rem"};
         text-align: center;
 
         &:hover {
@@ -42,7 +43,6 @@ const NumberInput = ({ ...props }: NumberInputProps | undefined) => {
     `;
 
     const StyledInputRoot = styled("div")`
-        font-family: "IBM Plex Sans", sans-serif;
         font-weight: 400;
         color: ${colors.textSecondary};
         display: flex;
@@ -52,7 +52,6 @@ const NumberInput = ({ ...props }: NumberInputProps | undefined) => {
     `;
 
     const StyledButton = styled("button")`
-        font-family: "IBM Plex Sans", sans-serif;
         font-size: 0.875rem;
         box-sizing: border-box;
         line-height: 1.5;
@@ -60,8 +59,8 @@ const NumberInput = ({ ...props }: NumberInputProps | undefined) => {
         border-radius: 999px;
         background: ${colors.divider};
         color: ${colors.textSecondary};
-        width: 32px;
-        height: 32px;
+        width: ${screen.md ? "32px" : "20px"};
+        height: ${screen.md ? "32px" : "20px"};
         display: flex;
         flex-flow: row nowrap;
         justify-content: center;

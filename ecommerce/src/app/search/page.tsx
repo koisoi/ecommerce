@@ -3,17 +3,15 @@
 import { useAppDispatch, useAppSelector } from "@/lib";
 import SearchPageTemplate from "./page.template";
 import { SearchState, resetSearch, search } from "@/lib/slices/search.slice";
-import { notFound, useRouter, useSearchParams } from "next/navigation";
-import { ChangeEvent, Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 import Loading from "../(shared)/loading.template";
-import { Box } from "@mui/material";
-import HeaderSearchBox from "../(header)/search/search";
 import NoQuery from "./noQueryPage.template";
 
 const SearchPageFC = () => {
     const dispatch = useAppDispatch();
     const params = useSearchParams();
-    const router = useRouter();
+    // const router = useRouter();
     const productsPerPage = 12;
 
     const query = params.get("query");
@@ -24,8 +22,8 @@ const SearchPageFC = () => {
     // const [page, setPage] = useState<number>(1);
     const [pagesCount, setPagesCount] = useState<number>(0);
 
-    const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
-        router.push(`/search?query=${query}&page=${page}`);
+    // const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
+    //     router.push(`/search?query=${query}&page=${page}`);
 
     useEffect(() => {
         if (!query) return;

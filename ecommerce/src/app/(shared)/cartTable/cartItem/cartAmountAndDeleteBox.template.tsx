@@ -1,7 +1,10 @@
+"use client";
+
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import NumberInput from "../../numberInput.template";
 import Price from "../../text/price.template";
 import { NumberInputProps } from "@mui/base/Unstable_NumberInput";
+import { useMediaQueries } from "@/lib";
 
 export type AmountBoxProps = {
     amount: number;
@@ -22,12 +25,14 @@ const AmountBox = ({
     totalPrice,
     displayOnly
 }: AmountBoxProps) => {
+    const screen = useMediaQueries();
+
     const amountAndDeleteBoxProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
         justifyContent: "space-between",
 
-        minWidth: { sm: "100%", md: displayOnly ? "100px" : "250px" },
+        minWidth: { sm: "unset", md: displayOnly ? "100px" : "250px" },
         width: "fit-content"
     };
 
@@ -43,7 +48,8 @@ const AmountBox = ({
     };
 
     const amountTextPriceProps: TypographyProps = {
-        fontSize: "inherit"
+        fontSize: "inherit",
+        display: "inline"
     };
 
     const numberInputProps: NumberInputProps = {
@@ -53,7 +59,7 @@ const AmountBox = ({
         onChange: onAmountChange,
 
         style: {
-            width: "170px"
+            width: screen.md ? "170px" : "120px"
         }
     };
 

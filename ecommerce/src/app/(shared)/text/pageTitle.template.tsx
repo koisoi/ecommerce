@@ -11,8 +11,8 @@ const PageTitle = ({
     const titleProps: TypographyProps = {
         fontSize: "2.5rem",
         fontWeight: "bolder",
-        marginBottom: { xs: "0.5rem", sm: "1rem" },
-        lineHeight: { xs: 1, sm: 1.5 },
+        marginBottom: "0.5rem",
+        lineHeight: { xs: 1, sm: 1.2 },
 
         color: "text.primary",
         ...props

@@ -1,5 +1,3 @@
-"use client";
-
 import { YouTube } from "@mui/icons-material";
 import {
     Box,
@@ -18,7 +16,7 @@ const HeaderTopContainer = () => {
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        fontSize: "15px"
+        fontSize: "1rem"
     };
 
     const wrapperProps: BoxProps = {
@@ -72,7 +70,6 @@ const HeaderTopContainer = () => {
         sx: {
             padding: "7.5px",
             ":hover": {
-                color: "text.primary",
                 cursor: "pointer"
             }
         }
@@ -109,7 +106,7 @@ const HeaderTopContainer = () => {
                         {...MUILinkProps}
                     >
                         <SvgIcon {...iconProps}>
-                            <VK />
+                            <VK fill="#969696" />
                         </SvgIcon>
                     </MUILink>
                     <MUILink

@@ -97,8 +97,6 @@ const HeaderDesktopNavigationTemplate = ({
         }
     });
 
-    console.log(categories[0], catalogPath);
-
     return (
         <Box {...innerWrapperProps}>
             <Link style={linkStyle} href="/catalog">

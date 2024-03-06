@@ -44,13 +44,11 @@ const CartItemTemplate = ({
     totalPrice: string;
     displayOnly?: boolean;
 }) => {
-    const screen = useMediaQueries();
-
     const outerWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
-        gap: "20px",
+        gap: "1rem",
 
         position: "relative"
     };
@@ -59,7 +57,7 @@ const CartItemTemplate = ({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "20px",
+        gap: "1rem",
 
         padding: "10px",
         width: "100%",
@@ -68,9 +66,9 @@ const CartItemTemplate = ({
 
     const innerWrapperProps: BoxProps = {
         display: "flex",
-        flexDirection: { xs: "column", md: "row" },
+        flexDirection: { xs: "column", xsm: "row" },
         alignItems: "center",
-        gap: "20px",
+        gap: "1rem",
 
         flexGrow: 1,
 
@@ -78,16 +76,18 @@ const CartItemTemplate = ({
     };
 
     const titleBoxProps: BoxProps = {
-        flexGrow: 1,
-        width: "100%"
+        flexGrow: 1
+        // width: "100%"
     };
 
     const titleProps: TypographyProps = {
-        fontWeight: "bold"
+        fontWeight: "bold",
+        fontSize: { xs: "1.25rem", md: "1rem" },
+        flexGrow: 1
     };
 
     const priceProps: TypographyProps = {
-        minWidth: { xs: "100%", md: "140px" },
+        minWidth: { xs: "fit-content", md: "140px" },
         fontWeight: "normal"
     };
 
@@ -122,6 +122,13 @@ const CartItemTemplate = ({
         displayOnly: displayOnly
     };
 
+    const amountAndPriceBox: BoxProps = {
+        display: "flex",
+        flexDirection: { xs: "column", sm: "row" },
+        alignItems: "center",
+        gap: "1rem"
+    };
+
     return (
         <>
             {!displayOnly && (
@@ -133,21 +140,20 @@ const CartItemTemplate = ({
             )}
 
             <Box {...outerWrapperProps}>
-                {!screen.sm && <CartImg {...imgProps} />}
                 <Box {...wrapperProps}>
-                    {screen.sm && <CartImg {...imgProps} />}
+                    <CartImg {...imgProps} />
                     <Box {...innerWrapperProps}>
                         <Box {...titleBoxProps}>
                             <ProductLink url={item.url} props={titleProps}>
                                 {item.title}
                             </ProductLink>
                         </Box>
-                        <Price price={item.price} props={priceProps} />
-                        {screen.sm && <AmountBox {...amountBoxProps} />}
+                        <Box {...amountAndPriceBox}>
+                            <Price price={item.price} props={priceProps} />
+                            <AmountBox {...amountBoxProps} />
+                        </Box>
                     </Box>
                 </Box>
-
-                {!screen.sm && <AmountBox {...amountBoxProps} />}
 
                 {!displayOnly && (
                     <IconButton {...deleteButtonProps}>

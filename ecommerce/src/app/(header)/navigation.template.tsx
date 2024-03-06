@@ -5,6 +5,16 @@ import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
 import { CategoryListItem } from "@/lib";
 import HeaderDesktopNavigation from "./desktopNavigation/desktopNavigation";
 import { useRouter } from "next/navigation";
+import LoadingHeaderContactsBox from "./contactsBox/loadingContactsBox";
+import dynamic from "next/dynamic";
+
+const DynamicContactsBox = dynamic(
+    () => import("@/app/(header)/contactsBox/realContactsBox"),
+    {
+        ssr: false
+        // loading: () => <LoadingHeaderContactsBox />
+    }
+);
 
 const HeaderNavigation = ({
     mobile,
@@ -23,20 +33,26 @@ const HeaderNavigation = ({
         router.push(`/catalog/${path}`);
     };
 
-    const wrapperProps: BoxProps = {
+    const outerWrapperProps: BoxProps = {
         component: "nav",
-
-        display: "flex",
-        justifyContent: { xs: "normal", md: "center" },
-
-        width: { xs: "unset", md: "100vw" },
-        minHeight: { xs: "45px", md: "50px" },
-        paddingX: { xs: "15px", md: "0" },
 
         position: "sticky",
         top: "-1px",
         zIndex: 11,
         boxSizing: "border-box",
+
+        display: "flex",
+        flexDirection: "column"
+    };
+
+    const wrapperProps: BoxProps = {
+        display: "flex",
+        justifyContent: { xs: "normal", md: "center" },
+
+        // width: { xs: "unset", md: "100vw" },
+        width: "100vw",
+        minHeight: { xs: "45px", md: "50px" },
+        // paddingX: { xs: "15px", md: "0" },
 
         ...boxProps,
 
@@ -48,14 +64,17 @@ const HeaderNavigation = ({
     };
 
     return (
-        <Box {...wrapperProps}>
-            {mobile && <HeaderMobileNavigation />}
-            {!mobile && (
-                <HeaderDesktopNavigation
-                    categories={categories}
-                    onTabClick={handleDesktopTabClick}
-                />
-            )}
+        <Box {...outerWrapperProps}>
+            {mobile && <DynamicContactsBox mobile />}
+            <Box {...wrapperProps}>
+                {mobile && <HeaderMobileNavigation />}
+                {!mobile && (
+                    <HeaderDesktopNavigation
+                        categories={categories}
+                        onTabClick={handleDesktopTabClick}
+                    />
+                )}
+            </Box>
         </Box>
     );
 };

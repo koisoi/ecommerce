@@ -25,14 +25,8 @@ import Mir from "@/assets/svg/mir.svg";
 import { Description } from "@mui/icons-material";
 import { CSSProperties } from "react";
 import AttentionText from "../(shared)/text/attentionText.template";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
-import { homePageBreadcrumbs } from "../page";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
-
-export const deliveryBreadcrumbs: Breadcrumb[] = [
-    ...homePageBreadcrumbs,
-    { link: "/delivery", title: "Доставка и оплата" }
-];
+import { deliveryBreadcrumbs } from "@/lib";
 
 const Delivery = () => {
     const underTableTextProps: TypographyProps = {
@@ -60,14 +54,6 @@ const Delivery = () => {
         marginTop: { xs: "1rem", md: "2rem" }
     };
 
-    const tableProps: TableProps = {
-        sx: {
-            ".MuiTableCell-root": {
-                padding: "0.5rem !important"
-            }
-        }
-    };
-
     return (
         <>
             <AppBreadcrumbs linksArray={deliveryBreadcrumbs} />
@@ -75,7 +61,7 @@ const Delivery = () => {
 
             <Title>Способы доставки</Title>
 
-            <Table {...tableProps}>
+            <Table>
                 <TableHead>
                     <TableRow>
                         <TableCell>

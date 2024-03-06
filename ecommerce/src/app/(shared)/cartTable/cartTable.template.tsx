@@ -16,7 +16,7 @@ import { Delete } from "@mui/icons-material";
 import { MouseEventHandler } from "react";
 import ClearDialog from "./clearDialog.template";
 import { useMediaQueries } from "@/lib";
-import EmptyCart from "./emptyCard/emptyCart";
+import EmptyCart from "./emptyCart/emptyCart";
 
 export type CartTableTemplateProps = {
     items: CartItem[];
@@ -207,7 +207,7 @@ const CartTableTemplate = ({
                 <Box {...footerProps}>
                     {!displayOnly && (
                         <Button {...clearButtonProps}>
-                            <Delete /> {screen.sm && "Очистить корзину"}
+                            <Delete /> {screen.xsm && "Очистить корзину"}
                         </Button>
                     )}
                     {!full && !displayOnly && (
@@ -222,7 +222,7 @@ const CartTableTemplate = ({
                                     ? full
                                         ? "large"
                                         : "medium"
-                                    : "small"
+                                    : "medium"
                             }
                             props={footerPriceProps}
                         />

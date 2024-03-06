@@ -1,6 +1,11 @@
 * {
 	margin: 0;
 	padding: 0;
+  font-family: inherit;
+}
+
+html {
+  font-family: "Roboto","Helvetica","Arial",sans-serif
 }
 
 ul, ol {
@@ -17,7 +22,7 @@ iframe {
   border: 0;
 }
 
-@font-face { 
+/* @font-face { 
   font-family: "Main"; 
   src: url('../assets/fonts/mainFont.woff2'); 
   font-weight: normal; 
@@ -78,5 +83,9 @@ iframe {
   src: url('../assets/fonts/mainFontCyrrilicExt.woff2'); 
   font-weight: bolder; 
   font-style: normal; 
-} 
+}  */
+
+.MuiTable-root .MuiTableCell-root {
+  padding: 0.5rem !important;
+}
 

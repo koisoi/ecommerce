@@ -2,7 +2,7 @@ import { Box, BoxProps } from "@mui/material";
 import HeaderNavigation from "./navigation.template";
 import { landingConfig } from "@/lib/data/config";
 import HeaderTopContainer from "./topContainer.template";
-import HeaderMainContainer from "./mainContainer/mainContainer";
+import HeaderMainContainer from "./mainContainer/mainContainer.template";
 
 const Header = () => {
     // props
@@ -33,7 +33,7 @@ const Header = () => {
             <header>
                 <Box {...wrapperProps}>
                     <HeaderTopContainer />
-                    <HeaderMainContainer />
+                    <HeaderMainContainer props={desktopHeaderProps} />
                 </Box>
             </header>
             <HeaderNavigation

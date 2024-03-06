@@ -2,7 +2,6 @@ import {
     Box,
     BoxProps,
     ButtonProps,
-    Link,
     LinkProps,
     SvgIconProps
 } from "@mui/material";
@@ -55,7 +54,7 @@ const ContactsBox = ({
     };
 
     const phoneLinkProps: LinkProps = {
-        fontSize: { xs: "1rem", md: "1.2rem" }
+        fontSize: "1.2rem"
     };
 
     const backCallButtonProps: ButtonProps = {

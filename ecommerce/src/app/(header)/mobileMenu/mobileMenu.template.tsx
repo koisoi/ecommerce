@@ -13,11 +13,12 @@ import {
     ListItemButton,
     ListItemButtonProps,
     ListItemProps,
-    ListItemText
+    ListItemText,
+    ListProps
 } from "@mui/material";
 import Link from "next/link";
 import { CSSProperties } from "react";
-import Logo from "../logo/logo";
+import Logo from "../logo";
 import { Close } from "@mui/icons-material";
 
 const MobileMenuTemplate = ({
@@ -41,7 +42,8 @@ const MobileMenuTemplate = ({
         open,
         onClose: onMenuClose,
 
-        disableRestoreFocus: true
+        disableRestoreFocus: true,
+        disableScrollLock: true
     };
 
     const wrapperProps: BoxProps = {
@@ -85,10 +87,19 @@ const MobileMenuTemplate = ({
         color: "inherit"
     };
 
+    const listProps: ListProps = {
+        sx: {
+            flexGrow: 1,
+            ".MuiListItemButton-root": {
+                padding: "0.5rem"
+            }
+        }
+    };
+
     return (
         <Drawer {...drawerProps}>
             <Box {...wrapperProps}>
-                <List sx={{ flexGrow: 1 }}>
+                <List {...listProps}>
                     <ListItem {...logoListItemProps}>
                         <Logo />
                         <IconButton {...iconButtonProps}>

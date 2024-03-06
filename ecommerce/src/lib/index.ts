@@ -22,3 +22,4 @@ export * from "./types/hookForm";
 export * from "./types/order";
 
 export * from "./data/formValidators";
+export * from "./data/breadcrumbs";

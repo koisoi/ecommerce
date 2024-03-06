@@ -1,5 +1,4 @@
 import "./globals.css";
-import styles from "./page.module.css";
 import Header from "./(header)/header";
 import { Box, BoxProps, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
@@ -43,13 +42,13 @@ const RootLayout = ({
             overflow: "auto",
             scrollbarGutter: "stable",
             maxWidth: "100vw",
+            minWidth: "320px",
             overflowX: "hidden",
             fontSize: { xs: "12px", sm: "15px" }
         }
     };
 
-    const bodyProps: { className: string; style: CSSProperties } = {
-        className: styles.mainFont,
+    const bodyProps: { style: CSSProperties } = {
         style: {
             display: "flex",
             flexDirection: "column",
@@ -79,7 +78,6 @@ const RootLayout = ({
                             <Header />
                             <Box
                                 padding={{ xs: "1rem", md: "2rem" }}
-                                paddingTop={{ xs: "0" }}
                                 display="flex"
                                 justifyContent="center"
                                 flexGrow={1}

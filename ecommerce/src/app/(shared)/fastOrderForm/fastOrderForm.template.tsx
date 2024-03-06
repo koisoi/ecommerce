@@ -57,7 +57,7 @@ const FastOrderFormTemplate = ({
     const dialogContentProps: DialogContentProps = {
         sx: {
             display: "flex",
-            flexDirection: { xs: "column", sm: "row" },
+            flexDirection: { xs: "column", md: "row" },
             justifyContent: "center",
             gap: "20px",
 
@@ -103,9 +103,27 @@ const FastOrderFormTemplate = ({
         recommended: item?.is_recommend,
         categoryItem: item,
 
-        cardProps: {
-            sx: { width: "unset" }
-        }
+        initialCardProps: {
+            sx: { width: "unset", minHeight: { xs: "unset", md: "300px" } }
+        },
+        initialCardMediaProps: {
+            sx: {
+                minHeight: "100px"
+            }
+        },
+        ...(screen.md && {
+            initialCardContentProps: {
+                sx: {
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "1rem",
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    textAlign: "center"
+                }
+            }
+        })
     };
 
     const productCardBoxProps: BoxProps = {
@@ -115,8 +133,9 @@ const FastOrderFormTemplate = ({
         display: "flex",
         flexDirection: "column",
         gap: "20px",
+        alignItems: "center",
 
-        width: { xs: "100%", sm: "unset" }
+        width: { xs: "100%", md: "unset" }
     };
 
     const orderFormProps: BoxProps = {

@@ -2,6 +2,7 @@ import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
 import { CategoryItem, getProductImageLink } from "@/lib";
+import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { getProductLink } from "@/lib/functions/getProductLink";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 
@@ -13,7 +14,10 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                 title: item.title,
                 price: item.price,
                 articul: item.articul,
-                url: getProductLink(item.category.path, item.alias) /*{
+                url: getProductLink(
+                    categoryPathToAlias(item.category.path)!,
+                    item.alias
+                ) /*{
                     pathname: "/catalog/product",
                     query: {
                         category: item.category.path,
@@ -26,18 +30,20 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
             },
             newProduct: item.is_new,
             recommended: item.is_recommend,
-            cardMediaProps: {
+            initialCardMediaProps: {
                 sx: {
-                    height: { md: "190px", xl: "310px" }
+                    height: { md: "190px", xl: "310px" },
+                    minWidth: "165px"
                 }
             },
-            cardProps: {
+            initialCardProps: {
                 sx: {
                     height: "100%"
                 }
             },
             linkProps: {
-                height: { xs: "310px", md: "190px", xl: "310px" }
+                height: { xs: "100%", md: "190px", xl: "310px" }
+                // height: "100%"
             }, // md: "190px", xl: "310px"
             categoryItem: item
         };

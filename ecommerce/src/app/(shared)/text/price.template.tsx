@@ -18,13 +18,15 @@ const Price = ({
         minWidth: "max-content",
         maxHeight: "min-content",
 
+        noWrap: true,
+
         fontFamily: "inherit",
         fontWeight: "bold",
         fontSize:
             variant === "small"
                 ? "0.95rem"
                 : variant === "medium"
-                ? "1.2rem"
+                ? { xs: "1.4rem", md: "1.2rem" }
                 : "2rem",
         ...(autoScaleLarge && {
             fontSize: { xs: "1.2rem", sm: "2rem" }

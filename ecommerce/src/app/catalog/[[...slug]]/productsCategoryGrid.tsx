@@ -41,10 +41,6 @@ const ProductsCategoryGrid = async ({
     //     list: products
     // } = useAppSelector(ProductsCategoryGridState);
 
-    // TODO: redirect на страницу с новым query
-    // const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
-    //     setPage(page);
-
     // useEffect(() => {
     //     dispatch(setCanFetchCategoryItems(true));
     //     const promise = dispatch(
@@ -68,15 +64,12 @@ const ProductsCategoryGrid = async ({
     // }, [totalAmount]);
 
     return (
-        // <></>
         <ProductsGridTemplate
             list={response?.list || []}
             totalItemCount={response?.totalItemCount || 0}
             page={page}
             pagesCount={pagesCount}
             linkBeforeQuery={linkBeforeQuery}
-            // category={category}
-            // series={series}
         />
     );
 };

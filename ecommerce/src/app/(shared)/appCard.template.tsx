@@ -47,8 +47,8 @@ const AppCard = ({
 
         sx: {
             width: "100%",
-            height: { xs: "100px", md: "310px" },
             position: "relative",
+            borderRadius: "4px 4px 0 0",
 
             backgroundSize: "contain",
 

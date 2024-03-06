@@ -5,6 +5,7 @@ export type LandingConfig = {
     landing_title: string;
     landing_id: number;
     logoImgLink: string;
+    logoImgMobileLink: string;
     categories: CategoryListItem[];
     colors: {
         primary: {

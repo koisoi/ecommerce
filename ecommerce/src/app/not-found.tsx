@@ -11,24 +11,27 @@ import Link from "next/link";
 const NotFound = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
+        flexDirection: { xs: "column", md: "row" },
         justifyContent: "center",
         alignItems: "center",
-        gap: "50px"
+        gap: "2rem",
+        height: "100%"
     };
 
-    const innerWrapperProps: BoxProps = {
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "center",
-        alignItems: "center",
+    // const innerWrapperProps: BoxProps = {
+    //     display: "flex",
+    //     flexDirection: "row",
+    //     justifyContent: "center",
+    //     alignItems: "center",
 
-        width: "fit-content",
-        height: "fit-content"
-    };
+    //     width: "fit-content",
+    //     height: "fit-content"
+    // };
 
     const titleProps: TypographyProps = {
         color: "primary.main",
-        fontSize: "10rem"
+        fontSize: "10rem",
+        lineHeight: 1
     };
 
     const rightBoxProps: BoxProps = {
@@ -39,7 +42,7 @@ const NotFound = () => {
     };
 
     const subtitleProps: TypographyProps = {
-        color: "secondary.main",
+        color: "primary.main",
         fontSize: "1.5rem"
     };
 

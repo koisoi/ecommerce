@@ -13,7 +13,7 @@ const Paragraph = ({
     inline?: boolean;
 }) => {
     const paragraphProps: TypographyProps = {
-        fontSize: { xs: "0.8rem", sm: "1rem" },
+        fontSize: "1rem",
         ...(margin && { marginTop: "0.9rem" }),
         ...(inline && { display: "inline" }),
 

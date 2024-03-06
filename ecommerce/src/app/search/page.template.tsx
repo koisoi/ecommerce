@@ -1,19 +1,12 @@
 import { Box, Typography, TypographyProps } from "@mui/material";
 import PageTitle from "../(shared)/text/pageTitle.template";
 import { SearchResponse } from "@/lib/services/search.service";
-import { ChangeEvent } from "react";
 import Loading from "../(shared)/loading.template";
 import ProductsGridTemplate, {
     ProductsGridTemplateProps
 } from "../(shared)/productsGrid/productsGrid.template";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
-import { homePageBreadcrumbs } from "../page";
-
-export const searchBreadcrumbs: Breadcrumb[] = [
-    ...homePageBreadcrumbs,
-    { link: "/search", title: "Поиск" }
-];
+import { searchBreadcrumbs } from "@/lib";
 
 const SearchPageTemplate = ({
     loading,

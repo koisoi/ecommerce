@@ -10,7 +10,6 @@ export * from "./text/paragraph.template";
 export * from "./text/tableTitle.template";
 
 export * from "./breadcrumbs/breadcrumbs.template";
-export * from "./breadcrumbs/breadcrumbs";
 
 export * from "./productCard/cardsSkeleton.template";
 export * from "./productCard/productCard.template";

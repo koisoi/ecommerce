@@ -16,13 +16,7 @@ import Paragraph from "../(shared)/text/paragraph.template";
 import AppLink from "../(shared)/text/appLink.template";
 import Title from "../(shared)/text/title.template";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
-import { homePageBreadcrumbs } from "../page";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
-
-export const warrantyBreadcrumbs: Breadcrumb[] = [
-    ...homePageBreadcrumbs,
-    { link: "/warranty", title: "Гарантии и возврат" }
-];
+import { warrantyBreadcrumbs } from "@/lib";
 
 const WarrantyPage = () => {
     const warrantyBoxProps: BoxProps = {
@@ -32,8 +26,9 @@ const WarrantyPage = () => {
 
         width: "100%",
         boxSizing: "border-box",
-        padding: "30px",
-        marginBottom: "2rem",
+        padding: "2rem",
+        marginY: "2rem",
+        marginTop: { xs: "1rem", md: "2rem" },
 
         display: "flex",
         flexDirection: "column",
@@ -65,21 +60,21 @@ const WarrantyPage = () => {
                 <Title props={titleProps}>
                     Какие вы предоставляете гарантии?
                 </Title>
-                <Typography>
+                <Paragraph>
                     На все продаваемые товары действует гарантия производителя.
                     Гарантийные сроки могут варьироваться от одного года до
                     десятков лет. На некоторые товары действует пожизненная
                     гарантия.
-                </Typography>
-                <Typography>
+                </Paragraph>
+                <Paragraph>
                     Гарантийный ремонт и замена могут осуществляться как через
                     сервисный центр Telescope1.ru, так и через авторизованные
                     сервисные центры производителей.
-                </Typography>
-                <Typography>
+                </Paragraph>
+                <Paragraph>
                     Гарантийный срок можно найти на странице каждого товара,
                     либо можно уточнить его у менеджера магазина.
-                </Typography>
+                </Paragraph>
             </Box>
 
             <Title props={titleProps}>Как вернуть товар?</Title>

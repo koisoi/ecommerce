@@ -10,8 +10,6 @@ export type ProductsGridTemplateProps = CategoryItemsResponse & {
     loading?: boolean;
     page: number;
     pagesCount: number;
-    // category?: string;
-    // series?: string | null;
     linkBeforeQuery: string;
     search?: boolean;
 };
@@ -22,22 +20,25 @@ const ProductsGridTemplate = ({
     loading,
     page,
     pagesCount,
-    // category,
-    // series,
     search,
     linkBeforeQuery
 }: ProductsGridTemplateProps) => {
     const cardsWrapperProps: BoxProps = {
         width: "100%",
 
-        display: "grid",
-        gap: "20px",
-        gridTemplateColumns: {
-            xs: "1fr",
-            sm: "1fr 1fr",
-            md: "1fr 1fr 1fr",
-            mlg: "1fr 1fr 1fr 1fr"
+        display: "flex",
+        gap: "1rem",
+        justifyContent: "center",
+
+        sx: {
+            flexFlow: "row wrap"
         }
+        // gridTemplateColumns: {
+        //     xs: "1fr",
+        //     sm: "1fr 1fr",
+        //     md: "1fr 1fr 1fr",
+        //     mlg: "1fr 1fr 1fr 1fr"
+        // }
     };
 
     const foundTextProps: TypographyProps = {
@@ -58,42 +59,35 @@ const ProductsGridTemplate = ({
                             page={page}
                             pagesCount={pagesCount}
                             linkBeforeQuery={linkBeforeQuery}
-                            // category={category}
-                            // series={series}
                         />
                     )}
                     <Box {...cardsWrapperProps}>
-                        {products.map((item) => (
-                            <ProductCard
-                                key={item.id}
-                                newProduct={item.is_new}
-                                recommended={item.is_recommend}
-                                cartItem={{
-                                    url: getProductLink(
-                                        categoryPathToAlias(
-                                            item.category.path
-                                        )!,
-                                        item.alias
-                                    ) /*{
-                                        pathname: "/catalog/product",
-                                        query: {
-                                            category: item.category.path,
-                                            series: item.series?.alias,
-                                            product: item.alias
-                                        }
-                                    }*/,
-                                    alias: item.alias,
-                                    title: item.title,
-                                    imgLink: getProductImageLink(
-                                        item.images[0].url
-                                    ),
-                                    price: item.price,
-                                    amount: 1,
-                                    articul: item.articul
-                                }}
-                                categoryItem={item}
-                            />
-                        ))}
+                        {products.map((item) => {
+                            return (
+                                <ProductCard
+                                    key={item.id}
+                                    newProduct={item.is_new}
+                                    recommended={item.is_recommend}
+                                    cartItem={{
+                                        url: getProductLink(
+                                            categoryPathToAlias(
+                                                item.category.path
+                                            )!,
+                                            item.alias
+                                        ),
+                                        alias: item.alias,
+                                        title: item.title,
+                                        imgLink: getProductImageLink(
+                                            item.images[0].url
+                                        ),
+                                        price: item.price,
+                                        amount: 1,
+                                        articul: item.articul
+                                    }}
+                                    categoryItem={item}
+                                />
+                            );
+                        })}
                     </Box>
                 </>
             )}
