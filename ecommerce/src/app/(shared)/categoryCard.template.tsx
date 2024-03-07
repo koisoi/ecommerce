@@ -1,24 +1,19 @@
-import { CategoryListItem, NextLinkProps } from "@/lib";
+import { CategoryListItem } from "@/lib";
 import AppCard, { AppCardProps } from "./appCard.template";
-import Link from "next/link";
 import ProductLink, { ProductLinkProps } from "./text/productLink.template";
+import { default as NextLink } from "next/link";
+import { Link, LinkProps } from "@mui/material";
 
-const CategoryCard = ({
-    category,
-    smallText,
-    smallImage
-}: {
-    category: CategoryListItem;
-    smallText?: boolean;
-    smallImage?: boolean;
-}) => {
-    const imgLinkProps = (category: CategoryListItem): NextLinkProps => ({
+const CategoryCard = ({ category }: { category: CategoryListItem }) => {
+    const imgLinkProps = (category: CategoryListItem): LinkProps => ({
+        component: NextLink,
         href: `/catalog/${category.path}`,
         // href: { pathname: "/catalog", query: { category: category.path } },
 
-        style: {
+        sx: {
             display: "inline-block",
             // height: smallImage ? "200px" : "310px",
+            height: { xs: "150px", md: "200px" },
             width: "100%",
 
             cursor: "pointer"
@@ -46,10 +41,6 @@ const CategoryCard = ({
 
     const linkProps = (category: CategoryListItem): ProductLinkProps => ({
         url: `/catalog/${category.path}`,
-        // url: {
-        //     pathname: "/catalog",
-        //     query: { category: category.path }
-        // },
 
         props: {
             fontSize: /*smallText ? "0.9rem" :*/ "1rem",

@@ -25,19 +25,20 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
             recommended: item.is_recommend,
             initialCardMediaProps: {
                 sx: {
+                    minHeight: { md: "190px", xl: "310px" },
                     height: { md: "190px", xl: "310px" },
                     minWidth: "165px"
                 }
             },
             initialCardProps: {
                 sx: {
-                    height: "100%"
+                    height: "100%",
+                    width: { xs: "unset", md: "300px" }
                 }
             },
             linkProps: {
                 height: { xs: "100%", md: "190px", xl: "310px" }
-                // height: "100%"
-            }, // md: "190px", xl: "310px"
+            },
             categoryItem: item
         };
     };
