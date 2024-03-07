@@ -184,7 +184,7 @@ const ProductCard = ({
     };
 
     const appCardProps: AppCardProps = {
-        imageLink: cartItem.imgLink,
+        imageLink: cartItem.imgLink.replaceAll("original", "thumbnail"),
         cardProps,
         cardMediaProps,
         cardMediaChildren: (

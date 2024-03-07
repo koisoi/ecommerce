@@ -30,7 +30,7 @@ const buttonProps: ButtonProps = {
 };
 
 const buttonTextProps: TypographyProps = {
-    fontSize: "0.82rem",
+    fontSize: "1rem",
     noWrap: true
 };
 

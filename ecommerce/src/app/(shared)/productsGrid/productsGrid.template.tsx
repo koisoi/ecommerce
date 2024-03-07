@@ -47,7 +47,7 @@ const ProductsGridTemplate = ({
 
     const productCardProps: CardProps = {
         sx: {
-            maxWidth: { xs: "unset", sm: "300px" }
+            maxWidth: { xs: "unset", smd: "300px" } //smd?
         }
     };
 

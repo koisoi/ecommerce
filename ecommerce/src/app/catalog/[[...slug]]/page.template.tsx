@@ -26,9 +26,6 @@ const CategoryTemplate = ({
         display: "flex",
         flexWrap: "wrap",
         gap: "0.5rem",
-        // rowGap: "0.5rem",
-        // columnGap: "1rem",
-        // marginBottom: "25px"
         marginY: "1rem"
     };
 

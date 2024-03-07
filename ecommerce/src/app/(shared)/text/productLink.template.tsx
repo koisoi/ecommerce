@@ -15,7 +15,7 @@ const ProductLink = ({ url, children, props }: ProductLinkProps) => {
         // @ts-ignore
         href: url,
 
-        fontSize: "0.95rem",
+        fontSize: { xs: "1.3rem", md: "1rem" },
         color: "text.primary",
 
         ...props,

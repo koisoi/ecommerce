@@ -32,6 +32,11 @@ const ImagesCarousel = ({
 
     const [canOpenImg, setCanOpenImg] = useState<boolean>(true);
 
+    imageLinks = imageLinks.map((el) => ({
+        ...el,
+        url: el.url.replaceAll("original", "middle")
+    }));
+
     const handleImgClick: MouseEventHandler<HTMLDivElement> = (event) => {
         if (canOpenImg)
             dispatch(
