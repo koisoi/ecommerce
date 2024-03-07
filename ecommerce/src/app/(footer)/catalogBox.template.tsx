@@ -15,6 +15,7 @@ const CatalogBox = ({ categories }: { categories: CategoryListItem[] }) => {
     const categoriesBoxProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         gap: "5px"
     };
 

@@ -29,6 +29,7 @@ const AppLink = ({
             display: "inline-flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
 
             ":hover": {
                 color: "primary.main"

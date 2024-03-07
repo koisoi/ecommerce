@@ -35,17 +35,18 @@ const Footer = () => {
         paddingY: { xs: "1rem", md: "2rem" },
         paddingX: "1rem",
 
-        minWidth: { xs: "100%", smd: "0" },
+        // minWidth: { xs: "100%", smd: "0" },
         width: "100%",
         boxSizing: "border-box",
 
         display: "flex",
         flexDirection: { xs: "column", smd: "row" },
-        justifyContent: "space-between",
-        gap: { xs: "1rem", sm: "2rem" },
+        justifyContent: { xs: "center", md: "space-between" },
+        gap: "2rem",
 
         // fontSize: { xs: "0.8rem", md: "0.95rem" }
-        fontSize: "1rem"
+        fontSize: "1rem",
+        textAlign: "center"
     };
 
     return (

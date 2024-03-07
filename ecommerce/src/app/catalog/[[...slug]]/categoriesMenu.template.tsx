@@ -5,6 +5,7 @@ import { Box, BoxProps } from "@mui/material";
 const CategoriesMenuTemplate = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
+        justifyContent: "center",
         sx: {
             flexFlow: "row wrap"
         },

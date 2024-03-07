@@ -14,6 +14,7 @@ const UpperMenuBox = () => {
     const innerWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
         gap: "5px"
     };
 

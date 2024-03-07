@@ -7,6 +7,7 @@ import { CategoryItem, ProductReview } from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
+import SectionContainer from "./(shared)/section.template";
 
 const Home = async () => {
     // async
@@ -25,14 +26,17 @@ const Home = async () => {
     }
 
     return (
-        <Box>
-            <MainPageCarousel />
-            <Title>Категории</Title>
-            <CategoriesMenuTemplate />
-            <Title>Популярные товары</Title>
-            <SimliarProductsSlider products={popularProducts} />
-            <OurAdvantages props={{ marginTop: "40px" }} />
-        </Box>
+        <SectionContainer>
+            {[
+                <MainPageCarousel key={0} />,
+                <CategoriesMenuTemplate key={1} />,
+                <>
+                    <Title>Популярные товары</Title>
+                    <SimliarProductsSlider products={popularProducts} />
+                </>,
+                <OurAdvantages key={3} />
+            ]}
+        </SectionContainer>
     );
 };
 

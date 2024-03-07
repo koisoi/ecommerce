@@ -24,6 +24,7 @@ const ContactsBox = ({
         display: "flex",
         flexDirection: "column",
         gap: { xs: "0.5rem", md: "1rem" },
+        alignItems: "center",
 
         boxSizing: "border-box",
 
@@ -43,13 +44,14 @@ const ContactsBox = ({
 
         display: "flex",
         flexDirection: "row",
-        alignItems: "center"
+        alignItems: "center",
+        justifyContent: "center"
     };
 
     const iconProps: SvgIconProps = {
         fontSize: "inherit",
         sx: {
-            marginRight: "10px"
+            marginRight: "0.4rem"
         }
     };
 
