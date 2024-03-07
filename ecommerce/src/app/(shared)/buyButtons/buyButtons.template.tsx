@@ -166,7 +166,7 @@ export const ShoppingCartButtonTemplate = ({
     };
 
     return (
-        <Button {...shoppingCartButtonProps}>
+        <Button {...shoppingCartButtonProps} id="shopping-cart-button">
             <Typography {...cartButtonTextProps}>В корзину</Typography>
             <ShoppingCart {...animationShoppingIconProps} />
             <ShoppingCart {...shoppingCartIconProps} />

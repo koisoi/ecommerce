@@ -1,40 +1,42 @@
+"use client";
+
+import { useForm } from "react-hook-form";
 import {
     CartState,
-    CategoryItem,
     OrderForm,
+    RulesType,
     authorize,
     emailPattern,
-    getProductImageLink,
     postOrder,
     postStatistics,
     requiredRule,
-    ruPhoneValidator,
     setCanAuthorize,
     setCanPostOrder,
     setCanPostStatistics,
-    setCart,
     setCompletedOrderInfo,
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import FastOrderFormTemplate from "./fastOrderForm.template";
-import { useForm } from "react-hook-form";
-import { OrderRules } from "../../cart/page.client";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { useRouter } from "next/navigation";
 import { GlobalState } from "@/lib/slices/global.slice";
-import { getProductLink } from "@/lib/functions/getProductLink";
+import { useRouter } from "next/navigation";
+import { matchIsValidTel } from "mui-tel-input";
+import dynamic from "next/dynamic";
+import Loading from "../(shared)/loading.template";
 
-const FastOrderForm = ({
-    item,
-    open,
-    onClose
-}: {
-    item: CategoryItem;
-    open: boolean;
-    onClose: MouseEventHandler<HTMLButtonElement>;
-}) => {
+const DynamicCartTemplate = dynamic(() => import("@/app/cart/page.template"), {
+    ssr: false,
+    loading: () => <Loading>Загрузка...</Loading>
+});
+
+export type OrderRules = {
+    fullName: RulesType;
+    email: RulesType;
+    phoneNumber: RulesType;
+};
+
+const CartClient = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
 
@@ -61,32 +63,17 @@ const FastOrderForm = ({
         },
         phoneNumber: {
             required: requiredRule,
-            validate: ruPhoneValidator
+            validate: (value: string) => {
+                return (
+                    matchIsValidTel(value, { onlyCountries: ["RU"] }) ||
+                    "Неверный формат номера телефона"
+                );
+            }
         }
     };
 
     const handleSubmit = (data: OrderForm) => {
         data.phoneNumber = data.phoneNumber.replace(/\D/g, "");
-        dispatch(
-            setCart([
-                {
-                    url: getProductLink(item.category.path, item.alias) /*{
-                        pathname: "/catalog/product",
-                        query: {
-                            category: item.category.path,
-                            series: item.series?.alias,
-                            product: item.alias
-                        }
-                    }*/,
-                    alias: item.alias,
-                    title: item.title,
-                    imgLink: getProductImageLink(item.images[0].url),
-                    price: item.price,
-                    amount: 1,
-                    articul: item.articul
-                }
-            ])
-        );
 
         const authPromise = dispatch(authorize());
         setCurrentPromise(authPromise);
@@ -119,8 +106,7 @@ const FastOrderForm = ({
                                 referer: referrer,
                                 start_url,
                                 utm
-                            },
-                            fastOrder: true
+                            }
                         })
                     );
                     setCurrentPromise(statisticsPromise);
@@ -136,7 +122,6 @@ const FastOrderForm = ({
                 });
             })
             .catch((error) => console.error(error.message));
-
         // console.log(data);
         // dispatch(setOrderLoading(true));
         // setTimeout(() => dispatch(setOrderLoading(false)), 2000);
@@ -155,16 +140,14 @@ const FastOrderForm = ({
     }, []);
 
     return (
-        <FastOrderFormTemplate
-            item={item}
-            rules={formValidation}
+        <DynamicCartTemplate
             form={form}
-            open={open}
+            rules={formValidation}
             onSubmit={form.handleSubmit(handleSubmit)}
-            onClose={onClose}
+            hasItems={items.length > 0}
             loading={loading}
         />
     );
 };
 
-export default FastOrderForm;
+export default CartClient;

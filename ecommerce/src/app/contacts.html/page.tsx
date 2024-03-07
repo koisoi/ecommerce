@@ -21,6 +21,11 @@ import ImageSwitcher from "./imageSwitcher";
 import { contactsData } from "./contactsData";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
 import { contactsBreadcrumbs } from "@/lib";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Контактная информация"
+};
 
 const ContactsTemplate = () => {
     const phoneLinksProps: LinkProps = {

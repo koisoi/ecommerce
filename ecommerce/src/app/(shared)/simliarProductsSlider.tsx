@@ -17,14 +17,7 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                 url: getProductLink(
                     categoryPathToAlias(item.category.path)!,
                     item.alias
-                ) /*{
-                    pathname: "/catalog/product",
-                    query: {
-                        category: item.category.path,
-                        series: item.series?.alias,
-                        product: item.alias
-                    }
-                }*/,
+                ),
                 imgLink: getProductImageLink(item.images[0].url),
                 amount: 1
             },

@@ -6,13 +6,72 @@ import {
     SeriesInfo,
     catalogPageBreadcrumb,
     categoryAPI,
-    homePageBreadcrumbs
+    homePageBreadcrumbs,
+    productAPI
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
+import { Metadata } from "next";
+import { landingConfig } from "@/lib/data/config";
+
+export async function generateMetadata({
+    params
+}: {
+    params: { slug: string[] };
+}): Promise<Metadata> {
+    if (!params.slug)
+        return {
+            title: "Каталог"
+        };
+
+    if (params.slug[0]) {
+        if (params.slug[1] && params.slug[1].includes(".html")) {
+            const productMetadata = await productAPI.getProductMainInfo({
+                alias: params.slug[1],
+                category: params.slug[0]
+            });
+
+            return {
+                title: productMetadata.page_title,
+                description: productMetadata.page_description,
+                keywords: productMetadata.page_keywords
+            };
+        } else {
+            const categoryMetadata = await categoryAPI.getCategory({
+                category: params.slug[0],
+                series: params.slug[1]
+            });
+
+            console.log(categoryMetadata);
+
+            if (!!params.slug[1])
+                return {
+                    title:
+                        categoryMetadata.page_title ||
+                        categoryMetadata.category?.page_title,
+                    description:
+                        categoryMetadata.page_description ||
+                        categoryMetadata.category?.page_description,
+                    keywords:
+                        categoryMetadata.page_keywords ||
+                        categoryMetadata.category?.page_keywords
+                };
+            else
+                return {
+                    title: categoryMetadata.category?.page_title,
+                    description: categoryMetadata.category?.page_description,
+                    keywords: categoryMetadata.category?.page_keywords
+                };
+        }
+    }
+
+    return {
+        title: landingConfig.landing_title
+    };
+}
 
 /**
  * slug пустой - меню категорий

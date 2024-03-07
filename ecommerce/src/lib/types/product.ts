@@ -1,6 +1,9 @@
 import { CategoryItem } from "..";
 
 export type MainProductInfo = CategoryItem & {
+    page_title?: string;
+    page_description?: string;
+    page_keywords?: string;
     complectation: string;
     text: string;
 };

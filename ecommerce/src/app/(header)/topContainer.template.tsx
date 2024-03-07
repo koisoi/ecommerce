@@ -85,17 +85,17 @@ const HeaderTopContainer = () => {
             <Box {...wrapperProps}>
                 <Box {...leftBoxProps}>
                     <Box {...leftItemProps}>
-                        <Link {...linkProps} href="/delivery">
+                        <Link {...linkProps} href="/delivery.html">
                             Доставка и оплата
                         </Link>
                     </Box>
                     <Box {...leftItemProps}>
-                        <Link {...linkProps} href="/warranty">
+                        <Link {...linkProps} href="/warranty.html">
                             Гарантия и возврат
                         </Link>
                     </Box>
                     <Box {...leftItemProps}>
-                        <Link {...linkProps} href="/contacts">
+                        <Link {...linkProps} href="/contacts.html">
                             Контактная информация
                         </Link>
                     </Box>

@@ -23,7 +23,7 @@ class ProductService extends Service {
         return fetch(
             `${this.baseURL}/catalog/backend/product?path=${categoryAliasToPath(
                 category
-            )}&alias=${alias}&format=json`,
+            )}&alias=${alias?.replace(".html", "")}&format=json`,
             this.options
         )
             .then((response) => {
@@ -48,7 +48,12 @@ class ProductService extends Service {
         alias: string | null;
     }): Promise<ProductCharacteristic> {
         return fetch(
-            `${this.baseURL}/filters/backend/product-filters?alias=${alias}&mode=main&format=json`,
+            `${
+                this.baseURL
+            }/filters/backend/product-filters?alias=${alias?.replace(
+                ".html",
+                ""
+            )}&mode=main&format=json`,
             this.options
         )
             .then((response) => {
@@ -73,7 +78,12 @@ class ProductService extends Service {
         alias: string | null;
     }): Promise<ProductCharacteristics> {
         return fetch(
-            `${this.baseURL}/filters/backend/product-filters?alias=${alias}&mode=full&format=json`,
+            `${
+                this.baseURL
+            }/filters/backend/product-filters?alias=${alias?.replace(
+                ".html",
+                ""
+            )}&mode=full&format=json`,
             this.options
         )
             .then((response) => {
@@ -100,7 +110,10 @@ class ProductService extends Service {
         alias: string | null;
     }): Promise<ProductReview[]> {
         return fetch(
-            `${this.baseURL}/catalog/backend/reviews?alias=${alias}&format=json`,
+            `${this.baseURL}/catalog/backend/reviews?alias=${alias?.replace(
+                ".html",
+                ""
+            )}&format=json`,
             this.options
         )
             .then((response) => {
@@ -125,7 +138,10 @@ class ProductService extends Service {
         alias: string | null;
     }): Promise<CategoryItem[]> {
         return fetch(
-            `${this.baseURL}/catalog/backend/siblings?alias=${alias}&format=json`,
+            `${this.baseURL}/catalog/backend/siblings?alias=${alias?.replace(
+                ".html",
+                ""
+            )}&format=json`,
             this.options
         )
             .then((response) => {

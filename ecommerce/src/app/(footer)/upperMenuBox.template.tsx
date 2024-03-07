@@ -21,13 +21,13 @@ const UpperMenuBox = () => {
         <Box {...wrapperProps}>
             <FooterTitle>Для покупателей</FooterTitle>
             <Box {...innerWrapperProps}>
-                <AppLink href="/delivery" footer>
+                <AppLink href="/delivery.html" footer>
                     Доставка и оплата
                 </AppLink>
-                <AppLink href="/warranty" footer>
+                <AppLink href="/warranty.html" footer>
                     Гарантия и возврат
                 </AppLink>
-                <AppLink href="/contacts" footer>
+                <AppLink href="/contacts.html" footer>
                     Контактная информация
                 </AppLink>
             </Box>

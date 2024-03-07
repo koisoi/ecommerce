@@ -6,10 +6,11 @@ import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
-import { landingConfig } from "../lib/data/config";
 import { headers } from "next/headers";
 import Container from "./(shared)/container.template";
 import StoreProvider from "./storeProvider";
+import { landingConfig } from "@/lib/data/config";
+import { Metadata } from "next";
 
 // Fixes: Hydration failed because the initial UI does not match what was rendered on the server.
 // const DynamicContextProvider = dynamic(() => import('@/app/storeProvider').then(mod => mod.default, {
@@ -24,6 +25,10 @@ import StoreProvider from "./storeProvider";
 //         </Box>
 //     )
 // });
+
+// export const metadata: Metadata = {
+//     title: landingConfig.landing_title
+// };
 
 const RootLayout = ({
     children
@@ -70,7 +75,7 @@ const RootLayout = ({
                             name="viewport"
                             content="width=device-width, initial-scale=1.0"
                         />
-                        <title>{landingConfig.landing_title}</title>
+                        {/* <title>{landingConfig.landing_title}</title> */}
                     </head>
                     <body {...bodyProps}>
                         <StoreProvider referer={referer}>

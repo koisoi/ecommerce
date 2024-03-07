@@ -27,6 +27,11 @@ import { CSSProperties } from "react";
 import AttentionText from "../(shared)/text/attentionText.template";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
 import { deliveryBreadcrumbs } from "@/lib";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Доставка и оплата"
+};
 
 const Delivery = () => {
     const underTableTextProps: TypographyProps = {

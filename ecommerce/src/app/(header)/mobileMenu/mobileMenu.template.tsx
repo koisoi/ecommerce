@@ -119,7 +119,7 @@ const MobileMenuTemplate = ({
 
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/delivery")}>
-                            <Link href="/delivery" style={linksStyle}>
+                            <Link href="/delivery.html" style={linksStyle}>
                                 <ListItemText primary="Доставка и оплата" />
                             </Link>
                         </ListItemButton>
@@ -127,7 +127,7 @@ const MobileMenuTemplate = ({
 
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/warranty")}>
-                            <Link href="/warranty" style={linksStyle}>
+                            <Link href="/warranty.html" style={linksStyle}>
                                 <ListItemText primary="Гарантия и возврат" />
                             </Link>
                         </ListItemButton>
@@ -135,7 +135,7 @@ const MobileMenuTemplate = ({
 
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/contacts")}>
-                            <Link href="/contacts" style={linksStyle}>
+                            <Link href="/contacts.html" style={linksStyle}>
                                 <ListItemText primary="Контактная информация" />
                             </Link>
                         </ListItemButton>

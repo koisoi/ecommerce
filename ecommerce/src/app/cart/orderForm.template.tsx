@@ -2,7 +2,7 @@
 
 import { Box, BoxProps } from "@mui/material";
 import { Controller, ControllerProps, UseFormReturn } from "react-hook-form";
-import { OrderRules } from "./page";
+import { OrderRules } from "./page.client";
 import Title from "../(shared)/text/title.template";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";

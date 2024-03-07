@@ -52,31 +52,21 @@ export const ShoppingCartButton = ({
 
         const scrolled = document.documentElement.scrollTop;
         const id = screen.md
-            ? scrolled > 500
+            ? scrolled > 600
                 ? "desktop-sliding-header-button"
                 : "desktop-header-button"
             : "mobile-shopping-cart-button";
         const button = document.getElementById(id);
 
-        const translateTo =
-            screen.md && scrolled > 500
-                ? {
-                      x:
-                          button!.getBoundingClientRect().x -
-                          event.currentTarget.getBoundingClientRect().x -
-                          16,
-                      y:
-                          button!.getBoundingClientRect().y -
-                          event.currentTarget.getBoundingClientRect().y
-                  }
-                : {
-                      x:
-                          button!.getBoundingClientRect().x -
-                          event.currentTarget.getBoundingClientRect().x,
-                      y:
-                          button!.getBoundingClientRect().y -
-                          event.currentTarget.getBoundingClientRect().y
-                  };
+        const translateTo = {
+            x:
+                button!.getBoundingClientRect().x -
+                event.currentTarget.getBoundingClientRect().x -
+                event.currentTarget.clientWidth / 2,
+            y:
+                button!.getBoundingClientRect().y -
+                event.currentTarget.getBoundingClientRect().y
+        };
 
         setTranslateTo(translateTo);
 
@@ -84,13 +74,6 @@ export const ShoppingCartButton = ({
     };
 
     return (
-        // <></>
-        // <ShoppingCartButtonTemplate
-        // props={props}
-        // textProps={textProps}
-        // onAddToCartClick={handleAddToCartClick}
-        // translateTo={translateTo}
-        // />
         <DynamicShoppingCartButtonTemplate
             props={props}
             textProps={textProps}

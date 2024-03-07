@@ -7,7 +7,6 @@ import {
     TableHead,
     TableProps,
     TableRow,
-    Typography,
     TypographyProps
 } from "@mui/material";
 import PageTitle from "../(shared)/text/pageTitle.template";
@@ -17,6 +16,11 @@ import AppLink from "../(shared)/text/appLink.template";
 import Title from "../(shared)/text/title.template";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
 import { warrantyBreadcrumbs } from "@/lib";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Гарантии и возврат"
+};
 
 const WarrantyPage = () => {
     const warrantyBoxProps: BoxProps = {

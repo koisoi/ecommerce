@@ -36,7 +36,9 @@ class CategoryService extends Service {
                 }
                 return response.json();
             })
-            .then((data) => data.landing);
+            .then((data) => {
+                return data.landing;
+            });
     }
 
     public async getSeriesSiblings({

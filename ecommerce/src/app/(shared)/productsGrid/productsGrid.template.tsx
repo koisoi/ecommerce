@@ -28,17 +28,11 @@ const ProductsGridTemplate = ({
 
         display: "flex",
         gap: "1rem",
-        justifyContent: "center",
+        justifyContent: "flex-start",
 
         sx: {
             flexFlow: "row wrap"
         }
-        // gridTemplateColumns: {
-        //     xs: "1fr",
-        //     sm: "1fr 1fr",
-        //     md: "1fr 1fr 1fr",
-        //     mlg: "1fr 1fr 1fr 1fr"
-        // }
     };
 
     const foundTextProps: TypographyProps = {

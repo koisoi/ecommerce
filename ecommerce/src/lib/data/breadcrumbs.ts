@@ -6,7 +6,7 @@ export const homePageBreadcrumbs: Breadcrumb[] = [
 
 export const warrantyBreadcrumbs: Breadcrumb[] = [
     ...homePageBreadcrumbs,
-    { link: "/warranty", title: "Гарантии и возврат" }
+    { link: "/warranty.html", title: "Гарантии и возврат" }
 ];
 
 export const searchBreadcrumbs: Breadcrumb[] = [
@@ -16,12 +16,12 @@ export const searchBreadcrumbs: Breadcrumb[] = [
 
 export const deliveryBreadcrumbs: Breadcrumb[] = [
     ...homePageBreadcrumbs,
-    { link: "/delivery", title: "Доставка и оплата" }
+    { link: "/delivery.html", title: "Доставка и оплата" }
 ];
 
 export const contactsBreadcrumbs: Breadcrumb[] = [
     ...homePageBreadcrumbs,
-    { link: "/contacts", title: "Контактная информация" }
+    { link: "/contacts.html", title: "Контактная информация" }
 ];
 
 export const catalogPageBreadcrumb: Breadcrumb[] = [

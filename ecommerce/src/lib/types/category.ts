@@ -8,11 +8,16 @@ export type SeriesInfo = {
 };
 
 export type CategoryInfo = {
+    page_title?: string;
+    page_keywords?: string;
     title: string;
     alias: string;
     page_description?: string;
     series: SeriesInfo[];
     category?: {
+        page_title: string;
+        page_description: string;
+        page_keywords: string;
         title: string;
         path: string;
         images: [{ id: number; url: string }];

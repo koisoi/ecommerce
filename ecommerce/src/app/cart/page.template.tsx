@@ -3,7 +3,7 @@ import CartTable from "../(shared)/cartTable/cartTable";
 import PageTitle from "../(shared)/text/pageTitle.template";
 import { UseFormReturn } from "react-hook-form";
 import OrderFormTemplate from "./orderForm.template";
-import { OrderRules } from "./page";
+import { OrderRules } from "./page.client";
 import { OrderForm, cartBreadcrumbs } from "@/lib";
 import { MouseEventHandler } from "react";
 import Loading from "../(shared)/loading.template";

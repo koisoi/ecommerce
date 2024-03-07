@@ -21,12 +21,13 @@ import {
 } from "@/lib";
 import Title from "../text/title.template";
 import { UseFormReturn } from "react-hook-form";
-import { OrderRules } from "../../cart/page";
+import { OrderRules } from "../../cart/page.client";
 import OrderFormTemplate from "../../cart/orderForm.template";
 import { MouseEventHandler } from "react";
 import { Close } from "@mui/icons-material";
 import Loading from "../loading.template";
 import { getProductLink } from "@/lib/functions/getProductLink";
+import { categoryAliasToPath } from "@/lib/functions/catalogPathTransform";
 
 const FastOrderFormTemplate = ({
     item,
@@ -84,14 +85,10 @@ const FastOrderFormTemplate = ({
 
     const productCardProps: ProductCardProps = {
         cartItem: {
-            url: getProductLink(item.category.path, item.alias) /*{
-                pathname: "/catalog/product",
-                query: {
-                    category: item?.category.path,
-                    series: item?.series?.alias,
-                    product: item?.alias
-                }
-            }*/,
+            url: getProductLink(
+                categoryAliasToPath(item.category.path)!,
+                item.alias
+            ),
             alias: item?.alias || "",
             title: item?.title || "",
             imgLink: item ? getProductImageLink(item.images[0].url) : "",
@@ -104,7 +101,11 @@ const FastOrderFormTemplate = ({
         categoryItem: item,
 
         initialCardProps: {
-            sx: { width: "unset", minHeight: { xs: "unset", md: "300px" } }
+            sx: {
+                width: "unset",
+                minHeight: { xs: "unset", md: "300px" },
+                maxWidth: "210px"
+            }
         },
         initialCardMediaProps: {
             sx: {
