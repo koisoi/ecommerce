@@ -32,14 +32,10 @@ const CategoryTemplate = ({
         marginY: "1rem"
     };
 
-    const descriptionProps: TypographyProps = {};
-
     return (
         <>
             <AppBreadcrumbs linksArray={breadcrumbs} />
-            <Box>
-                <PageTitle>{title}</PageTitle>
-            </Box>
+            <PageTitle>{title}</PageTitle>
 
             <Paragraph>{page_description}</Paragraph>
 

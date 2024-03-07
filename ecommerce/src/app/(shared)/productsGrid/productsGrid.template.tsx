@@ -1,5 +1,11 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
-import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    CardProps,
+    Typography,
+    TypographyProps
+} from "@mui/material";
 import CategoryPagination from "./categoryPagination.template";
 import { CategoryItemsResponse, getProductImageLink } from "@/lib";
 import { getProductLink } from "@/lib/functions/getProductLink";
@@ -37,6 +43,12 @@ const ProductsGridTemplate = ({
 
     const foundTextProps: TypographyProps = {
         color: "text.disabled"
+    };
+
+    const productCardProps: CardProps = {
+        sx: {
+            maxWidth: { xs: "unset", sm: "300px" }
+        }
     };
 
     return (
@@ -79,6 +91,7 @@ const ProductsGridTemplate = ({
                                         articul: item.articul
                                     }}
                                     categoryItem={item}
+                                    initialCardProps={productCardProps}
                                 />
                             );
                         })}

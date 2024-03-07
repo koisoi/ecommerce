@@ -58,6 +58,7 @@ const ProductCard = ({
 
         sx: {
             display: "inline-block",
+            height: { xs: "100%", md: "200px" },
             width: "100%",
 
             cursor: "pointer",

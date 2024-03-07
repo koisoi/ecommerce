@@ -12,6 +12,7 @@ import OurAdvantages from "@/app/(shared)/ourAdvantages.template";
 import AllCharacteristicsBox from "./allCharacteristicsBox.template";
 import FeedbackBoxTemplate from "../../../../(shared)/feedbackBox.template";
 import ProductPageTabs from "./productPageTabs";
+import SectionContainer from "@/app/(shared)/section.template";
 
 export type ProductPageLowerBoxProps = {
     searchParams: { page?: number; tab?: ProductPageTabType };
@@ -41,8 +42,7 @@ const ProductPageLowerBox = ({
         (fullCharasterictics ? "allCharasteristics" : "description");
 
     const wrapperProps: BoxProps = {
-        width: "100%",
-        marginTop: "15px"
+        width: "100%"
     };
 
     const innerWrapperProps: BoxProps = {
@@ -102,11 +102,11 @@ const ProductPageLowerBox = ({
         }
     };
 
-    const simliarTitleProps: TypographyProps = {
-        sx: {
-            marginTop: "20px"
-        }
-    };
+    // const simliarTitleProps: TypographyProps = {
+    //     sx: {
+    //         marginTop: "20px"
+    //     }
+    // };
 
     const noTextProps: TypographyProps = {
         color: "text.disabled"
@@ -123,53 +123,69 @@ const ProductPageLowerBox = ({
                 product={product}
                 category={category}
                 series={series}
+                key={0}
             />
-            <Box {...innerWrapperProps}>
-                {currentTab === "allCharasteristics" && (
-                    <AllCharacteristicsBox
-                        fullCharacteristics={fullCharasterictics}
-                    />
-                )}
-                {currentTab === "description" && (
-                    <>
-                        {!description && (
-                            <Typography {...noTextProps}>
-                                У данного товара нет описания.
-                            </Typography>
-                        )}
-                        {!!description && <Box {...descriptionBoxProps} />}
-                    </>
-                )}
-                {currentTab === "complectation" && (
-                    <>
-                        {!complectation && (
-                            <Typography {...noTextProps}>
-                                Для данного товара не указана комплектация.
-                            </Typography>
-                        )}
-                        {complectation && <Box {...complectationBoxProps} />}
-                    </>
-                )}
-                {currentTab === "feedback" && (
-                    <>
-                        {!feedback ||
-                            (!feedback.length && (
-                                <Typography {...noTextProps}>
-                                    У данного товара нет отзывов.
-                                </Typography>
-                            ))}
-                        {feedback && !!feedback.length && (
-                            <FeedbackBoxTemplate feedback={feedback} />
-                        )}
-                    </>
-                )}
-                {simliarProducts && !!simliarProducts.length && (
-                    <>
-                        <Title props={simliarTitleProps}>Похожие товары</Title>
-                        <SimliarProductsSlider products={simliarProducts} />
-                    </>
-                )}
-                <OurAdvantages props={{ marginTop: "80px" }} />
+            <Box {...innerWrapperProps} key={1}>
+                <SectionContainer>
+                    {[
+                        <>
+                            {currentTab === "allCharasteristics" && (
+                                <AllCharacteristicsBox
+                                    fullCharacteristics={fullCharasterictics}
+                                />
+                            )}
+                            {currentTab === "description" && (
+                                <>
+                                    {!description && (
+                                        <Typography {...noTextProps}>
+                                            У данного товара нет описания.
+                                        </Typography>
+                                    )}
+                                    {!!description && (
+                                        <Box {...descriptionBoxProps} />
+                                    )}
+                                </>
+                            )}
+                            {currentTab === "complectation" && (
+                                <>
+                                    {!complectation && (
+                                        <Typography {...noTextProps}>
+                                            Для данного товара не указана
+                                            комплектация.
+                                        </Typography>
+                                    )}
+                                    {complectation && (
+                                        <Box {...complectationBoxProps} />
+                                    )}
+                                </>
+                            )}
+                            {currentTab === "feedback" && (
+                                <>
+                                    {!feedback ||
+                                        (!feedback.length && (
+                                            <Typography {...noTextProps}>
+                                                У данного товара нет отзывов.
+                                            </Typography>
+                                        ))}
+                                    {feedback && !!feedback.length && (
+                                        <FeedbackBoxTemplate
+                                            feedback={feedback}
+                                        />
+                                    )}
+                                </>
+                            )}
+                            {simliarProducts && !!simliarProducts.length && (
+                                <>
+                                    <Title>Похожие товары</Title>
+                                    <SimliarProductsSlider
+                                        products={simliarProducts}
+                                    />
+                                </>
+                            )}
+                        </>,
+                        <OurAdvantages key={1} />
+                    ]}
+                </SectionContainer>
             </Box>
         </Box>
     );
