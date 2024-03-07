@@ -45,7 +45,7 @@ export async function generateMetadata({
                 series: params.slug[1]
             });
 
-            console.log(categoryMetadata);
+            // console.log(categoryMetadata);
 
             if (!!params.slug[1])
                 return {
