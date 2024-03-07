@@ -13,7 +13,7 @@ const CategoryCard = ({ category }: { category: CategoryListItem }) => {
         sx: {
             display: "inline-block",
             // height: smallImage ? "200px" : "310px",
-            height: { xs: "130px", md: "200px" },
+            height: { xs: "140px", md: "200px" },
             width: "100%",
 
             cursor: "pointer"
@@ -25,8 +25,8 @@ const CategoryCard = ({ category }: { category: CategoryListItem }) => {
         cardProps: {
             sx: {
                 color: "text.primary",
-                height: { xs: "170px", md: "250px" },
-                width: { xs: "130px", md: "200px" },
+                height: { xs: "170px", sm: "180px", md: "250px" },
+                width: { xs: "140px", md: "200px" },
 
                 ":hover": {
                     color: "primary.main"

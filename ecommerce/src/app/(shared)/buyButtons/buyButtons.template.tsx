@@ -25,7 +25,8 @@ const buttonProps: ButtonProps = {
         textTransform: "none",
         fontFamily: "inherit",
 
-        boxShadow: "none"
+        boxShadow: "none",
+        margin: "0 !important"
     }
 };
 
@@ -56,8 +57,8 @@ export const InstantBuyButtonTemplate = ({
 
         sx: {
             ...buttonProps.sx,
-            color: props?.variant === "contained" ? "white" : undefined,
 
+            color: props?.variant === "contained" ? "white" : undefined,
             ":hover": {
                 backgroundColor:
                     props?.variant === "contained"

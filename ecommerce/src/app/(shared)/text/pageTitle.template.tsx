@@ -11,10 +11,13 @@ const PageTitle = ({
     noDivider?: boolean;
 }) => {
     const titleProps: TypographyProps = {
+        component: "div",
+
         fontSize: "2.5rem",
         fontWeight: "bolder",
         marginBottom: "1.3rem",
         lineHeight: { xs: 1, sm: 1.2 },
+        maxWidth: "100vw",
 
         color: "text.primary",
         ...props

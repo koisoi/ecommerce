@@ -33,7 +33,7 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
             initialCardProps: {
                 sx: {
                     height: "100%",
-                    width: { xs: "unset", md: "300px" }
+                    width: { xs: "unset", md: "340px" }
                 }
             },
             linkProps: {
@@ -63,7 +63,8 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
         sx: {
             textTransform: "none",
             overflow: "visible",
-            minHeight: "100%"
+            minHeight: "100%",
+            textAlign: "left"
         }
     };
 

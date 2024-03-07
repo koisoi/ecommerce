@@ -69,11 +69,14 @@ const HeaderSearchBoxTemplate = ({
 
             fieldset: {
                 // border: {xs: 0}
-                border: { xs: 0, md: "solid 1px rgba(0, 0, 0, 0.23)" }
+                border: searchPage
+                    ? "solid 1px rgba(0, 0, 0, 0.23)"
+                    : { xs: 0, md: "solid 1px rgba(0, 0, 0, 0.23)" }
                 // borderColor: "text.disabled"
             }
         },
-        label: "Поиск по каталогу",
+        // label: "Поиск по каталогу",
+        placeholder: "Поиск по каталогу",
 
         value: searchQuery,
         onChange: onSearchQueryChange,

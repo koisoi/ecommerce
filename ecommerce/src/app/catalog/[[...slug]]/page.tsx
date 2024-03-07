@@ -45,8 +45,6 @@ export async function generateMetadata({
                 series: params.slug[1]
             });
 
-            // console.log(categoryMetadata);
-
             if (!!params.slug[1])
                 return {
                     title:
@@ -129,7 +127,7 @@ const Category = async ({
             title: category?.title || ""
         });
 
-    if (params.slug[1] && !siblings.find((el) => el.alias === params.slug[1])) {
+    if (params.slug[1] && params.slug[1].includes(".html")) {
         return (
             <ProductPage
                 category={params.slug[0]}
@@ -141,66 +139,6 @@ const Category = async ({
     }
 
     if (!category) return notFound();
-    // const searchParams = useSearchParams();
-    // const dispatch = useAppDispatch();
-    // const category: string | null = searchParams.get("category");
-    // const series: string | null = searchParams.get("series");
-
-    // const {
-    //     loading,
-    //     title,
-    //     page_description,
-    //     series: seriesArray,
-    //     category: currentCategory,
-    //     parent_class
-    // } = useAppSelector(CategoryPageState);
-
-    // useEffect(() => {
-    //     dispatch(setCanFetchCategory(true));
-    //     dispatch(setCanFetchSeriesSiblings(true));
-
-    //     return () => {
-    //         dispatch(setCanFetchCategory(false));
-    //         dispatch(setCanFetchSeriesSiblings(false));
-    //         dispatch(resetBreadcrumbsState());
-    //     };
-    // }, []);
-
-    // useEffect(() => {
-    //     if (!category) return;
-
-    //     const promise = dispatch(fetchCategory({ category, series }));
-    //     promise
-    //         .unwrap()
-    //         .then((val) => {
-    //             if (!val || !val.category) return;
-
-    //             dispatch(setCurrentCategoryTitle(val.category.title));
-    //             dispatch(setCurrentSeriesTitle(series ? val.title : null));
-    //         })
-    //         .catch((error) => console.error(error.message));
-
-    //     return () => {
-    //         promise.abort();
-    //     };
-    // }, [category, series]);
-
-    // useEffect(() => {
-    //     if (!category) return;
-
-    //     const seriesSiblingsPromise = dispatch(
-    //         fetchSeriesSiblings({ category, series })
-    //     );
-    //     seriesSiblingsPromise
-    //         .unwrap()
-    //         .catch((error) => console.error(error.message));
-
-    //     return () => {
-    //         seriesSiblingsPromise.abort();
-    //     };
-    // }, [parent_class]);
-
-    // return categoriesMenu
 
     return (
         <CategoryTemplate

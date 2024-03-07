@@ -103,7 +103,7 @@ const ImagesCarousel = ({
         sx: {
             position: "sticky",
             top: "60px",
-            minHeight: { xs: "230px", sm: "430px" }
+            minHeight: { xs: "300px", sm: "430px" }
         },
 
         IndicatorIcon: screen.lg
@@ -147,6 +147,7 @@ const ImagesCarousel = ({
     const imgProps = {
         style: {
             maxWidth: "100%",
+            height: "100%",
             objectFit: "contain"
             // pointerEvents: "none"
         } as CSSProperties,

@@ -104,12 +104,16 @@ const FastOrderFormTemplate = ({
             sx: {
                 width: "unset",
                 minHeight: { xs: "unset", md: "300px" },
-                maxWidth: "210px"
+                maxWidth: { xs: "unset", md: "210px" },
+                alignItems: "center",
+                textAlign: "left"
             }
         },
         initialCardMediaProps: {
             sx: {
-                minHeight: "100px"
+                minHeight: "100px",
+                height: "100%",
+                maxWidth: { xs: "100px", md: "unset" }
             }
         },
         ...(screen.md && {
@@ -118,13 +122,15 @@ const FastOrderFormTemplate = ({
                     display: "flex",
                     flexDirection: "column",
                     gap: "1rem",
-                    alignItems: "center",
                     justifyContent: "center",
 
-                    textAlign: "center"
+                    textAlign: "left"
                 }
             }
-        })
+        }),
+        linkProps: {
+            sx: { height: { xs: "100px", md: "150px" } }
+        }
     };
 
     const productCardBoxProps: BoxProps = {

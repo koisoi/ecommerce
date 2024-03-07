@@ -8,12 +8,12 @@ const CartImg = ({ alt, src }: CartImgProps) => {
         width: { xs: "120px", md: "75px" },
         // height: { xs: "120px", md: "75px" },
         minWidth: "75px",
-        minHeight: "75px"
+        height: { xs: "120px", md: "75px" }
     };
 
     const imgStyle: CSSProperties = {
         maxWidth: "100%",
-        maxHeight: "100%",
+        height: "100%",
         objectFit: "contain"
     };
 

@@ -17,7 +17,6 @@ import {
     ShoppingCartButton
 } from "@/app/(shared)/buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
-import ImagesCarousel from "./imagesCarousel";
 import dynamic from "next/dynamic";
 
 const DynamicImagesCarousel = dynamic(
@@ -110,7 +109,7 @@ const ProductPageUpperBox = ({
 
             width: "100%",
             maxHeight: "fit-content",
-            maxWidth: "320px",
+            maxWidth: { xs: "100vw", xsm: "320px" },
 
             order: { xs: -1, mlg: "unset" }
 

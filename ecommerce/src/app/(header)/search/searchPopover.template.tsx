@@ -42,7 +42,8 @@ const SearchPopoverTemplate = ({
         disableScrollLock: true,
 
         sx: {
-            display: searchPage ? "block" : { xs: "none", sm: "block" }
+            display: searchPage ? "block" : { xs: "none", sm: "block" },
+            maxHeight: "80vh"
         },
 
         anchorOrigin: {

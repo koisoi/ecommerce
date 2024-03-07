@@ -9,8 +9,6 @@ import { theme } from "./theme";
 import { headers } from "next/headers";
 import Container from "./(shared)/container.template";
 import StoreProvider from "./storeProvider";
-import { landingConfig } from "@/lib/data/config";
-import { Metadata } from "next";
 
 // Fixes: Hydration failed because the initial UI does not match what was rendered on the server.
 // const DynamicContextProvider = dynamic(() => import('@/app/storeProvider').then(mod => mod.default, {

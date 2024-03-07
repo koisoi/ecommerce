@@ -112,14 +112,5 @@ export const InstantBuyButton = ({
             open={fastOrderDialogOpen}
             onClose={handleClose}
         />
-        // <></>
-        // <InstantBuyButtonTemplate
-        // props={props}
-        // textProps={textProps}
-        // onInstantBuyClick={handleClick}
-        // item={item}
-        // open={fastOrderDialogOpen}
-        // onClose={handleClose}
-        // />
     );
 };

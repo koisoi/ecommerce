@@ -149,16 +149,22 @@ const ProductCard = ({
             flexDirection: "column",
             justifyContent: "space-between",
             rowGap: "5px",
+            alignItems: "flex-start",
 
-            paddingX: "1rem",
-            paddingTop: "0"
+            paddingX: "0.5rem",
+            paddingTop: 0,
+
+            ".MuiButton-root": {
+                margin: 0
+            }
         }
     };
 
     const buttonProps: ButtonProps = {
         sx: {
             flexGrow: 1,
-            width: "100%"
+            width: "100%",
+            margin: 0
         }
     };
 
@@ -166,7 +172,7 @@ const ProductCard = ({
         ...initialCardProps,
         sx: {
             flexDirection: { xs: "row", md: "column" },
-            maxWidth: "300px",
+            maxWidth: { xs: "350px", md: "unset" },
             ...initialCardProps?.sx
         }
     };
@@ -207,6 +213,8 @@ const ProductCard = ({
         sx: {
             flexGrow: 1,
             padding: "0.5rem",
+            alignItems: "flex-start",
+            textAlign: "left",
             ...initialCardContentProps?.sx
         }
     };

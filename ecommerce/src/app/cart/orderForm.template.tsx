@@ -36,8 +36,8 @@ const OrderFormTemplate = ({
         border: "1px solid",
         borderColor: "divider",
 
-        padding: "20px",
-        paddingTop: 0,
+        padding: "2rem",
+        paddingTop: "1rem",
 
         display: "flex",
         flexDirection: "column",
