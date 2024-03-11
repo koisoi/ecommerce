@@ -30,7 +30,7 @@ const RootLayout = ({
             minWidth: "320px",
             overflowX: "hidden",
             fontFamily: "Tahoma, sans-serif",
-            fontSize: { xs: "12px", sm: "15px" }
+            fontSize: { xs: "13px", sm: "15px" }
         }
     };
 

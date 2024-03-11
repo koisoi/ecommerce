@@ -12,7 +12,7 @@ const CategoryCard = ({ category }: { category: CategoryListItem }) => {
 
         sx: {
             display: "inline-block",
-            height: { xs: "140px", md: "200px" },
+            height: { xs: "100px", md: "140px" },
             width: "100%",
 
             cursor: "pointer"
