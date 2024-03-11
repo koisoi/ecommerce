@@ -30,7 +30,7 @@ export type ProductCardProps = {
     initialCardProps?: CardProps;
     initialCardMediaProps?: CardMediaProps;
     initialCardContentProps?: CardContentProps;
-    // TODO: переделать пропы
+    initialActionRowProps?: CardActionsProps;
     categoryItem: CategoryItem;
     hideButtons?: boolean;
     linkProps?: LinkProps;
@@ -44,6 +44,7 @@ const ProductCard = ({
     initialCardProps,
     initialCardMediaProps,
     initialCardContentProps,
+    initialActionRowProps,
     cartItem,
     categoryItem,
     hideButtons,
@@ -144,6 +145,8 @@ const ProductCard = ({
     };
 
     const actionRowProps: CardActionsProps = {
+        ...initialActionRowProps,
+
         sx: {
             display: "flex",
             flexDirection: "column",
@@ -156,7 +159,9 @@ const ProductCard = ({
 
             ".MuiButton-root": {
                 margin: 0
-            }
+            },
+
+            ...initialActionRowProps?.sx
         }
     };
 

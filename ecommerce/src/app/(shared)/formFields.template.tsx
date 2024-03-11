@@ -126,7 +126,7 @@ export const FormButton = ({
     };
 
     const smallTextProps: TypographyProps = {
-        fontSize: "0.7rem"
+        fontSize: "0.9rem"
     };
 
     return (

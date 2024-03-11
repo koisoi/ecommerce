@@ -1,20 +1,14 @@
 import "./globals.css";
 import Header from "./(header)/header";
-import {
-    Box,
-    BoxProps,
-    CssBaseline,
-    ScopedCssBaseline,
-    ThemeProvider
-} from "@mui/material";
+import { Box, BoxProps, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
 import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
-import Container from "./(shared)/container.template";
 import StoreProvider from "./storeProvider";
+import LoadingPage from "./loading";
 
 const RootLayout = ({
     children
@@ -46,8 +40,7 @@ const RootLayout = ({
             flexDirection: "column",
             minHeight: "100vh",
             backgroundColor: "#fff",
-            padding: "0!important",
-            boxSizing: "border-box"
+            padding: "0!important"
         }
     };
 
@@ -65,7 +58,8 @@ const RootLayout = ({
         component: "main",
         padding: { xs: "1rem", md: "2rem" },
         display: "flex",
-        justifyContent: "center",
+        justifyContent: "flex-start",
+        flexDirection: "column",
         flexGrow: 1
     };
 
@@ -84,7 +78,7 @@ const RootLayout = ({
                         <StoreProvider referer={referer}>
                             <BackCallForm />
                             <Header props={innerProps} />
-                            {/* <Box {...rootBoxProps}>{children}</Box> */}
+                            <Box {...rootBoxProps}>{children}</Box>
                             <Footer props={innerProps} />
                         </StoreProvider>
                     </body>

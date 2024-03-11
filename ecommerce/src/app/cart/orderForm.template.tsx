@@ -18,26 +18,27 @@ const OrderFormTemplate = ({
     form,
     rules,
     onSubmit,
-    props
+    props,
+    compact
 }: {
     form: UseFormReturn<OrderForm>;
     rules: OrderRules;
     onSubmit: MouseEventHandler<HTMLButtonElement>;
     props?: BoxProps;
+    compact?: boolean;
 }) => {
     const checkoutBoxProps: BoxProps = {
-        flexGrow: 1,
-
         position: "sticky",
         top: "60px",
 
         height: "fit-content",
 
-        border: "1px solid",
-        borderColor: "divider",
-
-        padding: "2rem",
-        paddingTop: "1rem",
+        ...(!compact && {
+            border: "1px solid",
+            borderColor: "divider",
+            padding: "2rem",
+            paddingTop: "1rem"
+        }),
 
         display: "flex",
         flexDirection: "column",
@@ -82,7 +83,7 @@ const OrderFormTemplate = ({
 
     return (
         <Box {...checkoutBoxProps}>
-            <Title props={{ noWrap: true }}>Форма заказа</Title>
+            {!compact && <Title props={{ noWrap: true }}>Форма заказа</Title>}
             <Box {...contactsBox}>
                 <Controller {...fullNameControllerProps} />
                 <Controller {...emailControllerProps} />

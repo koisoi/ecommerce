@@ -18,6 +18,7 @@ export type LandingConfig = {
             dark: string;
             light: string;
         };
+        divider: string;
     };
     phoneNumber: string;
 };

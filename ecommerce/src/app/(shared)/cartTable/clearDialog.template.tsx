@@ -3,9 +3,11 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText
+    DialogContentText,
+    DialogProps
 } from "@mui/material";
 import { MouseEventHandler } from "react";
+import AppDialog from "../appDialog";
 
 const ClearDialog = ({
     open,
@@ -16,8 +18,13 @@ const ClearDialog = ({
     onClear?: MouseEventHandler<HTMLButtonElement>;
     onDialogClose?: (event: any) => void;
 }) => {
+    const dialogProps: DialogProps = {
+        open,
+        onClose: onDialogClose
+    };
+
     return (
-        <Dialog open={open} onClose={onDialogClose}>
+        <AppDialog props={dialogProps}>
             <DialogContent>
                 <DialogContentText>
                     Вы уверены, что хотите очистить корзину?
@@ -29,7 +36,7 @@ const ClearDialog = ({
                     Нет
                 </Button>
             </DialogActions>
-        </Dialog>
+        </AppDialog>
     );
 };
 

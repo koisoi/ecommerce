@@ -17,6 +17,7 @@ const Loading = ({
     const wrapperProps: BoxProps = {
         width: "100%",
         height: "100%",
+        flexGrow: 1,
 
         display: "flex",
         flexDirection: "column",

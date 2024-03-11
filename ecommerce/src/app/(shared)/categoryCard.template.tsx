@@ -3,16 +3,15 @@ import AppCard, { AppCardProps } from "./appCard.template";
 import ProductLink, { ProductLinkProps } from "./text/productLink.template";
 import { default as NextLink } from "next/link";
 import { Link, LinkProps } from "@mui/material";
+import { landingConfig } from "@/lib/data/config";
 
 const CategoryCard = ({ category }: { category: CategoryListItem }) => {
     const imgLinkProps = (category: CategoryListItem): LinkProps => ({
         component: NextLink,
         href: `/catalog/${category.path}`,
-        // href: { pathname: "/catalog", query: { category: category.path } },
 
         sx: {
             display: "inline-block",
-            // height: smallImage ? "200px" : "310px",
             height: { xs: "140px", md: "200px" },
             width: "100%",
 
@@ -25,18 +24,23 @@ const CategoryCard = ({ category }: { category: CategoryListItem }) => {
         cardProps: {
             sx: {
                 color: "text.primary",
-                height: { xs: "170px", sm: "180px", md: "250px" },
-                width: { xs: "140px", md: "200px" },
+                height: { xs: "155px", sm: "unset" },
+                width: { xs: "130px", sm: "150px" },
 
                 ":hover": {
                     color: "primary.main"
+                },
+
+                border: {
+                    xs: `1px solid ${landingConfig.colors.divider}`,
+                    sm: "none"
                 }
             }
         },
         cardMediaProps: {
             sx: {
-                height: { xs: "130px", md: "200px" },
-                backgroundSize: { xs: "100px", md: "200px" }
+                height: { xs: "100px", md: "140px" },
+                backgroundSize: { xs: "100px", md: "140px" }
             }
         },
         cardMediaChildren: <Link {...imgLinkProps(category)} />
@@ -46,7 +50,7 @@ const CategoryCard = ({ category }: { category: CategoryListItem }) => {
         url: `/catalog/${category.path}`,
 
         props: {
-            fontSize: /*smallText ? "0.9rem" :*/ "1rem",
+            fontSize: "1rem",
             fontWeight: "bold",
             color: "inherit",
 

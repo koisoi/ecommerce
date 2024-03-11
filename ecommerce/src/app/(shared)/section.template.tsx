@@ -1,12 +1,31 @@
 import { Box, BoxProps } from "@mui/material";
 import { ReactNode } from "react";
 
-const SectionContainer = ({ children }: { children?: ReactNode[] }) => {
-    const wrapperProps: BoxProps = {
+const SectionContainer = ({
+    children,
+    level = 0
+}: {
+    children?: ReactNode[];
+    level?: number;
+}) => {
+    let wrapperProps: BoxProps = {
         display: "flex",
-        flexDirection: "column",
-        gap: "2rem"
+        flexDirection: "column"
     };
+
+    switch (level) {
+        case 1:
+            wrapperProps.gap = "1rem";
+            break;
+
+        case 2:
+            wrapperProps.gap = "0.5rem";
+            break;
+
+        default:
+            wrapperProps.gap = "2rem";
+            break;
+    }
 
     const sectionProps: BoxProps = {
         component: "section"

@@ -3,10 +3,11 @@
 import {
     Box,
     BoxProps,
-    Dialog,
     DialogContent,
     DialogContentProps,
     DialogProps,
+    DialogTitle,
+    DialogTitleProps,
     IconButton,
     IconButtonProps
 } from "@mui/material";
@@ -28,6 +29,7 @@ import { Close } from "@mui/icons-material";
 import Loading from "../loading.template";
 import { getProductLink } from "@/lib/functions/getProductLink";
 import { categoryAliasToPath } from "@/lib/functions/catalogPathTransform";
+import AppDialog from "../appDialog";
 
 const FastOrderFormTemplate = ({
     item,
@@ -72,15 +74,7 @@ const FastOrderFormTemplate = ({
     };
 
     const iconButtonProps: IconButtonProps = {
-        onClick: onClose,
-
-        sx: {
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-
-            zIndex: "10"
-        }
+        onClick: onClose
     };
 
     const productCardProps: ProductCardProps = {
@@ -106,7 +100,7 @@ const FastOrderFormTemplate = ({
                 minHeight: { xs: "unset", md: "300px" },
                 maxWidth: { xs: "unset", md: "210px" },
                 alignItems: "center",
-                textAlign: "left"
+                textAlign: "center"
             }
         },
         initialCardMediaProps: {
@@ -123,19 +117,24 @@ const FastOrderFormTemplate = ({
                     flexDirection: "column",
                     gap: "1rem",
                     justifyContent: "center",
+                    alignItems: "center",
 
-                    textAlign: "left"
+                    textAlign: "center"
                 }
             }
         }),
         linkProps: {
             sx: { height: { xs: "100px", md: "150px" } }
+        },
+        initialActionRowProps: {
+            sx: {
+                alignItems: { xs: "flex-start", md: "center" }
+            }
         }
     };
 
     const productCardBoxProps: BoxProps = {
         alignSelf: "flex-start",
-        flexGrow: 1,
 
         display: "flex",
         flexDirection: "column",
@@ -146,22 +145,29 @@ const FastOrderFormTemplate = ({
     };
 
     const orderFormProps: BoxProps = {
-        border: "none",
-        flexGrow: 1
+        flexGrow: { xs: 0, sm: 1 }
+    };
+
+    const dialogTitleProps: DialogTitleProps = {
+        position: "relative",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
     };
 
     return (
-        <Dialog {...dialogProps}>
-            <DialogContent {...dialogContentProps}>
+        <AppDialog props={dialogProps}>
+            <DialogTitle {...dialogTitleProps}>
+                <Title props={{ noWrap: true }}>Быстрый заказ</Title>
+
                 <IconButton {...iconButtonProps}>
                     <Close />
                 </IconButton>
+            </DialogTitle>
+            <DialogContent {...dialogContentProps}>
                 {!loading && (
                     <>
                         <Box {...productCardBoxProps}>
-                            <Title props={{ noWrap: true }}>
-                                Быстрый заказ
-                            </Title>
                             <ProductCard {...productCardProps} hideButtons />
                         </Box>
                         <OrderFormTemplate
@@ -169,12 +175,13 @@ const FastOrderFormTemplate = ({
                             rules={rules}
                             onSubmit={onSubmit}
                             props={orderFormProps}
+                            compact
                         />
                     </>
                 )}
                 {loading && <Loading>Отправка заказа...</Loading>}
             </DialogContent>
-        </Dialog>
+        </AppDialog>
     );
 };
 

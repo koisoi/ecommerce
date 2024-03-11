@@ -4,18 +4,32 @@ import { ReactNode } from "react";
 const Paragraph = ({
     children,
     props,
-    margin,
+    // margin,
     inline
 }: {
     children?: ReactNode;
     props?: TypographyProps;
-    margin?: boolean;
+    // margin?: boolean;
     inline?: boolean;
 }) => {
     const paragraphProps: TypographyProps = {
         fontSize: "1rem",
-        ...(margin && { marginTop: "0.9rem" }),
+        // ...(margin && { marginTop: "0.9rem" }),
         ...(inline && { display: "inline" }),
+
+        sx: {
+            "& + &": {
+                marginTop: "0.5rem"
+            },
+
+            "ol + &": {
+                marginTop: "0.5rem"
+            },
+
+            "ul + &": {
+                marginTop: "0.5rem"
+            }
+        },
 
         ...props
     };

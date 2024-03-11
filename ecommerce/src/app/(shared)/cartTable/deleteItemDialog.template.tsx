@@ -3,9 +3,11 @@ import {
     Dialog,
     DialogActions,
     DialogContent,
-    DialogContentText
+    DialogContentText,
+    DialogProps
 } from "@mui/material";
 import { MouseEventHandler } from "react";
+import AppDialog from "../appDialog";
 
 const DeleteItemDialog = ({
     open,
@@ -16,8 +18,13 @@ const DeleteItemDialog = ({
     onDelete: MouseEventHandler<HTMLButtonElement>;
     onDialogClose: (event: any) => void;
 }) => {
+    const dialogProps: DialogProps = {
+        open,
+        onClose: onDialogClose
+    };
+
     return (
-        <Dialog open={open} onClose={onDialogClose}>
+        <AppDialog props={dialogProps}>
             <DialogContent>
                 <DialogContentText>
                     Вы уверены, что хотите удалить товар из корзины?
@@ -29,7 +36,7 @@ const DeleteItemDialog = ({
                     Нет
                 </Button>
             </DialogActions>
-        </Dialog>
+        </AppDialog>
     );
 };
 

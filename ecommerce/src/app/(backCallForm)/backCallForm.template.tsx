@@ -29,9 +29,10 @@ import {
     FullNameInput,
     PhoneInput
 } from "../(shared)/formFields.template";
-import { AppealForm } from "@/lib";
+import { AppealForm, useMediaQueries } from "@/lib";
 import Loading from "../(shared)/loading.template";
-import SecondTitle from "../(shared)/text/secondTitle.template";
+import ThirdTitle from "../(shared)/text/thirdTitle.template";
+import AppDialog from "../(shared)/appDialog";
 
 const BackCallFormTemplate = ({
     open,
@@ -53,19 +54,21 @@ const BackCallFormTemplate = ({
     appealSendingCompleted: boolean;
 }) => {
     const dialogProps: DialogProps = {
-        open,
-        disableScrollLock: true
+        open
     };
 
     const dialogTitleProps: DialogTitleProps = {
-        position: "relative"
+        position: "relative",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center"
     };
 
     const dialogContentProps: DialogContentProps = {
         sx: {
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            justifyContent: "flex-startts",
             gap: "20px",
 
             overflowX: "hidden",
@@ -76,15 +79,7 @@ const BackCallFormTemplate = ({
     };
 
     const iconButtonProps: IconButtonProps = {
-        onClick: onClose,
-
-        sx: {
-            position: "absolute",
-            top: "20px",
-            right: "20px",
-
-            zIndex: "10"
-        }
+        onClick: onClose
     };
 
     const formBoxProps: BoxProps = {
@@ -138,7 +133,7 @@ const BackCallFormTemplate = ({
     };
 
     return (
-        <Dialog {...dialogProps}>
+        <AppDialog props={dialogProps}>
             <DialogTitle {...dialogTitleProps}>
                 <Title>Обратный звонок</Title>
 
@@ -201,7 +196,7 @@ const BackCallFormTemplate = ({
 
                 {appealSendingCompleted && postedAppealId && (
                     <Box {...thanksForAppealBoxProps}>
-                        <SecondTitle>Спасибо за обращение!</SecondTitle>
+                        <ThirdTitle>Спасибо за обращение!</ThirdTitle>
                         <Paragraph>
                             Номер вашего обращения:{" "}
                             <AttentionText inline>
@@ -212,7 +207,7 @@ const BackCallFormTemplate = ({
                     </Box>
                 )}
             </DialogContent>
-        </Dialog>
+        </AppDialog>
     );
 };
 

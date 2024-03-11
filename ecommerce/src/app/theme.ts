@@ -3,7 +3,7 @@
 import { createTheme } from "@mui/material";
 import { landingConfig } from "../lib/data/config";
 
-export const theme = createTheme({
+const theme = createTheme({
     palette: {
         ...landingConfig.colors,
         text: {
@@ -34,13 +34,6 @@ export const theme = createTheme({
             fontSize: "1rem"
         }
     }
-    // components: {
-    //     MuiButtonBase: {
-    //         styleOverrides: {
-    //             root: {
-    //                 fontSize: "1rem"
-    //             }
-    //         }
-    //     }
-    // }
 });
+
+export { theme };

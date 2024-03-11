@@ -1,4 +1,11 @@
-import { Divider, Typography, TypographyProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    Divider,
+    DividerProps,
+    Typography,
+    TypographyProps
+} from "@mui/material";
 import { ReactNode } from "react";
 
 const PageTitle = ({
@@ -10,12 +17,15 @@ const PageTitle = ({
     props?: TypographyProps;
     noDivider?: boolean;
 }) => {
+    const wrapperProps: BoxProps = {
+        marginBottom: "1.5rem"
+    };
+
     const titleProps: TypographyProps = {
-        component: "div",
+        component: "h1",
 
         fontSize: "2.5rem",
         fontWeight: "bolder",
-        marginBottom: "1.3rem",
         lineHeight: { xs: 1, sm: 1.2 },
         maxWidth: "100vw",
 
@@ -23,13 +33,17 @@ const PageTitle = ({
         ...props
     };
 
+    const dividerProps: DividerProps = {
+        sx: {
+            marginTop: "0.7rem"
+        }
+    };
+
     return (
-        <>
-            <Typography {...titleProps}>
-                {children}
-                {!noDivider && <Divider />}
-            </Typography>
-        </>
+        <Box {...wrapperProps}>
+            <Typography {...titleProps}>{children}</Typography>
+            {!noDivider && <Divider {...dividerProps} />}
+        </Box>
     );
 };
 
