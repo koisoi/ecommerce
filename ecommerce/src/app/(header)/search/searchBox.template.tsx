@@ -1,5 +1,12 @@
 import { Search } from "@mui/icons-material";
-import { Button, ButtonProps, TextField, TextFieldProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    Button,
+    ButtonProps,
+    TextField,
+    TextFieldProps
+} from "@mui/material";
 import {
     ChangeEventHandler,
     KeyboardEventHandler,
@@ -48,13 +55,10 @@ const HeaderSearchBoxTemplate = ({
     };
 
     const searchBoxProps: TextFieldProps = {
-        // variant: "outlined",
-
         size: "small",
         fullWidth: true,
         sx: {
-            maxWidth: { sm: "220px", md: "380px", xl: "420px" },
-            minWidth: { sm: "220px", md: "380px", xl: "420px" },
+            width: "100%",
             display: { xs: "none", sm: "block" },
             ...(searchPage && {
                 maxWidth: "420px",
@@ -68,14 +72,11 @@ const HeaderSearchBoxTemplate = ({
             },
 
             fieldset: {
-                // border: {xs: 0}
                 border: searchPage
                     ? "solid 1px rgba(0, 0, 0, 0.23)"
                     : { xs: 0, md: "solid 1px rgba(0, 0, 0, 0.23)" }
-                // borderColor: "text.disabled"
             }
         },
-        // label: "Поиск по каталогу",
         placeholder: "Поиск по каталогу",
 
         value: searchQuery,
@@ -90,7 +91,6 @@ const HeaderSearchBoxTemplate = ({
             ),
             sx: {
                 padding: 0
-                // backgroundColor: "background.default"
             }
         }
     };

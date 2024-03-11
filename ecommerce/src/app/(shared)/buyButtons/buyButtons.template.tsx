@@ -126,10 +126,10 @@ export const ShoppingCartButtonTemplate = ({
     };
 
     const shoppingCartIconProps: SvgIconProps = {
-        fontSize: "inherit",
-        sx: {
-            fontSize: "0.9rem"
-        }
+        fontSize: "inherit"
+        // sx: {
+        //     fontSize: "0.9rem"
+        // }
     };
 
     const cartButtonTextProps: TypographyProps = {

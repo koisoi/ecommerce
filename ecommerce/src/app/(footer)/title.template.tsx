@@ -4,8 +4,8 @@ import { ReactNode } from "react";
 const FooterTitle = ({ children }: { children: ReactNode }) => {
     const titleProps: TypographyProps = {
         color: "text.primary",
-        fontSize: { xs: "1.2rem", md: "1.7rem" },
-        lineHeight: { xs: 1, md: 1.5 },
+        fontSize: "1.2rem",
+        lineHeight: 1,
         fontWeight: "bold"
     };
 

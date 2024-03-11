@@ -20,10 +20,9 @@ const HeaderTopContainer = () => {
     };
 
     const wrapperProps: BoxProps = {
-        // minWidth: "768px",
-        width: { lg: "100%", xl: "1300px" },
-        maxWidth: "1320px",
-        paddingX: { lg: "10px", xl: "0" },
+        // width: { lg: "100%", xl: "1300px" },
+        // maxWidth: "1320px",
+        width: "100%",
 
         display: { xs: "none", md: "flex" },
         flexDirection: "row",
@@ -35,6 +34,8 @@ const HeaderTopContainer = () => {
         display: "flex",
         flexWrap: "wrap",
         flexGrow: 1,
+        gap: "1rem",
+        alignItems: "center",
 
         minWidth: "max-content"
     };
@@ -48,11 +49,9 @@ const HeaderTopContainer = () => {
     };
 
     const leftItemProps: BoxProps = {
-        paddingY: "7.5px",
-        paddingX: "15px",
         sx: {
             ":hover": {
-                color: "#212529",
+                color: "text.secondary",
                 cursor: "pointer"
             }
         }
@@ -62,13 +61,13 @@ const HeaderTopContainer = () => {
         display: "flex",
         flexWrap: "wrap",
         flexGrow: 1,
-        justifyContent: "flex-end"
+        justifyContent: "flex-end",
+        gap: "0.5rem"
     };
 
     const iconProps: SvgIconProps = {
         fontSize: "small",
         sx: {
-            padding: "7.5px",
             ":hover": {
                 cursor: "pointer"
             }

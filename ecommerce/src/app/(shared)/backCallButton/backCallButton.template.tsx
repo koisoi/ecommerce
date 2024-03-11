@@ -3,13 +3,16 @@ import { MouseEventHandler } from "react";
 
 const BackCallButtonTemplate = ({
     onBackCallButtonClick,
-    props
+    props,
+    altColor
 }: {
     onBackCallButtonClick: MouseEventHandler<HTMLButtonElement>;
     props?: ButtonProps;
+    altColor?: boolean;
 }) => {
     const backCallButtonProps: ButtonProps = {
         variant: "contained",
+        color: altColor ? "secondary" : "primary",
 
         onClick: onBackCallButtonClick,
 
@@ -20,6 +23,9 @@ const BackCallButtonTemplate = ({
             boxShadow: "none",
             textWrap: "nowrap",
             maxWidth: "100%",
+            padding: "0.5rem",
+            lineHeight: 1,
+            fontSize: "1rem",
 
             ...props?.sx,
 

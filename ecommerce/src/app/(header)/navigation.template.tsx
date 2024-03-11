@@ -18,12 +18,10 @@ const DynamicContactsBox = dynamic(
 
 const HeaderNavigation = ({
     mobile,
-    categories,
-    boxProps
+    categories
 }: {
     mobile: boolean;
     categories: CategoryListItem[];
-    boxProps?: BoxProps;
 }) => {
     // const
     const router = useRouter();
@@ -34,7 +32,7 @@ const HeaderNavigation = ({
     };
 
     const outerWrapperProps: BoxProps = {
-        component: "nav",
+        component: mobile ? "header" : "nav",
 
         position: "sticky",
         top: "-1px",
@@ -46,20 +44,18 @@ const HeaderNavigation = ({
     };
 
     const wrapperProps: BoxProps = {
-        display: "flex",
         justifyContent: { xs: "normal", md: "center" },
 
-        // width: { xs: "unset", md: "100vw" },
-        width: "100vw",
+        width: "100%",
         minHeight: { xs: "45px", md: "50px" },
-        // paddingX: { xs: "15px", md: "0" },
+        display: { xs: mobile ? "flex" : "none", md: mobile ? "none" : "flex" },
 
-        ...boxProps,
+        // ...boxProps,
 
         sx: {
-            backgroundColor: "primary.main",
+            backgroundColor: "primary.main"
 
-            ...boxProps?.sx
+            // ...boxProps?.sx
         }
     };
 

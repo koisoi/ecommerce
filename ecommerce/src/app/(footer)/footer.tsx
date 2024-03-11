@@ -1,4 +1,4 @@
-import { Box, BoxProps } from "@mui/material";
+import { Box, BoxProps, Divider } from "@mui/material";
 import ContactsBox from "./contactsBox.template";
 import CatalogBox from "./catalogBox.template";
 import UpperMenuBox from "./upperMenuBox.template";
@@ -15,11 +15,10 @@ const DynamicContactsBox = dynamic(
     }
 );
 
-const Footer = () => {
+const Footer = ({ props }: { props?: BoxProps }) => {
     // props
     const wrapperProps: BoxProps = {
-        boxSizing: "border-box",
-        minWidth: "100%",
+        component: "footer",
 
         display: "flex",
         justifyContent: "center",
@@ -27,7 +26,9 @@ const Footer = () => {
         borderTop: "1px solid",
         borderColor: "divider",
 
-        marginTop: "2rem"
+        marginTop: "2rem",
+
+        ...props
     };
 
     const innerWrapperProps: BoxProps = {
@@ -48,7 +49,8 @@ const Footer = () => {
     };
 
     return (
-        <footer style={{ boxSizing: "border-box" }}>
+        <>
+            <Divider />
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
                     <DynamicContactsBox />
@@ -56,7 +58,7 @@ const Footer = () => {
                     <UpperMenuBox />
                 </Box>
             </Box>
-        </footer>
+        </>
     );
 };
 

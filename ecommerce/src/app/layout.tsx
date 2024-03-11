@@ -1,6 +1,12 @@
 import "./globals.css";
 import Header from "./(header)/header";
-import { Box, BoxProps, ThemeProvider } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    CssBaseline,
+    ScopedCssBaseline,
+    ThemeProvider
+} from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
 import Footer from "./(footer)/footer";
 import BackCallForm from "./(backCallForm)/backCallForm";
@@ -9,24 +15,6 @@ import { theme } from "./theme";
 import { headers } from "next/headers";
 import Container from "./(shared)/container.template";
 import StoreProvider from "./storeProvider";
-
-// Fixes: Hydration failed because the initial UI does not match what was rendered on the server.
-// const DynamicContextProvider = dynamic(() => import('@/app/storeProvider').then(mod => mod.default, {
-//     ssr: false
-//   })
-
-// const DynamicStoreProvider = dynamic(() => import("@/app/storeProvider"), {
-//     ssr: false,
-//     loading: () => (
-//         <Box sx={{ height: "100vh", width: "100vw" }}>
-//             <Loading>Загрузка...</Loading>
-//         </Box>
-//     )
-// });
-
-// export const metadata: Metadata = {
-//     title: landingConfig.landing_title
-// };
 
 const RootLayout = ({
     children
@@ -47,6 +35,7 @@ const RootLayout = ({
             maxWidth: "100vw",
             minWidth: "320px",
             overflowX: "hidden",
+            fontFamily: "Tahoma, sans-serif",
             fontSize: { xs: "12px", sm: "15px" }
         }
     };
@@ -56,11 +45,28 @@ const RootLayout = ({
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
-            // minWidth: "100vw",
             backgroundColor: "#fff",
             padding: "0!important",
             boxSizing: "border-box"
         }
+    };
+
+    const innerProps: BoxProps = {
+        width: "100%",
+        maxWidth: "1350px",
+        minHeight: "100%",
+
+        margin: "0 auto",
+        paddingX: { xs: "1rem", xl: 0 }
+    };
+
+    const rootBoxProps: BoxProps = {
+        ...innerProps,
+        component: "main",
+        padding: { xs: "1rem", md: "2rem" },
+        display: "flex",
+        justifyContent: "center",
+        flexGrow: 1
     };
 
     return (
@@ -73,21 +79,13 @@ const RootLayout = ({
                             name="viewport"
                             content="width=device-width, initial-scale=1.0"
                         />
-                        {/* <title>{landingConfig.landing_title}</title> */}
                     </head>
                     <body {...bodyProps}>
                         <StoreProvider referer={referer}>
                             <BackCallForm />
-                            <Header />
-                            <Box
-                                padding={{ xs: "1rem", md: "2rem" }}
-                                display="flex"
-                                justifyContent="center"
-                                flexGrow={1}
-                            >
-                                <Container>{children}</Container>
-                            </Box>
-                            <Footer />
+                            <Header props={innerProps} />
+                            {/* <Box {...rootBoxProps}>{children}</Box> */}
+                            <Footer props={innerProps} />
                         </StoreProvider>
                     </body>
                 </Box>

@@ -27,5 +27,8 @@ export const theme = createTheme({
             xlg: 1350,
             xl: 1536
         }
+    },
+    typography: {
+        fontFamily: "inherit"
     }
 });

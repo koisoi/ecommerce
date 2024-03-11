@@ -5,6 +5,8 @@ import MobileMenu from "../mobileMenu/mobileMenu";
 import dynamic from "next/dynamic";
 import HeaderMainContainer from "../mainContainer/mainContainer.template";
 import MobileContactsBox from "../contactsBox/mobileContactsBox";
+import Logo from "../logo";
+import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 
 const DynamicHeaderButton = dynamic(
     () => import("@/app/(header)/mobileHeaderButton.template"),
@@ -42,13 +44,29 @@ const HeaderMobileNavigationTemplate = ({
         boxSizing: "border-box"
     };
 
+    const centerBoxProps: BoxProps = {
+        display: "flex",
+        gap: "1rem",
+        justifyContent: "center",
+        alignItems: "center"
+    };
+
+    const backCallWrapperProps: BoxProps = {
+        display: { xs: "none", sm: "block" }
+    };
+
     return (
         <>
             <MobileMenu />
 
             <Box {...wrapperProps}>
                 <MobileHeaderButton variant="menu" onClick={onMenuOpen} />
-                <HeaderMainContainer mobileHeader />
+                <Box {...centerBoxProps}>
+                    <Logo mobile />
+                    <Box {...backCallWrapperProps}>
+                        <BackCallButton altColor />
+                    </Box>
+                </Box>
                 <DynamicHeaderButton
                     variant="shoppingCart"
                     onClick={onCartClick}

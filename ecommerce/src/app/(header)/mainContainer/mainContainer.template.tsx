@@ -42,7 +42,7 @@ const HeaderMainContainer = ({
 }) => {
     // props
     const outerWrapperProps: BoxProps = {
-        paddingY: { xs: "0.4rem", md: "2rem" },
+        paddingY: "0.4rem",
         marginX: "auto",
 
         display: "flex",
@@ -50,11 +50,12 @@ const HeaderMainContainer = ({
         alignItems: "center",
         flexDirection: "row",
 
-        width: "95%",
-        maxWidth: "1320px",
+        width: "100%",
         ...(mobileHeader && {
-            fontSize: "1rem"
+            fontSize: "1rem",
+            display: { xs: "flex", md: "none" }
         }),
+        ...(!mobileHeader && { display: { xs: "none", md: "flex" } }),
         ...props,
 
         sx: {
@@ -64,57 +65,39 @@ const HeaderMainContainer = ({
 
     const wrapperProps: BoxProps = {
         display: "flex",
-        flexDirection: { xs: "column", mlg: "row" },
-        alignItems: "center",
-        justifyContent: "space-between",
-        gap: "30px",
-        width: "100%",
-        paddingX: "10px"
-    };
-
-    const innerWrapperProps: BoxProps = {
-        display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "30px",
-
-        flexGrow: 2
+        justifyContent: "space-between",
+        gap: "2rem",
+        width: "100%"
     };
 
     const logoAndContactsWrapper: BoxProps = {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "30px"
+        gap: "2rem"
     };
 
-    const buttonsRowProps: BoxProps = {
-        display: { xs: "none", md: "flex" },
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "20px",
-        flexGrow: 1,
-
-        height: "min-content"
+    const searchWrapperProps: BoxProps = {
+        flexGrow: 1
     };
 
     return (
         <>
             <Box {...outerWrapperProps}>
                 <Box {...wrapperProps}>
-                    <Box {...innerWrapperProps}>
-                        <Box {...logoAndContactsWrapper}>
-                            <Logo mobile={mobileHeader} />
-                            <DynamicContactsBox />
-                        </Box>
+                    <Box {...logoAndContactsWrapper}>
+                        <Logo mobile={mobileHeader} />
+                        <DynamicContactsBox />
+                    </Box>
+                    <Box {...searchWrapperProps}>
                         <HeaderSearchBox />
                     </Box>
-                    <Box {...buttonsRowProps}>
-                        <BackCallButton />
-                        <DynamicHeaderButton>
-                            <ShoppingCart id="desktop-header-button" />
-                        </DynamicHeaderButton>
-                    </Box>
+                    <BackCallButton />
+                    <DynamicHeaderButton>
+                        <ShoppingCart id="desktop-header-button" />
+                    </DynamicHeaderButton>
                 </Box>
             </Box>
         </>

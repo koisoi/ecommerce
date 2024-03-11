@@ -36,7 +36,8 @@ const ContactsBox = ({
     const innerWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "5px"
+        gap: "0.5rem",
+        textAlign: "center"
     };
 
     const boxProps: BoxProps = {

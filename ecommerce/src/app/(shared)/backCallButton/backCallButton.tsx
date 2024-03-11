@@ -5,7 +5,13 @@ import BackCallButtonTemplate from "./backCallButton.template";
 import { openBackCallModal } from "@/lib/slices/backCall.slice";
 import { ButtonProps } from "@mui/material";
 
-const BackCallButton = ({ props }: { props?: ButtonProps }) => {
+const BackCallButton = ({
+    props,
+    altColor
+}: {
+    props?: ButtonProps;
+    altColor?: boolean;
+}) => {
     const dispatch = useAppDispatch();
 
     const handleBackCallButtonClick = () => {
@@ -16,6 +22,7 @@ const BackCallButton = ({ props }: { props?: ButtonProps }) => {
         <BackCallButtonTemplate
             onBackCallButtonClick={handleBackCallButtonClick}
             props={props}
+            altColor={altColor}
         />
     );
 };

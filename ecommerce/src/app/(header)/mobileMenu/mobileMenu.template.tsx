@@ -13,7 +13,6 @@ import {
     ListItemButton,
     ListItemButtonProps,
     ListItemProps,
-    ListItemText,
     ListProps
 } from "@mui/material";
 import Link from "next/link";
@@ -27,8 +26,7 @@ const MobileMenuTemplate = ({
     categories,
     phone,
     address,
-    path,
-    catalogPath
+    path
 }: {
     open: boolean;
     onMenuClose: (...props: any) => void;
@@ -36,7 +34,6 @@ const MobileMenuTemplate = ({
     phone: string;
     address: string;
     path: string;
-    catalogPath: string | null;
 }) => {
     const drawerProps: DrawerProps = {
         open,
@@ -52,7 +49,10 @@ const MobileMenuTemplate = ({
 
         width: "250px",
         height: "100%",
-        minHeight: "fit-content"
+        minHeight: "fit-content",
+        lineHeight: 1,
+
+        component: "nav"
     };
 
     const listItemProps: ListItemProps = {
@@ -91,7 +91,7 @@ const MobileMenuTemplate = ({
         sx: {
             flexGrow: 1,
             ".MuiListItemButton-root": {
-                padding: "0.5rem"
+                padding: "0.7rem"
             }
         }
     };
@@ -110,9 +110,7 @@ const MobileMenuTemplate = ({
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/")}>
                             <Link href="/" style={linksStyle}>
-                                <ListItemText
-                                    primary={<FooterTitle>Главная</FooterTitle>}
-                                />
+                                <FooterTitle>Главная</FooterTitle>
                             </Link>
                         </ListItemButton>
                     </ListItem>
@@ -120,7 +118,7 @@ const MobileMenuTemplate = ({
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/delivery")}>
                             <Link href="/delivery.html" style={linksStyle}>
-                                <ListItemText primary="Доставка и оплата" />
+                                Доставка и оплата
                             </Link>
                         </ListItemButton>
                     </ListItem>
@@ -128,7 +126,7 @@ const MobileMenuTemplate = ({
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/warranty")}>
                             <Link href="/warranty.html" style={linksStyle}>
-                                <ListItemText primary="Гарантия и возврат" />
+                                Гарантия и возврат
                             </Link>
                         </ListItemButton>
                     </ListItem>
@@ -136,7 +134,7 @@ const MobileMenuTemplate = ({
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/contacts")}>
                             <Link href="/contacts.html" style={linksStyle}>
-                                <ListItemText primary="Контактная информация" />
+                                Контактная информация
                             </Link>
                         </ListItemButton>
                     </ListItem>
@@ -144,9 +142,7 @@ const MobileMenuTemplate = ({
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/catalog")}>
                             <Link href="/catalog" style={linksStyle}>
-                                <ListItemText
-                                    primary={<FooterTitle>Каталог</FooterTitle>}
-                                />
+                                <FooterTitle>Каталог</FooterTitle>
                             </Link>
                         </ListItemButton>
                     </ListItem>
@@ -162,7 +158,7 @@ const MobileMenuTemplate = ({
                                     href={`/catalog/${category.path}`}
                                     style={linksStyle}
                                 >
-                                    <ListItemText primary={category.title} />
+                                    {category.title}
                                 </Link>
                             </ListItemButton>
                         </ListItem>
@@ -171,9 +167,7 @@ const MobileMenuTemplate = ({
                     <ListItem {...listItemProps}>
                         <ListItemButton {...listItemButtonProps("/search")}>
                             <Link href="/search" style={linksStyle}>
-                                <ListItemText
-                                    primary={<FooterTitle>Поиск</FooterTitle>}
-                                />
+                                <FooterTitle>Поиск</FooterTitle>
                             </Link>
                         </ListItemButton>
                     </ListItem>
@@ -183,8 +177,8 @@ const MobileMenuTemplate = ({
                     phone={phone}
                     address={address}
                     props={{
-                        paddingX: "16px",
-                        paddingY: "8px",
+                        paddingX: "1rem",
+                        paddingY: "0.5rem",
                         sx: { backgroundColor: "divider" }
                     }}
                 />

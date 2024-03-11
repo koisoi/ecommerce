@@ -1,5 +1,11 @@
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
-import { Box, BoxProps, LinkProps } from "@mui/material";
+import {
+    Box,
+    BoxProps,
+    LinkProps,
+    Typography,
+    TypographyProps
+} from "@mui/material";
 
 const MobileContactsBox = ({
     phoneNumber,
@@ -16,8 +22,7 @@ const MobileContactsBox = ({
         justifyContent: "center",
         gap: "1rem",
 
-        width: "100vw",
-        fontSize: "0.9rem",
+        width: "100%",
         padding: "0.4rem",
         boxSizing: "border-box",
 
@@ -32,10 +37,15 @@ const MobileContactsBox = ({
         color: "inherit"
     };
 
+    const addressProps: TypographyProps = {
+        component: "span",
+        display: { xs: "none", sm: "inline" }
+    };
+
     return (
         <Box {...contactsBoxProps}>
             <PhoneLink number={phoneNumber} props={linkProps} />
-            {storeAddress}
+            <Typography {...addressProps}>{storeAddress}</Typography>
         </Box>
     );
 };

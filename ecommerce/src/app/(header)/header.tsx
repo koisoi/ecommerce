@@ -4,23 +4,20 @@ import { landingConfig } from "@/lib/data/config";
 import HeaderTopContainer from "./topContainer.template";
 import HeaderMainContainer from "./mainContainer/mainContainer.template";
 
-const Header = () => {
+const Header = ({ props }: { props?: BoxProps }) => {
     // props
     const wrapperProps: BoxProps = {
+        component: "header",
         boxSizing: "border-box",
-        minWidth: "100%",
+        width: "100%",
 
         display: "flex",
         justifyContent: "center",
-        flexDirection: "column"
-    };
+        flexDirection: "column",
 
-    const mobileHeaderProps: BoxProps = {
-        display: { xs: "flex", md: "none" }
-    };
+        ...props,
 
-    const desktopHeaderProps: BoxProps = {
-        display: { xs: "none", md: "flex" }
+        marginTop: "0.5rem"
     };
 
     return (
@@ -28,18 +25,14 @@ const Header = () => {
             <HeaderNavigation
                 mobile={true}
                 categories={landingConfig.categories}
-                boxProps={mobileHeaderProps}
             />
-            <header>
-                <Box {...wrapperProps}>
-                    <HeaderTopContainer />
-                    <HeaderMainContainer props={desktopHeaderProps} />
-                </Box>
-            </header>
+            <Box {...wrapperProps}>
+                <HeaderTopContainer />
+                <HeaderMainContainer />
+            </Box>
             <HeaderNavigation
                 mobile={false}
                 categories={landingConfig.categories}
-                boxProps={desktopHeaderProps}
             />
         </>
     );

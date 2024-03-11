@@ -58,15 +58,16 @@ const SearchPopoverTemplate = ({
         dense: true,
 
         sx: {
-            minWidth: { sm: "220px", md: "380px", xl: "420px" }
+            // minWidth: { sm: "220px", md: "380px", xl: "420px" }
+            width: "100%"
         }
     };
 
     const noResponseTextProps: TypographyProps = {
         color: "text.disabled",
         sx: {
-            minWidth: { sm: "190px", md: "350px", xl: "390px" },
-            padding: "15px"
+            // minWidth: { sm: "190px", md: "350px", xl: "390px" },
+            padding: "1rem"
         }
     };
 
