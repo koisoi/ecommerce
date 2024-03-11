@@ -1,19 +1,8 @@
 import { Box, BoxProps, Divider } from "@mui/material";
-import ContactsBox from "./contactsBox.template";
 import CatalogBox from "./catalogBox.template";
 import UpperMenuBox from "./upperMenuBox.template";
-import { phoneNumber, storeAddress } from "@/lib/data/geoInf";
 import { landingConfig } from "@/lib/data/config";
-import dynamic from "next/dynamic";
-import LoadingContactsBox from "./loadingContactsBox";
-
-const DynamicContactsBox = dynamic(
-    () => import("@/app/(footer)/realContactsBox"),
-    {
-        ssr: false,
-        loading: () => <LoadingContactsBox />
-    }
-);
+import ContactsBox from "./contactsBox.template";
 
 const Footer = ({ props }: { props?: BoxProps }) => {
     // props
@@ -53,7 +42,7 @@ const Footer = ({ props }: { props?: BoxProps }) => {
             <Divider />
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
-                    <DynamicContactsBox />
+                    <ContactsBox phone={landingConfig.phoneNumber} />
                     <CatalogBox categories={landingConfig.categories} />
                     <UpperMenuBox />
                 </Box>

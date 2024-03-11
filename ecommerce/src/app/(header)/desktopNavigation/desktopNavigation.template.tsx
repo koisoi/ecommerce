@@ -59,6 +59,7 @@ const HeaderDesktopNavigationTemplate = ({
             fontWeight: "bold",
             paddingX: "30px",
             fontSize: "1rem",
+            textTransform: "capitalize",
 
             ":hover": {
                 boxShadow: "none",
@@ -86,7 +87,7 @@ const HeaderDesktopNavigationTemplate = ({
             textDecoration: "none",
             color: "white",
             fontWeight: "bold",
-            textTransform: "uppercase",
+            textTransform: "none",
 
             transition: "0.2s",
             height: "100%",

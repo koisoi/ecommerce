@@ -1,4 +1,3 @@
-import { YouTube } from "@mui/icons-material";
 import {
     Box,
     BoxProps,
@@ -107,12 +106,6 @@ const HeaderTopContainer = () => {
                         <SvgIcon {...iconProps}>
                             <VK fill="#969696" />
                         </SvgIcon>
-                    </MUILink>
-                    <MUILink
-                        href="https://www.youtube.com/watch?v=WYgzpw7FaRI"
-                        {...MUILinkProps}
-                    >
-                        <YouTube {...iconProps} />
                     </MUILink>
                 </Box>
             </Box>

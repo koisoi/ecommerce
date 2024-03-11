@@ -29,6 +29,18 @@ export const theme = createTheme({
         }
     },
     typography: {
-        fontFamily: "inherit"
+        fontFamily: "inherit",
+        button: {
+            fontSize: "1rem"
+        }
     }
+    // components: {
+    //     MuiButtonBase: {
+    //         styleOverrides: {
+    //             root: {
+    //                 fontSize: "1rem"
+    //             }
+    //         }
+    //     }
+    // }
 });

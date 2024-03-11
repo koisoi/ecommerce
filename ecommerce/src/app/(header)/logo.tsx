@@ -5,34 +5,32 @@ import Link from "next/link";
 const Logo = ({ mobile }: { mobile?: boolean }) => {
     const logoContainerProps: BoxProps = {
         width: {
-            // xs: "100%",
-            sm: "100%",
-            md: "120px",
-            lg: "160px",
-            xl: "180px"
-        },
-        maxWidth: "225px",
-        display: "flex",
-        justifyContent: "center"
+            xs: "90px",
+            md: "120px"
+        }
+        // display: "flex",
+        // justifyContent: "center"
     };
 
     const logoProps = {
         src: mobile
             ? landingConfig.logoImgMobileLink
             : landingConfig.logoImgLink,
-        alt: "Логотип",
+        alt: landingConfig.landing_title,
         width: "100%",
         style: {
-            margin: "auto"
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center"
         }
     };
 
     return (
-        <Link href="/">
-            <Box {...logoContainerProps}>
+        <Box {...logoContainerProps}>
+            <Link href="/">
                 <img {...logoProps} />
-            </Box>
-        </Link>
+            </Link>
+        </Box>
     );
 };
 

@@ -3,8 +3,6 @@ import MobileHeaderButton from "../mobileHeaderButton.template";
 import { MouseEventHandler } from "react";
 import MobileMenu from "../mobileMenu/mobileMenu";
 import dynamic from "next/dynamic";
-import HeaderMainContainer from "../mainContainer/mainContainer.template";
-import MobileContactsBox from "../contactsBox/mobileContactsBox";
 import Logo from "../logo";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 

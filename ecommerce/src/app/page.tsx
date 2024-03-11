@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import Title from "./(shared)/text/title.template";
 import OurAdvantages from "./(shared)/ourAdvantages.template";
 import { homePageAPI } from "@/lib/services/homePage.service";

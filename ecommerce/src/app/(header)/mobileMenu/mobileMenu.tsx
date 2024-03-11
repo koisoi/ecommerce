@@ -31,9 +31,7 @@ const MobileMenu = () => {
             onMenuClose={handleMenuClose}
             categories={landingConfig.categories}
             phone={phoneNumber}
-            address={storeAddress}
             path={path}
-            catalogPath={params.get("category")}
         />
     );
 };

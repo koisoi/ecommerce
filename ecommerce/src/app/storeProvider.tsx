@@ -1,13 +1,7 @@
 "use client";
 
 import { setCart } from "@/lib";
-import {
-    getGeo,
-    setGeo,
-    setReferrer,
-    setStartUrl,
-    setUTM
-} from "@/lib/slices/global.slice";
+import { setReferrer, setStartUrl, setUTM } from "@/lib/slices/global.slice";
 import { AppStore, makeStore } from "@/lib/store";
 import { getCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
@@ -48,14 +42,6 @@ export default function StoreProvider({
             })
         );
         storeRef.current.dispatch(setReferrer(referer || ""));
-
-        const geo = getCookie("geo");
-        if (!geo) storeRef.current.dispatch(getGeo());
-        else {
-            storeRef.current.dispatch(
-                setGeo(geo as "rf" | "nn" | "msk" | "spb")
-            );
-        }
 
         if (getCookie("cart")) storeRef.current.dispatch(setCart([]));
     }

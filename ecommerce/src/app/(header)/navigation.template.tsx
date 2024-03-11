@@ -5,16 +5,8 @@ import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
 import { CategoryListItem } from "@/lib";
 import HeaderDesktopNavigation from "./desktopNavigation/desktopNavigation";
 import { useRouter } from "next/navigation";
-import LoadingHeaderContactsBox from "./contactsBox/loadingContactsBox";
-import dynamic from "next/dynamic";
-
-const DynamicContactsBox = dynamic(
-    () => import("@/app/(header)/contactsBox/realContactsBox"),
-    {
-        ssr: false
-        // loading: () => <LoadingHeaderContactsBox />
-    }
-);
+import MobileContactsBox from "./contactsBox/mobileContactsBox";
+import { landingConfig } from "@/lib/data/config";
 
 const HeaderNavigation = ({
     mobile,
@@ -61,7 +53,9 @@ const HeaderNavigation = ({
 
     return (
         <Box {...outerWrapperProps}>
-            {mobile && <DynamicContactsBox mobile />}
+            {mobile && (
+                <MobileContactsBox phoneNumber={landingConfig.phoneNumber} />
+            )}
             <Box {...wrapperProps}>
                 {mobile && <HeaderMobileNavigation />}
                 {!mobile && (

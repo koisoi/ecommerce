@@ -50,5 +50,6 @@ export const landingConfig: LandingConfig = {
             dark: "#b04d51",
             light: "#ffb3b5"
         }
-    }
+    },
+    phoneNumber: "+74950851700"
 };

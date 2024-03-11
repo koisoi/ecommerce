@@ -25,14 +25,12 @@ const MobileMenuTemplate = ({
     onMenuClose,
     categories,
     phone,
-    address,
     path
 }: {
     open: boolean;
     onMenuClose: (...props: any) => void;
     categories: CategoryListItem[];
     phone: string;
-    address: string;
     path: string;
 }) => {
     const drawerProps: DrawerProps = {
@@ -175,7 +173,6 @@ const MobileMenuTemplate = ({
 
                 <ContactsBox
                     phone={phone}
-                    address={address}
                     props={{
                         paddingX: "1rem",
                         paddingY: "0.5rem",

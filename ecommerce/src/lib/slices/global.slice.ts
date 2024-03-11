@@ -9,7 +9,6 @@ const initialState: {
     referrer: string;
     ip: string;
     utm: UTMParams;
-    geo: "rf" | "nn" | "msk" | "spb";
     storeAddress: string;
     phoneNumber: string;
 } = {
@@ -17,7 +16,6 @@ const initialState: {
     referrer: "",
     ip: "",
     utm: {},
-    geo: "rf",
     storeAddress: "Доставка в пункт самовывоза",
     phoneNumber: "88007078195"
 };
@@ -27,31 +25,6 @@ export const getIp = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             const response = await fetch(`https://api.ipify.org/?format=json`);
-            return response.json();
-        } catch (error: any) {
-            rejectWithValue(error.response.data);
-        }
-    }
-);
-
-export const getGeo = createAsyncThunk(
-    "global/getGeo",
-    async (_, { getState, rejectWithValue, dispatch }) => {
-        try {
-            await dispatch(getIp());
-            const { ip } = (getState() as RootState).GlobalReducer;
-            const response = await fetch(
-                `https://dev.telescope1.ru/geo/backend/locate?ip=${ip}&format=json`,
-                {
-                    method: "GET",
-                    credentials: "include",
-                    mode: "cors",
-                    headers: new Headers({
-                        Authorization: "Basic " + btoa("fr123:123qwe"),
-                        "Content-Type": "application/json"
-                    })
-                }
-            );
             return response.json();
         } catch (error: any) {
             rejectWithValue(error.response.data);
@@ -71,94 +44,15 @@ const slice = createSlice({
         },
         setUTM(state, action: PayloadAction<UTMParams>) {
             state.utm = action.payload;
-        },
-        setGeo(state, action: PayloadAction<"rf" | "nn" | "msk" | "spb">) {
-            state.geo = action.payload;
-
-            switch (state.geo) {
-                case "nn":
-                    state.storeAddress = "Пункт выдачи: ул. Саврасова, 32";
-                    state.phoneNumber = "+78312156667";
-                    break;
-
-                case "msk":
-                    state.storeAddress = "ул. Сокольническая Слободка, д. 10";
-                    state.phoneNumber = "+74951510900";
-                    break;
-
-                case "spb":
-                    state.storeAddress = "Пункт выдачи: ул. Заозерная, д. 3к2";
-                    state.phoneNumber = "+78127010115";
-                    break;
-
-                default:
-                    break;
-            }
         }
     },
     extraReducers: (builder) => {
         builder.addCase(getIp.fulfilled, (state, action) => {
             state.ip = action.payload.ip;
         });
-
-        builder.addCase(
-            getGeo.fulfilled,
-            (
-                state,
-                action: PayloadAction<{
-                    location: {
-                        data: {
-                            city: string;
-                        };
-                    };
-                }>
-            ) => {
-                switch (action.payload?.location.data.city) {
-                    case "Нижний Новгород":
-                        state.geo = "nn";
-                        break;
-
-                    case "Москва":
-                        state.geo = "msk";
-                        break;
-
-                    case "Санкт-Петербург":
-                        state.geo = "spb";
-                        break;
-
-                    default:
-                        state.geo = "rf";
-                        break;
-                }
-
-                switch (state.geo) {
-                    case "nn":
-                        state.storeAddress = "Пункт выдачи: ул. Саврасова, 32";
-                        state.phoneNumber = "+78312156667";
-                        break;
-
-                    case "msk":
-                        state.storeAddress =
-                            "ул. Сокольническая Слободка, д. 10";
-                        state.phoneNumber = "+74951510900";
-                        break;
-
-                    case "spb":
-                        state.storeAddress =
-                            "Пункт выдачи: ул. Заозерная, д. 3к2";
-                        state.phoneNumber = "+78127010115";
-                        break;
-
-                    default:
-                        break;
-                }
-
-                setCookie("geo", state.geo, { maxAge: 604800 });
-            }
-        );
     }
 });
 
 export const GlobalReducer = slice.reducer;
-export const { setReferrer, setStartUrl, setUTM, setGeo } = slice.actions;
+export const { setReferrer, setStartUrl, setUTM } = slice.actions;
 export const GlobalState = (state: RootState) => state.GlobalReducer;

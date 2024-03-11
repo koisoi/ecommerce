@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import FooterTitle from "./title.template";
 import VK from "@/assets/svg/vk.svg";
-import { Instagram, YouTube } from "@mui/icons-material";
+import { YouTube } from "@mui/icons-material";
 
 const SocialNetworksBox = () => {
     const wrapperProps: BoxProps = {

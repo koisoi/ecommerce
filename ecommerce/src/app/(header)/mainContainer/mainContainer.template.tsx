@@ -3,8 +3,9 @@ import { ShoppingCart } from "@mui/icons-material";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import HeaderSearchBox from "../search/search";
 import dynamic from "next/dynamic";
-import LoadingHeaderContactsBox from "../contactsBox/loadingContactsBox";
 import Logo from "../logo";
+import { landingConfig } from "@/lib/data/config";
+import HeaderContactsBox from "../contactsBox/contactsBox.template";
 
 const DynamicHeaderButton = dynamic(
     () => import("@/app/(header)/desktopHeaderButton.template"),
@@ -22,14 +23,6 @@ const DynamicHeaderButton = dynamic(
 
             return <Typography {...textProps}>Загрузка корзины...</Typography>;
         }
-    }
-);
-
-const DynamicContactsBox = dynamic(
-    () => import("@/app/(header)/contactsBox/realContactsBox"),
-    {
-        ssr: false,
-        loading: () => <LoadingHeaderContactsBox />
     }
 );
 
@@ -89,7 +82,9 @@ const HeaderMainContainer = ({
                 <Box {...wrapperProps}>
                     <Box {...logoAndContactsWrapper}>
                         <Logo mobile={mobileHeader} />
-                        <DynamicContactsBox />
+                        <HeaderContactsBox
+                            phoneNumber={landingConfig.phoneNumber}
+                        />
                     </Box>
                     <Box {...searchWrapperProps}>
                         <HeaderSearchBox />

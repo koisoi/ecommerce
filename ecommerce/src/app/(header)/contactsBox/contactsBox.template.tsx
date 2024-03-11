@@ -1,13 +1,7 @@
 import PhoneLink from "@/app/(shared)/text/phoneLink.template";
-import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 
-const HeaderContactsBox = ({
-    phoneNumber,
-    storeAddress
-}: {
-    phoneNumber: string;
-    storeAddress: string;
-}) => {
+const HeaderContactsBox = ({ phoneNumber }: { phoneNumber: string }) => {
     // props
     const contactsBoxProps: BoxProps = {
         display: { xs: "none", md: "flex" },
@@ -16,16 +10,16 @@ const HeaderContactsBox = ({
         maxWidth: "220px"
     };
 
-    const addressProps: TypographyProps = {
-        color: "text.disabled",
-        fontSize: "0.8rem",
-        noWrap: true
-    };
+    // const addressProps: TypographyProps = {
+    //     color: "text.disabled",
+    //     fontSize: "0.8rem",
+    //     noWrap: true
+    // };
 
     return (
         <Box {...contactsBoxProps}>
             <PhoneLink number={phoneNumber} />
-            <Typography {...addressProps}>{storeAddress}</Typography>
+            {/* <Typography {...addressProps}>{storeAddress}</Typography> */}
         </Box>
     );
 };

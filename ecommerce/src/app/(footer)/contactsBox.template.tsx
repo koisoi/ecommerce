@@ -7,19 +7,12 @@ import {
 } from "@mui/material";
 import FooterTitle from "./title.template";
 import AppLink from "../(shared)/text/appLink.template";
-import { Email, LocationOn } from "@mui/icons-material";
+import { Email } from "@mui/icons-material";
 import PhoneLink from "../(shared)/text/phoneLink.template";
 import BackCallButton from "../(shared)/backCallButton/backCallButton";
+import { landingConfig } from "@/lib/data/config";
 
-const ContactsBox = ({
-    phone,
-    address,
-    props
-}: {
-    phone: string;
-    address: string;
-    props?: BoxProps;
-}) => {
+const ContactsBox = ({ props, phone }: { props?: BoxProps; phone: string }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
@@ -73,10 +66,10 @@ const ContactsBox = ({
                     <Email {...iconProps} />
                     sales@telescope1.ru
                 </AppLink>
-                <Box {...boxProps}>
+                {/* <Box {...boxProps}>
                     <LocationOn {...iconProps} />
                     {address}
-                </Box>
+                </Box> */}
             </Box>
             <BackCallButton props={backCallButtonProps} />
         </Box>
