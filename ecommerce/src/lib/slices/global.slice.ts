@@ -9,15 +9,11 @@ const initialState: {
     referrer: string;
     ip: string;
     utm: UTMParams;
-    storeAddress: string;
-    phoneNumber: string;
 } = {
     start_url: "",
     referrer: "",
     ip: "",
-    utm: {},
-    storeAddress: "Доставка в пункт самовывоза",
-    phoneNumber: "88007078195"
+    utm: {}
 };
 
 export const getIp = createAsyncThunk(

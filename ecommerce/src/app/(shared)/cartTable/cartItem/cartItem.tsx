@@ -3,11 +3,9 @@ import CartItemTemplate from "./cartItem.template";
 import { MouseEventHandler, ReactNode, useState } from "react";
 
 const CartItemComponent = ({
-    children,
     item,
     displayOnly
 }: {
-    children: ReactNode;
     item: CartItemTemplate;
     displayOnly?: boolean;
 }) => {
@@ -48,9 +46,7 @@ const CartItemComponent = ({
             onDelete={handleDelete}
             totalPrice={totalPrice}
             displayOnly={displayOnly}
-        >
-            {children}
-        </CartItemTemplate>
+        ></CartItemTemplate>
     );
 };
 

@@ -91,7 +91,10 @@ const HeaderMainContainer = ({
                     </Box>
                     <BackCallButton />
                     <DynamicHeaderButton>
-                        <ShoppingCart id="desktop-header-button" />
+                        <ShoppingCart
+                            fontSize="large"
+                            id="desktop-header-button"
+                        />
                     </DynamicHeaderButton>
                 </Box>
             </Box>

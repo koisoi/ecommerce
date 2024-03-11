@@ -13,10 +13,8 @@ import { landingConfig } from "@/lib/data/config";
 const MobileMenu = () => {
     const dispatch = useAppDispatch();
     const path = usePathname();
-    const params = useSearchParams();
 
     const { mobileMenuOpen } = useAppSelector(MobileMenuState);
-    const { phoneNumber, storeAddress } = useAppSelector(GlobalState);
 
     const handleMenuClose: (
         event: {},
@@ -30,7 +28,7 @@ const MobileMenu = () => {
             open={mobileMenuOpen}
             onMenuClose={handleMenuClose}
             categories={landingConfig.categories}
-            phone={phoneNumber}
+            phone={landingConfig.phoneNumber}
             path={path}
         />
     );

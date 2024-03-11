@@ -50,7 +50,8 @@ const HeaderMobileNavigationTemplate = ({
     };
 
     const backCallWrapperProps: BoxProps = {
-        display: { xs: "none", sm: "block" }
+        display: { xs: "none", sm: "flex" },
+        alignItems: "center"
     };
 
     return (

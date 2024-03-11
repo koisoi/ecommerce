@@ -7,6 +7,17 @@ import {
     Button,
     ButtonProps,
     Divider,
+    Table,
+    TableBody,
+    TableBodyProps,
+    TableCell,
+    TableCellProps,
+    TableFooter,
+    TableFooterProps,
+    TableHead,
+    TableHeadProps,
+    TableProps,
+    TableRow,
     Typography,
     TypographyProps
 } from "@mui/material";
@@ -43,72 +54,38 @@ const CartTableTemplate = ({
 }: CartTableTemplateProps) => {
     const screen = useMediaQueries();
 
-    const wrapperProps: BoxProps = {
-        width: "100%"
-    };
-
-    const headerProps: BoxProps = {
-        padding: "10px",
+    const wrapperProps: TableProps = {
         width: "100%",
-        boxSizing: "border-box",
-
-        display: "flex",
-        flexDirection: "row",
-        gap: "20px"
+        sx: {
+            tableLayout: "fixed"
+        }
     };
 
-    const headerTextProps: TypographyProps = {
-        color: "text.disabled"
-    };
+    // const headerProps: TableHeadProps = {
+    //     sx: {
+    //         // padding: "10px",
+    //         width: "100%",
 
-    const headerImageSpace: TypographyProps = {
-        width: "75px"
-    };
+    //         // display: "flex",
+    //         // flexDirection: "row",
+    //         // gap: "20px"
+    //     }
+    // };
 
-    const titleHeaderProps: TypographyProps = {
-        ...headerTextProps,
-        flexGrow: 1
-    };
-
-    const priceHeaderProps: TypographyProps = {
-        ...headerTextProps,
-        width: "140px"
-    };
-
-    const amountHeaderBoxProps: BoxProps = {
-        ...headerTextProps,
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "space-between",
-        width: displayOnly ? "100px" : "250px"
-    };
-
-    const amountHeaderTextProps: TypographyProps = {
-        width: displayOnly ? "100px" : "170px",
-        ...(!displayOnly && { textAlign: "center" })
-    };
-
-    const headerDeleteButtonSpace: TypographyProps = {
-        width: "40px"
-    };
-
-    const itemBoxProps: BoxProps = {
-        border: "1px solid",
-        borderColor: "divider",
-
-        display: "flex",
-        flexDirection: "column"
-    };
-
-    const footerProps: BoxProps = {
-        ...headerProps,
-        padding: "20px",
-        justifyContent: displayOnly ? "flex-end" : "space-between",
-        alignItems: "center",
-        width: "100%"
+    const footerProps: TableCellProps = {
+        // ...headerProps,
+        sx: {
+            padding: "2rem",
+            justifyContent: displayOnly ? "flex-end" : "space-between",
+            alignItems: "center",
+            width: "100%"
+        }
     };
 
     const footerTextProps: TypographyProps = {
+        sx: {
+            columnSpan: displayOnly ? 5 : 4
+        },
         color: "text.disabled",
 
         display: "inline-flex",
@@ -161,6 +138,10 @@ const CartTableTemplate = ({
         }
     };
 
+    const tableHeadProps: TableHeadProps = {
+        color: "text.disabled"
+    };
+
     if (!items.length) return <EmptyCart full={full} />;
 
     return (
@@ -173,62 +154,70 @@ const CartTableTemplate = ({
                 />
             )}
 
-            <Box {...wrapperProps}>
+            <Table {...wrapperProps}>
+                <colgroup>
+                    <col width={100} />
+                    <col />
+                    <col width={140} />
+                    <col width={200} />
+                    {!displayOnly && <col width={100} />}
+                </colgroup>
                 {full && screen.md && (
-                    <Box {...headerProps}>
-                        <Typography {...headerImageSpace} />
-                        <Typography {...titleHeaderProps}>
-                            Наименование
-                        </Typography>
-                        <Typography {...priceHeaderProps}>Цена</Typography>
-                        <Box {...amountHeaderBoxProps}>
-                            <Typography {...amountHeaderTextProps}>
-                                Количество
-                            </Typography>
-                            {!displayOnly && (
-                                <Typography {...headerDeleteButtonSpace} />
-                            )}
-                        </Box>
-                    </Box>
+                    <TableHead {...tableHeadProps}>
+                        <TableRow>
+                            <TableCell />
+                            <TableCell>Наименование</TableCell>
+                            <TableCell>Цена</TableCell>
+                            <TableCell>Количество</TableCell>
+                            {!displayOnly && <TableCell />}
+                        </TableRow>
+                    </TableHead>
                 )}
-                <Box {...itemBoxProps}>
+                <TableBody>
                     {items.map((item, i, array) => (
                         <CartItemComponent
                             key={item.alias}
                             item={item}
                             displayOnly={displayOnly}
                         >
-                            {!screen.md && i !== array.length - 1 && (
+                            {/* {!screen.md && i !== array.length - 1 && (
                                 <Divider key={item.alias} flexItem />
-                            )}
+                            )} */}
                         </CartItemComponent>
                     ))}
-                </Box>
-                <Box {...footerProps}>
-                    {!displayOnly && (
-                        <Button {...clearButtonProps}>
-                            <Delete /> {screen.xsm && "Очистить корзину"}
-                        </Button>
-                    )}
-                    {!full && !displayOnly && (
-                        <Button {...orderButtonProps}>Оформить заказ</Button>
-                    )}
-                    <Typography {...footerTextProps}>
-                        Итого:
-                        <Price
-                            price={totalPrice}
-                            variant={
-                                screen.sm
-                                    ? full
-                                        ? "large"
-                                        : "medium"
-                                    : "medium"
-                            }
-                            props={footerPriceProps}
-                        />
-                    </Typography>
-                </Box>
-            </Box>
+                </TableBody>
+                <TableFooter>
+                    <TableRow>
+                        <TableCell {...footerProps}>
+                            {!displayOnly && (
+                                <Button {...clearButtonProps}>
+                                    <Delete />{" "}
+                                    {screen.xsm && "Очистить корзину"}
+                                </Button>
+                            )}
+                            {!full && !displayOnly && (
+                                <Button {...orderButtonProps}>
+                                    Оформить заказ
+                                </Button>
+                            )}
+                            <Typography {...footerTextProps}>
+                                Итого:
+                                <Price
+                                    price={totalPrice}
+                                    variant={
+                                        screen.sm
+                                            ? full
+                                                ? "large"
+                                                : "medium"
+                                            : "medium"
+                                    }
+                                    props={footerPriceProps}
+                                />
+                            </Typography>
+                        </TableCell>
+                    </TableRow>
+                </TableFooter>
+            </Table>
         </>
     );
 };

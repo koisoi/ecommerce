@@ -16,6 +16,7 @@ import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
 import { Metadata } from "next";
 import { landingConfig } from "@/lib/data/config";
+import CatalogPage from "./catalog.template";
 
 export async function generateMetadata({
     params
@@ -83,13 +84,7 @@ const Category = async ({
     params: { slug: string[] };
     searchParams: { page?: number; tab?: ProductPageTabType };
 }) => {
-    if (!params.slug)
-        return (
-            <>
-                <AppBreadcrumbs linksArray={catalogPageBreadcrumb} />
-                <CategoriesMenuTemplate />
-            </>
-        );
+    if (!params.slug) return <CatalogPage />;
 
     let category: CategoryInfo | null = null;
     let siblings: SeriesInfo[] = [];

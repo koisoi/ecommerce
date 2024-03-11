@@ -56,7 +56,7 @@ const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
     };
 
     const upperTextProps: TypographyProps = {
-        fontSize: "0.9rem",
+        fontSize: "1rem",
         lineHeight: "1.2",
         sx: {
             textTransform: "none"
@@ -64,7 +64,7 @@ const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
     };
 
     const lowerTextProps: TypographyProps = {
-        fontSize: "0.7rem",
+        fontSize: "0.9rem",
         textTransform: "none"
     };
 

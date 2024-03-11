@@ -44,7 +44,8 @@ const AmountBox = ({
     };
 
     const amountTextProps: TypographyProps = {
-        fontSize: "0.8rem"
+        fontSize: "1rem",
+        textAlign: "center"
     };
 
     const amountTextPriceProps: TypographyProps = {

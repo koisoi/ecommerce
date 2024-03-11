@@ -15,12 +15,10 @@ const HeaderTopContainer = () => {
         width: "100%",
         display: "flex",
         justifyContent: "center",
-        fontSize: "1rem"
+        fontSize: "0.9rem"
     };
 
     const wrapperProps: BoxProps = {
-        // width: { lg: "100%", xl: "1300px" },
-        // maxWidth: "1320px",
         width: "100%",
 
         display: { xs: "none", md: "flex" },
