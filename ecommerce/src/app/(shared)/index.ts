@@ -3,7 +3,6 @@ export * from "./text/price.template";
 export * from "./buyButtons/buyButtons.template";
 export * from "./text/title.template";
 export * from "./text/appLink.template";
-export * from "./container.template";
 export * from "./ourAdvantages.template";
 export * from "./text/pageTitle.template";
 export * from "./text/paragraph.template";
