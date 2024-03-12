@@ -8,7 +8,6 @@ import {
 } from "@/lib";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import SimliarProductsSlider from "../../../../(shared)/simliarProductsSlider";
-import OurAdvantages from "@/app/(shared)/ourAdvantages.template";
 import AllCharacteristicsBox from "./allCharacteristicsBox.template";
 import FeedbackBoxTemplate from "../../../../(shared)/feedbackBox.template";
 import ProductPageTabs from "./productPageTabs";
@@ -182,8 +181,7 @@ const ProductPageLowerBox = ({
                                     />
                                 </>
                             )}
-                        </>,
-                        <OurAdvantages key={1} />
+                        </>
                     ]}
                 </SectionContainer>
             </Box>

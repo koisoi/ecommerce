@@ -20,6 +20,7 @@ import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
 import PageTitle from "@/app/(shared)/text/pageTitle.template";
 import SectionContainer from "@/app/(shared)/section.template";
+import OurAdvantages from "@/app/(shared)/ourAdvantages.template";
 
 const ProductPage = async ({
     product,
@@ -130,7 +131,8 @@ const ProductPage = async ({
                         product={product}
                         series={series}
                         category={category}
-                    />
+                    />,
+                    <OurAdvantages key={3} />
                 ]}
             </SectionContainer>
         </>
