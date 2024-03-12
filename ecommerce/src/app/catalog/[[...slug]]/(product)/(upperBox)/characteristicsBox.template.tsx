@@ -17,13 +17,19 @@ const CharacteristicsBox = ({
     };
 
     const characteristicTextProps: TypographyProps = {
+        component: "dd",
         display: "inline"
     };
 
     const characteristicTitleProps: TypographyProps = {
         ...characteristicTextProps,
+        component: "dt",
         fontWeight: "bold",
         fontSize: "1.1rem"
+    };
+
+    const descriptionListProps: BoxProps = {
+        component: "dl"
     };
 
     return (
@@ -33,20 +39,22 @@ const CharacteristicsBox = ({
                     У данного товара нет характеристик.
                 </Typography>
             )}
-            {characteristics &&
-                !!Object.entries(characteristics).length &&
-                Object.entries(characteristics).map(
-                    ([charTitle, description], i) => (
-                        <Box key={i}>
-                            <Typography {...characteristicTitleProps}>
-                                {charTitle}:{" "}
+            {characteristics && !!Object.entries(characteristics).length && (
+                <Box {...descriptionListProps}>
+                    {Object.entries(characteristics).map(
+                        ([charTitle, description], i) => (
+                            <Typography key={i}>
+                                <Typography {...characteristicTitleProps}>
+                                    {charTitle}:{" "}
+                                </Typography>
+                                <Typography {...characteristicTextProps}>
+                                    {description.value}
+                                </Typography>
                             </Typography>
-                            <Typography {...characteristicTextProps}>
-                                {description.value}
-                            </Typography>
-                        </Box>
-                    )
-                )}
+                        )
+                    )}
+                </Box>
+            )}
         </Box>
     );
 };

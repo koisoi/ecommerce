@@ -65,19 +65,6 @@ const ProductPageUpperBox = ({
         marginBottom: "1rem"
     };
 
-    const descriptionAndProductOfferBoxProps: BoxProps = {
-        flexGrow: { xs: 1, xlg: 2 },
-        flexBasis: 0,
-
-        paddingX: "2rem",
-
-        display: "flex",
-        flexDirection: { xs: "column", xlg: "row" },
-        gap: "20px",
-
-        minHeight: "fit-content"
-    };
-
     const descriptionBoxProps: BoxProps = {
         flexGrow: 1,
         flexBasis: 0,
@@ -151,7 +138,6 @@ const ProductPageUpperBox = ({
                     title={cartItem.title}
                 />
             </Box>
-            {/* <Box {...descriptionAndProductOfferBoxProps}> */}
             <Box {...descriptionBoxProps}>
                 <Typography {...articulTextProps}>
                     Артикул: {cartItem.articul}
@@ -164,7 +150,6 @@ const ProductPageUpperBox = ({
                 <InstantBuyButton {...buyButtonsProps} item={categoryItem} />
                 <ShoppingCartButton {...buyButtonsProps} />
             </Paper>
-            {/* </Box> */}
         </Box>
     );
 };
