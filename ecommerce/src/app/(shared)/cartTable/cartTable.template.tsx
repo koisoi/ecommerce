@@ -60,8 +60,7 @@ const CartTableTemplate = ({
 
     let columnsTotal = 5;
     if (displayOnly) columnsTotal--;
-    if (!screen.md) columnsTotal--;
-    if (!screen.sm) columnsTotal--;
+    if (!screen.sm) columnsTotal -= 2;
 
     const footerProps: TableCellProps = {
         colSpan: columnsTotal
@@ -72,7 +71,9 @@ const CartTableTemplate = ({
         padding: "0.5rem",
         justifyContent: displayOnly ? "flex-end" : "space-between",
         alignItems: "center",
-        width: "100%"
+        width: "100%",
+
+        fontSize: "1rem"
     };
 
     const footerTextProps: TypographyProps = {
@@ -80,9 +81,9 @@ const CartTableTemplate = ({
 
         display: "inline-flex",
         alignItems: "center",
-        gap: "10px",
+        gap: "1rem",
 
-        paddingRight: "8px"
+        paddingRight: "0.5rem"
     };
 
     const footerPriceProps: TypographyProps = {
@@ -147,8 +148,12 @@ const CartTableTemplate = ({
 
             <Table {...wrapperProps}>
                 <colgroup>
-                    {screen.md && <col width={100} />}
-                    {screen.sm && <col />}
+                    {screen.sm && (
+                        <>
+                            <col width={100} />
+                            <col />
+                        </>
+                    )}
                     <col width={screen.sm ? 140 : 90} />
                     <col width={screen.md ? 200 : screen.sm ? 170 : 130} />
                     {!displayOnly && <col width={screen.sm ? 50 : 40} />}

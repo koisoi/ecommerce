@@ -126,17 +126,17 @@ const CartItemTemplate = ({
                         onDialogClose={onDeleteWarningClose}
                     />
                 )}
-                {screen.md && (
-                    <TableCell {...tableCellProps}>
-                        <CartImg {...imgProps} />
-                    </TableCell>
-                )}
                 {screen.sm && (
-                    <TableCell {...tableCellProps}>
-                        <ProductLink url={item.url} props={titleProps}>
-                            {item.title}
-                        </ProductLink>
-                    </TableCell>
+                    <>
+                        <TableCell {...tableCellProps}>
+                            <CartImg {...imgProps} />
+                        </TableCell>
+                        <TableCell {...tableCellProps}>
+                            <ProductLink url={item.url} props={titleProps}>
+                                {item.title}
+                            </ProductLink>
+                        </TableCell>
+                    </>
                 )}
                 <TableCell {...tableCellProps}>
                     <Price price={item.price} props={priceProps} />
