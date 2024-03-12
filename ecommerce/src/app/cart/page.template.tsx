@@ -24,18 +24,16 @@ const CartTemplate = ({
 }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
-        flexDirection: { xs: "column", lg: "row" },
-        gap: "20px"
+        flexDirection: { xs: "column", xlg: "row" },
+        gap: "2rem"
     };
 
     const leftBoxProps: BoxProps = {
-        // width: "100%",
         flexGrow: 1,
-        maxWidth: "900px"
     };
 
     const rightBoxProps: BoxProps = {
-        flexGrow: 1
+        minWidth: { xs: "370px" }
     };
 
     if (loading) return <Loading>Отправка заказа...</Loading>;

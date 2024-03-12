@@ -5,10 +5,8 @@ export type CartImgProps = { alt: string; src: string };
 
 const CartImg = ({ alt, src }: CartImgProps) => {
     const imgBoxProps: BoxProps = {
-        width: { xs: "120px", md: "75px" },
-        // height: { xs: "120px", md: "75px" },
-        minWidth: "75px",
-        height: { xs: "120px", md: "75px" }
+        width: "75px",
+        height: "75px",
     };
 
     const imgStyle: CSSProperties = {
