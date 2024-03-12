@@ -36,13 +36,12 @@ const OrderFormTemplate = ({
         ...(!compact && {
             border: "1px solid",
             borderColor: "divider",
-            padding: "2rem",
-            paddingTop: "1rem"
+            padding: "1rem"
         }),
 
         display: "flex",
         flexDirection: "column",
-        gap: "20px",
+        gap: "1rem",
 
         ...props
     };
@@ -50,7 +49,7 @@ const OrderFormTemplate = ({
     const contactsBox: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "10px",
+        gap: "1rem",
         width: "100%"
     };
 

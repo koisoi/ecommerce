@@ -90,13 +90,13 @@ const CartItemTemplate = ({
         colSpan: columnsTotal,
         sx: {
             borderBottom: 0,
-            paddingTop: "2rem !important"
+            paddingTop: "1rem !important"
         }
     };
 
     const tableCellProps: TableCellProps = {
         sx: {
-            paddingBottom: "2rem !important"
+            paddingBottom: { xs: "1rem !important", sm: "0.5rem !important" }
         }
     };
 

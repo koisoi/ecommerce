@@ -25,8 +25,11 @@ const ThanksForOrderPageTemplate = ({
     };
 
     const leftBoxProps: BoxProps = {
-        // width: "100%",
         flexGrow: 1
+    };
+
+    const rightBoxProps: BoxProps = {
+        minWidth: { xs: "100%", sm: "370px" }
     };
 
     const orderFormProps: CompletedOrderFormProps = {
@@ -52,7 +55,9 @@ const ThanksForOrderPageTemplate = ({
                 <Box {...leftBoxProps}>
                     <CartTableTemplate {...cartTableProps} />
                 </Box>
-                <CompletedOrderFormTemplate {...orderFormProps} />
+                <Box {...rightBoxProps}>
+                    <CompletedOrderFormTemplate {...orderFormProps} />
+                </Box>
             </Box>
         </>
     );
