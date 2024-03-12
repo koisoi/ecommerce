@@ -73,19 +73,18 @@ const CartTableTemplate = ({
     // };
 
     const footerProps: TableCellProps = {
-        // ...headerProps,
-        sx: {
-            padding: "2rem",
-            justifyContent: displayOnly ? "flex-end" : "space-between",
-            alignItems: "center",
-            width: "100%"
-        }
+        colSpan: displayOnly ? 4 : 5
+    };
+
+    const footerWrapperProps: BoxProps = {
+        display: "flex",
+        padding: "2rem",
+        justifyContent: displayOnly ? "flex-end" : "space-between",
+        alignItems: "center",
+        width: "100%"
     };
 
     const footerTextProps: TypographyProps = {
-        sx: {
-            columnSpan: displayOnly ? 5 : 4
-        },
         color: "text.disabled",
 
         display: "inline-flex",
@@ -179,41 +178,39 @@ const CartTableTemplate = ({
                             key={item.alias}
                             item={item}
                             displayOnly={displayOnly}
-                        >
-                            {/* {!screen.md && i !== array.length - 1 && (
-                                <Divider key={item.alias} flexItem />
-                            )} */}
-                        </CartItemComponent>
+                        ></CartItemComponent>
                     ))}
                 </TableBody>
                 <TableFooter>
                     <TableRow>
                         <TableCell {...footerProps}>
-                            {!displayOnly && (
-                                <Button {...clearButtonProps}>
-                                    <Delete />{" "}
-                                    {screen.xsm && "Очистить корзину"}
-                                </Button>
-                            )}
-                            {!full && !displayOnly && (
-                                <Button {...orderButtonProps}>
-                                    Оформить заказ
-                                </Button>
-                            )}
-                            <Typography {...footerTextProps}>
-                                Итого:
-                                <Price
-                                    price={totalPrice}
-                                    variant={
-                                        screen.sm
-                                            ? full
-                                                ? "large"
+                            <Box {...footerWrapperProps}>
+                                {!displayOnly && (
+                                    <Button {...clearButtonProps}>
+                                        <Delete />{" "}
+                                        {screen.xsm && "Очистить корзину"}
+                                    </Button>
+                                )}
+                                {!full && !displayOnly && (
+                                    <Button {...orderButtonProps}>
+                                        Оформить заказ
+                                    </Button>
+                                )}
+                                <Typography {...footerTextProps}>
+                                    Итого:
+                                    <Price
+                                        price={totalPrice}
+                                        variant={
+                                            screen.sm
+                                                ? full
+                                                    ? "large"
+                                                    : "medium"
                                                 : "medium"
-                                            : "medium"
-                                    }
-                                    props={footerPriceProps}
-                                />
-                            </Typography>
+                                        }
+                                        props={footerPriceProps}
+                                    />
+                                </Typography>
+                            </Box>
                         </TableCell>
                     </TableRow>
                 </TableFooter>

@@ -1,4 +1,3 @@
-import Title from "@/app/(shared)/text/title.template";
 import ImgModal from "./imgModal";
 import {
     CategoryItem,
@@ -32,7 +31,6 @@ const ProductPage = async ({
     category: string;
     series?: string;
     searchParams: { page?: number; tab?: ProductPageTabType };
-    breadcrumbs: Breadcrumb[];
 }) => {
     let productMainInfo: MainProductInfo | null = null;
     let productShortCharacteristics: ProductCharacteristic | null = null;
@@ -70,70 +68,64 @@ const ProductPage = async ({
             title: productMainInfo.category.title
         }
     ];
+
     if (productMainInfo.series)
         breadcrumbs.push({
             link: `/catalog/${productMainInfo.category.path}/${productMainInfo.series.alias}`,
             title: productMainInfo.series.title
         });
-    // console.log(breadcrumbs);
 
     return (
         <>
             <AppBreadcrumbs linksArray={breadcrumbs} lastLink />
             <ImgModal title={productMainInfo?.title || ""} />
 
-            <PageTitle key={0} noDivider>
-                {productMainInfo?.title || ""}
-            </PageTitle>
+            <PageTitle noDivider>{productMainInfo?.title || ""}</PageTitle>
             <SectionContainer>
-                {[
-                    <ProductPageUpperBox
-                        key={1}
-                        imageLinks={
-                            productMainInfo.images.map((el) => ({
-                                id: el.id,
-                                url: getProductImageLink(el.url)
-                            })) || []
-                        }
-                        stock={productMainInfo.is_available || false}
-                        characteristics={productShortCharacteristics}
-                        cartItem={{
-                            url: getProductLink(category, product),
-                            alias: product,
-                            title: productMainInfo.title,
-                            imgLink: getProductImageLink(
-                                productMainInfo.images[0].url
-                            ),
-                            price: productMainInfo.price,
-                            amount: 1,
-                            articul: productMainInfo.articul
-                        }}
-                        categoryItem={{
-                            id: productMainInfo.id,
-                            articul: productMainInfo.articul,
-                            images: productMainInfo.images,
-                            title: productMainInfo.title,
-                            price: productMainInfo.price,
-                            alias: productMainInfo.alias,
-                            is_new: productMainInfo.is_new,
-                            is_recommend: productMainInfo.is_recommend,
-                            category: productMainInfo.category
-                        }}
-                    />,
-                    <ProductPageLowerBox
-                        key={2}
-                        searchParams={searchParams}
-                        simliarProducts={productSiblings}
-                        fullCharasterictics={productFullCharacteristics}
-                        description={productMainInfo.text}
-                        feedback={productReviews}
-                        complectation={productMainInfo.complectation}
-                        product={product}
-                        series={series}
-                        category={category}
-                    />,
-                    <OurAdvantages key={3} />
-                ]}
+                <ProductPageUpperBox
+                    imageLinks={
+                        productMainInfo.images.map((el) => ({
+                            id: el.id,
+                            url: getProductImageLink(el.url)
+                        })) || []
+                    }
+                    stock={productMainInfo.is_available || false}
+                    characteristics={productShortCharacteristics}
+                    cartItem={{
+                        url: getProductLink(category, product),
+                        alias: product,
+                        title: productMainInfo.title,
+                        imgLink: getProductImageLink(
+                            productMainInfo.images[0].url
+                        ),
+                        price: productMainInfo.price,
+                        amount: 1,
+                        articul: productMainInfo.articul
+                    }}
+                    categoryItem={{
+                        id: productMainInfo.id,
+                        articul: productMainInfo.articul,
+                        images: productMainInfo.images,
+                        title: productMainInfo.title,
+                        price: productMainInfo.price,
+                        alias: productMainInfo.alias,
+                        is_new: productMainInfo.is_new,
+                        is_recommend: productMainInfo.is_recommend,
+                        category: productMainInfo.category
+                    }}
+                />
+                <ProductPageLowerBox
+                    searchParams={searchParams}
+                    simliarProducts={productSiblings}
+                    fullCharasterictics={productFullCharacteristics}
+                    description={productMainInfo.text}
+                    feedback={productReviews}
+                    complectation={productMainInfo.complectation}
+                    product={product}
+                    series={series}
+                    category={category}
+                />
+                <OurAdvantages />
             </SectionContainer>
         </>
     );

@@ -1,19 +1,16 @@
 import CategoryTemplate from "./page.template";
-import CategoriesMenuTemplate from "./categoriesMenu.template";
 import {
     CategoryInfo,
     ProductPageTabType,
     SeriesInfo,
     catalogPageBreadcrumb,
     categoryAPI,
-    homePageBreadcrumbs,
     productAPI
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
-import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
 import { Metadata } from "next";
 import { landingConfig } from "@/lib/data/config";
 import CatalogPage from "./catalog.template";
@@ -86,6 +83,16 @@ const Category = async ({
 }) => {
     if (!params.slug) return <CatalogPage />;
 
+    if (params.slug[1] && params.slug[1].includes(".html")) {
+        return (
+            <ProductPage
+                category={params.slug[0]}
+                product={params.slug[1]}
+                searchParams={searchParams}
+            />
+        );
+    }
+
     let category: CategoryInfo | null = null;
     let siblings: SeriesInfo[] = [];
 
@@ -121,17 +128,6 @@ const Category = async ({
             link: `/catalog/${params.slug[0]}/${params.slug[1]}`,
             title: category?.title || ""
         });
-
-    if (params.slug[1] && params.slug[1].includes(".html")) {
-        return (
-            <ProductPage
-                category={params.slug[0]}
-                product={params.slug[1]}
-                searchParams={searchParams}
-                breadcrumbs={breadcrumbs}
-            />
-        );
-    }
 
     if (!category) return notFound();
 

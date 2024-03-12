@@ -126,63 +126,57 @@ const ProductPageLowerBox = ({
             />
             <Box {...innerWrapperProps} key={1}>
                 <SectionContainer>
-                    {[
+                    <>
+                        {currentTab === "allCharasteristics" && (
+                            <AllCharacteristicsBox
+                                fullCharacteristics={fullCharasterictics}
+                            />
+                        )}
+                        {currentTab === "description" && (
+                            <>
+                                {!description && (
+                                    <Typography {...noTextProps}>
+                                        У данного товара нет описания.
+                                    </Typography>
+                                )}
+                                {!!description && (
+                                    <Box {...descriptionBoxProps} />
+                                )}
+                            </>
+                        )}
+                        {currentTab === "complectation" && (
+                            <>
+                                {!complectation && (
+                                    <Typography {...noTextProps}>
+                                        Для данного товара не указана
+                                        комплектация.
+                                    </Typography>
+                                )}
+                                {complectation && (
+                                    <Box {...complectationBoxProps} />
+                                )}
+                            </>
+                        )}
+                        {currentTab === "feedback" && (
+                            <>
+                                {!feedback ||
+                                    (!feedback.length && (
+                                        <Typography {...noTextProps}>
+                                            У данного товара нет отзывов.
+                                        </Typography>
+                                    ))}
+                                {feedback && !!feedback.length && (
+                                    <FeedbackBoxTemplate feedback={feedback} />
+                                )}
+                            </>
+                        )}
+                    </>
+                    {simliarProducts && !!simliarProducts.length && (
                         <>
-                            {currentTab === "allCharasteristics" && (
-                                <AllCharacteristicsBox
-                                    fullCharacteristics={fullCharasterictics}
-                                />
-                            )}
-                            {currentTab === "description" && (
-                                <>
-                                    {!description && (
-                                        <Typography {...noTextProps}>
-                                            У данного товара нет описания.
-                                        </Typography>
-                                    )}
-                                    {!!description && (
-                                        <Box {...descriptionBoxProps} />
-                                    )}
-                                </>
-                            )}
-                            {currentTab === "complectation" && (
-                                <>
-                                    {!complectation && (
-                                        <Typography {...noTextProps}>
-                                            Для данного товара не указана
-                                            комплектация.
-                                        </Typography>
-                                    )}
-                                    {complectation && (
-                                        <Box {...complectationBoxProps} />
-                                    )}
-                                </>
-                            )}
-                            {currentTab === "feedback" && (
-                                <>
-                                    {!feedback ||
-                                        (!feedback.length && (
-                                            <Typography {...noTextProps}>
-                                                У данного товара нет отзывов.
-                                            </Typography>
-                                        ))}
-                                    {feedback && !!feedback.length && (
-                                        <FeedbackBoxTemplate
-                                            feedback={feedback}
-                                        />
-                                    )}
-                                </>
-                            )}
-                            {simliarProducts && !!simliarProducts.length && (
-                                <>
-                                    <Title>Похожие товары</Title>
-                                    <SimliarProductsSlider
-                                        products={simliarProducts}
-                                    />
-                                </>
-                            )}
+                            <Title>Похожие товары</Title>
+                            <SimliarProductsSlider products={simliarProducts} />
                         </>
-                    ]}
+                    )}
                 </SectionContainer>
             </Box>
         </Box>

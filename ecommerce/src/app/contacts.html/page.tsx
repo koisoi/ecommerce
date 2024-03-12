@@ -51,328 +51,291 @@ const ContactsTemplate = () => {
             <AppBreadcrumbs linksArray={contactsBreadcrumbs} />
             <PageTitle>Контактная информация</PageTitle>
             <SectionContainer>
-                {[
-                    <SectionContainer level={1} key={0}>
-                        {[
-                            <AttentionText key={0}>
-                                Бесплатный звонок по России:{" "}
-                                <AppLink
-                                    href="tel:88007078195"
-                                    props={phoneLinksProps}
-                                >
-                                    8 (800) 707-81-95
-                                </AppLink>
-                            </AttentionText>,
+                <SectionContainer level={1}>
+                    <AttentionText>
+                        Бесплатный звонок по России:{" "}
+                        <AppLink href="tel:88007078195" props={phoneLinksProps}>
+                            8 (800) 707-81-95
+                        </AppLink>
+                    </AttentionText>
 
-                            <Table key={1}>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Пункт выдачи
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Номер телефона
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell {...upMdTableCellProps}>
-                                            <TableTitle>
-                                                График работы
-                                            </TableTitle>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableHead>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>Пункт выдачи</TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <TableTitle>Номер телефона</TableTitle>
+                                </TableCell>
+                                <TableCell {...upMdTableCellProps}>
+                                    <TableTitle>График работы</TableTitle>
+                                </TableCell>
+                            </TableRow>
+                        </TableHead>
 
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell>
-                                            <Paragraph>
-                                                107113, Москва, ул.
-                                                Сокольническая Слободка, д. 10{" "}
-                                                <MetroStation>
-                                                    Сокольники
-                                                </MetroStation>{" "}
-                                                (вход с торца дома со стороны
-                                                Сокольнического переулка)
-                                            </Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <AppLink
-                                                href="tel:+74951510900"
-                                                props={phoneLinksProps}
-                                            >
-                                                +7 (495) 151-09-00
-                                            </AppLink>
-                                        </TableCell>
-                                        <TableCell
-                                            {...upMdTableCellProps}
-                                            rowSpan={3}
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>
+                                        107113, Москва, ул. Сокольническая
+                                        Слободка, д. 10{" "}
+                                        <MetroStation>Сокольники</MetroStation>{" "}
+                                        (вход с торца дома со стороны
+                                        Сокольнического переулка)
+                                    </Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <AppLink
+                                        href="tel:+74951510900"
+                                        props={phoneLinksProps}
+                                    >
+                                        +7 (495) 151-09-00
+                                    </AppLink>
+                                </TableCell>
+                                <TableCell {...upMdTableCellProps} rowSpan={3}>
+                                    <Paragraph>
+                                        пн-пт:{" "}
+                                        <AttentionText inline>
+                                            10:00 - 19:00
+                                        </AttentionText>
+                                    </Paragraph>
+                                    <Paragraph>
+                                        сб:{" "}
+                                        <AttentionText inline>
+                                            10:00 - 17:00
+                                        </AttentionText>
+                                    </Paragraph>
+                                    <Paragraph>
+                                        вс:{" "}
+                                        <AttentionText inline>
+                                            выходной
+                                        </AttentionText>
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>
+                                        603146, Нижний Новгород, ул. Саврасова,
+                                        д. 32
+                                    </Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <AppLink
+                                        href="tel:+78312156667"
+                                        props={phoneLinksProps}
+                                    >
+                                        +7 (831) 215-66-67
+                                    </AppLink>
+                                </TableCell>
+                            </TableRow>
+
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>
+                                        196084, Санкт-Петербург, ул. Заозерная,
+                                        д. 3к2{" "}
+                                        <MetroStation>Фрунзенская</MetroStation>
+                                    </Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <AppLink
+                                        href="+78125011013"
+                                        props={phoneLinksProps}
+                                    >
+                                        +7 (812) 501-10-13
+                                    </AppLink>
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>Сервисный центр</TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <TableTitle>Номер телефона</TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <TableTitle>График работы</TableTitle>
+                                </TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>
+                                    <Paragraph>
+                                        Москва, ул. Сокольническая Слободка, д.
+                                        10{" "}
+                                        <MetroStation>Сокольники</MetroStation>
+                                        (вход с торца дома со стороны
+                                        Сокольнического переулка)
+                                    </Paragraph>
+                                </TableCell>
+                                <TableCell>
+                                    <AppLink
+                                        href="tel:+74950858075"
+                                        props={phoneLinksProps}
+                                    >
+                                        +7 (495) 085-80-75
+                                    </AppLink>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        пн-пт:{" "}
+                                        <AttentionText inline>
+                                            10:00 - 18:00
+                                        </AttentionText>
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+
+                    <Table>
+                        <TableBody>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>
+                                        Отдел розничных продаж
+                                    </TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <AppLink
+                                            href="mailto:sales@telescope1.ru"
+                                            props={mailLinkProps}
                                         >
-                                            <Paragraph>
-                                                пн-пт:{" "}
-                                                <AttentionText inline>
-                                                    10:00 - 19:00
-                                                </AttentionText>
-                                            </Paragraph>
-                                            <Paragraph>
-                                                сб:{" "}
-                                                <AttentionText inline>
-                                                    10:00 - 17:00
-                                                </AttentionText>
-                                            </Paragraph>
-                                            <Paragraph>
-                                                вс:{" "}
-                                                <AttentionText inline>
-                                                    выходной
-                                                </AttentionText>
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
+                                            sales@telescope1.ru
+                                        </AppLink>{" "}
+                                        (продажи физическим лицам)
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>
+                                        Отдел корпоративных и оптовых продаж
+                                    </TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <AppLink
+                                            href="mailto:corp@telescope1.ru"
+                                            props={mailLinkProps}
+                                        >
+                                            corp@telescope1.ru
+                                        </AppLink>{" "}
+                                        (продажи юр. лицам, получение счета
+                                        возможно через корзину)
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>
+                                        Отдел клиентского сервиса
+                                    </TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <AppLink
+                                            href="mailto:service@telescope1.ru"
+                                            props={mailLinkProps}
+                                        >
+                                            service@telescope1.ru
+                                        </AppLink>{" "}
+                                        (по вопросам гарантийного обслуживания,
+                                        ремонта и возврата товара)
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>Отдел закупок</TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <AppLink
+                                            href="mailto:pur@telescope1.ru"
+                                            props={mailLinkProps}
+                                        >
+                                            pur@telescope1.ru
+                                        </AppLink>{" "}
+                                        (по вопросам предложений дилерства и
+                                        дистрибуции)
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                            <TableRow>
+                                <TableCell>
+                                    <TableTitle>Отдел маркетинга</TableTitle>
+                                </TableCell>
+                                <TableCell>
+                                    <Paragraph>
+                                        <AppLink
+                                            href="mailto:marketing@telescope1.ru"
+                                            props={mailLinkProps}
+                                        >
+                                            marketing@telescope1.ru
+                                        </AppLink>{" "}
+                                        (по вопросам рекламы и сотрудничества)
+                                    </Paragraph>
+                                </TableCell>
+                            </TableRow>
+                        </TableBody>
+                    </Table>
+                </SectionContainer>
 
-                                    <TableRow>
-                                        <TableCell>
-                                            <Paragraph>
-                                                603146, Нижний Новгород, ул.
-                                                Саврасова, д. 32
-                                            </Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <AppLink
-                                                href="tel:+78312156667"
-                                                props={phoneLinksProps}
-                                            >
-                                                +7 (831) 215-66-67
-                                            </AppLink>
-                                        </TableCell>
-                                    </TableRow>
+                <>
+                    <Title>
+                        Схема проезда в пункт выдачи Telescope1.ru в Москве
+                    </Title>
+                    <ImageSwitcher
+                        mapElement={contactsData.moscowMap}
+                        imageLinks={contactsData.moscowImageLinks}
+                        alt="Магазин в Москве"
+                    />
+                </>
 
-                                    <TableRow>
-                                        <TableCell>
-                                            <Paragraph>
-                                                196084, Санкт-Петербург, ул.
-                                                Заозерная, д. 3к2{" "}
-                                                <MetroStation>
-                                                    Фрунзенская
-                                                </MetroStation>
-                                            </Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <AppLink
-                                                href="+78125011013"
-                                                props={phoneLinksProps}
-                                            >
-                                                +7 (812) 501-10-13
-                                            </AppLink>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>,
+                <>
+                    <Title>
+                        Схема проезда в пункт выдачи Telescope1.ru в
+                        Санкт-Петербурге
+                    </Title>
+                    <ImageSwitcher
+                        mapElement={contactsData.spbMap}
+                        imageLinks={contactsData.spbImageLinks}
+                        alt="Магазин в Санкт-Петербурге"
+                    />
+                </>
 
-                            <Table key={2}>
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Сервисный центр
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Номер телефона
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <TableTitle>
-                                                График работы
-                                            </TableTitle>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell>
-                                            <Paragraph>
-                                                Москва, ул. Сокольническая
-                                                Слободка, д. 10{" "}
-                                                <MetroStation>
-                                                    Сокольники
-                                                </MetroStation>
-                                                (вход с торца дома со стороны
-                                                Сокольнического переулка)
-                                            </Paragraph>
-                                        </TableCell>
-                                        <TableCell>
-                                            <AppLink
-                                                href="tel:+74950858075"
-                                                props={phoneLinksProps}
-                                            >
-                                                +7 (495) 085-80-75
-                                            </AppLink>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>
-                                                пн-пт:{" "}
-                                                <AttentionText inline>
-                                                    10:00 - 18:00
-                                                </AttentionText>
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>,
+                <>
+                    <Title>
+                        Схема проезда в пункт выдачи Telescope1.ru в Нижнем
+                        Новгороде
+                    </Title>
+                    <ImageSwitcher
+                        mapElement={contactsData.nnMap}
+                        imageLinks={contactsData.nnImageLinks}
+                        alt="Магазин в Нижнем Новгороде"
+                    />
+                </>
 
-                            <Table key={3}>
-                                <TableBody>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Отдел розничных продаж
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>
-                                                <AppLink
-                                                    href="mailto:sales@telescope1.ru"
-                                                    props={mailLinkProps}
-                                                >
-                                                    sales@telescope1.ru
-                                                </AppLink>{" "}
-                                                (продажи физическим лицам)
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Отдел корпоративных и оптовых
-                                                продаж
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>
-                                                <AppLink
-                                                    href="mailto:corp@telescope1.ru"
-                                                    props={mailLinkProps}
-                                                >
-                                                    corp@telescope1.ru
-                                                </AppLink>{" "}
-                                                (продажи юр. лицам, получение
-                                                счета возможно через корзину)
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Отдел клиентского сервиса
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>
-                                                <AppLink
-                                                    href="mailto:service@telescope1.ru"
-                                                    props={mailLinkProps}
-                                                >
-                                                    service@telescope1.ru
-                                                </AppLink>{" "}
-                                                (по вопросам гарантийного
-                                                обслуживания, ремонта и возврата
-                                                товара)
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Отдел закупок
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>
-                                                <AppLink
-                                                    href="mailto:pur@telescope1.ru"
-                                                    props={mailLinkProps}
-                                                >
-                                                    pur@telescope1.ru
-                                                </AppLink>{" "}
-                                                (по вопросам предложений
-                                                дилерства и дистрибуции)
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                    <TableRow>
-                                        <TableCell>
-                                            <TableTitle>
-                                                Отдел маркетинга
-                                            </TableTitle>
-                                        </TableCell>
-                                        <TableCell>
-                                            <Paragraph>
-                                                <AppLink
-                                                    href="mailto:marketing@telescope1.ru"
-                                                    props={mailLinkProps}
-                                                >
-                                                    marketing@telescope1.ru
-                                                </AppLink>{" "}
-                                                (по вопросам рекламы и
-                                                сотрудничества)
-                                            </Paragraph>
-                                        </TableCell>
-                                    </TableRow>
-                                </TableBody>
-                            </Table>
-                        ]}
-                    </SectionContainer>,
-
-                    <>
-                        <Title>
-                            Схема проезда в пункт выдачи Telescope1.ru в Москве
-                        </Title>
-                        <ImageSwitcher
-                            mapElement={contactsData.moscowMap}
-                            imageLinks={contactsData.moscowImageLinks}
-                            alt="Магазин в Москве"
-                        />
-                    </>,
-
-                    <>
-                        <Title>
-                            Схема проезда в пункт выдачи Telescope1.ru в
-                            Санкт-Петербурге
-                        </Title>
-                        <ImageSwitcher
-                            mapElement={contactsData.spbMap}
-                            imageLinks={contactsData.spbImageLinks}
-                            alt="Магазин в Санкт-Петербурге"
-                        />
-                    </>,
-
-                    <>
-                        <Title key={0}>
-                            Схема проезда в пункт выдачи Telescope1.ru в Нижнем
-                            Новгороде
-                        </Title>
-                        <ImageSwitcher
-                            key={1}
-                            mapElement={contactsData.nnMap}
-                            imageLinks={contactsData.nnImageLinks}
-                            alt="Магазин в Нижнем Новгороде"
-                        />
-                    </>,
-
-                    <>
-                        <Title>Юридическая информация</Title>
-                        <Paragraph>ООО «1.ПРО»</Paragraph>
-                        <Paragraph>ОГРН: 1135260010159</Paragraph>
-                        <Paragraph>
-                            Юридический адрес: 603146, Российская Федерация,
-                            Нижний Новгород, ул. Саврасова, д. 32, литер Б,
-                            помещение 5
-                        </Paragraph>
-                    </>
-                ]}
+                <>
+                    <Title>Юридическая информация</Title>
+                    <Paragraph>ООО «1.ПРО»</Paragraph>
+                    <Paragraph>ОГРН: 1135260010159</Paragraph>
+                    <Paragraph>
+                        Юридический адрес: 603146, Российская Федерация, Нижний
+                        Новгород, ул. Саврасова, д. 32, литер Б, помещение 5
+                    </Paragraph>
+                </>
             </SectionContainer>
         </>
     );

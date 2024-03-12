@@ -30,6 +30,11 @@ const CartTemplate = ({
 
     const leftBoxProps: BoxProps = {
         // width: "100%",
+        flexGrow: 1,
+        maxWidth: "900px"
+    };
+
+    const rightBoxProps: BoxProps = {
         flexGrow: 1
     };
 
@@ -44,11 +49,13 @@ const CartTemplate = ({
                     <CartTable full />
                 </Box>
                 {hasItems && (
-                    <OrderFormTemplate
-                        form={form}
-                        rules={rules}
-                        onSubmit={onSubmit}
-                    />
+                    <Box {...rightBoxProps}>
+                        <OrderFormTemplate
+                            form={form}
+                            rules={rules}
+                            onSubmit={onSubmit}
+                        />
+                    </Box>
                 )}
             </Box>
         </>

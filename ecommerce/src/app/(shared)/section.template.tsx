@@ -1,11 +1,11 @@
 import { Box, BoxProps } from "@mui/material";
-import { ReactNode } from "react";
+import React, { ReactNode } from "react";
 
 const SectionContainer = ({
     children,
     level = 0
 }: {
-    children?: ReactNode[];
+    children?: ReactNode;
     level?: number;
 }) => {
     let wrapperProps: BoxProps = {
@@ -33,7 +33,12 @@ const SectionContainer = ({
 
     return (
         <Box {...wrapperProps}>
-            {children?.map((el, i) => (
+            {/* {children?.map((el, i) => (
+                <Box key={i} {...sectionProps}>
+                    {el}
+                </Box>
+            ))} */}
+            {React.Children.map(children, (el, i) => (
                 <Box key={i} {...sectionProps}>
                     {el}
                 </Box>

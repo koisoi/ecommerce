@@ -31,15 +31,13 @@ const Home = async () => {
 
     return (
         <SectionContainer>
-            {[
-                <MainPageCarousel key={0} />,
-                <CategoriesMenuTemplate key={1} />,
-                <>
-                    <Title>Популярные товары</Title>
-                    <SimliarProductsSlider products={popularProducts} />
-                </>,
-                <OurAdvantages key={3} />
-            ]}
+            <MainPageCarousel />
+            <CategoriesMenuTemplate />
+            <>
+                <Title>Популярные товары</Title>
+                <SimliarProductsSlider products={popularProducts} />
+            </>
+            <OurAdvantages />
         </SectionContainer>
     );
 };
