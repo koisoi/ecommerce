@@ -1,5 +1,6 @@
 import { ProductCharacteristic } from "@/lib";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import { Fragment } from "react";
 
 const CharacteristicsBox = ({
     characteristics
@@ -43,14 +44,17 @@ const CharacteristicsBox = ({
                 <Box {...descriptionListProps}>
                     {Object.entries(characteristics).map(
                         ([charTitle, description], i) => (
-                            <Typography key={i}>
+                            // <Typography key={i}>
+                            <Fragment key={i}>
                                 <Typography {...characteristicTitleProps}>
                                     {charTitle}:{" "}
                                 </Typography>
                                 <Typography {...characteristicTextProps}>
                                     {description.value}
                                 </Typography>
-                            </Typography>
+                                <br />
+                            </Fragment>
+                            // </Typography>
                         )
                     )}
                 </Box>

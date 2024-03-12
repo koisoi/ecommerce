@@ -59,6 +59,7 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
 
     const tabProps: TabProps = {
         disableRipple: true,
+        component: "div",
 
         sx: {
             textTransform: "none",

@@ -1,23 +1,17 @@
 "use client";
 
-import {
-    setOpenedImgLink,
-    useAppDispatch,
-    useMediaQueries,
-    useThemeColors
-} from "@/lib";
+import ImageGallery, { ImageGalleryProps } from "@/app/(shared)/imageGallery";
+import { setOpenedImgLink, useAppDispatch, useMediaQueries } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
 import {
     CSSProperties,
     DragEventHandler,
     MouseEventHandler,
+    SyntheticEvent,
     useState
 } from "react";
 import Carousel from "react-material-ui-carousel";
-import {
-    CarouselNavProps,
-    CarouselProps
-} from "react-material-ui-carousel/dist/components/types";
+import { CarouselProps } from "react-material-ui-carousel/dist/components/types";
 
 const ImagesCarousel = ({
     imageLinks,
@@ -26,11 +20,12 @@ const ImagesCarousel = ({
     imageLinks: { url: string; id: number }[];
     title: string;
 }) => {
-    const colors = useThemeColors();
+    // const colors = useThemeColors();
     const screen = useMediaQueries();
     const dispatch = useAppDispatch();
 
     const [canOpenImg, setCanOpenImg] = useState<boolean>(true);
+    const [selectedImg, setSelectedImg] = useState<number>(0);
 
     imageLinks = imageLinks.map((el) => ({
         ...el,
@@ -57,80 +52,50 @@ const ImagesCarousel = ({
         setTimeout(() => setCanOpenImg(true), 300);
     };
 
-    const carouselIndicatorButtonProps: CarouselNavProps = {
-        style: {
-            borderRadius: "3px",
-            border: "1px solid",
-            borderColor: colors.divider,
-            margin: "5px"
-        }
+    const handleImgTabChange: (
+        event: SyntheticEvent<Element, Event>,
+        value: any
+    ) => void = (_, val) => {
+        setSelectedImg(val);
     };
 
-    const carouselActiveIndicatorButtonProps: CarouselNavProps = {
-        style: {
-            borderColor: colors.primary
-        }
+    const handleCarouselChange: (
+        now?: number | undefined,
+        previous?: number | undefined
+    ) => any = (now) => {
+        if (now === undefined) return;
+        setSelectedImg(now);
     };
 
-    const carouselIndicatorBoxProps: BoxProps = {
-        width: "75px",
-        height: "75px",
-
+    const wrapperProps: BoxProps = {
         display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
+        alignItems: "stretch",
 
-        overflow: "hidden",
-        borderRadius: "3px",
-
-        zIndex: 2,
-
-        sx: {
-            backgroundColor: "white",
-            transition: "300ms",
-
-            ":hover": {
-                boxShadow: "0 0 10px 1px " + colors.divider
-            }
-        }
+        gap: "1rem",
+        maxHeight: "450px"
+        // maxHeight: "100%"
     };
 
     const carouselProps: CarouselProps = {
         animation: "slide",
         autoPlay: false,
         swipe: true,
+        changeOnFirstRender: true,
+
+        onChange: handleCarouselChange,
+        index: selectedImg,
 
         sx: {
-            position: "sticky",
-            top: "60px",
-            minHeight: { xs: "300px", sm: "430px" }
+            // width: "100%"
+            height: "100%"
         },
 
-        IndicatorIcon: screen.lg
-            ? imageLinks.map((imageLink, i) => (
-                  <Box key={i} {...carouselIndicatorBoxProps}>
-                      <img src={imageLink.url} width="100%" />
-                  </Box>
-              ))
-            : undefined,
-
-        indicatorIconButtonProps: screen.lg
-            ? carouselIndicatorButtonProps
-            : undefined,
-        activeIndicatorIconButtonProps: screen.lg
-            ? carouselActiveIndicatorButtonProps
-            : undefined,
-        navButtonsWrapperProps: screen.lg
-            ? {
-                  style: {
-                      height: "400px"
-                  }
-              }
-            : undefined
+        IndicatorIcon: screen.lg ? <></> : undefined
     };
 
     const imgBoxProps: BoxProps = {
-        width: "100%",
+        // width: "100%",
+        height: "100%",
         minHeight: { xs: "200px", sm: "400px" },
 
         display: "flex",
@@ -148,22 +113,42 @@ const ImagesCarousel = ({
         style: {
             maxWidth: "100%",
             height: "100%",
-            objectFit: "contain"
-            // pointerEvents: "none"
+            objectFit: "contain",
+            maxHeight: "400px"
         } as CSSProperties,
 
         onDragStart: handleDragStart,
         onDragEnd: handleDragStop
     };
 
+    const imageGalleryProps: ImageGalleryProps = {
+        imageLinks: imageLinks.map((el) => el.url),
+        alt: title,
+        onTabChange: handleImgTabChange,
+        selectedTab: selectedImg
+    };
+
+    const carouselBoxProps: BoxProps = {
+        flexGrow: 1
+    };
+
     return (
-        <Carousel {...carouselProps}>
-            {imageLinks.map((imageLink, i) => (
-                <Box key={i} {...imgBoxProps}>
-                    <img src={imageLink.url} alt={title} {...imgProps} />
-                </Box>
-            ))}
-        </Carousel>
+        <Box {...wrapperProps}>
+            {screen.lg && <ImageGallery {...imageGalleryProps} />}
+            <Box {...carouselBoxProps}>
+                <Carousel {...carouselProps}>
+                    {imageLinks.map((imageLink, i) => (
+                        <Box key={i} {...imgBoxProps}>
+                            <img
+                                src={imageLink.url}
+                                alt={title}
+                                {...imgProps}
+                            />
+                        </Box>
+                    ))}
+                </Carousel>
+            </Box>
+        </Box>
     );
 };
 

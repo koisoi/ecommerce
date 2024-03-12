@@ -1,7 +1,6 @@
-import { Box, BoxProps, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
-import { Map } from "@mui/icons-material";
+import { Box, BoxProps } from "@mui/material";
 import { CSSProperties, SyntheticEvent } from "react";
-import { useMediaQueries } from "@/lib";
+import ImageGallery, { ImageGalleryProps } from "../(shared)/imageGallery";
 
 const ImageSwitcherTemplate = ({
     mapElement,
@@ -20,8 +19,6 @@ const ImageSwitcherTemplate = ({
     wrapperProps?: BoxProps;
     onTabChange: (event: SyntheticEvent<Element, Event>, value: any) => void;
 }) => {
-    const screen = useMediaQueries();
-
     const initialWrapperProps: BoxProps = {
         display: "flex",
         flexDirection: { xs: "column", sm: "row" },
@@ -60,34 +57,13 @@ const ImageSwitcherTemplate = ({
         objectFit: "contain"
     };
 
-    const tabsProps: TabsProps = {
-        orientation: screen.sm ? "vertical" : "horizontal",
-        variant: "scrollable",
-        value: false,
-        onChange: onTabChange
+    const imageGalleryProps: ImageGalleryProps = {
+        onTabChange,
+        mapElement,
+        imageLinks,
+        selectedTab,
+        alt
     };
-
-    const tabProps: TabProps = {
-        sx: {
-            textTransform: "none"
-        }
-    };
-
-    const tabBoxProps = (selected: boolean): BoxProps => ({
-        width: "150px",
-        height: "100px",
-
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-
-        border: "1px solid",
-        borderColor: selected ? "primary.main" : "divider",
-
-        sx: {
-            backgroundColor: "background.default"
-        }
-    });
 
     return (
         <Box {...initialWrapperProps}>
@@ -105,31 +81,7 @@ const ImageSwitcherTemplate = ({
                     </Box>
                 )}
             </Box>
-            <Tabs {...tabsProps}>
-                {!!mapElement && (
-                    <Tab
-                        {...tabProps}
-                        label={
-                            <Box {...tabBoxProps(selectedTab === "map")}>
-                                <Map sx={{ marginRight: "5px" }} /> Карта
-                            </Box>
-                        }
-                        value="map"
-                    />
-                )}
-                {imageLinks.map((image, i) => (
-                    <Tab
-                        {...tabProps}
-                        key={i}
-                        label={
-                            <Box {...tabBoxProps(selectedTab === i)}>
-                                <img alt={alt} src={image} width="100%" />
-                            </Box>
-                        }
-                        value={i}
-                    />
-                ))}
-            </Tabs>
+            <ImageGallery {...imageGalleryProps} />
         </Box>
     );
 };

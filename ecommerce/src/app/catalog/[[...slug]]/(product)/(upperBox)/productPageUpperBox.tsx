@@ -18,12 +18,14 @@ import {
 } from "@/app/(shared)/buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
 import dynamic from "next/dynamic";
+import ProductOfferBox, { ProductOfferBoxProps } from "./productOfferBox";
+import ImagesCarousel from "@/app/catalog/[[...slug]]/(product)/(upperBox)/imagesCarousel";
 
 const DynamicImagesCarousel = dynamic(
     () =>
         import("@/app/catalog/[[...slug]]/(product)/(upperBox)/imagesCarousel"),
     {
-        ssr: false,
+        // ssr: false,
         loading: () => (
             <Box
                 minHeight={{ xs: "230px", sm: "430px" }}
@@ -60,15 +62,11 @@ const ProductPageUpperBox = ({
     };
 
     const carouselBoxProps: BoxProps = {
-        flexGrow: 1,
-        flexBasis: 0,
-        marginBottom: "1rem"
+        flexGrow: 2,
+        flexBasis: 0
     };
 
     const descriptionBoxProps: BoxProps = {
-        flexGrow: 1,
-        flexBasis: 0,
-
         display: "flex",
         flexDirection: "column",
         gap: "20px"
@@ -78,78 +76,56 @@ const ProductPageUpperBox = ({
         color: "text.disabled"
     };
 
-    const productOfferBoxProps: PaperProps = {
-        variant: "outlined",
-
+    const desktopProductOfferBoxProps: PaperProps = {
         sx: {
-            flexGrow: 1,
-            flexBasis: 0,
-            alignSelf: "start",
-
-            display: "flex",
-            flexDirection: "column",
-            gap: "5px",
-            padding: "1rem",
-
-            position: { xs: "static", xlg: "sticky" },
-            top: "60px",
-
-            width: "100%",
-            maxHeight: "fit-content",
-            maxWidth: { xs: "100vw", xsm: "320px" },
-
-            order: { xs: -1, mlg: "unset" }
-
-            // fontFamily: "Main"
+            display: { xs: "none", mlg: "flex" }
         }
     };
 
-    const stockProps: StockIndicatorProps = {
+    const mobileProductOfferBoxProps: PaperProps = {
+        sx: {
+            display: { xs: "flex", mlg: "none" }
+        }
+    };
+
+    const productOfferBoxProps: ProductOfferBoxProps = {
+        categoryItem,
+        cartItem,
         stock
     };
 
-    const priceProps: PriceProps = {
-        price: cartItem.price,
-        autoScaleLarge: true
-    };
-
-    const buyButtonsProps: BuyButtonProps = {
-        props: {
-            disabled: !stock,
-
-            variant: "contained",
-            sx: {
-                padding: "5px"
-            }
-        },
-
-        textProps: {
-            fontSize: "0.95rem"
-        },
-
-        item: cartItem
+    const rightBoxProps: BoxProps = {
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        flexGrow: 1,
+        flexBasis: 0
     };
 
     return (
         <Box {...upperBoxProps}>
+            <ProductOfferBox
+                {...productOfferBoxProps}
+                props={mobileProductOfferBoxProps}
+            />
             <Box {...carouselBoxProps}>
-                <DynamicImagesCarousel
+                <ImagesCarousel
                     imageLinks={imageLinks}
                     title={cartItem.title}
                 />
             </Box>
-            <Box {...descriptionBoxProps}>
-                <Typography {...articulTextProps}>
-                    Артикул: {cartItem.articul}
-                </Typography>
-                <CharacteristicsBox characteristics={characteristics} />
+            <Box {...rightBoxProps}>
+                <Box {...descriptionBoxProps}>
+                    <Typography {...articulTextProps}>
+                        Артикул: {cartItem.articul}
+                    </Typography>
+                    <CharacteristicsBox characteristics={characteristics} />
+                </Box>
+                <ProductOfferBox
+                    {...productOfferBoxProps}
+                    props={desktopProductOfferBoxProps}
+                />
             </Box>
-            <Paper {...productOfferBoxProps}>
-                <StockIndicator {...stockProps} />
-                <Price {...priceProps} />
-                <InstantBuyButton {...buyButtonsProps} item={categoryItem} />
-                <ShoppingCartButton {...buyButtonsProps} />
-            </Paper>
         </Box>
     );
 };
