@@ -4,10 +4,12 @@ import { MouseEventHandler, ReactNode, useState } from "react";
 
 const CartItemComponent = ({
     item,
-    displayOnly
+    displayOnly,
+    columnsTotal
 }: {
     item: CartItemTemplate;
     displayOnly?: boolean;
+    columnsTotal: number;
 }) => {
     const dispatch = useAppDispatch();
     const totalPrice = (Number(item.price) * item.amount).toString();
@@ -46,6 +48,7 @@ const CartItemComponent = ({
             onDelete={handleDelete}
             totalPrice={totalPrice}
             displayOnly={displayOnly}
+            columnsTotal={columnsTotal}
         ></CartItemTemplate>
     );
 };

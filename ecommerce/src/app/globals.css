@@ -1,23 +1,23 @@
 * {
-	margin: 0;
-	padding: 0;
-  font-family: inherit;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: inherit;
+    box-sizing: border-box;
 }
 
 /* html {
   font-family: "Tahoma","Helvetica","Arial",sans-serif
 } */
 
-ul, ol {
-  padding-left: 15px;
+ul,
+ol {
+    padding-left: 15px;
 }
 
 iframe {
-  border: 0;
+    border: 0;
 }
 
 .MuiTable-root .MuiTableCell-root {
-  padding: 0.5rem !important;
+    padding: 0.5rem;
 }
-

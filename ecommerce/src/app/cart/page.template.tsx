@@ -29,11 +29,11 @@ const CartTemplate = ({
     };
 
     const leftBoxProps: BoxProps = {
-        flexGrow: 1,
+        flexGrow: 1
     };
 
     const rightBoxProps: BoxProps = {
-        minWidth: { xs: "370px" }
+        minWidth: { xs: "100%", sm: "370px" }
     };
 
     if (loading) return <Loading>Отправка заказа...</Loading>;

@@ -1,7 +1,7 @@
 "use client";
 
 import CartTableTemplate from "./cartTable.template";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { MouseEventHandler, useState } from "react";
 import { CartState, clearCart, useAppDispatch, useAppSelector } from "@/lib";
 import { useRouter } from "next/navigation";
 

@@ -2,22 +2,22 @@
 
 import { CartItem as CartItemTemplate } from "@/lib/types/cart";
 import {
-    Box,
-    BoxProps,
     IconButton,
     IconButtonProps,
     TableCell,
     TableCellProps,
     TableRow,
+    TableRowProps,
     TypographyProps
 } from "@mui/material";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler } from "react";
 import ProductLink from "../../text/productLink.template";
 import Price from "../../text/price.template";
 import { Close } from "@mui/icons-material";
 import DeleteItemDialog from "../deleteItemDialog.template";
 import CartImg, { CartImgProps } from "./cartImg.template";
 import AmountBox, { AmountBoxProps } from "./cartAmountAndDeleteBox.template";
+import { useMediaQueries } from "@/lib";
 
 const CartItemTemplate = ({
     item,
@@ -27,7 +27,8 @@ const CartItemTemplate = ({
     onDeleteWarningOpen,
     onDeleteWarningClose,
     totalPrice,
-    displayOnly
+    displayOnly,
+    columnsTotal
 }: {
     item: CartItemTemplate;
     onAmountChange: (
@@ -43,41 +44,13 @@ const CartItemTemplate = ({
     onDeleteWarningOpen: MouseEventHandler<HTMLButtonElement>;
     totalPrice: string;
     displayOnly?: boolean;
+    columnsTotal: number;
 }) => {
-    const outerWrapperProps: BoxProps = {
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "1rem",
-
-        position: "relative"
-    };
-
-    const wrapperProps: BoxProps = {
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        gap: "1rem",
-
-        padding: "10px",
-        width: "100%",
-        boxSizing: "border-box"
-    };
-
-    const innerWrapperProps: BoxProps = {
-        display: "flex",
-        flexDirection: { xs: "column", xsm: "row" },
-        alignItems: "center",
-        gap: "1rem",
-
-        flexGrow: 1,
-
-        boxSizing: "border-box"
-    };
+    const screen = useMediaQueries();
 
     const titleProps: TypographyProps = {
         fontWeight: "bold",
-        fontSize: "1rem",
+        fontSize: { xs: "1.3rem", sm: "1rem" },
         flexGrow: 1
     };
 
@@ -94,10 +67,6 @@ const CartItemTemplate = ({
         sx: {
             alignSelf: "flex-start",
             color: "text.disabled",
-
-            // position: "absolute",
-            // right: { xs: 0, md: "10px" },
-            // top: { xs: 0, md: "18%" },
 
             ":hover": {
                 color: "primary.main"
@@ -117,44 +86,74 @@ const CartItemTemplate = ({
         displayOnly: displayOnly
     };
 
+    const mobileTitleCellProps: TableCellProps = {
+        colSpan: columnsTotal,
+        sx: {
+            borderBottom: 0,
+            paddingTop: "2rem !important"
+        }
+    };
+
+    const tableCellProps: TableCellProps = {
+        sx: {
+            paddingBottom: "2rem !important"
+        }
+    };
+
     const deleteButtonCellProps: TableCellProps = {
         sx: {
+            ...tableCellProps.sx,
             textAlign: "right"
         }
     };
 
     return (
-        <TableRow>
-            {!displayOnly && (
-                <DeleteItemDialog
-                    open={deleteWarningOpen}
-                    onDelete={onDelete}
-                    onDialogClose={onDeleteWarningClose}
-                />
+        <>
+            {!screen.sm && (
+                <TableRow>
+                    <TableCell {...mobileTitleCellProps}>
+                        <ProductLink url={item.url} props={titleProps}>
+                            {item.title}
+                        </ProductLink>
+                    </TableCell>
+                </TableRow>
             )}
-            <TableCell>
-                <CartImg {...imgProps} />
-            </TableCell>
-            <TableCell>
-                <ProductLink url={item.url} props={titleProps}>
-                    {item.title}
-                </ProductLink>
-            </TableCell>
-            <TableCell>
-                <Price price={item.price} props={priceProps} />
-            </TableCell>
-            <TableCell>
-                <AmountBox {...amountBoxProps} />
-            </TableCell>
-
-            {!displayOnly && (
-                <TableCell {...deleteButtonCellProps}>
-                    <IconButton {...deleteButtonProps}>
-                        <Close />
-                    </IconButton>
+            <TableRow>
+                {!displayOnly && (
+                    <DeleteItemDialog
+                        open={deleteWarningOpen}
+                        onDelete={onDelete}
+                        onDialogClose={onDeleteWarningClose}
+                    />
+                )}
+                {screen.md && (
+                    <TableCell {...tableCellProps}>
+                        <CartImg {...imgProps} />
+                    </TableCell>
+                )}
+                {screen.sm && (
+                    <TableCell {...tableCellProps}>
+                        <ProductLink url={item.url} props={titleProps}>
+                            {item.title}
+                        </ProductLink>
+                    </TableCell>
+                )}
+                <TableCell {...tableCellProps}>
+                    <Price price={item.price} props={priceProps} />
                 </TableCell>
-            )}
-        </TableRow>
+                <TableCell {...tableCellProps}>
+                    <AmountBox {...amountBoxProps} />
+                </TableCell>
+
+                {!displayOnly && (
+                    <TableCell {...deleteButtonCellProps}>
+                        <IconButton {...deleteButtonProps}>
+                            <Close />
+                        </IconButton>
+                    </TableCell>
+                )}
+            </TableRow>
+        </>
     );
 };
 

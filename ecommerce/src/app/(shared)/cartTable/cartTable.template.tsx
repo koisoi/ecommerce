@@ -6,14 +6,11 @@ import {
     BoxProps,
     Button,
     ButtonProps,
-    Divider,
     Table,
     TableBody,
-    TableBodyProps,
     TableCell,
     TableCellProps,
     TableFooter,
-    TableFooterProps,
     TableHead,
     TableHeadProps,
     TableProps,
@@ -61,24 +58,18 @@ const CartTableTemplate = ({
         }
     };
 
-    // const headerProps: TableHeadProps = {
-    //     sx: {
-    //         // padding: "10px",
-    //         width: "100%",
-
-    //         // display: "flex",
-    //         // flexDirection: "row",
-    //         // gap: "20px"
-    //     }
-    // };
+    let columnsTotal = 5;
+    if (displayOnly) columnsTotal--;
+    if (!screen.md) columnsTotal--;
+    if (!screen.sm) columnsTotal--;
 
     const footerProps: TableCellProps = {
-        colSpan: displayOnly ? 4 : 5
+        colSpan: columnsTotal
     };
 
     const footerWrapperProps: BoxProps = {
         display: "flex",
-        padding: "2rem",
+        padding: "0.5rem",
         justifyContent: displayOnly ? "flex-end" : "space-between",
         alignItems: "center",
         width: "100%"
@@ -106,6 +97,7 @@ const CartTableTemplate = ({
         sx: {
             textTransform: "none",
             fontSize: "inherit",
+            lineHeight: 1,
 
             display: "flex",
             flexDirection: "row",
@@ -155,16 +147,16 @@ const CartTableTemplate = ({
 
             <Table {...wrapperProps}>
                 <colgroup>
-                    <col width={100} />
-                    <col />
-                    <col width={140} />
-                    <col width={200} />
-                    {!displayOnly && <col width={100} />}
+                    {screen.md && <col width={100} />}
+                    {screen.sm && <col />}
+                    <col width={screen.sm ? 140 : 90} />
+                    <col width={screen.md ? 200 : screen.sm ? 170 : 130} />
+                    {!displayOnly && <col width={screen.sm ? 50 : 40} />}
                 </colgroup>
                 {full && screen.md && (
                     <TableHead {...tableHeadProps}>
                         <TableRow>
-                            <TableCell />
+                            {screen.md && <TableCell />}
                             <TableCell>Наименование</TableCell>
                             <TableCell>Цена</TableCell>
                             <TableCell>Количество</TableCell>
@@ -173,11 +165,12 @@ const CartTableTemplate = ({
                     </TableHead>
                 )}
                 <TableBody>
-                    {items.map((item, i, array) => (
+                    {items.map((item) => (
                         <CartItemComponent
                             key={item.alias}
                             item={item}
                             displayOnly={displayOnly}
+                            columnsTotal={columnsTotal}
                         ></CartItemComponent>
                     ))}
                 </TableBody>
