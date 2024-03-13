@@ -1,14 +1,13 @@
 import Paragraph from "@/app/(shared)/text/paragraph.template";
-import { NextLinkProps } from "@/lib";
-import { Typography, TypographyProps } from "@mui/material";
+import { NextLinkProps, PageData } from "@/lib";
+import { TypographyProps } from "@mui/material";
 import Link from "next/link";
-import { ReactNode } from "react";
 
 const CatalogSubcategory = ({
     page,
     selected
 }: {
-    page: PageData,
+    page: PageData;
     selected?: boolean;
 }) => {
     const linkProps: NextLinkProps = {

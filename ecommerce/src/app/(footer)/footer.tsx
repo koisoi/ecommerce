@@ -43,9 +43,7 @@ const Footer = ({ props }: { props?: BoxProps }) => {
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
                     <ContactsBox phone={landingConfig.phoneNumber} />
-                    <CatalogBox
-                        categories={Object.values(landingConfig.categories)}
-                    />
+                    <CatalogBox categories={landingConfig.categories} />
                     <UpperMenuBox />
                 </Box>
             </Box>

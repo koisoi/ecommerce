@@ -1,9 +1,9 @@
-import { CategoryItemsResponse, categoryAPI } from "@/lib";
+import { CategoryItemsResponse, PageData, categoryAPI } from "@/lib";
 import ProductsGridTemplate from "../../(shared)/productsGrid/productsGrid.template";
 
 const ProductsCategoryGrid = async ({
     page,
-    pageNumber,
+    pageNumber
 }: {
     page: PageData;
     pageNumber: number;
@@ -62,8 +62,9 @@ const ProductsCategoryGrid = async ({
         <ProductsGridTemplate
             list={response?.list || []}
             totalItemCount={response?.totalItemCount || 0}
-            page={page}
+            page={pageNumber}
             pagesCount={pagesCount}
+            url={page.url}
         />
     );
 };

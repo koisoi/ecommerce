@@ -8,16 +8,16 @@ import { ChangeEvent } from "react";
 const CategoryPagination = ({
     page,
     pagesCount,
-    linkBeforeQuery
+    url
 }: {
     page: number;
     pagesCount: number;
-    linkBeforeQuery: string;
+    url: string;
 }) => {
     const router = useRouter();
 
     const handlePageChange = (_: ChangeEvent<unknown>, page: number): void => {
-        router.push(`${linkBeforeQuery}page=${page}`);
+        router.push(`${url}?page=${page}`);
     };
 
     const screen = useMediaQueries();

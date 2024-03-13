@@ -11,7 +11,7 @@ import {
     TabsProps
 } from "@mui/material";
 import Link from "next/link";
-import { CategoryListItem } from "@/lib";
+import { PageData } from "@/lib";
 import { CSSProperties } from "react";
 import dynamic from "next/dynamic";
 
@@ -27,7 +27,7 @@ const HeaderDesktopNavigationTemplate = ({
     onTabClick,
     catalogPath
 }: {
-    categories: CategoryListItem[];
+    categories: PageData[];
     onTabClick: (path: string) => void;
     catalogPath: string;
 }) => {
@@ -106,9 +106,9 @@ const HeaderDesktopNavigationTemplate = ({
             <Tabs {...tabsProps}>
                 {categories.map((category, i) => (
                     <Tab
-                        {...tabProps(`/catalog/${category.path}`)}
+                        {...tabProps(category.url)}
                         key={i}
-                        onClick={() => onTabClick(category.path)}
+                        onClick={() => onTabClick(category.url)}
                         label={category.title}
                     />
                 ))}

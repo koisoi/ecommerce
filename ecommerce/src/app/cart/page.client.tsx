@@ -122,9 +122,6 @@ const CartClient = () => {
                 });
             })
             .catch((error) => console.error(error.message));
-        // console.log(data);
-        // dispatch(setOrderLoading(true));
-        // setTimeout(() => dispatch(setOrderLoading(false)), 2000);
     };
 
     useEffect(() => {

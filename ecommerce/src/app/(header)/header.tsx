@@ -29,7 +29,7 @@ const Header = ({ props }: { props?: BoxProps }) => {
         <>
             <DynamicHeaderNavigation
                 mobile={true}
-                categories={Object.values(landingConfig.categories)}
+                categories={landingConfig.categories}
             />
             <Box {...wrapperProps}>
                 <HeaderTopContainer />
@@ -37,7 +37,7 @@ const Header = ({ props }: { props?: BoxProps }) => {
             </Box>
             <DynamicHeaderNavigation
                 mobile={false}
-                categories={Object.values(landingConfig.categories)}
+                categories={landingConfig.categories}
             />
         </>
     );

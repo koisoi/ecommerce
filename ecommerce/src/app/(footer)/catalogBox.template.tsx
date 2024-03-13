@@ -1,9 +1,9 @@
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./title.template";
 import AppLink from "../(shared)/text/appLink.template";
-import { CategoryListItem } from "@/lib";
+import { PageData } from "@/lib";
 
-const CatalogBox = ({ categories }: { categories: CategoryListItem[] }) => {
+const CatalogBox = ({ categories }: { categories: PageData[] }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
@@ -24,11 +24,7 @@ const CatalogBox = ({ categories }: { categories: CategoryListItem[] }) => {
             <FooterTitle>Каталог</FooterTitle>
             <Box {...categoriesBoxProps}>
                 {categories.map((category) => (
-                    <AppLink
-                        key={category.path}
-                        href={`/catalog/${category.path}`}
-                        footer
-                    >
+                    <AppLink key={category.path} href={category.url} footer>
                         {category.title}
                     </AppLink>
                 ))}

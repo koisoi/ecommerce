@@ -29,7 +29,7 @@ const SearchPageTemplate = ({
         page,
         pagesCount,
         // onPageChange,
-        linkBeforeQuery,
+        url: linkBeforeQuery,
 
         search: true
     };

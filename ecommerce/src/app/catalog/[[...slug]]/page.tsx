@@ -1,17 +1,13 @@
 import CategoryTemplate from "./page.template";
 import {
-    CategoryInfo,
     ProductPageTabType,
-    SeriesInfo,
     catalogPageBreadcrumb,
     categoryAPI,
     productAPI,
-
     PageData
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
-import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { makePagePath } from "@/lib/functions/makePagePath";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import { Metadata } from "next";
@@ -86,11 +82,16 @@ const Category = async ({
     searchParams: { page?: number; tab?: ProductPageTabType };
 }) => {
     if (!params.slug) {
-        const responsePage = await pagesAPI.getPages({});
-        const pages: PageData[] | null = responsePage.map((el) => ({
-            ...el,
-             image: getProductImageLink(el.images[0]?.url) || ""
-        }));
+        let pages: PageData[] = [];
+        try {
+            const responsePage = await pagesAPI.getPages({});
+            pages = responsePage.map((el) => ({
+                ...el,
+                image: getProductImageLink(el.images[0]?.url || "") || ""
+            }));
+        } catch (error) {
+            console.error(error);
+        }
 
         return <CatalogPage pages={pages} />;
     }
@@ -106,51 +107,41 @@ const Category = async ({
     }
 
     const path = makePagePath(params.slug);
-
-    const responsePage = await pagesAPI.getPages({path});
-    const page: PageData | null = responsePage.map((el) => ({
-        ...el,
-         image: getProductImageLink(el.images[0]?.url) || ""
-    }))[0];
-
-    let pages :PageData | null = null;
-    if (params.slug[1]) {
-        const response = await pagesAPI.getPages({path: params.slug[0] + '.*{1}'});
-        pages = response.map((el) => ({
-            ...el,
-             image: getProductImageLink(el.images[0]?.url) || ""
-        }));
-    } else {
-        const response = await pagesAPI.getPages({path: page.path + '.*{1}'});
-        pages = response.map((el) => ({
-            ...el,
-             image: getProductImageLink(el.images[0]?.url) || ""
-        }));
-    }
+    let page: PageData | null = null;
+    let pages: PageData[] | null = null;
 
     try {
-        // const response = await categoryAPI.getPages({path:})
-        // category = await categoryAPI.getCategory({
-        //     category: params.slug[0],
-        //     series: params.slug[1]
-        // });
-        /*
-        if (category.category?.path)
-            category.category.path = categoryPathToAlias(
-                category.category.path
-            )!;
+        const responsePage = await pagesAPI.getPages({ path });
+        page = responsePage.map((el) => ({
+            ...el,
+            image: getProductImageLink(el.images[0]?.url || "") || ""
+        }))[0];
 
-        siblings = await categoryAPI.getSeriesSiblings({
-            category: params.slug[0],
-            series: params.slug[1]
-        });
-        */
+        if (params.slug[1]) {
+            const response = await pagesAPI.getPages({
+                path: params.slug[0] + ".*{1}"
+            });
+            pages = response.map((el) => ({
+                ...el,
+                image: getProductImageLink(el.images[0]?.url || "") || ""
+            }));
+        } else {
+            const response = await pagesAPI.getPages({
+                path: page.path + ".*{1}"
+            });
+            pages = response.map((el) => ({
+                ...el,
+                image: getProductImageLink(el.images[0]?.url || "") || ""
+            }));
+        }
     } catch (error) {
         console.error(error);
     }
 
     // TODO: проверить работу с несколькими клиентами
     let breadcrumbs: Breadcrumb[] = [...catalogPageBreadcrumb];
+
+    if (!page) return notFound();
 
     if (page.parent)
         breadcrumbs.push({
@@ -163,20 +154,18 @@ const Category = async ({
         title: page.title || ""
     });
 
-    if (!page) return notFound();
-
     return (
-       <CategoryTemplate
-           category={page}
-           pages={pages}
-           pageNumber={Number(searchParams.page) || 1}
-           breadcrumbs={breadcrumbs}
-           /*
+        <CategoryTemplate
+            category={page}
+            pages={pages}
+            pageNumber={Number(searchParams.page) || 1}
+            breadcrumbs={breadcrumbs}
+            /*
            linkBeforeQuery={`/catalog/${params.slug[0]}${
                params.slug[1] ? "/" + params.slug[1] : ""
            }?`}
            */
-       />
+        />
     );
 };
 

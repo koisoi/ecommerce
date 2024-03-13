@@ -16,7 +16,7 @@ export type ProductsGridTemplateProps = CategoryItemsResponse & {
     loading?: boolean;
     page: number;
     pagesCount: number;
-    linkBeforeQuery: string;
+    url: string;
     search?: boolean;
 };
 
@@ -27,7 +27,7 @@ const ProductsGridTemplate = ({
     page,
     pagesCount,
     search,
-    linkBeforeQuery
+    url
 }: ProductsGridTemplateProps) => {
     const cardsWrapperProps: BoxProps = {
         width: "100%",
@@ -64,7 +64,7 @@ const ProductsGridTemplate = ({
                         <CategoryPagination
                             page={page}
                             pagesCount={pagesCount}
-                            linkBeforeQuery={linkBeforeQuery}
+                            url={url}
                         />
                     )}
                     <Box {...cardsWrapperProps}>

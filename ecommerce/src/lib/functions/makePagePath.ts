@@ -1,11 +1,8 @@
-export const makePagePath = (
-    slug: string[]
-) =>
-{
-    let parts = ['TOP'];
+export const makePagePath = (slug: string[]) => {
+    let parts = ["TOP"];
     slug.forEach((el) => {
-        parts.push(el.replace('-', '_'));
+        parts.push(el.replaceAll("-", "_"));
     });
 
-    return parts.join('.');
-}
+    return parts.join(".");
+};

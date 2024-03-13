@@ -1,6 +1,6 @@
 import ContactsBox from "@/app/(footer)/contactsBox.template";
 import FooterTitle from "@/app/(footer)/title.template";
-import { CategoryListItem } from "@/lib";
+import { CategoryListItem, PageData } from "@/lib";
 import {
     Box,
     BoxProps,
@@ -29,7 +29,7 @@ const MobileMenuTemplate = ({
 }: {
     open: boolean;
     onMenuClose: (...props: any) => void;
-    categories: CategoryListItem[];
+    categories: PageData[];
     phone: string;
     path: string;
 }) => {
@@ -148,14 +148,9 @@ const MobileMenuTemplate = ({
                     {categories.map((category) => (
                         <ListItem key={category.path} {...listItemProps}>
                             <ListItemButton
-                                {...listItemButtonProps(
-                                    `/catalog/${category.path}`
-                                )}
+                                {...listItemButtonProps(category.url)}
                             >
-                                <Link
-                                    href={`/catalog/${category.path}`}
-                                    style={linksStyle}
-                                >
+                                <Link href={category.url} style={linksStyle}>
                                     {category.title}
                                 </Link>
                             </ListItemButton>

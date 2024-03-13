@@ -6,7 +6,10 @@ export type PageData = {
     page_title?: string;
     page_description?: string;
     page_keywords?: string;
-    images: [{ url: string }];
+    text?: string | null;
+    images: [{ url: string }?];
+    image?: string;
     parent_class: string;
+    parent_id: number;
     parent?: PageData;
 };

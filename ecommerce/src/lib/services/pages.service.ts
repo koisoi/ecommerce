@@ -1,20 +1,10 @@
-import {
-    PageData,
-} from "..";
-
+import { NetworkError, PageData } from "..";
 import { Service } from "./base.service";
-import { landingConfig } from "@/lib/data/config";
 
 class PagesService extends Service {
-    public getPages({
-        path
-    }: {
-        path?: string;
-    }): Promise<PageData[]> {
+    public getPages({ path }: { path?: string }): Promise<PageData[]> {
         return fetch(
-            `${this.baseURL}/pages/site_id/1?path=${
-                path || ""
-            }&format=json`,
+            `${this.baseURL}/pages/site_id/1?path=${path || ""}&format=json`,
             this.options
         )
             .then((response) => {

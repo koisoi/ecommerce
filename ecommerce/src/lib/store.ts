@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import {
     ProductPageReducer,
-    ProductsCategoryGridReducer,
-    CategoryPageReducer,
+    // ProductsCategoryGridReducer,
+    // CategoryPageReducer,
     BreadcrumbsReducer,
     CartReducer
 } from ".";
@@ -16,8 +16,8 @@ import { HomePageReducer } from "./slices/homePage.slice";
 export const makeStore = () => {
     return configureStore({
         reducer: {
-            CategoryPageReducer,
-            ProductsCategoryGridReducer,
+            // CategoryPageReducer,
+            // ProductsCategoryGridReducer,
             ProductPageReducer,
             BreadcrumbsReducer,
             CartReducer,

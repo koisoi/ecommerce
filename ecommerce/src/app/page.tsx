@@ -2,7 +2,13 @@ import Title from "./(shared)/text/title.template";
 import OurAdvantages from "./(shared)/ourAdvantages.template";
 import { homePageAPI } from "@/lib/services/homePage.service";
 import MainPageCarousel from "./mainPageCarousel";
-import { CategoryItem, ProductReview } from "@/lib";
+import {
+    CategoryItem,
+    PageData,
+    ProductReview,
+    getProductImageLink,
+    pagesAPI
+} from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
@@ -17,6 +23,8 @@ export const metadata: Metadata = {
 const Home = async () => {
     let popularProducts: CategoryItem[] = [];
     let reviews: ProductReview[] = [];
+    let pages: PageData[] = [];
+
     try {
         popularProducts = await homePageAPI.getPopularProducts();
         reviews = await homePageAPI.getLastReviews();
@@ -25,6 +33,13 @@ const Home = async () => {
             (val) =>
                 (val.category.path = categoryPathToAlias(val.category.path)!)
         );
+
+        const responsePage = await pagesAPI.getPages({});
+
+        pages = responsePage.map((el) => ({
+            ...el,
+            image: getProductImageLink(el.images[0]?.url || "") || ""
+        }));
     } catch (error) {
         console.error(error);
     }
@@ -32,7 +47,7 @@ const Home = async () => {
     return (
         <SectionContainer>
             <MainPageCarousel />
-            <CategoriesMenuTemplate />
+            <CategoriesMenuTemplate pages={pages} />
             <>
                 <Title>Популярные товары</Title>
                 <SimliarProductsSlider products={popularProducts} />

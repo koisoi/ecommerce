@@ -1,15 +1,15 @@
-import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
+import { Box, BoxProps } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
-import { CategoryInfo } from "@/lib";
+import { PageData } from "@/lib";
 import PageTitle from "../../(shared)/text/pageTitle.template";
 import CatalogSubcategory from "./catalogSubcategory.template";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
 import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import Paragraph from "@/app/(shared)/text/paragraph.template";
 
-const CategoryTemplate = (
-    params :PageData & {
-    pages? :PageData[],
+const CategoryTemplate = (params: {
+    category: PageData;
+    pages?: PageData[] | null;
     pageNumber: number;
     breadcrumbs: Breadcrumb[];
 }) => {
@@ -21,7 +21,7 @@ const CategoryTemplate = (
     };
 
     const category = params.category;
-    const pages    = params.pages;
+    const pages = params.pages;
 
     return (
         <>
@@ -59,7 +59,7 @@ const CategoryTemplate = ({
     page,
     breadcrumbs,
     linkBeforeQuery
-}: Page & {
+}: PageData & {
     seriesAlias: string | null;
     page: number;
     breadcrumbs: Breadcrumb[];

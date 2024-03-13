@@ -10,7 +10,6 @@ import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
 import { pagesAPI, getProductImageLink } from "@/lib";
 import { landingConfig } from "@/lib/data/config";
-import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 
 const RootLayout = async ({
     children
@@ -23,7 +22,7 @@ const RootLayout = async ({
 
         landingConfig.categories = response.map((el) => ({
             ...el,
-             image: getProductImageLink(el.images[0].url)
+            image: getProductImageLink(el.images[0]?.url || "") || ""
         }));
 
         // landingConfig.categories = response.map((el) => ({
@@ -32,7 +31,7 @@ const RootLayout = async ({
         //     image: getProductImageLink(el.images[0].url),
         //     series: []
         // }));
-            /*
+        /*
         response.forEach((el) => {
             landingConfig.categories[categoryPathToAlias(el.path || "")!] = {
                 ...el,

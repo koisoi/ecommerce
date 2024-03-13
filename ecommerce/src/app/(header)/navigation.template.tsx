@@ -2,7 +2,7 @@
 
 import { Box, BoxProps } from "@mui/material";
 import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
-import { CategoryListItem } from "@/lib";
+import { PageData } from "@/lib";
 import HeaderDesktopNavigation from "./desktopNavigation/desktopNavigation";
 import { useRouter } from "next/navigation";
 import MobileContactsBox from "./contactsBox/mobileContactsBox";
@@ -13,14 +13,14 @@ const HeaderNavigation = ({
     categories
 }: {
     mobile: boolean;
-    categories: CategoryListItem[];
+    categories: PageData[];
 }) => {
     // const
     const router = useRouter();
 
     // handlers
     const handleDesktopTabClick = (path: string): void => {
-        router.push(`/catalog/${path}`);
+        router.push(path);
     };
 
     const outerWrapperProps: BoxProps = {

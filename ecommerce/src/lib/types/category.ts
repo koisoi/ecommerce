@@ -1,3 +1,5 @@
+import { PageData } from "..";
+
 export type CategoryListItem = { title: string; path: string; image: string };
 
 export type SeriesInfo = {
@@ -62,10 +64,9 @@ export type CategoryItem = {
 };
 
 export type CategoryItemsRequest = {
-    category: string;
-    series?: string | null;
+    page: PageData;
     productsPerPage: number;
-    page: number;
+    pageNumber: number;
 };
 
 export type CategoryItemsResponse = {

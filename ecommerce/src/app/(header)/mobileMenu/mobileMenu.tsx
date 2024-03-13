@@ -6,8 +6,7 @@ import {
     MobileMenuState,
     setMobileMenuOpen
 } from "@/lib/slices/mobileMenu.slice";
-import { GlobalState } from "@/lib/slices/global.slice";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { landingConfig } from "@/lib/data/config";
 
 const MobileMenu = () => {
@@ -27,7 +26,7 @@ const MobileMenu = () => {
         <MobileMenuTemplate
             open={mobileMenuOpen}
             onMenuClose={handleMenuClose}
-            categories={Object.values(landingConfig.categories)}
+            categories={landingConfig.categories}
             phone={landingConfig.phoneNumber}
             path={path}
         />
