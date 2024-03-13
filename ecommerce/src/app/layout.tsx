@@ -8,7 +8,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { categoryAPI, getProductImageLink } from "@/lib";
+import { pagesAPI, getProductImageLink } from "@/lib";
 import { landingConfig } from "@/lib/data/config";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 
@@ -19,7 +19,12 @@ const RootLayout = async ({
     searchParams: { [key: string]: string | string[] | undefined };
 }>) => {
     try {
-        const response = await categoryAPI.getPages({});
+        const response = await pagesAPI.getPages({});
+
+        landingConfig.categories = response.map((el) => ({
+            ...el,
+             image: getProductImageLink(el.images[0].url)
+        }));
 
         // landingConfig.categories = response.map((el) => ({
         //     ...el,
@@ -27,6 +32,7 @@ const RootLayout = async ({
         //     image: getProductImageLink(el.images[0].url),
         //     series: []
         // }));
+            /*
         response.forEach((el) => {
             landingConfig.categories[categoryPathToAlias(el.path || "")!] = {
                 ...el,
@@ -35,6 +41,7 @@ const RootLayout = async ({
                 series: []
             };
         });
+            */
     } catch (error) {
         console.error(error);
     }

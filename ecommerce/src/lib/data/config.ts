@@ -7,7 +7,7 @@ export const landingConfig: LandingConfig = {
     logoImgLink:
         "https://telescope1.ru/data/upload/Catalog_Model_Brands/45855_original.svg",
     logoImgMobileLink: "/iRay.svg",
-    categories: {},
+    categories: [],
     // {
     //     title: "Дальномеры",
     //     // path: "TOP.range_finders",

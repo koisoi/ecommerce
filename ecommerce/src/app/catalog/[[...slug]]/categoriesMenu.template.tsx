@@ -2,7 +2,7 @@ import CategoryCard from "@/app/(shared)/categoryCard.template";
 import { landingConfig } from "@/lib/data/config";
 import { Box, BoxProps } from "@mui/material";
 
-const CategoriesMenuTemplate = () => {
+const CategoriesMenuTemplate = ({pages}: {pages: PageData[]}) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         justifyContent: "center",
@@ -14,11 +14,13 @@ const CategoriesMenuTemplate = () => {
 
     return (
         <>
+            {
             <Box {...wrapperProps}>
-                {landingConfig.categories.map((category) => (
-                    <CategoryCard category={category} key={category.path} />
+                {pages.map((page) => (
+                    <CategoryCard category={page} key={page.path} />
                 ))}
             </Box>
+            }
         </>
     );
 };

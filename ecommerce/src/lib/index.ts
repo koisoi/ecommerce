@@ -7,6 +7,7 @@ export * from "./functions/getProductImageLink";
 // export * from "./services/base.service";
 export * from "./services/catalog.service";
 export * from "./services/product.service";
+export * from "./services/pages.service";
 
 export * from "./slices/categoryPage.slice";
 export * from "./slices/productsCategoryGrid.slice";
@@ -20,6 +21,7 @@ export * from "./types/product";
 export * from "./types/error";
 export * from "./types/hookForm";
 export * from "./types/order";
+export * from "./types/page";
 
 export * from "./data/formValidators";
 export * from "./data/breadcrumbs";

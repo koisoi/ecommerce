@@ -100,17 +100,12 @@ class CategoryService extends Service {
      * @param page страница
      */
     public async getCategoryItems({
-        category,
-        series,
+        page,
         productsPerPage,
-        page
+        pageNumber
     }: CategoryItemsRequest): Promise<CategoryItemsResponse> {
         return fetch(
-            `${this.baseURL}products?path=${categoryAliasToPath(
-                category
-            )}&landing=${
-                series || landingConfig.landing
-            }&page=${page}&limit=${productsPerPage}&format=json`,
+            `${this.baseURL}products?parent_id=${page.parent_id}&parent_class=${page.parent_class}&page=${pageNumber}&limit=${productsPerPage}&format=json`,
             this.options
         )
             .then((response) => {

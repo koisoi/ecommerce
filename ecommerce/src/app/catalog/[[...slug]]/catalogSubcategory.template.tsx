@@ -5,18 +5,14 @@ import Link from "next/link";
 import { ReactNode } from "react";
 
 const CatalogSubcategory = ({
-    children,
-    seriesAlias,
-    categoryAlias,
+    page,
     selected
 }: {
-    children: ReactNode;
-    seriesAlias: string;
-    categoryAlias: string;
+    page: PageData,
     selected?: boolean;
 }) => {
     const linkProps: NextLinkProps = {
-        href: `/catalog/${categoryAlias}/${seriesAlias}`,
+        href: page.url,
         // href: {
         //     pathname: "/catalog",
         //     query: { category: categoryAlias, series: seriesAlias }
@@ -46,7 +42,7 @@ const CatalogSubcategory = ({
     return (
         <Link {...linkProps}>
             {/* <Typography {...textProps}>{children}</Typography> */}
-            <Paragraph props={textProps}>{children}</Paragraph>
+            <Paragraph props={textProps}>{page.title}</Paragraph>
         </Link>
     );
 };

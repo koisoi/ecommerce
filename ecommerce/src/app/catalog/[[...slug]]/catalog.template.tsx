@@ -3,12 +3,13 @@ import { catalogPageBreadcrumb } from "@/lib";
 import CategoriesMenuTemplate from "./categoriesMenu.template";
 import PageTitle from "@/app/(shared)/text/pageTitle.template";
 
-const CatalogPage = () => {
+const CatalogPage = ({pages}: {pages: PageData[]}) => {
+    console.log(pages);
     return (
         <>
             <AppBreadcrumbs linksArray={catalogPageBreadcrumb} />
             <PageTitle>Каталог</PageTitle>
-            <CategoriesMenuTemplate />
+            <CategoriesMenuTemplate pages={pages} />
         </>
     );
 };

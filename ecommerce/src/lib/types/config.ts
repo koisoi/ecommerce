@@ -6,7 +6,7 @@ export type LandingConfig = {
     landing_id: number;
     logoImgLink: string;
     logoImgMobileLink: string;
-    categories: { [key: string]: CategoryInfo };
+    categories: Page[];
     colors: {
         primary: {
             main: string;

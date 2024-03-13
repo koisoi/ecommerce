@@ -8,7 +8,7 @@ import { landingConfig } from "@/lib/data/config";
 const CategoryCard = ({ category }: { category: CategoryListItem }) => {
     const imgLinkProps = (category: CategoryListItem): LinkProps => ({
         component: NextLink,
-        href: `/catalog/${category.path}`,
+        href: category.url,
 
         sx: {
             display: "inline-block",
@@ -47,7 +47,7 @@ const CategoryCard = ({ category }: { category: CategoryListItem }) => {
     });
 
     const linkProps = (category: CategoryListItem): ProductLinkProps => ({
-        url: `/catalog/${category.path}`,
+        url: category.url,
 
         props: {
             fontSize: "1rem",

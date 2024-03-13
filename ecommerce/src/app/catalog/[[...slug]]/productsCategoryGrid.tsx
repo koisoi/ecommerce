@@ -2,15 +2,11 @@ import { CategoryItemsResponse, categoryAPI } from "@/lib";
 import ProductsGridTemplate from "../../(shared)/productsGrid/productsGrid.template";
 
 const ProductsCategoryGrid = async ({
-    category,
-    series,
     page,
-    linkBeforeQuery
+    pageNumber,
 }: {
-    category: string;
-    series?: string | null;
-    page: number;
-    linkBeforeQuery: string;
+    page: PageData;
+    pageNumber: number;
 }) => {
     // const dispatch = useAppDispatch();
     const productsPerPage = 12;
@@ -18,10 +14,9 @@ const ProductsCategoryGrid = async ({
 
     try {
         response = await categoryAPI.getCategoryItems({
-            category,
-            series,
+            page,
             productsPerPage,
-            page
+            pageNumber
         });
     } catch (error) {
         console.error(error);
@@ -69,7 +64,6 @@ const ProductsCategoryGrid = async ({
             totalItemCount={response?.totalItemCount || 0}
             page={page}
             pagesCount={pagesCount}
-            linkBeforeQuery={linkBeforeQuery}
         />
     );
 };
