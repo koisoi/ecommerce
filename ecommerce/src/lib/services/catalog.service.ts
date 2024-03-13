@@ -3,6 +3,7 @@ import {
     CategoryItemsRequest,
     CategoryItemsResponse,
     NetworkError,
+    PageResponse,
     SeriesInfo
 } from "..";
 import { categoryAliasToPath } from "../functions/catalogPathTransform";
@@ -10,6 +11,31 @@ import { Service } from "./base.service";
 import { landingConfig } from "@/lib/data/config";
 
 class CategoryService extends Service {
+    public async getPages({
+        path
+    }: {
+        path?: string;
+    }): Promise<PageResponse[]> {
+        return fetch(
+            `https://dev.telescope1.ru/backend/index/pages/site_id/1?path=${
+                path || ""
+            }&format=json`,
+            this.options
+        )
+            .then((response) => {
+                if (!response.ok) {
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
+                }
+                return response.json();
+            })
+            .then((data) => {
+                return data.pages;
+            });
+    }
+
     /**
      * Получение информации для отображения категории
      * @param category alias категории

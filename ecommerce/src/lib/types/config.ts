@@ -1,4 +1,4 @@
-import { CategoryListItem } from "..";
+import { CategoryInfo, CategoryListItem } from "..";
 
 export type LandingConfig = {
     landing: string;
@@ -6,7 +6,7 @@ export type LandingConfig = {
     landing_id: number;
     logoImgLink: string;
     logoImgMobileLink: string;
-    categories: CategoryListItem[];
+    categories: { [key: string]: CategoryInfo };
     colors: {
         primary: {
             main: string;

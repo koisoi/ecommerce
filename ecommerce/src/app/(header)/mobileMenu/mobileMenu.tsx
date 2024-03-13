@@ -27,7 +27,7 @@ const MobileMenu = () => {
         <MobileMenuTemplate
             open={mobileMenuOpen}
             onMenuClose={handleMenuClose}
-            categories={landingConfig.categories}
+            categories={Object.values(landingConfig.categories)}
             phone={landingConfig.phoneNumber}
             path={path}
         />

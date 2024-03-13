@@ -8,6 +8,8 @@ import {
     DragEventHandler,
     MouseEventHandler,
     SyntheticEvent,
+    useEffect,
+    useRef,
     useState
 } from "react";
 import Carousel from "react-material-ui-carousel";
@@ -23,9 +25,34 @@ const ImagesCarousel = ({
     // const colors = useThemeColors();
     const screen = useMediaQueries();
     const dispatch = useAppDispatch();
+    // const carouselRef = useRef<HTMLDivElement>();
 
     const [canOpenImg, setCanOpenImg] = useState<boolean>(true);
     const [selectedImg, setSelectedImg] = useState<number>(0);
+    const [carouselHeight, setCarouselHeight] = useState<number>(0);
+
+    const renderHeight = () => {
+        setCarouselHeight(
+            // (carouselRef.current?.getBoundingClientRect().width || 0) * 0.75
+            (document
+                .getElementById("product-image-carousel")
+                ?.getBoundingClientRect().width || 0) * 0.75
+        );
+    };
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            renderHeight();
+        }
+
+        window.addEventListener("resize", () => {
+            renderHeight();
+        });
+
+        return window.removeEventListener("resize", () => {
+            renderHeight();
+        });
+    });
 
     imageLinks = imageLinks.map((el) => ({
         ...el,
@@ -72,7 +99,7 @@ const ImagesCarousel = ({
         alignItems: "stretch",
 
         gap: "1rem",
-        maxHeight: "450px"
+        maxHeight: `${carouselHeight + 30}px`
         // maxHeight: "100%"
     };
 
@@ -87,10 +114,15 @@ const ImagesCarousel = ({
 
         sx: {
             // width: "100%"
-            height: "100%"
+            height: "100%",
+            // minHeight: { xs: "250px", md: "400px" }
+
+            ".mui-1f8sh1y": {
+                height: `${carouselHeight}px !important`
+            }
         },
 
-        IndicatorIcon: screen.lg ? <></> : undefined
+        IndicatorIcon: screen.mlg ? <></> : undefined
     };
 
     const imgBoxProps: BoxProps = {
@@ -113,8 +145,13 @@ const ImagesCarousel = ({
         style: {
             maxWidth: "100%",
             height: "100%",
-            objectFit: "contain",
-            maxHeight: "400px"
+            // height: "auto",
+            width: "100%",
+            objectFit: "contain"
+            // maxHeight: screen.sm ? "435px" : "370px"
+            // minHeight: /*{ xs: "250px", md: "400px" }*/ screen.md
+            //     ? "400px"
+            //     : "250px"
         } as CSSProperties,
 
         onDragStart: handleDragStart,
@@ -134,17 +171,22 @@ const ImagesCarousel = ({
 
     return (
         <Box {...wrapperProps}>
-            {screen.lg && <ImageGallery {...imageGalleryProps} />}
-            <Box {...carouselBoxProps}>
+            {screen.mlg && <ImageGallery {...imageGalleryProps} />}
+            <Box
+                {...carouselBoxProps}
+                // ref={carouselRef}
+                id="product-image-carousel"
+            >
                 <Carousel {...carouselProps}>
                     {imageLinks.map((imageLink, i) => (
-                        <Box key={i} {...imgBoxProps}>
-                            <img
-                                src={imageLink.url}
-                                alt={title}
-                                {...imgProps}
-                            />
-                        </Box>
+                        // <Box key={i} {...imgBoxProps}>
+                        <img
+                            src={imageLink.url}
+                            alt={title}
+                            key={i}
+                            {...imgProps}
+                        />
+                        // </Box>
                     ))}
                 </Carousel>
             </Box>

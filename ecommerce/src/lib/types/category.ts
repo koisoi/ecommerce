@@ -7,12 +7,25 @@ export type SeriesInfo = {
     productsAmount: number;
 };
 
-export type CategoryInfo = {
+export type PageResponse = {
+    id: number;
+    title: string;
+    path: string;
+    page_description?: string;
     page_title?: string;
     page_keywords?: string;
+    images: [{ url: string }];
+    parent_class: string;
+};
+
+export type CategoryInfo = {
+    id: number;
     title: string;
-    alias: string;
+    image: string;
+    path: string;
     page_description?: string;
+    page_title?: string;
+    page_keywords?: string;
     series: SeriesInfo[];
     category?: {
         page_title: string;
@@ -23,6 +36,8 @@ export type CategoryInfo = {
         images: [{ id: number; url: string }];
     };
     parent_class: string;
+
+    readonly [key: string]: any;
 };
 
 export type CategoryItem = {

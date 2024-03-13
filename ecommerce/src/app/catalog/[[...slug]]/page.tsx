@@ -93,14 +93,17 @@ const Category = async ({
         );
     }
 
-    let category: CategoryInfo | null = null;
+    const category: CategoryInfo | null =
+        landingConfig.categories[params.slug[0]];
+    console.log(landingConfig.categories);
     let siblings: SeriesInfo[] = [];
 
     try {
-        category = await categoryAPI.getCategory({
-            category: params.slug[0],
-            series: params.slug[1]
-        });
+        // const response = await categoryAPI.getPages({path:})
+        // category = await categoryAPI.getCategory({
+        //     category: params.slug[0],
+        //     series: params.slug[1]
+        // });
         if (category.category?.path)
             category.category.path = categoryPathToAlias(
                 category.category.path
@@ -133,7 +136,8 @@ const Category = async ({
 
     return (
         <CategoryTemplate
-            alias={category?.category?.path || ""}
+            id={category.id}
+            path={category?.category?.path || ""}
             title={
                 category?.series
                     ? category?.category?.title || ""
@@ -148,6 +152,7 @@ const Category = async ({
             linkBeforeQuery={`/catalog/${params.slug[0]}${
                 params.slug[1] ? "/" + params.slug[1] : ""
             }?`}
+            image={category?.image}
         />
     );
 };

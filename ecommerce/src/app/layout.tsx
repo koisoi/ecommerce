@@ -8,14 +8,37 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import LoadingPage from "./loading";
+import { categoryAPI, getProductImageLink } from "@/lib";
+import { landingConfig } from "@/lib/data/config";
+import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 
-const RootLayout = ({
+const RootLayout = async ({
     children
 }: Readonly<{
     children: ReactNode;
     searchParams: { [key: string]: string | string[] | undefined };
 }>) => {
+    try {
+        const response = await categoryAPI.getPages({});
+
+        // landingConfig.categories = response.map((el) => ({
+        //     ...el,
+        //     path: categoryPathToAlias(el.path || "")!,
+        //     image: getProductImageLink(el.images[0].url),
+        //     series: []
+        // }));
+        response.forEach((el) => {
+            landingConfig.categories[categoryPathToAlias(el.path || "")!] = {
+                ...el,
+                path: categoryPathToAlias(el.path || "")!,
+                image: getProductImageLink(el.images[0].url),
+                series: []
+            };
+        });
+    } catch (error) {
+        console.error(error);
+    }
+
     const headersList = headers();
     const referer = headersList.get("referer");
 

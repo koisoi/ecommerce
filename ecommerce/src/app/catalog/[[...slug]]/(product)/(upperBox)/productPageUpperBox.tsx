@@ -2,20 +2,12 @@ import {
     Box,
     BoxProps,
     CircularProgress,
-    Paper,
     PaperProps,
     Typography,
     TypographyProps
 } from "@mui/material";
-import StockIndicator, { StockIndicatorProps } from "./stockIndicator.template";
 import { CategoryItem, ProductCharacteristic } from "@/lib";
-import Price, { PriceProps } from "@/app/(shared)/text/price.template";
 import CharacteristicsBox from "./characteristicsBox.template";
-import {
-    BuyButtonProps,
-    InstantBuyButton,
-    ShoppingCartButton
-} from "@/app/(shared)/buyButtons/buyButtons";
 import { CartItem } from "@/lib/types/cart";
 import dynamic from "next/dynamic";
 import ProductOfferBox, { ProductOfferBoxProps } from "./productOfferBox";
@@ -78,13 +70,13 @@ const ProductPageUpperBox = ({
 
     const desktopProductOfferBoxProps: PaperProps = {
         sx: {
-            display: { xs: "none", mlg: "flex" }
+            display: { xs: "none", sm: "flex" }
         }
     };
 
     const mobileProductOfferBoxProps: PaperProps = {
         sx: {
-            display: { xs: "flex", mlg: "none" }
+            display: { xs: "flex", sm: "none" }
         }
     };
 
@@ -96,10 +88,14 @@ const ProductPageUpperBox = ({
 
     const rightBoxProps: BoxProps = {
         display: "flex",
-        flexDirection: "column",
+        flexDirection: { xs: "row-reverse", mlg: "column" },
+        justifyContent: "space-between",
         gap: "2rem",
+
         flexGrow: 1,
-        flexBasis: 0
+        flexBasis: 0,
+
+        order: { xs: "unset", sm: -1, mlg: "unset" }
     };
 
     return (
@@ -109,7 +105,7 @@ const ProductPageUpperBox = ({
                 props={mobileProductOfferBoxProps}
             />
             <Box {...carouselBoxProps}>
-                <ImagesCarousel
+                <DynamicImagesCarousel
                     imageLinks={imageLinks}
                     title={cartItem.title}
                 />

@@ -11,7 +11,7 @@ const CategoryTemplate = ({
     title,
     page_description,
     series,
-    alias,
+    path,
     seriesAlias,
     page,
     breadcrumbs,
@@ -41,7 +41,7 @@ const CategoryTemplate = ({
                     {series.map((series) => (
                         <CatalogSubcategory
                             seriesAlias={series.alias}
-                            categoryAlias={alias}
+                            categoryAlias={path}
                             selected={seriesAlias === series.alias}
                             key={series.id}
                         >
@@ -51,7 +51,7 @@ const CategoryTemplate = ({
                 </Box>
             )}
             <ProductsCategoryGrid
-                category={alias}
+                category={path}
                 series={seriesAlias}
                 page={page}
                 linkBeforeQuery={linkBeforeQuery}

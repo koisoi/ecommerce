@@ -3,6 +3,11 @@ import HeaderNavigation from "./navigation.template";
 import { landingConfig } from "@/lib/data/config";
 import HeaderTopContainer from "./topContainer.template";
 import HeaderMainContainer from "./mainContainer/mainContainer.template";
+import dynamic from "next/dynamic";
+
+const DynamicHeaderNavigation = dynamic(
+    () => import("@/app/(header)/navigation.template")
+);
 
 const Header = ({ props }: { props?: BoxProps }) => {
     // props
@@ -22,17 +27,17 @@ const Header = ({ props }: { props?: BoxProps }) => {
 
     return (
         <>
-            <HeaderNavigation
+            <DynamicHeaderNavigation
                 mobile={true}
-                categories={landingConfig.categories}
+                categories={Object.values(landingConfig.categories)}
             />
             <Box {...wrapperProps}>
                 <HeaderTopContainer />
                 <HeaderMainContainer />
             </Box>
-            <HeaderNavigation
+            <DynamicHeaderNavigation
                 mobile={false}
-                categories={landingConfig.categories}
+                categories={Object.values(landingConfig.categories)}
             />
         </>
     );
