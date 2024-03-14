@@ -7,7 +7,7 @@ import {
     PageData,
     ProductReview,
     getProductImageLink,
-    pagesAPI
+    backendAPI
 } from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
@@ -34,7 +34,7 @@ const Home = async () => {
                 (val.category.path = categoryPathToAlias(val.category.path)!)
         );
 
-        const responsePage = await pagesAPI.getPages({});
+        const responsePage = await backendAPI.getPages({});
 
         pages = responsePage.map((el) => ({
             ...el,

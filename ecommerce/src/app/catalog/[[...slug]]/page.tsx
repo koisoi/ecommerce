@@ -13,7 +13,7 @@ import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import { Metadata } from "next";
 import { landingConfig } from "@/lib/data/config";
 import CatalogPage from "./catalog.template";
-import { pagesAPI, getProductImageLink } from "@/lib";
+import { backendAPI, getProductImageLink } from "@/lib";
 
 export async function generateMetadata({
     params
@@ -39,7 +39,7 @@ export async function generateMetadata({
             };
         } else {
             const path = makePagePath(params.slug);
-            const responsePage = await pagesAPI.getPages({ path });
+            const responsePage = await backendAPI.getPages({ path });
             const categoryMetadata = responsePage.map((el) => ({
                 ...el,
                 image: getProductImageLink(el.images[0]?.url || "") || ""
@@ -80,7 +80,7 @@ const Category = async ({
     if (!params.slug) {
         let pages: PageData[] = [];
         try {
-            const responsePage = await pagesAPI.getPages({});
+            const responsePage = await backendAPI.getPages({});
             pages = responsePage.map((el) => ({
                 ...el,
                 image: getProductImageLink(el.images[0]?.url || "") || ""
@@ -107,14 +107,14 @@ const Category = async ({
     let pages: PageData[] | null = null;
 
     try {
-        const responsePage = await pagesAPI.getPages({ path });
+        const responsePage = await backendAPI.getPages({ path });
         page = responsePage.map((el) => ({
             ...el,
             image: getProductImageLink(el.images[0]?.url || "") || ""
         }))[0];
 
         if (params.slug[1]) {
-            const response = await pagesAPI.getPages({
+            const response = await backendAPI.getPages({
                 path: params.slug[0] + ".*{1}"
             });
             pages = response.map((el) => ({
@@ -122,7 +122,7 @@ const Category = async ({
                 image: getProductImageLink(el.images[0]?.url || "") || ""
             }));
         } else {
-            const response = await pagesAPI.getPages({
+            const response = await backendAPI.getPages({
                 path: page.path + ".*{1}"
             });
             pages = response.map((el) => ({

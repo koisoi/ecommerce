@@ -8,7 +8,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { pagesAPI, getProductImageLink } from "@/lib";
+import { backendAPI, getProductImageLink } from "@/lib";
 import { landingConfig } from "@/lib/data/config";
 
 const RootLayout = async ({
@@ -18,7 +18,7 @@ const RootLayout = async ({
     searchParams: { [key: string]: string | string[] | undefined };
 }>) => {
     try {
-        const response = await pagesAPI.getPages({});
+        const response = await backendAPI.getPages({});
 
         landingConfig.categories = response.map((el) => ({
             ...el,

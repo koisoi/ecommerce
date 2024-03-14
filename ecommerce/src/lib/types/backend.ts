@@ -1,3 +1,16 @@
+export type SiteData = {
+    id: number;
+    title: string;
+    url: string;
+    page_title?: string;
+    page_description?: string;
+    page_keywords?: string;
+    text?: string | null;
+    images: [{ url: string }?];
+    logo?: string;
+    logo_alt?: string;
+};
+
 export type PageData = {
     id: number;
     title: string;
