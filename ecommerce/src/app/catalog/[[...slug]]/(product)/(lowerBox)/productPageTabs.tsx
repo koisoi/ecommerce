@@ -92,13 +92,13 @@ const ProductPageTabs = ({
                             {...tabProps}
                         />
                     )}
-                    {feedback && feedback.length && (
+                    {/* {feedback && feedback.length && (
                         <Tab
                             value={"feedback"}
                             label={"Отзывы"}
                             {...tabProps}
                         />
-                    )}
+                    )} */}
                 </Tabs>
             )}
         </>

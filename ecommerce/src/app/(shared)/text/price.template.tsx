@@ -29,7 +29,7 @@ const Price = ({
                 ? { xs: "1.4rem", md: "1.2rem" }
                 : "2rem",
         ...(autoScaleLarge && {
-            fontSize: { xs: "1.2rem", sm: "2rem" }
+            fontSize: "2rem"
         }),
 
         ...props,

@@ -42,7 +42,7 @@ const AllCharacteristicsBox = ({
     const characteristicsBoxProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
-        gap: "1rem",
+        gap: "0.5rem",
         marginTop: "0.5rem"
     };
 

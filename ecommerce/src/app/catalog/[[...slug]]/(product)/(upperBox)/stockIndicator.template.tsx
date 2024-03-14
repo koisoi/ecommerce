@@ -8,7 +8,7 @@ export type StockIndicatorProps = {
 const StockIndicator = ({ stock }: StockIndicatorProps) => {
     const wrapperProps: TypographyProps = {
         color: stock ? "success.main" : "text.disabled",
-        fontSize: "0.9rem",
+        fontSize: "1rem",
 
         display: "inline-flex",
         alignItems: "center",

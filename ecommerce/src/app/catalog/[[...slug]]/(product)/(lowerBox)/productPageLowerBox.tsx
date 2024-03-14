@@ -157,7 +157,7 @@ const ProductPageLowerBox = ({
                                 )}
                             </>
                         )}
-                        {currentTab === "feedback" && (
+                        {/* {currentTab === "feedback" && (
                             <>
                                 {!feedback ||
                                     (!feedback.length && (
@@ -169,7 +169,7 @@ const ProductPageLowerBox = ({
                                     <FeedbackBoxTemplate feedback={feedback} />
                                 )}
                             </>
-                        )}
+                        )} */}
                     </>
                     {simliarProducts && !!simliarProducts.length && (
                         <>

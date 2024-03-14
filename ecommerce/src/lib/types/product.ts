@@ -46,5 +46,5 @@ export type ProductRequest = {
 export type ProductPageTabType =
     | "allCharasteristics"
     | "description"
-    | "feedback"
+    // | "feedback"
     | "complectation";

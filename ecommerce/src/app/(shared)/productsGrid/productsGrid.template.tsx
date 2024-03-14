@@ -1,11 +1,5 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
-import {
-    Box,
-    BoxProps,
-    CardProps,
-    Typography,
-    TypographyProps
-} from "@mui/material";
+import { Box, BoxProps, CardProps, TypographyProps } from "@mui/material";
 import CategoryPagination from "./categoryPagination.template";
 import { CategoryItemsResponse, getProductImageLink } from "@/lib";
 import { getProductLink } from "@/lib/functions/getProductLink";
@@ -47,7 +41,7 @@ const ProductsGridTemplate = ({
 
     const productCardProps: CardProps = {
         sx: {
-            maxWidth: { xs: "unset", smd: "300px" } //smd?
+            maxWidth: { xs: "unset", smd: "350px", md: "250px" } //smd?
         }
     };
 
@@ -96,6 +90,13 @@ const ProductsGridTemplate = ({
                             );
                         })}
                     </Box>
+                    {pagesCount > 1 && (
+                        <CategoryPagination
+                            page={page}
+                            pagesCount={pagesCount}
+                            url={url}
+                        />
+                    )}
                 </>
             )}
         </>

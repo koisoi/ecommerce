@@ -88,7 +88,7 @@ const ProductPageUpperBox = ({
 
     const rightBoxProps: BoxProps = {
         display: "flex",
-        flexDirection: { xs: "row-reverse", mlg: "column" },
+        flexDirection: { xs: "row", mlg: "column" },
         justifyContent: "space-between",
         gap: "2rem",
 
@@ -111,16 +111,16 @@ const ProductPageUpperBox = ({
                 />
             </Box>
             <Box {...rightBoxProps}>
+                <ProductOfferBox
+                    {...productOfferBoxProps}
+                    props={desktopProductOfferBoxProps}
+                />
                 <Box {...descriptionBoxProps}>
                     <Typography {...articulTextProps}>
                         Артикул: {cartItem.articul}
                     </Typography>
                     <CharacteristicsBox characteristics={characteristics} />
                 </Box>
-                <ProductOfferBox
-                    {...productOfferBoxProps}
-                    props={desktopProductOfferBoxProps}
-                />
             </Box>
         </Box>
     );

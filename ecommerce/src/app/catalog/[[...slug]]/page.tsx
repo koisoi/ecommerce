@@ -38,29 +38,25 @@ export async function generateMetadata({
                 keywords: productMetadata.page_keywords
             };
         } else {
-            const categoryMetadata = await categoryAPI.getCategory({
-                category: params.slug[0],
-                series: params.slug[1]
-            });
+            const path = makePagePath(params.slug);
+            const responsePage = await pagesAPI.getPages({ path });
+            const categoryMetadata = responsePage.map((el) => ({
+                ...el,
+                image: getProductImageLink(el.images[0]?.url || "") || ""
+            }))[0];
 
-            if (!!params.slug[1])
-                return {
-                    title:
-                        categoryMetadata.page_title ||
-                        categoryMetadata.category?.page_title,
-                    description:
-                        categoryMetadata.page_description ||
-                        categoryMetadata.category?.page_description,
-                    keywords:
-                        categoryMetadata.page_keywords ||
-                        categoryMetadata.category?.page_keywords
-                };
-            else
-                return {
-                    title: categoryMetadata.category?.page_title,
-                    description: categoryMetadata.category?.page_description,
-                    keywords: categoryMetadata.category?.page_keywords
-                };
+            // if (!!params.slug[1])
+            return {
+                title: categoryMetadata.page_title,
+                description: categoryMetadata.page_description,
+                keywords: categoryMetadata.page_keywords
+            };
+            // else
+            //     return {
+            //         title: categoryMetadata.category?.page_title,
+            //         description: categoryMetadata.category?.page_description,
+            //         keywords: categoryMetadata.category?.page_keywords
+            //     };
         }
     }
 

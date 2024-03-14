@@ -9,7 +9,7 @@ const ProductsCategoryGrid = async ({
     pageNumber: number;
 }) => {
     // const dispatch = useAppDispatch();
-    const productsPerPage = 12;
+    const productsPerPage = 15;
     let response: CategoryItemsResponse | null = null;
 
     try {
