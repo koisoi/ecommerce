@@ -1,7 +1,7 @@
 import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
-import { CategoryItem, getProductImageLink } from "@/lib";
+import { CategoryItem, getImageLink } from "@/lib";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import { getProductLink } from "@/lib/functions/getProductLink";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
@@ -18,7 +18,7 @@ const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {
                     categoryPathToAlias(item.category.path)!,
                     item.alias
                 ),
-                imgLink: getProductImageLink(item.images[0].url),
+                imgLink: getImageLink(item.images[0].url),
                 amount: 1
             },
             newProduct: item.is_new,

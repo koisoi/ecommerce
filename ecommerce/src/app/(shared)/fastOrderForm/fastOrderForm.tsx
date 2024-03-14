@@ -4,7 +4,7 @@ import {
     OrderForm,
     authorize,
     emailPattern,
-    getProductImageLink,
+    getImageLink,
     postOrder,
     postStatistics,
     requiredRule,
@@ -80,7 +80,7 @@ const FastOrderForm = ({
                     }*/,
                     alias: item.alias,
                     title: item.title,
-                    imgLink: getProductImageLink(item.images[0].url),
+                    imgLink: getImageLink(item.images[0].url),
                     price: item.price,
                     amount: 1,
                     articul: item.articul

@@ -1,6 +1,6 @@
 import ContactsBox from "@/app/(footer)/contactsBox.template";
 import FooterTitle from "@/app/(footer)/title.template";
-import { CategoryListItem, PageData } from "@/lib";
+import { PageData } from "@/lib";
 import {
     Box,
     BoxProps,
@@ -16,22 +16,32 @@ import {
     ListProps
 } from "@mui/material";
 import Link from "next/link";
-import { CSSProperties } from "react";
-import Logo from "../logo";
+import { CSSProperties, ReactNode, Suspense } from "react";
 import { Close } from "@mui/icons-material";
+import dynamic from "next/dynamic";
+import Logo from "@/app/(header)/logo";
+
+const DynamicLogo = dynamic(() => import("@/app/(header)/logo"), {
+    ssr: false,
+    loading: () => <></>
+});
 
 const MobileMenuTemplate = ({
     open,
     onMenuClose,
     categories,
     phone,
-    path
+    path,
+    // logoImgLink,
+    children
 }: {
     open: boolean;
     onMenuClose: (...props: any) => void;
     categories: PageData[];
     phone: string;
     path: string;
+    // logoImgLink: string;
+    children: ReactNode;
 }) => {
     const drawerProps: DrawerProps = {
         open,
@@ -99,7 +109,8 @@ const MobileMenuTemplate = ({
             <Box {...wrapperProps}>
                 <List {...listProps}>
                     <ListItem {...logoListItemProps}>
-                        <Logo />
+                        {/* <Logo logoSrc={logoImgLink} /> */}
+                        {children}
                         <IconButton {...iconButtonProps}>
                             <Close />
                         </IconButton>

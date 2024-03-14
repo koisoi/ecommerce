@@ -1,12 +1,9 @@
-"use client";
-
 import { Box, BoxProps } from "@mui/material";
-import HeaderMobileNavigation from "./mobileNavigation/mobileNavigation";
+import HeaderMobileNavigationTemplate from "./mobileNavigation/mobileNavigation.template";
 import { PageData } from "@/lib";
-import HeaderDesktopNavigation from "./desktopNavigation/desktopNavigation";
-import { useRouter } from "next/navigation";
 import MobileContactsBox from "./contactsBox/mobileContactsBox";
 import { landingConfig } from "@/lib/data/config";
+import HeaderDesktopNavigationTemplate from "./desktopNavigation/desktopNavigation.template";
 
 const HeaderNavigation = ({
     mobile,
@@ -15,13 +12,19 @@ const HeaderNavigation = ({
     mobile: boolean;
     categories: PageData[];
 }) => {
-    // const
-    const router = useRouter();
+    // // const
+    // const router = useRouter();
+    // const dispatch = useAppDispatch();
 
-    // handlers
-    const handleDesktopTabClick = (path: string): void => {
-        router.push(path);
-    };
+    // // handlers
+    // const handleDesktopTabClick = (path: string): void => {
+    //     router.push(path);
+    // };
+
+    // useEffect(() => {
+    //     dispatch(setLogoSrc(logoSrc));
+    //     dispatch(setMobileLogoSrc(logoMobileSrc));
+    // }, []);
 
     const outerWrapperProps: BoxProps = {
         component: mobile ? "header" : "nav",
@@ -57,12 +60,9 @@ const HeaderNavigation = ({
                 <MobileContactsBox phoneNumber={landingConfig.phoneNumber} />
             )}
             <Box {...wrapperProps}>
-                {mobile && <HeaderMobileNavigation />}
+                {mobile && <HeaderMobileNavigationTemplate />}
                 {!mobile && (
-                    <HeaderDesktopNavigation
-                        categories={categories}
-                        onTabClick={handleDesktopTabClick}
-                    />
+                    <HeaderDesktopNavigationTemplate categories={categories} />
                 )}
             </Box>
         </Box>

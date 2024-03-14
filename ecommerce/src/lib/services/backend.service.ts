@@ -1,10 +1,11 @@
-import { NetworkError, PageData } from "..";
+import { NetworkError, PageData, SiteData } from "..";
+import { landingConfig } from "../data/config";
 import { Service } from "./base.service";
 
 class BackendService extends Service {
     public getSite(): Promise<SiteData> {
         return fetch(
-            `${this.baseURL}/site/site_id/1?path=${path || ""}&format=json`,
+            `${this.baseURL}/site/site_id/${landingConfig.id}?format=json`,
             this.options
         )
             .then((response) => {
@@ -23,7 +24,9 @@ class BackendService extends Service {
 
     public getPages({ path }: { path?: string }): Promise<PageData[]> {
         return fetch(
-            `${this.baseURL}/pages/site_id/1?path=${path || ""}&format=json`,
+            `${this.baseURL}/pages/site_id/${landingConfig.id}?path=${
+                path || ""
+            }&format=json`,
             this.options
         )
             .then((response) => {

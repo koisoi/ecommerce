@@ -6,7 +6,7 @@ import {
     CategoryItem,
     PageData,
     ProductReview,
-    getProductImageLink,
+    getImageLink,
     backendAPI
 } from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
@@ -38,7 +38,7 @@ const Home = async () => {
 
         pages = responsePage.map((el) => ({
             ...el,
-            image: getProductImageLink(el.images[0]?.url || "") || ""
+            image: getImageLink(el.images[0]?.url || "") || ""
         }));
     } catch (error) {
         console.error(error);

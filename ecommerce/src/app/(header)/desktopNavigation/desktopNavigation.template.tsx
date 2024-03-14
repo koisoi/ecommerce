@@ -1,5 +1,3 @@
-"use client";
-
 import {
     Box,
     BoxProps,
@@ -23,13 +21,9 @@ const DynamicSlidingCartButton = dynamic(
 );
 
 const HeaderDesktopNavigationTemplate = ({
-    categories,
-    onTabClick,
-    catalogPath
+    categories
 }: {
     categories: PageData[];
-    onTabClick: (path: string) => void;
-    catalogPath: string;
 }) => {
     const innerWrapperProps: BoxProps = {
         position: "relative",
@@ -83,6 +77,12 @@ const HeaderDesktopNavigationTemplate = ({
     };
 
     const tabProps = (path: string): TabProps => ({
+        component: "a",
+        // @ts-ignore
+        href: path,
+
+        value: path,
+
         sx: {
             textDecoration: "none",
             color: "white",
@@ -90,11 +90,11 @@ const HeaderDesktopNavigationTemplate = ({
             textTransform: "none",
 
             transition: "0.2s",
-            height: "100%",
+            height: "100%"
 
-            ...((path === catalogPath || path + "/" === catalogPath) && {
-                backgroundColor: "secondary.main"
-            })
+            // ...((path === catalogPath || path + "/" === catalogPath) && {
+            //     backgroundColor: "secondary.main"
+            // })
         }
     });
 
@@ -108,7 +108,6 @@ const HeaderDesktopNavigationTemplate = ({
                     <Tab
                         {...tabProps(category.url)}
                         key={i}
-                        onClick={() => onTabClick(category.url)}
                         label={category.title}
                     />
                 ))}

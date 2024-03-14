@@ -13,7 +13,7 @@ import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import { Metadata } from "next";
 import { landingConfig } from "@/lib/data/config";
 import CatalogPage from "./catalog.template";
-import { backendAPI, getProductImageLink } from "@/lib";
+import { backendAPI, getImageLink } from "@/lib";
 
 export async function generateMetadata({
     params
@@ -42,7 +42,7 @@ export async function generateMetadata({
             const responsePage = await backendAPI.getPages({ path });
             const categoryMetadata = responsePage.map((el) => ({
                 ...el,
-                image: getProductImageLink(el.images[0]?.url || "") || ""
+                image: getImageLink(el.images[0]?.url || "") || ""
             }))[0];
 
             // if (!!params.slug[1])
@@ -83,7 +83,7 @@ const Category = async ({
             const responsePage = await backendAPI.getPages({});
             pages = responsePage.map((el) => ({
                 ...el,
-                image: getProductImageLink(el.images[0]?.url || "") || ""
+                image: getImageLink(el.images[0]?.url || "") || ""
             }));
         } catch (error) {
             console.error(error);
@@ -110,7 +110,7 @@ const Category = async ({
         const responsePage = await backendAPI.getPages({ path });
         page = responsePage.map((el) => ({
             ...el,
-            image: getProductImageLink(el.images[0]?.url || "") || ""
+            image: getImageLink(el.images[0]?.url || "") || ""
         }))[0];
 
         if (params.slug[1]) {
@@ -119,7 +119,7 @@ const Category = async ({
             });
             pages = response.map((el) => ({
                 ...el,
-                image: getProductImageLink(el.images[0]?.url || "") || ""
+                image: getImageLink(el.images[0]?.url || "") || ""
             }));
         } else {
             const response = await backendAPI.getPages({
@@ -127,7 +127,7 @@ const Category = async ({
             });
             pages = response.map((el) => ({
                 ...el,
-                image: getProductImageLink(el.images[0]?.url || "") || ""
+                image: getImageLink(el.images[0]?.url || "") || ""
             }));
         }
     } catch (error) {

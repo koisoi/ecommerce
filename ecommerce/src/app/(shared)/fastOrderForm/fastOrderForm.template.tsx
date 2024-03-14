@@ -14,12 +14,7 @@ import {
 import ProductCard, {
     ProductCardProps
 } from "../productCard/productCard.template";
-import {
-    CategoryItem,
-    OrderForm,
-    getProductImageLink,
-    useMediaQueries
-} from "@/lib";
+import { CategoryItem, OrderForm, getImageLink, useMediaQueries } from "@/lib";
 import Title from "../text/title.template";
 import { UseFormReturn } from "react-hook-form";
 import { OrderRules } from "../../cart/page.client";
@@ -85,7 +80,7 @@ const FastOrderFormTemplate = ({
             ),
             alias: item?.alias || "",
             title: item?.title || "",
-            imgLink: item ? getProductImageLink(item.images[0].url) : "",
+            imgLink: item ? getImageLink(item.images[0].url) : "",
             price: item?.price || "",
             amount: 1,
             articul: item?.articul || ""

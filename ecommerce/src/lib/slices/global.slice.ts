@@ -2,18 +2,21 @@
 
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState, UTMParams } from "..";
-import { setCookie } from "cookies-next";
 
 const initialState: {
     start_url: string;
     referrer: string;
     ip: string;
     utm: UTMParams;
+    logoSrc: string;
+    logoMobileSrc: string;
 } = {
     start_url: "",
     referrer: "",
     ip: "",
-    utm: {}
+    utm: {},
+    logoSrc: "",
+    logoMobileSrc: ""
 };
 
 export const getIp = createAsyncThunk(
@@ -40,6 +43,12 @@ const slice = createSlice({
         },
         setUTM(state, action: PayloadAction<UTMParams>) {
             state.utm = action.payload;
+        },
+        setLogoSrc(state, action: PayloadAction<string>) {
+            state.logoSrc = action.payload;
+        },
+        setMobileLogoSrc(state, action: PayloadAction<string>) {
+            state.logoMobileSrc = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -50,5 +59,11 @@ const slice = createSlice({
 });
 
 export const GlobalReducer = slice.reducer;
-export const { setReferrer, setStartUrl, setUTM } = slice.actions;
+export const {
+    setReferrer,
+    setStartUrl,
+    setUTM,
+    setLogoSrc,
+    setMobileLogoSrc
+} = slice.actions;
 export const GlobalState = (state: RootState) => state.GlobalReducer;

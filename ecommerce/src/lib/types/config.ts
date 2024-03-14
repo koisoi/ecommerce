@@ -1,11 +1,12 @@
 import { PageData } from "..";
 
 export type LandingConfig = {
+    id: number;
     landing: string;
     landing_title: string;
     landing_id: number;
-    logoImgLink: string;
-    logoImgMobileLink: string;
+    logoImgLink?: string;
+    logoImgMobileLink?: string;
     categories: PageData[];
     colors: {
         primary: {

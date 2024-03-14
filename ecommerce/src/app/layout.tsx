@@ -8,7 +8,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { backendAPI, getProductImageLink } from "@/lib";
+import { backendAPI, getImageLink } from "@/lib";
 import { landingConfig } from "@/lib/data/config";
 
 const RootLayout = async ({
@@ -18,11 +18,18 @@ const RootLayout = async ({
     searchParams: { [key: string]: string | string[] | undefined };
 }>) => {
     try {
+        const siteData = await backendAPI.getSite();
+
+        landingConfig.logoImgLink =
+            getImageLink(siteData.logo_main || "") || "";
+        landingConfig.logoImgMobileLink =
+            getImageLink(siteData.logo_alt || "") || "";
+
         const response = await backendAPI.getPages({});
 
         landingConfig.categories = response.map((el) => ({
             ...el,
-            image: getProductImageLink(el.images[0]?.url || "") || ""
+            image: getImageLink(el.images[0]?.url || "") || ""
         }));
 
         // landingConfig.categories = response.map((el) => ({

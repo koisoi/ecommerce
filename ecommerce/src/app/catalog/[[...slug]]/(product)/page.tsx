@@ -7,7 +7,7 @@ import {
     ProductPageTabType,
     ProductReview,
     catalogPageBreadcrumb,
-    getProductImageLink,
+    getImageLink,
     productAPI
 } from "@/lib";
 import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
@@ -86,7 +86,7 @@ const ProductPage = async ({
                     imageLinks={
                         productMainInfo.images.map((el) => ({
                             id: el.id,
-                            url: getProductImageLink(el.url)
+                            url: getImageLink(el.url)
                         })) || []
                     }
                     stock={productMainInfo.is_available || false}
@@ -95,9 +95,7 @@ const ProductPage = async ({
                         url: getProductLink(category, product),
                         alias: product,
                         title: productMainInfo.title,
-                        imgLink: getProductImageLink(
-                            productMainInfo.images[0].url
-                        ),
+                        imgLink: getImageLink(productMainInfo.images[0].url),
                         price: productMainInfo.price,
                         amount: 1,
                         articul: productMainInfo.articul

@@ -6,9 +6,7 @@ import {
     TableCell,
     TableCellProps,
     TableHead,
-    TableProps,
-    TableRow,
-    TypographyProps
+    TableRow
 } from "@mui/material";
 import AppLink from "../(shared)/text/appLink.template";
 import AttentionText from "../(shared)/text/attentionText.template";

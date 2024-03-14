@@ -1,5 +1,4 @@
 import { Box, BoxProps } from "@mui/material";
-import HeaderNavigation from "./navigation.template";
 import { landingConfig } from "@/lib/data/config";
 import HeaderTopContainer from "./topContainer.template";
 import HeaderMainContainer from "./mainContainer/mainContainer.template";

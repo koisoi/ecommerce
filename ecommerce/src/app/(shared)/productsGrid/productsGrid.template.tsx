@@ -1,7 +1,7 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
 import { Box, BoxProps, CardProps, TypographyProps } from "@mui/material";
 import CategoryPagination from "./categoryPagination.template";
-import { CategoryItemsResponse, getProductImageLink } from "@/lib";
+import { CategoryItemsResponse, getImageLink } from "@/lib";
 import { getProductLink } from "@/lib/functions/getProductLink";
 import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import Paragraph from "../text/paragraph.template";
@@ -77,7 +77,7 @@ const ProductsGridTemplate = ({
                                         ),
                                         alias: item.alias,
                                         title: item.title,
-                                        imgLink: getProductImageLink(
+                                        imgLink: getImageLink(
                                             item.images[0].url
                                         ),
                                         price: item.price,

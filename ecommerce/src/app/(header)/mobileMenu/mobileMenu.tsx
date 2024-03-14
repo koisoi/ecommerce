@@ -8,8 +8,15 @@ import {
 } from "@/lib/slices/mobileMenu.slice";
 import { usePathname } from "next/navigation";
 import { landingConfig } from "@/lib/data/config";
+import { ReactNode } from "react";
 
-const MobileMenu = () => {
+const MobileMenu = ({
+    children
+}: // logoImgLink
+{
+    // logoImgLink: string;
+    children: ReactNode;
+}) => {
     const dispatch = useAppDispatch();
     const path = usePathname();
 
@@ -29,7 +36,10 @@ const MobileMenu = () => {
             categories={landingConfig.categories}
             phone={landingConfig.phoneNumber}
             path={path}
-        />
+            // logoImgLink={logoImgLink}
+        >
+            {children}
+        </MobileMenuTemplate>
     );
 };
 

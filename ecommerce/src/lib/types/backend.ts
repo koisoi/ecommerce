@@ -6,8 +6,8 @@ export type SiteData = {
     page_description?: string;
     page_keywords?: string;
     text?: string | null;
-    images: [{ url: string }?];
-    logo?: string;
+    images: [{ url: string }, { url: string }];
+    logo_main?: string;
     logo_alt?: string;
 };
 
