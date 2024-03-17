@@ -26,3 +26,12 @@ export type PageData = {
     parent_id: number;
     parent?: PageData;
 };
+
+export type BannerData = {
+    id: number;
+    url: string;
+    src: string;
+    width: string;
+    height: string;
+    backgrounds: [{ descktop: string }, { mobile: string }];
+};

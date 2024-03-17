@@ -25,7 +25,7 @@ const CategoryCard = ({ category }: { category: PageData }) => {
             cardProps: {
                 sx: {
                     color: "text.primary",
-                    height: { xs: "155px", sm: "unset" },
+                    height: { xs: "150px", sm: "unset" },
                     width: { xs: "130px", sm: "150px" },
 
                     ":hover": {

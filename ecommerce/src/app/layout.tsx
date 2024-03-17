@@ -3,6 +3,7 @@ import Header from "./(header)/header";
 import { Box, BoxProps, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
 import Footer from "./(footer)/footer";
+import BannersCarousel from "./bannersCarousel";
 import BackCallForm from "./(backCallForm)/backCallForm";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
@@ -51,6 +52,9 @@ const RootLayout = async ({
     } catch (error) {
         console.error(error);
     }
+
+    // const
+    const banners = await backendAPI.getBanners();
 
     const headersList = headers();
     const referer = headersList.get("referer");
@@ -114,6 +118,7 @@ const RootLayout = async ({
                         <StoreProvider referer={referer}>
                             <BackCallForm />
                             <Header props={innerProps} />
+                            {banners?.length ? <BannersCarousel banners={banners} /> : '' }
                             <Box {...rootBoxProps}>{children}</Box>
                             <Footer props={innerProps} />
                         </StoreProvider>

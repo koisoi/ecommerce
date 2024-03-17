@@ -1,7 +1,6 @@
 import Title from "./(shared)/text/title.template";
 import OurAdvantages from "./(shared)/ourAdvantages.template";
 import { homePageAPI } from "@/lib/services/homePage.service";
-import MainPageCarousel from "./mainPageCarousel";
 import {
     CategoryItem,
     PageData,
@@ -46,7 +45,6 @@ const Home = async () => {
 
     return (
         <SectionContainer>
-            <MainPageCarousel />
             <CategoriesMenuTemplate pages={pages} />
             <>
                 <Title>Популярные товары</Title>

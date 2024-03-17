@@ -1,4 +1,4 @@
-import { NetworkError, PageData, SiteData } from "..";
+import { NetworkError, SiteData, PageData, BannerData} from "..";
 import { landingConfig } from "../data/config";
 import { Service } from "./base.service";
 
@@ -40,6 +40,25 @@ class BackendService extends Service {
             })
             .then((data) => {
                 return data.pages;
+            });
+    }
+
+    public getBanners(): Promise<BannerData[]> {
+        return fetch(
+            `${this.baseURL}/banners/site_id/${landingConfig.id}?format=json`,
+            this.options
+        )
+            .then((response) => {
+                if (!response.ok) {
+                    throw new NetworkError(
+                        response.statusText,
+                        response.status
+                    );
+                }
+                return response.json();
+            })
+            .then((data) => {
+                return data.banners;
             });
     }
 }
