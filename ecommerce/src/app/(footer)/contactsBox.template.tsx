@@ -10,7 +10,6 @@ import AppLink from "../(shared)/text/appLink.template";
 import { Email } from "@mui/icons-material";
 import PhoneLink from "../(shared)/text/phoneLink.template";
 import BackCallButton from "../(shared)/backCallButton/backCallButton";
-import { landingConfig } from "@/lib/data/config";
 
 const ContactsBox = ({ props, phone }: { props?: BoxProps; phone: string }) => {
     const wrapperProps: BoxProps = {
@@ -66,10 +65,6 @@ const ContactsBox = ({ props, phone }: { props?: BoxProps; phone: string }) => {
                     <Email {...iconProps} />
                     sales@telescope1.ru
                 </AppLink>
-                {/* <Box {...boxProps}>
-                    <LocationOn {...iconProps} />
-                    {address}
-                </Box> */}
             </Box>
             <BackCallButton props={backCallButtonProps} />
         </Box>

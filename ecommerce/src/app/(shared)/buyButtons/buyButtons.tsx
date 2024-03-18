@@ -1,8 +1,7 @@
 "use client";
 
-import { CartItem } from "@/lib/types/cart";
-import { InstantBuyButtonTemplate, ShoppingCartButtonTemplate } from "..";
 import {
+    CartItem,
     CategoryItem,
     addItemToCart,
     useAppDispatch,

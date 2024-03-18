@@ -1,7 +1,6 @@
 "use client";
 
-import { useAppDispatch } from "@/lib";
-import { setMobileMenuOpen } from "@/lib/slices/mobileMenu.slice";
+import { setMobileMenuOpen, useAppDispatch } from "@/lib";
 import { MouseEventHandler } from "react";
 import MobileHeaderButton from "./mobileHeaderButton.template";
 

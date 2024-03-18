@@ -1,9 +1,12 @@
 import ProductCard, {
     ProductCardProps
 } from "@/app/(shared)/productCard/productCard.template";
-import { CategoryItem, getImageLink } from "@/lib";
-import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
-import { getProductLink } from "@/lib/functions/getProductLink";
+import {
+    CategoryItem,
+    categoryPathToAlias,
+    getImageLink,
+    getProductLink
+} from "@/lib";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 
 const SimliarProductsSlider = ({ products }: { products: CategoryItem[] }) => {

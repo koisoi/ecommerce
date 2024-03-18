@@ -1,13 +1,11 @@
 "use client";
 
-import { CartItem as CartItemTemplate } from "@/lib/types/cart";
 import {
     IconButton,
     IconButtonProps,
     TableCell,
     TableCellProps,
     TableRow,
-    TableRowProps,
     TypographyProps
 } from "@mui/material";
 import { MouseEventHandler } from "react";
@@ -17,7 +15,7 @@ import { Close } from "@mui/icons-material";
 import DeleteItemDialog from "../deleteItemDialog.template";
 import CartImg, { CartImgProps } from "./cartImg.template";
 import AmountBox, { AmountBoxProps } from "./cartAmountAndDeleteBox.template";
-import { useMediaQueries } from "@/lib";
+import { CartItem, useMediaQueries } from "@/lib";
 
 const CartItemTemplate = ({
     item,
@@ -30,7 +28,7 @@ const CartItemTemplate = ({
     displayOnly,
     columnsTotal
 }: {
-    item: CartItemTemplate;
+    item: CartItem;
     onAmountChange: (
         event:
             | React.FocusEvent<HTMLInputElement>

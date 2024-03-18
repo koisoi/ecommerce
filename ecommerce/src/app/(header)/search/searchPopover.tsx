@@ -1,11 +1,12 @@
 import { useEffect } from "react";
 import SearchPopoverTemplate from "./searchPopover.template";
-import { useAppDispatch, useAppSelector } from "@/lib";
 import {
     SearchPopoverState,
     searchPopover,
-    setCanSearchInPopover
-} from "@/lib/slices/searchPopover.slice";
+    setCanSearchInPopover,
+    useAppDispatch,
+    useAppSelector
+} from "@/lib";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 const SearchPopover = ({

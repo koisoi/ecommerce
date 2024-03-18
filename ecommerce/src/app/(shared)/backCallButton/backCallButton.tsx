@@ -1,8 +1,7 @@
 "use client";
 
-import { useAppDispatch } from "@/lib";
+import { openBackCallModal, useAppDispatch } from "@/lib";
 import BackCallButtonTemplate from "./backCallButton.template";
-import { openBackCallModal } from "@/lib/slices/backCall.slice";
 import { ButtonProps } from "@mui/material";
 
 const BackCallButton = ({

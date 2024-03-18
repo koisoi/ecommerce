@@ -15,8 +15,7 @@ import {
     TypographyProps
 } from "@mui/material";
 import Title from "./text/title.template";
-import { useMediaQueries } from "@/lib";
-import { landingConfig } from "@/lib/data/config";
+import { landingConfig, useMediaQueries } from "@/lib";
 
 const OurAdvantages = ({ props }: { props?: BoxProps }) => {
     const advantages = landingConfig.advantages;
@@ -98,9 +97,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
     return (
         <Box {...wrapperProps}>
             <Title props={titleProps}>Наши преимущества</Title>
-            <Typography {...descriptionProps}>
-                {advantages.text}
-            </Typography>
+            <Typography {...descriptionProps}>{advantages.text}</Typography>
             <Box {...innerWrapperProps}>
                 <Box {...advantageBoxProps}>
                     <span {...iconSpanProps}>

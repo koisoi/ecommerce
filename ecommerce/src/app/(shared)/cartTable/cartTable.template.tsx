@@ -1,6 +1,5 @@
 "use client";
 
-import { CartItem } from "@/lib/types/cart";
 import {
     Box,
     BoxProps,
@@ -23,7 +22,7 @@ import Price from "../text/price.template";
 import { Delete } from "@mui/icons-material";
 import { MouseEventHandler } from "react";
 import ClearDialog from "./clearDialog.template";
-import { useMediaQueries } from "@/lib";
+import { CartItem, useMediaQueries } from "@/lib";
 import EmptyCart from "./emptyCart/emptyCart";
 
 export type CartTableTemplateProps = {

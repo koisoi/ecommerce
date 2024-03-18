@@ -6,9 +6,8 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { CategoryItem, ProductCharacteristic } from "@/lib";
+import { CartItem, CategoryItem, ProductCharacteristic } from "@/lib";
 import CharacteristicsBox from "./characteristicsBox.template";
-import { CartItem } from "@/lib/types/cart";
 import dynamic from "next/dynamic";
 import ProductOfferBox, { ProductOfferBoxProps } from "./productOfferBox";
 

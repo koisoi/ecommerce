@@ -9,8 +9,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { backendAPI, getImageLink } from "@/lib";
-import { landingConfig } from "@/lib/data/config";
+import { backendAPI, getImageLink, landingConfig } from "@/lib";
 
 const RootLayout = async ({
     children

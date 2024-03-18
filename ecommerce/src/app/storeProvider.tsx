@@ -1,8 +1,13 @@
 "use client";
 
-import { setCart } from "@/lib";
-import { setReferrer, setStartUrl, setUTM } from "@/lib/slices/global.slice";
-import { AppStore, makeStore } from "@/lib/store";
+import {
+    AppStore,
+    makeStore,
+    setCart,
+    setReferrer,
+    setStartUrl,
+    setUTM
+} from "@/lib";
 import { getCookie } from "cookies-next";
 import { useSearchParams } from "next/navigation";
 import { ReactNode, useEffect, useRef } from "react";

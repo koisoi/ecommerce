@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import {
     CartState,
+    GlobalState,
     OrderForm,
     RulesType,
     authorize,
@@ -19,7 +20,6 @@ import {
 } from "@/lib";
 import { useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { GlobalState } from "@/lib/slices/global.slice";
 import { useRouter } from "next/navigation";
 import { matchIsValidTel } from "mui-tel-input";
 import dynamic from "next/dynamic";

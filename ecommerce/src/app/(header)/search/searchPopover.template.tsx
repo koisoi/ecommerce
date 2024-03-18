@@ -1,4 +1,3 @@
-import { SearchResponse } from "@/lib/services/search.service";
 import {
     LinkProps,
     List,
@@ -13,6 +12,7 @@ import SearchPopoverItem from "./searchPopoverItem.template";
 import { Url } from "next/dist/shared/lib/router/router";
 import AppLink from "@/app/(shared)/text/appLink.template";
 import AttentionText from "@/app/(shared)/text/attentionText.template";
+import { SearchResponse } from "@/lib";
 
 const SearchPopoverTemplate = ({
     open,

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMediaQueries } from "@/lib/hooks";
+import { useMediaQueries } from "@/lib";
 import CardSkeleton from "../cardSkeleton.template";
 
 const CardsSkeleton = () => {

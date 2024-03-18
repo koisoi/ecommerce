@@ -1,10 +1,9 @@
 import { Box, BoxProps } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
-import { PageData } from "@/lib";
+import { Breadcrumb, PageData } from "@/lib";
 import PageTitle from "../../(shared)/text/pageTitle.template";
 import CatalogSubcategory from "./catalogSubcategory.template";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import Paragraph from "@/app/(shared)/text/paragraph.template";
 
 const CategoryTemplate = (params: {

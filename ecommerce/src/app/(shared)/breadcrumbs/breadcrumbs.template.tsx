@@ -1,5 +1,4 @@
-import { NextLinkProps } from "@/lib";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
+import { Breadcrumb, NextLinkProps } from "@/lib";
 import {
     Breadcrumbs,
     BreadcrumbsProps,

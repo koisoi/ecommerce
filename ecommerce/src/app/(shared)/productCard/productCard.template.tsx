@@ -13,11 +13,10 @@ import {
     Link,
     LinkProps
 } from "@mui/material";
-import { CategoryItem } from "@/lib";
+import { CartItem, CategoryItem } from "@/lib";
 import Price from "../text/price.template";
 import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
-import { CartItem } from "@/lib/types/cart";
 import AppCard, { AppCardProps } from "../appCard.template";
 import { default as NextLink } from "next/link";
 

@@ -1,4 +1,4 @@
-import { landingConfig } from "@/lib/data/config";
+import { landingConfig } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
 import Link from "next/link";
 

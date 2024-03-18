@@ -1,6 +1,5 @@
-import { CategoryItemsResponse, NetworkError } from "..";
+import { CategoryItemsResponse, NetworkError, landingConfig } from "..";
 import { Service } from "./base.service";
-import { landingConfig } from "@/lib/data/config";
 
 export type SearchResponse = CategoryItemsResponse;
 

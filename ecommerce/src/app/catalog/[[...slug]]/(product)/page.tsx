@@ -1,5 +1,6 @@
 import ImgModal from "./imgModal";
 import {
+    Breadcrumb,
     CategoryItem,
     MainProductInfo,
     ProductCharacteristic,
@@ -7,15 +8,14 @@ import {
     ProductPageTabType,
     ProductReview,
     catalogPageBreadcrumb,
+    categoryPathToAlias,
     getImageLink,
+    getProductLink,
     productAPI
 } from "@/lib";
 import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
 import { notFound } from "next/navigation";
 import ProductPageLowerBox from "./(lowerBox)/productPageLowerBox";
-import { getProductLink } from "@/lib/functions/getProductLink";
-import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
 import PageTitle from "@/app/(shared)/text/pageTitle.template";
 import SectionContainer from "@/app/(shared)/section.template";

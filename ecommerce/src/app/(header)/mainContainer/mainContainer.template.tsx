@@ -4,8 +4,8 @@ import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import HeaderSearchBox from "../search/search";
 import dynamic from "next/dynamic";
 import Logo from "../logo";
-import { landingConfig } from "@/lib/data/config";
 import HeaderContactsBox from "../contactsBox/contactsBox.template";
+import { landingConfig } from "@/lib";
 
 const DynamicHeaderButton = dynamic(
     () => import("@/app/(header)/desktopHeaderButton.template"),

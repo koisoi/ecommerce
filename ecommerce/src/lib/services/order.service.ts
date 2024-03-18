@@ -8,10 +8,10 @@ import {
     OrderResponse,
     StatisticsForm,
     StatisticsQuery,
-    StatisticsResponse
+    StatisticsResponse,
+    landingConfig
 } from "..";
 import { Service } from "./base.service";
-import { landingConfig } from "@/lib/data/config";
 
 class OrderService extends Service {
     constructor(baseURL: string, options?: RequestInit) {

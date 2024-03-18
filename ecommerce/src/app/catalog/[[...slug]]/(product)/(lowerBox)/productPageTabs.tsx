@@ -3,9 +3,9 @@
 import {
     ProductCharacteristics,
     ProductPageTabType,
-    ProductReview
+    ProductReview,
+    getProductLink
 } from "@/lib";
-import { getProductLink } from "@/lib/functions/getProductLink";
 import { Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 import { useRouter } from "next/navigation";
 import { SyntheticEvent } from "react";
@@ -32,13 +32,6 @@ const ProductPageTabs = ({
     const router = useRouter();
 
     const handleTabChange = (_: SyntheticEvent<Element, Event>, value: any) => {
-        // router.replace({
-        //     pathname: router.pathname,
-        //     query: {
-        //         ...router.query,
-        //         tab: value
-        //     }
-        // });
         router.replace(getProductLink(category, product) + `?tab=${value}`, {
             scroll: false
         });

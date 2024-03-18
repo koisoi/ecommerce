@@ -4,23 +4,21 @@ import { useForm } from "react-hook-form";
 import BackCallFormTemplate from "./backCallForm.template";
 import {
     AppealForm,
+    BackCallState,
+    GlobalState,
     RulesType,
+    authorizeAppeal,
+    closeBackCallModal,
+    postAppeal,
+    postAppealStatistics,
     requiredRule,
+    resetAppeal,
     ruPhoneValidator,
     useAppDispatch,
     useAppSelector
 } from "@/lib";
 import { MouseEventHandler, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
-import {
-    BackCallState,
-    authorizeAppeal,
-    closeBackCallModal,
-    postAppeal,
-    postAppealStatistics,
-    resetAppeal
-} from "@/lib/slices/backCall.slice";
-import { GlobalState } from "@/lib/slices/global.slice";
 
 export type BackCallRules = {
     fullName: RulesType;

@@ -3,7 +3,6 @@
 import {
     Box,
     BoxProps,
-    Dialog,
     DialogContent,
     DialogContentProps,
     DialogProps,
@@ -29,7 +28,7 @@ import {
     FullNameInput,
     PhoneInput
 } from "../(shared)/formFields.template";
-import { AppealForm, useMediaQueries } from "@/lib";
+import { AppealForm } from "@/lib";
 import Loading from "../(shared)/loading.template";
 import ThirdTitle from "../(shared)/text/thirdTitle.template";
 import AppDialog from "../(shared)/appDialog";

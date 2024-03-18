@@ -1,8 +1,7 @@
 import { Box, BoxProps } from "@mui/material";
 import HeaderMobileNavigationTemplate from "./mobileNavigation/mobileNavigation.template";
-import { PageData } from "@/lib";
+import { PageData, landingConfig } from "@/lib";
 import MobileContactsBox from "./contactsBox/mobileContactsBox";
-import { landingConfig } from "@/lib/data/config";
 import HeaderDesktopNavigationTemplate from "./desktopNavigation/desktopNavigation.template";
 
 const HeaderNavigation = ({
@@ -12,20 +11,6 @@ const HeaderNavigation = ({
     mobile: boolean;
     categories: PageData[];
 }) => {
-    // // const
-    // const router = useRouter();
-    // const dispatch = useAppDispatch();
-
-    // // handlers
-    // const handleDesktopTabClick = (path: string): void => {
-    //     router.push(path);
-    // };
-
-    // useEffect(() => {
-    //     dispatch(setLogoSrc(logoSrc));
-    //     dispatch(setMobileLogoSrc(logoMobileSrc));
-    // }, []);
-
     const outerWrapperProps: BoxProps = {
         component: mobile ? "header" : "nav",
 

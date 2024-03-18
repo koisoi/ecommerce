@@ -1,8 +1,8 @@
 import { Box, BoxProps, Divider } from "@mui/material";
 import CatalogBox from "./catalogBox.template";
 import UpperMenuBox from "./upperMenuBox.template";
-import { landingConfig } from "@/lib/data/config";
 import ContactsBox from "./contactsBox.template";
+import { landingConfig } from "@/lib";
 
 const Footer = ({ props }: { props?: BoxProps }) => {
     // props

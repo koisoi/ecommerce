@@ -3,14 +3,14 @@ import {
     ProductPageTabType,
     catalogPageBreadcrumb,
     productAPI,
-    PageData
+    PageData,
+    makePagePath,
+    landingConfig,
+    Breadcrumb
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
-import { makePagePath } from "@/lib/functions/makePagePath";
-import { Breadcrumb } from "@/lib/types/breadcrumbs";
 import { Metadata } from "next";
-import { landingConfig } from "@/lib/data/config";
 import CatalogPage from "./catalog.template";
 import { backendAPI, getImageLink } from "@/lib";
 

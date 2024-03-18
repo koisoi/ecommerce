@@ -1,13 +1,15 @@
 "use client";
 
-import { PageData, useAppDispatch, useAppSelector } from "@/lib";
-import MobileMenuTemplate from "./mobileMenu.template";
 import {
     MobileMenuState,
-    setMobileMenuOpen
-} from "@/lib/slices/mobileMenu.slice";
+    PageData,
+    landingConfig,
+    setMobileMenuOpen,
+    useAppDispatch,
+    useAppSelector
+} from "@/lib";
+import MobileMenuTemplate from "./mobileMenu.template";
 import { usePathname } from "next/navigation";
-import { landingConfig } from "@/lib/data/config";
 import { ReactNode } from "react";
 
 const MobileMenu = ({

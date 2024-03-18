@@ -1,8 +1,8 @@
 import { Box, BoxProps } from "@mui/material";
-import { landingConfig } from "@/lib/data/config";
 import HeaderTopContainer from "./topContainer.template";
 import HeaderMainContainer from "./mainContainer/mainContainer.template";
 import dynamic from "next/dynamic";
+import { landingConfig } from "@/lib";
 
 const DynamicHeaderNavigation = dynamic(
     () => import("@/app/(header)/navigation.template")

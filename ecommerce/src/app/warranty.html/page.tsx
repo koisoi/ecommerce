@@ -15,9 +15,8 @@ import Paragraph from "../(shared)/text/paragraph.template";
 import AppLink from "../(shared)/text/appLink.template";
 import Title from "../(shared)/text/title.template";
 import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
-import { warrantyBreadcrumbs } from "@/lib";
+import { landingConfig, warrantyBreadcrumbs } from "@/lib";
 import { Metadata } from "next";
-import { landingConfig } from "@/lib/data/config";
 import SectionContainer from "../(shared)/section.template";
 
 export const metadata: Metadata = {
@@ -58,11 +57,13 @@ const WarrantyPage = () => {
                 <Box {...warrantyBoxProps} key={0}>
                     <Title>Какие вы предоставляете гарантии?</Title>
                     <Paragraph>
-                        На все продаваемые товары действует гарантия производителя 2 года.
+                        На все продаваемые товары действует гарантия
+                        производителя 2 года.
                     </Paragraph>
                     <Paragraph>
-                        Гарантийный ремонт и замена могут осуществляться как через
-                        сервисный центр магазина, так и через авторизованные сервисные центры iRay.
+                        Гарантийный ремонт и замена могут осуществляться как
+                        через сервисный центр магазина, так и через
+                        авторизованные сервисные центры iRay.
                     </Paragraph>
                     <Paragraph>
                         Гарантийный срок можно найти на странице каждого товара,

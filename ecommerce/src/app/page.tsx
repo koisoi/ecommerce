@@ -1,15 +1,15 @@
 import Title from "./(shared)/text/title.template";
 import OurAdvantages from "./(shared)/ourAdvantages.template";
-import { homePageAPI } from "@/lib/services/homePage.service";
 import {
     CategoryItem,
     PageData,
     ProductReview,
     getImageLink,
-    backendAPI
+    backendAPI,
+    homePageAPI,
+    categoryPathToAlias
 } from "@/lib";
 import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
-import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
 import SectionContainer from "./(shared)/section.template";
 import { Metadata } from "next";

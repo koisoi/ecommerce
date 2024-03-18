@@ -8,8 +8,7 @@ import {
 } from "react";
 import HeaderSearchBoxTemplate from "./searchBox.template";
 import { useRouter } from "next/navigation";
-import { useAppDispatch } from "@/lib";
-import { clearPopupSearchResponse } from "@/lib/slices/searchPopover.slice";
+import { clearPopupSearchResponse, useAppDispatch } from "@/lib";
 
 const HeaderSearchBox = ({ searchPage }: { searchPage?: boolean }) => {
     const router = useRouter();

@@ -6,8 +6,7 @@ import {
     InstantBuyButton,
     ShoppingCartButton
 } from "@/app/(shared)/buyButtons/buyButtons";
-import { CategoryItem } from "@/lib";
-import { CartItem } from "@/lib/types/cart";
+import { CartItem, CategoryItem } from "@/lib";
 
 export type ProductOfferBoxProps = {
     categoryItem: CategoryItem;

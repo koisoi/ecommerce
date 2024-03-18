@@ -1,8 +1,13 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/lib";
+import {
+    SearchState,
+    resetSearch,
+    search,
+    useAppDispatch,
+    useAppSelector
+} from "@/lib";
 import SearchPageTemplate from "./page.template";
-import { SearchState, resetSearch, search } from "@/lib/slices/search.slice";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "../(shared)/loading.template";

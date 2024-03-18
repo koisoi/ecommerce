@@ -1,13 +1,18 @@
-import { deleteItemFromCart, setCartItemAmount, useAppDispatch } from "@/lib";
+import {
+    CartItem,
+    deleteItemFromCart,
+    setCartItemAmount,
+    useAppDispatch
+} from "@/lib";
 import CartItemTemplate from "./cartItem.template";
-import { MouseEventHandler, ReactNode, useState } from "react";
+import { MouseEventHandler, useState } from "react";
 
 const CartItemComponent = ({
     item,
     displayOnly,
     columnsTotal
 }: {
-    item: CartItemTemplate;
+    item: CartItem;
     displayOnly?: boolean;
     columnsTotal: number;
 }) => {

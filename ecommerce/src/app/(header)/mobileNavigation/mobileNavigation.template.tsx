@@ -4,7 +4,7 @@ import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import CartHeaderButton from "../cartHeaderButton";
 import MobileMenuButton from "../mobileMenuButton";
 import MobileMenu from "../mobileMenu/mobileMenu";
-import { landingConfig } from "@/lib/data/config";
+import { landingConfig } from "@/lib";
 
 const HeaderMobileNavigationTemplate = () => {
     const wrapperProps: BoxProps = {

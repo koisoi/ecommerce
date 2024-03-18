@@ -14,7 +14,14 @@ import {
 import ProductCard, {
     ProductCardProps
 } from "../productCard/productCard.template";
-import { CategoryItem, OrderForm, getImageLink, useMediaQueries } from "@/lib";
+import {
+    CategoryItem,
+    OrderForm,
+    categoryAliasToPath,
+    getImageLink,
+    getProductLink,
+    useMediaQueries
+} from "@/lib";
 import Title from "../text/title.template";
 import { UseFormReturn } from "react-hook-form";
 import { OrderRules } from "../../cart/page.client";
@@ -22,8 +29,6 @@ import OrderFormTemplate from "../../cart/orderForm.template";
 import { MouseEventHandler } from "react";
 import { Close } from "@mui/icons-material";
 import Loading from "../loading.template";
-import { getProductLink } from "@/lib/functions/getProductLink";
-import { categoryAliasToPath } from "@/lib/functions/catalogPathTransform";
 import AppDialog from "../appDialog";
 
 const FastOrderFormTemplate = ({

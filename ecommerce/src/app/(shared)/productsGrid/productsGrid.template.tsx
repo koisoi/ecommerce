@@ -1,9 +1,12 @@
 import ProductCard from "@/app/(shared)/productCard/productCard.template";
 import { Box, BoxProps, CardProps, TypographyProps } from "@mui/material";
 import CategoryPagination from "./categoryPagination.template";
-import { CategoryItemsResponse, getImageLink } from "@/lib";
-import { getProductLink } from "@/lib/functions/getProductLink";
-import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
+import {
+    CategoryItemsResponse,
+    categoryPathToAlias,
+    getImageLink,
+    getProductLink
+} from "@/lib";
 import Paragraph from "../text/paragraph.template";
 
 export type ProductsGridTemplateProps = CategoryItemsResponse & {
