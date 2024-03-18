@@ -9,13 +9,15 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { backendAPI, getImageLink, landingConfig } from "@/lib";
+import { BannerData, backendAPI, getImageLink, landingConfig } from "@/lib";
 
 const RootLayout = async ({
     children
 }: Readonly<{
     children: ReactNode;
 }>) => {
+    let banners: BannerData[] = [];
+
     try {
         const siteData = await backendAPI.getSite();
 
@@ -30,12 +32,11 @@ const RootLayout = async ({
             ...el,
             image: getImageLink(el.images[0]?.url || "") || ""
         }));
+
+        banners = await backendAPI.getBanners();
     } catch (error) {
         console.error(error);
     }
-
-    // const
-    const banners = await backendAPI.getBanners();
 
     const headersList = headers();
     const referer = headersList.get("referer");

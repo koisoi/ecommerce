@@ -28,6 +28,7 @@ const Home = async () => {
     let popularProducts: CategoryItem[] = [];
     let reviews: ProductReview[] = [];
     let pages: PageData[] = [];
+    // let banners: BannerData[] = [];
 
     try {
         popularProducts = await homePageAPI.getPopularProducts();
@@ -44,12 +45,23 @@ const Home = async () => {
             ...el,
             image: getImageLink(el.images[0]?.url || "") || ""
         }));
+
+        // banners = await backendAPI.getBanners();
     } catch (error) {
         console.error(error);
     }
 
+    // const bannerBoxProps: BoxProps = {
+    //     sx: { position: "absolute", left: 0, right: 0 }
+    // };
+
     return (
         <SectionContainer>
+            {/* {!!banners?.length && (
+                <Box {...bannerBoxProps}>
+                    <BannersCarousel banners={banners} />
+                </Box>
+            )} */}
             <CategoriesMenuTemplate pages={pages} />
             <>
                 <Title>Популярные товары</Title>
