@@ -16,8 +16,11 @@ import {
 } from "@mui/material";
 import Title from "./text/title.template";
 import { useMediaQueries } from "@/lib";
+import { landingConfig } from "@/lib/data/config";
 
 const OurAdvantages = ({ props }: { props?: BoxProps }) => {
+    const advantages = landingConfig.advantages;
+
     const screen = useMediaQueries();
 
     const wrapperProps: BoxProps = {
@@ -96,16 +99,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
         <Box {...wrapperProps}>
             <Title props={titleProps}>Наши преимущества</Title>
             <Typography {...descriptionProps}>
-                Интернет-магазин Telescope1.ru предлагает своим клиентам широкий
-                ассортимент оптического оборудования для любого уровня
-                подготовки: от детских до профессиональных. Только самые
-                современные устройства от ведущих мировых производителей,
-                предназначенные для наблюдений природы и звездного неба, охоты в
-                любое время суток и разнообразных биологических исследований.
-                Более 8000 наименований оптических приборов (биноклей,
-                телескопов, микроскопов, зрительных труб и монокуляров,
-                тепловизоров, ПНВ и прицелов), а также большой выбор аксессуаров
-                и принадлежностей к этой и прочей оптике.
+                {advantages.text}
             </Typography>
             <Box {...innerWrapperProps}>
                 <Box {...advantageBoxProps}>
@@ -113,7 +107,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
                         <LocalShippingOutlined {...iconProps} />
                     </span>
                     <Typography {...advantageTextProps}>
-                        Бесплатная доставка по Москве и Санкт-Петербургу
+                        {advantages.delivery}
                     </Typography>
                 </Box>
                 <Divider {...dividerProps} />
@@ -122,7 +116,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
                         <CurrencyRuble {...iconProps} />
                     </span>
                     <Typography {...advantageTextProps}>
-                        Оплата после получения и проверки товара
+                        {advantages.payment}
                     </Typography>
                 </Box>
                 <Divider {...dividerProps} />
@@ -131,7 +125,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
                         <AddCard {...iconProps} />
                     </span>
                     <Typography {...advantageTextProps}>
-                        Совершая покупки, вы получаете бонусные баллы
+                        {advantages.bonuses}
                     </Typography>
                 </Box>
             </Box>
