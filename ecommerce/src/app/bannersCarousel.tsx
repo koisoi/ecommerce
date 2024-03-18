@@ -80,7 +80,7 @@ const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
         sx: {
             width: "100%",
             height: "100%",
-            // minHeight: carouselHeight ? `${carouselHeight}px` : "600px",
+            minHeight: `${carouselHeight}px`,
             aspectRatio: "16 / 9",
             maxHeight: carouselHeight
                 ? `${carouselHeight}px !important`
