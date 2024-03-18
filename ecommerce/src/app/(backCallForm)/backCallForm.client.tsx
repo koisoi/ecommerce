@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import BackCallFormTemplate from "./backCallForm.template";
+import { BackCallFormTemplate } from "./backCallForm.template";
 import {
     AppealForm,
     BackCallState,
@@ -26,7 +26,7 @@ export type BackCallRules = {
     question: RulesType;
 };
 
-const BackCallForm = () => {
+export const BackCallForm = () => {
     const dispatch = useAppDispatch();
     const { utm, ip, referrer, start_url } = useAppSelector(GlobalState);
     const { loading, postedAppealId, appealSendingCompleted, backCallOpen } =
@@ -118,4 +118,4 @@ const BackCallForm = () => {
     );
 };
 
-export default BackCallForm;
+// export default BackCallForm;

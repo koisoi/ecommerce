@@ -17,8 +17,8 @@ import { CartItem, CategoryItem } from "@/lib";
 import Price from "../text/price.template";
 import ProductLink from "../text/productLink.template";
 import { InstantBuyButton, ShoppingCartButton } from "../buyButtons/buyButtons";
-import AppCard, { AppCardProps } from "../appCard.template";
 import { default as NextLink } from "next/link";
+import { AppCard, AppCardProps } from "..";
 
 export type ProductCardProps = {
     cartItem: CartItem;

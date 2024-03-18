@@ -29,7 +29,7 @@ import OrderFormTemplate from "../../cart/orderForm.template";
 import { MouseEventHandler } from "react";
 import { Close } from "@mui/icons-material";
 import Loading from "../loading.template";
-import AppDialog from "../appDialog";
+import { AppDialog } from "..";
 
 const FastOrderFormTemplate = ({
     item,

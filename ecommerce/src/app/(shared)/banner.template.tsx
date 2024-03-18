@@ -1,18 +1,7 @@
-import {
-    Box,
-    BoxProps,
-    TypographyProps
-} from "@mui/material";
-import { ReactNode } from "react";
-import {
-    BannerData
-} from "@/lib";
+import { Box, BoxProps } from "@mui/material";
+import { BannerData } from "@/lib";
 
-const Banner = ({
-    banner
-}: {
-    banner: BannerData
-}) => {
+const Banner = ({ banner }: { banner: BannerData }) => {
     const bannerBoxProps: BoxProps = {
         component: "a",
         width: "100%",
@@ -22,13 +11,17 @@ const Banner = ({
 
         sx: {
             cursor: "grab",
-            href: banner.url,
+            href: banner.url
         }
     };
 
     return (
         <Box {...bannerBoxProps}>
-            <iframe src={banner.src}  width={banner.width} height={banner.height} />
+            <iframe
+                src={banner.src}
+                width={banner.width}
+                height={banner.height}
+            />
         </Box>
     );
 };

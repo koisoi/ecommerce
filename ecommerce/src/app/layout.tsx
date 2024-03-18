@@ -4,7 +4,7 @@ import { Box, BoxProps, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
 import Footer from "./(footer)/footer";
 import BannersCarousel from "./bannersCarousel";
-import BackCallForm from "./(backCallForm)/backCallForm";
+import { BackCallForm } from "./(backCallForm)/backCallForm.client";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";

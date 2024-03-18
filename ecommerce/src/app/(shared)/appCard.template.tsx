@@ -9,7 +9,7 @@ export type AppCardProps = {
     cardMediaProps?: CardMediaProps;
 };
 
-const AppCard = ({
+export const AppCard = ({
     children,
     cardProps,
     imageLink,
@@ -66,4 +66,4 @@ const AppCard = ({
     );
 };
 
-export default AppCard;
+// export default AppCard;

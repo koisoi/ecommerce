@@ -21,7 +21,7 @@ import { MouseEventHandler } from "react";
 import Paragraph from "../(shared)/text/paragraph.template";
 import AttentionText from "../(shared)/text/attentionText.template";
 import { Controller, ControllerProps, UseFormReturn } from "react-hook-form";
-import { BackCallRules } from "./backCallForm";
+import { BackCallRules } from "./backCallForm.client";
 import {
     CommentaryInput,
     FormButton,
@@ -31,9 +31,9 @@ import {
 import { AppealForm } from "@/lib";
 import Loading from "../(shared)/loading.template";
 import ThirdTitle from "../(shared)/text/thirdTitle.template";
-import AppDialog from "../(shared)/appDialog";
+import { AppDialog } from "../(shared)";
 
-const BackCallFormTemplate = ({
+export const BackCallFormTemplate = ({
     open,
     onClose,
     form,
@@ -210,4 +210,4 @@ const BackCallFormTemplate = ({
     );
 };
 
-export default BackCallFormTemplate;
+// export default BackCallFormTemplate;

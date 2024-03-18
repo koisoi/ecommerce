@@ -7,7 +7,7 @@ import {
     DialogProps
 } from "@mui/material";
 import { MouseEventHandler } from "react";
-import AppDialog from "../appDialog";
+import { AppDialog } from "..";
 
 const DeleteItemDialog = ({
     open,

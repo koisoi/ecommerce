@@ -4,7 +4,7 @@ import { useMediaQueries } from "@/lib";
 import { Dialog, DialogProps } from "@mui/material";
 import { ReactNode } from "react";
 
-const AppDialog = ({
+export const AppDialog = ({
     children,
     props
 }: {
@@ -30,4 +30,4 @@ const AppDialog = ({
     return <Dialog {...dialogProps}>{children}</Dialog>;
 };
 
-export default AppDialog;
+// export default AppDialog;

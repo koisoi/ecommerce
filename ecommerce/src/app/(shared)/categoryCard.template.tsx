@@ -1,8 +1,8 @@
-import { CategoryListItem, PageData, landingConfig } from "@/lib";
-import AppCard, { AppCardProps } from "./appCard.template";
+import { PageData, landingConfig } from "@/lib";
 import ProductLink, { ProductLinkProps } from "./text/productLink.template";
 import { default as NextLink } from "next/link";
 import { Link, LinkProps } from "@mui/material";
+import { AppCard, AppCardProps } from ".";
 
 const CategoryCard = ({ category }: { category: PageData }) => {
     const imgLinkProps = (category: PageData): LinkProps => ({
