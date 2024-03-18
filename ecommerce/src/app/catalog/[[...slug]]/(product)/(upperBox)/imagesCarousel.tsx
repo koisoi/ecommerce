@@ -117,6 +117,10 @@ const ImagesCarousel = ({
             height: "100%",
             // minHeight: { xs: "250px", md: "400px" }
 
+            div: {
+                transform: "none !important"
+            },
+
             ".mui-1f8sh1y": {
                 height: `${carouselHeight}px !important`
             }

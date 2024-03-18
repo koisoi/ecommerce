@@ -15,7 +15,7 @@ const Header = ({ props }: { props?: BoxProps }) => {
         boxSizing: "border-box",
         width: "100%",
 
-        display: "flex",
+        display: { xs: "none", md: "flex" },
         justifyContent: "center",
         flexDirection: "column",
 

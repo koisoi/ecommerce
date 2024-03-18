@@ -16,7 +16,6 @@ const RootLayout = async ({
     children
 }: Readonly<{
     children: ReactNode;
-    searchParams: { [key: string]: string | string[] | undefined };
 }>) => {
     try {
         const siteData = await backendAPI.getSite();
@@ -104,7 +103,7 @@ const RootLayout = async ({
     };
 
     return (
-        <AppRouterCacheProvider>
+        <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>
                 <Box {...htmlBoxProps}>
                     <head>
@@ -118,7 +117,9 @@ const RootLayout = async ({
                         <StoreProvider referer={referer}>
                             <BackCallForm />
                             <Header props={innerProps} />
-                            {banners?.length ? <BannersCarousel banners={banners} /> : '' }
+                            {!!banners?.length && (
+                                <BannersCarousel banners={banners} />
+                            )}
                             <Box {...rootBoxProps}>{children}</Box>
                             <Footer props={innerProps} />
                         </StoreProvider>

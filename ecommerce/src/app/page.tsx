@@ -13,11 +13,16 @@ import { categoryPathToAlias } from "@/lib/functions/catalogPathTransform";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
 import SectionContainer from "./(shared)/section.template";
 import { Metadata } from "next";
-import { landingConfig } from "@/lib/data/config";
 
-export const metadata: Metadata = {
-    title: landingConfig.landing_title
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const response = await backendAPI.getSite();
+
+    return {
+        title: response.page_title,
+        description: response.page_description,
+        keywords: response.page_keywords
+    };
+}
 
 const Home = async () => {
     let popularProducts: CategoryItem[] = [];

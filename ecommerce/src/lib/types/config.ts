@@ -22,4 +22,10 @@ export type LandingConfig = {
         divider: string;
     };
     phoneNumber: string;
+    advantages: {
+        text: string;
+        delivery: string;
+        payment: string;
+        bonuses: string;
+    };
 };

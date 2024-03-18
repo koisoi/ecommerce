@@ -1,6 +1,6 @@
 "use client";
 
-import { useAppDispatch, useAppSelector } from "@/lib";
+import { PageData, useAppDispatch, useAppSelector } from "@/lib";
 import MobileMenuTemplate from "./mobileMenu.template";
 import {
     MobileMenuState,
@@ -11,11 +11,11 @@ import { landingConfig } from "@/lib/data/config";
 import { ReactNode } from "react";
 
 const MobileMenu = ({
-    children
-}: // logoImgLink
-{
-    // logoImgLink: string;
+    children,
+    categories
+}: {
     children: ReactNode;
+    categories: PageData[];
 }) => {
     const dispatch = useAppDispatch();
     const path = usePathname();
@@ -33,10 +33,9 @@ const MobileMenu = ({
         <MobileMenuTemplate
             open={mobileMenuOpen}
             onMenuClose={handleMenuClose}
-            categories={landingConfig.categories}
+            categories={categories}
             phone={landingConfig.phoneNumber}
             path={path}
-            // logoImgLink={logoImgLink}
         >
             {children}
         </MobileMenuTemplate>

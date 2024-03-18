@@ -52,7 +52,7 @@ export const ShoppingCartButton = ({
 
         const scrolled = document.documentElement.scrollTop;
         const id = screen.md
-            ? scrolled > 600
+            ? scrolled > 400
                 ? "desktop-sliding-header-button"
                 : "desktop-header-button"
             : "mobile-shopping-cart-button";

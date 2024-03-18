@@ -2,7 +2,6 @@ import CategoryTemplate from "./page.template";
 import {
     ProductPageTabType,
     catalogPageBreadcrumb,
-    categoryAPI,
     productAPI,
     PageData
 } from "@/lib";
@@ -45,18 +44,11 @@ export async function generateMetadata({
                 image: getImageLink(el.images[0]?.url || "") || ""
             }))[0];
 
-            // if (!!params.slug[1])
             return {
                 title: categoryMetadata.page_title,
                 description: categoryMetadata.page_description,
                 keywords: categoryMetadata.page_keywords
             };
-            // else
-            //     return {
-            //         title: categoryMetadata.category?.page_title,
-            //         description: categoryMetadata.category?.page_description,
-            //         keywords: categoryMetadata.category?.page_keywords
-            //     };
         }
     }
 
@@ -156,11 +148,6 @@ const Category = async ({
             pages={pages}
             pageNumber={Number(searchParams.page) || 1}
             breadcrumbs={breadcrumbs}
-            /*
-           linkBeforeQuery={`/catalog/${params.slug[0]}${
-               params.slug[1] ? "/" + params.slug[1] : ""
-           }?`}
-           */
         />
     );
 };

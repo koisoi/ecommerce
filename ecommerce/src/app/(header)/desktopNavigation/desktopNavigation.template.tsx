@@ -1,3 +1,5 @@
+"use client";
+
 import {
     Box,
     BoxProps,
@@ -12,6 +14,7 @@ import Link from "next/link";
 import { PageData } from "@/lib";
 import { CSSProperties } from "react";
 import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
 
 const DynamicSlidingCartButton = dynamic(
     () => import("@/app/(header)/slidingCartButton/slidingCartButton"),
@@ -25,6 +28,8 @@ const HeaderDesktopNavigationTemplate = ({
 }: {
     categories: PageData[];
 }) => {
+    const pathname = usePathname();
+
     const innerWrapperProps: BoxProps = {
         position: "relative",
 
@@ -90,7 +95,11 @@ const HeaderDesktopNavigationTemplate = ({
             textTransform: "none",
 
             transition: "0.2s",
-            height: "100%"
+            height: "100%",
+
+            ...((path === pathname || path + "/" === pathname) && {
+                backgroundColor: "secondary.main"
+            })
 
             // ...((path === catalogPath || path + "/" === catalogPath) && {
             //     backgroundColor: "secondary.main"

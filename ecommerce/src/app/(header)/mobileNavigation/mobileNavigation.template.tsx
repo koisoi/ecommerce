@@ -3,8 +3,8 @@ import Logo from "../logo";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
 import CartHeaderButton from "../cartHeaderButton";
 import MobileMenuButton from "../mobileMenuButton";
-import { backendAPI, getImageLink } from "@/lib";
 import MobileMenu from "../mobileMenu/mobileMenu";
+import { landingConfig } from "@/lib/data/config";
 
 const HeaderMobileNavigationTemplate = () => {
     const wrapperProps: BoxProps = {
@@ -35,7 +35,7 @@ const HeaderMobileNavigationTemplate = () => {
 
     return (
         <>
-            <MobileMenu>
+            <MobileMenu categories={landingConfig.categories}>
                 <Logo />
             </MobileMenu>
 

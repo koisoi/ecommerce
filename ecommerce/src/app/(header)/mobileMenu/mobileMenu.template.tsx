@@ -16,15 +16,8 @@ import {
     ListProps
 } from "@mui/material";
 import Link from "next/link";
-import { CSSProperties, ReactNode, Suspense } from "react";
+import { CSSProperties, ReactNode } from "react";
 import { Close } from "@mui/icons-material";
-import dynamic from "next/dynamic";
-import Logo from "@/app/(header)/logo";
-
-const DynamicLogo = dynamic(() => import("@/app/(header)/logo"), {
-    ssr: false,
-    loading: () => <></>
-});
 
 const MobileMenuTemplate = ({
     open,
@@ -32,7 +25,6 @@ const MobileMenuTemplate = ({
     categories,
     phone,
     path,
-    // logoImgLink,
     children
 }: {
     open: boolean;
@@ -40,7 +32,6 @@ const MobileMenuTemplate = ({
     categories: PageData[];
     phone: string;
     path: string;
-    // logoImgLink: string;
     children: ReactNode;
 }) => {
     const drawerProps: DrawerProps = {

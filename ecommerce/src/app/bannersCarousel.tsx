@@ -1,24 +1,31 @@
 "use client";
 
-import { Box, BoxProps } from "@mui/material";
-import { CSSProperties } from "react";
 import Carousel from "react-material-ui-carousel";
 import { CarouselProps } from "react-material-ui-carousel/dist/components/types";
-import {
-    BannerData
-} from "@/lib";
+import { BannerData } from "@/lib";
 import Banner from "@/app/(shared)/banner.template";
+import { usePathname } from "next/navigation";
 
-const BannersCarousel = ({banners} : {banners: BannerData[]}) => {
+const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
+    const pathname = usePathname();
+
+    if (pathname !== "/") return <></>;
+
     // props
     const carouselProps: CarouselProps = {
         animation: "slide",
         autoPlay: true,
         swipe: true,
+        cycleNavigation: true,
+        stopAutoPlayOnHover: true,
 
         sx: {
             width: "100%",
-            minHeight: "330px"
+            minHeight: "760px",
+
+            div: {
+                transform: "none !important"
+            }
         }
     };
 

@@ -96,6 +96,10 @@ const SlidingCartButtonTemplate = ({
         }
     };
 
+    const cartWrapperProps: BoxProps = {
+        maxWidth: "900px"
+    };
+
     // мб лучше использовать Collapse, но он здесь не работает почему-то
     return (
         <>
@@ -107,7 +111,9 @@ const SlidingCartButtonTemplate = ({
             </Fade>
 
             <Popover {...popoverProps}>
-                <CartTable />
+                <Box {...cartWrapperProps}>
+                    <CartTable />
+                </Box>
             </Popover>
         </>
     );

@@ -11,7 +11,6 @@ import CharacteristicsBox from "./characteristicsBox.template";
 import { CartItem } from "@/lib/types/cart";
 import dynamic from "next/dynamic";
 import ProductOfferBox, { ProductOfferBoxProps } from "./productOfferBox";
-import ImagesCarousel from "@/app/catalog/[[...slug]]/(product)/(upperBox)/imagesCarousel";
 
 const DynamicImagesCarousel = dynamic(
     () =>

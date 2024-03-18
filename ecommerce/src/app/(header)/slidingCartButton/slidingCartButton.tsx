@@ -36,12 +36,10 @@ const SlidingCartButton = () => {
             return;
         }
 
-        const button = document.getElementById("desktop-header-sliding-button");
-
         const scrolled = document.documentElement.scrollTop;
-        if (scrolled > 500) {
+        if (scrolled > 400) {
             setVisible(true);
-        } else if (scrolled <= 500) {
+        } else if (scrolled <= 400) {
             setVisible(false);
             setCartAnchorEl(null);
         }
