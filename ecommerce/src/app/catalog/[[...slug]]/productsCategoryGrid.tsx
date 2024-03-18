@@ -8,7 +8,6 @@ const ProductsCategoryGrid = async ({
     page: PageData;
     pageNumber: number;
 }) => {
-    // const dispatch = useAppDispatch();
     const productsPerPage = 15;
     let response: CategoryItemsResponse | null = null;
 
@@ -26,37 +25,6 @@ const ProductsCategoryGrid = async ({
     const pagesCount = Math.ceil(
         (response?.totalItemCount || 0) / productsPerPage
     );
-
-    // const [page, setPage] = useState<number>(1);
-    // const [pagesCount, setPagesCount] = useState<number>(0);
-
-    // const {
-    //     loading,
-    //     totalItemCount: totalAmount,
-    //     list: products
-    // } = useAppSelector(ProductsCategoryGridState);
-
-    // useEffect(() => {
-    //     dispatch(setCanFetchCategoryItems(true));
-    //     const promise = dispatch(
-    //         fetchCategoryItems({
-    //             category,
-    //             series,
-    //             productsPerPage,
-    //             page
-    //         })
-    //     );
-    //     promise.catch((error) => console.error(error.message));
-
-    //     return () => {
-    //         promise.abort();
-    //         dispatch(setCanFetchCategoryItems(false));
-    //     };
-    // }, [page, category, series]); <=== это должно работать с серверными компнентами без массива заивисмостей т.к. у нас изменение каждой из этих переменных === изменение ссылки === ререндер
-
-    // useEffect(() => {
-    //     setPagesCount(Math.ceil(totalAmount / productsPerPage));
-    // }, [totalAmount]);
 
     return (
         <ProductsGridTemplate

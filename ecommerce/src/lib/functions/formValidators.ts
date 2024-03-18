@@ -21,18 +21,6 @@ export const emailPattern: {
 /**
  * Объект валидации номера телефона
  */
-// export const ruPhonePattern: {
-//     value: RegExp;
-//     message: string;
-// } = {
-//     // value: /^(\+7|7|8)[0-9]{10}$/,
-//     value: /^[0-9]{10}$/,
-//     message: "Неверный формат номера телефона"
-// };
-
-/**
- * Объект валидации номера телефона
- */
 export const ruPhoneValidator = (value: string) => {
     return (
         matchIsValidTel(value, { onlyCountries: ["RU"] }) ||

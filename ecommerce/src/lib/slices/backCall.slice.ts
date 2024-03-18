@@ -85,15 +85,6 @@ const slice = createSlice({
     name: "BackCallSlice",
     initialState,
     reducers: {
-        setCanAuthorizeAppeal(state, action: PayloadAction<boolean>) {
-            state.canAuthorizeAppeal = action.payload;
-        },
-        setCanPostAppeal(state, action: PayloadAction<boolean>) {
-            state.canPostAppeal = action.payload;
-        },
-        setCanPostAppealStatistics(state, action: PayloadAction<boolean>) {
-            state.canPostAppealStatistics = action.payload;
-        },
         setOrderLoading(state, action: PayloadAction<boolean>) {
             state.loading = action.payload;
         },
@@ -164,9 +155,6 @@ const slice = createSlice({
 
 export const BackCallReducer = slice.reducer;
 export const {
-    setCanAuthorizeAppeal,
-    setCanPostAppeal,
-    setCanPostAppealStatistics,
     setOrderLoading,
     resetAppeal,
     closeBackCallModal,

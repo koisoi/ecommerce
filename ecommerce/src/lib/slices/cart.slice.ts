@@ -179,7 +179,7 @@ const slice = createSlice({
             state.completedOrderForm = action.payload;
         },
 
-        setOrderLoading(state, action: PayloadAction<boolean>) {
+        setCartOrderLoading(state, action: PayloadAction<boolean>) {
             state.loading = action.payload;
         }
     },
@@ -249,6 +249,6 @@ export const {
     setCanPostStatistics,
     setCompletedOrderInfo,
     clearOrder,
-    setOrderLoading
+    setCartOrderLoading
 } = slice.actions;
 export const CartState = (state: RootState) => state.CartReducer;

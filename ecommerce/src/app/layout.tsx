@@ -31,23 +31,6 @@ const RootLayout = async ({
             ...el,
             image: getImageLink(el.images[0]?.url || "") || ""
         }));
-
-        // landingConfig.categories = response.map((el) => ({
-        //     ...el,
-        //     path: categoryPathToAlias(el.path || "")!,
-        //     image: getProductImageLink(el.images[0].url),
-        //     series: []
-        // }));
-        /*
-        response.forEach((el) => {
-            landingConfig.categories[categoryPathToAlias(el.path || "")!] = {
-                ...el,
-                path: categoryPathToAlias(el.path || "")!,
-                image: getProductImageLink(el.images[0].url),
-                series: []
-            };
-        });
-            */
     } catch (error) {
         console.error(error);
     }
