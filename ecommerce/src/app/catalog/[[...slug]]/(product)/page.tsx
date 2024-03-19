@@ -9,7 +9,7 @@ import {
     ProductReview,
     catalogPageBreadcrumb,
     categoryPathToAlias,
-    getImageLink,
+    getLinkDomain,
     getProductLink,
     productAPI
 } from "@/lib";
@@ -86,7 +86,7 @@ const ProductPage = async ({
                     imageLinks={
                         productMainInfo.images.map((el) => ({
                             id: el.id,
-                            url: getImageLink(el.url)
+                            url: getLinkDomain(el.url)
                         })) || []
                     }
                     stock={productMainInfo.is_available || false}
@@ -95,7 +95,7 @@ const ProductPage = async ({
                         url: getProductLink(category, product),
                         alias: product,
                         title: productMainInfo.title,
-                        imgLink: getImageLink(productMainInfo.images[0].url),
+                        imgLink: getLinkDomain(productMainInfo.images[0].url),
                         price: productMainInfo.price,
                         amount: 1,
                         articul: productMainInfo.articul

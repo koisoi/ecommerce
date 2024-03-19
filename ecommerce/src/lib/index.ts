@@ -8,7 +8,7 @@ export * from "./functions/backendTextRegExp";
 export * from "./functions/cartCookie";
 export * from "./functions/catalogPathTransform";
 export * from "./functions/formValidators";
-export * from "./functions/getProductImageLink";
+export * from "./functions/getLinkDomain";
 export * from "./functions/getProductLink";
 export * from "./functions/makePagePath";
 

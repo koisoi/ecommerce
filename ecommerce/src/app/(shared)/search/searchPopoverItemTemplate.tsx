@@ -1,5 +1,5 @@
 import ProductLink from "@/app/(shared)/text/productLinkTemplate";
-import { CategoryItem, getImageLink, getProductLink } from "@/lib";
+import { CategoryItem, getLinkDomain, getProductLink } from "@/lib";
 import {
     ListItem,
     ListItemAvatar,
@@ -38,7 +38,7 @@ const SearchPopoverItemTemplate = ({
                 <Link href={url}>
                     <img
                         alt={item.title}
-                        src={getImageLink(item.images[0].url)}
+                        src={getLinkDomain(item.images[0].url)}
                         width="100%"
                     />
                 </Link>

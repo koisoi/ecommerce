@@ -4,7 +4,7 @@ import {
     CategoryItem,
     PageData,
     ProductReview,
-    getImageLink,
+    getLinkDomain,
     backendAPI,
     homePageAPI,
     categoryPathToAlias
@@ -42,7 +42,7 @@ const Home = async () => {
 
         pages = responsePage.map((el) => ({
             ...el,
-            image: getImageLink(el.images[0]?.url || "") || ""
+            image: getLinkDomain(el.images[0]?.url || "") || ""
         }));
     } catch (error) {
         console.error(error);

@@ -4,7 +4,7 @@ import CategoryPagination from "./categoryPagination/categoryPagination.client";
 import {
     CategoryItemsResponse,
     categoryPathToAlias,
-    getImageLink,
+    getLinkDomain,
     getProductLink
 } from "@/lib";
 import Paragraph from "../text/paragraph";
@@ -80,7 +80,7 @@ const ProductsGridTemplate = ({
                                         ),
                                         alias: item.alias,
                                         title: item.title,
-                                        imgLink: getImageLink(
+                                        imgLink: getLinkDomain(
                                             item.images[0].url
                                         ),
                                         price: item.price,

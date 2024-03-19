@@ -4,7 +4,7 @@ import ProductCardTemplate, {
 import {
     CategoryItem,
     categoryPathToAlias,
-    getImageLink,
+    getLinkDomain,
     getProductLink
 } from "@/lib";
 import { Box, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
@@ -25,7 +25,7 @@ const SimliarProductsSliderTemplate = ({
                     categoryPathToAlias(item.category.path)!,
                     item.alias
                 ),
-                imgLink: getImageLink(item.images[0].url),
+                imgLink: getLinkDomain(item.images[0].url),
                 amount: 1
             },
             newProduct: item.is_new,

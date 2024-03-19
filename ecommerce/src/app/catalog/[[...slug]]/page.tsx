@@ -12,7 +12,7 @@ import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
 import { Metadata } from "next";
 import CatalogPageTemplate from "./catalogPageTemplate";
-import { backendAPI, getImageLink } from "@/lib";
+import { backendAPI, getLinkDomain } from "@/lib";
 
 export async function generateMetadata({
     params
@@ -41,7 +41,7 @@ export async function generateMetadata({
             const responsePage = await backendAPI.getPages({ path });
             const categoryMetadata = responsePage.map((el) => ({
                 ...el,
-                image: getImageLink(el.images[0]?.url || "") || ""
+                image: getLinkDomain(el.images[0]?.url || "") || ""
             }))[0];
 
             return {
@@ -75,7 +75,7 @@ const CategoryPage = async ({
             const responsePage = await backendAPI.getPages({});
             pages = responsePage.map((el) => ({
                 ...el,
-                image: getImageLink(el.images[0]?.url || "") || ""
+                image: getLinkDomain(el.images[0]?.url || "") || ""
             }));
         } catch (error) {
             console.error(error);
@@ -102,7 +102,7 @@ const CategoryPage = async ({
         const responsePage = await backendAPI.getPages({ path });
         page = responsePage.map((el) => ({
             ...el,
-            image: getImageLink(el.images[0]?.url || "") || ""
+            image: getLinkDomain(el.images[0]?.url || "") || ""
         }))[0];
 
         if (params.slug[1]) {
@@ -111,7 +111,7 @@ const CategoryPage = async ({
             });
             pages = response.map((el) => ({
                 ...el,
-                image: getImageLink(el.images[0]?.url || "") || ""
+                image: getLinkDomain(el.images[0]?.url || "") || ""
             }));
         } else {
             const response = await backendAPI.getPages({
@@ -119,7 +119,7 @@ const CategoryPage = async ({
             });
             pages = response.map((el) => ({
                 ...el,
-                image: getImageLink(el.images[0]?.url || "") || ""
+                image: getLinkDomain(el.images[0]?.url || "") || ""
             }));
         }
     } catch (error) {

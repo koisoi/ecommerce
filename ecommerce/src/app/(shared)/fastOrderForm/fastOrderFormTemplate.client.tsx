@@ -16,7 +16,7 @@ import {
     CategoryItem,
     OrderForm,
     categoryAliasToPath,
-    getImageLink,
+    getLinkDomain,
     getProductLink,
     useMediaQueries
 } from "@/lib";
@@ -83,7 +83,7 @@ const FastOrderFormTemplate = ({
             ),
             alias: item?.alias || "",
             title: item?.title || "",
-            imgLink: item ? getImageLink(item.images[0].url) : "",
+            imgLink: item ? getLinkDomain(item.images[0].url) : "",
             price: item?.price || "",
             amount: 1,
             articul: item?.articul || ""

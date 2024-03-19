@@ -9,7 +9,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { BannerData, backendAPI, getImageLink, landingConfig } from "@/lib";
+import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
 
 const RootLayout = async ({
     children
@@ -22,18 +22,21 @@ const RootLayout = async ({
         const siteData = await backendAPI.getSite();
 
         landingConfig.logoImgLink =
-            getImageLink(siteData.logo_main || "") || "";
+            getLinkDomain(siteData.logo_main || "") || "";
         landingConfig.logoImgMobileLink =
-            getImageLink(siteData.logo_alt || "") || "";
+            getLinkDomain(siteData.logo_alt || "") || "";
 
         const response = await backendAPI.getPages({});
 
         landingConfig.categories = response.map((el) => ({
             ...el,
-            image: getImageLink(el.images[0]?.url || "") || ""
+            image: getLinkDomain(el.images[0]?.url || "") || ""
         }));
 
-        banners = await backendAPI.getBanners();
+        banners = (await backendAPI.getBanners()).map((el) => ({
+            ...el,
+            src: getLinkDomain(el.src)
+        }));
     } catch (error) {
         console.error(error);
     }
