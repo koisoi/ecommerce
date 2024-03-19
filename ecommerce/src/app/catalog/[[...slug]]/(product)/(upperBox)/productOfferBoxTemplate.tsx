@@ -1,5 +1,7 @@
 import { Paper, PaperProps } from "@mui/material";
-import StockIndicator, { StockIndicatorProps } from "./stockIndicator.template";
+import StockIndicatorTemplate, {
+    StockIndicatorProps
+} from "./stockIndicatorTemplate";
 import Price, { PriceProps } from "@/app/(shared)/text/priceTemplate";
 import {
     BuyButtonProps,
@@ -15,7 +17,7 @@ export type ProductOfferBoxProps = {
     stock: boolean;
 };
 
-const ProductOfferBox = ({
+const ProductOfferBoxTemplate = ({
     categoryItem,
     props,
     cartItem,
@@ -70,7 +72,7 @@ const ProductOfferBox = ({
 
     return (
         <Paper {...productOfferBoxProps}>
-            <StockIndicator {...stockProps} />
+            <StockIndicatorTemplate {...stockProps} />
             <Price {...priceProps} />
             <InstantBuyButton {...buyButtonsProps} item={categoryItem} />
             <ShoppingCartButton {...buyButtonsProps} />
@@ -78,4 +80,4 @@ const ProductOfferBox = ({
     );
 };
 
-export default ProductOfferBox;
+export default ProductOfferBoxTemplate;

@@ -7,13 +7,17 @@ import {
     TypographyProps
 } from "@mui/material";
 import { CartItem, CategoryItem, ProductCharacteristic } from "@/lib";
-import CharacteristicsBox from "./characteristicsBox.template";
+import CharacteristicsBoxTemplate from "./characteristicsBoxTemplate";
 import dynamic from "next/dynamic";
-import ProductOfferBox, { ProductOfferBoxProps } from "./productOfferBox";
+import ProductOfferBoxTemplate, {
+    ProductOfferBoxProps
+} from "./productOfferBoxTemplate";
 
 const DynamicImagesCarousel = dynamic(
     () =>
-        import("@/app/catalog/[[...slug]]/(product)/(upperBox)/imagesCarousel"),
+        import(
+            "@/app/catalog/[[...slug]]/(product)/(upperBox)/imagesCarousel.client"
+        ),
     {
         // ssr: false,
         loading: () => (
@@ -30,7 +34,7 @@ const DynamicImagesCarousel = dynamic(
     }
 );
 
-export type ProductPageUpperBoxProps = {
+export type ProductPageUpperTemplateProps = {
     imageLinks: { url: string; id: number }[];
     stock: boolean;
     characteristics?: ProductCharacteristic | null;
@@ -38,13 +42,13 @@ export type ProductPageUpperBoxProps = {
     categoryItem: CategoryItem;
 };
 
-const ProductPageUpperBox = ({
+const ProductPageUpperTemplate = ({
     imageLinks,
     stock,
     characteristics,
     cartItem,
     categoryItem
-}: ProductPageUpperBoxProps) => {
+}: ProductPageUpperTemplateProps) => {
     const upperBoxProps: BoxProps = {
         display: "flex",
         flexDirection: { xs: "column", mlg: "row" },
@@ -98,7 +102,7 @@ const ProductPageUpperBox = ({
 
     return (
         <Box {...upperBoxProps}>
-            <ProductOfferBox
+            <ProductOfferBoxTemplate
                 {...productOfferBoxProps}
                 props={mobileProductOfferBoxProps}
             />
@@ -109,7 +113,7 @@ const ProductPageUpperBox = ({
                 />
             </Box>
             <Box {...rightBoxProps}>
-                <ProductOfferBox
+                <ProductOfferBoxTemplate
                     {...productOfferBoxProps}
                     props={desktopProductOfferBoxProps}
                 />
@@ -117,11 +121,13 @@ const ProductPageUpperBox = ({
                     <Typography {...articulTextProps}>
                         Артикул: {cartItem.articul}
                     </Typography>
-                    <CharacteristicsBox characteristics={characteristics} />
+                    <CharacteristicsBoxTemplate
+                        characteristics={characteristics}
+                    />
                 </Box>
             </Box>
         </Box>
     );
 };
 
-export default ProductPageUpperBox;
+export default ProductPageUpperTemplate;

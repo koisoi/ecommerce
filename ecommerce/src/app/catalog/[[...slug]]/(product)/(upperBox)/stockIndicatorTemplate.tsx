@@ -5,7 +5,7 @@ export type StockIndicatorProps = {
     stock: boolean;
 };
 
-const StockIndicator = ({ stock }: StockIndicatorProps) => {
+const StockIndicatorTemplate = ({ stock }: StockIndicatorProps) => {
     const wrapperProps: TypographyProps = {
         color: stock ? "success.main" : "text.disabled",
         fontSize: "1rem",
@@ -31,4 +31,4 @@ const StockIndicator = ({ stock }: StockIndicatorProps) => {
     );
 };
 
-export default StockIndicator;
+export default StockIndicatorTemplate;

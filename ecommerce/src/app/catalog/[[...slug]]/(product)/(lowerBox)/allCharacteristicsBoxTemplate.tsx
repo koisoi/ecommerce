@@ -10,7 +10,7 @@ import {
     TypographyProps
 } from "@mui/material";
 
-const AllCharacteristicsBox = ({
+const AllCharacteristicsBoxTemplate = ({
     fullCharacteristics
 }: {
     fullCharacteristics?: ProductCharacteristics | null;
@@ -114,4 +114,4 @@ const AllCharacteristicsBox = ({
     );
 };
 
-export default AllCharacteristicsBox;
+export default AllCharacteristicsBoxTemplate;

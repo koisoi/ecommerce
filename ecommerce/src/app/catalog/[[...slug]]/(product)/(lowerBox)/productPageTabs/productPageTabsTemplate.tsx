@@ -1,45 +1,29 @@
-"use client";
-
 import {
     ProductCharacteristics,
     ProductPageTabType,
-    ProductReview,
-    getProductLink
+    ProductReview
 } from "@/lib";
 import { Tab, TabProps, Tabs, TabsProps } from "@mui/material";
-import { useRouter } from "next/navigation";
 import { SyntheticEvent } from "react";
 
-const ProductPageTabs = ({
+const ProductPageTabsTemplate = ({
     currentTab,
     fullCharasterictics,
     description,
     feedback,
     complectation,
-    product,
-    category,
-    series
+    onTabChange
 }: {
     currentTab: ProductPageTabType;
     fullCharasterictics?: ProductCharacteristics | null;
     description?: string | null;
     feedback?: ProductReview[] | null;
     complectation?: string | null;
-    product: string;
-    category: string;
-    series?: string;
+    onTabChange: (event: SyntheticEvent<Element, Event>, value: any) => void;
 }) => {
-    const router = useRouter();
-
-    const handleTabChange = (_: SyntheticEvent<Element, Event>, value: any) => {
-        router.replace(getProductLink(category, product) + `?tab=${value}`, {
-            scroll: false
-        });
-    };
-
     const tabsProps: TabsProps = {
         value: currentTab,
-        onChange: handleTabChange,
+        onChange: onTabChange,
 
         variant: "scrollable",
 
@@ -85,17 +69,10 @@ const ProductPageTabs = ({
                             {...tabProps}
                         />
                     )}
-                    {/* {feedback && feedback.length && (
-                        <Tab
-                            value={"feedback"}
-                            label={"Отзывы"}
-                            {...tabProps}
-                        />
-                    )} */}
                 </Tabs>
             )}
         </>
     );
 };
 
-export default ProductPageTabs;
+export default ProductPageTabsTemplate;

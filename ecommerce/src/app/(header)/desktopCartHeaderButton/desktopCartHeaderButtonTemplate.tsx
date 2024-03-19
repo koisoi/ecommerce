@@ -1,6 +1,5 @@
 "use client";
 
-import { CartState, useAppSelector } from "@/lib";
 import { ShoppingCart } from "@mui/icons-material";
 import {
     Box,
@@ -10,29 +9,19 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { useRouter } from "next/navigation";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler } from "react";
 
 export type DesktopHeaderButtonProps = {
     id?: string;
 };
 
-const DesktopCartHeaderButton = () => {
-    const { items } = useAppSelector(CartState);
-
-    // const
-    const router = useRouter();
-    const amount = items.reduce<number>(
-        (prev, _, i, arr) => prev + arr[i].amount,
-        0
-    );
-
-    // handlers
-    const handleCartClick: MouseEventHandler<HTMLButtonElement> = () => {
-        router.push("/cart");
-    };
-
-    // props
+const DesktopCartHeaderButtonTemplate = ({
+    onCartClick,
+    amount
+}: {
+    onCartClick: MouseEventHandler<HTMLButtonElement>;
+    amount: number;
+}) => {
     const wrapperProps: ButtonProps = {
         sx: {
             display: "flex",
@@ -44,7 +33,7 @@ const DesktopCartHeaderButton = () => {
             height: "min-content"
         },
 
-        onClick: handleCartClick
+        onClick: onCartClick
     };
 
     const textWrapperProps: BoxProps = {
@@ -79,4 +68,4 @@ const DesktopCartHeaderButton = () => {
     );
 };
 
-export default DesktopCartHeaderButton;
+export default DesktopCartHeaderButtonTemplate;

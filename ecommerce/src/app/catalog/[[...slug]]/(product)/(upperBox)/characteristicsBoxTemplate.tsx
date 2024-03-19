@@ -2,7 +2,7 @@ import { ProductCharacteristic } from "@/lib";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import { Fragment } from "react";
 
-const CharacteristicsBox = ({
+const CharacteristicsBoxTemplate = ({
     characteristics
 }: {
     characteristics?: ProductCharacteristic | null;
@@ -44,7 +44,6 @@ const CharacteristicsBox = ({
                 <Box {...descriptionListProps}>
                     {Object.entries(characteristics).map(
                         ([charTitle, description], i) => (
-                            // <Typography key={i}>
                             <Fragment key={i}>
                                 <Typography {...characteristicTitleProps}>
                                     {charTitle}:{" "}
@@ -54,7 +53,6 @@ const CharacteristicsBox = ({
                                 </Typography>
                                 <br />
                             </Fragment>
-                            // </Typography>
                         )
                     )}
                 </Box>
@@ -63,4 +61,4 @@ const CharacteristicsBox = ({
     );
 };
 
-export default CharacteristicsBox;
+export default CharacteristicsBoxTemplate;

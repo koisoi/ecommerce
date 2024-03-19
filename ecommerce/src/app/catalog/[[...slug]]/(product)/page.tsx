@@ -1,4 +1,4 @@
-import ImgModal from "./imgModal";
+import ImgModal from "./imgModal.client";
 import {
     Breadcrumb,
     CategoryItem,
@@ -13,9 +13,9 @@ import {
     getProductLink,
     productAPI
 } from "@/lib";
-import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
+import ProductPageUpperTemplate from "./(upperBox)/productPageUpperTemplate";
 import { notFound } from "next/navigation";
-import ProductPageLowerBox from "./(lowerBox)/productPageLowerBox";
+import ProductPageLowerTemplate from "./(lowerBox)/productPageLowerTemplate";
 import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
 import PageTitle from "@/app/(shared)/text/pageTitle";
 import SectionContainer from "@/app/(shared)/sectionContainer";
@@ -82,7 +82,7 @@ const ProductPage = async ({
 
             <PageTitle noDivider>{productMainInfo?.title || ""}</PageTitle>
             <SectionContainer>
-                <ProductPageUpperBox
+                <ProductPageUpperTemplate
                     imageLinks={
                         productMainInfo.images.map((el) => ({
                             id: el.id,
@@ -112,7 +112,7 @@ const ProductPage = async ({
                         category: productMainInfo.category
                     }}
                 />
-                <ProductPageLowerBox
+                <ProductPageLowerTemplate
                     searchParams={searchParams}
                     simliarProducts={productSiblings}
                     fullCharasterictics={productFullCharacteristics}

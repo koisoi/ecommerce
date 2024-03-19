@@ -8,12 +8,11 @@ import {
 } from "@/lib";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import SimliarProductsSliderTemplate from "../../../../(shared)/simliarProductsSliderTemplate";
-import AllCharacteristicsBox from "./allCharacteristicsBox.template";
-import FeedbackBoxTemplate from "../../../../(shared)/feedbackBoxTemplate";
-import ProductPageTabs from "./productPageTabs";
+import AllCharacteristicsBoxTemplate from "./allCharacteristicsBoxTemplate";
+import ProductPageTabs from "./productPageTabs/productPageTabs.client";
 import SectionContainer from "@/app/(shared)/sectionContainer";
 
-export type ProductPageLowerBoxProps = {
+export type ProductPageLowerTemplateProps = {
     searchParams: { page?: number; tab?: ProductPageTabType };
     fullCharasterictics?: ProductCharacteristics | null;
     description?: string | null;
@@ -25,7 +24,7 @@ export type ProductPageLowerBoxProps = {
     series?: string;
 };
 
-const ProductPageLowerBox = ({
+const ProductPageLowerTemplate = ({
     searchParams,
     fullCharasterictics,
     description,
@@ -35,7 +34,7 @@ const ProductPageLowerBox = ({
     product,
     category,
     series
-}: ProductPageLowerBoxProps) => {
+}: ProductPageLowerTemplateProps) => {
     const currentTab =
         searchParams.tab ||
         (fullCharasterictics ? "allCharasteristics" : "description");
@@ -101,12 +100,6 @@ const ProductPageLowerBox = ({
         }
     };
 
-    // const simliarTitleProps: TypographyProps = {
-    //     sx: {
-    //         marginTop: "20px"
-    //     }
-    // };
-
     const noTextProps: TypographyProps = {
         color: "text.disabled"
     };
@@ -121,14 +114,13 @@ const ProductPageLowerBox = ({
                 complectation={complectation}
                 product={product}
                 category={category}
-                series={series}
                 key={0}
             />
             <Box {...innerWrapperProps} key={1}>
                 <SectionContainer>
                     <>
                         {currentTab === "allCharasteristics" && (
-                            <AllCharacteristicsBox
+                            <AllCharacteristicsBoxTemplate
                                 fullCharacteristics={fullCharasterictics}
                             />
                         )}
@@ -157,19 +149,6 @@ const ProductPageLowerBox = ({
                                 )}
                             </>
                         )}
-                        {/* {currentTab === "feedback" && (
-                            <>
-                                {!feedback ||
-                                    (!feedback.length && (
-                                        <Typography {...noTextProps}>
-                                            У данного товара нет отзывов.
-                                        </Typography>
-                                    ))}
-                                {feedback && !!feedback.length && (
-                                    <FeedbackBoxTemplate feedback={feedback} />
-                                )}
-                            </>
-                        )} */}
                     </>
                     {simliarProducts && !!simliarProducts.length && (
                         <>
@@ -185,4 +164,4 @@ const ProductPageLowerBox = ({
     );
 };
 
-export default ProductPageLowerBox;
+export default ProductPageLowerTemplate;

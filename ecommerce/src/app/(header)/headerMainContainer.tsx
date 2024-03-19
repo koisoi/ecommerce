@@ -7,17 +7,17 @@ import { landingConfig } from "@/lib";
 import { TelescopeLogo } from "./telescopeLogo";
 
 const DynamicCartHeaderButton = dynamic(
-    () => import("@/app/(header)/desktopCartHeaderButton.client"),
+    () =>
+        import(
+            "@/app/(header)/desktopCartHeaderButton/desktopCartHeaderButton.client"
+        ),
     {
         ssr: false,
         loading: () => {
             const textProps: TypographyProps = {
-                fontSize: "0.8rem",
-                lineHeight: "1.2",
-                color: "primary.main",
-                sx: {
-                    textTransform: "none"
-                }
+                // fontSize: "0.8rem",
+                // lineHeight: "1.2",
+                color: "primary.main"
             };
 
             return <Typography {...textProps}>Загрузка корзины...</Typography>;
@@ -75,6 +75,15 @@ const HeaderMainContainer = ({
         flexGrow: 1
     };
 
+    const cartButtonWrapperProps: BoxProps = {
+        height: "50px",
+        width: "150px",
+
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
+    };
+
     return (
         <>
             <Box {...outerWrapperProps}>
@@ -89,7 +98,9 @@ const HeaderMainContainer = ({
                     <ContactsBoxTemplate
                         phoneNumber={landingConfig.phoneNumber}
                     />
-                    <DynamicCartHeaderButton />
+                    <Box {...cartButtonWrapperProps}>
+                        <DynamicCartHeaderButton />
+                    </Box>
                 </Box>
             </Box>
         </>

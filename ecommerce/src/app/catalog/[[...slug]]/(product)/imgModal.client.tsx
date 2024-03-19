@@ -39,8 +39,6 @@ const ImgModal = ({ title }: { title: string }) => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center"
-
-            // position: "relative"
         }
     };
 
