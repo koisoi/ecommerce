@@ -22,8 +22,8 @@ import {
 } from "@/lib";
 import Title from "../text/title";
 import { UseFormReturn } from "react-hook-form";
-import { OrderRules } from "../../cart/page.client";
-import OrderFormTemplate from "../../cart/orderForm.template";
+import { OrderRules } from "../../cart/cart.client";
+import OrderFormTemplate from "../orderFormTemplate";
 import { MouseEventHandler } from "react";
 import { Close } from "@mui/icons-material";
 import Loading from "../loading";

@@ -2,14 +2,14 @@ import PageTitle from "@/app/(shared)/text/pageTitle";
 import { Box, BoxProps } from "@mui/material";
 import CompletedOrderFormTemplate, {
     CompletedOrderFormProps
-} from "./completedOrderForm.template";
+} from "./completedOrderFormTemplate";
 import CartTableTemplate, {
     CartTableTemplateProps
 } from "@/app/(shared)/cartTable/cartTableTemplate.client";
 import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
 import { thanksForOrderBreadcrumbs } from "@/lib";
 
-const ThanksForOrderPageTemplate = ({
+const ThanksForOrderTemplate = ({
     fullName,
     email,
     phone,
@@ -63,4 +63,4 @@ const ThanksForOrderPageTemplate = ({
     );
 };
 
-export default ThanksForOrderPageTemplate;
+export default ThanksForOrderTemplate;

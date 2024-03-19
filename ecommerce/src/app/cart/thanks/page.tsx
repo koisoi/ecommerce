@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import ThanksForOrderPageClient from "./page.client";
+import ThanksForOrder from "./thanksForOrder.client";
 
 export const metadata: Metadata = {
     title: "Спасибо за заказ!"
 };
 
 const ThanksForOrderPage = () => {
-    return <ThanksForOrderPageClient />;
+    return <ThanksForOrder />;
 };
 
 export default ThanksForOrderPage;

@@ -7,11 +7,11 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import ThanksForOrderPageTemplate from "./page.template";
+import ThanksForOrderTemplate from "./thanksForOrderTemplate";
 import { notFound } from "next/navigation";
 import { useEffect } from "react";
 
-const ThanksForOrderPageClient = () => {
+const ThanksForOrder = () => {
     const dispatch = useAppDispatch();
 
     const { items, postedOrderId, cartTotal, completedOrderForm } =
@@ -30,7 +30,7 @@ const ThanksForOrderPageClient = () => {
     }
 
     return (
-        <ThanksForOrderPageTemplate
+        <ThanksForOrderTemplate
             fullName={completedOrderForm.fullName}
             email={completedOrderForm.email}
             phone={completedOrderForm.phoneNumber}
@@ -42,4 +42,4 @@ const ThanksForOrderPageClient = () => {
     );
 };
 
-export default ThanksForOrderPageClient;
+export default ThanksForOrder;

@@ -1,9 +1,7 @@
-"use client";
-
 import { Box, BoxProps } from "@mui/material";
 import { Controller, ControllerProps, UseFormReturn } from "react-hook-form";
-import { OrderRules } from "./page.client";
-import Title from "../(shared)/text/title";
+import { OrderRules } from "../cart/cart.client";
+import Title from "./text/title";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";
 import {
@@ -12,7 +10,7 @@ import {
     FormButton,
     FullNameInputTemplate,
     PhoneInputTemplate
-} from "../(shared)/formFieldsTemplate.client";
+} from "./formFieldsTemplate.client";
 
 const OrderFormTemplate = ({
     form,

@@ -23,7 +23,7 @@ import {
 } from "@/lib";
 import FastOrderFormTemplate from "./fastOrderFormTemplate.client";
 import { useForm } from "react-hook-form";
-import { OrderRules } from "../../cart/page.client";
+import { OrderRules } from "../../cart/cart.client";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";

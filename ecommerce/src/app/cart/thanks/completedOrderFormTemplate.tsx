@@ -22,12 +22,10 @@ const CompletedOrderFormTemplate = ({
         top: "60px",
 
         height: "fit-content",
-        // maxWidth: "fit-content",
 
         border: "1px solid",
         borderColor: "divider",
 
-        // paddingX: "2rem",
         padding: "1rem",
 
         display: "flex",
@@ -40,7 +38,6 @@ const CompletedOrderFormTemplate = ({
         flexDirection: "column",
         gap: "1rem",
         width: "100%"
-        // maxWidth: "fit-content"
     };
 
     const titleProps: TypographyProps = {

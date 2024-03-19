@@ -1,12 +1,12 @@
 import { Metadata } from "next";
-import CartClient from "./page.client";
+import Cart from "./cart.client";
 
 export const metadata: Metadata = {
     title: "Корзина"
 };
 
-const Cart = () => {
-    return <CartClient />;
+const CartPage = () => {
+    return <Cart />;
 };
 
-export default Cart;
+export default CartPage;

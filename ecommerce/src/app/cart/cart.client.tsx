@@ -25,7 +25,7 @@ import { matchIsValidTel } from "mui-tel-input";
 import dynamic from "next/dynamic";
 import Loading from "../(shared)/loading";
 
-const DynamicCartTemplate = dynamic(() => import("@/app/cart/page.template"), {
+const DynamicCartTemplate = dynamic(() => import("@/app/cart/cartTemplate"), {
     ssr: false,
     loading: () => <Loading>Загрузка...</Loading>
 });
@@ -36,7 +36,7 @@ export type OrderRules = {
     phoneNumber: RulesType;
 };
 
-const CartClient = () => {
+const Cart = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
 
@@ -147,4 +147,4 @@ const CartClient = () => {
     );
 };
 
-export default CartClient;
+export default Cart;
