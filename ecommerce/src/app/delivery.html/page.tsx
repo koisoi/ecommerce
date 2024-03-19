@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     title: "Доставка и оплата"
 };
 
-const Delivery = () => {
+const DeliveryPage = () => {
     const underTableTextProps: TypographyProps = {
         paddingX: "1rem"
     };
@@ -340,4 +340,4 @@ const Delivery = () => {
     );
 };
 
-export default Delivery;
+export default DeliveryPage;

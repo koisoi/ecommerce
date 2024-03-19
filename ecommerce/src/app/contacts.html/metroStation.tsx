@@ -4,7 +4,7 @@ import Metro from "@/assets/svg/m-red.svg";
 const MetroStation = ({ children }: { children?: ReactNode }) => {
     const iconStyling: CSSProperties = {
         width: "16px",
-        marginRight: "3px"
+        marginRight: "0.25rem"
     };
 
     return (

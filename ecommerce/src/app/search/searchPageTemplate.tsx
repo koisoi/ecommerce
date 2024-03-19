@@ -10,14 +10,12 @@ import { SearchResponse, searchBreadcrumbs } from "@/lib";
 const SearchPageTemplate = ({
     loading,
     response,
-    // onPageChange,
     page,
     pagesCount,
     linkBeforeQuery
 }: {
     loading: boolean;
     response?: SearchResponse;
-    // onPageChange: (event: ChangeEvent<unknown>, page: number) => void;
     page: number;
     pagesCount: number;
     linkBeforeQuery: string;
@@ -27,7 +25,6 @@ const SearchPageTemplate = ({
         totalItemCount: response?.totalItemCount || 0,
         page,
         pagesCount,
-        // onPageChange,
         url: linkBeforeQuery,
 
         search: true

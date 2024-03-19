@@ -7,16 +7,15 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import SearchPageTemplate from "./page.template";
+import SearchPageTemplate from "./searchPageTemplate";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "../(shared)/loading";
-import NoQuery from "./noQueryPage.template";
+import NoQuery from "./noQuery";
 
-const SearchPageFC = () => {
+const SearchPage = () => {
     const dispatch = useAppDispatch();
     const params = useSearchParams();
-    // const router = useRouter();
     const productsPerPage = 12;
 
     const query = params.get("query");
@@ -24,11 +23,7 @@ const SearchPageFC = () => {
 
     const { loading, response } = useAppSelector(SearchState);
 
-    // const [page, setPage] = useState<number>(1);
     const [pagesCount, setPagesCount] = useState<number>(0);
-
-    // const handlePageChange = (_: ChangeEvent<unknown>, page: number): void =>
-    //     router.push(`/search?query=${query}&page=${page}`);
 
     useEffect(() => {
         if (!query) return;
@@ -55,7 +50,6 @@ const SearchPageFC = () => {
     }, [response?.totalItemCount]);
 
     if (!query) {
-        // return notFound();
         return <NoQuery />;
     }
 
@@ -70,12 +64,12 @@ const SearchPageFC = () => {
     );
 };
 
-const SearchPage = () => {
+const SearchPageSuspense = () => {
     return (
         <Suspense fallback={<Loading>Загрузка...</Loading>}>
-            <SearchPageFC />
+            <SearchPage />
         </Suspense>
     );
 };
 
-export default SearchPage;
+export default SearchPageSuspense;

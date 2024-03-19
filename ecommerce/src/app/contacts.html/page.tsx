@@ -1,5 +1,4 @@
 import {
-    BoxProps,
     LinkProps,
     Table,
     TableBody,
@@ -12,10 +11,10 @@ import AppLink from "../(shared)/text/appLink";
 import AttentionText from "../(shared)/text/attentionText";
 import PageTitle from "../(shared)/text/pageTitle";
 import TableTitle from "../(shared)/text/tableTitle";
-import MetroStation from "./metro.template";
+import MetroStation from "./metroStation";
 import Paragraph from "../(shared)/text/paragraph";
 import Title from "../(shared)/text/title";
-import ImageSwitcher from "./imageSwitcher";
+import ImageSwitcher from "../(shared)/imageSwitcher/imageSwitcher.client";
 import { contactsData } from "./contactsData";
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { contactsBreadcrumbs } from "@/lib";
@@ -26,7 +25,7 @@ export const metadata: Metadata = {
     title: "Контактная информация"
 };
 
-const ContactsTemplate = () => {
+const ContactsPage = () => {
     const phoneLinksProps: LinkProps = {
         fontWeight: "bold",
         noWrap: true
@@ -339,4 +338,4 @@ const ContactsTemplate = () => {
     );
 };
 
-export default ContactsTemplate;
+export default ContactsPage;
