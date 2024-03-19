@@ -6,7 +6,7 @@ const Logo = ({ mobile }: { mobile?: boolean }) => {
     const logoContainerProps: BoxProps = {
         width: {
             xs: "90px",
-            md: "120px"
+            md: "100px"
         }
     };
 

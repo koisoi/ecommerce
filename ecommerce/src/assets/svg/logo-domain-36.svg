@@ -4,7 +4,7 @@
     <style>
       .c1 { fill: #707070; }
       .c1, .c2 { stroke-width: 0px; }
-      .c2 { fill: #f00; }
+      .c2 { fill: #000; }
     </style>
   </defs>
   <polygon class="c2" points="0 0 17 0 17 3 10 3 10 27 7 27 7 3 0 3 0 0"/>

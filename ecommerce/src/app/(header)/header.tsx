@@ -21,7 +21,7 @@ const Header = ({ props }: { props?: BoxProps }) => {
 
         ...props,
 
-        marginTop: "0.5rem"
+        marginY: "0.5rem"
     };
 
     return (
