@@ -92,13 +92,6 @@ const RootLayout = async ({
         <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>
                 <Box {...htmlBoxProps}>
-                    <head>
-                        <meta charSet="UTF-8" />
-                        <meta
-                            name="viewport"
-                            content="width=device-width, initial-scale=1.0"
-                        />
-                    </head>
                     <body {...bodyProps}>
                         <StoreProvider referer={referer}>
                             <BackCallForm />
