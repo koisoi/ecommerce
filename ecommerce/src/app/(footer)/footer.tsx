@@ -1,10 +1,10 @@
 import { Box, BoxProps, Divider } from "@mui/material";
-import CatalogBoxTemplate from "./catalogBoxTemplate";
-import UpperMenuBox from "./upperMenuBox";
-import ContactsBoxTemplate from "./contactsBoxTemplate";
+import { CatalogBoxTemplate } from "./catalogBoxTemplate";
+import { UpperMenuBox } from "./upperMenuBox";
+import { FooterContactsBoxTemplate } from "../(shared)/footerContactsBoxTemplate";
 import { landingConfig } from "@/lib";
 
-const Footer = ({ props }: { props?: BoxProps }) => {
+export const Footer = ({ props }: { props?: BoxProps }) => {
     // props
     const wrapperProps: BoxProps = {
         component: "footer",
@@ -42,7 +42,9 @@ const Footer = ({ props }: { props?: BoxProps }) => {
             <Divider />
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
-                    <ContactsBoxTemplate phone={landingConfig.phoneNumber} />
+                    <FooterContactsBoxTemplate
+                        phone={landingConfig.phoneNumber}
+                    />
                     <CatalogBoxTemplate categories={landingConfig.categories} />
                     <UpperMenuBox />
                 </Box>
@@ -50,5 +52,3 @@ const Footer = ({ props }: { props?: BoxProps }) => {
         </>
     );
 };
-
-export default Footer;

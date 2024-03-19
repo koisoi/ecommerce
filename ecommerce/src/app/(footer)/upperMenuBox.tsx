@@ -1,8 +1,8 @@
 import { Box, BoxProps } from "@mui/material";
-import FooterTitle from "./footerTitle";
+import { FooterTitle } from "../(shared)/footerTitle";
 import AppLink from "../(shared)/text/appLink";
 
-const UpperMenuBox = () => {
+export const UpperMenuBox = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
@@ -35,5 +35,3 @@ const UpperMenuBox = () => {
         </Box>
     );
 };
-
-export default UpperMenuBox;

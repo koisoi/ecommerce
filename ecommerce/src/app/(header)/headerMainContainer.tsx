@@ -1,7 +1,7 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import SearchBox from "../(shared)/search/searchBox.client";
 import dynamic from "next/dynamic";
-import Logo from "./logo";
+import { Logo } from "./logo";
 import ContactsBoxTemplate from "../(shared)/contactsBoxTemplate";
 import { landingConfig } from "@/lib";
 import { TelescopeLogo } from "./telescopeLogo";
@@ -25,7 +25,7 @@ const DynamicCartHeaderButton = dynamic(
     }
 );
 
-const HeaderMainContainer = ({
+export const HeaderMainContainer = ({
     props,
     mobileHeader
 }: {
@@ -106,5 +106,3 @@ const HeaderMainContainer = ({
         </>
     );
 };
-
-export default HeaderMainContainer;

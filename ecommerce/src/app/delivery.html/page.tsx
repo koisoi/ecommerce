@@ -4,7 +4,6 @@ import {
     TableBody,
     TableCell,
     TableHead,
-    TableProps,
     TableRow,
     TypographyProps
 } from "@mui/material";

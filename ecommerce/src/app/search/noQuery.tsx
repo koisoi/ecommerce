@@ -2,7 +2,7 @@ import { Box, BoxProps, TypographyProps } from "@mui/material";
 import SearchBox from "../(shared)/search/searchBox.client";
 import Title from "../(shared)/text/title";
 
-const NoQuery = () => {
+export const NoQuery = () => {
     const wrapperProps: BoxProps = {
         width: "100%",
         display: "flex",
@@ -22,5 +22,3 @@ const NoQuery = () => {
         </Box>
     );
 };
-
-export default NoQuery;

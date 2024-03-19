@@ -7,7 +7,7 @@ import ProductsGridTemplate, {
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { SearchResponse, searchBreadcrumbs } from "@/lib";
 
-const SearchPageTemplate = ({
+export const SearchPageTemplate = ({
     loading,
     response,
     page,
@@ -50,5 +50,3 @@ const SearchPageTemplate = ({
         </Box>
     );
 };
-
-export default SearchPageTemplate;

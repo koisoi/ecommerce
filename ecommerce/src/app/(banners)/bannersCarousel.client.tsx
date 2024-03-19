@@ -6,12 +6,12 @@ import {
     CarouselProps
 } from "react-material-ui-carousel/dist/components/types";
 import { BannerData, useThemeColors } from "@/lib";
-import BannerTemplate from "@/app/(banners)/bannerTemplate";
+import { BannerTemplate } from "@/app/(banners)/bannerTemplate";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Box, BoxProps } from "@mui/material";
 
-const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
+export const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
     // const
     const pathname = usePathname();
     const colors = useThemeColors();
@@ -113,37 +113,19 @@ const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
         });
     });
 
-    // const bannerBoxProps = (banner: BannerData): BoxProps => ({
-    //     component: "a",
-    //     // @ts-ignore
-    //     href: banner.url,
-    //     width: "100%",
-
-    //     display: "flex",
-    //     justifyContent: "center",
-
-    //     sx: {
-    //         cursor: "grab"
-    //     }
-    // });
-
     if (pathname !== "/") return <></>;
 
     return (
         <Box {...wrapperProps} id="mainPage-banners-carousel">
             <Carousel {...carouselProps}>
                 {banners.map((banner, i) => (
-                    // <Box key={i} {...bannerBoxProps(banner)}>
                     <BannerTemplate
                         key={i}
                         banner={banner}
                         height={`${carouselHeight} px`}
                     />
-                    // </Box>
                 ))}
             </Carousel>
         </Box>
     );
 };
-
-export default BannersCarousel;

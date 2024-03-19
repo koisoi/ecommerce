@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import { MouseEventHandler } from "react";
 
-const SlidingCartButtonTemplate = ({
+export const SlidingCartButtonTemplate = ({
     amount,
     visible,
     onCartClose,
@@ -115,5 +115,3 @@ const SlidingCartButtonTemplate = ({
         </>
     );
 };
-
-export default SlidingCartButtonTemplate;

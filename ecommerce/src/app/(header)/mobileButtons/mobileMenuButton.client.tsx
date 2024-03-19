@@ -4,7 +4,7 @@ import { setMobileMenuOpen, useAppDispatch } from "@/lib";
 import { MouseEventHandler } from "react";
 import MobileHeaderButtonTemplate from "./mobileHeaderButtonTemplate";
 
-const MobileMenuButton = () => {
+export const MobileMenuButton = () => {
     const dispatch = useAppDispatch();
 
     const handleMenuOpen: MouseEventHandler<HTMLButtonElement> = () => {
@@ -15,5 +15,3 @@ const MobileMenuButton = () => {
         <MobileHeaderButtonTemplate variant="menu" onClick={handleMenuOpen} />
     );
 };
-
-export default MobileMenuButton;

@@ -3,11 +3,7 @@
 import { CartState, useAppSelector } from "@/lib";
 import { useRouter } from "next/navigation";
 import { MouseEventHandler } from "react";
-import DesktopCartHeaderButtonTemplate from "./desktopCartHeaderButtonTemplate";
-
-export type DesktopHeaderButtonProps = {
-    id?: string;
-};
+import { DesktopCartHeaderButtonTemplate } from "./desktopCartHeaderButtonTemplate";
 
 const DesktopCartHeaderButton = () => {
     const { items } = useAppSelector(CartState);

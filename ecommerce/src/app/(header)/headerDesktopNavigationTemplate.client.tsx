@@ -23,7 +23,7 @@ const DynamicSlidingCartButton = dynamic(
     }
 );
 
-const HeaderDesktopNavigationTemplate = ({
+export const HeaderDesktopNavigationTemplate = ({
     categories
 }: {
     categories: PageData[];
@@ -121,5 +121,3 @@ const HeaderDesktopNavigationTemplate = ({
         </Box>
     );
 };
-
-export default HeaderDesktopNavigationTemplate;

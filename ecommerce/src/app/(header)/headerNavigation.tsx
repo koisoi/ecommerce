@@ -1,8 +1,8 @@
 import { Box, BoxProps } from "@mui/material";
-import HeaderMobileNavigation from "./headerMobileNavigation";
+import { HeaderMobileNavigation } from "./headerMobileNavigation";
 import { landingConfig } from "@/lib";
-import MobileContactsBoxTemplate from "./mobileContactsBoxTemplate";
-import HeaderDesktopNavigationTemplate from "./headerDesktopNavigationTemplate.client";
+import { MobileContactsBoxTemplate } from "./mobileContactsBoxTemplate";
+import { HeaderDesktopNavigationTemplate } from "./headerDesktopNavigationTemplate.client";
 
 const HeaderNavigation = ({
     mobile

@@ -1,5 +1,5 @@
-import ContactsBoxTemplate from "@/app/(footer)/contactsBoxTemplate";
-import FooterTitle from "@/app/(footer)/footerTitle";
+import { FooterContactsBoxTemplate } from "@/app/(shared)/footerContactsBoxTemplate";
+import { FooterTitle } from "@/app/(shared)/footerTitle";
 import { PageData } from "@/lib";
 import {
     Box,
@@ -19,7 +19,7 @@ import Link from "next/link";
 import { CSSProperties, ReactNode } from "react";
 import { Close } from "@mui/icons-material";
 
-const MobileMenuTemplate = ({
+export const MobileMenuTemplate = ({
     open,
     onMenuClose,
     categories,
@@ -167,7 +167,7 @@ const MobileMenuTemplate = ({
                     </ListItem>
                 </List>
 
-                <ContactsBoxTemplate
+                <FooterContactsBoxTemplate
                     phone={phone}
                     props={{
                         paddingX: "1rem",
@@ -179,5 +179,3 @@ const MobileMenuTemplate = ({
         </Drawer>
     );
 };
-
-export default MobileMenuTemplate;

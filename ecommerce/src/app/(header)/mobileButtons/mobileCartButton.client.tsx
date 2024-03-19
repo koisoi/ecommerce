@@ -19,7 +19,7 @@ const DynamicHeaderButton = dynamic(
     }
 );
 
-const MobileCartButton = () => {
+export const MobileCartButton = () => {
     const router = useRouter();
 
     const { items } = useAppSelector(CartState);
@@ -43,5 +43,3 @@ const MobileCartButton = () => {
         />
     );
 };
-
-export default MobileCartButton;

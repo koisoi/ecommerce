@@ -1,7 +1,7 @@
 "use client";
 
 import { CartState, useAppSelector, useMediaQueries } from "@/lib";
-import SlidingCartButtonTemplate from "./slidingCartButtonTemplate";
+import { SlidingCartButtonTemplate } from "./slidingCartButtonTemplate";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 

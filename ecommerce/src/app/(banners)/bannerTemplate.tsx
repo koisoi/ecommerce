@@ -1,7 +1,7 @@
 import { Box, BoxProps } from "@mui/material";
 import { BannerData } from "@/lib";
 
-const BannerTemplate = ({
+export const BannerTemplate = ({
     banner,
     height
 }: {
@@ -37,5 +37,3 @@ const BannerTemplate = ({
         </Box>
     );
 };
-
-export default BannerTemplate;

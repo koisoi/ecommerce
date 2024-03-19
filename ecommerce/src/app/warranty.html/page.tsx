@@ -6,8 +6,7 @@ import {
     TableCell,
     TableHead,
     TableProps,
-    TableRow,
-    TypographyProps
+    TableRow
 } from "@mui/material";
 import PageTitle from "../(shared)/text/pageTitle";
 import TableTitle from "../(shared)/text/tableTitle";
@@ -32,7 +31,6 @@ const WarrantyPage = () => {
         width: "100%",
         boxSizing: "border-box",
         padding: "2rem",
-        // marginTop: { xs: "1rem", md: "2rem" },
 
         display: "flex",
         flexDirection: "column",

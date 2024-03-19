@@ -8,11 +8,11 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import MobileMenuTemplate from "./mobileMenuTemplate";
+import { MobileMenuTemplate } from "./mobileMenuTemplate";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
-const MobileMenu = ({
+export const MobileMenu = ({
     children,
     categories
 }: {
@@ -43,5 +43,3 @@ const MobileMenu = ({
         </MobileMenuTemplate>
     );
 };
-
-export default MobileMenu;

@@ -11,7 +11,7 @@ import AppLink from "../(shared)/text/appLink";
 import AttentionText from "../(shared)/text/attentionText";
 import PageTitle from "../(shared)/text/pageTitle";
 import TableTitle from "../(shared)/text/tableTitle";
-import MetroStation from "./metroStation";
+import { MetroStation } from "./metroStation";
 import Paragraph from "../(shared)/text/paragraph";
 import Title from "../(shared)/text/title";
 import ImageSwitcher from "../(shared)/imageSwitcher/imageSwitcher.client";

@@ -1,14 +1,13 @@
 import { Box, BoxProps } from "@mui/material";
-import HeaderTopContainer from "./topContainer";
-import HeaderMainContainer from "./headerMainContainer";
+import { HeaderTopContainer } from "./topContainer";
+import { HeaderMainContainer } from "./headerMainContainer";
 import dynamic from "next/dynamic";
-import { landingConfig } from "@/lib";
 
 const DynamicHeaderNavigation = dynamic(
-    () => import("@/app/(header)/navigation.template")
+    () => import("@/app/(header)/headerNavigation")
 );
 
-const Header = ({ props }: { props?: BoxProps }) => {
+export const Header = ({ props }: { props?: BoxProps }) => {
     // props
     const wrapperProps: BoxProps = {
         component: "header",
@@ -35,5 +34,3 @@ const Header = ({ props }: { props?: BoxProps }) => {
         </>
     );
 };
-
-export default Header;

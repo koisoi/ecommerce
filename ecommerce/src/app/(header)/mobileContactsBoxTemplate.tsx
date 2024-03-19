@@ -1,7 +1,7 @@
 import PhoneLink from "@/app/(shared)/text/phoneLinkTemplate";
-import { Box, BoxProps, LinkProps, TypographyProps } from "@mui/material";
+import { Box, BoxProps, LinkProps } from "@mui/material";
 
-const MobileContactsBoxTemplate = ({
+export const MobileContactsBoxTemplate = ({
     phoneNumber
 }: {
     phoneNumber: string;
@@ -35,5 +35,3 @@ const MobileContactsBoxTemplate = ({
         </Box>
     );
 };
-
-export default MobileContactsBoxTemplate;

@@ -5,13 +5,13 @@ import {
     LinkProps,
     SvgIconProps
 } from "@mui/material";
-import FooterTitle from "./footerTitle";
-import AppLink from "../(shared)/text/appLink";
+import { FooterTitle } from "./footerTitle";
+import AppLink from "./text/appLink";
 import { Email } from "@mui/icons-material";
-import PhoneLink from "../(shared)/text/phoneLinkTemplate";
-import BackCallButton from "../(shared)/backCallButton/backCallButton.client";
+import PhoneLink from "./text/phoneLinkTemplate";
+import BackCallButton from "./backCallButton/backCallButton.client";
 
-const ContactsBoxTemplate = ({
+export const FooterContactsBoxTemplate = ({
     props,
     phone
 }: {
@@ -67,5 +67,3 @@ const ContactsBoxTemplate = ({
         </Box>
     );
 };
-
-export default ContactsBoxTemplate;

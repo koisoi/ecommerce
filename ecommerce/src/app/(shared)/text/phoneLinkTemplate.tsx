@@ -16,6 +16,7 @@ const PhoneLink = ({
         sx: {
             fontWeight: "bold",
             textDecoration: "none",
+            whiteSpace: "nowrap",
 
             ...props?.sx
         }

@@ -10,7 +10,7 @@ import VK from "@/assets/svg/vk.svg";
 import { NextLinkProps } from "@/lib";
 import Link from "next/link";
 
-const HeaderTopContainer = () => {
+export const HeaderTopContainer = () => {
     const outerWrapperProps: BoxProps = {
         width: "100%",
         display: "flex",
@@ -110,5 +110,3 @@ const HeaderTopContainer = () => {
         </Box>
     );
 };
-
-export default HeaderTopContainer;

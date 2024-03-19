@@ -1,7 +1,7 @@
 import { Typography, TypographyProps } from "@mui/material";
 import { ReactNode } from "react";
 
-const FooterTitle = ({ children }: { children?: ReactNode }) => {
+export const FooterTitle = ({ children }: { children?: ReactNode }) => {
     const titleProps: TypographyProps = {
         color: "text.primary",
         fontSize: "1.2rem",
@@ -11,5 +11,3 @@ const FooterTitle = ({ children }: { children?: ReactNode }) => {
 
     return <Typography {...titleProps}>{children}</Typography>;
 };
-
-export default FooterTitle;

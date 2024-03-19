@@ -1,13 +1,13 @@
 import { Box, BoxProps } from "@mui/material";
-import Logo from "./logo";
+import { Logo } from "./logo";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton.client";
-import MobileCartButton from "./mobileButtons/mobileCartButton.client";
-import MobileMenuButton from "./mobileButtons/mobileMenuButton.client";
-import MobileMenu from "./mobileMenu/mobileMenu.client";
+import { MobileCartButton } from "./mobileButtons/mobileCartButton.client";
+import { MobileMenuButton } from "./mobileButtons/mobileMenuButton.client";
+import { MobileMenu } from "./mobileMenu/mobileMenu.client";
 import { landingConfig } from "@/lib";
 import { TelescopeLogo } from "./telescopeLogo";
 
-const HeaderMobileNavigation = () => {
+export const HeaderMobileNavigation = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
@@ -54,5 +54,3 @@ const HeaderMobileNavigation = () => {
         </>
     );
 };
-
-export default HeaderMobileNavigation;

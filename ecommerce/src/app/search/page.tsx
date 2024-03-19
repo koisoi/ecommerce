@@ -7,11 +7,11 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import SearchPageTemplate from "./searchPageTemplate";
+import { SearchPageTemplate } from "./searchPageTemplate";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
 import Loading from "../(shared)/loading";
-import NoQuery from "./noQuery";
+import { NoQuery } from "./noQuery";
 
 const SearchPage = () => {
     const dispatch = useAppDispatch();

@@ -15,7 +15,7 @@ export type DesktopHeaderButtonProps = {
     id?: string;
 };
 
-const DesktopCartHeaderButtonTemplate = ({
+export const DesktopCartHeaderButtonTemplate = ({
     onCartClick,
     amount
 }: {
@@ -67,5 +67,3 @@ const DesktopCartHeaderButtonTemplate = ({
         </Button>
     );
 };
-
-export default DesktopCartHeaderButtonTemplate;
