@@ -3,7 +3,7 @@ import { NextLinkProps, PageData } from "@/lib";
 import { TypographyProps } from "@mui/material";
 import Link from "next/link";
 
-const CatalogSubcategory = ({
+const CatalogSeriesTemplate = ({
     page,
     selected
 }: {
@@ -12,10 +12,6 @@ const CatalogSubcategory = ({
 }) => {
     const linkProps: NextLinkProps = {
         href: page.url,
-        // href: {
-        //     pathname: "/catalog",
-        //     query: { category: categoryAlias, series: seriesAlias }
-        // },
 
         style: {
             textDecoration: "none",
@@ -40,10 +36,9 @@ const CatalogSubcategory = ({
 
     return (
         <Link {...linkProps}>
-            {/* <Typography {...textProps}>{children}</Typography> */}
             <Paragraph props={textProps}>{page.title}</Paragraph>
         </Link>
     );
 };
 
-export default CatalogSubcategory;
+export default CatalogSeriesTemplate;

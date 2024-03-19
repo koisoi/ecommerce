@@ -1,7 +1,7 @@
 import { CategoryItemsResponse, PageData, categoryAPI } from "@/lib";
 import ProductsGridTemplate from "../../(shared)/productsGrid/productsGridTemplate";
 
-const ProductsCategoryGrid = async ({
+const CategoryProductsGrid = async ({
     page,
     pageNumber
 }: {
@@ -37,4 +37,4 @@ const ProductsCategoryGrid = async ({
     );
 };
 
-export default ProductsCategoryGrid;
+export default CategoryProductsGrid;

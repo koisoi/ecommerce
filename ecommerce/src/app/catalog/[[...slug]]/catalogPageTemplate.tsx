@@ -1,9 +1,9 @@
 import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
 import { PageData, catalogPageBreadcrumb } from "@/lib";
-import CategoriesMenuTemplate from "./categoriesMenu.template";
+import CategoriesMenuTemplate from "./categoriesMenuTemplate";
 import PageTitle from "@/app/(shared)/text/pageTitle";
 
-const CatalogPage = ({ pages }: { pages: PageData[] }) => {
+const CatalogPageTemplate = ({ pages }: { pages: PageData[] }) => {
     return (
         <>
             <BreadcrumbsTemplate linksArray={catalogPageBreadcrumb} />
@@ -13,4 +13,4 @@ const CatalogPage = ({ pages }: { pages: PageData[] }) => {
     );
 };
 
-export default CatalogPage;
+export default CatalogPageTemplate;

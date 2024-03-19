@@ -10,7 +10,7 @@ import {
     categoryPathToAlias
 } from "@/lib";
 import SimliarProductsSliderTemplate from "./(shared)/simliarProductsSliderTemplate";
-import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
+import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenuTemplate";
 import SectionContainer from "./(shared)/sectionContainer";
 import { Metadata } from "next";
 

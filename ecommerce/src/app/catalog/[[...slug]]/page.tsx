@@ -1,4 +1,4 @@
-import CategoryTemplate from "./page.template";
+import CategoryTemplate from "./categoryTemplate";
 import {
     ProductPageTabType,
     catalogPageBreadcrumb,
@@ -11,7 +11,7 @@ import {
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
 import { Metadata } from "next";
-import CatalogPage from "./catalog.template";
+import CatalogPageTemplate from "./catalogPageTemplate";
 import { backendAPI, getImageLink } from "@/lib";
 
 export async function generateMetadata({
@@ -62,7 +62,7 @@ export async function generateMetadata({
  * slug [0] - категория
  * slug [1] - серия или товар
  */
-const Category = async ({
+const CategoryPage = async ({
     params,
     searchParams
 }: {
@@ -81,7 +81,7 @@ const Category = async ({
             console.error(error);
         }
 
-        return <CatalogPage pages={pages} />;
+        return <CatalogPageTemplate pages={pages} />;
     }
 
     if (params.slug[1] && params.slug[1].includes(".html")) {
@@ -152,4 +152,4 @@ const Category = async ({
     );
 };
 
-export default Category;
+export default CategoryPage;
