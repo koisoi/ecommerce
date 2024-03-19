@@ -1,12 +1,12 @@
 import { Box, BoxProps } from "@mui/material";
-import Logo from "../logo";
+import Logo from "./logo";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
-import CartHeaderButton from "../cartHeaderButton";
-import MobileMenuButton from "../mobileMenuButton";
-import MobileMenu from "../mobileMenu/mobileMenu";
+import MobileCartButton from "./mobileButtons/mobileCartButton.client";
+import MobileMenuButton from "./mobileButtons/mobileMenuButton.client";
+import MobileMenu from "./mobileMenu/mobileMenu.client";
 import { landingConfig } from "@/lib";
 
-const HeaderMobileNavigationTemplate = () => {
+const HeaderMobileNavigation = () => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "row",
@@ -47,10 +47,10 @@ const HeaderMobileNavigationTemplate = () => {
                         <BackCallButton altColor />
                     </Box>
                 </Box>
-                <CartHeaderButton />
+                <MobileCartButton />
             </Box>
         </>
     );
 };
 
-export default HeaderMobileNavigationTemplate;
+export default HeaderMobileNavigation;

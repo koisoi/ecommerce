@@ -1,5 +1,5 @@
-import ContactsBox from "@/app/(footer)/contactsBox.template";
-import FooterTitle from "@/app/(footer)/title.template";
+import ContactsBoxTemplate from "@/app/(footer)/contactsBoxTemplate";
+import FooterTitle from "@/app/(footer)/footerTitle";
 import { PageData } from "@/lib";
 import {
     Box,
@@ -100,7 +100,6 @@ const MobileMenuTemplate = ({
             <Box {...wrapperProps}>
                 <List {...listProps}>
                     <ListItem {...logoListItemProps}>
-                        {/* <Logo logoSrc={logoImgLink} /> */}
                         {children}
                         <IconButton {...iconButtonProps}>
                             <Close />
@@ -168,7 +167,7 @@ const MobileMenuTemplate = ({
                     </ListItem>
                 </List>
 
-                <ContactsBox
+                <ContactsBoxTemplate
                     phone={phone}
                     props={{
                         paddingX: "1rem",

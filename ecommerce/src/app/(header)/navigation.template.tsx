@@ -1,15 +1,15 @@
 import { Box, BoxProps } from "@mui/material";
-import HeaderMobileNavigationTemplate from "./mobileNavigation/mobileNavigation.template";
-import { PageData, landingConfig } from "@/lib";
-import MobileContactsBox from "./contactsBox/mobileContactsBox";
-import HeaderDesktopNavigationTemplate from "./desktopNavigation/desktopNavigation.template";
+import HeaderMobileNavigation from "./headerMobileNavigation";
+import { landingConfig } from "@/lib";
+import MobileContactsBoxTemplate from "./mobileContactsBoxTemplate";
+import HeaderDesktopNavigationTemplate from "./headerDesktopNavigationTemplate.client";
 
 const HeaderNavigation = ({
-    mobile,
-    categories
-}: {
-    mobile: boolean;
-    categories: PageData[];
+    mobile
+}: // categories
+{
+    mobile?: boolean;
+    // categories: PageData[];
 }) => {
     const outerWrapperProps: BoxProps = {
         component: mobile ? "header" : "nav",
@@ -30,24 +30,24 @@ const HeaderNavigation = ({
         minHeight: { xs: "45px", md: "50px" },
         display: { xs: mobile ? "flex" : "none", md: mobile ? "none" : "flex" },
 
-        // ...boxProps,
-
         sx: {
             backgroundColor: "primary.main"
-
-            // ...boxProps?.sx
         }
     };
 
     return (
         <Box {...outerWrapperProps}>
             {mobile && (
-                <MobileContactsBox phoneNumber={landingConfig.phoneNumber} />
+                <MobileContactsBoxTemplate
+                    phoneNumber={landingConfig.phoneNumber}
+                />
             )}
             <Box {...wrapperProps}>
-                {mobile && <HeaderMobileNavigationTemplate />}
+                {mobile && <HeaderMobileNavigation />}
                 {!mobile && (
-                    <HeaderDesktopNavigationTemplate categories={categories} />
+                    <HeaderDesktopNavigationTemplate
+                        categories={landingConfig.categories}
+                    />
                 )}
             </Box>
         </Box>

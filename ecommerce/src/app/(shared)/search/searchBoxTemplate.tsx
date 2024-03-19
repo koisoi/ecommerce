@@ -1,20 +1,13 @@
 import { Search } from "@mui/icons-material";
-import {
-    Box,
-    BoxProps,
-    Button,
-    ButtonProps,
-    TextField,
-    TextFieldProps
-} from "@mui/material";
+import { Button, ButtonProps, TextField, TextFieldProps } from "@mui/material";
 import {
     ChangeEventHandler,
     KeyboardEventHandler,
     MouseEventHandler
 } from "react";
-import SearchPopover from "./searchPopover";
+import SearchPopover from "./searchPopover.client";
 
-const HeaderSearchBoxTemplate = ({
+const SearchBoxTemplate = ({
     onSearch,
     searchQuery,
     onSearchQueryChange,
@@ -109,4 +102,4 @@ const HeaderSearchBoxTemplate = ({
     );
 };
 
-export default HeaderSearchBoxTemplate;
+export default SearchBoxTemplate;

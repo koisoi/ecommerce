@@ -8,7 +8,7 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import SearchPopoverItem from "./searchPopoverItem.template";
+import SearchPopoverItemTemplate from "./searchPopoverItemTemplate";
 import { Url } from "next/dist/shared/lib/router/router";
 import AppLink from "@/app/(shared)/text/appLink.template";
 import AttentionText from "@/app/(shared)/text/attentionText.template";
@@ -50,15 +50,12 @@ const SearchPopoverTemplate = ({
             vertical: "bottom",
             horizontal: "left"
         }
-
-        // anchorOrigin, transformOrigin
     };
 
     const listProps: ListProps = {
         dense: true,
 
         sx: {
-            // minWidth: { sm: "220px", md: "380px", xl: "420px" }
             width: "100%"
         }
     };
@@ -66,7 +63,6 @@ const SearchPopoverTemplate = ({
     const noResponseTextProps: TypographyProps = {
         color: "text.disabled",
         sx: {
-            // minWidth: { sm: "190px", md: "350px", xl: "390px" },
             padding: "1rem"
         }
     };
@@ -99,7 +95,7 @@ const SearchPopoverTemplate = ({
             {!loading && !!response && response.totalItemCount > 0 && (
                 <List {...listProps}>
                     {response.list.map((el) => (
-                        <SearchPopoverItem
+                        <SearchPopoverItemTemplate
                             item={el}
                             onClick={onClose}
                             key={el.alias}

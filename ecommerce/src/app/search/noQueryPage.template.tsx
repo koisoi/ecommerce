@@ -1,5 +1,5 @@
 import { Box, BoxProps, TypographyProps } from "@mui/material";
-import HeaderSearchBox from "../(header)/search/search";
+import SearchBox from "../(shared)/search/searchBox.client";
 import Title from "../(shared)/text/title.template";
 
 const NoQuery = () => {
@@ -18,7 +18,7 @@ const NoQuery = () => {
     return (
         <Box {...wrapperProps}>
             <Title props={titleProps}>Введите свой запрос:</Title>
-            <HeaderSearchBox searchPage />
+            <SearchBox searchPage />
         </Box>
     );
 };

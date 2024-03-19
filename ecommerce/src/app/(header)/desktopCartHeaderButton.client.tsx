@@ -1,6 +1,7 @@
 "use client";
 
 import { CartState, useAppSelector } from "@/lib";
+import { ShoppingCart } from "@mui/icons-material";
 import {
     Box,
     BoxProps,
@@ -13,11 +14,10 @@ import { useRouter } from "next/navigation";
 import { MouseEventHandler, ReactNode } from "react";
 
 export type DesktopHeaderButtonProps = {
-    children?: ReactNode;
     id?: string;
 };
 
-const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
+const DesktopCartHeaderButton = () => {
     const { items } = useAppSelector(CartState);
 
     // const
@@ -69,8 +69,8 @@ const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
     };
 
     return (
-        <Button {...wrapperProps} id={id}>
-            {children}
+        <Button {...wrapperProps}>
+            <ShoppingCart fontSize="large" id="desktop-header-button" />
             <Box {...textWrapperProps}>
                 <Typography {...upperTextProps}>Корзина</Typography>
                 <Typography {...lowerTextProps}>Товаров: {amount}</Typography>
@@ -79,4 +79,4 @@ const DesktopHeaderButton = ({ children, id }: DesktopHeaderButtonProps) => {
     );
 };
 
-export default DesktopHeaderButton;
+export default DesktopCartHeaderButton;

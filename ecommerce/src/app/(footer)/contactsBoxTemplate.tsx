@@ -5,13 +5,19 @@ import {
     LinkProps,
     SvgIconProps
 } from "@mui/material";
-import FooterTitle from "./title.template";
+import FooterTitle from "./footerTitle";
 import AppLink from "../(shared)/text/appLink.template";
 import { Email } from "@mui/icons-material";
 import PhoneLink from "../(shared)/text/phoneLink.template";
 import BackCallButton from "../(shared)/backCallButton/backCallButton";
 
-const ContactsBox = ({ props, phone }: { props?: BoxProps; phone: string }) => {
+const ContactsBoxTemplate = ({
+    props,
+    phone
+}: {
+    props?: BoxProps;
+    phone: string;
+}) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
@@ -30,15 +36,6 @@ const ContactsBox = ({ props, phone }: { props?: BoxProps; phone: string }) => {
         flexDirection: "column",
         gap: "0.5rem",
         textAlign: "center"
-    };
-
-    const boxProps: BoxProps = {
-        color: "text.secondary",
-
-        display: "flex",
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "center"
     };
 
     const iconProps: SvgIconProps = {
@@ -71,4 +68,4 @@ const ContactsBox = ({ props, phone }: { props?: BoxProps; phone: string }) => {
     );
 };
 
-export default ContactsBox;
+export default ContactsBoxTemplate;

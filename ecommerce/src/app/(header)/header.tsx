@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@mui/material";
-import HeaderTopContainer from "./topContainer.template";
-import HeaderMainContainer from "./mainContainer/mainContainer.template";
+import HeaderTopContainer from "./topContainer";
+import HeaderMainContainer from "./headerMainContainer";
 import dynamic from "next/dynamic";
 import { landingConfig } from "@/lib";
 
@@ -26,18 +26,12 @@ const Header = ({ props }: { props?: BoxProps }) => {
 
     return (
         <>
-            <DynamicHeaderNavigation
-                mobile={true}
-                categories={landingConfig.categories}
-            />
+            <DynamicHeaderNavigation mobile />
             <Box {...wrapperProps}>
                 <HeaderTopContainer />
                 <HeaderMainContainer />
             </Box>
-            <DynamicHeaderNavigation
-                mobile={false}
-                categories={landingConfig.categories}
-            />
+            <DynamicHeaderNavigation />
         </>
     );
 };

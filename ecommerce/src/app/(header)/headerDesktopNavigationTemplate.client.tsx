@@ -17,7 +17,7 @@ import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
 const DynamicSlidingCartButton = dynamic(
-    () => import("@/app/(header)/slidingCartButton/slidingCartButton"),
+    () => import("@/app/(header)/slidingCartButton/slidingCartButton.client"),
     {
         ssr: false
     }
@@ -100,10 +100,6 @@ const HeaderDesktopNavigationTemplate = ({
             ...((path === pathname || path + "/" === pathname) && {
                 backgroundColor: "secondary.main"
             })
-
-            // ...((path === catalogPath || path + "/" === catalogPath) && {
-            //     backgroundColor: "secondary.main"
-            // })
         }
     });
 

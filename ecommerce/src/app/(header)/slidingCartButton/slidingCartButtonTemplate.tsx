@@ -1,5 +1,3 @@
-"use client";
-
 import CartTable from "@/app/(shared)/cartTable/cartTable";
 import { ShoppingCart } from "@mui/icons-material";
 import {
@@ -12,7 +10,7 @@ import {
     PopoverProps,
     PopoverVirtualElement
 } from "@mui/material";
-import { MouseEventHandler, RefObject } from "react";
+import { MouseEventHandler } from "react";
 
 const SlidingCartButtonTemplate = ({
     amount,
@@ -100,7 +98,6 @@ const SlidingCartButtonTemplate = ({
         maxWidth: "900px"
     };
 
-    // мб лучше использовать Collapse, но он здесь не работает почему-то
     return (
         <>
             <Fade in={visible}>

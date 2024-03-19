@@ -1,7 +1,7 @@
 import { Box, BoxProps, Divider } from "@mui/material";
-import CatalogBox from "./catalogBox.template";
-import UpperMenuBox from "./upperMenuBox.template";
-import ContactsBox from "./contactsBox.template";
+import CatalogBoxTemplate from "./catalogBoxTemplate";
+import UpperMenuBox from "./upperMenuBox";
+import ContactsBoxTemplate from "./contactsBoxTemplate";
 import { landingConfig } from "@/lib";
 
 const Footer = ({ props }: { props?: BoxProps }) => {
@@ -42,8 +42,8 @@ const Footer = ({ props }: { props?: BoxProps }) => {
             <Divider />
             <Box {...wrapperProps}>
                 <Box {...innerWrapperProps}>
-                    <ContactsBox phone={landingConfig.phoneNumber} />
-                    <CatalogBox categories={landingConfig.categories} />
+                    <ContactsBoxTemplate phone={landingConfig.phoneNumber} />
+                    <CatalogBoxTemplate categories={landingConfig.categories} />
                     <UpperMenuBox />
                 </Box>
             </Box>

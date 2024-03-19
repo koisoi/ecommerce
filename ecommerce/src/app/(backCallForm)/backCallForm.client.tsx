@@ -1,7 +1,7 @@
 "use client";
 
 import { useForm } from "react-hook-form";
-import { BackCallFormTemplate } from "./backCallForm.template";
+import { BackCallFormTemplate } from "./backCallFormTemplate";
 import {
     AppealForm,
     BackCallState,

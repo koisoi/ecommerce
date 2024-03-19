@@ -2,16 +2,16 @@
 
 import { CartState, useAppSelector } from "@/lib";
 import { MouseEventHandler, useMemo } from "react";
-import MobileHeaderButton from "./mobileHeaderButton.template";
+import MobileHeaderButtonTemplate from "./mobileHeaderButtonTemplate";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 
 const DynamicHeaderButton = dynamic(
-    () => import("@/app/(header)/mobileHeaderButton.template"),
+    () => import("@/app/(header)/mobileButtons/mobileHeaderButtonTemplate"),
     {
         ssr: false,
         loading: () => (
-            <MobileHeaderButton
+            <MobileHeaderButtonTemplate
                 variant="shoppingCart"
                 id="mobile-shopping-cart-button"
             />
@@ -19,7 +19,7 @@ const DynamicHeaderButton = dynamic(
     }
 );
 
-const CartHeaderButton = () => {
+const MobileCartButton = () => {
     const router = useRouter();
 
     const { items } = useAppSelector(CartState);
@@ -44,4 +44,4 @@ const CartHeaderButton = () => {
     );
 };
 
-export default CartHeaderButton;
+export default MobileCartButton;

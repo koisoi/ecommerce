@@ -1,14 +1,13 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import { ShoppingCart } from "@mui/icons-material";
 import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
-import HeaderSearchBox from "../search/search";
+import SearchBox from "../(shared)/search/searchBox.client";
 import dynamic from "next/dynamic";
-import Logo from "../logo";
-import HeaderContactsBox from "../contactsBox/contactsBox.template";
+import Logo from "./logo";
+import ContactsBoxTemplate from "../(shared)/contactsBoxTemplate";
 import { landingConfig } from "@/lib";
 
-const DynamicHeaderButton = dynamic(
-    () => import("@/app/(header)/desktopHeaderButton.template"),
+const DynamicCartHeaderButton = dynamic(
+    () => import("@/app/(header)/desktopCartHeaderButton.client"),
     {
         ssr: false,
         loading: () => {
@@ -82,20 +81,15 @@ const HeaderMainContainer = ({
                 <Box {...wrapperProps}>
                     <Box {...logoAndContactsWrapper}>
                         <Logo mobile={mobileHeader} />
-                        <HeaderContactsBox
+                        <ContactsBoxTemplate
                             phoneNumber={landingConfig.phoneNumber}
                         />
                     </Box>
                     <Box {...searchWrapperProps}>
-                        <HeaderSearchBox />
+                        <SearchBox />
                     </Box>
                     <BackCallButton />
-                    <DynamicHeaderButton>
-                        <ShoppingCart
-                            fontSize="large"
-                            id="desktop-header-button"
-                        />
-                    </DynamicHeaderButton>
+                    <DynamicCartHeaderButton />
                 </Box>
             </Box>
         </>

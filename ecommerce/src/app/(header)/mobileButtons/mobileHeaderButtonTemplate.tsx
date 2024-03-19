@@ -8,15 +8,15 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler } from "react";
 
-const MobileHeaderButton = ({
+const MobileHeaderButtonTemplate = ({
     variant,
     amount,
     onClick,
     id
 }: {
-    variant: "menu" | "favorite" | "shoppingCart" | "accountCircle";
+    variant: "menu" | "shoppingCart";
     amount?: number;
     onClick?: MouseEventHandler<HTMLButtonElement>;
     id?: string;
@@ -66,26 +66,13 @@ const MobileHeaderButton = ({
         fontSize: "0.8rem"
     };
 
-    let child: ReactNode | null = null;
-
-    switch (variant) {
-        case "shoppingCart":
-            child = <ShoppingCart {...iconsProps} />;
-            break;
-
-        case "menu":
-            child = <Menu {...iconsProps} />;
-            break;
-
-        default:
-            break;
-    }
-
-    if (child === null) return <></>;
-
     return (
         <IconButton {...iconButtonsProps} id={id}>
-            {child}
+            {variant === "shoppingCart" ? (
+                <ShoppingCart {...iconsProps} />
+            ) : (
+                <Menu {...iconsProps} />
+            )}
             {!!amount && (
                 <Box {...amountBadgeProps}>
                     <Typography {...textProps}>{amount}</Typography>
@@ -95,4 +82,4 @@ const MobileHeaderButton = ({
     );
 };
 
-export default MobileHeaderButton;
+export default MobileHeaderButtonTemplate;

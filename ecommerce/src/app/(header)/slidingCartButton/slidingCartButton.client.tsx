@@ -1,19 +1,8 @@
 "use client";
 
-import {
-    CartState,
-    useAppDispatch,
-    useAppSelector,
-    useMediaQueries
-} from "@/lib";
-import SlidingCartButtonTemplate from "./slidingCartButton.template";
-import {
-    MouseEventHandler,
-    useEffect,
-    useLayoutEffect,
-    useRef,
-    useState
-} from "react";
+import { CartState, useAppSelector, useMediaQueries } from "@/lib";
+import SlidingCartButtonTemplate from "./slidingCartButtonTemplate";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 
 const SlidingCartButton = () => {

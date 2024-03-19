@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect } from "react";
-import SearchPopoverTemplate from "./searchPopover.template";
+import SearchPopoverTemplate from "./searchPopoverTemplate";
 import {
     SearchPopoverState,
     searchPopover,

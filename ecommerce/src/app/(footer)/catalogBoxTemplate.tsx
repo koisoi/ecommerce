@@ -1,9 +1,9 @@
 import { Box, BoxProps } from "@mui/material";
-import FooterTitle from "./title.template";
+import FooterTitle from "./footerTitle";
 import AppLink from "../(shared)/text/appLink.template";
 import { PageData } from "@/lib";
 
-const CatalogBox = ({ categories }: { categories: PageData[] }) => {
+const CatalogBoxTemplate = ({ categories }: { categories: PageData[] }) => {
     const wrapperProps: BoxProps = {
         display: "flex",
         flexDirection: "column",
@@ -33,4 +33,4 @@ const CatalogBox = ({ categories }: { categories: PageData[] }) => {
     );
 };
 
-export default CatalogBox;
+export default CatalogBoxTemplate;

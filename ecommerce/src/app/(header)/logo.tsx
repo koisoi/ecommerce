@@ -2,7 +2,7 @@ import { landingConfig } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
 import Link from "next/link";
 
-const Logo = ({ mobile, logoSrc }: { mobile?: boolean; logoSrc?: string }) => {
+const Logo = ({ mobile }: { mobile?: boolean }) => {
     const logoContainerProps: BoxProps = {
         width: {
             xs: "90px",
@@ -13,10 +13,9 @@ const Logo = ({ mobile, logoSrc }: { mobile?: boolean; logoSrc?: string }) => {
     };
 
     const logoProps = {
-        src:
-            logoSrc || mobile
-                ? landingConfig.logoImgMobileLink
-                : landingConfig.logoImgLink,
+        src: mobile
+            ? landingConfig.logoImgMobileLink
+            : landingConfig.logoImgLink,
         alt: landingConfig.landing_title,
         width: "100%",
         style: {

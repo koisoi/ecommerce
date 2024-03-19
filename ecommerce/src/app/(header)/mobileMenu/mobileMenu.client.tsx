@@ -8,7 +8,7 @@ import {
     useAppDispatch,
     useAppSelector
 } from "@/lib";
-import MobileMenuTemplate from "./mobileMenu.template";
+import MobileMenuTemplate from "./mobileMenuTemplate";
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 
@@ -16,7 +16,7 @@ const MobileMenu = ({
     children,
     categories
 }: {
-    children: ReactNode;
+    children?: ReactNode;
     categories: PageData[];
 }) => {
     const dispatch = useAppDispatch();

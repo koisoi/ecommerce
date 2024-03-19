@@ -10,7 +10,7 @@ import {
 import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 
-const SearchPopoverItem = ({
+const SearchPopoverItemTemplate = ({
     item,
     onClick
 }: {
@@ -51,4 +51,4 @@ const SearchPopoverItem = ({
     );
 };
 
-export default SearchPopoverItem;
+export default SearchPopoverItemTemplate;

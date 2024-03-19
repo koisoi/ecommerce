@@ -6,11 +6,11 @@ import {
     MouseEventHandler,
     useState
 } from "react";
-import HeaderSearchBoxTemplate from "./searchBox.template";
+import SearchBoxTemplate from "./searchBoxTemplate";
 import { useRouter } from "next/navigation";
 import { clearPopupSearchResponse, useAppDispatch } from "@/lib";
 
-const HeaderSearchBox = ({ searchPage }: { searchPage?: boolean }) => {
+const SearchBox = ({ searchPage }: { searchPage?: boolean }) => {
     const router = useRouter();
     const dispatch = useAppDispatch();
 
@@ -45,7 +45,7 @@ const HeaderSearchBox = ({ searchPage }: { searchPage?: boolean }) => {
     };
 
     return (
-        <HeaderSearchBoxTemplate
+        <SearchBoxTemplate
             onSearch={handleSearch}
             searchQuery={searchQuery}
             onSearchQueryChange={handleSearchQueryChange}
@@ -58,4 +58,4 @@ const HeaderSearchBox = ({ searchPage }: { searchPage?: boolean }) => {
     );
 };
 
-export default HeaderSearchBox;
+export default SearchBox;
