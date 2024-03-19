@@ -34,11 +34,6 @@ const HeaderMobileNavigation = () => {
         alignItems: "center"
     };
 
-    const logosBoxProps: BoxProps = {
-        display: "flex",
-        gap: "0.5rem"
-    };
-
     return (
         <>
             <MobileMenu categories={landingConfig.categories}>
@@ -48,10 +43,8 @@ const HeaderMobileNavigation = () => {
             <Box {...wrapperProps}>
                 <MobileMenuButton />
                 <Box {...centerBoxProps}>
-                    {/* <Box {...logosBoxProps}> */}
-                    <TelescopeLogo mobile />
                     <Logo mobile />
-                    {/* </Box> */}
+                    <TelescopeLogo mobile />
                     <Box {...backCallWrapperProps}>
                         <BackCallButton altColor />
                     </Box>

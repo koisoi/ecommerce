@@ -7,17 +7,18 @@ export const TelescopeLogo = ({ mobile }: { mobile?: boolean }) => {
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-end",
-        gap: "0.5rem"
+        gap: "0.3rem"
     };
 
     const iconProps: SvgIconProps = {
-        height: mobile ? "34px" : "30px"
+        height: "36px"
     };
 
     const domainProps: SvgIconProps = {
         ...iconProps,
         style: {
-            paddingTop: "0.25rem"
+            position: "relative",
+            top: "0.25rem"
         }
     };
 

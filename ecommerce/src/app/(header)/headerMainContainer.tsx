@@ -80,8 +80,8 @@ const HeaderMainContainer = ({
             <Box {...outerWrapperProps}>
                 <Box {...wrapperProps}>
                     <Box {...logosWrapper}>
-                        <TelescopeLogo />
                         <Logo mobile={mobileHeader} />
+                        <TelescopeLogo />
                     </Box>
                     <Box {...searchWrapperProps}>
                         <SearchBox />
