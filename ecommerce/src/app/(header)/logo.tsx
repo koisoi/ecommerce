@@ -8,8 +8,6 @@ const Logo = ({ mobile }: { mobile?: boolean }) => {
             xs: "90px",
             md: "120px"
         }
-        // display: "flex",
-        // justifyContent: "center"
     };
 
     const logoProps = {

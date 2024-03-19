@@ -1,10 +1,10 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import BackCallButton from "@/app/(shared)/backCallButton/backCallButton.client";
 import SearchBox from "../(shared)/search/searchBox.client";
 import dynamic from "next/dynamic";
 import Logo from "./logo";
 import ContactsBoxTemplate from "../(shared)/contactsBoxTemplate";
 import { landingConfig } from "@/lib";
+import { TelescopeLogo } from "./telescopeLogo";
 
 const DynamicCartHeaderButton = dynamic(
     () => import("@/app/(header)/desktopCartHeaderButton.client"),
@@ -64,11 +64,11 @@ const HeaderMainContainer = ({
         width: "100%"
     };
 
-    const logoAndContactsWrapper: BoxProps = {
+    const logosWrapper: BoxProps = {
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "2rem"
+        gap: "1rem"
     };
 
     const searchWrapperProps: BoxProps = {
@@ -79,16 +79,16 @@ const HeaderMainContainer = ({
         <>
             <Box {...outerWrapperProps}>
                 <Box {...wrapperProps}>
-                    <Box {...logoAndContactsWrapper}>
+                    <Box {...logosWrapper}>
+                        <TelescopeLogo />
                         <Logo mobile={mobileHeader} />
-                        <ContactsBoxTemplate
-                            phoneNumber={landingConfig.phoneNumber}
-                        />
                     </Box>
                     <Box {...searchWrapperProps}>
                         <SearchBox />
                     </Box>
-                    <BackCallButton />
+                    <ContactsBoxTemplate
+                        phoneNumber={landingConfig.phoneNumber}
+                    />
                     <DynamicCartHeaderButton />
                 </Box>
             </Box>
