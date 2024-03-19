@@ -14,7 +14,7 @@ const Title = ({
         fontSize: "1.5rem",
         lineHeight: 1,
         fontWeight: "bold",
-        marginBottom: "0.5rem",
+        marginBottom: "0.7rem",
 
         color: "text.primary",
         ...props

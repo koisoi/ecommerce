@@ -4,9 +4,11 @@ import {
     Table,
     TableBody,
     TableCell,
+    TableCellProps,
     TableHead,
     TableProps,
-    TableRow
+    TableRow,
+    TableRowProps
 } from "@mui/material";
 import PageTitle from "../(shared)/text/pageTitle";
 import TableTitle from "../(shared)/text/tableTitle";
@@ -30,20 +32,28 @@ const WarrantyPage = () => {
 
         width: "100%",
         boxSizing: "border-box",
-        padding: "2rem",
-
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        gap: "1rem"
+        padding: { xs: "1rem", sm: "2rem" }
     };
 
     const tableProps: TableProps = {
         sx: {
-            tableLayout: "fixed",
-            ".MuiTableCell-root": {
-                paddingLeft: "0 !important"
-            }
+            tableLayout: "fixed"
+
+            // ".MuiTableCell-root": {
+            // }
+        }
+    };
+
+    const tableRowProps: TableRowProps = {
+        sx: {
+            verticalAlign: "top"
+        }
+    };
+
+    const tableCellProps: TableCellProps = {
+        sx: {
+            padding: "1rem !important",
+            paddingLeft: "0 !important"
         }
     };
 
@@ -74,12 +84,12 @@ const WarrantyPage = () => {
                     <Table {...tableProps}>
                         <TableHead>
                             <TableRow>
-                                <TableCell>
+                                <TableCell {...tableCellProps}>
                                     <TableTitle>
                                         Возврат товара надлежащего качества
                                     </TableTitle>
                                 </TableCell>
-                                <TableCell>
+                                <TableCell {...tableCellProps}>
                                     <TableTitle>
                                         Возврат товара ненадлежащего качества
                                     </TableTitle>
@@ -87,8 +97,8 @@ const WarrantyPage = () => {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            <TableRow>
-                                <TableCell>
+                            <TableRow {...tableRowProps}>
+                                <TableCell {...tableCellProps}>
                                     <Paragraph>
                                         Можно вернуть товар надлежащего качества
                                         при соблюдении следующих условий:
@@ -137,7 +147,7 @@ const WarrantyPage = () => {
                                         защите прав потребителя&quot;.
                                     </Paragraph>
                                 </TableCell>
-                                <TableCell>
+                                <TableCell {...tableCellProps}>
                                     <Paragraph>
                                         Товар ненадлежащего качества (в котором
                                         выявлен существенный неустранимый

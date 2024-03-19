@@ -34,10 +34,6 @@ export const metadata: Metadata = {
 };
 
 const DeliveryPage = () => {
-    const underTableTextProps: TypographyProps = {
-        paddingX: "1rem"
-    };
-
     const linksProps: LinkProps = {
         sx: {
             textDecoration: "underline 1px"
@@ -52,6 +48,11 @@ const DeliveryPage = () => {
     const resizedIconsStyling: CSSProperties = {
         ...iconsStyling,
         maxHeight: "1rem"
+    };
+
+    const iconsWrapperProps: TypographyProps = {
+        display: "inline-flex",
+        gap: "0.5rem"
     };
 
     return (
@@ -269,7 +270,7 @@ const DeliveryPage = () => {
                                         </AppLink>
                                         )
                                     </Paragraph>
-                                    <Paragraph>
+                                    <Paragraph props={iconsWrapperProps}>
                                         <PostRF />
                                         <EMS />
                                         <DelLin />
@@ -289,7 +290,7 @@ const DeliveryPage = () => {
                         </TableBody>
                     </Table>
 
-                    <AttentionText props={underTableTextProps}>
+                    <AttentionText>
                         Доставка по Москве (в пределах МКАД) и Санкт-Петербургу
                         (в пределах КАД) курьером осуществляется бесплатно в тот
                         же, либо на следующий рабочий день.

@@ -30,11 +30,11 @@ export const Footer = ({ props }: { props?: BoxProps }) => {
 
         display: "flex",
         flexDirection: { xs: "column", smd: "row" },
-        justifyContent: { xs: "center", md: "space-between" },
+        justifyContent: { xs: "center", smd: "space-between" },
         gap: "2rem",
 
         fontSize: "1rem",
-        textAlign: "center"
+        textAlign: { xs: "center", smd: "left" }
     };
 
     return (

@@ -43,7 +43,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
     };
 
     const descriptionProps: TypographyProps = {
-        textAlign: "center",
+        textAlign: "left",
         padding: "1rem",
         paddingTop: "0",
 
@@ -76,7 +76,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
         fontSize: { xs: "1.2rem", md: "0.95rem", mlg: "1.2rem" },
         fontWeight: "bold",
         fontFamily: "inherit",
-        textAlign: "center",
+        textAlign: "left",
 
         maxWidth: "300px"
     };
@@ -94,7 +94,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
 
     return (
         <Box {...wrapperProps}>
-            <Title props={titleProps}>Наши преимущества</Title>
+            {/* <Title props={titleProps}>Преимущества</Title> */}
             <Typography {...descriptionProps}>
                 {landingConfig.advantages.text}
             </Typography>

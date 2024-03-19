@@ -5,7 +5,8 @@ import {
     TableCell,
     TableCellProps,
     TableHead,
-    TableRow
+    TableRow,
+    TypographyProps
 } from "@mui/material";
 import AppLink from "../(shared)/text/appLink";
 import AttentionText from "../(shared)/text/attentionText";
@@ -17,9 +18,10 @@ import Title from "../(shared)/text/title";
 import ImageSwitcher from "../(shared)/imageSwitcher/imageSwitcher.client";
 import { contactsData } from "./contactsData";
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
-import { contactsBreadcrumbs } from "@/lib";
+import { contactsBreadcrumbs, landingConfig } from "@/lib";
 import { Metadata } from "next";
 import SectionContainer from "../(shared)/sectionContainer";
+import PhoneLink from "../(shared)/text/phoneLinkTemplate";
 
 export const metadata: Metadata = {
     title: "Контактная информация"
@@ -28,7 +30,7 @@ export const metadata: Metadata = {
 const ContactsPage = () => {
     const phoneLinksProps: LinkProps = {
         fontWeight: "bold",
-        noWrap: true
+        color: "text.primary"
     };
 
     const mailLinkProps: LinkProps = {
@@ -43,6 +45,10 @@ const ContactsPage = () => {
         }
     };
 
+    const workingHoursProps: TypographyProps = {
+        noWrap: true
+    };
+
     return (
         <>
             <BreadcrumbsTemplate linksArray={contactsBreadcrumbs} />
@@ -50,10 +56,11 @@ const ContactsPage = () => {
             <SectionContainer>
                 <SectionContainer level={1}>
                     <AttentionText>
-                        Бесплатный звонок по России:{" "}
-                        <AppLink href="tel:88007078195" props={phoneLinksProps}>
-                            8 (800) 707-81-95
-                        </AppLink>
+                        Телефон отдела продаж:{" "}
+                        <PhoneLink
+                            number={landingConfig.phoneNumber}
+                            props={phoneLinksProps}
+                        />
                     </AttentionText>
 
                     <Table>
@@ -82,30 +89,37 @@ const ContactsPage = () => {
                                         Сокольнического переулка)
                                     </Paragraph>
                                 </TableCell>
-                                <TableCell>
-                                    <AppLink
-                                        href="tel:+74951510900"
+                                <TableCell rowSpan={3}>
+                                    <PhoneLink
+                                        number={landingConfig.phoneNumber}
                                         props={phoneLinksProps}
-                                    >
-                                        +7 (495) 151-09-00
-                                    </AppLink>
+                                    />
                                 </TableCell>
                                 <TableCell {...upMdTableCellProps} rowSpan={3}>
                                     <Paragraph>
                                         пн-пт:{" "}
-                                        <AttentionText inline>
+                                        <AttentionText
+                                            inline
+                                            props={workingHoursProps}
+                                        >
                                             10:00 - 19:00
                                         </AttentionText>
                                     </Paragraph>
                                     <Paragraph>
                                         сб:{" "}
-                                        <AttentionText inline>
+                                        <AttentionText
+                                            inline
+                                            props={workingHoursProps}
+                                        >
                                             10:00 - 17:00
                                         </AttentionText>
                                     </Paragraph>
                                     <Paragraph>
                                         вс:{" "}
-                                        <AttentionText inline>
+                                        <AttentionText
+                                            inline
+                                            props={workingHoursProps}
+                                        >
                                             выходной
                                         </AttentionText>
                                     </Paragraph>
@@ -119,14 +133,6 @@ const ContactsPage = () => {
                                         д. 32
                                     </Paragraph>
                                 </TableCell>
-                                <TableCell>
-                                    <AppLink
-                                        href="tel:+78312156667"
-                                        props={phoneLinksProps}
-                                    >
-                                        +7 (831) 215-66-67
-                                    </AppLink>
-                                </TableCell>
                             </TableRow>
 
                             <TableRow>
@@ -136,14 +142,6 @@ const ContactsPage = () => {
                                         д. 3к2{" "}
                                         <MetroStation>Фрунзенская</MetroStation>
                                     </Paragraph>
-                                </TableCell>
-                                <TableCell>
-                                    <AppLink
-                                        href="+78125011013"
-                                        props={phoneLinksProps}
-                                    >
-                                        +7 (812) 501-10-13
-                                    </AppLink>
                                 </TableCell>
                             </TableRow>
                         </TableBody>
@@ -175,17 +173,18 @@ const ContactsPage = () => {
                                     </Paragraph>
                                 </TableCell>
                                 <TableCell>
-                                    <AppLink
-                                        href="tel:+74950858075"
+                                    <PhoneLink
+                                        number="+74950858075"
                                         props={phoneLinksProps}
-                                    >
-                                        +7 (495) 085-80-75
-                                    </AppLink>
+                                    />
                                 </TableCell>
                                 <TableCell>
                                     <Paragraph>
                                         пн-пт:{" "}
-                                        <AttentionText inline>
+                                        <AttentionText
+                                            inline
+                                            props={workingHoursProps}
+                                        >
                                             10:00 - 18:00
                                         </AttentionText>
                                     </Paragraph>
@@ -290,9 +289,7 @@ const ContactsPage = () => {
                 </SectionContainer>
 
                 <>
-                    <Title>
-                        Схема проезда в пункт выдачи Telescope1.ru в Москве
-                    </Title>
+                    <Title>Схема проезда в пункт выдачи в Москве</Title>
                     <ImageSwitcher
                         mapElement={contactsData.moscowMap}
                         imageLinks={contactsData.moscowImageLinks}
@@ -302,8 +299,7 @@ const ContactsPage = () => {
 
                 <>
                     <Title>
-                        Схема проезда в пункт выдачи Telescope1.ru в
-                        Санкт-Петербурге
+                        Схема проезда в пункт выдачи в Санкт-Петербурге
                     </Title>
                     <ImageSwitcher
                         mapElement={contactsData.spbMap}
@@ -314,8 +310,7 @@ const ContactsPage = () => {
 
                 <>
                     <Title>
-                        Схема проезда в пункт выдачи Telescope1.ru в Нижнем
-                        Новгороде
+                        Схема проезда в пункт выдачи в Нижнем Новгороде
                     </Title>
                     <ImageSwitcher
                         mapElement={contactsData.nnMap}

@@ -22,7 +22,7 @@ export const FooterContactsBoxTemplate = ({
         display: "flex",
         flexDirection: "column",
         gap: { xs: "0.5rem", md: "1rem" },
-        alignItems: "center",
+        alignItems: { xs: "center", smd: "flex-start" },
 
         boxSizing: "border-box",
 
@@ -35,7 +35,7 @@ export const FooterContactsBoxTemplate = ({
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
-        textAlign: "center"
+        textAlign: { xs: "left", smd: "center" }
     };
 
     const iconProps: SvgIconProps = {

@@ -19,11 +19,19 @@ const Paragraph = ({
                 marginTop: "0.5rem"
             },
 
+            "p + &": {
+                marginTop: "0.5rem"
+            },
+
             "ol + &": {
                 marginTop: "0.5rem"
             },
 
             "ul + &": {
+                marginTop: "0.5rem"
+            },
+
+            "table + &": {
                 marginTop: "0.5rem"
             }
         },

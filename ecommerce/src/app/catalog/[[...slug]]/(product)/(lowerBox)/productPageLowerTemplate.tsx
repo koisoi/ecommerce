@@ -56,14 +56,21 @@ const ProductPageLowerTemplate = ({
             : undefined,
         sx: {
             fontSize: "1rem",
-            display: "flex",
-            flexDirection: "column",
-            gap: "10px",
             strong: {
                 color: "primary.main",
-                fontWeight: "bold",
-                paddingTop: "10px",
-                fontSize: "1.3rem"
+                fontWeight: "bold"
+            },
+
+            li: {
+                marginTop: "0.5rem"
+            },
+
+            "ul + p": {
+                paddingTop: "1rem"
+            },
+
+            "p + p": {
+                paddingTop: "0.5rem"
             }
         }
     };
@@ -78,7 +85,7 @@ const ProductPageLowerTemplate = ({
             fontSize: "1rem",
             display: "flex",
             flexDirection: "column",
-            gap: "10px",
+            gap: "1rem",
 
             ul: {
                 listStyle: "none",
@@ -87,14 +94,14 @@ const ProductPageLowerTemplate = ({
             },
 
             li: {
-                marginTop: "10px",
+                marginTop: "1rem",
                 paddingLeft: "1em",
                 textIndent: "-1em"
             },
 
             "li:before": {
                 content: '"—"',
-                paddingRight: "10px",
+                paddingRight: "1rem",
                 color: "text.primary"
             }
         }
