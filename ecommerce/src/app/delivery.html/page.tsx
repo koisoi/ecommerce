@@ -8,11 +8,11 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import PageTitle from "../(shared)/text/pageTitle.template";
-import Title from "../(shared)/text/title.template";
-import TableTitle from "../(shared)/text/tableTitle.template";
-import Paragraph from "../(shared)/text/paragraph.template";
-import AppLink from "../(shared)/text/appLink.template";
+import PageTitle from "../(shared)/text/pageTitle";
+import Title from "../(shared)/text/title";
+import TableTitle from "../(shared)/text/tableTitle";
+import Paragraph from "../(shared)/text/paragraph";
+import AppLink from "../(shared)/text/appLink";
 
 import YandexGo from "@/assets/svg/del-yandex-go.svg";
 import PostRF from "@/assets/svg/del-postrf.svg";
@@ -24,11 +24,11 @@ import MasterCard from "@/assets/svg/mastercard.svg";
 import Mir from "@/assets/svg/mir.svg";
 import { Description } from "@mui/icons-material";
 import { CSSProperties } from "react";
-import AttentionText from "../(shared)/text/attentionText.template";
-import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+import AttentionText from "../(shared)/text/attentionText";
+import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { deliveryBreadcrumbs } from "@/lib";
 import { Metadata } from "next";
-import SectionContainer from "../(shared)/section.template";
+import SectionContainer from "../(shared)/sectionContainer";
 
 export const metadata: Metadata = {
     title: "Доставка и оплата"
@@ -57,7 +57,7 @@ const Delivery = () => {
 
     return (
         <>
-            <AppBreadcrumbs linksArray={deliveryBreadcrumbs} />
+            <BreadcrumbsTemplate linksArray={deliveryBreadcrumbs} />
             <PageTitle>Доставка и оплата</PageTitle>
 
             <SectionContainer>
@@ -291,7 +291,9 @@ const Delivery = () => {
                     </Table>
 
                     <AttentionText props={underTableTextProps}>
-                        Доставка по Москве (в пределах МКАД) и Санкт-Петербургу (в пределах КАД) курьером осуществляется бесплатно в тот же, либо на следующий рабочий день.
+                        Доставка по Москве (в пределах МКАД) и Санкт-Петербургу
+                        (в пределах КАД) курьером осуществляется бесплатно в тот
+                        же, либо на следующий рабочий день.
                     </AttentionText>
                 </>
 

@@ -1,6 +1,8 @@
 import { Box, BoxProps } from "@mui/material";
 import { CSSProperties, SyntheticEvent } from "react";
-import ImageGallery, { ImageGalleryProps } from "../(shared)/imageGallery";
+import ImageGalleryTemplate, {
+    ImageGalleryProps
+} from "../(shared)/imageGalleryTemplate.client";
 
 const ImageSwitcherTemplate = ({
     mapElement,
@@ -81,7 +83,7 @@ const ImageSwitcherTemplate = ({
                     </Box>
                 )}
             </Box>
-            <ImageGallery {...imageGalleryProps} />
+            <ImageGalleryTemplate {...imageGalleryProps} />
         </Box>
     );
 };

@@ -1,11 +1,11 @@
 import { Paper, PaperProps } from "@mui/material";
 import StockIndicator, { StockIndicatorProps } from "./stockIndicator.template";
-import Price, { PriceProps } from "@/app/(shared)/text/price.template";
+import Price, { PriceProps } from "@/app/(shared)/text/priceTemplate";
 import {
     BuyButtonProps,
     InstantBuyButton,
     ShoppingCartButton
-} from "@/app/(shared)/buyButtons/buyButtons";
+} from "@/app/(shared)/buyButtons/buyButtons.client";
 import { CartItem, CategoryItem } from "@/lib";
 
 export type ProductOfferBoxProps = {

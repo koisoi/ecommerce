@@ -13,23 +13,23 @@ import {
     TableCell,
     TableRow
 } from "@mui/material";
-import Title from "../(shared)/text/title.template";
+import Title from "../(shared)/text/title";
 import { Close } from "@mui/icons-material";
 import { MouseEventHandler } from "react";
-import Paragraph from "../(shared)/text/paragraph.template";
-import AttentionText from "../(shared)/text/attentionText.template";
+import Paragraph from "../(shared)/text/paragraph";
+import AttentionText from "../(shared)/text/attentionText";
 import { Controller, ControllerProps, UseFormReturn } from "react-hook-form";
 import { BackCallRules } from "./backCallForm.client";
 import {
-    CommentaryInput,
+    CommentaryInputTemplate,
     FormButton,
-    FullNameInput,
-    PhoneInput
-} from "../(shared)/formFields.template";
+    FullNameInputTemplate,
+    PhoneInputTemplate
+} from "../(shared)/formFieldsTemplate.client";
 import { AppealForm } from "@/lib";
-import Loading from "../(shared)/loading.template";
-import ThirdTitle from "../(shared)/text/thirdTitle.template";
-import { AppDialog } from "../(shared)";
+import Loading from "../(shared)/loading";
+import ThirdTitle from "../(shared)/text/thirdTitle";
+import { DialogTemplate } from "../(shared)";
 
 export const BackCallFormTemplate = ({
     open,
@@ -90,14 +90,16 @@ export const BackCallFormTemplate = ({
         name: "fullName",
         control: form.control,
         rules: rules.fullName,
-        render: ({ field }) => <FullNameInput form={form} field={field} />
+        render: ({ field }) => (
+            <FullNameInputTemplate form={form} field={field} />
+        )
     };
 
     const phoneNumberControllerProps: ControllerProps<AppealForm> = {
         name: "phoneNumber",
         control: form.control,
         rules: rules.phoneNumber,
-        render: ({ field }) => <PhoneInput form={form} field={field} />
+        render: ({ field }) => <PhoneInputTemplate form={form} field={field} />
     };
 
     const questionControllerProps: ControllerProps<AppealForm> = {
@@ -105,7 +107,7 @@ export const BackCallFormTemplate = ({
         control: form.control,
         rules: rules.question,
         render: ({ field }) => (
-            <CommentaryInput
+            <CommentaryInputTemplate
                 form={form}
                 field={field}
                 props={{
@@ -130,7 +132,7 @@ export const BackCallFormTemplate = ({
     };
 
     return (
-        <AppDialog props={dialogProps}>
+        <DialogTemplate props={dialogProps}>
             <DialogTitle {...dialogTitleProps}>
                 <Title>Обратный звонок</Title>
 
@@ -204,7 +206,7 @@ export const BackCallFormTemplate = ({
                     </Box>
                 )}
             </DialogContent>
-        </AppDialog>
+        </DialogTemplate>
     );
 };
 

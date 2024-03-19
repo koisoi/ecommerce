@@ -1,2 +1,2 @@
-export * from "./appCard.template";
-export * from "./appDialog";
+export * from "./cardTemplate";
+export * from "./dialogTemplate.client";

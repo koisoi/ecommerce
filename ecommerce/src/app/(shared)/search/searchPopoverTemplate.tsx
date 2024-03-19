@@ -10,8 +10,8 @@ import {
 } from "@mui/material";
 import SearchPopoverItemTemplate from "./searchPopoverItemTemplate";
 import { Url } from "next/dist/shared/lib/router/router";
-import AppLink from "@/app/(shared)/text/appLink.template";
-import AttentionText from "@/app/(shared)/text/attentionText.template";
+import AppLink from "@/app/(shared)/text/appLink";
+import AttentionText from "@/app/(shared)/text/attentionText";
 import { SearchResponse } from "@/lib";
 
 const SearchPopoverTemplate = ({

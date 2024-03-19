@@ -1,10 +1,10 @@
 import { Box, BoxProps } from "@mui/material";
 import ProductsCategoryGrid from "./productsCategoryGrid";
 import { Breadcrumb, PageData } from "@/lib";
-import PageTitle from "../../(shared)/text/pageTitle.template";
+import PageTitle from "../../(shared)/text/pageTitle";
 import CatalogSubcategory from "./catalogSubcategory.template";
-import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
-import Paragraph from "@/app/(shared)/text/paragraph.template";
+import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
+import Paragraph from "@/app/(shared)/text/paragraph";
 
 const CategoryTemplate = (params: {
     category: PageData;
@@ -24,7 +24,7 @@ const CategoryTemplate = (params: {
 
     return (
         <>
-            <AppBreadcrumbs linksArray={params.breadcrumbs} />
+            <BreadcrumbsTemplate linksArray={params.breadcrumbs} />
             <PageTitle>{category.title}</PageTitle>
 
             <Paragraph>{category.text}</Paragraph>

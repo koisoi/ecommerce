@@ -1,4 +1,4 @@
-import ProductLink from "@/app/(shared)/text/productLink.template";
+import ProductLink from "@/app/(shared)/text/productLinkTemplate";
 import { CategoryItem, getImageLink, getProductLink } from "@/lib";
 import {
     ListItem,

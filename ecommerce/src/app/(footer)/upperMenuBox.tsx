@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@mui/material";
 import FooterTitle from "./footerTitle";
-import AppLink from "../(shared)/text/appLink.template";
+import AppLink from "../(shared)/text/appLink";
 
 const UpperMenuBox = () => {
     const wrapperProps: BoxProps = {

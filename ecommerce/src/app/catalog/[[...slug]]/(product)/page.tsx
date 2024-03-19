@@ -16,10 +16,10 @@ import {
 import ProductPageUpperBox from "./(upperBox)/productPageUpperBox";
 import { notFound } from "next/navigation";
 import ProductPageLowerBox from "./(lowerBox)/productPageLowerBox";
-import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
-import PageTitle from "@/app/(shared)/text/pageTitle.template";
-import SectionContainer from "@/app/(shared)/section.template";
-import OurAdvantages from "@/app/(shared)/ourAdvantages.template";
+import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
+import PageTitle from "@/app/(shared)/text/pageTitle";
+import SectionContainer from "@/app/(shared)/sectionContainer";
+import OurAdvantages from "@/app/(shared)/ourAdvantages.client";
 
 const ProductPage = async ({
     product,
@@ -77,7 +77,7 @@ const ProductPage = async ({
 
     return (
         <>
-            <AppBreadcrumbs linksArray={breadcrumbs} lastLink />
+            <BreadcrumbsTemplate linksArray={breadcrumbs} lastLink />
             <ImgModal title={productMainInfo?.title || ""} />
 
             <PageTitle noDivider>{productMainInfo?.title || ""}</PageTitle>

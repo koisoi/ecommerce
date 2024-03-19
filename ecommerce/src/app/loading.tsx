@@ -1,4 +1,4 @@
-import Loading from "./(shared)/loading.template";
+import Loading from "./(shared)/loading";
 
 const LoadingPage = () => {
     return <Loading>Загрузка...</Loading>;

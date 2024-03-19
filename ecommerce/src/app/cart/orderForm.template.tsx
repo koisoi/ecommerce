@@ -3,16 +3,16 @@
 import { Box, BoxProps } from "@mui/material";
 import { Controller, ControllerProps, UseFormReturn } from "react-hook-form";
 import { OrderRules } from "./page.client";
-import Title from "../(shared)/text/title.template";
+import Title from "../(shared)/text/title";
 import { OrderForm } from "@/lib";
 import { MouseEventHandler } from "react";
 import {
-    CommentaryInput,
-    EmailInput,
+    CommentaryInputTemplate,
+    EmailInputTemplate,
     FormButton,
-    FullNameInput,
-    PhoneInput
-} from "../(shared)/formFields.template";
+    FullNameInputTemplate,
+    PhoneInputTemplate
+} from "../(shared)/formFieldsTemplate.client";
 
 const OrderFormTemplate = ({
     form,
@@ -57,27 +57,31 @@ const OrderFormTemplate = ({
         name: "fullName",
         control: form.control,
         rules: rules.fullName,
-        render: ({ field }) => <FullNameInput form={form} field={field} />
+        render: ({ field }) => (
+            <FullNameInputTemplate form={form} field={field} />
+        )
     };
 
     const emailControllerProps: ControllerProps<OrderForm> = {
         name: "email",
         control: form.control,
         rules: rules.email,
-        render: ({ field }) => <EmailInput form={form} field={field} />
+        render: ({ field }) => <EmailInputTemplate form={form} field={field} />
     };
 
     const phoneNumberControllerProps: ControllerProps<OrderForm> = {
         name: "phoneNumber",
         control: form.control,
         rules: rules.phoneNumber,
-        render: ({ field }) => <PhoneInput form={form} field={field} />
+        render: ({ field }) => <PhoneInputTemplate form={form} field={field} />
     };
 
     const commentaryControllerProps: ControllerProps<OrderForm> = {
         name: "commentary",
         control: form.control,
-        render: ({ field }) => <CommentaryInput form={form} field={field} />
+        render: ({ field }) => (
+            <CommentaryInputTemplate form={form} field={field} />
+        )
     };
 
     return (

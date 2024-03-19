@@ -1,10 +1,10 @@
 import { Box, Typography, TypographyProps } from "@mui/material";
-import PageTitle from "../(shared)/text/pageTitle.template";
-import Loading from "../(shared)/loading.template";
+import PageTitle from "../(shared)/text/pageTitle";
+import Loading from "../(shared)/loading";
 import ProductsGridTemplate, {
     ProductsGridTemplateProps
-} from "../(shared)/productsGrid/productsGrid.template";
-import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+} from "../(shared)/productsGrid/productsGridTemplate";
+import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { SearchResponse, searchBreadcrumbs } from "@/lib";
 
 const SearchPageTemplate = ({
@@ -39,7 +39,7 @@ const SearchPageTemplate = ({
 
     return (
         <Box>
-            <AppBreadcrumbs linksArray={searchBreadcrumbs} />
+            <BreadcrumbsTemplate linksArray={searchBreadcrumbs} />
             <PageTitle>Поиск</PageTitle>
             {loading && <Loading>Поиск...</Loading>}
             {!loading && response?.list.length !== 0 && (

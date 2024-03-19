@@ -1,4 +1,4 @@
-import PhoneLink from "@/app/(shared)/text/phoneLink.template";
+import PhoneLink from "@/app/(shared)/text/phoneLinkTemplate";
 import { Box, BoxProps } from "@mui/material";
 
 const ContactsBoxTemplate = ({ phoneNumber }: { phoneNumber: string }) => {

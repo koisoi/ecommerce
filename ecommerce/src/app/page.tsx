@@ -1,5 +1,5 @@
-import Title from "./(shared)/text/title.template";
-import OurAdvantages from "./(shared)/ourAdvantages.template";
+import Title from "./(shared)/text/title";
+import OurAdvantages from "./(shared)/ourAdvantages.client";
 import {
     CategoryItem,
     PageData,
@@ -9,9 +9,9 @@ import {
     homePageAPI,
     categoryPathToAlias
 } from "@/lib";
-import SimliarProductsSlider from "./(shared)/simliarProductsSlider";
+import SimliarProductsSliderTemplate from "./(shared)/simliarProductsSliderTemplate";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenu.template";
-import SectionContainer from "./(shared)/section.template";
+import SectionContainer from "./(shared)/sectionContainer";
 import { Metadata } from "next";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -65,7 +65,7 @@ const Home = async () => {
             <CategoriesMenuTemplate pages={pages} />
             <>
                 <Title>Популярные товары</Title>
-                <SimliarProductsSlider products={popularProducts} />
+                <SimliarProductsSliderTemplate products={popularProducts} />
             </>
             <OurAdvantages />
         </SectionContainer>

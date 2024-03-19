@@ -1,4 +1,4 @@
-import Paragraph from "@/app/(shared)/text/paragraph.template";
+import Paragraph from "@/app/(shared)/text/paragraph";
 import { NextLinkProps, PageData } from "@/lib";
 import { TypographyProps } from "@mui/material";
 import Link from "next/link";

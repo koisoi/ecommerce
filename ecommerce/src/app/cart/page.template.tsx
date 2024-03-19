@@ -1,13 +1,13 @@
 import { Box, BoxProps } from "@mui/material";
-import CartTable from "../(shared)/cartTable/cartTable";
-import PageTitle from "../(shared)/text/pageTitle.template";
+import CartTable from "../(shared)/cartTable/cartTable.client";
+import PageTitle from "../(shared)/text/pageTitle";
 import { UseFormReturn } from "react-hook-form";
 import OrderFormTemplate from "./orderForm.template";
 import { OrderRules } from "./page.client";
 import { OrderForm, cartBreadcrumbs } from "@/lib";
 import { MouseEventHandler } from "react";
-import Loading from "../(shared)/loading.template";
-import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+import Loading from "../(shared)/loading";
+import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 
 const CartTemplate = ({
     form,
@@ -40,7 +40,7 @@ const CartTemplate = ({
 
     return (
         <>
-            <AppBreadcrumbs linksArray={cartBreadcrumbs} />
+            <BreadcrumbsTemplate linksArray={cartBreadcrumbs} />
             <PageTitle>Корзина</PageTitle>
             <Box {...wrapperProps}>
                 <Box {...leftBoxProps}>

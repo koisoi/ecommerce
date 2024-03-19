@@ -8,19 +8,19 @@ import {
     TableHead,
     TableRow
 } from "@mui/material";
-import AppLink from "../(shared)/text/appLink.template";
-import AttentionText from "../(shared)/text/attentionText.template";
-import PageTitle from "../(shared)/text/pageTitle.template";
-import TableTitle from "../(shared)/text/tableTitle.template";
+import AppLink from "../(shared)/text/appLink";
+import AttentionText from "../(shared)/text/attentionText";
+import PageTitle from "../(shared)/text/pageTitle";
+import TableTitle from "../(shared)/text/tableTitle";
 import MetroStation from "./metro.template";
-import Paragraph from "../(shared)/text/paragraph.template";
-import Title from "../(shared)/text/title.template";
+import Paragraph from "../(shared)/text/paragraph";
+import Title from "../(shared)/text/title";
 import ImageSwitcher from "./imageSwitcher";
 import { contactsData } from "./contactsData";
-import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { contactsBreadcrumbs } from "@/lib";
 import { Metadata } from "next";
-import SectionContainer from "../(shared)/section.template";
+import SectionContainer from "../(shared)/sectionContainer";
 
 export const metadata: Metadata = {
     title: "Контактная информация"
@@ -46,7 +46,7 @@ const ContactsTemplate = () => {
 
     return (
         <>
-            <AppBreadcrumbs linksArray={contactsBreadcrumbs} />
+            <BreadcrumbsTemplate linksArray={contactsBreadcrumbs} />
             <PageTitle>Контактная информация</PageTitle>
             <SectionContainer>
                 <SectionContainer level={1}>

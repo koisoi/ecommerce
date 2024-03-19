@@ -1,5 +1,5 @@
-import SectionContainer from "@/app/(shared)/section.template";
-import Title from "@/app/(shared)/text/title.template";
+import SectionContainer from "@/app/(shared)/sectionContainer";
+import Title from "@/app/(shared)/text/title";
 import { ProductCharacteristics } from "@/lib";
 import {
     Box,

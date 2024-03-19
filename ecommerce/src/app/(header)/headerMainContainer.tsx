@@ -1,5 +1,5 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import BackCallButton from "@/app/(shared)/backCallButton/backCallButton";
+import BackCallButton from "@/app/(shared)/backCallButton/backCallButton.client";
 import SearchBox from "../(shared)/search/searchBox.client";
 import dynamic from "next/dynamic";
 import Logo from "./logo";

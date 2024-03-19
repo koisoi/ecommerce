@@ -1,4 +1,4 @@
-import CartTable from "@/app/(shared)/cartTable/cartTable";
+import CartTable from "@/app/(shared)/cartTable/cartTable.client";
 import { ShoppingCart } from "@mui/icons-material";
 import {
     Box,

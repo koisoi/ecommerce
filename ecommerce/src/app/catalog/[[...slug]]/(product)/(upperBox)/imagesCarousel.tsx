@@ -1,6 +1,8 @@
 "use client";
 
-import ImageGallery, { ImageGalleryProps } from "@/app/(shared)/imageGallery";
+import ImageGalleryTemplate, {
+    ImageGalleryProps
+} from "@/app/(shared)/imageGalleryTemplate.client";
 import { setOpenedImgLink, useAppDispatch, useMediaQueries } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
 import {
@@ -162,7 +164,7 @@ const ImagesCarousel = ({
 
     return (
         <Box {...wrapperProps}>
-            {screen.mlg && <ImageGallery {...imageGalleryProps} />}
+            {screen.mlg && <ImageGalleryTemplate {...imageGalleryProps} />}
             <Box {...carouselBoxProps} id="product-image-carousel">
                 <Carousel {...carouselProps}>
                     {imageLinks.map((imageLink, i) => (

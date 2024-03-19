@@ -1,5 +1,5 @@
 import { CategoryItemsResponse, PageData, categoryAPI } from "@/lib";
-import ProductsGridTemplate from "../../(shared)/productsGrid/productsGrid.template";
+import ProductsGridTemplate from "../../(shared)/productsGrid/productsGridTemplate";
 
 const ProductsCategoryGrid = async ({
     page,

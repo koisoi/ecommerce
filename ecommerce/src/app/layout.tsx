@@ -3,7 +3,7 @@ import Header from "./(header)/header";
 import { Box, BoxProps, ThemeProvider } from "@mui/material";
 import { CSSProperties, ReactNode } from "react";
 import Footer from "./(footer)/footer";
-import BannersCarousel from "./bannersCarousel";
+import BannersCarousel from "./(banners)/bannersCarousel.client";
 import { BackCallForm } from "./(backCallForm)/backCallForm.client";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";

@@ -9,15 +9,15 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import PageTitle from "../(shared)/text/pageTitle.template";
-import TableTitle from "../(shared)/text/tableTitle.template";
-import Paragraph from "../(shared)/text/paragraph.template";
-import AppLink from "../(shared)/text/appLink.template";
-import Title from "../(shared)/text/title.template";
-import AppBreadcrumbs from "../(shared)/breadcrumbs/breadcrumbs.template";
+import PageTitle from "../(shared)/text/pageTitle";
+import TableTitle from "../(shared)/text/tableTitle";
+import Paragraph from "../(shared)/text/paragraph";
+import AppLink from "../(shared)/text/appLink";
+import Title from "../(shared)/text/title";
+import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { landingConfig, warrantyBreadcrumbs } from "@/lib";
 import { Metadata } from "next";
-import SectionContainer from "../(shared)/section.template";
+import SectionContainer from "../(shared)/sectionContainer";
 
 export const metadata: Metadata = {
     title: "Гарантии и возврат"
@@ -51,7 +51,7 @@ const WarrantyPage = () => {
 
     return (
         <>
-            <AppBreadcrumbs linksArray={warrantyBreadcrumbs} />
+            <BreadcrumbsTemplate linksArray={warrantyBreadcrumbs} />
             <PageTitle>Гарантии и возврат</PageTitle>
             <SectionContainer>
                 <Box {...warrantyBoxProps} key={0}>

@@ -1,6 +1,6 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import Title from "../../(shared)/text/title.template";
-import TableTitle from "../../(shared)/text/tableTitle.template";
+import Title from "../../(shared)/text/title";
+import TableTitle from "../../(shared)/text/tableTitle";
 
 export type CompletedOrderFormProps = {
     fullName: string;

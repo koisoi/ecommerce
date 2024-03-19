@@ -6,10 +6,10 @@ import {
     SvgIconProps
 } from "@mui/material";
 import FooterTitle from "./footerTitle";
-import AppLink from "../(shared)/text/appLink.template";
+import AppLink from "../(shared)/text/appLink";
 import { Email } from "@mui/icons-material";
-import PhoneLink from "../(shared)/text/phoneLink.template";
-import BackCallButton from "../(shared)/backCallButton/backCallButton";
+import PhoneLink from "../(shared)/text/phoneLinkTemplate";
+import BackCallButton from "../(shared)/backCallButton/backCallButton.client";
 
 const ContactsBoxTemplate = ({
     props,

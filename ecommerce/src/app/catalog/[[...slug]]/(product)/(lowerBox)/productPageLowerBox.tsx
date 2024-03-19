@@ -1,4 +1,4 @@
-import Title from "@/app/(shared)/text/title.template";
+import Title from "@/app/(shared)/text/title";
 import {
     CategoryItem,
     ProductCharacteristics,
@@ -7,11 +7,11 @@ import {
     backendTextRegExp
 } from "@/lib";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import SimliarProductsSlider from "../../../../(shared)/simliarProductsSlider";
+import SimliarProductsSliderTemplate from "../../../../(shared)/simliarProductsSliderTemplate";
 import AllCharacteristicsBox from "./allCharacteristicsBox.template";
-import FeedbackBoxTemplate from "../../../../(shared)/feedbackBox.template";
+import FeedbackBoxTemplate from "../../../../(shared)/feedbackBoxTemplate";
 import ProductPageTabs from "./productPageTabs";
-import SectionContainer from "@/app/(shared)/section.template";
+import SectionContainer from "@/app/(shared)/sectionContainer";
 
 export type ProductPageLowerBoxProps = {
     searchParams: { page?: number; tab?: ProductPageTabType };
@@ -174,7 +174,9 @@ const ProductPageLowerBox = ({
                     {simliarProducts && !!simliarProducts.length && (
                         <>
                             <Title>Похожие товары</Title>
-                            <SimliarProductsSlider products={simliarProducts} />
+                            <SimliarProductsSliderTemplate
+                                products={simliarProducts}
+                            />
                         </>
                     )}
                 </SectionContainer>

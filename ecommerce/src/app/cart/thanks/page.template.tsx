@@ -1,12 +1,12 @@
-import PageTitle from "@/app/(shared)/text/pageTitle.template";
+import PageTitle from "@/app/(shared)/text/pageTitle";
 import { Box, BoxProps } from "@mui/material";
 import CompletedOrderFormTemplate, {
     CompletedOrderFormProps
 } from "./completedOrderForm.template";
 import CartTableTemplate, {
     CartTableTemplateProps
-} from "@/app/(shared)/cartTable/cartTable.template";
-import AppBreadcrumbs from "@/app/(shared)/breadcrumbs/breadcrumbs.template";
+} from "@/app/(shared)/cartTable/cartTableTemplate.client";
+import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
 import { thanksForOrderBreadcrumbs } from "@/lib";
 
 const ThanksForOrderPageTemplate = ({
@@ -49,7 +49,7 @@ const ThanksForOrderPageTemplate = ({
 
     return (
         <>
-            <AppBreadcrumbs linksArray={thanksForOrderBreadcrumbs} />
+            <BreadcrumbsTemplate linksArray={thanksForOrderBreadcrumbs} />
             <PageTitle>Спасибо за заказ!</PageTitle>
             <Box {...wrapperProps}>
                 <Box {...leftBoxProps}>

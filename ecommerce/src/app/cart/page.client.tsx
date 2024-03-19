@@ -23,7 +23,7 @@ import { PayloadAction } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";
 import { matchIsValidTel } from "mui-tel-input";
 import dynamic from "next/dynamic";
-import Loading from "../(shared)/loading.template";
+import Loading from "../(shared)/loading";
 
 const DynamicCartTemplate = dynamic(() => import("@/app/cart/page.template"), {
     ssr: false,
