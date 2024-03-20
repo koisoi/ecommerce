@@ -6,7 +6,5 @@ export const executeYMScript = (
         | "order_add_main"
         | "order_add_fast"
 ) => {
-    // @ts-ignore
-    // eslint-disable-next-line
-    ym(96790254, "reachGoal", label);
+    eval(`ym(96790254, "reachGoal", "${label}")`);
 };

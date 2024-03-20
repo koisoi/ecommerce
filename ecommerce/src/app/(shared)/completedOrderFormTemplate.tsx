@@ -1,6 +1,6 @@
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
-import Title from "../../(shared)/text/title";
-import TableTitle from "../../(shared)/text/tableTitle";
+import Title from "./text/title";
+import TableTitle from "./text/tableTitle";
 
 export type CompletedOrderFormProps = {
     fullName: string;
@@ -8,6 +8,7 @@ export type CompletedOrderFormProps = {
     phone: string;
     commentary?: string;
     orderId: string;
+    props?: BoxProps;
 };
 
 const CompletedOrderFormTemplate = ({
@@ -15,7 +16,8 @@ const CompletedOrderFormTemplate = ({
     email,
     phone,
     commentary,
-    orderId
+    orderId,
+    props
 }: CompletedOrderFormProps) => {
     const checkoutBoxProps: BoxProps = {
         position: "sticky",
@@ -30,7 +32,8 @@ const CompletedOrderFormTemplate = ({
 
         display: "flex",
         flexDirection: "column",
-        gap: "1rem"
+        gap: "1rem",
+        ...props
     };
 
     const contactsBox: BoxProps = {

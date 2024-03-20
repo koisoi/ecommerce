@@ -48,7 +48,9 @@ const OrderFormTemplate = ({
         display: "flex",
         flexDirection: "column",
         gap: "1rem",
-        width: "100%"
+        width: "100%",
+
+        paddingTop: "0.3rem"
     };
 
     const fullNameControllerProps: ControllerProps<OrderForm> = {

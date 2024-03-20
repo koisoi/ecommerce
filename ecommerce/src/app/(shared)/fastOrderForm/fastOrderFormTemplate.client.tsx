@@ -14,6 +14,7 @@ import {
 import ProductCardTemplate, { ProductCardProps } from "../productCardTemplate";
 import {
     CategoryItem,
+    OrderData,
     OrderForm,
     categoryAliasToPath,
     getLinkDomain,
@@ -28,6 +29,11 @@ import { MouseEventHandler } from "react";
 import { Close } from "@mui/icons-material";
 import Loading from "../loading";
 import { DialogTemplate } from "..";
+import ThirdTitle from "../text/thirdTitle";
+import Paragraph from "../text/paragraph";
+import CompletedOrderFormTemplate, {
+    CompletedOrderFormProps
+} from "../completedOrderFormTemplate";
 
 const FastOrderFormTemplate = ({
     item,
@@ -36,7 +42,10 @@ const FastOrderFormTemplate = ({
     rules,
     onSubmit,
     onClose,
-    loading
+    loading,
+    orderSendingCompleted,
+    sentOrderId,
+    sentForm
 }: {
     item: CategoryItem;
     open: boolean;
@@ -45,6 +54,9 @@ const FastOrderFormTemplate = ({
     onSubmit: MouseEventHandler<HTMLButtonElement>;
     onClose: MouseEventHandler<HTMLButtonElement>;
     loading: boolean;
+    orderSendingCompleted: boolean;
+    sentOrderId: string | null;
+    sentForm: OrderForm;
 }) => {
     const screen = useMediaQueries();
 
@@ -146,6 +158,20 @@ const FastOrderFormTemplate = ({
         flexGrow: { xs: 0, sm: 1 }
     };
 
+    const completedOrderFormStyleProps: BoxProps = {
+        flexGrow: 1,
+        position: "static"
+    };
+
+    const completedOrderFormProps: CompletedOrderFormProps = {
+        orderId: sentOrderId || "",
+        fullName: sentForm.fullName,
+        email: sentForm.email,
+        phone: sentForm.phoneNumber,
+        commentary: sentForm.commentary,
+        props: completedOrderFormStyleProps
+    };
+
     const dialogTitleProps: DialogTitleProps = {
         position: "relative",
         display: "flex",
@@ -156,7 +182,12 @@ const FastOrderFormTemplate = ({
     return (
         <DialogTemplate props={dialogProps}>
             <DialogTitle {...dialogTitleProps}>
-                <Title props={{ noWrap: true }}>Быстрый заказ</Title>
+                <Title props={{ noWrap: true }}>
+                    {!orderSendingCompleted && !sentOrderId && "Быстрый заказ"}
+                    {orderSendingCompleted &&
+                        sentOrderId &&
+                        "Спасибо за заказ!"}
+                </Title>
 
                 <IconButton {...iconButtonProps}>
                     <Close />
@@ -171,13 +202,20 @@ const FastOrderFormTemplate = ({
                                 hideButtons
                             />
                         </Box>
-                        <OrderFormTemplate
-                            form={form}
-                            rules={rules}
-                            onSubmit={onSubmit}
-                            props={orderFormProps}
-                            compact
-                        />
+                        {!orderSendingCompleted && !sentOrderId && (
+                            <OrderFormTemplate
+                                form={form}
+                                rules={rules}
+                                onSubmit={onSubmit}
+                                props={orderFormProps}
+                                compact
+                            />
+                        )}
+                        {orderSendingCompleted && sentOrderId && (
+                            <CompletedOrderFormTemplate
+                                {...completedOrderFormProps}
+                            />
+                        )}
                     </>
                 )}
                 {loading && <Loading>Отправка заказа...</Loading>}

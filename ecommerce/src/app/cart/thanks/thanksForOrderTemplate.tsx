@@ -2,7 +2,7 @@ import PageTitle from "@/app/(shared)/text/pageTitle";
 import { Box, BoxProps } from "@mui/material";
 import CompletedOrderFormTemplate, {
     CompletedOrderFormProps
-} from "./completedOrderFormTemplate";
+} from "../../(shared)/completedOrderFormTemplate";
 import CartTableTemplate, {
     CartTableTemplateProps
 } from "@/app/(shared)/cartTable/cartTableTemplate.client";

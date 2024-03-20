@@ -74,7 +74,11 @@ export const PhoneInputTemplate = ({
         ...props,
 
         defaultCountry: "RU",
-        forceCallingCode: true
+        forceCallingCode: true,
+
+        inputProps: {
+            maxLength: 13
+        }
     };
 
     return <MuiTelInput {...phoneNumberInputProps} {...field} />;

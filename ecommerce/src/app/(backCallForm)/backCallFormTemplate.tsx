@@ -70,7 +70,7 @@ export const BackCallFormTemplate = ({
 
             overflowX: "hidden",
 
-            minHeight: "200px",
+            // minHeight: "200px",
             minWidth: "200px"
         }
     };

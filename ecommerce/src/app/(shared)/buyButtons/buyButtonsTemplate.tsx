@@ -75,7 +75,9 @@ export const InstantBuyButtonTemplate = ({
 
     return (
         <>
-            <FastOrderForm item={item} open={open} onClose={onClose} />
+            {open && (
+                <FastOrderForm item={item} open={open} onClose={onClose} />
+            )}
 
             <Button {...instantBuyButtonProps}>
                 <Typography {...buttonTextProps} {...textProps}>
