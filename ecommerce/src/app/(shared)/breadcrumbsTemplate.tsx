@@ -6,6 +6,7 @@ import {
     TypographyProps
 } from "@mui/material";
 import Link from "next/link";
+import Script from "next/script";
 import { BreadcrumbList, WithContext } from "schema-dts";
 
 const BreadcrumbsTemplate = ({
@@ -80,15 +81,14 @@ const BreadcrumbsTemplate = ({
 
     return (
         <>
-            <script
-                // id={`breadcrumbs-ld-json-${
-                //     linksArray[linksArray.length - 1].title
-                // }`}
+            <Script
+                id={`breadcrumbs-ld-json-${
+                    linksArray[linksArray.length - 1].title
+                }`}
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(schema)
                 }}
-                // strategy="beforeInteractive"
             />
 
             <Breadcrumbs {...breadcrumbsProps}>

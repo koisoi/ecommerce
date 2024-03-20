@@ -106,12 +106,14 @@ const ProductPage = async ({
 
     return (
         <>
-            <script
+            <Script
+                id={`product-ld-json-${productMainInfo.alias}`}
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{
                     __html: JSON.stringify(schema)
                 }}
             />
+
             <BreadcrumbsTemplate linksArray={breadcrumbs} lastLink />
 
             <ImgModal title={productMainInfo?.title || ""} />
