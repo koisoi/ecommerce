@@ -27,6 +27,7 @@ import { OrderRules } from "../../cart/cart.client";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { useRouter } from "next/navigation";
+import { executeYMScript } from "@/lib/functions/executeYMScript";
 
 const FastOrderForm = ({
     item,
@@ -105,6 +106,10 @@ const FastOrderForm = ({
                         throw new Error(
                             "Something went wrong while sending order. Server didn't respond with OK status."
                         );
+                    else {
+                        executeYMScript("order_add_fast");
+                        executeYMScript("appeal_add_from-order");
+                    }
 
                     const statisticsPromise = dispatch(
                         postStatistics({

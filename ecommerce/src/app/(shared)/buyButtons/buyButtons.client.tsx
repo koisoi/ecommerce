@@ -10,6 +10,7 @@ import {
 import { ButtonProps, TypographyProps } from "@mui/material";
 import { MouseEventHandler, useState } from "react";
 import dynamic from "next/dynamic";
+import { executeYMScript } from "@/lib/functions/executeYMScript";
 
 const DynamicShoppingCartButtonTemplate = dynamic(
     () =>
@@ -48,6 +49,7 @@ export const ShoppingCartButton = ({
         event
     ) => {
         dispatch(addItemToCart(item));
+        executeYMScript("basket_add_main");
 
         const scrolled = document.documentElement.scrollTop;
         const id = screen.md

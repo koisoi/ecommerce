@@ -24,6 +24,7 @@ import { useRouter } from "next/navigation";
 import { matchIsValidTel } from "mui-tel-input";
 import dynamic from "next/dynamic";
 import Loading from "../(shared)/loading";
+import { executeYMScript } from "@/lib/functions/executeYMScript";
 
 const DynamicCartTemplate = dynamic(() => import("@/app/cart/cartTemplate"), {
     ssr: false,
@@ -97,6 +98,10 @@ const Cart = () => {
                         throw new Error(
                             "Something went wrong while sending order. Server didn't respond with OK status."
                         );
+                    else {
+                        executeYMScript("order_add_main");
+                        executeYMScript("appeal_add_from-order");
+                    }
 
                     const statisticsPromise = dispatch(
                         postStatistics({

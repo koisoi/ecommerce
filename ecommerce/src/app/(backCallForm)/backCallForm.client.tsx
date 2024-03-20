@@ -19,6 +19,7 @@ import {
 } from "@/lib";
 import { MouseEventHandler, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
+import { executeYMScript } from "@/lib/functions/executeYMScript";
 
 export type BackCallRules = {
     fullName: RulesType;
@@ -72,8 +73,11 @@ export const BackCallForm = () => {
                 orderPromise.unwrap().then((val): any => {
                     if (!val?.appeal.id || val?.status != "ok")
                         throw new Error(
-                            "Something went wrong while sending order. Server didn't respond with OK status."
+                            "Something went wrong while sending appeal. Server didn't respond with OK status."
                         );
+                    else {
+                        executeYMScript("appeal_add_callback-footer");
+                    }
 
                     const statisticsPromise = dispatch(
                         postAppealStatistics({
