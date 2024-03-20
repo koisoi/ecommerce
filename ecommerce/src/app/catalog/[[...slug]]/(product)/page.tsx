@@ -11,6 +11,7 @@ import {
     categoryPathToAlias,
     getLinkDomain,
     getProductLink,
+    landingConfig,
     productAPI
 } from "@/lib";
 import ProductPageUpperTemplate from "./(upperBox)/productPageUpperTemplate";
@@ -20,6 +21,8 @@ import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
 import PageTitle from "@/app/(shared)/text/pageTitle";
 import SectionContainer from "@/app/(shared)/sectionContainer";
 import OurAdvantages from "@/app/(shared)/ourAdvantages.client";
+import { Product, WithContext } from "schema-dts";
+import Script from "next/script";
 
 const ProductPage = async ({
     product,
@@ -61,6 +64,32 @@ const ProductPage = async ({
 
     if (!productMainInfo) return notFound();
 
+    const schema: WithContext<Product> = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: productMainInfo.category.title_single
+            ? `${productMainInfo.category.title_single} ${productMainInfo.title}`
+            : productMainInfo.title,
+        image: productMainInfo.images.map(
+            (image) => landingConfig.url + image.url
+        ),
+        sku: productMainInfo.articul,
+        brand: {
+            "@type": "Brand",
+            name: landingConfig.landing_title
+        },
+        offers: {
+            "@type": "Offer",
+            url: `${landingConfig.url}/catalog/${category}/${product}`,
+            priceCurrency: "RUR",
+            price: productMainInfo.price,
+            priceValidUntil: new Date().toISOString().substring(0, 10),
+            itemCondition: "NewCondition",
+            availability: productMainInfo.is_available ? "InStock" : "SoldOut",
+            seller: landingConfig.organizationSchema
+        }
+    };
+
     const breadcrumbs: Breadcrumb[] = [
         ...catalogPageBreadcrumb,
         {
@@ -77,7 +106,14 @@ const ProductPage = async ({
 
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(schema)
+                }}
+            />
             <BreadcrumbsTemplate linksArray={breadcrumbs} lastLink />
+
             <ImgModal title={productMainInfo?.title || ""} />
 
             <PageTitle noDivider>{productMainInfo?.title || ""}</PageTitle>

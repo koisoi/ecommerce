@@ -1,3 +1,4 @@
+import { Organization } from "schema-dts";
 import { PageData } from "..";
 
 export type LandingConfig = {
@@ -5,6 +6,7 @@ export type LandingConfig = {
     landing: string;
     landing_title: string;
     landing_id: number;
+    url?: string;
     logoImgLink?: string;
     logoImgMobileLink?: string;
     categories: PageData[];
@@ -28,4 +30,5 @@ export type LandingConfig = {
         payment: string;
         bonuses: string;
     };
+    organizationSchema?: Organization;
 };

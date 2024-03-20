@@ -13,7 +13,12 @@ import {
     Link,
     LinkProps
 } from "@mui/material";
-import { CartItem, CategoryItem } from "@/lib";
+import {
+    CartItem,
+    CategoryItem,
+    categoryPathToAlias,
+    landingConfig
+} from "@/lib";
 import Price from "./text/priceTemplate";
 import ProductLink from "./text/productLinkTemplate";
 import {
@@ -22,6 +27,8 @@ import {
 } from "./buyButtons/buyButtons.client";
 import { default as NextLink } from "next/link";
 import { CardTemplate, AppCardProps } from ".";
+import { Product, WithContext } from "schema-dts";
+import Script from "next/script";
 
 export type ProductCardProps = {
     cartItem: CartItem;
@@ -52,6 +59,34 @@ const ProductCardTemplate = ({
     hideButtons,
     linkProps
 }: ProductCardProps) => {
+    const schema: WithContext<Product> = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: categoryItem.category.title_single
+            ? `${categoryItem.category.title_single} ${categoryItem.title}`
+            : categoryItem.title,
+        image: categoryItem.images.map(
+            (image) => landingConfig.url + image.url
+        ),
+        sku: categoryItem.articul,
+        brand: {
+            "@type": "Brand",
+            name: landingConfig.landing_title
+        },
+        offers: {
+            "@type": "Offer",
+            url: `${landingConfig.url}/catalog/${categoryPathToAlias(
+                categoryItem.category.path
+            )}/${categoryItem.alias}`,
+            priceCurrency: "RUR",
+            price: categoryItem.price,
+            priceValidUntil: new Date().toISOString().substring(0, 10),
+            itemCondition: "NewCondition",
+            availability: categoryItem.is_available ? "InStock" : "SoldOut",
+            seller: landingConfig.organizationSchema
+        }
+    };
+
     const imageLinkProps: LinkProps = {
         component: NextLink,
         // @ts-ignore
@@ -237,34 +272,45 @@ const ProductCardTemplate = ({
     };
 
     return (
-        <CardTemplate {...appCardProps}>
-            <Box {...cardContentWrapperProps}>
-                <CardContent {...cardContentProps}>
-                    <ProductLink url={cartItem.url}>
-                        {categoryItem.category.title_single} {cartItem.title}
-                    </ProductLink>
-                    <Typography {...articleTextProps}>
-                        Артикул: {cartItem.articul}
-                    </Typography>
-                </CardContent>
+        <>
+            <Script
+                id={`product-card-ld-json-${categoryItem.alias}`}
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{
+                    __html: JSON.stringify(schema)
+                }}
+            />
 
-                <CardActions {...actionRowProps}>
-                    <Price price={cartItem.price} props={{ flexGrow: 1 }} />
-                    {!hideButtons && (
-                        <>
-                            <InstantBuyButton
-                                props={buttonProps}
-                                item={categoryItem}
-                            />
-                            <ShoppingCartButton
-                                props={buttonProps}
-                                item={cartItem}
-                            />
-                        </>
-                    )}
-                </CardActions>
-            </Box>
-        </CardTemplate>
+            <CardTemplate {...appCardProps}>
+                <Box {...cardContentWrapperProps}>
+                    <CardContent {...cardContentProps}>
+                        <ProductLink url={cartItem.url}>
+                            {categoryItem.category.title_single || ""}{" "}
+                            {cartItem.title}
+                        </ProductLink>
+                        <Typography {...articleTextProps}>
+                            Артикул: {cartItem.articul}
+                        </Typography>
+                    </CardContent>
+
+                    <CardActions {...actionRowProps}>
+                        <Price price={cartItem.price} props={{ flexGrow: 1 }} />
+                        {!hideButtons && (
+                            <>
+                                <InstantBuyButton
+                                    props={buttonProps}
+                                    item={categoryItem}
+                                />
+                                <ShoppingCartButton
+                                    props={buttonProps}
+                                    item={cartItem}
+                                />
+                            </>
+                        )}
+                    </CardActions>
+                </Box>
+            </CardTemplate>
+        </>
     );
 };
 

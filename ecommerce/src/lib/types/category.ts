@@ -61,6 +61,7 @@ export type CategoryItem = {
         title: string;
     };
     is_available?: boolean; //FIXME: изменить на availability (строка)
+    external_link?: string;
 };
 
 export type CategoryItemsRequest = {

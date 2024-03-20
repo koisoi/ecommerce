@@ -10,6 +10,7 @@ import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
 import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
+import { Organization, WebSite, WithContext } from "schema-dts";
 
 const RootLayout = async ({
     children
@@ -17,14 +18,83 @@ const RootLayout = async ({
     children: ReactNode;
 }>) => {
     let banners: BannerData[] = [];
+    let metrika: string = "";
+    let webSiteSchema: WithContext<WebSite> = {
+        "@context": "https://schema.org",
+        "@type": "WebSite"
+    };
+    let organizationSchema: WithContext<Organization> = {
+        "@context": "https://schema.org",
+        "@type": "Organization"
+    };
 
     try {
         const siteData = await backendAPI.getSite();
+        metrika = siteData.yandex_metrika;
+        webSiteSchema = {
+            ...webSiteSchema,
+            url: siteData.url,
+            potentialAction: {
+                "@type": "SearchAction",
+                query: "required",
+                target: {
+                    "@type": "EntryPoint",
+                    urlTemplate: `${siteData.url}/search/?query={search}`
+                }
+            }
+        };
+        organizationSchema = {
+            ...organizationSchema,
+            name: "1.ПРО",
+            telephone: landingConfig.phoneNumber,
+            url: siteData.url,
+            logo: siteData.url + siteData.logo_main,
+            description: siteData.page_description,
+            email: "sales@telescope.ru",
+            address: {
+                "@type": "PostalAddress",
+                addressLocality: "Нижний Новгород",
+                streetAddress: "ул. Саврасова, д. 32, оф. 306"
+            },
+            department: [
+                {
+                    "@type": "Organization",
+                    name: "1.ПРО - Москва",
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Москва",
+                        streetAddress:
+                            "ул. Сокольническая Слободка, д. 10, оф. 1 (м. Сокольники)"
+                    }
+                },
+                {
+                    "@type": "Organization",
+                    name: "1.ПРО - Санкт-Петербург",
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Санкт-Петербург",
+                        streetAddress:
+                            "ул. Заозерная, д. 3к2, пом. 19Н (м. Фрунзенская)"
+                    }
+                },
+                {
+                    "@type": "Organization",
+                    name: "1.ПРО - Нижний Новгород",
+                    address: {
+                        "@type": "PostalAddress",
+                        addressLocality: "Нижний Новгород",
+                        streetAddress: "ул. Саврасова, д. 32, оф. 306"
+                    }
+                }
+            ]
+        };
 
+        landingConfig.organizationSchema = organizationSchema;
         landingConfig.logoImgLink =
             getLinkDomain(siteData.logo_main || "") || "";
         landingConfig.logoImgMobileLink =
             getLinkDomain(siteData.logo_alt || "") || "";
+        landingConfig.url = siteData.url;
 
         const response = await backendAPI.getPages({});
 
@@ -92,7 +162,24 @@ const RootLayout = async ({
         <AppRouterCacheProvider options={{ key: "css" }}>
             <ThemeProvider theme={theme}>
                 <Box {...htmlBoxProps}>
+                    <head
+                        dangerouslySetInnerHTML={{
+                            __html: metrika
+                        }}
+                    />
                     <body {...bodyProps}>
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify(webSiteSchema)
+                            }}
+                        />
+                        <script
+                            type="application/ld+json"
+                            dangerouslySetInnerHTML={{
+                                __html: JSON.stringify(organizationSchema)
+                            }}
+                        />
                         <StoreProvider referer={referer}>
                             <BackCallForm />
                             <Header props={innerProps} />

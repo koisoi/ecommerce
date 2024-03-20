@@ -9,6 +9,7 @@ export type SiteData = {
     images: [{ url: string }, { url: string }];
     logo_main?: string;
     logo_alt?: string;
+    yandex_metrika: string;
 };
 
 export type PageData = {
