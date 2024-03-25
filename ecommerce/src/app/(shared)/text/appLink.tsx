@@ -19,7 +19,7 @@ const AppLink = ({
         // @ts-ignore
         href: href || "#",
 
-        color: footer ? "text.secondary" : "text.primary",
+        color: footer ? "text.primary" : "link.main",
         fontSize: "inherit",
 
         ...props,
@@ -32,7 +32,7 @@ const AppLink = ({
             justifyContent: { xs: "center", smd: "flex-start" },
 
             ":hover": {
-                color: "primary.main"
+                color: footer ? "primary.main" : "link.main"
             },
 
             ...props?.sx

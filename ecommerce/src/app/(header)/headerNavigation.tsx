@@ -31,7 +31,7 @@ const HeaderNavigation = ({
         display: { xs: mobile ? "flex" : "none", md: mobile ? "none" : "flex" },
 
         sx: {
-            backgroundColor: "primary.main"
+            backgroundColor: "menuBackground.main"
         }
     };
 

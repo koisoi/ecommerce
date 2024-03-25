@@ -7,7 +7,7 @@ import {
     LinkProps
 } from "@mui/material";
 import VK from "@/assets/svg/vk.svg";
-import { NextLinkProps } from "@/lib";
+import { NextLinkProps, landingConfig } from "@/lib";
 import Link from "next/link";
 
 export const HeaderTopContainer = () => {
@@ -102,7 +102,7 @@ export const HeaderTopContainer = () => {
                         {...MUILinkProps}
                     >
                         <SvgIcon {...iconProps}>
-                            <VK fill="#969696" />
+                            <VK fill={landingConfig.colors.text?.disabled} />
                         </SvgIcon>
                     </MUILink>
                 </Box>

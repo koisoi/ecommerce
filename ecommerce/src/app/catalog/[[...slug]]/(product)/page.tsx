@@ -85,7 +85,10 @@ const ProductPage = async ({
             price: productMainInfo.price,
             priceValidUntil: new Date().toISOString().substring(0, 10),
             itemCondition: "NewCondition",
-            availability: productMainInfo.is_available ? "InStock" : "SoldOut",
+            availability:
+                productMainInfo.availability === "в наличии"
+                    ? "InStock"
+                    : "SoldOut",
             seller: landingConfig.organizationSchema
         }
     };
@@ -127,7 +130,7 @@ const ProductPage = async ({
                             url: getLinkDomain(el.url)
                         })) || []
                     }
-                    stock={productMainInfo.is_available || false}
+                    stock={productMainInfo.availability === "в наличии"}
                     characteristics={productShortCharacteristics}
                     cartItem={{
                         url: getProductLink(category, product),

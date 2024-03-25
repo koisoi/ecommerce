@@ -72,7 +72,7 @@ const OurAdvantages = ({ props }: { props?: BoxProps }) => {
     };
 
     const advantageTextProps: TypographyProps = {
-        color: "text.secondary",
+        color: "text.dark",
         fontSize: { xs: "1.2rem", md: "0.95rem", mlg: "1.2rem" },
         fontWeight: "bold",
         fontFamily: "inherit",

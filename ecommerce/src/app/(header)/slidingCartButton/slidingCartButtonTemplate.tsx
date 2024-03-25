@@ -46,13 +46,13 @@ export const SlidingCartButtonTemplate = ({
 
             borderRadius: "0 0 0.37rem 0.37rem",
 
-            color: "white",
+            color: "menuBackground.contrastText",
             fontSize: "1rem",
             lineHeight: 1,
 
-            backgroundColor: "primary.main",
+            backgroundColor: "menuBackground.main",
             ":hover": {
-                backgroundColor: "primary.dark"
+                backgroundColor: "menuBackground.dark"
             }
         }
     };
@@ -70,7 +70,7 @@ export const SlidingCartButtonTemplate = ({
         borderRadius: "100%",
 
         sx: {
-            backgroundColor: "white",
+            backgroundColor: "menuBackground.contrastText",
             color: "text.primary"
         }
     };

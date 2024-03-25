@@ -1,5 +1,6 @@
 import { Organization } from "schema-dts";
 import { PageData } from "..";
+import { PaletteOptions } from "@mui/material";
 
 export type LandingConfig = {
     id: number;
@@ -10,19 +11,7 @@ export type LandingConfig = {
     logoImgLink?: string;
     logoImgMobileLink?: string;
     categories: PageData[];
-    colors: {
-        primary: {
-            main: string;
-            dark: string;
-            light: string;
-        };
-        secondary: {
-            main: string;
-            dark: string;
-            light: string;
-        };
-        divider: string;
-    };
+    colors: PaletteOptions;
     phoneNumber: string;
     advantages: {
         text: string;

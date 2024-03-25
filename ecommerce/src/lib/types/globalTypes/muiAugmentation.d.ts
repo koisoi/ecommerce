@@ -12,4 +12,20 @@ declare module "@mui/material/styles" {
         xlg: true;
         xl: true;
     }
+
+    interface Palette {
+        link: Palette["primary"];
+        menuBackground: Palette["primary"];
+        accent: Palette["primary"];
+    }
+
+    interface PaletteOptions {
+        link?: PaletteOptions["primary"];
+        menuBackground?: PaletteOptions["primary"];
+        accent?: PaletteOptions["primary"];
+    }
+
+    interface TypeText {
+        dark: string;
+    }
 }

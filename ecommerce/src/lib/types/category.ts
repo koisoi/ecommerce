@@ -60,7 +60,7 @@ export type CategoryItem = {
         alias: string;
         title: string;
     };
-    is_available?: boolean; //FIXME: изменить на availability (строка)
+    availability?: "в наличии" | string;
     external_link?: string;
 };
 

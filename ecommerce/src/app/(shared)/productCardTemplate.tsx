@@ -82,7 +82,10 @@ const ProductCardTemplate = ({
             price: categoryItem.price,
             priceValidUntil: new Date().toISOString().substring(0, 10),
             itemCondition: "NewCondition",
-            availability: categoryItem.is_available ? "InStock" : "SoldOut",
+            availability:
+                categoryItem.availability === "в наличии"
+                    ? "InStock"
+                    : "SoldOut",
             seller: landingConfig.organizationSchema
         }
     };
@@ -134,52 +137,27 @@ const ProductCardTemplate = ({
         borderRadius: "0.37rem",
 
         sx: {
+            backgroundColor: "accent.main",
+            color: "accent.contrastText",
             verticalAlign: "baseline"
         }
     };
 
-    const newProductBadgeProps: BoxProps = {
-        ...badgeProps,
-        sx: {
-            backgroundColor: "#eee",
-            color: "text.primary"
-        }
-    };
+    // const newProductBadgeProps: BoxProps = {
+    //     ...badgeProps,
+    //     sx: {
+    //         backgroundColor: "#eee",
+    //         color: "text.primary"
+    //     }
+    // };
 
-    const saleBadgeProps: BoxProps = {
-        ...badgeProps,
-        sx: {
-            backgroundColor: "primary.main",
-            color: "white"
-        }
-    };
-
-    const recommendedBadgeProps: BoxProps = {
-        ...badgeProps,
-        sx: {
-            backgroundColor: "secondary.main",
-            color: "white"
-        }
-    };
-
-    const discountBadgeProps: BoxProps = {
-        display: "inline-block",
-        position: "absolute",
-        bottom: 0,
-        left: 0,
-
-        padding: "2px 12px 1px",
-        borderRadius: "0 20px 20px 0",
-        letterSpacing: "1px",
-        fontSize: "13px",
-
-        textAlign: "center",
-
-        sx: {
-            backgroundColor: "primary.main",
-            color: "white"
-        }
-    };
+    // const recommendedBadgeProps: BoxProps = {
+    //     ...badgeProps,
+    //     sx: {
+    //         backgroundColor: "secondary.main",
+    //         color: "white"
+    //     }
+    // };
 
     const actionRowProps: CardActionsProps = {
         ...initialActionRowProps,
@@ -242,13 +220,9 @@ const ProductCardTemplate = ({
             <>
                 <Link {...imageLinkProps} />
                 <Box {...badgeWrapperProps}>
-                    {newProduct && <Box {...newProductBadgeProps}>Новинка</Box>}
-                    {sale && <Box {...saleBadgeProps}>Распродажа</Box>}
-                    {recommended && (
-                        <Box {...recommendedBadgeProps}>Рекомендуем</Box>
-                    )}
+                    {newProduct && <Box {...badgeProps}>Новинка</Box>}
+                    {recommended && <Box {...badgeProps}>Рекомендуем</Box>}
                 </Box>
-                {discount && <Box {...discountBadgeProps}>-{discount}%</Box>}
             </>
         )
     };

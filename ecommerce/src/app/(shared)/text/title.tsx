@@ -16,7 +16,7 @@ const Title = ({
         fontWeight: "bold",
         marginBottom: "0.7rem",
 
-        color: "text.primary",
+        color: "text.dark",
         ...props
     };
 

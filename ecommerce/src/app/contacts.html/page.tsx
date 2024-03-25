@@ -29,8 +29,8 @@ export const metadata: Metadata = {
 
 const ContactsPage = () => {
     const phoneLinksProps: LinkProps = {
-        fontWeight: "bold",
-        color: "text.primary"
+        fontWeight: "bold"
+        // color: "text.primary"
     };
 
     const mailLinkProps: LinkProps = {

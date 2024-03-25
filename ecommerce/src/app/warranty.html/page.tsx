@@ -19,6 +19,7 @@ import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { landingConfig, warrantyBreadcrumbs } from "@/lib";
 import { Metadata } from "next";
 import SectionContainer from "../(shared)/sectionContainer";
+import PhoneLink from "../(shared)/text/phoneLinkTemplate";
 
 export const metadata: Metadata = {
     title: "Гарантии и возврат"
@@ -38,9 +39,6 @@ const WarrantyPage = () => {
     const tableProps: TableProps = {
         sx: {
             tableLayout: "fixed"
-
-            // ".MuiTableCell-root": {
-            // }
         }
     };
 
@@ -194,12 +192,9 @@ const WarrantyPage = () => {
                             <li>
                                 <Paragraph>
                                     Позвонить по телефону{" "}
-                                    <AppLink
-                                        href="tel:88007078195"
-                                        props={{ fontWeight: "bold" }}
-                                    >
-                                        8 (800) 707-81-95
-                                    </AppLink>
+                                    <PhoneLink
+                                        number={landingConfig.phoneNumber}
+                                    />
                                     , сообщить менеджеру магазина о возникшей
                                     проблеме и согласовать способ отправки
                                     товара;

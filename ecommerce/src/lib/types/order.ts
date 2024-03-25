@@ -100,7 +100,7 @@ export type StatisticsQuery = {
         action: "add";
         label: string;
     };
-    site_id?: number; // 49 по стандарту
+    site_id?: number;
     parent_id: string;
     parent_class: "Sale_Model_Appeals";
     source: "сайт";

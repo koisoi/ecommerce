@@ -134,7 +134,7 @@ const RootLayout = async ({
             display: "flex",
             flexDirection: "column",
             minHeight: "100vh",
-            backgroundColor: "#fff",
+            backgroundColor: landingConfig.colors.background?.default,
             padding: "0!important"
         }
     };

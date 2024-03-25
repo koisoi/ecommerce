@@ -11,6 +11,7 @@ const TableTitle = ({
     const titleProps: TypographyProps = {
         fontSize: "1rem",
         fontWeight: "bold",
+        color: "text.dark",
 
         ...props
     };

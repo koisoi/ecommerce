@@ -29,7 +29,7 @@ const PageTitle = ({
         lineHeight: { xs: 1, sm: 1.2 },
         maxWidth: "100vw",
 
-        color: "text.primary",
+        color: "text.dark",
         ...props
     };
 

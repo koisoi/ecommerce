@@ -15,7 +15,7 @@ const ThirdTitle = ({
         fontWeight: "bold",
         paddingY: "0.5rem",
 
-        color: "text.primary",
+        color: "text.dark",
         ...props
     };
 

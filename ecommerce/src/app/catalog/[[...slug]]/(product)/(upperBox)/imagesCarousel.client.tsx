@@ -121,7 +121,11 @@ const ImagesCarousel = ({
             }
         },
 
-        IndicatorIcon: screen.mlg ? <></> : undefined
+        IndicatorIcon: screen.mlg ? (
+            <></> /*: typeof window === "undefined" ? (
+            <></>
+        )*/
+        ) : undefined
     };
 
     const imgBoxProps: BoxProps = {
@@ -132,7 +136,7 @@ const ImagesCarousel = ({
         justifyContent: "center",
 
         sx: {
-            backgroundColor: "white",
+            backgroundColor: "background.default",
             cursor: "grab"
         },
 

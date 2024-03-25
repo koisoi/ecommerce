@@ -58,13 +58,16 @@ export const InstantBuyButtonTemplate = ({
         sx: {
             ...buttonProps.sx,
 
-            color: props?.variant === "contained" ? "white" : undefined,
+            color:
+                props?.variant === "contained"
+                    ? "secondary.contrastText"
+                    : undefined,
             ":hover": {
                 backgroundColor:
                     props?.variant === "contained"
                         ? "secondary.dark"
                         : "secondary.main",
-                color: "white",
+                color: "secondary.contrastText",
 
                 boxShadow: "none"
             },
@@ -118,7 +121,7 @@ export const ShoppingCartButtonTemplate = ({
                     props?.variant === "contained"
                         ? "primary.dark"
                         : "primary.main",
-                color: "white",
+                color: "primary.contrastText",
 
                 boxShadow: "none"
             },

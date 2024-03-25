@@ -18,7 +18,7 @@ export const MobileContactsBoxTemplate = ({
         padding: "0.4rem",
         boxSizing: "border-box",
 
-        color: "#fff",
+        color: "secondary.contrastText",
 
         sx: {
             backgroundColor: "secondary.main"

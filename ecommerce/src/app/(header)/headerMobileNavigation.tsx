@@ -17,7 +17,7 @@ export const HeaderMobileNavigation = () => {
         width: "100%",
 
         fontSize: "2rem",
-        color: "white",
+        color: "menuBackground.contrastText",
 
         boxSizing: "border-box"
     };

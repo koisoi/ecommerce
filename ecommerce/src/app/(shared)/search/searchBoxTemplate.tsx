@@ -60,7 +60,7 @@ const SearchBoxTemplate = ({
             }),
 
             ".MuiInputBase-input": {
-                backgroundColor: "white",
+                backgroundColor: "background.default",
                 borderRadius: "4px 0 0 4px"
             },
 

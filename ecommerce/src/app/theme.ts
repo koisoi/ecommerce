@@ -3,17 +3,9 @@
 import { createTheme } from "@mui/material";
 import { landingConfig } from "../lib/data/config";
 
-const theme = createTheme({
+let theme = createTheme({
     palette: {
-        ...landingConfig.colors,
-        text: {
-            disabled: "#969696",
-            primary: "#212529",
-            secondary: "#545454"
-        },
-        background: {
-            default: "#fff"
-        }
+        ...landingConfig.colors
     },
     breakpoints: {
         values: {
@@ -33,6 +25,26 @@ const theme = createTheme({
         button: {
             fontSize: "1rem"
         }
+    }
+});
+
+theme = createTheme(theme, {
+    palette: {
+        ...(theme.palette.accent.main && {
+            accent: theme.palette.augmentColor({
+                color: { main: theme.palette.accent.main },
+                name: "accent"
+            })
+        }),
+        ...(theme.palette.menuBackground.main && {
+            menuBackground: theme.palette.augmentColor({
+                color: {
+                    main: theme.palette.menuBackground.main,
+                    light: theme.palette.menuBackground.light
+                },
+                name: "menuBackground"
+            })
+        })
     }
 });
 

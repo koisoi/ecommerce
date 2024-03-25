@@ -56,7 +56,7 @@ const MobileHeaderButtonTemplate = ({
 
         borderRadius: "100%",
 
-        color: "white",
+        color: "secondary.contrastText",
         sx: {
             backgroundColor: "secondary.main"
         }

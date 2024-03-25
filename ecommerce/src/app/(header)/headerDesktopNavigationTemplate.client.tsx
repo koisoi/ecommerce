@@ -54,15 +54,16 @@ export const HeaderDesktopNavigationTemplate = ({
             maxHeight: "50px",
             borderRadius: "0px",
             boxShadow: "none",
-            color: "white",
+            color: "menuBackground.contrastText",
             fontWeight: "bold",
             paddingX: "30px",
             fontSize: "1rem",
             textTransform: "capitalize",
+            backgroundColor: "menuBackground.light",
 
             ":hover": {
                 boxShadow: "none",
-                backgroundColor: "secondary.main"
+                backgroundColor: "menuBackground.light"
             }
         }
     };
@@ -74,11 +75,7 @@ export const HeaderDesktopNavigationTemplate = ({
     const tabsProps: TabsProps = {
         variant: "scrollable",
 
-        value: false,
-
-        sx: {
-            color: "white"
-        }
+        value: false
     };
 
     const tabProps = (path: string): TabProps => ({
@@ -90,7 +87,7 @@ export const HeaderDesktopNavigationTemplate = ({
 
         sx: {
             textDecoration: "none",
-            color: "white",
+            color: "menuBackground.contrastText",
             fontWeight: "bold",
             textTransform: "none",
 
@@ -98,7 +95,7 @@ export const HeaderDesktopNavigationTemplate = ({
             height: "100%",
 
             ...((path === pathname || path + "/" === pathname) && {
-                backgroundColor: "secondary.main"
+                backgroundColor: "menuBackground.light"
             })
         }
     });

@@ -32,6 +32,8 @@ const Price = ({
             fontSize: "2rem"
         }),
 
+        color: "text.dark",
+
         ...props,
         sx: {
             ...props?.sx

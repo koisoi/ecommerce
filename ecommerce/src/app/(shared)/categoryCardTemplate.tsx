@@ -53,7 +53,7 @@ const CategoryCardTemplate = ({ category }: { category: PageData }) => {
         props: {
             fontSize: "1rem",
             fontWeight: "bold",
-            color: "inherit",
+            color: "text.dark",
 
             padding: "0.5rem",
             textAlign: "center",
