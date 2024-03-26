@@ -12,6 +12,8 @@ import StoreProvider from "./storeProvider";
 import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
 import { Organization, WebSite, WithContext } from "schema-dts";
 import { Metadata, Viewport } from "next";
+import ThanksForOrderPage from "./cart/thanks/page";
+import ThanksForOrder from "./cart/thanks/thanksForOrder.client";
 
 export async function generateMetadata(): Promise<Metadata> {
     const response = await backendAPI.getSite();

@@ -1,6 +1,9 @@
+"use client";
+
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import Title from "./text/title";
 import TableTitle from "./text/tableTitle";
+import { useMediaQueries } from "@/lib";
 
 export type CompletedOrderFormProps = {
     fullName: string;
@@ -19,6 +22,8 @@ const CompletedOrderFormTemplate = ({
     orderId,
     props
 }: CompletedOrderFormProps) => {
+    const screen = useMediaQueries();
+
     const checkoutBoxProps: BoxProps = {
         position: "sticky",
         top: "60px",
@@ -51,7 +56,9 @@ const CompletedOrderFormTemplate = ({
     const orderNumberProps: TypographyProps = {
         fontSize: "1.5rem",
         maxWidth: "fit-content",
-        lineHeight: 1.2
+        lineHeight: 1.2,
+        color: "text.dark",
+        noWrap: screen.sm ? true : false
     };
 
     const paragraphProps: TypographyProps = {

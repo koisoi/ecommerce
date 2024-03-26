@@ -33,7 +33,7 @@ import ThirdTitle from "../text/thirdTitle";
 import Paragraph from "../text/paragraph";
 import CompletedOrderFormTemplate, {
     CompletedOrderFormProps
-} from "../completedOrderFormTemplate";
+} from "../completedOrderFormTemplate.client";
 
 const FastOrderFormTemplate = ({
     item,
