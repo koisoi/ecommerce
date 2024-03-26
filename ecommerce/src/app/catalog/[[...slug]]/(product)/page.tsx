@@ -121,7 +121,12 @@ const ProductPage = async ({
 
             <ImgModal title={productMainInfo?.title || ""} />
 
-            <PageTitle noDivider>{productMainInfo?.title || ""}</PageTitle>
+            <PageTitle noDivider>
+                {productMainInfo?.category.title_single
+                    ? productMainInfo?.category.title_single + " "
+                    : ""}
+                {productMainInfo?.title || ""}
+            </PageTitle>
             <SectionContainer>
                 <ProductPageUpperTemplate
                     imageLinks={

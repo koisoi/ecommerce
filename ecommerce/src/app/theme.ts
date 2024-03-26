@@ -25,6 +25,13 @@ let theme = createTheme({
         button: {
             fontSize: "1rem"
         }
+    },
+    components: {
+        MuiTypography: {
+            defaultProps: {
+                color: landingConfig.colors.text?.primary
+            }
+        }
     }
 });
 

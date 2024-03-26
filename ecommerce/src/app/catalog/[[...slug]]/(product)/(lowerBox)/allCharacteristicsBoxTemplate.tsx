@@ -21,14 +21,16 @@ const AllCharacteristicsBoxTemplate = ({
 
     const characteristicTextProps: TypographyProps = {
         component: "dd",
-        display: "inline"
+        display: "inline",
+        color: "text.primary"
     };
 
     const characteristicTitleProps: TypographyProps = {
         ...characteristicTextProps,
         component: "dt",
         fontWeight: "bold",
-        fontSize: "1rem"
+        fontSize: "1rem",
+        color: "text.dark"
     };
 
     const titleProps: TypographyProps = {

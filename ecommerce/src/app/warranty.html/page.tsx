@@ -13,7 +13,6 @@ import {
 import PageTitle from "../(shared)/text/pageTitle";
 import TableTitle from "../(shared)/text/tableTitle";
 import Paragraph from "../(shared)/text/paragraph";
-import AppLink from "../(shared)/text/appLink";
 import Title from "../(shared)/text/title";
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
 import { landingConfig, warrantyBreadcrumbs } from "@/lib";

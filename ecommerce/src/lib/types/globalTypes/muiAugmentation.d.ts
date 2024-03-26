@@ -17,15 +17,24 @@ declare module "@mui/material/styles" {
         link: Palette["primary"];
         menuBackground: Palette["primary"];
         accent: Palette["primary"];
+        accentAlt: Palette["primary"];
     }
 
     interface PaletteOptions {
         link?: PaletteOptions["primary"];
         menuBackground?: PaletteOptions["primary"];
         accent?: PaletteOptions["primary"];
+        accentAlt?: PaletteOptions["primary"];
     }
 
     interface TypeText {
         dark: string;
+    }
+}
+
+declare module "@mui/material/Button" {
+    interface ButtonPropsColorOverrides {
+        accent: true;
+        accentAlt: true;
     }
 }

@@ -32,7 +32,8 @@ const buttonProps: ButtonProps = {
 
 const buttonTextProps: TypographyProps = {
     fontSize: "1rem",
-    noWrap: true
+    noWrap: true,
+    color: "inherit"
 };
 
 export const InstantBuyButtonTemplate = ({
@@ -61,7 +62,7 @@ export const InstantBuyButtonTemplate = ({
             color:
                 props?.variant === "contained"
                     ? "accentAlt.contrastText"
-                    : undefined,
+                    : "accentAlt.main",
             ":hover": {
                 backgroundColor:
                     props?.variant === "contained"

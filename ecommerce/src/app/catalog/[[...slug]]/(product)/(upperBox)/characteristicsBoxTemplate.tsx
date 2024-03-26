@@ -8,7 +8,7 @@ const CharacteristicsBoxTemplate = ({
     characteristics?: ProductCharacteristic | null;
 }) => {
     const wrapperProps: BoxProps = {
-        color: "text.main",
+        color: "text.primary",
         fontSize: "0.95rem"
     };
 
@@ -26,7 +26,8 @@ const CharacteristicsBoxTemplate = ({
         ...characteristicTextProps,
         component: "dt",
         fontWeight: "bold",
-        fontSize: "1.1rem"
+        fontSize: "1.1rem",
+        color: "text.dark"
     };
 
     const descriptionListProps: BoxProps = {
