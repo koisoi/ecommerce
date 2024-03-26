@@ -54,16 +54,16 @@ export const HeaderDesktopNavigationTemplate = ({
             maxHeight: "50px",
             borderRadius: "0px",
             boxShadow: "none",
-            color: "menuBackground.contrastText",
+            color: "primary.contrastText",
             fontWeight: "bold",
             paddingX: "30px",
             fontSize: "1rem",
             textTransform: "capitalize",
-            backgroundColor: "menuBackground.light",
+            backgroundColor: "primary.light",
 
             ":hover": {
                 boxShadow: "none",
-                backgroundColor: "menuBackground.light"
+                backgroundColor: "primary.light"
             }
         }
     };
@@ -87,7 +87,7 @@ export const HeaderDesktopNavigationTemplate = ({
 
         sx: {
             textDecoration: "none",
-            color: "menuBackground.contrastText",
+            color: "primary.contrastText",
             fontWeight: "bold",
             textTransform: "none",
 
@@ -95,7 +95,7 @@ export const HeaderDesktopNavigationTemplate = ({
             height: "100%",
 
             ...((path === pathname || path + "/" === pathname) && {
-                backgroundColor: "menuBackground.light"
+                backgroundColor: "primary.light"
             })
         }
     });

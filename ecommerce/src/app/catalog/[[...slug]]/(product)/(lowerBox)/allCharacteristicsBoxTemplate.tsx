@@ -32,7 +32,7 @@ const AllCharacteristicsBoxTemplate = ({
     };
 
     const titleProps: TypographyProps = {
-        color: "primary.main",
+        color: "text.dark",
         fontWeight: "bold",
         fontSize: "1.3rem",
         lineHeight: 1,

@@ -59,14 +59,14 @@ const BreadcrumbsTemplate = ({
 
     const navTextProps: TypographyProps = {
         ...textProps,
-        color: "primary.main",
+        color: "link.main",
 
         sx: {
             ...textProps.sx,
 
             fontSize: "inherit",
             ":hover": {
-                color: "primary.dark"
+                color: "link.dark"
             }
         }
     };

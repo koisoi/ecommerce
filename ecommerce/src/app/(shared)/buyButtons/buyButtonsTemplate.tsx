@@ -50,7 +50,7 @@ export const InstantBuyButtonTemplate = ({
 }) => {
     const instantBuyButtonProps: ButtonProps = {
         ...buttonProps,
-        color: "secondary",
+        color: "accentAlt",
         onClick: onInstantBuyClick,
 
         ...props,
@@ -60,14 +60,14 @@ export const InstantBuyButtonTemplate = ({
 
             color:
                 props?.variant === "contained"
-                    ? "secondary.contrastText"
+                    ? "accentAlt.contrastText"
                     : undefined,
             ":hover": {
                 backgroundColor:
                     props?.variant === "contained"
-                        ? "secondary.dark"
-                        : "secondary.main",
-                color: "secondary.contrastText",
+                        ? "accentAlt.main"
+                        : "accentAlt.main",
+                color: "accentAlt.contrastText",
 
                 boxShadow: "none"
             },
@@ -105,7 +105,7 @@ export const ShoppingCartButtonTemplate = ({
 }) => {
     const shoppingCartButtonProps: ButtonProps = {
         ...buttonProps,
-        color: "primary",
+        color: "accent",
 
         onClick,
 
@@ -119,9 +119,9 @@ export const ShoppingCartButtonTemplate = ({
             ":hover": {
                 backgroundColor:
                     props?.variant === "contained"
-                        ? "primary.dark"
-                        : "primary.main",
-                color: "primary.contrastText",
+                        ? "accent.main"
+                        : "accent.main",
+                color: "accent.contrastText",
 
                 boxShadow: "none"
             },

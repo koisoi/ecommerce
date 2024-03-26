@@ -36,15 +36,21 @@ theme = createTheme(theme, {
                 name: "accent"
             })
         }),
-        ...(theme.palette.menuBackground.main && {
+        ...(theme.palette.accentAlt.main && {
+            accentAlt: theme.palette.augmentColor({
+                color: { main: theme.palette.accentAlt.main },
+                name: "accentAlt"
+            })
+        }),
+        ...(theme.palette.primary.main && {
             menuBackground: theme.palette.augmentColor({
                 color: {
-                    main: theme.palette.menuBackground.main,
-                    light: theme.palette.menuBackground.light
+                    main: theme.palette.primary.main,
+                    light: theme.palette.primary.light
                 },
                 name: "menuBackground"
             })
-        })
+        }),
     }
 });
 

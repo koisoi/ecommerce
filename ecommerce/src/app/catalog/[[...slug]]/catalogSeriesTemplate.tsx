@@ -20,7 +20,7 @@ const CatalogSeriesTemplate = ({
     };
 
     const textProps: TypographyProps = {
-        color: selected ? "text.primary" : "primary.main",
+        color: selected ? "text.primary" : "link.main",
 
         sx: {
             textDecoration: "none",
@@ -28,7 +28,7 @@ const CatalogSeriesTemplate = ({
 
             ...(!selected && {
                 ":hover": {
-                    color: "primary.dark"
+                    color: "link.dark"
                 }
             })
         }

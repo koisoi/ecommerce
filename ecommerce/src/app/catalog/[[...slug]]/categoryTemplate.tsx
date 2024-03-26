@@ -21,7 +21,7 @@ const CategoryTemplate = ({
         display: "flex",
         flexWrap: "wrap",
         gap: "0.5rem",
-        marginY: "1rem"
+        marginBottom: "1rem"
     };
 
     return (

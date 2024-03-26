@@ -12,7 +12,7 @@ const BackCallButtonTemplate = ({
 }) => {
     const backCallButtonProps: ButtonProps = {
         variant: "contained",
-        color: altColor ? "secondary" : "primary",
+        color: altColor ? "accent" : "primary",
 
         onClick: onBackCallButtonClick,
 

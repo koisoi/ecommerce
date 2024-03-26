@@ -137,8 +137,8 @@ const ProductCardTemplate = ({
         borderRadius: "0.37rem",
 
         sx: {
-            backgroundColor: "accent.main",
-            color: "accent.contrastText",
+            backgroundColor: "accentAlt.main",
+            color: "accentAlt.contrastText",
             verticalAlign: "baseline"
         }
     };
@@ -258,13 +258,13 @@ const ProductCardTemplate = ({
             <CardTemplate {...appCardProps}>
                 <Box {...cardContentWrapperProps}>
                     <CardContent {...cardContentProps}>
+                        <Typography {...articleTextProps}>
+                            Артикул: {cartItem.articul}
+                        </Typography>
                         <ProductLink url={cartItem.url}>
                             {categoryItem.category.title_single || ""}{" "}
                             {cartItem.title}
                         </ProductLink>
-                        <Typography {...articleTextProps}>
-                            Артикул: {cartItem.articul}
-                        </Typography>
                     </CardContent>
 
                     <CardActions {...actionRowProps}>
