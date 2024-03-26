@@ -63,7 +63,8 @@ const MobileHeaderButtonTemplate = ({
     };
 
     const textProps: TypographyProps = {
-        fontSize: "0.8rem"
+        fontSize: "0.8rem",
+        color: "inherit"
     };
 
     return (

@@ -155,7 +155,9 @@ const FastOrderFormTemplate = ({
     };
 
     const orderFormProps: BoxProps = {
-        flexGrow: { xs: 0, sm: 1 }
+        flexGrow: { xs: 0, sm: 1 },
+        position: "static",
+        top: 0
     };
 
     const completedOrderFormStyleProps: BoxProps = {

@@ -51,7 +51,8 @@ const CartItemTemplate = ({
     const titleProps: TypographyProps = {
         fontWeight: "bold",
         fontSize: { xs: "1.3rem", sm: "1rem" },
-        flexGrow: 1
+        flexGrow: 1,
+        color: "text.dark"
     };
 
     const priceProps: TypographyProps = {
