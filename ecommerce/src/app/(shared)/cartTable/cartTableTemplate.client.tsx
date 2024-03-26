@@ -86,7 +86,7 @@ const CartTableTemplate = ({
     };
 
     const footerPriceProps: TypographyProps = {
-        color: "text.primary"
+        color: "text.dark"
     };
 
     const clearButtonProps: ButtonProps = {

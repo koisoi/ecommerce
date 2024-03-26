@@ -151,7 +151,7 @@ const RootLayout = async ({
     const rootBoxProps: BoxProps = {
         ...innerProps,
         component: "main",
-        padding: { xs: "1rem", md: "2rem" },
+        padding: "1rem",
         display: "flex",
         justifyContent: "flex-start",
         flexDirection: "column",

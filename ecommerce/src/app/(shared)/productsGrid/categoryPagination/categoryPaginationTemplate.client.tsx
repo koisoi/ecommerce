@@ -20,7 +20,7 @@ const CategoryPaginationTemplate = ({
         justifyContent: "center",
 
         width: "100%",
-        paddingY: { xs: "1rem", md: "1.5rem" }
+        paddingY: "1rem"
     };
 
     const paginationProps: PaginationProps = {

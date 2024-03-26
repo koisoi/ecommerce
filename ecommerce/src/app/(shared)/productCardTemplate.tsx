@@ -122,7 +122,7 @@ const ProductCardTemplate = ({
         top: "10px",
         left: "10px",
 
-        fontSize: "75%"
+        fontSize: "0.9rem"
     };
 
     const badgeProps: BoxProps = {
@@ -137,8 +137,8 @@ const ProductCardTemplate = ({
         borderRadius: "0.37rem",
 
         sx: {
-            backgroundColor: "accentAlt.main",
-            color: "accentAlt.contrastText",
+            backgroundColor: "accent.main",
+            color: "accent.contrastText",
             verticalAlign: "baseline"
         }
     };

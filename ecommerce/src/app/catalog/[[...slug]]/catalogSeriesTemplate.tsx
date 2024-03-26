@@ -1,7 +1,7 @@
 import Paragraph from "@/app/(shared)/text/paragraph";
 import { NextLinkProps, PageData } from "@/lib";
-import { TypographyProps } from "@mui/material";
-import Link from "next/link";
+import { TypographyProps, LinkProps, Link } from "@mui/material";
+import { default as NextLink } from "next/link";
 
 const CatalogSeriesTemplate = ({
     page,
@@ -10,33 +10,23 @@ const CatalogSeriesTemplate = ({
     page: PageData;
     selected?: boolean;
 }) => {
-    const linkProps: NextLinkProps = {
+    const linkProps: LinkProps = {
+        component: NextLink,
         href: page.url,
 
-        style: {
-            textDecoration: "none",
-            pointerEvents: selected ? "none" : "all"
-        }
-    };
-
-    const textProps: TypographyProps = {
-        color: selected ? "text.primary" : "link.main",
-
         sx: {
+            color: "accentAlt.contrastText",
+            backgroundColor: "accentAlt.main",
             textDecoration: "none",
-            lineHeight: { xs: "1", md: "1.5" },
-
-            ...(!selected && {
-                ":hover": {
-                    color: "link.dark"
-                }
-            })
+            pointerEvents: selected ? "none" : "all",
+            padding: "0.25em 0.4em",
+            borderRadius: "0.37rem",
         }
     };
 
     return (
         <Link {...linkProps}>
-            <Paragraph props={textProps}>{page.title}</Paragraph>
+            {page.title}
         </Link>
     );
 };
