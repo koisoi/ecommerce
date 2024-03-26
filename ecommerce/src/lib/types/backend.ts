@@ -1,3 +1,5 @@
+export type ImagePurpose = "images" | "favicon";
+
 export type SiteData = {
     id: number;
     title: string;
@@ -6,7 +8,11 @@ export type SiteData = {
     page_description?: string;
     page_keywords?: string;
     text?: string | null;
-    images: [{ url: string }, { url: string }];
+    images: [
+        { url: string; purpose: ImagePurpose },
+        { url: string; purpose: ImagePurpose },
+        { url: string; purpose: ImagePurpose }
+    ];
     logo_main?: string;
     logo_alt?: string;
     yandex_metrika: string;

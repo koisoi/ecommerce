@@ -24,7 +24,7 @@ const PageTitle = ({
     const titleProps: TypographyProps = {
         component: "h1",
 
-        fontSize: { xs: "2rem", md: "2.5rem" },
+        fontSize: "2rem",
         fontWeight: "bolder",
         lineHeight: { xs: 1, sm: 1.2 },
         maxWidth: "100vw",

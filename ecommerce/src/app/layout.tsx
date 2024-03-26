@@ -11,6 +11,25 @@ import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
 import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
 import { Organization, WebSite, WithContext } from "schema-dts";
+import { Metadata, Viewport } from "next";
+
+export async function generateMetadata(): Promise<Metadata> {
+    const response = await backendAPI.getSite();
+
+    return {
+        icons:
+            response.images[2].purpose === "favicon"
+                ? getLinkDomain(response.images[2].url)
+                : undefined
+    };
+}
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false
+};
 
 const RootLayout = async ({
     children
