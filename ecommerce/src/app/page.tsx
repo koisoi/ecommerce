@@ -31,7 +31,6 @@ const Home = async () => {
 
     try {
         popularProducts = await homePageAPI.getPopularProducts();
-        reviews = await homePageAPI.getLastReviews();
 
         popularProducts.forEach(
             (val) =>

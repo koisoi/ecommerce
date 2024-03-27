@@ -5,7 +5,7 @@ module.exports = {
     transpilePackages: ["mui-tel-input"],
     // static files
     // output: "export",
-    trailingSlash: true,
+    // trailingSlash: true,
 
     // not recommended (https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout)
     // remove after ssr

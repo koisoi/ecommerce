@@ -44,14 +44,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             ...defaultOptions
         },
         {
-            url: `${url}/cart`,
-            ...defaultOptions
-        },
-        {
-            url: `${url}/cart/thanks`,
-            ...defaultOptions
-        },
-        {
             url: `${url}/cart/catalog`,
             ...defaultOptions
         },
