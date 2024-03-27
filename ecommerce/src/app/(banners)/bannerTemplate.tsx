@@ -1,5 +1,6 @@
 import { Box, BoxProps } from "@mui/material";
 import { BannerData } from "@/lib";
+import { CSSProperties } from "react";
 
 export const BannerTemplate = ({
     banner,
@@ -25,14 +26,19 @@ export const BannerTemplate = ({
         zIndex: 1
     };
 
+    const iframeStyle: CSSProperties = {
+        width: banner.width,
+        height
+    };
+
     return (
         <Box {...bannerBoxProps}>
             <Box {...blockerProps} />
             <iframe
                 src={banner.src}
-                width={banner.width}
-                // height={banner.height}
-                height={height}
+                style={iframeStyle}
+                // width={banner.width}
+                // height={height}
             />
         </Box>
     );

@@ -58,7 +58,10 @@ const CompletedOrderFormTemplate = ({
         maxWidth: "fit-content",
         lineHeight: 1.2,
         color: "text.dark",
-        noWrap: screen.sm ? true : false
+        // noWrap: screen.sm ? true : false
+        sx: {
+            whiteSpace: { xs: "wrap", sm: "nowrap" }
+        }
     };
 
     const paragraphProps: TypographyProps = {

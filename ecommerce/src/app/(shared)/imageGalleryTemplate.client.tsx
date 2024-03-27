@@ -71,7 +71,11 @@ const ImageGalleryTemplate = ({
                     key={i}
                     label={
                         <Box {...tabBoxProps(selectedTab === i)}>
-                            <img alt={alt} src={image} width="100%" />
+                            <img
+                                alt={alt}
+                                src={image}
+                                style={{ width: "100%" }}
+                            />
                         </Box>
                     }
                     value={i}

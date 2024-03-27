@@ -57,8 +57,20 @@ theme = createTheme(theme, {
                 },
                 name: "menuBackground"
             })
-        }),
+        })
     }
+    // typography: {
+    //     ...theme.typography,
+    //     sx: {
+    //         overflow: "auto",
+    //         scrollbarGutter: "stable",
+    //         maxWidth: "100vw",
+    //         minWidth: "320px",
+    //         overflowX: "hidden",
+    //         fontFamily: "Tahoma, sans-serif",
+    //         fontSize: { xs: "13px", sm: "15px" }
+    //     }
+    // }
 });
 
 export { theme };

@@ -123,7 +123,7 @@ export const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
                     <BannerTemplate
                         key={i}
                         banner={banner}
-                        height={`${carouselHeight} px`}
+                        height={`${carouselHeight}px`}
                     />
                 ))}
             </Carousel>

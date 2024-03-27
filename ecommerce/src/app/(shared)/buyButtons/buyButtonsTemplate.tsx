@@ -32,8 +32,11 @@ const buttonProps: ButtonProps = {
 
 const buttonTextProps: TypographyProps = {
     fontSize: "1rem",
-    noWrap: true,
-    color: "inherit"
+    // noWrap: true,
+    color: "inherit",
+    sx: {
+        whiteSpace: "nowrap"
+    }
 };
 
 export const InstantBuyButtonTemplate = ({
@@ -122,7 +125,10 @@ export const ShoppingCartButtonTemplate = ({
                     props?.variant === "contained"
                         ? "accent.main"
                         : "primary.main",
-                color: props?.variant === "contained" ? "accent.contrastText" : "primary.contrastText",
+                color:
+                    props?.variant === "contained"
+                        ? "accent.contrastText"
+                        : "primary.contrastText",
 
                 boxShadow: "none"
             },

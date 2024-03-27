@@ -21,7 +21,8 @@ const BackCallButtonTemplate = ({
         sx: {
             textTransform: "none",
             boxShadow: "none",
-            textWrap: "nowrap",
+            // textWrap: "nowrap",
+            whiteSpace: "nowrap",
             maxWidth: "100%",
             padding: "0.5rem",
             lineHeight: 1,

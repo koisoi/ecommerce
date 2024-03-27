@@ -46,7 +46,10 @@ const ContactsPage = () => {
     };
 
     const workingHoursProps: TypographyProps = {
-        noWrap: true
+        // noWrap: true
+        sx: {
+            whiteSpace: "nowrap"
+        }
     };
 
     return (

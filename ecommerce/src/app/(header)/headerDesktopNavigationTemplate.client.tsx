@@ -43,8 +43,11 @@ export const HeaderDesktopNavigationTemplate = ({
     };
 
     const catalogButtonProps: ButtonProps = {
+        component: "div",
         variant: "contained",
         color: "secondary",
+        // @ts-ignore
+        tabIndex: null,
 
         disableFocusRipple: true,
         disableRipple: true,
@@ -60,6 +63,29 @@ export const HeaderDesktopNavigationTemplate = ({
             fontSize: "1rem",
             textTransform: "capitalize",
             backgroundColor: "primary.light",
+
+            ":hover": {
+                boxShadow: "none",
+                backgroundColor: "primary.light"
+            }
+        }
+    };
+
+    const catalogBoxProps: BoxProps = {
+        sx: {
+            height: "100%",
+            maxHeight: "50px",
+            borderRadius: "0px",
+            boxShadow: "none",
+            color: "primary.contrastText",
+            fontWeight: "bold",
+            paddingX: "30px",
+            fontSize: "1rem",
+            textTransform: "capitalize",
+            backgroundColor: "primary.light",
+            display: "inline-flex",
+            justifyContent: "center",
+            alignItems: "center",
 
             ":hover": {
                 boxShadow: "none",
@@ -103,7 +129,7 @@ export const HeaderDesktopNavigationTemplate = ({
     return (
         <Box {...innerWrapperProps}>
             <Link style={linkStyle} href="/catalog">
-                <Button {...catalogButtonProps}>Каталог</Button>
+                <Box {...catalogBoxProps}>Каталог</Box>
             </Link>
             <Tabs {...tabsProps}>
                 {categories.map((category, i) => (

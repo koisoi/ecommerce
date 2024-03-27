@@ -39,7 +39,7 @@ const SearchPopoverItemTemplate = ({
                     <img
                         alt={item.title}
                         src={getLinkDomain(item.images[0].url)}
-                        width="100%"
+                        style={{ width: "100%" }}
                     />
                 </Link>
             </ListItemAvatar>

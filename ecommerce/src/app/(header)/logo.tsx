@@ -15,11 +15,11 @@ export const Logo = ({ mobile }: { mobile?: boolean }) => {
             ? landingConfig.logoImgMobileLink
             : landingConfig.logoImgLink,
         alt: landingConfig.landing_title,
-        width: "100%",
         style: {
             margin: "auto",
             display: "flex",
-            justifyContent: "center"
+            justifyContent: "center",
+            width: "100%"
         }
     };
 

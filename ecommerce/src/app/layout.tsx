@@ -1,7 +1,12 @@
 import "./globals.css";
 import { Header } from "./(header)/header";
 import { Box, BoxProps, ThemeProvider } from "@mui/material";
-import { CSSProperties, ReactNode } from "react";
+import {
+    CSSProperties,
+    DetailedHTMLProps,
+    HtmlHTMLAttributes,
+    ReactNode
+} from "react";
 import { Footer } from "./(footer)/footer";
 import { BannersCarousel } from "./(banners)/bannersCarousel.client";
 import { BackCallForm } from "./(backCallForm)/backCallForm.client";
@@ -9,15 +14,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import {
-    BannerData,
-    backendAPI,
-    categoryAPI,
-    categoryPathToAlias,
-    getLinkDomain,
-    landingConfig,
-    makePagePath
-} from "@/lib";
+import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
 import { Organization, WebSite, WithContext } from "schema-dts";
 import { Metadata, Viewport } from "next";
 
@@ -134,34 +131,6 @@ const RootLayout = async ({
             ...el,
             src: getLinkDomain(el.src)
         }));
-
-        // const categories = await backendAPI.getPages({});
-        // const series = await Promise.all(
-        //     categories.map((category) =>
-        //         backendAPI.getPages({ path: category.path + ".*{1}" })
-        //     )
-        // );
-        // const products = await Promise.all(
-        //     categories.map((category) =>
-        //         categoryAPI.getCategoryItems({
-        //             page: category,
-        //             productsPerPage: 999999,
-        //             pageNumber: 1
-        //         })
-        //     )
-        // );
-
-        // const products = await categoryAPI.getCategoryItems({});
-
-        // console.log(products);
-
-        // console.log(
-        //     `/${categoryPathToAlias(products[0].list[0].category.path)}/${
-        //         products[0].list[0].series?.alias
-        //             ? products[0].list[0].series?.alias + "/"
-        //             : ""
-        //     }${products[0].list[0].alias}`
-        // );
     } catch (error) {
         console.error(error);
     }
@@ -182,6 +151,13 @@ const RootLayout = async ({
             fontFamily: "Tahoma, sans-serif",
             fontSize: { xs: "13px", sm: "15px" }
         }
+    };
+
+    const htmlProps: DetailedHTMLProps<
+        HtmlHTMLAttributes<HTMLHtmlElement>,
+        HTMLHtmlElement
+    > = {
+        lang: "ru"
     };
 
     const bodyProps: { style: CSSProperties } = {
@@ -214,15 +190,16 @@ const RootLayout = async ({
     };
 
     return (
-        <AppRouterCacheProvider options={{ key: "css" }}>
-            <ThemeProvider theme={theme}>
-                <Box {...htmlBoxProps}>
-                    <head
-                        dangerouslySetInnerHTML={{
-                            __html: metrika
-                        }}
-                    />
-                    <body {...bodyProps}>
+        <ThemeProvider theme={theme}>
+            <Box {...htmlBoxProps}>
+                {/* <html {...htmlProps}> */}
+                <head
+                // dangerouslySetInnerHTML={{
+                //     __html: metrika
+                // }}
+                />
+                <body {...bodyProps}>
+                    <AppRouterCacheProvider options={{ key: "css" }}>
                         <script
                             type="application/ld+json"
                             dangerouslySetInnerHTML={{
@@ -244,10 +221,11 @@ const RootLayout = async ({
                             <Box {...rootBoxProps}>{children}</Box>
                             <Footer props={innerProps} />
                         </StoreProvider>
-                    </body>
-                </Box>
-            </ThemeProvider>
-        </AppRouterCacheProvider>
+                    </AppRouterCacheProvider>
+                </body>
+                {/* </html> */}
+            </Box>
+        </ThemeProvider>
     );
 };
 

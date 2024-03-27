@@ -18,7 +18,7 @@ const Price = ({
         minWidth: "max-content",
         maxHeight: "min-content",
 
-        noWrap: true,
+        // noWrap: true,
 
         fontFamily: "inherit",
         fontWeight: "bold",
@@ -36,6 +36,7 @@ const Price = ({
 
         ...props,
         sx: {
+            whiteSpace: "nowrap",
             ...props?.sx
         }
     };

@@ -184,7 +184,9 @@ const FastOrderFormTemplate = ({
     return (
         <DialogTemplate props={dialogProps}>
             <DialogTitle {...dialogTitleProps}>
-                <Title props={{ noWrap: true }}>
+                <Title
+                    props={{ /*noWrap: true*/ sx: { whiteSpace: "nowrap" } }}
+                >
                     {!orderSendingCompleted && !sentOrderId && "Быстрый заказ"}
                     {orderSendingCompleted &&
                         sentOrderId &&

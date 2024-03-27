@@ -86,7 +86,13 @@ const OrderFormTemplate = ({
 
     return (
         <Box {...checkoutBoxProps}>
-            {!compact && <Title props={{ noWrap: true }}>Форма заказа</Title>}
+            {!compact && (
+                <Title
+                    props={{ /*noWrap: true*/ sx: { whiteSpace: "nowrap" } }}
+                >
+                    Форма заказа
+                </Title>
+            )}
             <Box {...contactsBox}>
                 <Controller {...fullNameControllerProps} />
                 <Controller {...emailControllerProps} />
