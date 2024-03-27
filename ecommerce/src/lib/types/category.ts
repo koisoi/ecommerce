@@ -65,9 +65,9 @@ export type CategoryItem = {
 };
 
 export type CategoryItemsRequest = {
-    page: PageData;
-    productsPerPage: number;
-    pageNumber: number;
+    page?: PageData;
+    productsPerPage?: number;
+    pageNumber?: number;
 };
 
 export type CategoryItemsResponse = {

@@ -9,11 +9,17 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
+import {
+    BannerData,
+    backendAPI,
+    categoryAPI,
+    categoryPathToAlias,
+    getLinkDomain,
+    landingConfig,
+    makePagePath
+} from "@/lib";
 import { Organization, WebSite, WithContext } from "schema-dts";
 import { Metadata, Viewport } from "next";
-import ThanksForOrderPage from "./cart/thanks/page";
-import ThanksForOrder from "./cart/thanks/thanksForOrder.client";
 
 export async function generateMetadata(): Promise<Metadata> {
     const response = await backendAPI.getSite();
@@ -128,6 +134,34 @@ const RootLayout = async ({
             ...el,
             src: getLinkDomain(el.src)
         }));
+
+        // const categories = await backendAPI.getPages({});
+        // const series = await Promise.all(
+        //     categories.map((category) =>
+        //         backendAPI.getPages({ path: category.path + ".*{1}" })
+        //     )
+        // );
+        // const products = await Promise.all(
+        //     categories.map((category) =>
+        //         categoryAPI.getCategoryItems({
+        //             page: category,
+        //             productsPerPage: 999999,
+        //             pageNumber: 1
+        //         })
+        //     )
+        // );
+
+        // const products = await categoryAPI.getCategoryItems({});
+
+        // console.log(products);
+
+        // console.log(
+        //     `/${categoryPathToAlias(products[0].list[0].category.path)}/${
+        //         products[0].list[0].series?.alias
+        //             ? products[0].list[0].series?.alias + "/"
+        //             : ""
+        //     }${products[0].list[0].alias}`
+        // );
     } catch (error) {
         console.error(error);
     }

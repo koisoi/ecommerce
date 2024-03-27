@@ -60,6 +60,7 @@ const ProductPage = async ({
         )!;
     } catch (error) {
         console.error(error);
+        return notFound();
     }
 
     if (!productMainInfo) return notFound();

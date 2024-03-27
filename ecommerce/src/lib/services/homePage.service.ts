@@ -20,25 +20,6 @@ class HomePageService extends Service {
                 return data.products;
             });
     }
-
-    public async getLastReviews(): Promise<ProductReview[]> {
-        return fetch(
-            `${this.baseURL}/last-reviews?brand=${landingConfig.landing}&limit=9&format=json`,
-            this.options
-        )
-            .then((response) => {
-                if (!response.ok) {
-                    throw new NetworkError(
-                        response.statusText,
-                        response.status
-                    );
-                }
-                return response.json();
-            })
-            .then((data) => {
-                return data.reviews;
-            });
-    }
 }
 
 export const homePageAPI = new HomePageService("/catalog/backend");

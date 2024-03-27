@@ -1,4 +1,9 @@
-import { CategoryItemsRequest, CategoryItemsResponse, NetworkError } from "..";
+import {
+    CategoryItemsRequest,
+    CategoryItemsResponse,
+    NetworkError,
+    landingConfig
+} from "..";
 import { Service } from "./base.service";
 
 class CategoryService extends Service {
@@ -15,7 +20,11 @@ class CategoryService extends Service {
         pageNumber
     }: CategoryItemsRequest): Promise<CategoryItemsResponse> {
         return fetch(
-            `${this.baseURL}products/site_id/1?parent_id=${page.parent_id}&parent_class=${page.parent_class}&page=${pageNumber}&limit=${productsPerPage}&format=json`,
+            `${this.baseURL}products/site_id/${landingConfig.id}?parent_id=${
+                page?.parent_id || ""
+            }&parent_class=${page?.parent_class || ""}&page=${
+                pageNumber || ""
+            }&limit=${productsPerPage || ""}&format=json`,
             this.options
         )
             .then((response) => {

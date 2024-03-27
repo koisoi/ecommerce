@@ -58,9 +58,9 @@ export const FooterContactsBoxTemplate = ({
             <FooterTitle>Контакты</FooterTitle>
             <Box {...innerWrapperProps}>
                 <PhoneLink number={phone} props={phoneLinkProps} />
-                <AppLink href="mailto:sales@telescope1.ru" footer>
+                <AppLink href="mailto:sales@telescope.ru" footer>
                     <Email {...iconProps} />
-                    sales@telescope1.ru
+                    sales@telescope.ru
                 </AppLink>
             </Box>
             <BackCallButton props={backCallButtonProps} />

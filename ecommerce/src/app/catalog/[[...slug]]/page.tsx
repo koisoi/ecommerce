@@ -6,7 +6,8 @@ import {
     PageData,
     makePagePath,
     landingConfig,
-    Breadcrumb
+    Breadcrumb,
+    MainProductInfo
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
@@ -26,11 +27,18 @@ export async function generateMetadata({
 
     if (params.slug[0]) {
         if (params.slug[1] && params.slug[1].includes(".html")) {
-            const productMetadata = await productAPI.getProductMainInfo({
-                alias: params.slug[1],
-                category: params.slug[0]
-            });
-
+            let productMetadata: MainProductInfo | null = null;
+            try {
+                productMetadata = await productAPI.getProductMainInfo({
+                    alias: params.slug[1],
+                    category: params.slug[0]
+                });
+            } catch (error) {
+                console.error(error);
+                return {
+                    title: "404"
+                };
+            }
             return {
                 title: productMetadata.page_title,
                 description: productMetadata.page_description,
@@ -38,7 +46,15 @@ export async function generateMetadata({
             };
         } else {
             const path = makePagePath(params.slug);
-            const responsePage = await backendAPI.getPages({ path });
+            let responsePage: PageData[] = [];
+            try {
+                responsePage = await backendAPI.getPages({ path });
+            } catch (error) {
+                console.error(error);
+                return {
+                    title: "404"
+                };
+            }
             const categoryMetadata = responsePage.map((el) => ({
                 ...el,
                 image: getLinkDomain(el.images[0]?.url || "") || ""
