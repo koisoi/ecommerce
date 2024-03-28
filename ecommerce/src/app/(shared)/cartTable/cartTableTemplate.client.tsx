@@ -86,6 +86,7 @@ const CartTableTemplate = ({
     };
 
     const footerPriceProps: TypographyProps = {
+        component: "span",
         color: "text.dark"
     };
 

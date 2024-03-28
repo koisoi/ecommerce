@@ -1,3 +1,4 @@
+import { landingConfig } from "@/lib";
 import {
     Box,
     BoxProps,
@@ -11,11 +12,13 @@ import { ReactNode } from "react";
 const PageTitle = ({
     children,
     props,
-    noDivider
+    noDivider,
+    landingTitleCheck
 }: {
     children?: ReactNode;
     props?: TypographyProps;
     noDivider?: boolean;
+    landingTitleCheck?: boolean;
 }) => {
     const wrapperProps: BoxProps = {
         marginBottom: "1.5rem"
@@ -41,7 +44,13 @@ const PageTitle = ({
 
     return (
         <Box {...wrapperProps}>
-            <Typography {...titleProps}>{children}</Typography>
+            <Typography {...titleProps}>
+                {children}
+                {landingTitleCheck &&
+                    typeof children === "string" &&
+                    !children.includes(landingConfig.landing_title) &&
+                    ` ${landingConfig.landing_title}`}
+            </Typography>
             {!noDivider && <Divider {...dividerProps} />}
         </Box>
     );

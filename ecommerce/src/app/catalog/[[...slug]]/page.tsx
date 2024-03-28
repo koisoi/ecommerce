@@ -22,7 +22,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
     if (!params.slug)
         return {
-            title: "Каталог"
+            title: "Каталог",
+            robots: {
+                index: false
+            }
         };
 
     if (params.slug[0]) {

@@ -17,7 +17,6 @@ import {
     setCanAuthorize,
     setCanPostOrder,
     setCanPostStatistics,
-    setCart,
     setCompletedOrderInfo,
     useAppDispatch,
     useAppSelector
@@ -27,7 +26,6 @@ import { useForm } from "react-hook-form";
 import { OrderRules } from "../../cart/cart.client";
 import { MouseEventHandler, useEffect, useState } from "react";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { useRouter } from "next/navigation";
 import { executeYMScript } from "@/lib/functions/executeYMScript";
 
 const FastOrderForm = ({

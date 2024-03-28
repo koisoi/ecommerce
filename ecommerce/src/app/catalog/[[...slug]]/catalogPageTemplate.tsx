@@ -7,7 +7,7 @@ const CatalogPageTemplate = ({ pages }: { pages: PageData[] }) => {
     return (
         <>
             <BreadcrumbsTemplate linksArray={catalogPageBreadcrumb} />
-            <PageTitle>Каталог</PageTitle>
+            <PageTitle landingTitleCheck>Каталог</PageTitle>
             <CategoriesMenuTemplate pages={pages} />
         </>
     );

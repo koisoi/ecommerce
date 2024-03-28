@@ -139,10 +139,8 @@ export const MobileMenuTemplate = ({
                     </ListItem>
 
                     <ListItem {...listItemProps}>
-                        <ListItemButton {...listItemButtonProps("/catalog")}>
-                            <Link href="/catalog" style={linksStyle}>
-                                <FooterTitle>Каталог</FooterTitle>
-                            </Link>
+                        <ListItemButton sx={{ pointerEvents: "none" }}>
+                            <FooterTitle>Каталог</FooterTitle>
                         </ListItemButton>
                     </ListItem>
 

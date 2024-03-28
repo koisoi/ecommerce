@@ -3,30 +3,37 @@ import OurAdvantages from "./(shared)/ourAdvantages.client";
 import {
     CategoryItem,
     PageData,
-    ProductReview,
     getLinkDomain,
     backendAPI,
     homePageAPI,
-    categoryPathToAlias
+    categoryPathToAlias,
+    SiteData
 } from "@/lib";
 import SimliarProductsSliderTemplate from "./(shared)/simliarProductsSliderTemplate";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenuTemplate";
 import SectionContainer from "./(shared)/sectionContainer";
 import { Metadata } from "next";
+import PageTitle from "./(shared)/text/pageTitle";
 
 export async function generateMetadata(): Promise<Metadata> {
-    const response = await backendAPI.getSite();
+    let response: SiteData | null = null;
+    try {
+        response = await backendAPI.getSite();
+    } catch (error) {
+        console.error(error);
+        return { title: "Главная" };
+    }
 
     return {
-        title: response.page_title,
-        description: response.page_description,
-        keywords: response.page_keywords
+        title: response?.page_title,
+        description: response?.page_description,
+        keywords: response?.page_keywords
     };
 }
 
 const Home = async () => {
+    let siteInfo: SiteData | null = null;
     let popularProducts: CategoryItem[] = [];
-    let reviews: ProductReview[] = [];
     let pages: PageData[] = [];
 
     try {
@@ -43,13 +50,18 @@ const Home = async () => {
             ...el,
             image: getLinkDomain(el.images[0]?.url || "") || ""
         }));
+
+        siteInfo = await backendAPI.getSite();
     } catch (error) {
         console.error(error);
     }
 
     return (
         <SectionContainer>
-            <CategoriesMenuTemplate pages={pages} />
+            <>
+                <PageTitle landingTitleCheck>{siteInfo?.page_title}</PageTitle>
+                <CategoriesMenuTemplate pages={pages} />
+            </>
             <>
                 <Title>Популярные товары</Title>
                 <SimliarProductsSliderTemplate products={popularProducts} />

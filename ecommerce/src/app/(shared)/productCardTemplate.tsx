@@ -29,6 +29,7 @@ import { default as NextLink } from "next/link";
 import { CardTemplate, AppCardProps } from ".";
 import { Product, WithContext } from "schema-dts";
 import Script from "next/script";
+import HTMLComment from "./htmlComment";
 
 export type ProductCardProps = {
     cartItem: CartItem;
@@ -258,9 +259,11 @@ const ProductCardTemplate = ({
             <CardTemplate {...appCardProps}>
                 <Box {...cardContentWrapperProps}>
                     <CardContent {...cardContentProps}>
-                        <Typography {...articleTextProps}>
-                            Артикул: {cartItem.articul}
-                        </Typography>
+                        <noscript>
+                            <Typography {...articleTextProps}>
+                                Артикул: {cartItem.articul}
+                            </Typography>
+                        </noscript>
                         <ProductLink url={cartItem.url}>
                             {categoryItem.category.title_single || ""}{" "}
                             {cartItem.title}

@@ -1,18 +1,8 @@
 "use client";
 
-import {
-    Box,
-    BoxProps,
-    Button,
-    ButtonProps,
-    Tab,
-    TabProps,
-    Tabs,
-    TabsProps
-} from "@mui/material";
+import { Box, BoxProps, Tab, TabProps, Tabs, TabsProps } from "@mui/material";
 import Link from "next/link";
 import { PageData } from "@/lib";
-import { CSSProperties } from "react";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
@@ -42,62 +32,6 @@ export const HeaderDesktopNavigationTemplate = ({
         gap: "20px"
     };
 
-    const catalogButtonProps: ButtonProps = {
-        component: "div",
-        variant: "contained",
-        color: "secondary",
-        // @ts-ignore
-        tabIndex: null,
-
-        disableFocusRipple: true,
-        disableRipple: true,
-
-        sx: {
-            height: "100%",
-            maxHeight: "50px",
-            borderRadius: "0px",
-            boxShadow: "none",
-            color: "primary.contrastText",
-            fontWeight: "bold",
-            paddingX: "30px",
-            fontSize: "1rem",
-            textTransform: "capitalize",
-            backgroundColor: "primary.light",
-
-            ":hover": {
-                boxShadow: "none",
-                backgroundColor: "primary.light"
-            }
-        }
-    };
-
-    const catalogBoxProps: BoxProps = {
-        sx: {
-            height: "100%",
-            maxHeight: "50px",
-            borderRadius: "0px",
-            boxShadow: "none",
-            color: "primary.contrastText",
-            fontWeight: "bold",
-            paddingX: "30px",
-            fontSize: "1rem",
-            textTransform: "capitalize",
-            backgroundColor: "primary.light",
-            display: "inline-flex",
-            justifyContent: "center",
-            alignItems: "center",
-
-            ":hover": {
-                boxShadow: "none",
-                backgroundColor: "primary.light"
-            }
-        }
-    };
-
-    const linkStyle: CSSProperties = {
-        height: "100%"
-    };
-
     const tabsProps: TabsProps = {
         variant: "scrollable",
 
@@ -105,7 +39,7 @@ export const HeaderDesktopNavigationTemplate = ({
     };
 
     const tabProps = (path: string): TabProps => ({
-        component: "a",
+        component: Link,
         // @ts-ignore
         href: path,
 
@@ -128,9 +62,6 @@ export const HeaderDesktopNavigationTemplate = ({
 
     return (
         <Box {...innerWrapperProps}>
-            <Link style={linkStyle} href="/catalog">
-                <Box {...catalogBoxProps}>Каталог</Box>
-            </Link>
             <Tabs {...tabsProps}>
                 {categories.map((category, i) => (
                     <Tab

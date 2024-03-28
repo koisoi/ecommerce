@@ -27,7 +27,7 @@ const CategoryTemplate = ({
     return (
         <>
             <BreadcrumbsTemplate linksArray={breadcrumbs} />
-            <PageTitle>{category.title}</PageTitle>
+            <PageTitle landingTitleCheck>{category.title}</PageTitle>
 
             <Paragraph>{category.text}</Paragraph>
 

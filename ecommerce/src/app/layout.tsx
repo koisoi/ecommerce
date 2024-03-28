@@ -157,7 +157,17 @@ const RootLayout = async ({
         HtmlHTMLAttributes<HTMLHtmlElement>,
         HTMLHtmlElement
     > = {
-        lang: "ru"
+        lang: "ru",
+
+        style: {
+            overflow: "auto",
+            scrollbarGutter: "stable",
+            maxWidth: "100vw",
+            minWidth: "320px",
+            overflowX: "hidden",
+            fontFamily: "Tahoma, sans-serif",
+            fontSize: "15px"
+        }
     };
 
     const bodyProps: { style: CSSProperties } = {
@@ -190,16 +200,16 @@ const RootLayout = async ({
     };
 
     return (
-        <ThemeProvider theme={theme}>
-            <Box {...htmlBoxProps}>
-                {/* <html {...htmlProps}> */}
-                <head
-                // dangerouslySetInnerHTML={{
-                //     __html: metrika
-                // }}
-                />
-                <body {...bodyProps}>
-                    <AppRouterCacheProvider options={{ key: "css" }}>
+        <AppRouterCacheProvider options={{ key: "css" }}>
+            <ThemeProvider theme={theme}>
+                <Box {...htmlBoxProps}>
+                    {/* <html {...htmlProps}> */}
+                    {/* <head
+            dangerouslySetInnerHTML={{
+                __html: metrika
+            }}
+            /> */}
+                    <body {...bodyProps}>
                         <script
                             type="application/ld+json"
                             dangerouslySetInnerHTML={{
@@ -221,11 +231,11 @@ const RootLayout = async ({
                             <Box {...rootBoxProps}>{children}</Box>
                             <Footer props={innerProps} />
                         </StoreProvider>
-                    </AppRouterCacheProvider>
-                </body>
-                {/* </html> */}
-            </Box>
-        </ThemeProvider>
+                    </body>
+                    {/* </html> */}
+                </Box>
+            </ThemeProvider>
+        </AppRouterCacheProvider>
     );
 };
 

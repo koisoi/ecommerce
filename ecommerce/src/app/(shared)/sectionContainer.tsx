@@ -27,10 +27,6 @@ const SectionContainer = ({
             break;
     }
 
-    const sectionProps: BoxProps = {
-        component: "section"
-    };
-
     return (
         <Box {...wrapperProps}>
             {/* {children?.map((el, i) => (
@@ -39,9 +35,7 @@ const SectionContainer = ({
                 </Box>
             ))} */}
             {React.Children.map(children, (el, i) => (
-                <Box key={i} {...sectionProps}>
-                    {el}
-                </Box>
+                <Box key={i}>{el}</Box>
             ))}
         </Box>
     );

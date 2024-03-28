@@ -17,6 +17,7 @@ import {
     OrderData,
     OrderForm,
     categoryAliasToPath,
+    categoryPathToAlias,
     getLinkDomain,
     getProductLink,
     useMediaQueries
@@ -90,7 +91,7 @@ const FastOrderFormTemplate = ({
     const productCardProps: ProductCardProps = {
         cartItem: {
             url: getProductLink(
-                categoryAliasToPath(item.category.path)!,
+                categoryPathToAlias(item.category.path)!,
                 item.alias
             ),
             alias: item?.alias || "",
@@ -175,6 +176,7 @@ const FastOrderFormTemplate = ({
     };
 
     const dialogTitleProps: DialogTitleProps = {
+        component: "div",
         position: "relative",
         display: "flex",
         justifyContent: "space-between",

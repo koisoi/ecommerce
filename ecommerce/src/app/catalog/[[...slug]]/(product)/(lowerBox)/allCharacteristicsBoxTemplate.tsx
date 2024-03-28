@@ -42,14 +42,11 @@ const AllCharacteristicsBoxTemplate = ({
     };
 
     const characteristicsBoxProps: BoxProps = {
+        component: "dl",
         display: "flex",
         flexDirection: "column",
         gap: "0.5rem",
         marginTop: "0.5rem"
-    };
-
-    const descriptionListProps: BoxProps = {
-        component: "dl"
     };
 
     return (
@@ -62,7 +59,7 @@ const AllCharacteristicsBoxTemplate = ({
             )}
             {fullCharacteristics &&
                 !!Object.entries(fullCharacteristics).length && (
-                    <Box {...descriptionListProps}>
+                    <Box>
                         <SectionContainer level={2}>
                             {Object.entries(fullCharacteristics).map(
                                 ([charTitle, charCategory], i) => (

@@ -38,7 +38,7 @@ const ProductsGridTemplate = ({
         }
     };
 
-    const foundTextProps: TypographyProps = {
+    const subtleTextProps: TypographyProps = {
         color: "text.disabled"
     };
 
@@ -50,9 +50,12 @@ const ProductsGridTemplate = ({
 
     return (
         <>
-            <Paragraph props={foundTextProps}>
+            <Paragraph props={subtleTextProps}>
                 Товаров {search ? "найдено" : "в категории"}: {totalAmount}
             </Paragraph>
+            {page > 1 && (
+                <Paragraph props={subtleTextProps}>Страница: {page}</Paragraph>
+            )}
 
             {loading && "Загрузка товаров..."}
             {!loading && (

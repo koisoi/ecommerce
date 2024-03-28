@@ -45,15 +45,14 @@ const CharacteristicsBoxTemplate = ({
                 <Box {...descriptionListProps}>
                     {Object.entries(characteristics).map(
                         ([charTitle, description], i) => (
-                            <Fragment key={i}>
+                            <Box key={i}>
                                 <Typography {...characteristicTitleProps}>
                                     {charTitle}:{" "}
                                 </Typography>
                                 <Typography {...characteristicTextProps}>
                                     {description.value}
                                 </Typography>
-                                <br />
-                            </Fragment>
+                            </Box>
                         )
                     )}
                 </Box>

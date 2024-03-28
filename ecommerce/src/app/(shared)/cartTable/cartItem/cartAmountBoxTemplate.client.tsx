@@ -49,6 +49,7 @@ const CartAmountBoxTemplate = ({
     };
 
     const amountTextPriceProps: TypographyProps = {
+        component: "span",
         fontSize: "inherit",
         display: "inline"
     };

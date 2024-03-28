@@ -8,7 +8,7 @@ const CategoryProductsGrid = async ({
     page: PageData;
     pageNumber: number;
 }) => {
-    const productsPerPage = 15;
+    const productsPerPage = 20;
     let response: CategoryItemsResponse | null = null;
 
     try {

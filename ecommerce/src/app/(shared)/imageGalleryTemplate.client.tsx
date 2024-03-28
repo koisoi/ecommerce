@@ -30,6 +30,7 @@ const ImageGalleryTemplate = ({
     };
 
     const tabProps: TabProps = {
+        component: "div",
         sx: {
             textTransform: "none"
         }

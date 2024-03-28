@@ -55,6 +55,7 @@ export const BackCallFormTemplate = ({
     };
 
     const dialogTitleProps: DialogTitleProps = {
+        component: "div",
         position: "relative",
         display: "flex",
         justifyContent: "space-between",
