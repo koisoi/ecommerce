@@ -1,3 +1,4 @@
+import { formatPhoneNumber } from "@/lib";
 import { Link, LinkProps } from "@mui/material";
 
 const PhoneLink = ({
@@ -22,16 +23,7 @@ const PhoneLink = ({
         }
     };
 
-    return (
-        <Link {...linkProps}>
-            {number
-                .slice(number[0] === "+" ? 2 : 1)
-                .replace(
-                    /(\d{3})(\d{3})(\d{2})(\d{2})/g,
-                    `${number[0] === "+" ? "+7" : "8"} ($1) $2 $3 $4`
-                )}
-        </Link>
-    );
+    return <Link {...linkProps}>{formatPhoneNumber(number)}</Link>;
 };
 
 export default PhoneLink;

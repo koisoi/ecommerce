@@ -11,6 +11,7 @@ export * from "./functions/formValidators";
 export * from "./functions/getLinkDomain";
 export * from "./functions/getProductLink";
 export * from "./functions/makePagePath";
+export * from "./functions/formatPhoneNumber";
 
 export * from "./services/backend.service";
 export * from "./services/catalog.service";

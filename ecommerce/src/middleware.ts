@@ -1,12 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
-    // console.log(`URL ${req.url} matches middleware!`);
-    if (req.url !== req.url.toLowerCase())
+    if (req.url !== req.url.toLowerCase()) {
         return NextResponse.redirect(
-            new URL(req.nextUrl.origin + req.nextUrl.pathname.toLowerCase()),
+            new URL(
+                req.nextUrl.origin +
+                    req.nextUrl.pathname.toLowerCase() +
+                    req.nextUrl.search
+            ),
             301
         );
+    }
 }
 
 export const config = {

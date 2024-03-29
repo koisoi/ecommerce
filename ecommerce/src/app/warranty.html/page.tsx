@@ -15,13 +15,23 @@ import TableTitle from "../(shared)/text/tableTitle";
 import Paragraph from "../(shared)/text/paragraph";
 import Title from "../(shared)/text/title";
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
-import { landingConfig, warrantyBreadcrumbs } from "@/lib";
+import {
+    backendAPI,
+    formatPhoneNumber,
+    landingConfig,
+    warrantyBreadcrumbs
+} from "@/lib";
 import { Metadata } from "next";
 import SectionContainer from "../(shared)/sectionContainer";
 import PhoneLink from "../(shared)/text/phoneLinkTemplate";
 
 export const metadata: Metadata = {
-    title: "Гарантии и возврат"
+    title: "Гарантии и возврат",
+    description: `Информация по сервисному гарантийному обслуживанию продукции ${
+        landingConfig.landing_title
+    }. Для консультации звоните ${formatPhoneNumber(
+        landingConfig.phoneNumber
+    )}.`
 };
 
 const WarrantyPage = () => {

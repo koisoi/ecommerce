@@ -14,7 +14,6 @@ import {
     Typography,
     TypographyProps
 } from "@mui/material";
-import Title from "./text/title";
 import { landingConfig, useMediaQueries } from "@/lib";
 
 const OurAdvantages = ({ props }: { props?: BoxProps }) => {

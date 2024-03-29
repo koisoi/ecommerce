@@ -7,7 +7,8 @@ import {
     makePagePath,
     landingConfig,
     Breadcrumb,
-    MainProductInfo
+    MainProductInfo,
+    formatPhoneNumber
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
@@ -23,6 +24,11 @@ export async function generateMetadata({
     if (!params.slug)
         return {
             title: "Каталог",
+            description: `Каталог тепловизионного оборудования ${
+                landingConfig.landing_title
+            }. Широкий ассортимент тепловизионных прицелов и монокуляров. Звоните ${formatPhoneNumber(
+                landingConfig.phoneNumber
+            )}`,
             robots: {
                 index: false
             }
@@ -43,9 +49,9 @@ export async function generateMetadata({
                 };
             }
             return {
-                title: productMetadata.page_title,
-                description: productMetadata.page_description,
-                keywords: productMetadata.page_keywords
+                title: productMetadata?.page_title,
+                description: productMetadata?.page_description,
+                keywords: productMetadata?.page_keywords
             };
         } else {
             const path = makePagePath(params.slug);
@@ -64,9 +70,9 @@ export async function generateMetadata({
             }))[0];
 
             return {
-                title: categoryMetadata.page_title,
-                description: categoryMetadata.page_description,
-                keywords: categoryMetadata.page_keywords
+                title: categoryMetadata?.page_title,
+                description: categoryMetadata?.page_description,
+                keywords: categoryMetadata?.page_keywords
             };
         }
     }

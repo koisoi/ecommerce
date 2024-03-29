@@ -25,13 +25,31 @@ import { Description } from "@mui/icons-material";
 import { CSSProperties } from "react";
 import AttentionText from "../(shared)/text/attentionText";
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
-import { deliveryBreadcrumbs } from "@/lib";
+import {
+    backendAPI,
+    deliveryBreadcrumbs,
+    formatPhoneNumber,
+    landingConfig
+} from "@/lib";
 import { Metadata } from "next";
 import SectionContainer from "../(shared)/sectionContainer";
 
-export const metadata: Metadata = {
-    title: "Доставка и оплата"
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const response = await backendAPI.getSite();
+
+    return {
+        title: "Доставка и оплата",
+        description: `Информация о доставке и способах оплаты тепловизионного оборудования в магазине ${
+            response.url || ""
+        }. По вопросам оплаты и доставки звоните ${formatPhoneNumber(
+            landingConfig.phoneNumber
+        )}.`
+    };
+}
+
+// export const metadata: Metadata = {
+//     title: "Доставка и оплата"
+// };
 
 const DeliveryPage = () => {
     const linksProps: LinkProps = {

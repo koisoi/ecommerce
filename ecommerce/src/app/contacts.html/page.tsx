@@ -12,20 +12,39 @@ import AppLink from "../(shared)/text/appLink";
 import AttentionText from "../(shared)/text/attentionText";
 import PageTitle from "../(shared)/text/pageTitle";
 import TableTitle from "../(shared)/text/tableTitle";
-import { MetroStation } from "./metroStation";
+import { MetroStation } from "../(shared)/metroStation";
 import Paragraph from "../(shared)/text/paragraph";
 import Title from "../(shared)/text/title";
 import ImageSwitcher from "../(shared)/imageSwitcher/imageSwitcher.client";
 import { contactsData } from "./contactsData";
 import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
-import { contactsBreadcrumbs, landingConfig } from "@/lib";
+import {
+    backendAPI,
+    contactsBreadcrumbs,
+    formatPhoneNumber,
+    landingConfig
+} from "@/lib";
 import { Metadata } from "next";
 import SectionContainer from "../(shared)/sectionContainer";
 import PhoneLink from "../(shared)/text/phoneLinkTemplate";
 
-export const metadata: Metadata = {
-    title: "Контактная информация"
-};
+export async function generateMetadata(): Promise<Metadata> {
+    const response = await backendAPI.getSite();
+
+    return {
+        title: "Контактная информация",
+        description: `Контактная информация магазина ${
+            response.url || ""
+        }. Для консультации и заказа звоните ${formatPhoneNumber(
+            landingConfig.phoneNumber
+        )}.`
+    };
+}
+
+// export const metadata: Metadata = {
+//     title: "Контактная информация",
+//     description: `Контактная информация магазина ${landingConfig.landing_title} Для консультации и заказа звоните +7 (495) 085 17 00.`
+// };
 
 const ContactsPage = () => {
     const phoneLinksProps: LinkProps = {
