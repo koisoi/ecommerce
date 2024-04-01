@@ -259,11 +259,11 @@ const ProductCardTemplate = ({
             <CardTemplate {...appCardProps}>
                 <Box {...cardContentWrapperProps}>
                     <CardContent {...cardContentProps}>
-                        <noscript>
+                        <noindex>
                             <Typography {...articleTextProps}>
                                 Артикул: {cartItem.articul}
                             </Typography>
-                        </noscript>
+                        </noindex>
                         <ProductLink url={cartItem.url}>
                             {categoryItem.type.title
                                 ? categoryItem.type.title + " "

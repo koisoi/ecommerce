@@ -3,6 +3,7 @@ export * from "./store";
 
 export * from "./data/breadcrumbs";
 export * from "./data/config";
+export * from "./data/innerHtmlStyles";
 
 export * from "./functions/backendTextRegExp";
 export * from "./functions/cartCookie";

@@ -4,7 +4,8 @@ import {
     ProductCharacteristics,
     ProductPageTabType,
     ProductReview,
-    backendTextRegExp
+    backendTextRegExp,
+    innerHtmlStyles
 } from "@/lib";
 import { Box, BoxProps, Typography, TypographyProps } from "@mui/material";
 import SimliarProductsSliderTemplate from "../../../../(shared)/simliarProductsSliderTemplate";
@@ -55,25 +56,7 @@ const ProductPageLowerTemplate = ({
                   __html: description.replace(backendTextRegExp, "<br />")
               }
             : undefined,
-        sx: {
-            fontSize: "1rem",
-            strong: {
-                color: "primary.main",
-                fontWeight: "bold"
-            },
-
-            li: {
-                marginTop: "0.5rem"
-            },
-
-            "ul + p": {
-                paddingTop: "1rem"
-            },
-
-            "p + p": {
-                paddingTop: "0.5rem"
-            }
-        }
+        sx: innerHtmlStyles
     };
 
     const complectationBoxProps: BoxProps = {

@@ -24,10 +24,7 @@ export const contactsBreadcrumbs: Breadcrumb[] = [
     { link: "/contacts.html", title: "Контактная информация" }
 ];
 
-export const catalogPageBreadcrumb: Breadcrumb[] = [
-    ...homePageBreadcrumbs,
-    { link: "/catalog", title: "Каталог" }
-];
+export const catalogPageBreadcrumb: Breadcrumb[] = [...homePageBreadcrumbs];
 
 export const cartBreadcrumbs: Breadcrumb[] = [
     ...homePageBreadcrumbs,

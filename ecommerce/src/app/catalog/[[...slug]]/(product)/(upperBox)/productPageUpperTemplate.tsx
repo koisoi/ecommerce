@@ -118,11 +118,11 @@ const ProductPageUpperTemplate = ({
                     props={desktopProductOfferBoxProps}
                 />
                 <Box {...descriptionBoxProps}>
-                    <noscript>
+                    <noindex>
                         <Typography {...articulTextProps}>
                             Артикул: {cartItem.articul}
                         </Typography>
-                    </noscript>
+                    </noindex>
                     <CharacteristicsBoxTemplate
                         characteristics={characteristics}
                     />
