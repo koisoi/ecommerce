@@ -91,7 +91,7 @@ const ProductPageUpperTemplate = ({
     const rightBoxProps: BoxProps = {
         display: "flex",
         flexDirection: { xs: "row", mlg: "column" },
-        justifyContent: "space-between",
+        justifyContent: { xs: "space-between", mlg: "flex-start" },
         gap: "2rem",
 
         flexGrow: 1,
