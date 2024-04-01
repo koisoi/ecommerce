@@ -8,6 +8,7 @@ import { Box, BoxProps } from "@mui/material";
 import {
     CSSProperties,
     DragEventHandler,
+    Fragment,
     MouseEventHandler,
     SyntheticEvent,
     useEffect,
@@ -121,11 +122,15 @@ const ImagesCarousel = ({
             }
         },
 
-        IndicatorIcon: screen.mlg ? (
-            <></> /*: typeof window === "undefined" ? (
-            <></>
-        )*/
-        ) : undefined
+        IndicatorIcon: (
+            <div suppressHydrationWarning>
+                {screen.mlg ? (
+                    <></>
+                ) : typeof window === "undefined" ? (
+                    <></>
+                ) : undefined}
+            </div>
+        )
     };
 
     const imgBoxProps: BoxProps = {

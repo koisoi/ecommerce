@@ -69,7 +69,11 @@ const ProductPageTabsTemplate = ({
                             {...tabProps}
                         />
                     )}
-                    <Tab value={"delivery"} label={"Доставка"} {...tabProps} />
+                    <Tab
+                        value={"pickUp"}
+                        label={"Пункты выдачи"}
+                        {...tabProps}
+                    />
                 </Tabs>
             )}
         </>

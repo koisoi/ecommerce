@@ -48,4 +48,4 @@ export type ProductPageTabType =
     | "description"
     // | "feedback"
     | "complectation"
-    | "delivery";
+    | "pickUp";

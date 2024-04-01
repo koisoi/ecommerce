@@ -96,13 +96,6 @@ export const MobileMenuTemplate = ({
         }
     };
 
-    const pickUpPointsBoxProps: BoxProps = {
-        display: "flex",
-        flexDirection: "column",
-        gap: { xs: "0.5rem", md: "1rem" },
-        padding: "1rem"
-    };
-
     return (
         <Drawer {...drawerProps}>
             <Box {...wrapperProps}>
@@ -172,11 +165,6 @@ export const MobileMenuTemplate = ({
                         </ListItemButton>
                     </ListItem>
                 </List>
-
-                <Box {...pickUpPointsBoxProps}>
-                    <FooterTitle>Пункты выдачи</FooterTitle>
-                    <PickUpPoints />
-                </Box>
 
                 <FooterContactsBoxTemplate
                     phone={phone}

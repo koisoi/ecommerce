@@ -23,6 +23,15 @@ export async function generateMetadata({
     params: { slug: string[] };
     searchParams: { page?: number };
 }): Promise<Metadata> {
+    const getParentKeywords = async () => {
+        const path = makePagePath(params.slug.slice(0, params.slug.length - 1));
+        const parentCategoryResponse = await backendAPI.getPages({
+            path
+        });
+
+        return parentCategoryResponse[0]?.page_keywords;
+    };
+
     if (!params.slug)
         return {
             title: "Каталог",
@@ -52,9 +61,20 @@ export async function generateMetadata({
             }
 
             return {
-                title: productMetadata?.page_title,
-                description: productMetadata?.page_description,
-                keywords: productMetadata?.page_keywords
+                title: productMetadata?.page_title?.replaceAll(
+                    " в интернет магазине Telescope1.ru",
+                    ""
+                ),
+                description: productMetadata?.page_description?.replaceAll(
+                    " в интернет магазине Telescope1.ru",
+                    ""
+                ),
+                keywords: [
+                    productMetadata?.page_keywords,
+                    await getParentKeywords()
+                ]
+                    .filter(Boolean)
+                    .join(", ")
             };
         } else {
             const path = makePagePath(params.slug);
@@ -67,7 +87,7 @@ export async function generateMetadata({
                     title: "404"
                 };
             }
-            const categoryMetadata = responsePage.map((el) => ({
+            let categoryMetadata = responsePage.map((el) => ({
                 ...el,
                 image: getLinkDomain(el.images[0]?.url || "") || ""
             }))[0];
@@ -84,7 +104,12 @@ export async function generateMetadata({
             return {
                 title: addPage(categoryMetadata?.page_title),
                 description: addPage(categoryMetadata?.page_description),
-                keywords: categoryMetadata?.page_keywords
+                keywords: [
+                    categoryMetadata?.page_keywords,
+                    await getParentKeywords()
+                ]
+                    .filter(Boolean)
+                    .join(", ")
             };
         }
     }

@@ -39,12 +39,6 @@ export const Footer = ({ props }: { props?: BoxProps }) => {
         textAlign: { xs: "center", smd: "left" }
     };
 
-    const pickUpPointsBoxProps: BoxProps = {
-        display: "flex",
-        flexDirection: "column",
-        gap: { xs: "0.5rem", md: "1rem" }
-    };
-
     return (
         <>
             <Divider />
@@ -55,10 +49,6 @@ export const Footer = ({ props }: { props?: BoxProps }) => {
                     />
                     <CatalogBoxTemplate categories={landingConfig.categories} />
                     <UpperMenuBox />
-                    <Box {...pickUpPointsBoxProps}>
-                        <FooterTitle>Пункты выдачи</FooterTitle>
-                        <PickUpPoints />
-                    </Box>
                 </Box>
             </Box>
         </>
