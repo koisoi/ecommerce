@@ -3,7 +3,7 @@ import TableTitle from "./text/tableTitle";
 import { MetroStation } from "./metroStation";
 import SectionContainer from "./sectionContainer";
 import Title from "./text/title";
-import { RussiaDelivery } from "../delivery.html/russiaDelivery";
+import { RussiaDelivery } from "./russiaDelivery";
 import YandexGo from "@/assets/svg/del-yandex-go.svg";
 import { CSSProperties } from "react";
 

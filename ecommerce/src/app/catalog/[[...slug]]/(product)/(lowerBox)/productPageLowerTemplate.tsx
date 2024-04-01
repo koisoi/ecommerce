@@ -140,7 +140,11 @@ const ProductPageLowerTemplate = ({
                                 )}
                             </>
                         )}
-                        {currentTab === "delivery" && <PickUpPoints />}
+                        {currentTab === "delivery" && (
+                            <noindex>
+                                <PickUpPoints />
+                            </noindex>
+                        )}
                     </>
                     {simliarProducts && !!simliarProducts.length && (
                         <>

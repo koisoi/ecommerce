@@ -1,5 +1,5 @@
-import AppLink from "../(shared)/text/appLink";
-import Paragraph from "../(shared)/text/paragraph";
+import AppLink from "./text/appLink";
+import Paragraph from "./text/paragraph";
 
 import PostRF from "@/assets/svg/del-postrf.svg";
 import EMS from "@/assets/svg/del-ems.svg";
@@ -11,7 +11,8 @@ export const RussiaDelivery = ({ noIcons }: { noIcons?: boolean }) => {
     const linksProps: LinkProps = {
         sx: {
             textDecoration: "underline 1px"
-        }
+        },
+        rel: "nofollow noopener"
     };
 
     const iconsWrapperProps: TypographyProps = {

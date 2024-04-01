@@ -51,7 +51,8 @@ const DeliveryPage = () => {
     const linksProps: LinkProps = {
         sx: {
             textDecoration: "underline 1px"
-        }
+        },
+        rel: "nofollow noopener"
     };
 
     const iconsStyling: CSSProperties = {

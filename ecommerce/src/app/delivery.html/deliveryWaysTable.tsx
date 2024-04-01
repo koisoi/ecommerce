@@ -13,7 +13,7 @@ import Paragraph from "../(shared)/text/paragraph";
 
 import YandexGo from "@/assets/svg/del-yandex-go.svg";
 import { CSSProperties } from "react";
-import { RussiaDelivery } from "./russiaDelivery";
+import { RussiaDelivery } from "../(shared)/russiaDelivery";
 
 export const DeliveryWaysTable = () => {
     const iconsStyling: CSSProperties = {
