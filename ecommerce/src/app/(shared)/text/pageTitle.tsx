@@ -12,13 +12,11 @@ import { ReactNode } from "react";
 const PageTitle = ({
     children,
     props,
-    noDivider,
-    landingTitleCheck
+    noDivider
 }: {
     children?: ReactNode;
     props?: TypographyProps;
     noDivider?: boolean;
-    landingTitleCheck?: boolean;
 }) => {
     const wrapperProps: BoxProps = {
         marginBottom: "1.5rem"
@@ -44,13 +42,7 @@ const PageTitle = ({
 
     return (
         <Box {...wrapperProps}>
-            <Typography {...titleProps}>
-                {children}
-                {landingTitleCheck &&
-                    typeof children === "string" &&
-                    !children.includes(landingConfig.landing_title) &&
-                    ` ${landingConfig.landing_title}`}
-            </Typography>
+            <Typography {...titleProps}>{children}</Typography>
             {!noDivider && <Divider {...dividerProps} />}
         </Box>
     );

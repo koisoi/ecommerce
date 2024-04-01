@@ -122,7 +122,7 @@ const ProductPage = async ({
 
             <ImgModal title={productMainInfo?.title || ""} />
 
-            <PageTitle noDivider landingTitleCheck>
+            <PageTitle noDivider>
                 {productMainInfo?.type.title
                     ? productMainInfo?.type.title + " "
                     : ""}

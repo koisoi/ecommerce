@@ -59,7 +59,7 @@ const Home = async () => {
     return (
         <SectionContainer>
             <>
-                <PageTitle landingTitleCheck>{siteInfo?.page_title}</PageTitle>
+                <PageTitle>{siteInfo?.page_title}</PageTitle>
                 <CategoriesMenuTemplate pages={pages} />
             </>
             <>
