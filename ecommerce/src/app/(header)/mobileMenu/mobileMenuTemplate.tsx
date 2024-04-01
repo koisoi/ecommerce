@@ -18,7 +18,7 @@ import {
 import Link from "next/link";
 import { CSSProperties, ReactNode } from "react";
 import { Close } from "@mui/icons-material";
-import PickUpPoints from "@/app/(shared)/pickUpPoints";
+import DeliveryWays from "@/app/(shared)/deliveryWays";
 
 export const MobileMenuTemplate = ({
     open,

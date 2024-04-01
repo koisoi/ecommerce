@@ -3,7 +3,7 @@ import { CatalogBoxTemplate } from "./catalogBoxTemplate";
 import { UpperMenuBox } from "./upperMenuBox";
 import { FooterContactsBoxTemplate } from "../(shared)/footerContactsBoxTemplate";
 import { landingConfig } from "@/lib";
-import PickUpPoints from "../(shared)/pickUpPoints";
+import DeliveryWays from "../(shared)/deliveryWays";
 import { FooterTitle } from "../(shared)/footerTitle";
 
 export const Footer = ({ props }: { props?: BoxProps }) => {

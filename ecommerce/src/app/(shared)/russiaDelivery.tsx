@@ -10,7 +10,8 @@ import { LinkProps, TypographyProps } from "@mui/material";
 export const RussiaDelivery = ({ noIcons }: { noIcons?: boolean }) => {
     const linksProps: LinkProps = {
         sx: {
-            textDecoration: "underline 1px"
+            textDecoration: "underline 1px",
+            color: "text.primary"
         },
         rel: "nofollow noopener"
     };

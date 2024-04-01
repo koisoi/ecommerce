@@ -12,7 +12,7 @@ import SimliarProductsSliderTemplate from "../../../../(shared)/simliarProductsS
 import AllCharacteristicsBoxTemplate from "./allCharacteristicsBoxTemplate";
 import ProductPageTabs from "./productPageTabs/productPageTabs.client";
 import SectionContainer from "@/app/(shared)/sectionContainer";
-import PickUpPoints from "@/app/(shared)/pickUpPoints";
+import DeliveryWays from "@/app/(shared)/deliveryWays";
 
 export type ProductPageLowerTemplateProps = {
     searchParams: { page?: number; tab?: ProductPageTabType };
@@ -142,7 +142,7 @@ const ProductPageLowerTemplate = ({
                         )}
                         {currentTab === "delivery" && (
                             <noindex>
-                                <PickUpPoints />
+                                <DeliveryWays />
                             </noindex>
                         )}
                     </>
