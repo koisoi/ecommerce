@@ -157,7 +157,7 @@ const ProductPageLowerTemplate = ({
                                 )}
                             </>
                         )}
-                        {currentTab === "pickUp" && <PickUpPoints />}
+                        {currentTab === "delivery" && <PickUpPoints />}
                     </>
                     {simliarProducts && !!simliarProducts.length && (
                         <>

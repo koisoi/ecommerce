@@ -123,8 +123,8 @@ const ProductPage = async ({
             <ImgModal title={productMainInfo?.title || ""} />
 
             <PageTitle noDivider landingTitleCheck>
-                {productMainInfo?.category.title_single
-                    ? productMainInfo?.category.title_single + " "
+                {productMainInfo?.type.title
+                    ? productMainInfo?.type.title + " "
                     : ""}
                 {productMainInfo?.title || ""}
             </PageTitle>
@@ -156,7 +156,8 @@ const ProductPage = async ({
                         alias: productMainInfo.alias,
                         is_new: productMainInfo.is_new,
                         is_recommend: productMainInfo.is_recommend,
-                        category: productMainInfo.category
+                        category: productMainInfo.category,
+                        type: productMainInfo.type
                     }}
                 />
                 <ProductPageLowerTemplate

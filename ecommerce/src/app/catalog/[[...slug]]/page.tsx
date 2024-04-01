@@ -8,7 +8,8 @@ import {
     landingConfig,
     Breadcrumb,
     MainProductInfo,
-    formatPhoneNumber
+    formatPhoneNumber,
+    categoryAliasToPath
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
@@ -167,16 +168,16 @@ const CategoryPage = async ({
             image: getLinkDomain(el.images[0]?.url || "") || ""
         }))[0];
 
-        if (params.slug[1]) {
+        if (!params.slug[1]) {
+            /*{
             const response = await backendAPI.getPages({
-                path: params.slug[0] + ".*{1}"
+                path: categoryAliasToPath(params.slug[0])!
             });
             pages = response.map((el) => ({
                 ...el,
                 image: getLinkDomain(el.images[0]?.url || "") || ""
             }));
-        } else {
-            const response = await backendAPI.getPages({
+        } else*/ const response = await backendAPI.getPages({
                 path: page.path + ".*{1}"
             });
             pages = response.map((el) => ({
