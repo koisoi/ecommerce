@@ -62,6 +62,9 @@ export type CategoryItem = {
     };
     availability?: "в наличии" | string;
     external_link?: string;
+    type: {
+        title: string;
+    };
 };
 
 export type CategoryItemsRequest = {

@@ -31,7 +31,6 @@ class BackendService extends Service {
         )
             .then((response) => {
                 if (!response.ok) {
-                    console.log(response.status);
                     throw new NetworkError(
                         response.statusText,
                         response.status

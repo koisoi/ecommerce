@@ -204,11 +204,11 @@ const RootLayout = async ({
             <ThemeProvider theme={theme}>
                 <Box {...htmlBoxProps}>
                     {/* <html {...htmlProps}> */}
-                    {/* <head
-            dangerouslySetInnerHTML={{
-                __html: metrika
-            }}
-            /> */}
+                    <head
+                        dangerouslySetInnerHTML={{
+                            __html: metrika
+                        }}
+                    />
                     <body {...bodyProps}>
                         <script
                             type="application/ld+json"

@@ -265,7 +265,9 @@ const ProductCardTemplate = ({
                             </Typography>
                         </noscript>
                         <ProductLink url={cartItem.url}>
-                            {categoryItem.category.title_single || ""}{" "}
+                            {categoryItem.type.title
+                                ? categoryItem.type.title + " "
+                                : ""}
                             {cartItem.title}
                         </ProductLink>
                     </CardContent>
