@@ -47,4 +47,5 @@ export type ProductPageTabType =
     | "allCharasteristics"
     | "description"
     // | "feedback"
-    | "complectation";
+    | "complectation"
+    | "delivery";

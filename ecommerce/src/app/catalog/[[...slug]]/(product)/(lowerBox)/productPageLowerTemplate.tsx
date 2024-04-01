@@ -11,6 +11,7 @@ import SimliarProductsSliderTemplate from "../../../../(shared)/simliarProductsS
 import AllCharacteristicsBoxTemplate from "./allCharacteristicsBoxTemplate";
 import ProductPageTabs from "./productPageTabs/productPageTabs.client";
 import SectionContainer from "@/app/(shared)/sectionContainer";
+import PickUpPoints from "@/app/(shared)/pickUpPoints";
 
 export type ProductPageLowerTemplateProps = {
     searchParams: { page?: number; tab?: ProductPageTabType };
@@ -156,6 +157,7 @@ const ProductPageLowerTemplate = ({
                                 )}
                             </>
                         )}
+                        {currentTab === "delivery" && <PickUpPoints />}
                     </>
                     {simliarProducts && !!simliarProducts.length && (
                         <>

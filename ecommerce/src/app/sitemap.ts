@@ -44,23 +44,23 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             ...defaultOptions
         },
         {
-            url: `${url}/cart/catalog`,
+            url: `${url}/catalog`,
             ...defaultOptions
         },
         {
-            url: `${url}/cart/search`,
+            url: `${url}/search`,
             ...defaultOptions
         },
         {
-            url: `${url}/cart/contacts.html`,
+            url: `${url}/contacts.html`,
             ...defaultOptions
         },
         {
-            url: `${url}/cart/delivery.html`,
+            url: `${url}/delivery.html`,
             ...defaultOptions
         },
         {
-            url: `${url}/cart/warranty.html`,
+            url: `${url}/warranty.html`,
             ...defaultOptions
         }
     ];

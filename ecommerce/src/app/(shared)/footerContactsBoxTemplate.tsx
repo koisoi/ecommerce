@@ -10,6 +10,7 @@ import AppLink from "./text/appLink";
 import { Email } from "@mui/icons-material";
 import PhoneLink from "./text/phoneLinkTemplate";
 import BackCallButton from "./backCallButton/backCallButton.client";
+import { landingConfig } from "@/lib";
 
 export const FooterContactsBoxTemplate = ({
     props,
@@ -58,9 +59,9 @@ export const FooterContactsBoxTemplate = ({
             <FooterTitle>Контакты</FooterTitle>
             <Box {...innerWrapperProps}>
                 <PhoneLink number={phone} props={phoneLinkProps} />
-                <AppLink href="mailto:sales@telescope.ru" footer>
+                <AppLink href={`mailto:${landingConfig.email}`} footer>
                     <Email {...iconProps} />
-                    sales@telescope.ru
+                    {landingConfig.email}
                 </AppLink>
             </Box>
             <BackCallButton props={backCallButtonProps} />

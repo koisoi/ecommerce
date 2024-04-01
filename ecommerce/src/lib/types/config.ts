@@ -13,6 +13,7 @@ export type LandingConfig = {
     categories: PageData[];
     colors: PaletteOptions;
     phoneNumber: string;
+    email: string;
     advantages: {
         text: string;
         delivery: string;

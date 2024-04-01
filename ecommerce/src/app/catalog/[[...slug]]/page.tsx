@@ -17,9 +17,11 @@ import CatalogPageTemplate from "./catalogPageTemplate";
 import { backendAPI, getLinkDomain } from "@/lib";
 
 export async function generateMetadata({
-    params
+    params,
+    searchParams
 }: {
     params: { slug: string[] };
+    searchParams: { page?: number };
 }): Promise<Metadata> {
     if (!params.slug)
         return {
@@ -48,6 +50,7 @@ export async function generateMetadata({
                     title: "404"
                 };
             }
+
             return {
                 title: productMetadata?.page_title,
                 description: productMetadata?.page_description,
@@ -69,9 +72,18 @@ export async function generateMetadata({
                 image: getLinkDomain(el.images[0]?.url || "") || ""
             }))[0];
 
+            const addPage = (str: string | undefined) =>
+                str
+                    ? `${str}${
+                          (searchParams?.page || 0) > 1
+                              ? `, страница №${searchParams.page}`
+                              : ""
+                      }`
+                    : undefined;
+
             return {
-                title: categoryMetadata?.page_title,
-                description: categoryMetadata?.page_description,
+                title: addPage(categoryMetadata?.page_title),
+                description: addPage(categoryMetadata?.page_description),
                 keywords: categoryMetadata?.page_keywords
             };
         }

@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 export function middleware(req: NextRequest) {
-    if (req.url !== req.url.toLowerCase()) {
+    if (req.nextUrl.pathname !== req.nextUrl.pathname.toLowerCase()) {
         return NextResponse.redirect(
             new URL(
                 req.nextUrl.origin +

@@ -1,6 +1,6 @@
 import { Box, BoxProps } from "@mui/material";
 import CategoryProductsGrid from "./categoryProductsGrid";
-import { Breadcrumb, PageData } from "@/lib";
+import { Breadcrumb, PageData, landingConfig } from "@/lib";
 import PageTitle from "../../(shared)/text/pageTitle";
 import CatalogSeriesTemplate from "./catalogSeriesTemplate";
 import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
@@ -27,7 +27,12 @@ const CategoryTemplate = ({
     return (
         <>
             <BreadcrumbsTemplate linksArray={breadcrumbs} />
-            <PageTitle landingTitleCheck>{category.title}</PageTitle>
+            <PageTitle>
+                {category.title}
+                {category.title.includes(landingConfig.landing_title) &&
+                    ` ${landingConfig.landing_title}`}
+                {pageNumber > 1 && `, страница №${pageNumber}`}
+            </PageTitle>
 
             <Paragraph>{category.text}</Paragraph>
 
