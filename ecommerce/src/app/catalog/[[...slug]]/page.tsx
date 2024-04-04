@@ -9,13 +9,57 @@ import {
     Breadcrumb,
     MainProductInfo,
     formatPhoneNumber,
-    categoryAliasToPath
+    categoryAliasToPath,
+    categoryAPI,
+    categoryPathToAlias
 } from "@/lib";
 import { notFound } from "next/navigation";
 import ProductPage from "./(product)/page";
 import { Metadata } from "next";
 import CatalogPageTemplate from "./catalogPageTemplate";
 import { backendAPI, getLinkDomain } from "@/lib";
+import { Suspense } from "react";
+
+// export function generateStaticParams() {
+//     return [{ slug: ['a', '1'] }, { slug: ['b', '2'] }, { slug: ['c', '3'] }]
+//   }
+// export const dynamicParams = false;
+
+// export async function generateStaticParams() {
+//     const routes: { slug: string[] }[] = [];
+//     const categories = await backendAPI.getPages({});
+//     categories.forEach((category) => {
+//         routes.push({ slug: [categoryPathToAlias(category.path) || ""] });
+//     });
+//     await Promise.all(
+//         categories.map(async (category) =>
+//             (
+//                 await backendAPI.getPages({ path: category.path + ".*{1}" })
+//             ).forEach((seria) => {
+//                 routes.push({
+//                     slug: [
+//                         categoryPathToAlias(category.path) || "",
+//                         seria.path.replace(`${category.path}.`, "")
+//                     ]
+//                 });
+//             })
+//         )
+//     );
+//     (
+//         await categoryAPI.getCategoryItems({
+//             productsPerPage: 999999
+//         })
+//     ).list.forEach((product) => {
+//         routes.push({
+//             slug: [
+//                 categoryPathToAlias(product.category.path) || "",
+//                 `${product.alias}.html`
+//             ]
+//         });
+//     });
+
+//     return routes;
+// }
 
 export async function generateMetadata({
     params,
@@ -132,6 +176,8 @@ const CategoryPage = async ({
     params: { slug: string[] };
     searchParams: { page?: number; tab?: ProductPageTabType };
 }) => {
+    // return notFound();
+
     if (!params.slug) {
         let pages: PageData[] = [];
         try {
@@ -168,16 +214,8 @@ const CategoryPage = async ({
             image: getLinkDomain(el.images[0]?.url || "") || ""
         }))[0];
 
-        if (!params.slug[1]) {
-            /*{
+        if (!params.slug[1] && page) {
             const response = await backendAPI.getPages({
-                path: categoryAliasToPath(params.slug[0])!
-            });
-            pages = response.map((el) => ({
-                ...el,
-                image: getLinkDomain(el.images[0]?.url || "") || ""
-            }));
-        } else*/ const response = await backendAPI.getPages({
                 path: page.path + ".*{1}"
             });
             pages = response.map((el) => ({
@@ -189,10 +227,10 @@ const CategoryPage = async ({
         console.error(error);
     }
 
-    // TODO: проверить работу с несколькими клиентами
-    let breadcrumbs: Breadcrumb[] = [...catalogPageBreadcrumb];
-
     if (!page) return notFound();
+
+    // // TODO: проверить работу с несколькими клиентами
+    let breadcrumbs: Breadcrumb[] = [...catalogPageBreadcrumb];
 
     if (page.parent)
         breadcrumbs.push({
@@ -214,5 +252,19 @@ const CategoryPage = async ({
         />
     );
 };
+
+// const CategoryPageSuspense = ({
+//     params,
+//     searchParams
+// }: {
+//     params: { slug: string[] };
+//     searchParams: { page?: number; tab?: ProductPageTabType };
+// }) => {
+//     return (
+//         <Suspense>
+//             <CategoryPage params={params} searchParams={searchParams} />
+//         </Suspense>
+//     );
+// };
 
 export default CategoryPage;
