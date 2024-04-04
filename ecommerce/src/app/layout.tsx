@@ -205,6 +205,7 @@ const RootLayout = async ({
                 <Box {...htmlBoxProps}>
                     {/* <html {...htmlProps}> */}
                     <head
+                        suppressHydrationWarning
                         dangerouslySetInnerHTML={{
                             __html: metrika
                         }}
