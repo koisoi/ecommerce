@@ -1,6 +1,5 @@
-import Paragraph from "@/app/(shared)/text/paragraph";
-import { NextLinkProps, PageData } from "@/lib";
-import { TypographyProps, LinkProps, Link } from "@mui/material";
+import { PageData } from "@/lib";
+import { LinkProps, Link } from "@mui/material";
 import { default as NextLink } from "next/link";
 
 const CatalogSeriesTemplate = ({
@@ -20,15 +19,11 @@ const CatalogSeriesTemplate = ({
             textDecoration: "none",
             pointerEvents: selected ? "none" : "all",
             padding: "0.25em 0.4em",
-            borderRadius: "0.37rem",
+            borderRadius: "0.37rem"
         }
     };
 
-    return (
-        <Link {...linkProps}>
-            {page.title}
-        </Link>
-    );
+    return <Link {...linkProps}>{page.title}</Link>;
 };
 
 export default CatalogSeriesTemplate;

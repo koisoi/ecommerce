@@ -14,11 +14,10 @@ import {
     categoryPathToAlias
 } from "@/lib";
 import { notFound } from "next/navigation";
-import ProductPage from "./(product)/page";
+import ProductPage from "./_product/productPage";
 import { Metadata } from "next";
 import CatalogPageTemplate from "./catalogPageTemplate";
 import { backendAPI, getLinkDomain } from "@/lib";
-import { Suspense } from "react";
 
 // export function generateStaticParams() {
 //     return [{ slug: ['a', '1'] }, { slug: ['b', '2'] }, { slug: ['c', '3'] }]

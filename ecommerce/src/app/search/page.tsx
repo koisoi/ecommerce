@@ -10,7 +10,7 @@ import {
 import { SearchPageTemplate } from "./searchPageTemplate";
 import { useSearchParams } from "next/navigation";
 import { Suspense, useEffect, useState } from "react";
-import Loading from "../(shared)/loading";
+import Loading from "../_shared/loading";
 import { NoQuery } from "./noQuery";
 
 const SearchPage = () => {

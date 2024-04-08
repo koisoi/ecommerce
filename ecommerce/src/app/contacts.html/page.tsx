@@ -8,16 +8,16 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import AppLink from "../(shared)/text/appLink";
-import AttentionText from "../(shared)/text/attentionText";
-import PageTitle from "../(shared)/text/pageTitle";
-import TableTitle from "../(shared)/text/tableTitle";
-import { MetroStation } from "../(shared)/metroStation";
-import Paragraph from "../(shared)/text/paragraph";
-import Title from "../(shared)/text/title";
-import ImageSwitcher from "../(shared)/imageSwitcher/imageSwitcher.client";
+import AppLink from "../_shared/text/appLink";
+import AttentionText from "../_shared/text/attentionText";
+import PageTitle from "../_shared/text/pageTitle";
+import TableTitle from "../_shared/text/tableTitle";
+import { MetroStation } from "../_shared/metroStation";
+import Paragraph from "../_shared/text/paragraph";
+import Title from "../_shared/text/title";
+import ImageSwitcher from "../_shared/imageSwitcher/imageSwitcher.client";
 import { contactsData } from "./contactsData";
-import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
+import BreadcrumbsTemplate from "../_shared/breadcrumbsTemplate";
 import {
     backendAPI,
     contactsBreadcrumbs,
@@ -25,8 +25,8 @@ import {
     landingConfig
 } from "@/lib";
 import { Metadata } from "next";
-import SectionContainer from "../(shared)/sectionContainer";
-import PhoneLink from "../(shared)/text/phoneLinkTemplate";
+import SectionContainer from "../_shared/sectionContainer";
+import PhoneLink from "../_shared/text/phoneLinkTemplate";
 
 export async function generateMetadata(): Promise<Metadata> {
     const response = await backendAPI.getSite();

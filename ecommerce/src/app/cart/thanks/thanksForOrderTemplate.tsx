@@ -1,12 +1,12 @@
-import PageTitle from "@/app/(shared)/text/pageTitle";
+import PageTitle from "@/app/_shared/text/pageTitle";
 import { Box, BoxProps } from "@mui/material";
 import CompletedOrderFormTemplate, {
     CompletedOrderFormProps
-} from "../../(shared)/completedOrderFormTemplate.client";
+} from "../../_shared/completedOrderFormTemplate.client";
 import CartTableTemplate, {
     CartTableTemplateProps
-} from "@/app/(shared)/cartTable/cartTableTemplate.client";
-import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
+} from "@/app/_shared/cartTable/cartTableTemplate.client";
+import BreadcrumbsTemplate from "@/app/_shared/breadcrumbsTemplate";
 import { thanksForOrderBreadcrumbs } from "@/lib";
 
 const ThanksForOrderTemplate = ({

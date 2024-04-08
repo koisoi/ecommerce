@@ -1,10 +1,10 @@
 import { Box, Typography, TypographyProps } from "@mui/material";
-import PageTitle from "../(shared)/text/pageTitle";
-import Loading from "../(shared)/loading";
+import PageTitle from "../_shared/text/pageTitle";
+import Loading from "../_shared/loading";
 import ProductsGridTemplate, {
     ProductsGridTemplateProps
-} from "../(shared)/productsGrid/productsGridTemplate";
-import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
+} from "../_shared/productsGrid/productsGridTemplate";
+import BreadcrumbsTemplate from "../_shared/breadcrumbsTemplate";
 import { SearchResponse, searchBreadcrumbs } from "@/lib";
 
 export const SearchPageTemplate = ({

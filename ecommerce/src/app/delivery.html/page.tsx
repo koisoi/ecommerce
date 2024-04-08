@@ -7,15 +7,15 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import PageTitle from "../(shared)/text/pageTitle";
-import Title from "../(shared)/text/title";
-import TableTitle from "../(shared)/text/tableTitle";
-import Paragraph from "../(shared)/text/paragraph";
-import AppLink from "../(shared)/text/appLink";
+import PageTitle from "../_shared/text/pageTitle";
+import Title from "../_shared/text/title";
+import TableTitle from "../_shared/text/tableTitle";
+import Paragraph from "../_shared/text/paragraph";
+import AppLink from "../_shared/text/appLink";
 import { Description } from "@mui/icons-material";
 import { CSSProperties } from "react";
-import AttentionText from "../(shared)/text/attentionText";
-import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
+import AttentionText from "../_shared/text/attentionText";
+import BreadcrumbsTemplate from "../_shared/breadcrumbsTemplate";
 import {
     backendAPI,
     deliveryBreadcrumbs,
@@ -23,7 +23,7 @@ import {
     landingConfig
 } from "@/lib";
 import { Metadata } from "next";
-import SectionContainer from "../(shared)/sectionContainer";
+import SectionContainer from "../_shared/sectionContainer";
 
 import Visa from "@/assets/svg/visa.svg";
 import MasterCard from "@/assets/svg/mastercard.svg";

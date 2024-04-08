@@ -1,4 +1,4 @@
-import Loading from "./(shared)/loading";
+import Loading from "./_shared/loading";
 
 const LoadingPage = () => {
     return <Loading>Загрузка...</Loading>;

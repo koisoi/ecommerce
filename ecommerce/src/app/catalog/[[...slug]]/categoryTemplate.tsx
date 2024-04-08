@@ -1,11 +1,11 @@
 import { Box, BoxProps } from "@mui/material";
 import CategoryProductsGrid from "./categoryProductsGrid";
 import { Breadcrumb, PageData, innerHtmlStyles, landingConfig } from "@/lib";
-import PageTitle from "../../(shared)/text/pageTitle";
+import PageTitle from "../../_shared/text/pageTitle";
 import CatalogSeriesTemplate from "./catalogSeriesTemplate";
-import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
-import Paragraph from "@/app/(shared)/text/paragraph";
-import SectionContainer from "@/app/(shared)/sectionContainer";
+import BreadcrumbsTemplate from "@/app/_shared/breadcrumbsTemplate";
+import Paragraph from "@/app/_shared/text/paragraph";
+import SectionContainer from "@/app/_shared/sectionContainer";
 
 const CategoryTemplate = ({
     category,

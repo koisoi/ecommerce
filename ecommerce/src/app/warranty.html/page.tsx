@@ -10,11 +10,11 @@ import {
     TableRow,
     TableRowProps
 } from "@mui/material";
-import PageTitle from "../(shared)/text/pageTitle";
-import TableTitle from "../(shared)/text/tableTitle";
-import Paragraph from "../(shared)/text/paragraph";
-import Title from "../(shared)/text/title";
-import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
+import PageTitle from "../_shared/text/pageTitle";
+import TableTitle from "../_shared/text/tableTitle";
+import Paragraph from "../_shared/text/paragraph";
+import Title from "../_shared/text/title";
+import BreadcrumbsTemplate from "../_shared/breadcrumbsTemplate";
 import {
     backendAPI,
     formatPhoneNumber,
@@ -22,8 +22,8 @@ import {
     warrantyBreadcrumbs
 } from "@/lib";
 import { Metadata } from "next";
-import SectionContainer from "../(shared)/sectionContainer";
-import PhoneLink from "../(shared)/text/phoneLinkTemplate";
+import SectionContainer from "../_shared/sectionContainer";
+import PhoneLink from "../_shared/text/phoneLinkTemplate";
 
 export const metadata: Metadata = {
     title: "Гарантии и возврат",

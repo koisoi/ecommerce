@@ -1,4 +1,4 @@
-import CategoryCardTemplate from "@/app/(shared)/categoryCardTemplate";
+import CategoryCardTemplate from "@/app/_shared/categoryCardTemplate";
 import { PageData } from "@/lib";
 import { Box, BoxProps } from "@mui/material";
 

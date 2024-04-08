@@ -1,5 +1,5 @@
-import Title from "./(shared)/text/title";
-import OurAdvantages from "./(shared)/ourAdvantages.client";
+import Title from "./_shared/text/title";
+import OurAdvantages from "./_shared/ourAdvantages.client";
 import {
     CategoryItem,
     PageData,
@@ -9,11 +9,11 @@ import {
     categoryPathToAlias,
     SiteData
 } from "@/lib";
-import SimliarProductsSliderTemplate from "./(shared)/simliarProductsSliderTemplate";
+import SimliarProductsSliderTemplate from "./_shared/simliarProductsSliderTemplate";
 import CategoriesMenuTemplate from "./catalog/[[...slug]]/categoriesMenuTemplate";
-import SectionContainer from "./(shared)/sectionContainer";
+import SectionContainer from "./_shared/sectionContainer";
 import { Metadata } from "next";
-import PageTitle from "./(shared)/text/pageTitle";
+import PageTitle from "./_shared/text/pageTitle";
 
 export async function generateMetadata(): Promise<Metadata> {
     let response: SiteData | null = null;

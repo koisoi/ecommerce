@@ -1,7 +1,7 @@
-import BreadcrumbsTemplate from "@/app/(shared)/breadcrumbsTemplate";
+import BreadcrumbsTemplate from "@/app/_shared/breadcrumbsTemplate";
 import { PageData, catalogPageBreadcrumb } from "@/lib";
 import CategoriesMenuTemplate from "./categoriesMenuTemplate";
-import PageTitle from "@/app/(shared)/text/pageTitle";
+import PageTitle from "@/app/_shared/text/pageTitle";
 
 const CatalogPageTemplate = ({ pages }: { pages: PageData[] }) => {
     return (

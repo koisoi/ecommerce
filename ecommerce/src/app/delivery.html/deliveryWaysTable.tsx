@@ -7,13 +7,13 @@ import {
     TableRow,
     TypographyProps
 } from "@mui/material";
-import AttentionText from "../(shared)/text/attentionText";
-import TableTitle from "../(shared)/text/tableTitle";
-import Paragraph from "../(shared)/text/paragraph";
+import AttentionText from "../_shared/text/attentionText";
+import TableTitle from "../_shared/text/tableTitle";
+import Paragraph from "../_shared/text/paragraph";
 
 import YandexGo from "@/assets/svg/del-yandex-go.svg";
 import { CSSProperties } from "react";
-import { RussiaDelivery } from "../(shared)/russiaDelivery";
+import { RussiaDelivery } from "../_shared/russiaDelivery";
 
 export const DeliveryWaysTable = () => {
     const iconsStyling: CSSProperties = {

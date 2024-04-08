@@ -1,13 +1,13 @@
 import { Box, BoxProps } from "@mui/material";
-import CartTable from "../(shared)/cartTable/cartTable.client";
-import PageTitle from "../(shared)/text/pageTitle";
+import CartTable from "../_shared/cartTable/cartTable.client";
+import PageTitle from "../_shared/text/pageTitle";
 import { UseFormReturn } from "react-hook-form";
-import OrderFormTemplate from "../(shared)/orderFormTemplate";
+import OrderFormTemplate from "../_shared/orderFormTemplate";
 import { OrderRules } from "./cart.client";
 import { OrderForm, cartBreadcrumbs } from "@/lib";
 import { MouseEventHandler } from "react";
-import Loading from "../(shared)/loading";
-import BreadcrumbsTemplate from "../(shared)/breadcrumbsTemplate";
+import Loading from "../_shared/loading";
+import BreadcrumbsTemplate from "../_shared/breadcrumbsTemplate";
 
 const CartTemplate = ({
     form,

@@ -1,6 +1,6 @@
 import { Box, BoxProps, TypographyProps } from "@mui/material";
-import SearchBox from "../(shared)/search/searchBox.client";
-import Title from "../(shared)/text/title";
+import SearchBox from "../_shared/search/searchBox.client";
+import Title from "../_shared/text/title";
 
 export const NoQuery = () => {
     const wrapperProps: BoxProps = {
