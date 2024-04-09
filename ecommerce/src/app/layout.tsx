@@ -23,7 +23,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
     return {
         icons:
-            response.images[2]?.purpose === "favicon"
+            response.images[2]?.purpose === "favicon" ||
+            response.images[2]?.purpose === "images_favicon"
                 ? getLinkDomain(response.images[2].url)
                 : undefined
     };
@@ -127,7 +128,7 @@ const RootLayout = async ({
             image: getLinkDomain(el.images[0]?.url || "") || ""
         }));
 
-        banners = (await backendAPI.getBanners()).map((el) => ({
+        banners = (await backendAPI.getBanners())?.map((el) => ({
             ...el,
             src: getLinkDomain(el.src)
         }));

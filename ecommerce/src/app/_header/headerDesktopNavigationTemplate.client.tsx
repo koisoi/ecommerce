@@ -29,7 +29,9 @@ export const HeaderDesktopNavigationTemplate = ({
         display: "flex",
         flexDirection: "row",
         alignItems: "center",
-        gap: "20px"
+        gap: "20px",
+
+        color: "primary.contrastText"
     };
 
     const tabsProps: TabsProps = {

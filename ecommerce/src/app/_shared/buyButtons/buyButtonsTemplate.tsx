@@ -67,11 +67,9 @@ export const InstantBuyButtonTemplate = ({
                     ? "primary.contrastText"
                     : "primary.main",
             ":hover": {
-                backgroundColor:
-                    props?.variant === "contained"
-                        ? "primary.main"
-                        : "primary.main",
-                color: "accentAlt.contrastText",
+                backgroundColor: "primary.main",
+                // color: "accentAlt.contrastText",
+                color: "primary.contrastText",
 
                 boxShadow: "none"
             },

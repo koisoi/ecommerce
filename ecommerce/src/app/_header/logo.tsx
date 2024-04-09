@@ -6,7 +6,7 @@ export const Logo = ({ mobile }: { mobile?: boolean }) => {
     const logoContainerProps: BoxProps = {
         width: {
             xs: "90px",
-            md: "100px"
+            md: "100%"
         }
     };
 

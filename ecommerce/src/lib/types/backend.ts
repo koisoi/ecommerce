@@ -1,4 +1,4 @@
-export type ImagePurpose = "images" | "favicon";
+export type ImagePurpose = "images" | "favicon" | "images_favicon";
 
 export type SiteData = {
     id: number;
