@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
 
     return {
         icons:
-            response.images[2].purpose === "favicon"
+            response.images[2]?.purpose === "favicon"
                 ? getLinkDomain(response.images[2].url)
                 : undefined
     };
@@ -153,22 +153,22 @@ const RootLayout = async ({
         }
     };
 
-    const htmlProps: DetailedHTMLProps<
-        HtmlHTMLAttributes<HTMLHtmlElement>,
-        HTMLHtmlElement
-    > = {
-        lang: "ru",
+    // const htmlProps: DetailedHTMLProps<
+    //     HtmlHTMLAttributes<HTMLHtmlElement>,
+    //     HTMLHtmlElement
+    // > = {
+    //     lang: "ru",
 
-        style: {
-            overflow: "auto",
-            scrollbarGutter: "stable",
-            maxWidth: "100vw",
-            minWidth: "320px",
-            overflowX: "hidden",
-            fontFamily: "Tahoma, sans-serif",
-            fontSize: "15px"
-        }
-    };
+    //     style: {
+    //         overflow: "auto",
+    //         scrollbarGutter: "stable",
+    //         maxWidth: "100vw",
+    //         minWidth: "320px",
+    //         overflowX: "hidden",
+    //         fontFamily: "Tahoma, sans-serif",
+    //         fontSize: "15px"
+    //     }
+    // };
 
     const bodyProps: { style: CSSProperties } = {
         style: {
