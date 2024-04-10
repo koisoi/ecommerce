@@ -21,4 +21,5 @@ export type LandingConfig = {
         bonuses: string;
     };
     organizationSchema?: Organization;
+    ymId: string;
 };

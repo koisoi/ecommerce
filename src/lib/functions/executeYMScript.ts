@@ -1,3 +1,5 @@
+import { landingConfig } from "..";
+
 export const executeYMScript = (
     label:
         | "appeal_add_callback-footer"
@@ -6,5 +8,5 @@ export const executeYMScript = (
         | "order_add_main"
         | "order_add_fast"
 ) => {
-    eval(`ym(96790254, "reachGoal", "${label}")`);
+    eval(`ym(${landingConfig.ymId}, "reachGoal", "${label}")`);
 };
