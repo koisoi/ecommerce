@@ -4,6 +4,7 @@ import ImageGalleryTemplate, {
     ImageGalleryProps
 } from "@/app/_shared/imageGalleryTemplate.client";
 import { setOpenedImgLink, useAppDispatch, useMediaQueries } from "@/lib";
+import { Circle, FiberManualRecord } from "@mui/icons-material";
 import { Box, BoxProps } from "@mui/material";
 import {
     CSSProperties,
@@ -113,9 +114,9 @@ const ImagesCarousel = ({
         sx: {
             height: "100%",
 
-            div: {
-                transform: "none !important"
-            },
+            // div: {
+            //     transform: "none !important"
+            // },
 
             ".css-1f8sh1y": {
                 height: `${carouselHeight}px !important`
@@ -124,11 +125,14 @@ const ImagesCarousel = ({
 
         IndicatorIcon: (
             <div suppressHydrationWarning>
+                {" "}
                 {screen.mlg ? (
                     <></>
                 ) : typeof window === "undefined" ? (
                     <></>
-                ) : undefined}
+                ) : (
+                    <FiberManualRecord fontSize="small" />
+                )}
             </div>
         )
     };
