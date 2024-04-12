@@ -88,7 +88,6 @@ export const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
                 : "unset",
 
             div: {
-                transform: "none !important",
                 maxHeight: carouselHeight
                     ? `${carouselHeight}px !important`
                     : "unset"

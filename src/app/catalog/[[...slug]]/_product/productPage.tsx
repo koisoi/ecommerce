@@ -50,7 +50,7 @@ const ProductPage = async ({
             await productAPI.getProductShortCharacteristics({ alias: product });
         productFullCharacteristics =
             await productAPI.getProductFullCharacteristics({ alias: product });
-        productReviews = await productAPI.getProductReviews({ alias: product });
+        // productReviews = await productAPI.getProductReviews({ alias: product });
         productSiblings = await productAPI.getProductSiblings({
             alias: product
         });
