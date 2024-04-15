@@ -33,7 +33,7 @@ const CategoryTemplate = ({
                 {pageNumber > 1 && `, страница №${pageNumber}`}
             </PageTitle>
 
-            <SectionContainer>
+            <SectionContainer level={2}>
                 <>
                     {!!pages?.length && (
                         <Box {...linksWrapper}>
