@@ -33,14 +33,7 @@ const CategoryTemplate = ({
                 {pageNumber > 1 && `, страница №${pageNumber}`}
             </PageTitle>
 
-            <SectionContainer level={1}>
-                {category.text && (
-                    <Box
-                        dangerouslySetInnerHTML={{ __html: category.text }}
-                        sx={innerHtmlStyles}
-                    />
-                )}
-
+            <SectionContainer>
                 <>
                     {!!pages?.length && (
                         <Box {...linksWrapper}>
@@ -58,6 +51,13 @@ const CategoryTemplate = ({
                         pageNumber={pageNumber}
                     />
                 </>
+
+                {category.text && (
+                    <Box
+                        dangerouslySetInnerHTML={{ __html: category.text }}
+                        sx={innerHtmlStyles}
+                    />
+                )}
             </SectionContainer>
         </>
     );
