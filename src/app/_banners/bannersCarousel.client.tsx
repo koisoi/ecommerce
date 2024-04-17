@@ -53,12 +53,6 @@ export const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
         }
     };
 
-    const indicatorIconButtonProps: CarouselNavProps = {
-        style: {
-            color: colors.textDisabled
-        }
-    };
-
     const navButtonsProps: CarouselNavProps = {
         style: {
             opacity: Number(navOpacity)
@@ -74,15 +68,12 @@ export const BannersCarousel = ({ banners }: { banners: BannerData[] }) => {
         stopAutoPlayOnHover: true,
 
         indicatorContainerProps,
-        indicatorIconButtonProps,
         navButtonsProps,
 
         sx: {
             width: "100%",
             height: "100%",
             minHeight: carouselHeight ? `${carouselHeight}px` : "760px",
-            // minHeight: `${carouselHeight}px`,
-            // aspectRatio: "16 / 9",
             maxHeight: carouselHeight
                 ? `${carouselHeight}px !important`
                 : "unset",
