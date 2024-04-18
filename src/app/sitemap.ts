@@ -84,8 +84,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     products.list.forEach((product) => {
         result.push({
             url: `${url}/${categoryPathToAlias(product.category.path)}/${
-                product.series?.alias ? product.series?.alias + "/" : ""
-            }${product.alias + ".html"}`,
+                product.alias + ".html"
+            }`,
             ...defaultOptions
         });
     });

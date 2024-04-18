@@ -5,7 +5,8 @@ import {
     CategoryItemsResponse,
     categoryPathToAlias,
     getLinkDomain,
-    getProductLink
+    getProductLink,
+    getProductLinkWithUrl
 } from "@/lib";
 import Paragraph from "../text/paragraph";
 
@@ -89,6 +90,9 @@ const ProductsGridTemplate = ({
                                     }}
                                     categoryItem={item}
                                     initialCardProps={productCardProps}
+                                    is_available={
+                                        item.availability === "в наличии"
+                                    }
                                 />
                             );
                         })}

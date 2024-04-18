@@ -72,11 +72,14 @@ class OrderService extends Service {
         //     formData.append(key, JSONbody[key])
         // );
 
-        return fetch(`${this.baseURL}/sale/remote/appeal-save`, {
-            ...this.options,
-            method: "POST",
-            body: JSON.stringify(JSONbody)
-        }).then((response) => {
+        return fetch(
+            `${this.baseURL}/sale/remote/appeal-save/site_id/${landingConfig.id}`,
+            {
+                ...this.options,
+                method: "POST",
+                body: JSON.stringify(JSONbody)
+            }
+        ).then((response) => {
             if (!response.ok) {
                 throw new NetworkError(response.statusText, response.status);
             }
@@ -109,11 +112,14 @@ class OrderService extends Service {
             yandex: {}
         };
 
-        return fetch(`${this.baseURL}/statv2/remote/action-save`, {
-            ...this.options,
-            method: "POST",
-            body: JSON.stringify(body)
-        }).then((response) => {
+        return fetch(
+            `${this.baseURL}/statv2/remote/action-save/site_id/${landingConfig.id}`,
+            {
+                ...this.options,
+                method: "POST",
+                body: JSON.stringify(body)
+            }
+        ).then((response) => {
             if (!response.ok) {
                 throw new NetworkError(response.statusText, response.status);
             }
@@ -137,11 +143,14 @@ class OrderService extends Service {
             status_appeal: "new"
         };
 
-        return fetch(`${this.baseURL}/sale/remote/appeal-save`, {
-            ...this.options,
-            method: "POST",
-            body: JSON.stringify(body)
-        }).then((response) => {
+        return fetch(
+            `${this.baseURL}/sale/remote/appeal-save/site_id/${landingConfig.id}`,
+            {
+                ...this.options,
+                method: "POST",
+                body: JSON.stringify(body)
+            }
+        ).then((response) => {
             if (!response.ok) {
                 throw new NetworkError(response.statusText, response.status);
             }

@@ -17,6 +17,7 @@ import {
     CartItem,
     CategoryItem,
     categoryPathToAlias,
+    getProductTitle,
     landingConfig
 } from "@/lib";
 import Price from "./text/priceTemplate";
@@ -44,6 +45,7 @@ export type ProductCardProps = {
     categoryItem: CategoryItem;
     hideButtons?: boolean;
     linkProps?: LinkProps;
+    is_available?: boolean;
 };
 
 const ProductCardTemplate = ({
@@ -58,7 +60,8 @@ const ProductCardTemplate = ({
     cartItem,
     categoryItem,
     hideButtons,
-    linkProps
+    linkProps,
+    is_available
 }: ProductCardProps) => {
     const schema: WithContext<Product> = {
         "@context": "https://schema.org",
@@ -186,7 +189,9 @@ const ProductCardTemplate = ({
             flexGrow: 1,
             width: "100%",
             margin: 0
-        }
+        },
+
+        disabled: !is_available
     };
 
     const cardProps: CardProps = {
@@ -265,10 +270,7 @@ const ProductCardTemplate = ({
                             </Typography>
                         </noindex>
                         <ProductLink url={cartItem.url}>
-                            {categoryItem.type.title
-                                ? categoryItem.type.title + " "
-                                : ""}
-                            {cartItem.title}
+                            {getProductTitle(categoryItem)}
                         </ProductLink>
                     </CardContent>
 

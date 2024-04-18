@@ -57,14 +57,12 @@ export type CategoryItem = {
         title_single?: string;
     };
     series?: {
-        alias: string;
+        path: string;
         title: string;
     };
     availability?: "в наличии" | string;
     external_link?: string;
-    type: {
-        title: string;
-    };
+    prefix: string;
 };
 
 export type CategoryItemsRequest = {

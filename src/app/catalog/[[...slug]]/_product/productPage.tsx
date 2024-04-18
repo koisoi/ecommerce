@@ -11,6 +11,7 @@ import {
     categoryPathToAlias,
     getLinkDomain,
     getProductLink,
+    getProductTitle,
     landingConfig,
     productAPI
 } from "@/lib";
@@ -104,7 +105,9 @@ const ProductPage = async ({
 
     if (productMainInfo.series)
         breadcrumbs.push({
-            link: `/catalog/${productMainInfo.category.path}/${productMainInfo.series.alias}`,
+            link: `/catalog/${categoryPathToAlias(
+                productMainInfo.series.path
+            )}`,
             title: productMainInfo.series.title
         });
 
@@ -122,12 +125,7 @@ const ProductPage = async ({
 
             <ImgModal title={productMainInfo?.title || ""} />
 
-            <PageTitle noDivider>
-                {productMainInfo?.type.title
-                    ? productMainInfo?.type.title + " "
-                    : ""}
-                {productMainInfo?.title || ""}
-            </PageTitle>
+            <PageTitle noDivider>{getProductTitle(productMainInfo)}</PageTitle>
             <SectionContainer>
                 <ProductPageUpperTemplate
                     imageLinks={
@@ -157,7 +155,7 @@ const ProductPage = async ({
                         is_new: productMainInfo.is_new,
                         is_recommend: productMainInfo.is_recommend,
                         category: productMainInfo.category,
-                        type: productMainInfo.type
+                        prefix: productMainInfo.prefix
                     }}
                 />
                 <ProductPageLowerTemplate

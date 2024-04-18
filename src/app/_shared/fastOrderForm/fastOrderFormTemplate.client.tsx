@@ -104,6 +104,7 @@ const FastOrderFormTemplate = ({
         newProduct: item?.is_new,
         recommended: item?.is_recommend,
         categoryItem: item,
+        is_available: item.availability === "в наличии",
 
         initialCardProps: {
             sx: {

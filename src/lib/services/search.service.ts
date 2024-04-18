@@ -22,7 +22,7 @@ class SearchService extends Service {
         page
     }: SearchQuery): Promise<SearchResponse> {
         return fetch(
-            `${this.baseURL}?brand=${landingConfig.landing}&term=${query}&page=${page}&limit=${productsPerPage}&format=json`,
+            `${this.baseURL}/site_id/${landingConfig.id}?brand=${landingConfig.landing}&term=${query}&page=${page}&limit=${productsPerPage}&format=json`,
             this.options
         )
             .then((response) => {

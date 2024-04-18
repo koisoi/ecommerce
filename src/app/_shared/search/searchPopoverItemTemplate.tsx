@@ -1,5 +1,10 @@
 import ProductLink from "@/app/_shared/text/productLinkTemplate";
-import { CategoryItem, getLinkDomain, getProductLink } from "@/lib";
+import {
+    CategoryItem,
+    categoryPathToAlias,
+    getLinkDomain,
+    getProductLink
+} from "@/lib";
 import {
     ListItem,
     ListItemAvatar,
@@ -17,7 +22,10 @@ const SearchPopoverItemTemplate = ({
     item: CategoryItem;
     onClick: (...props: any) => any;
 }) => {
-    const url: Url = getProductLink(item.category.path, item.alias);
+    const url: Url = getProductLink(
+        categoryPathToAlias(item.category.path)!,
+        item.alias
+    );
 
     const linksProps: ListItemAvatarProps & ListItemTextProps = {
         onClick

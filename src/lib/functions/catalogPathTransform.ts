@@ -1,5 +1,7 @@
 export const categoryPathToAlias = (category?: string | null) =>
-    category?.replaceAll("_", "-").replace("TOP.", "");
+    category?.replaceAll("_", "-").replace("TOP.", "").replaceAll(".", "/");
 
 export const categoryAliasToPath = (category?: string | null) =>
-    category ? `TOP.${category.replaceAll("-", "_")}` : category;
+    category
+        ? `TOP.${category.replaceAll("-", "_").replaceAll("/", ".")}`
+        : category;

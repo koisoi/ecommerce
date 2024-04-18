@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { landingConfig } from "./lib/data/config";
 import { PageData } from "./lib/types/backend";
 import { CategoryItemsResponse } from "./lib/types/category";
+import { getProductLink } from "./lib/functions/getProductLink";
+import { categoryPathToAlias } from "./lib/functions/catalogPathTransform";
 
 export async function middleware(req: NextRequest) {
     if (req.nextUrl.pathname !== req.nextUrl.pathname.toLowerCase()) {
@@ -105,13 +107,14 @@ export async function middleware(req: NextRequest) {
             });
         });
         products.list.forEach((el) => {
-            if (el.external_link)
-                allPathnames.push(
-                    el.external_link?.replace("https://telescope1.ru", "")
-                );
+            allPathnames.push(
+                getProductLink(categoryPathToAlias(el.category.path)!, el.alias)
+            );
         });
-        if (!allPathnames.includes(req.nextUrl.pathname))
+
+        if (!allPathnames.includes(req.nextUrl.pathname)) {
             return NextResponse.error();
+        }
     }
 }
 

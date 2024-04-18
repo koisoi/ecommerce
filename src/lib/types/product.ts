@@ -6,7 +6,6 @@ export type MainProductInfo = CategoryItem & {
     page_keywords?: string;
     complectation: string;
     text: string;
-    type: { title: string };
 };
 
 export type Characteristic = {

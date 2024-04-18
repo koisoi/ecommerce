@@ -46,7 +46,8 @@ const SimliarProductsSliderTemplate = ({
             linkProps: {
                 sx: { height: { xs: "100%", md: "190px", xl: "310px" } }
             },
-            categoryItem: item
+            categoryItem: item,
+            is_available: item.availability === "в наличии"
         };
     };
 
