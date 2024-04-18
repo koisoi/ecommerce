@@ -12,6 +12,7 @@ import dynamic from "next/dynamic";
 import ProductOfferBoxTemplate, {
     ProductOfferBoxProps
 } from "./productOfferBoxTemplate";
+import ImagesCarousel from "./imagesCarousel.client";
 
 const DynamicImagesCarousel = dynamic(
     () =>

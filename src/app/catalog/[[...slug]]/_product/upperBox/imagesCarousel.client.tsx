@@ -4,12 +4,11 @@ import ImageGalleryTemplate, {
     ImageGalleryProps
 } from "@/app/_shared/imageGalleryTemplate.client";
 import { setOpenedImgLink, useAppDispatch, useMediaQueries } from "@/lib";
-import { Circle, FiberManualRecord } from "@mui/icons-material";
+import { FiberManualRecord } from "@mui/icons-material";
 import { Box, BoxProps } from "@mui/material";
 import {
     CSSProperties,
     DragEventHandler,
-    Fragment,
     MouseEventHandler,
     SyntheticEvent,
     useEffect,
@@ -31,6 +30,7 @@ const ImagesCarousel = ({
     const [canOpenImg, setCanOpenImg] = useState<boolean>(true);
     const [selectedImg, setSelectedImg] = useState<number>(0);
     const [carouselHeight, setCarouselHeight] = useState<number>(0);
+    const [isClient, setIsClient] = useState<boolean>(false);
 
     const renderHeight = () => {
         setCarouselHeight(
@@ -39,6 +39,10 @@ const ImagesCarousel = ({
                 ?.getBoundingClientRect().width || 0) * 0.75
         );
     };
+
+    useEffect(() => {
+        setIsClient(true);
+    }, []);
 
     useEffect(() => {
         if (typeof window !== "undefined") {
@@ -180,16 +184,17 @@ const ImagesCarousel = ({
             {screen.mlg && <ImageGalleryTemplate {...imageGalleryProps} />}
             <Box {...carouselBoxProps} id="product-image-carousel">
                 <Carousel {...carouselProps}>
-                    {imageLinks.map((imageLink, i) => (
-                        <Box key={i} {...imgBoxProps}>
-                            <img
-                                src={imageLink.url}
-                                alt={title}
-                                key={i}
-                                {...imgProps}
-                            />
-                        </Box>
-                    ))}
+                    {isClient &&
+                        imageLinks.map((imageLink, i) => (
+                            <Box key={i} {...imgBoxProps}>
+                                <img
+                                    src={imageLink.url}
+                                    alt={title}
+                                    key={i}
+                                    {...imgProps}
+                                />
+                            </Box>
+                        ))}
                 </Carousel>
             </Box>
         </Box>
