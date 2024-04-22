@@ -14,7 +14,13 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v14-appRouter";
 import { theme } from "./theme";
 import { headers } from "next/headers";
 import StoreProvider from "./storeProvider";
-import { BannerData, backendAPI, getLinkDomain, landingConfig } from "@/lib";
+import {
+    BannerData,
+    PageData,
+    backendAPI,
+    getLinkDomain,
+    landingConfig
+} from "@/lib";
 import { Organization, WebSite, WithContext } from "schema-dts";
 import { Metadata, Viewport } from "next";
 
@@ -121,12 +127,25 @@ const RootLayout = async ({
             getLinkDomain(siteData.logo_alt || "") || "";
         landingConfig.url = siteData.url;
 
-        const response = await backendAPI.getPages({});
+        const categoriesResponse = await backendAPI.getPages({});
 
-        landingConfig.categories = response.map((el) => ({
+        landingConfig.categories = categoriesResponse.map((el) => ({
             ...el,
             image: getLinkDomain(el.images[0]?.url || "") || ""
         }));
+
+        const seriesResponse = await Promise.all(
+            categoriesResponse.map((category) => {
+                return backendAPI.getPages({ path: category.path + ".*{1}" });
+            })
+        );
+        const series: PageData[] = [];
+        seriesResponse.forEach((categorySeries) => {
+            categorySeries.forEach((seria) => {
+                series.push(seria);
+            });
+        });
+        landingConfig.series = series;
 
         banners = (await backendAPI.getBanners())?.map((el) => ({
             ...el,

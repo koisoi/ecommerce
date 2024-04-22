@@ -2,10 +2,11 @@ import { Box, BoxProps } from "@mui/material";
 import CategoryProductsGrid from "./categoryProductsGrid";
 import { Breadcrumb, PageData, innerHtmlStyles, landingConfig } from "@/lib";
 import PageTitle from "../../_shared/text/pageTitle";
-import CatalogSeriesTemplate from "./catalogSeriesTemplate";
+import CatalogSeriesTemplate from "../../_shared/catalogSeriesTemplate";
 import BreadcrumbsTemplate from "@/app/_shared/breadcrumbsTemplate";
 import Paragraph from "@/app/_shared/text/paragraph";
 import SectionContainer from "@/app/_shared/sectionContainer";
+import { CategorySeriesBoxTemplate } from "@/app/_shared/categorySeriesBoxTemplate";
 
 const CategoryTemplate = ({
     category,
@@ -18,13 +19,6 @@ const CategoryTemplate = ({
     pageNumber: number;
     breadcrumbs: Breadcrumb[];
 }) => {
-    const linksWrapper: BoxProps = {
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "0.5rem",
-        marginBottom: "1rem"
-    };
-
     return (
         <>
             <BreadcrumbsTemplate linksArray={breadcrumbs} />
@@ -35,7 +29,7 @@ const CategoryTemplate = ({
 
             <SectionContainer level={2}>
                 <>
-                    {!!pages?.length && (
+                    {/* {!!pages?.length && (
                         <Box {...linksWrapper}>
                             {pages.map((page) => (
                                 <CatalogSeriesTemplate
@@ -45,7 +39,11 @@ const CategoryTemplate = ({
                                 />
                             ))}
                         </Box>
-                    )}
+                    )} */}
+                    <CategorySeriesBoxTemplate
+                        series={pages}
+                        category={category}
+                    />
                     <CategoryProductsGrid
                         page={category}
                         pageNumber={pageNumber}

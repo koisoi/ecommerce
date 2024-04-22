@@ -5,6 +5,7 @@ import { FooterContactsBoxTemplate } from "../_shared/footerContactsBoxTemplate"
 import { landingConfig } from "@/lib";
 import DeliveryWays from "../_shared/deliveryWays";
 import { FooterTitle } from "../_shared/footerTitle";
+import { SeriesBoxTemplate } from "./seriesBoxTemplate";
 
 export const Footer = ({ props }: { props?: BoxProps }) => {
     // props
@@ -48,6 +49,7 @@ export const Footer = ({ props }: { props?: BoxProps }) => {
                         phone={landingConfig.phoneNumber}
                     />
                     <CatalogBoxTemplate categories={landingConfig.categories} />
+                    <SeriesBoxTemplate series={landingConfig.series} />
                     <UpperMenuBox />
                 </Box>
             </Box>

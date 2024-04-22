@@ -39,7 +39,11 @@ const ProductPageLowerTemplate = ({
 }: ProductPageLowerTemplateProps) => {
     const currentTab =
         searchParams.tab ||
-        (fullCharasterictics ? "allCharasteristics" : "description");
+        (fullCharasterictics
+            ? "allCharasteristics"
+            : description
+            ? "description"
+            : "delivery");
 
     const wrapperProps: BoxProps = {
         width: "100%"

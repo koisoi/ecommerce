@@ -7,7 +7,7 @@ import {
     useAppDispatch,
     useMediaQueries
 } from "@/lib";
-import { ButtonProps, TypographyProps } from "@mui/material";
+import { ButtonProps, Snackbar, TypographyProps } from "@mui/material";
 import { MouseEventHandler, useState } from "react";
 import dynamic from "next/dynamic";
 import { executeYMScript } from "@/lib/functions/executeYMScript";
@@ -38,6 +38,8 @@ export const ShoppingCartButton = ({
     props,
     textProps
 }: BuyButtonProps) => {
+    const [snackbarOpen, setSnackbarOpen] = useState<boolean>(false);
+
     const dispatch = useAppDispatch();
     const screen = useMediaQueries();
 
@@ -45,10 +47,22 @@ export const ShoppingCartButton = ({
         { x: number; y: number } | undefined
     >(undefined);
 
+    const handleSnackbarClose = (
+        event: React.SyntheticEvent | Event,
+        reason?: string
+    ) => {
+        if (reason === "clickaway") {
+            return;
+        }
+
+        setSnackbarOpen(false);
+    };
+
     const handleAddToCartClick: MouseEventHandler<HTMLButtonElement> = (
         event
     ) => {
         dispatch(addItemToCart(item));
+        setSnackbarOpen(true);
         executeYMScript("basket_add_main");
 
         const scrolled = document.documentElement.scrollTop;
@@ -75,12 +89,29 @@ export const ShoppingCartButton = ({
     };
 
     return (
-        <DynamicShoppingCartButtonTemplate
-            props={props}
-            textProps={textProps}
-            onAddToCartClick={handleAddToCartClick}
-            translateTo={translateTo}
-        />
+        <>
+            <Snackbar
+                open={snackbarOpen}
+                autoHideDuration={2000}
+                onClose={handleSnackbarClose}
+                message="Товар добавлен в корзину"
+                sx={{
+                    minWidth: "none"
+                }}
+                ContentProps={{
+                    sx: {
+                        fontSize: "1rem"
+                    }
+                }}
+            />
+
+            <DynamicShoppingCartButtonTemplate
+                props={props}
+                textProps={textProps}
+                onAddToCartClick={handleAddToCartClick}
+                translateTo={translateTo}
+            />
+        </>
     );
 };
 

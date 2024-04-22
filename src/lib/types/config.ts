@@ -11,6 +11,7 @@ export type LandingConfig = {
     logoImgLink?: string;
     logoImgMobileLink?: string;
     categories: PageData[];
+    series: PageData[];
     colors: PaletteOptions;
     phoneNumber: string;
     email: string;

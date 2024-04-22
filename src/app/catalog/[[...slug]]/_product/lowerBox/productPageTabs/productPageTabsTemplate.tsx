@@ -43,35 +43,37 @@ const ProductPageTabsTemplate = ({
 
     return (
         <>
-            {(fullCharasterictics ||
+            {/*{!!(
+                fullCharasterictics ||
                 description ||
                 complectation ||
-                (feedback && feedback.length)) && (
-                <Tabs {...tabsProps}>
-                    {fullCharasterictics && (
-                        <Tab
-                            value={"allCharasteristics"}
-                            label={"Все характеристики"}
-                            {...tabProps}
-                        />
-                    )}
-                    {description && (
-                        <Tab
-                            value={"description"}
-                            label={"Описание"}
-                            {...tabProps}
-                        />
-                    )}
-                    {complectation && (
-                        <Tab
-                            value={"complectation"}
-                            label={"Комплектация"}
-                            {...tabProps}
-                        />
-                    )}
-                    <Tab value={"delivery"} label={"Доставка"} {...tabProps} />
-                </Tabs>
-            )}
+                (feedback && feedback.length)
+            ) && (*/}
+            <Tabs {...tabsProps}>
+                {fullCharasterictics && (
+                    <Tab
+                        value={"allCharasteristics"}
+                        label={"Все характеристики"}
+                        {...tabProps}
+                    />
+                )}
+                {description && (
+                    <Tab
+                        value={"description"}
+                        label={"Описание"}
+                        {...tabProps}
+                    />
+                )}
+                {complectation && (
+                    <Tab
+                        value={"complectation"}
+                        label={"Комплектация"}
+                        {...tabProps}
+                    />
+                )}
+                <Tab value={"delivery"} label={"Доставка"} {...tabProps} />
+            </Tabs>
+            {/* )} */}
         </>
     );
 };

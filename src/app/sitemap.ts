@@ -12,8 +12,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const categories = await backendAPI.getPages({});
     const series = await Promise.all(
         categories.map((category) => {
-            if (category.url.endsWith("-pulsar"))
-                return backendAPI.getPages({ path: category.path + ".*{1}" });
+            return backendAPI.getPages({ path: category.path + ".*{1}" });
         })
     );
     const products = await categoryAPI.getCategoryItems({
@@ -68,11 +67,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     categories.forEach((category) => {
-        if (category.url.endsWith("-pulsar"))
-            result.push({
-                url: `${url}${category.url}`,
-                ...defaultOptions
-            });
+        result.push({
+            url: `${url}${category.url}`,
+            ...defaultOptions
+        });
     });
 
     series.forEach((categorySeries) => {
