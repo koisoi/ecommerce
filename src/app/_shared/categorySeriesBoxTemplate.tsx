@@ -15,7 +15,9 @@ export const CategorySeriesBoxTemplate = ({
         display: "flex",
         flexWrap: "wrap",
         gap: "0.5rem",
-        marginBottom: "1rem"
+        marginBottom: "1rem",
+
+        ...props
     };
 
     return !!series?.length ? (

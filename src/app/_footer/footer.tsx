@@ -34,6 +34,7 @@ export const Footer = ({ props }: { props?: BoxProps }) => {
         display: "flex",
         flexDirection: { xs: "column", smd: "row" },
         justifyContent: { xs: "center", smd: "space-between" },
+        alignItems: { xs: "center", smd: "flex-start" },
         gap: "2rem",
 
         fontSize: "1rem",
