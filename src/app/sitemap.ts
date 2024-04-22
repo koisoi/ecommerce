@@ -2,6 +2,7 @@ import {
     backendAPI,
     categoryAPI,
     categoryPathToAlias,
+    getProductLink,
     makePagePath
 } from "@/lib";
 import { MetadataRoute } from "next";
@@ -10,9 +11,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const { url } = await backendAPI.getSite();
     const categories = await backendAPI.getPages({});
     const series = await Promise.all(
-        categories.map((category) =>
-            backendAPI.getPages({ path: category.path + ".*{1}" })
-        )
+        categories.map((category) => {
+            if (category.url.endsWith("-pulsar"))
+                return backendAPI.getPages({ path: category.path + ".*{1}" });
+        })
     );
     const products = await categoryAPI.getCategoryItems({
         productsPerPage: 999999
@@ -66,14 +68,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ];
 
     categories.forEach((category) => {
-        result.push({
-            url: `${url}${category.url}`,
-            ...defaultOptions
-        });
+        if (category.url.endsWith("-pulsar"))
+            result.push({
+                url: `${url}${category.url}`,
+                ...defaultOptions
+            });
     });
 
     series.forEach((categorySeries) => {
-        categorySeries.forEach((seria) => {
+        categorySeries?.forEach((seria) => {
             result.push({
                 url: `${url}${seria.url}`,
                 ...defaultOptions
@@ -83,9 +86,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     products.list.forEach((product) => {
         result.push({
-            url: `${url}/${categoryPathToAlias(product.category.path)}/${
-                product.alias + ".html"
-            }`,
+            // url: `${url}/category/${categoryPathToAlias(
+            //     product.category.path
+            // )}/${product.alias + ".html"}`,
+            url: `${url}${getProductLink(
+                categoryPathToAlias(product.category.path)!,
+                product.alias
+            )}`,
             ...defaultOptions
         });
     });

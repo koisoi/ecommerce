@@ -79,6 +79,7 @@ const ProductsGridTemplate = ({
                                             )!,
                                             item.alias
                                         ),
+                                        // url: item.url,
                                         alias: item.alias,
                                         title: item.title,
                                         imgLink: getLinkDomain(

@@ -225,10 +225,12 @@ const ProductCardTemplate = ({
         cardMediaChildren: (
             <>
                 <Link {...imageLinkProps} />
-                <Box {...badgeWrapperProps}>
-                    {newProduct && <Box {...badgeProps}>Новинка</Box>}
-                    {recommended && <Box {...badgeProps}>Рекомендуем</Box>}
-                </Box>
+                <noindex>
+                    <Box {...badgeWrapperProps}>
+                        {newProduct && <Box {...badgeProps}>Новинка</Box>}
+                        {recommended && <Box {...badgeProps}>Рекомендуем</Box>}
+                    </Box>
+                </noindex>
             </>
         )
     };

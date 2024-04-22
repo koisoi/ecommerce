@@ -28,6 +28,7 @@ const HeaderNavigation = ({
 
         width: "100%",
         minHeight: { xs: "45px", md: "50px" },
+        maxHeight: { xs: "45px", md: "50px" },
         display: { xs: mobile ? "flex" : "none", md: mobile ? "none" : "flex" },
 
         sx: {

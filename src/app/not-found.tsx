@@ -18,16 +18,6 @@ const NotFound = () => {
         height: "100%"
     };
 
-    // const innerWrapperProps: BoxProps = {
-    //     display: "flex",
-    //     flexDirection: "row",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-
-    //     width: "fit-content",
-    //     height: "fit-content"
-    // };
-
     const titleProps: TypographyProps = {
         color: "primary.main",
         fontSize: "10rem",
@@ -47,6 +37,8 @@ const NotFound = () => {
     };
 
     const buttonProps: ButtonProps = {
+        component: "a",
+        href: "/",
         variant: "contained",
 
         disableFocusRipple: true,

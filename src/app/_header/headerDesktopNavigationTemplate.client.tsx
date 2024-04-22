@@ -55,6 +55,7 @@ export const HeaderDesktopNavigationTemplate = ({
 
             transition: "0.2s",
             height: "100%",
+            maxWidth: "none",
 
             ...((path === pathname || path + "/" === pathname) && {
                 backgroundColor: "primary.light"
